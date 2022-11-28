@@ -6,14 +6,15 @@ import lombok.Data;
 
 @Data
 public class tripsBoardDto {
-	private boolean ACCEPT;
-	private int WRITER_NO;
-	private String BOARD_TITLE;
-	private String BOARD_CONTENT;
-	private String ORIGIANL_FILENAME;
-	private String RENAMED_FILENAME;
-	private String READCOUNT;
-	private String STATUS;
-	private LocalDateTime CREATE_DATE;
-	private LocalDateTime MODIFY_DATE;
+	private int B_ACCEPT;
+	private String B_WRITER;
+	private int B_NO;
+	private String title;
+	private String B_CONTENT;
+	private String B_FILENAME;
+	private String B_RFILENAME;
+	private String B_READCOUNT;
+	private String B_STATUS;
+	private LocalDateTime B_CREATEDATE;
+	private LocalDateTime B_MODIFYDATE;
 }

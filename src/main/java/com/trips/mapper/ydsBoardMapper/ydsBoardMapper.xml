@@ -6,13 +6,24 @@
 <mapper namespace="com.trips.mapper.ydsBoardMapper.ydsBoardMapper">
 <select id="getBoardList" resultType="com.trips.domain.ydsBoard.tripsBoardDto">
 SELECT
-	BOARD_TITLE,
-	BOARD_CONTENT,
-	ORIGINAL_FILENAME,
-	READCOUNT,
-	STATUS,
-	CREATE_DATE
-FROM ACTI_BOARD;
+	B_TITLE title,
+	B_WRITER writer,
+	B_CONTENT,
+	B_FILENAME,
+	B_RFILENAME,
+	B_STATUS,
+	B_CREATEDATE,
+	B_MODIFYDATE
+FROM ACTI_BOARD
+</select>
+
+<select id="getBoard" resultType="com.trips.domain.ydsBoard.tripsBoardDto">
+SELECT
+	B_TITLE title,
+	B_WRITER writer,
+	B_CONTENT content
+FROM ACTI_BOARD
+WHERE B_NO = {no}
 </select>
 
 

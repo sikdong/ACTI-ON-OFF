@@ -12,11 +12,16 @@ import com.trips.mapper.ydsBoardMapper.ydsBoardMapper;
 public class ydsBoardService {
 	
 	@Autowired
-	private ydsBoardMapper ydsBoardMapper;
+	private ydsBoardMapper mapper;
 
 	public List<tripsBoardDto> getBoardlist() {
 		// TODO Auto-generated method stub
-		return ydsBoardMapper.getBoardList();
+		return mapper.getBoardList();
+	}
+
+	public tripsBoardDto getBoard(int no) {
+		// TODO Auto-generated method stub
+		return mapper.getBoard(no);
 	}
 
 }
