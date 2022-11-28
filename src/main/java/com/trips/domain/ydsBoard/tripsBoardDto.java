@@ -2,6 +2,9 @@ package com.trips.domain.ydsBoard;
 
 import java.time.LocalDateTime;
 
+import lombok.Data;
+
+@Data
 public class tripsBoardDto {
 	private boolean ACCEPT;
 	private int WRITER_NO;
