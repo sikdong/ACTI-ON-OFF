@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.trips.mapper.yds.reply.YdsReplyMapper">
+<select id="listReply" resultType = "com.trips.domain.yds.TripsReplyDto">
+SELECT 
+	R_NO replyNum,
+	R_WRITER writer,
+	R_CONTENT content,
+	R_CREATEDATE createDate
+FROM ACTI_REPLY
+WHERE B_NO = #{boardNum}
+ORDER BY R_NO DESC;
+</select>
+
+
+
+</mapper>

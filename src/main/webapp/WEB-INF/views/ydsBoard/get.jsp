@@ -4313,6 +4313,15 @@ padding-right
 													<h2>호스트 소개</h2>
 													<input value="${board.writer }"class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example">
 													
+																<%-- 댓글 리스트 출력되는 곳 --%>
+													<div class="row mt-3">
+														<div class="col">
+															<div class="list-group" id="replyListContainer">
+																<input type="hidden" id="boardNum" value="${board.num}">		
+															</div>
+														</div>
+													</div>
+																									
 													<!-- 모바일용 상세 정보 버튼 시작 -->
 													<div class="m-btn-group underline_tab" id="tab_offset">
 														<div class="site_prod_nav_wrap _prod_detail_tab_fixed"
@@ -6211,4 +6220,22 @@ body.doz_sys {
 	</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>	
 </body>
+<script>
+const ctx = "${pageContext.request.contextPath}"
+function listReply(){
+	const boardNum = document.querySelector("#boardNum").value;
+	fetch(`\${ctx}/ydsReply/listReply/\${boardNum}`)
+	.then(res => res.json())
+	.then(list => {
+		const replyListContainer = document.querySelector("#replyListContainer");
+		replyListContainer.innerHTML = "";
+		
+		for(const item of list) {
+			
+		}
+	})
+}
+	
+
+</script>
 </html>

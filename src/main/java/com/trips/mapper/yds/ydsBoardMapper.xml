@@ -3,8 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="com.trips.mapper.ydsBoardMapper.ydsBoardMapper">
-<select id="getBoardList" resultType="com.trips.domain.ydsBoard.tripsBoardDto">
+<mapper namespace="com.trips.mapper.yds.ydsBoardMapper">
+<select id="getBoardList" resultType="com.trips.domain.yds.TripsBoardDto">
 SELECT
 	B_NO num,
 	B_TITLE title,
@@ -18,8 +18,9 @@ SELECT
 FROM ACTI_BOARD
 </select>
 
-<select id="getBoard" resultType="com.trips.domain.ydsBoard.tripsBoardDto">
+<select id="getBoard" resultType="com.trips.domain.yds.TripsBoardDto">
 SELECT
+	B_NO num,
 	B_TITLE title,
 	B_WRITER writer,
 	B_CONTENT content

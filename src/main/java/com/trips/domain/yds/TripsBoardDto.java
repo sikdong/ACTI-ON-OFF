@@ -1,11 +1,11 @@
-package com.trips.domain.ydsBoard;
+package com.trips.domain.yds;
 
 import java.time.LocalDateTime;
 
 import lombok.Data;
 
 @Data
-public class tripsBoardDto {
+public class TripsBoardDto {
 	private int B_ACCEPT;
 	private String writer;
 	private int num;

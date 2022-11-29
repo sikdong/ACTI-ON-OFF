@@ -22,7 +22,7 @@ import org.mybatis.spring.annotation.MapperScan;
 //import software.amazon.awssdk.services.s3.S3Client;
 //
 //@Configuration
-@MapperScan("com.trips.mapper")
+@MapperScan("com.trips.mapper.yds")
 //@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class CustomConfig {
 //
