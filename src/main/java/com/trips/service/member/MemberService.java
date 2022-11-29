@@ -1,7 +1,5 @@
 package com.trips.service.member;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,19 +11,11 @@ public class MemberService {
 	@Autowired
 	private MemberMapper mapper;
 
-
-	public int delete(String id) {
-		return mapper.delete(id);
-	}
-
-	public int getMemberTotal(MemberDto member) {
+	public MemberDto selectNo(int memberNo) {
 		// TODO Auto-generated method stub
-		return mapper.getmemberTotal(member);
+		return mapper.selectoNo(memberNo);
 	}
 
-	public List<MemberDto> memberList(MemberDto member) {
-		// TODO Auto-generated method stub
-		return mapper.memberList(member);
-	}
+	
 
 }

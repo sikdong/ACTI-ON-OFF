@@ -6,7 +6,7 @@ import lombok.Data;
 public class MemberDto {
 	private String id;
 
-	public int StartRow;
-
-	public int EndRow;
+	public int MemberNo;
+	
+	
 }
