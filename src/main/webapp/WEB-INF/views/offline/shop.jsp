@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="ko" class=" js cssanimations">
-<head>
-<script type="text/javascript" id="www-widgetapi-script" src="https://www.youtube.com/s/player/4eb6b35d/www-widgetapi.vflset/www-widgetapi.js" async=""></script>
+  
+
+<html lang="ko" class=" js cssanimations"><head><script type="text/javascript" id="www-widgetapi-script" src="https://www.youtube.com/s/player/4eb6b35d/www-widgetapi.vflset/www-widgetapi.js" async=""></script>
 
 	<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +10,7 @@
 <meta name="msapplication-navbutton-color" content="#363636">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-<meta property="og:url" content="https://onoffline.imweb.me/beens/?idx=2">
+<meta property="og:url" content="https://onoffline.imweb.me/shop_view/?idx=2">
 <title>Signature coffee beens : onoffline</title>
 <meta name="application-name" content="Signature coffee beens : onoffline">
 <meta name="msapplication-tooltip" content="Signature coffee beens : onoffline">
@@ -19,13 +18,13 @@
 <meta id="meta_og_image" property="og:image" content="https://cdn.imweb.me/thumbnail/20190919/2276438f9ed5d.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="627">
-<link rel="canonical" href="https://onoffline.imweb.me/beens/?idx=2">
+<link rel="canonical" href="https://onoffline.imweb.me/shop_view/?idx=2">
 <link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://cdn.imweb.me/thumbnail/20191014/355c5a32f3364.png">
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://cdn.imweb.me/thumbnail/20191014/3381b07b0c505.png">
 <link rel="apple-touch-icon-precomposed" sizes="60x60" href="https://cdn.imweb.me/thumbnail/20191014/6320c1bfb93d7.png">
 <link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://cdn.imweb.me/thumbnail/20191014/f1120cc13f93f.png">
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://cdn.imweb.me/thumbnail/20191014/5cf26f29b32e8.png">
-<link rel="apple-touch-icon-precomposhop/?idx=8sed" sizes="120x120" href="https://cdn.imweb.me/thumbnail/20191014/d94c779afe33c.png">
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://cdn.imweb.me/thumbnail/20191014/d94c779afe33c.png">
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://cdn.imweb.me/thumbnail/20191014/7c2396acc1f32.png">
 <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://cdn.imweb.me/thumbnail/20191014/1f049942b3d13.png">
 <link rel="icon" type="image/png" href="https://cdn.imweb.me/thumbnail/20191014/959d1e99f4465.png" sizes="16x16">
@@ -60,8 +59,10 @@
 <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/chosen.css?1617331870">
 <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/chosenImage.css?1617331762">
 <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/fonts/im-icon/style.css?1666251299">
+<link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/fonts/pretendard/web/variable/pretendardvariable.css?1669614457">
+<link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/fonts/pretendard/web/static/pretendard.css?1669614457">
 <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/fonts/froala-emoji-tap/style.css?1660095148">
-<link rel="stylesheet" type="text/css" href="/css/custom.cm?1669602111">
+<link rel="stylesheet" type="text/css" href="/css/custom.cm?1669699148">
 <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/tailwind.css?1669340906">
 <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/emoji.css?1660095097">
 <link rel="stylesheet" type="text/css" href="https://vendor-cdn.imweb.me/css/font-awesome5.min.css?1660780829">
@@ -2616,7 +2617,7 @@
 	var UPLOAD_URL = '/upload/';
 	var CDN_UPLOAD_URL = 'https://cdn.imweb.me/upload/';
 	var IS_MAIN = false;
-	var CURRENT_URL = 'L2JlZW5zLz9pZHg9Mg%3D%3D';
+	var CURRENT_URL = 'L3Nob3Bfdmlldy8%2FaWR4PTI%3D';
 	var CURRENT_DOMAIN = 'onoffline.imweb.me';
 	var THUMBNAIL_URL= '/thumbnail/';
 	var CDN_THUMBNAIL_URL= 'https://cdn.imweb.me/thumbnail/';
@@ -2633,7 +2634,7 @@
 		var IS_APP = IS_ANDROID_APP == "Y" || IS_IOS_APP == "Y";
 	var IE_VERSION = '11';
 	var TEST_SERVER = false;
-	var MENU_SNS_INIT_DATA = {"_main_url":"https:\/\/onoffline.imweb.me","_site_name":"onoffline","_subject":"Signature coffee beens : onoffline","_body":"","_post_url":"https:\/\/onoffline.imweb.me\/beens\/?idx=2","_img":"https:\/\/cdn.imweb.me\/thumbnail\/20190919\/2276438f9ed5d.png","_security_post_url":"aHR0cHM6Ly9vbm9mZmxpbmUuaW13ZWIubWUvYmVlbnMvP2lkeD0y"};
+	var MENU_SNS_INIT_DATA = {"_main_url":"https:\/\/onoffline.imweb.me","_site_name":"onoffline","_subject":"Signature coffee beens : onoffline","_body":"","_post_url":"https:\/\/onoffline.imweb.me\/shop_view\/?idx=2","_img":"https:\/\/cdn.imweb.me\/thumbnail\/20190919\/2276438f9ed5d.png","_security_post_url":"aHR0cHM6Ly9vbm9mZmxpbmUuaW13ZWIubWUvc2hvcF92aWV3Lz9pZHg9Mg=="};
 	var LIMIT_API_LIST = ["kakao_link","kakaostory_link"];
 	var NO_IMAGE_URL = '/img/transparency.png';
 	var SITE_COUNTRY_CODE = 'kr';
@@ -2645,7 +2646,7 @@
 
 	//var LOGIN_MEMBER_DATA = {"name": "", "point": ""};
 	</script><script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script><script src="https://player.vimeo.com/api/player.js"></script><script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"Product","name":"Signature coffee beens","image":["https:\/\/cdn.imweb.me\/thumbnail\/20190919\/9a46b50147235.png"],"description":"","offers":{"@type":"Offer","price":18000,"priceCurrency":"KRW","url":"http:\/\/onoffline.imweb.me\/shop_view\/?idx=2","availability":"http:\/\/schema.org\/InStock"}}</script></head>
-<body class="doz_sys  _body_menu_m202211287faae98d6ec58  shop_view  new_header_site" style=";" id="doz_body">
+<body class="doz_sys  _body_menu_m20221128551e9c60c13fa  shop_view  new_header_site" style=";" id="doz_body">
 
 
 
@@ -2742,7 +2743,7 @@
 	</li>
 	<li class="profile-footer btn-group-justified">
 		<a href="javascript:;" onclick="SITE_MEMBER.openLogin('L3Nob3BfbXlwYWdl','mypage');" class="btn btn-flat">마이페이지</a>
-				<a href="/logout.cm?back_url=L2JlZW5zLz9pZHg9Mg%3D%3D" class="btn btn-flat right">로그아웃</a>
+				<a href="/logout.cm?back_url=L3Nob3Bfdmlldy8%2FaWR4PTI%3D" class="btn btn-flat right">로그아웃</a>
 	</li>
 </ul><div id="mobile_slide_menu_wrap" class="mobile_slide_menu_container">
 	<div id="mobile_slide_menu" class="mobile_slide_menu slide_menu _slide_menu">
@@ -2751,7 +2752,7 @@
 			<div class="viewport-nav mobile _menu_wrap " style="position:relative">
 				<!-- 모바일 메뉴서랍내 프로필 -->
 				<input type="hidden" value="/common/img/app_login.png" id="imagepath">						<div class="profile-area">
-							<a href="javascript:;" onclick="SITE_MEMBER.openLogin('L2JlZW5zLz9pZHg9Mg%3D%3D', 'null', null, 'Y');" class="btn nav-btn-icon profile no-padding btn-flat full-width">
+							<a href="javascript:;" onclick="SITE_MEMBER.openLogin('L3Nob3Bfdmlldy8%2FaWR4PTI%3D', 'null', null, 'Y');" class="btn nav-btn-icon profile no-padding btn-flat full-width">
 								<div class="member-info guest full-width">
 									<span>로그인이 필요합니다.</span>
 									<button>로그인</button>
@@ -2764,16 +2765,16 @@
 						
 				
 						
-						<li style="" class="depth-01" data-code="m20221128e445c75c466cd">
-							<a href="/shop" data-url="shop" data-has_child="Y" data-is_folder_menu="N" class="active   open has_child" onclick="">
+						<li style="" class="depth-01  " data-code="m20221128e445c75c466cd">
+							<a href="/shop" data-url="shop" data-has_child="Y" data-is_folder_menu="N" class="has_child" onclick="">
 								<span class="plain_name" data-hover="">SHOP</span>
 								<span class="_toggle_btn toggle-btn"></span>
 							</a>
 							
-							<ul data-index="1" class="in" style="display: block;">
+							<ul data-index="1" style="height: 0px;">
 								
-								<li class="depth-02" style="" data-code="m202211287faae98d6ec58">
-									<a tabindex="-1" data-url="beens" data-has_child="N" data-is_folder_menu="N" href="/beens" class=" active   active-real " onclick="">
+								<li class="depth-02  " style="" data-code="m202211287faae98d6ec58">
+									<a tabindex="-1" data-url="beens" data-has_child="N" data-is_folder_menu="N" href="/beens" class=" " onclick="">
 										<span class="plain_name" data-hover="">Beens</span>
 										<span class="_toggle_btn toggle-btn"></span>
 									</a>
@@ -2961,16 +2962,16 @@
 		</div>
 
 </div></div></div></div><div data-type="col-group" data-col-group="right" class="inline-col-group inline-col-group-right" style="width: 625px; visibility: visible;"><div data-type="grid" class="inline-col"><div data-type="widget" id="w20221128b396043bbee26" class="inline-widget"><div class="_widget_data" data-widget-type="inline_menu">	<ul class="nav navbar-nav _inline_menu_container " style="visibility: visible;">
-		<div class="viewport-nav desktop _main_menu"><li class="dropdown _show_m20221128e445c75c466cd" style="" id="dropdown_m20221128e445c75c466cd" data-code="m20221128e445c75c466cd">
-				<a href="/shop" class="fixed_transform dropdown-toggle disabled _header_dropdown  active   _fade_link " data-url="shop" data-toggle="dropdown">
+		<div class="viewport-nav desktop _main_menu"><li class="dropdown _show_m20221128e445c75c466cd   " style="" id="dropdown_m20221128e445c75c466cd" data-code="m20221128e445c75c466cd">
+				<a href="/shop" class="fixed_transform dropdown-toggle disabled _header_dropdown   _fade_link " data-url="shop" data-toggle="dropdown">
 					<span class="_txt_m20221128e445c75c466cd plain_name" data-hover="">SHOP</span>
 				</a>
 				
 				
 				<ul class="dropdown-menu" role="menu">
 					
-					<li class="dropdown-submenu _show_m202211287faae98d6ec58" data-code="m202211287faae98d6ec58" style="">
-						<a tabindex="-1" href="/beens" data-url="beens" class="_txt_m202211287faae98d6ec58  active   _fade_link "><span class="plain_name" data-hover="">Beens</span></a>
+					<li class="dropdown-submenu _show_m202211287faae98d6ec58   " data-code="m202211287faae98d6ec58" style="">
+						<a tabindex="-1" href="/beens" data-url="beens" class="_txt_m202211287faae98d6ec58   _fade_link "><span class="plain_name" data-hover="">Beens</span></a>
 						
 					</li>
 					
@@ -3007,16 +3008,16 @@
 	<div style="position: absolute; top: -9999px; left: -9999px;"><div class="viewport-nav desktop _main_clone_menu main_clone_menu">
 			
 			
-			<li class="dropdown _show_m20221128e445c75c466cd" style="" id="dropdown_m20221128e445c75c466cd" data-code="m20221128e445c75c466cd">
-				<a href="/shop" class="fixed_transform dropdown-toggle disabled _header_dropdown  active   _fade_link " data-url="shop" data-toggle="dropdown">
+			<li class="dropdown _show_m20221128e445c75c466cd   " style="" id="dropdown_m20221128e445c75c466cd" data-code="m20221128e445c75c466cd">
+				<a href="/shop" class="fixed_transform dropdown-toggle disabled _header_dropdown   _fade_link " data-url="shop" data-toggle="dropdown">
 					<span class="_txt_m20221128e445c75c466cd plain_name" data-hover="">SHOP</span>
 				</a>
 				
 				
 				<ul class="dropdown-menu" role="menu">
 					
-					<li class="dropdown-submenu _show_m202211287faae98d6ec58" data-code="m202211287faae98d6ec58" style="">
-						<a tabindex="-1" href="/beens" data-url="beens" class="_txt_m202211287faae98d6ec58  active   _fade_link "><span class="plain_name" data-hover="">Beens</span></a>
+					<li class="dropdown-submenu _show_m202211287faae98d6ec58   " data-code="m202211287faae98d6ec58" style="">
+						<a tabindex="-1" href="/beens" data-url="beens" class="_txt_m202211287faae98d6ec58   _fade_link "><span class="plain_name" data-hover="">Beens</span></a>
 						
 					</li>
 					
@@ -3066,7 +3067,7 @@
 	
 	</div></div></div><div data-type="grid" class="inline-col"><div data-type="widget" id="w20221128b54f172ff3ac0" class="inline-widget"><div class="_widget_data" data-widget-type="inline_login_btn">	<div class="widget inline_widget login_btn button  button_text txt_l text-xx-small">
 		<div>
-							<div class="inline-blocked login_btn_item "><a class="_fade_link   btn_text btn_DC0whb10io   btn_custom " href="javascript:;" onclick="SITE_MEMBER.openLogin('L2JlZW5zLz9pZHg9Mg%3D%3D', 'null', null, 'N');" style="border-radius:0px; "><span class="sr-only">로그인 위젯 문구</span><span class="icon_class "><i class="fixed_transform simple icon-user" aria-hidden="true"></i></span><span class="text fixed_transform no_text"></span></a></div><div class="inline-blocked login_btn_item "><a class="_fade_link   btn_text btn_38CT35044M   btn_custom " href="/shop_cart" style="border-radius:0px; "><span class="sr-only">로그인 위젯 문구</span><span class="icon_class "><i class="fixed_transform simple icon-bag" aria-hidden="true"></i></span><span class="text fixed_transform no_text"></span><span class="badge_wrap"><sup class="badge _shop_cart_badge_cnt_wrap" style="top:-6px; right: -9px;"></sup></span></a></div>					</div>
+							<div class="inline-blocked login_btn_item "><a class="_fade_link   btn_text btn_DC0whb10io   btn_custom " href="javascript:;" onclick="SITE_MEMBER.openLogin('L3Nob3Bfdmlldy8%2FaWR4PTI%3D', 'null', null, 'N');" style="border-radius:0px; "><span class="sr-only">로그인 위젯 문구</span><span class="icon_class "><i class="fixed_transform simple icon-user" aria-hidden="true"></i></span><span class="text fixed_transform no_text"></span></a></div><div class="inline-blocked login_btn_item "><a class="_fade_link   btn_text btn_38CT35044M   btn_custom " href="/shop_cart" style="border-radius:0px; "><span class="sr-only">로그인 위젯 문구</span><span class="icon_class "><i class="fixed_transform simple icon-bag" aria-hidden="true"></i></span><span class="text fixed_transform no_text"></span><span class="badge_wrap"><sup class="badge _shop_cart_badge_cnt_wrap" style="top:-6px; right: -9px;"></sup></span></a></div>					</div>
 					</div>
 
 	
@@ -3130,10 +3131,7 @@
                         <header style="border: none; padding-bottom: 0;">
                                                             <div class="shop_sub_depth hidden-xs hidden-sm" style="display: inline-block">
                                     <ul class="sub_depth">
-                                                                                    <li>
-                                                <a href="/" data-catecnt="2">Home</a>
-                                                <span class="icon-arrow-right" data-cnt=""></span>                                            </li>
-                                            <li><a href="/shop" class=" ">Shop</a><span class="icon-arrow-right"></span></li><li><a href="/beens" class="active ">Beens</a></li>                                    </ul>
+                                                                            </ul>
                                 </div>
                                                             <div class="view_tit title_font_style " style="color: #212121; font-size: 22px !important;">Signature coffee beens                                                                            <div class="ns-icon inline-blocked clearfix">
                                                                                     </div>
@@ -3150,8 +3148,8 @@
                                 <div class="fr-view">
                                                                     </div>
                             </div>
-                                                <div class="m-btn-group buy_btns">
-                                                            <a href="javascript:" class="like_box " onclick="SITE_SHOP_DETAIL.addProdWish('s20221128d84b66e56259f', 'L2JlZW5zLz9pZHg9Mg%3D%3D')">
+                                               <!--  <div class="m-btn-group buy_btns">
+                                                            <a href="javascript:" class="like_box " onclick="SITE_SHOP_DETAIL.addProdWish('s20221128d84b66e56259f', 'L3Nob3Bfdmlldy8%2FaWR4PTI%3D')">
                                     <i aria-hidden="true" class="wish-icon-s20221128d84b66e56259f im-icon im-ico-like text-17"></i>
                                     <span id="prod_detail_wish_count_mobile" class="prod_detail_wish_count">
 										                                            0                                        									</span>
@@ -3159,17 +3157,17 @@
                                                         <button class="comment_num btn btn-flat" type="button" onclick="SNS.showDefalutSnsShareList();" style="margin-left: 15px; padding: 0;">
                                 <i aria-hidden="true" class="btl bt-share board-summary-icon"></i>
                             </button>
-                        </div>
+                        </div> -->
                         <div class="_today_arrival_wrap"></div>
                         <!-- 모바일용 상세 정보 버튼 시작 -->
                         <div class="m-btn-group underline_tab" id="tab_offset">
                             <div class="site_prod_nav_wrap _prod_detail_tab_fixed" id="prod_detail_content_tab_mobile" style="display:;">
                                 <ul class="site_nav site_prod_nav">
                                                                                     <li class="after_line holder table-cell prod_tab_3 activeborder">
-                                                    <a class="_detail body_font_color_30" href="#prod_detail_detail" role="button" onclick="SITE_SHOP_DETAIL.changeContentTab('detail', 0,0)">상세정보</a>
+                                                    <a class="_detail body_font_color_30 active" href="#prod_detail_detail" role="button" onclick="SITE_SHOP_DETAIL.changeContentTab('detail', 0,0)">상세정보</a>
                                                 </li>
                                                                                                 <li class="after_line holder right_margin table-cell prod_tab_3">
-                                                    <a class="_review body_font_color_30 active" href="#prod_detail_review" role="button" onclick="SITE_SHOP_DETAIL.changeContentTab('review', 0,0)" style="display:">구매평                                                        <span class="braket-badge badge _review_count_text">0</span>
+                                                    <a class="_review body_font_color_30" href="#prod_detail_review" role="button" onclick="SITE_SHOP_DETAIL.changeContentTab('review', 0,0)" style="display:">구매평                                                        <span class="braket-badge badge _review_count_text">0</span>
                                                     </a>
                                                 </li>
                                                                                                 <li class="after_line table-cell prod_tab_3">
@@ -3191,15 +3189,15 @@
 														<div class="goods_container">
 								<div id="goods_wrap" class="goods_wrap _goods_wrap no-margin-top no-padding-top">
 									<!-- 필수 옵션, 선택 옵션이 둘다 없을경우 태그가 출력되면 안됨(여백, 가로선)-->
-																			<div class="goods_section goods_left">
+																		<!-- 	<div class="goods_section goods_left"> -->
 																																													<div class="goods_select" id="prod_options"></div>
-											<div class="goods_detail" id="prod_deliv_setting">		<div class="margin-bottom-xxl select_wrap  clearfix">
+											<!-- <div class="goods_detail" id="prod_deliv_setting">		<div class="margin-bottom-xxl select_wrap  clearfix">
 							<div class="inline-blocked form-delivery" style="display: inline-block">
 											<div class="form-select-wrap " style="display: none;">
 							<select class="countryList">
 								<option value="KR" selected=""></option>
 							</select>
-						</div>
+						</div> -->
 									</div>
 						</div>
 				<div class="option_wrap" style="display: block; font-size:12px;">
@@ -3258,7 +3256,7 @@
 	</div>
 										</div>
 																		<div class="goods_section goods_right">
-										<div class="goods_payment" id="prod_selected_options"><div class="opt_block no-border order_quantity_area" style="height: auto; "> 	<div class="area_tit holder">		<span class="option_title inline-blocked" style="margin-bottom: 7px">수량</span> 	</div> 	<div class="area_count holder">		<div class="option_btn_wrap" style="top:0;"> 			<div class="option_btn_tools" style="float: none;"> 				<a href="javascript:;" onclick="SITE_SHOP_DETAIL.decreaseOrderCount('mobile', function(){SITE_SHOP_DETAIL.updateSelectedOptions('prod')})"><i class="btl bt-minus" aria-hidden="true"></i><span class="sr-only">minus</span></a>				<input type="text" title="number" value="1" class="form-control _order_count_mobile" onchange="SITE_SHOP_DETAIL.changeOrderCount('mobile', $(this).val(), function(){SITE_SHOP_DETAIL.updateSelectedOptions('prod')})"> 				<a href="javascript:;" onclick="SITE_SHOP_DETAIL.increaseOrderCount('mobile', function(){SITE_SHOP_DETAIL.updateSelectedOptions('prod')})"><i class="btl bt-plus" aria-hidden="true"></i><span class="sr-only">plus</span></a>			</div> 			<div class="area_price absolute absolute_right absolute_middle"><span>18,000원</span></div>		</div> 	</div> </div> <div class="opt_block total bottom">	<p class="no-margin text-right">		<span class="body_font_color_70 text-left" style="padding: 16px 0">총 상품금액(1개)</span>		<span class="total_price " style="padding: 16px 0">18,000원</span>	</p></div></div>
+<!-- 										<div class="goods_payment" id="prod_selected_options"><div class="opt_block no-border order_quantity_area" style="height: auto; "> 	<div class="area_tit holder">		<span class="option_title inline-blocked" style="margin-bottom: 7px">수량</span> 	</div> 	<div class="area_count holder">		<div class="option_btn_wrap" style="top:0;"> 			<div class="option_btn_tools" style="float: none;"> 				<a href="javascript:;" onclick="SITE_SHOP_DETAIL.decreaseOrderCount('mobile', function(){SITE_SHOP_DETAIL.updateSelectedOptions('prod')})"><i class="btl bt-minus" aria-hidden="true"></i><span class="sr-only">minus</span></a>				<input type="text" title="number" value="1" class="form-control _order_count_mobile" onchange="SITE_SHOP_DETAIL.changeOrderCount('mobile', $(this).val(), function(){SITE_SHOP_DETAIL.updateSelectedOptions('prod')})"> 				<a href="javascript:;" onclick="SITE_SHOP_DETAIL.increaseOrderCount('mobile', function(){SITE_SHOP_DETAIL.updateSelectedOptions('prod')})"><i class="btl bt-plus" aria-hidden="true"></i><span class="sr-only">plus</span></a>			</div> 			<div class="area_price absolute absolute_right absolute_middle"><span>18,000원</span></div>		</div> 	</div> </div> <div class="opt_block total bottom">	<p class="no-margin text-right">		<span class="body_font_color_70 text-left" style="padding: 16px 0">총 상품금액(1개)</span>		<span class="total_price " style="padding: 16px 0">18,000원</span>	</p></div></div> -->
 											<div class="_social_pc_position">
 												
                                         <div class="social-pay _social_pay">
@@ -3270,20 +3268,20 @@
                                                 <div class="buy_btns pc clearfix    talkpay_pc">
                                                             <div class="buy_footer_fixed _buy_footer_fixed">
                                     <div class="_buy_footer_wrap" style="display: block; vertical-align: middle; height: 100%; position: relative;">
-                                                                                    <a href="javascript:" style="width: auto; border: none; background: none; margin: 18px 10px !important; font-size: 15px;" class="btn like_box " onclick="SITE_SHOP_DETAIL.addProdWish('s20221128d84b66e56259f', 'L2JlZW5zLz9pZHg9Mg%3D%3D')">
+                                                                                   <!--  <a href="javascript:" style="width: auto; border: none; background: none; margin: 18px 10px !important; font-size: 15px;" class="btn like_box " onclick="SITE_SHOP_DETAIL.addProdWish('s20221128d84b66e56259f', 'L3Nob3Bfdmlldy8%2FaWR4PTI%3D')">
                                                 <i aria-hidden="true" class="wish-icon-s20221128d84b66e56259f im-icon im-ico-like text-17"></i>
                                                 <span id="prod_detail_wish_count" class="prod_detail_wish_count text-14">
 													0												</span>
-                                            </a>
-                                            <a href="javascript:" style="width: auto; border: none; background: none; margin: 18px 10px !important;" class="btn" onclick="SNS.showDefalutSnsShareList();">
+                                            </a> -->
+                                           <!--  <a href="javascript:" style="width: auto; border: none; background: none; margin: 18px 10px !important;" class="btn" onclick="SNS.showDefalutSnsShareList();">
                                                 <i aria-hidden="true" class="btm bt-share board-summary-icon text-16 active"></i>
-                                            </a>
+                                            </a> -->
                                             <!-- 판매가 세팅 시작 -->
-                                                                                            <a class="btn cart _btn_cart" onclick="SITE_SHOP_DETAIL.showPCOptions('cart');"><i aria-hidden="true" class="simple im-icon im-ico-cart text-18"></i> 장바구니</a>                                                                                                <div class="clearfix" style="position: absolute; top: 15px;">
+                                                                                         <!--    <a class="btn cart _btn_cart" onclick="SITE_SHOP_DETAIL.showPCOptions('cart');"><i aria-hidden="true" class="simple im-icon im-ico-cart text-18"></i> 장바구니</a>                                                         -->                                        <div class="clearfix" style="position: absolute; top: 15px;">
                                                     <div class="float_l style_b_left_pc">
                                                         <div class="_footer_price_wrap footer-price-wrap" style="display: inline-block; padding: 10px; float: left;"><span class="_pay_org_label pay_label body_font_color_50" style="display: none;"></span><span class="_pay_org_number pay_number holder total_price" style="font-size: 20px; display: none;"></span><span class="_pay_label pay_label body_font_color_50" style="">총 상품금액(1개)</span><span class="_pay_number pay_number holder total_price" style="font-size: 20px; style=" display:="" none;"="">18,000원</span></div>                                                                                                                                                                    </div>
                                                     <div class="float_l holder">
-                                                        <a href="javascript:" class="btn defualt buy bg-brand " onclick="SITE_SHOP_DETAIL.showPCOptions('order')">구매하기</a> <a class="btn opt buy bg-brand _btn_buy" href="javascript:;" onclick="SITE_MEMBER.openLogin('L2JlZW5zLz9pZHg9Mg%3D%3D','payment',function(){SITE_SHOP_DETAIL.addOrder('normal', 'https://onoffline.imweb.me/beens/?idx=2')}, 'N', 'payment');">구매하기</a>                                                                                                            </div>
+                                                      <!--   <a href="javascript:" class="btn defualt buy bg-brand " onclick="SITE_SHOP_DETAIL.showPCOptions('order')">구매하기</a> <a class="btn opt buy bg-brand _btn_buy" href="javascript:;" onclick="SITE_MEMBER.openLogin('L3Nob3Bfdmlldy8%2FaWR4PTI%3D','payment',function(){SITE_SHOP_DETAIL.addOrder('normal', 'https://onoffline.imweb.me/shop_view/?idx=2')}, 'N', 'payment');">구매하기</a>   -->                                                                                                          </div>
                                                 </div>
                                                                                                                         </div>
                                 </div>
@@ -3296,7 +3294,7 @@
 															<div class="pay-box no-pay-btn  ">
 											<div class="cart_btn_child _cart_btn_child ">
                                                         							<a href="javascript:" class="btn defualt-cart" onclick="SITE_SHOP_DETAIL.showMobileOptions('buy')">장바구니</a><a href="javascript:" class="btn cart opt _btn_cart" onclick="SITE_SHOP_DETAIL.addCart()">장바구니</a>                            																				</div>
-															    <a href="javascript:" class="btn defualt buy bg-brand " onclick="SITE_SHOP_DETAIL.showMobileOptions('buy')">구매하기</a> <a class="btn opt buy bg-brand _btn_buy" href="javascript:;" onclick="SITE_MEMBER.openLogin('L2JlZW5zLz9pZHg9Mg%3D%3D','payment',function(){SITE_SHOP_DETAIL.addOrder('normal', 'https://onoffline.imweb.me/beens/?idx=2')}, 'N', 'payment');">구매하기</a>                    				</div>
+															    <a href="javascript:" class="btn defualt buy bg-brand " onclick="SITE_SHOP_DETAIL.showMobileOptions('buy')">구매하기</a> <a class="btn opt buy bg-brand _btn_buy" href="javascript:;" onclick="SITE_MEMBER.openLogin('L3Nob3Bfdmlldy8%2FaWR4PTI%3D','payment',function(){SITE_SHOP_DETAIL.addOrder('normal', 'https://onoffline.imweb.me/shop_view/?idx=2')}, 'N', 'payment');">구매하기</a>                    				</div>
 				<div class="_social_m_position social-m-position"></div>
 					</div>
 	</div>
@@ -3306,20 +3304,20 @@
                         <!-- PC용 상세 정보 버튼 시작 -->
                             <div class="categorize review-box" style="padding-top: 0;">
                     <div class="_detail_detail_wrap fr-view" id="fixed_tab">
-                        <div class="underline_tab tansparent_bg">
-                                                                                                <div class="_prod_detail_tab_fixed site_prod_nav_wrap scroll-to-fixed-fixed" style="width: 1181px; z-index: 999; position: fixed; top: 0px; margin-left: 0px; left: 15px;">
+                        <div class="underline_tab">
+                                                                                                <div class="_prod_detail_tab_fixed site_prod_nav_wrap" style="z-index: auto; position: static; top: auto;">
                                         <ul class="site_nav site_prod_nav" style="">
                                                                                                     <li class="after_line holder table-cell prod_tab_3 activeborder">
-                                                            <a class="_detail  body_font_color_30" href="#prod_detail_detail" onclick="SITE_SHOP_DETAIL.scrollPCTab('detail'); return false;">상세정보</a>
+                                                            <a class="_detail  body_font_color_30 active" href="#prod_detail_detail" onclick="SITE_SHOP_DETAIL.scrollPCTab('detail'); return false;">상세정보</a>
                                                         </li>
                                                                                                                 <li class="after_line holder right_margin table-cell prod_tab_3">
-                                                            <a class="_review body_font_color_30 active" href="#prod_detail_review" onclick="SITE_SHOP_DETAIL.scrollPCTab('review'); return false;">구매평                                                                <span class="braket-badge badge _review_count_text">0</span></a>
+                                                            <a class="_review body_font_color_30" href="#prod_detail_review" onclick="SITE_SHOP_DETAIL.scrollPCTab('review'); return false;">구매평                                                                <span class="braket-badge badge _review_count_text">0</span></a>
                                                         </li>
                                                                                                                 <li class="after_line table-cell prod_tab_3">
                                                             <a class="_qna right_margin body_font_color_30" href="#prod_detail_qna" onclick="SITE_SHOP_DETAIL.scrollPCTab('qna'); return false;">Q&amp;A                                                                <span class="braket-badge badge _qna_count_text">0</span></a>
                                                         </li>
                                                                                                 </ul>
-                                    </div><div class="spacer" style="display: block; width: 1180.67px; height: 43px; float: none;"></div>
+                                    </div><div class="spacer" style="display: none; width: 989.608px; height: 42.9902px; float: none;"></div>
                                                             
                                                     </div>
                     </div>
@@ -3699,7 +3697,7 @@ End Function
 <script src="/js/site_coupon.js?1664263439"></script>
 <script src="/js/secret_article.js?1604286051"></script>
 <script src="/js/article_reaction.js?1586730656"></script>
-<script src="/js/site_shop.js?1668735616"></script>
+<script src="/js/site_shop.js?1669694718"></script>
 <script src="/js/board_common.js?1648107937"></script>
 <script src="/js/site_shop_mypage.js?1666250711"></script>
 <script src="/js/site_search.js?1658822737"></script>
@@ -3767,7 +3765,12 @@ End Function
 			easing : 'easeInOutExpo'
 		});
 				$('.pms_check').remove();
-					});
+						var recentScrollUrl = IMWEB_SESSIONSTORAGE.get('RECENT_PROD_SCROLL_URL');
+		if(recentScrollUrl && recentScrollUrl !== document.location.href){
+			IMWEB_SESSIONSTORAGE.remove('RECENT_PROD_SCROLL');
+			IMWEB_SESSIONSTORAGE.remove('RECENT_PROD_SCROLL_URL');
+		}
+			});
 </script>
 <script>
 		$(function(){
@@ -3891,7 +3894,7 @@ $("#text_w202211285622030fa19bd").find("._table_responsive").addClass("table").w
 $("#text_w20221128aa8064894aa86").find("._table_responsive").addClass("table").wrap($("<div />").addClass("table-responsive"));
 </script><script>ALARM_BADGE.addBadgeArea($('#slide-alarm'),'<i aria-hidden="true" class="im-icon im-ico-bell"></i><sup class="badge style-danger _badge_cnt">{count}</sup>');</script><script>
 	$(function(){
-		SITE_VISIT_LOG.addVisitLog(document.referrer,'OK9CVzPXlZWTMsPmOAmxbZ1VUQfdj9zMi9S0iFgj5DDsZsre3GNaXB+L/Jr7IIF+GPVekQpEGAy2VAAXTpthMS0U5UJJKo5DXj2u39PrFH/tB+GHz7xLllryT2zWBqAy', '511','m202211287faae98d6ec58');
+		SITE_VISIT_LOG.addVisitLog(document.referrer,'Fjpn5GTlD7i6utaQE8QvR3FENq7kUuC6VrEtpZPmr5KzAMLjruFx1J3vW14SQSbQBT8GJ2TPXQ/Yr4ZI82NnsPCsFtfyui02CTbvzh49fDHmabYkg5CzisZphYLqd9zJ', '6912','m20221128551e9c60c13fa');
 	});
 </script>
 <script>
