@@ -11,6 +11,6 @@ public interface ydsBoardMapper {
 
 	public List<tripsBoardDto> getBoardList();
 
-	public tripsBoardDto getBoard(int no);
+	public tripsBoardDto getBoard(int num);
 
 }

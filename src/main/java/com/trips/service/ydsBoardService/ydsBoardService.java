@@ -19,9 +19,9 @@ public class ydsBoardService {
 		return mapper.getBoardList();
 	}
 
-	public tripsBoardDto getBoard(int no) {
+	public tripsBoardDto getBoard(int num) {
 		// TODO Auto-generated method stub
-		return mapper.getBoard(no);
+		return mapper.getBoard(num);
 	}
 
 }

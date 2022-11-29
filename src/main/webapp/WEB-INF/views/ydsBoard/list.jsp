@@ -5601,14 +5601,14 @@ padding-right
 												</div>
 												<c:forEach items="${boardList }" var="boardList">
 												<c:url value="/ydsBoard/get" var="getLink">
-													<c:param name="no" value="${board.b_NO}"></c:param>
+													<c:param name="num" value="${boardList.num}"></c:param>
 												</c:url>
 												<div class="shop-item _shop_item"
 													style="width: 377px; padding: 0px 7.5px; height: 469px;">
 													<div class="item-wrap" style="position: relative;">
-														<a href="${getLink }" class="_fade_link shop-item-thumb "></a>
-														<img src="${path}/assets/img/home2.jpg" alt=""
-															class="home__img">
+														<a href="${getLink}" class="_fade_link shop-item-thumb " target="_blank">
+														<img src="${path}/assets/img/home2.jpg" alt="picture1"
+															class="home__img"> 
 
 														<!-- <img data-prodcode="s20221128cbc2f1144c480" alt="" src="https://cdn.imweb.me/thumbnail/20200805/54c1b5e109a18.png" class="_org_img org_img _lazy_img" data-original="https://cdn.imweb.me/thumbnail/20200805/54c1b5e109a18.png" data-src="https://cdn.imweb.me/thumbnail/20200805/54c1b5e109a18.png" style="display: inline;"> -->
 														<div class="item-overlay">
@@ -5623,7 +5623,7 @@ padding-right
 																</div>
 															</div>
 														</div>
-														</a>
+														</a>	
 													</div>
 													<div class="item-detail" style="">
 														<div class="item-pay">

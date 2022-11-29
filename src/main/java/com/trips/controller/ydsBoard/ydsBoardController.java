@@ -30,8 +30,8 @@ public class ydsBoardController {
 	}
 	
 	@GetMapping("get")
-	public void getBoard(int no, Model model) {
-		tripsBoardDto board = service.getBoard(no);
+	public void getBoard(int num, Model model) {
+		tripsBoardDto board = service.getBoard(num);
 		model.addAttribute("board", board);
 		
 	}

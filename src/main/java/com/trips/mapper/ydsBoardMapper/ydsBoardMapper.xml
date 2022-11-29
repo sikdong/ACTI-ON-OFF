@@ -6,10 +6,11 @@
 <mapper namespace="com.trips.mapper.ydsBoardMapper.ydsBoardMapper">
 <select id="getBoardList" resultType="com.trips.domain.ydsBoard.tripsBoardDto">
 SELECT
+	B_NO num,
 	B_TITLE title,
 	B_WRITER writer,
-	B_CONTENT,
-	B_FILENAME,
+	B_CONTENT content,
+	B_FILENAME fileName,
 	B_RFILENAME,
 	B_STATUS,
 	B_CREATEDATE,
@@ -23,7 +24,7 @@ SELECT
 	B_WRITER writer,
 	B_CONTENT content
 FROM ACTI_BOARD
-WHERE B_NO = {no}
+WHERE B_NO = #{num}
 </select>
 
 
