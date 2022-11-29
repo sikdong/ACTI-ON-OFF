@@ -26,15 +26,15 @@
 					<th colspan="9">회원 정보가 없습니다</th>
 				</tr>
 			</c:if>
-			<c:if test="${not empty mbList }">
-				<c:forEach var="member" items="${mbList }">
+			<c:if test="${not empty memberList }">
+				<c:forEach var="member" items="${memberList }">
 					<tr>
 						<!-- 게시글 번호 순서 정렬 -->
-							<td class="text-center col-md-1"></td>
-							<td class="col-md-1 text-center"></td>
-							<td class="col-md-1 text-center"></td>
-							<td class="col-md-1 text-center"></td>
-							<td class="col-md-1 text-center"></td>
+							<td class="text-center col-md-1">${member.id }</td>
+							<td class="col-md-1 text-center">${member.name }</td>
+							<td class="col-md-1 text-center">${member.call }</td>
+							<td class="col-md-1 text-center">${member.email }</td>
+							<td class="col-md-1 text-center">${member.address }</td>
 							<c:if test="${member.gender == 'm' }">
 								<td class="col-md-1 text-center">남자</td>
 							</c:if>
@@ -74,7 +74,7 @@
 							<span class="glyphicon glyphicon-backward"></span>
 						</a>
 					</li>
-					<li><a href=" ">
+					<li><a href="adminMb.do?pageNum=${pb.startPage - 1 }">
 							<span class="glyphicon glyphicon-triangle-left"></span>
 					</a></li>
 				</c:if>
