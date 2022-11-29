@@ -4,32 +4,78 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.trips.mapper.mypage.MyPageMapper">
-	<select id="select" resultMap="boardMap">
+	<select id="select" resultMap="memberMap">
 	SELECT
-		b.id,
-		b.title,
-		b.content,
-		b.writer,
-		b.inserted,
-		f.id fileId,
-		f.name fileName
+		M_ID,
+	    M_PASSWORD,
+	    M_NAME,
+	    M_GENDER,
+	    M_PHONE,
+	    M_EMAIL,
+	    M_HOST
 	FROM
-		Board b LEFT JOIN File f ON b.id = f.boardId
+		MEMBER
 	WHERE
-		b.id = #{id}
+		M_ID = #{id}
 	</select>
 	
-	<resultMap type="com.trips.domain.mypage.BoardDto" id="boardMap">
-		<id column="id" property="id"></id>
-		<result column="title" property="title"/>
-		<result column="writer" property="writer"></result>
-		<result column="content" property="content"/>
-		<result column="inserted" property="inserted"/>
-		<collection property="fileName" ofType="string">
-			<result property="fileName" column="fileName"/>
-		</collection>
+	<resultMap type="com.trips.domain.mypage.MemberDto" id="memberMap">
+		<id column="M_ID" property="id"></id>
+		<result column="M_PASSWORD" property="password"/>
+		<result column="M_NAME" property="name"/>
+		<result column="M_GENDER" property="gender"/>
+		<result column="M_PHONE" property="phone"/>
+		<result column="M_EMAIL" property="email"/>
+		<result column="M_HOST" property="host"/>
 	</resultMap>
 	
+	<update id="update">
+	UPDATE MEMBER
+	SET
+		M_PASSWORD = #{password}
+	WHERE
+		M_ID = #{id}
+	</update>
+	
+	<update id="updateByName">
+	UPDATE MEMBER
+	SET
+		M_NAME = #{name}
+	WHERE
+		M_ID = #{id}
+	</update>
+	
+	<update id="updateByPhone">
+	UPDATE MEMBER
+	SET
+		M_PHONE = #{phone}
+	WHERE
+		M_ID = #{id}
+	</update>
+	
+	<update id="updateByEmail">
+	UPDATE MEMBER
+	SET
+		M_EMAIL = #{email}
+	WHERE
+		M_ID = #{id}
+	</update>
+	
+	<update id="updateByGender">
+	UPDATE MEMBER
+	SET
+		M_GENDER = #{gender}
+	WHERE
+		M_ID = #{id}
+	</update>
+	
+	<update id="updateByHost">
+	UPDATE MEMBER
+	SET
+		M_HOST = #{host}
+	WHERE
+		M_ID = #{id}
+	</update>
 </mapper>
 
 
