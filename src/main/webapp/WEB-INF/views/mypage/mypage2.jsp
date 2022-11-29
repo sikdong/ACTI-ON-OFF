@@ -20,7 +20,21 @@
 	font-family: "Malgun Gothic";
 	font-weight: bold;
 }
+.fix {
+  background-color:rgb(60, 60, 60) !important;	
+  width:100%;
+  position:fixed !important;
+  animation: down 0.5s ease !important;
+}
 
+@keyframes down {
+  0%{
+    transform: translateY(-50px)
+  }
+  100%{
+    transform: translateY(0px)
+  }
+}
 </style>
 
 <meta charset="UTF-8">
@@ -293,6 +307,23 @@ document.querySelector("#reservation").addEventListener("click", function() {
 	location.href="/mypage/reservation"
 });
 /* --------------예약페이지 이동 기능 끝-------------------------------------------------------------------------------------------------- */
+function navigo (){
+  const header = document.querySelector('#nav2'); //헤더부분획득
+  const headerheight = header.clientHeight;//헤더높이
+document.addEventListener('scroll', onScroll, { passive: true });//스크롤 이벤트
+ function onScroll () {
+     const scrollposition = pageYOffset;//스크롤 위치
+   const nav = document.querySelector('#nav');//네비게이션
+   if (headerheight<=scrollposition){//만약 헤더높이<=스크롤위치라면
+     nav.classList.add('fix')//fix클래스를 네비에 추가
+   }
+   else {//그 외의 경우
+     nav.classList.remove('fix');//fix클래스를 네비에서 제거
+   }
+ } 
+  
+}
+navigo()
 </script>
 </body>
 </html>

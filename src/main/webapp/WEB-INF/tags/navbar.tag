@@ -8,11 +8,10 @@
 	width: auto;
 }
 #nav{
- position: sticky;
- top: 0;	
-}
+background-color:black;
+} 
 .navbar{
- background-color:#f7323f !important;
+ background-color:black;
  height:80px;
  margin:0 0 0 0 !important;
 
@@ -21,14 +20,19 @@
  padding:0 0 0 220px !important; 
 }
 .font{
-color: #fcb9bd;
-font-family: "Noto Serif" !important;
-font-weight: bold
+color: #ffffff;
+font-family: "Palatino Linotype" !important;
+font-weight: bold;
+font-size: 20px;
 }
 .font-main{
 color: #ffffff;
-font-family: "Noto Serif" !important;
-font-weight: bold
+font-family: "Palatino Linotype" !important;
+font-weight: bold;
+font-size: 30px;
+}
+.nav-item{
+padding: 0 15px 0 15px;
 }
 </style>
 
@@ -36,30 +40,30 @@ font-weight: bold
 <c:url value="/mypage/mypage2" var="myPageLink" />
 
 
-<nav id="nav" class="navbar navbar-expand-md bg-light mb-3">
+<nav id="nav" class="navbar navbar-expand-md mb-3">
   <div class="container-md">
     <a class="navbar-brand" href="${listLink }">
-    <span class="font-main" style='font-family: "Noto Serif" !important;'>Main</span>
+    <span class="font-main">Main</span>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div style="padding-left: 200px"class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
          <a class="nav-link">
-          <span class="font">체험페이지</span>
-          </a>
+          <span class="font">Activity</span>
+         </a>
         </li>
         <li class="nav-item">
          <a class="nav-link">
-		  <span class="font">로그인</span>
+		  <span class="font">Log In</span>
 		  </a>
         </li>
         
         <li class="nav-item">
           <a class="nav-link">
-          <span class="font">회원가입</span>
+          <span class="font">Sign Up</span>
           </a>
         </li>
         
@@ -67,19 +71,19 @@ font-weight: bold
           <a class="nav-link"
           <%-- ${active eq 'signup' ? 'active' : '' } --%>
           href="${myPageLink}">
-          <span class="font">마이페이지</span
+          <span class="font">My Page</span
           ></a>
         </li>
         
          <li class="nav-item">
           <a class="nav-link">
-          <span class="font">관리자페이지</span
+          <span class="font">Admin Page</span
           ></a>
         </li>
         
          <li class="nav-item">
           <a class="nav-link">
-          <span class="font">호스트페이지</span
+          <span class="font">Host Page</span
           ></a>
         </li>
         

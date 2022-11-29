@@ -8,35 +8,17 @@
 	width: auto;
 }
 .navbar{
- background-color:#f7323f !important;
+ background-color:black;
  height:100px;
 }
-/* .nav li a{
-background-color:blue;
-} 
-.nav .active a{
-background-color:orange !important;
-} */
-.font{
-color: #fcb9bd;
-font-family: "Malgun Gothic";
-font-weight: bold
-}
-.font-main{
-color: #ffffff;
-font-family: "Malgun Gothic";
-font-weight: bold
-}
+
 </style>
 
 
-<c:url value="/mypage/mypage1" var="myPageLink" />
-
-
-<nav id="nav2" class="navbar navbar-expand-md bg-light mb-3">
+<nav id="nav2" class="navbar navbar-expand-md mb-3">
   <div class="container-md">
     <a class="navbar-brand" href="${listLink }">
-    <span class="font-main">내 정보</span>
+    <span class="font">My Page</span>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
