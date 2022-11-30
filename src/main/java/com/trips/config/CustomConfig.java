@@ -1,13 +1,13 @@
-//package com.trips.config;
+package com.trips.config;
 //
 //import javax.annotation.PostConstruct;
 //import javax.servlet.ServletContext;
 //
-//import org.mybatis.spring.annotation.MapperScan;
+import org.mybatis.spring.annotation.MapperScan;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.beans.factory.annotation.Value;
 //import org.springframework.context.annotation.Bean;
-//import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Configuration;
 //import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 //import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -21,10 +21,10 @@
 //import software.amazon.awssdk.regions.Region;
 //import software.amazon.awssdk.services.s3.S3Client;
 //
-//@Configuration
-//@MapperScan("com.study.mapper")
+@Configuration
+@MapperScan("com.trips.mapper")
 //@EnableGlobalMethodSecurity(prePostEnabled = true)
-//public class CustomConfig {
+public class CustomConfig {
 //
 //	@Value("${aws.accessKeyId}")
 //	private String accessKeyId;
@@ -75,7 +75,7 @@
 //	public AwsCredentials awsCredentials() {
 //		return AwsBasicCredentials.create(accessKeyId, secretAccessKey);
 //	}
-//}
+}
 //
 //
 //
