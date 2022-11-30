@@ -4,10 +4,13 @@ package com.trips.config;
 //import javax.servlet.ServletContext;
 //
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.context.annotation.Bean;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.beans.factory.annotation.Value;
 //import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.web.SecurityFilterChain;
 //import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 //import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -50,14 +53,14 @@ public class CustomConfig {
 //		return new BCryptPasswordEncoder();
 //	}
 //	
-//	@Bean
-//	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+	@Bean
+	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 //		http.formLogin().loginPage("/member/login").defaultSuccessUrl("/board/list", true);
 //		http.logout().logoutUrl("/member/logout");
-//		http.csrf().disable();
+		http.csrf().disable();
 //		http.rememberMe();
-//		return http.build();
-//	}
+		return http.build();
+	}
 //
 //	@Bean
 //	public S3Client s3Client() {

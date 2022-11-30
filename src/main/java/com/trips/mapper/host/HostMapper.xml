@@ -4,13 +4,15 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.trips.mapper.host.HostMapper">
-<insert id="listingTopic">
+<insert id="listingTopic" useGeneratedKeys="true" keyProperty="b_no" keyColumn="B_NO">
 	insert into ACTI_BOARD (b_topic,b_accept) values(#{b_topic},0)
 </insert>
 <insert id="listingContents">
 	insert into ACTI_BOARD (b_title,b_content,cost,max_person,min_person,min_age) 
 	values(#{b_title},#{b_content},#{cost},#{max_person},#{min_person},#{min_age})
 </insert>
+<!-- <select id="select"> -->
+<!-- select b_id from ACTI_BOARD</select> -->
 
 	<select id="select" resultMap="boardMap">
 	SELECT

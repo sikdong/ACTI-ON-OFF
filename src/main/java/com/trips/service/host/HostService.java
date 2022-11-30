@@ -1,10 +1,18 @@
 package com.trips.service.host;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.trips.domain.host.BoardDto;
 import com.trips.mapper.host.HostMapper;
+
+import software.amazon.awssdk.core.sync.RequestBody;
+import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.model.ObjectCannedACL;
+import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 
 @Service
 @Transactional
@@ -13,11 +21,76 @@ public class HostService {
 	private HostMapper hostMapper;
 	
 	public int listingTopic(String b_topic) {
-		return hostMapper.listingTopic(b_topic);
-	}
+		
+		BoardDto dto = new BoardDto();
+		dto.setB_topic(b_topic);//이게 중요함. 디티오에 값을 셋팅해줘야함
+//		int cnt = hostMapper.listingTopic(b_topic);
+		int cnt = hostMapper.listingTopic(dto);//이건 더 중요. 디티오를 넣고 그 디티오에 프라이머리키(오토인크리)가 들어 있어야 토픽 인서트 할 때 같이 삽입됨
+												// > 만약 매개변수로 dto안넣고 b_topic 넣으면 인서트할 때 같이 삽입될 b_id가 없음.
+//		Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.executor.ExecutorException: Error getting generated key or setting result to parameter object. Cause: org.apache.ibatis.executor.ExecutorException: No setter found for the keyProperty 'b_no' in 'java.lang.String'.] with root cause
+//
+//		org.apache.ibatis.executor.ExecutorException: No setter found for the keyProperty 'b_no' in 'java.lang.String'.
+
+		
+		System.out.println("###########");
+		System.out.println(dto);
+		return cnt;
+	} 
 
 	public int listingContents(String b_title, String b_content, int cost, int max_person,int min_person, int min_age) {
 		return hostMapper.listingContents(b_title,b_content,cost,max_person,min_person,min_age);
 	}
+	
+	
+	
+	//--- 이미지파일 저장
+	// >> 컨트롤러가 다르니까 쿼리문에 where써서(보드아이디나 멤버아이디만 가능할듯) 이전쿼리와 같은 row에 삽입되도록
+//	@Autowired
+//	private S3Client s3Client;
+//	
+//	@Value("${aws.s3.bucket}")
+//	private String bucketName;
+//	
+//	public int register(BoardDto board, MultipartFile[] files) {
+//		// db에 게시물 정보 저장
+//		int cnt = hostMapper.insertFile(board);
+//		
+//		for (MultipartFile file : files) {
+//			if (file != null && file.getSize() > 0) {
+//				// db에 파일 정보 저장
+//				hostMapper.insertFile(board.getId(), file.getOriginalFilename());
+//				
+//				uploadFile(board.getId(), file);
+//			}
+//		}
+//		
+//		return cnt;
+//	}
+//
+//	private void uploadFile(int id, MultipartFile file) {
+//		try {
+//			// S3에 파일 저장
+//			// 키 생성
+//			String key = "prj1/board/" + id + "/" + file.getOriginalFilename();
+//			
+//			// putObjectRequest
+//			PutObjectRequest putObjectRequest = PutObjectRequest.builder()
+//					.bucket(bucketName)
+//					.key(key)
+//					.acl(ObjectCannedACL.PUBLIC_READ)
+//					.build();
+//			
+//			// requestBody
+//			RequestBody requestBody = RequestBody.fromInputStream(file.getInputStream(), file.getSize());
+//			
+//			// object(파일) 올리기
+//			s3Client.putObject(putObjectRequest, requestBody);
+//			
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			throw new RuntimeException(e);
+//		}
+//	}
+
 
 }
