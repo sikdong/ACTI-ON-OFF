@@ -117,6 +117,7 @@
 	href="https://vendor-cdn.imweb.me/css/emoji.css?1660095097">
 <link rel="stylesheet" type="text/css"
 	href="https://vendor-cdn.imweb.me/css/font-awesome5.min.css?1660780829">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
 @import url("//vendor-cdn.imweb.me/css/notoserif.css");
 
@@ -4317,7 +4318,7 @@ padding-right
 													<div class="row mt-3">
 														<div class="col">
 															<div class="list-group" id="replyListContainer">
-																<input type="hidden" id="boardNum" value="${board.num}">		
+																<input type="text" id="boardNum" value="${board.num}">		
 															</div>
 														</div>
 													</div>
@@ -6222,6 +6223,9 @@ body.doz_sys {
 </body>
 <script>
 const ctx = "${pageContext.request.contextPath}"
+listReply();
+
+
 function listReply(){
 	const boardNum = document.querySelector("#boardNum").value;
 	fetch(`\${ctx}/ydsReply/listReply/\${boardNum}`)
@@ -6231,7 +6235,22 @@ function listReply(){
 		replyListContainer.innerHTML = "";
 		
 		for(const item of list) {
-			
+			const replyDiv = 
+				`<div class="list-group-item d-flex">
+					<div class="me-auto">
+						<h5>
+							<i class="fa-solid fa-user"></i>
+							\${item.writer}
+						</h5>
+						<div>
+							\${item.content}
+						</div>
+						<small class="text-muted">
+						<i class="fa-regular fa-clock"></i> 
+							\${item.createDate}
+						</small>
+				</div>
+				replyListContainer.insertAdjacentHTML("beforeend", replyDiv);	
 		}
 	})
 }
