@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.trips.mapper.host.HostMapper">
+<insert id="listingTopic">
+	insert into ACTI_BOARD (b_topic,b_accept) values(#{b_topic},0)
+</insert>
+<insert id="listingContents">
+	insert into ACTI_BOARD (b_title,b_content,cost,max_person,min_person,min_age) 
+	values(#{b_title},#{b_content},#{cost},#{max_person},#{min_person},#{min_age})
+</insert>
+
+	<select id="select" resultMap="boardMap">
+	SELECT
+		b.id,
+		b.title,
+		b.content,
+		b.writer,
+		b.inserted,
+		f.id fileId,
+		f.name fileName
+	FROM
+		Board b LEFT JOIN File f ON b.id = f.boardId
+	WHERE
+		b.id = #{id}
+	</select>
+	
+	<resultMap type="com.trips.domain.mypage.BoardDto" id="boardMap">
+		<id column="id" property="id"></id>
+		<result column="title" property="title"/>
+		<result column="writer" property="writer"></result>
+		<result column="content" property="content"/>
+		<result column="inserted" property="inserted"/>
+		<collection property="fileName" ofType="string">
+			<result property="fileName" column="fileName"/>
+		</collection>
+	</resultMap>
+	
+</mapper>
+
+
+
+
+
+
+
+
