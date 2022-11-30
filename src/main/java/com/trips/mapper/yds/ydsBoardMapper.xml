@@ -8,7 +8,7 @@
 SELECT
 	B_NO num,
 	B_TITLE title,
-	B_WRITER writer,
+	M_ID writer,
 	B_CONTENT content,
 	B_FILENAME fileName,
 	B_RFILENAME,
@@ -22,11 +22,16 @@ FROM ACTI_BOARD
 SELECT
 	B_NO num,
 	B_TITLE title,
-	B_WRITER writer,
+	M_ID writer,
 	B_CONTENT content
 FROM ACTI_BOARD
 WHERE B_NO = #{num}
 </select>
+
+<delete id="removeBoard">
+DELETE FROM ACTI_BOARD
+WHERE B_NO = #{num}
+</delete>
 
 
 </mapper>

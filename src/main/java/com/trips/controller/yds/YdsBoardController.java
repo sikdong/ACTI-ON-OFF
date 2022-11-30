@@ -35,4 +35,11 @@ public class YdsBoardController {
 		model.addAttribute("board", board);
 		
 	}
+	
+	@GetMapping("remove")
+	public String removeBoard(int num) {
+		service.removeBoard(num);
+		return "redirect:/ydsBoard/list";
+	}
+	
 }

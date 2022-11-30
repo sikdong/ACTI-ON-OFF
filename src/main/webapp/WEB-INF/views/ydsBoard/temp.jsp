@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
+<!DOCTYPE html>
 <html lang="ko" class=" js cssanimations">
 <head>
 <script type="text/javascript" id="www-widgetapi-script"
 	src="https://www.youtube.com/s/player/4eb6b35d/www-widgetapi.vflset/www-widgetapi.js"
-	async="">
-	
-</script>
+	async=""></script>
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,16 +16,21 @@
 <meta name="apple-mobile-web-app-status-bar-style"
 	content="black-translucent">
 
-<meta property="og:url" content="https://onoffline.imweb.me/shop">
-<title>onoffline</title>
-<meta name="application-name" content="onoffline">
-<meta name="msapplication-tooltip" content="onoffline">
-<meta id="meta_og_title" property="og:title" content="onoffline">
+<meta property="og:url"
+	content="https://onoffline.imweb.me/beens/?idx=2">
+<title>${board.title }</title>
+<meta name="application-name"
+	content="Signature coffee beens : onoffline">
+<meta name="msapplication-tooltip"
+	content="Signature coffee beens : onoffline">
+<meta id="meta_og_title" property="og:title"
+	content="Signature coffee beens : onoffline">
 <meta id="meta_og_image" property="og:image"
-	content="https://cdn.imweb.me/upload/S20190909897bd4d3191f1/1d63f1fc805ea.png">
+	content="https://cdn.imweb.me/thumbnail/20190919/2276438f9ed5d.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="627">
-<link rel="canonical" href="https://onoffline.imweb.me/shop">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<link rel="canonical" href="https://onoffline.imweb.me/beens/?idx=2">
 <link rel="apple-touch-icon-precomposed" sizes="57x57"
 	href="https://cdn.imweb.me/thumbnail/20191014/355c5a32f3364.png">
 <link rel="apple-touch-icon-precomposed" sizes="72x72"
@@ -37,7 +41,7 @@
 	href="https://cdn.imweb.me/thumbnail/20191014/f1120cc13f93f.png">
 <link rel="apple-touch-icon-precomposed" sizes="114x114"
 	href="https://cdn.imweb.me/thumbnail/20191014/5cf26f29b32e8.png">
-<link rel="apple-touch-icon-precomposed" sizes="120x120"
+<link rel="apple-touch-icon-precomposhop/?idx=8sed" sizes="120x120"
 	href="https://cdn.imweb.me/thumbnail/20191014/d94c779afe33c.png">
 <link rel="apple-touch-icon-precomposed" sizes="144x144"
 	href="https://cdn.imweb.me/thumbnail/20191014/7c2396acc1f32.png">
@@ -106,13 +110,14 @@
 	href="https://vendor-cdn.imweb.me/fonts/im-icon/style.css?1666251299">
 <link rel="stylesheet" type="text/css"
 	href="https://vendor-cdn.imweb.me/fonts/froala-emoji-tap/style.css?1660095148">
-<link rel="stylesheet" type="text/css" href="/css/custom.cm?1669601096">
+<link rel="stylesheet" type="text/css" href="/css/custom.cm?1669602111">
 <link rel="stylesheet" type="text/css"
 	href="https://vendor-cdn.imweb.me/css/tailwind.css?1669340906">
 <link rel="stylesheet" type="text/css"
 	href="https://vendor-cdn.imweb.me/css/emoji.css?1660095097">
 <link rel="stylesheet" type="text/css"
 	href="https://vendor-cdn.imweb.me/css/font-awesome5.min.css?1660780829">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
 @import url("//vendor-cdn.imweb.me/css/notoserif.css");
 
@@ -127,7 +132,7 @@
 }
 
 .doz_sys #logo_w20221128580f6db37b928.logo .logo_title a {
-	font-family: Malgun Gothic;
+	font-family: Noto Serif;
 	font-size: 22px;
 	letter-spacing: 0px;
 	font-weight: bold;
@@ -823,14 +828,14 @@
 }
 
 .fixed-menu-on .scroll_position {
-	top: -90px;
+	top: -0px;
 }
 
 @media ( max-width : 991px) {
 	.doz_sys .section_first.visual_section .full_screen_show .owl-theme .item .op,
 		.doz_sys .section_first.visual_section .full_screen_show .owl-theme .item .op .header-content
 		{
-		height: calc(100vh - 129px) !important;
+		height: calc(100vh - 49px) !important;
 	}
 }
 
@@ -1360,132 +1365,59 @@
 
 @media all and (max-width : 767px) {
 	.fixed-menu-on .scroll_position {
-		top: -129px !important;
+		top: -49px !important;
 	}
 	.fixed-menu-on.new_fixed_header_disable .scroll_position {
 		top: 0 !important;
 	}
 }
 
-.mobile_table_nav_wrap {
-	border-top: 1px solid rgba(33, 33, 33, 0.65);
-	width: 100%;
-	table-layout: fixed;
-}
-
-.scroll-to-fixed-fixed .mobile_table_nav_wrap {
-	border-top: 1px solid rgba(33, 33, 33, 0.65);
-}
-
-.mobile_table_nav_wrap tr>td {
-	width: 33.3%;
-	border-right: 1px solid rgba(33, 33, 33, 0.65);
-	border-bottom: 1px solid rgba(33, 33, 33, 0.65);
-	text-align: center;
-	background: #fff;
-	vertical-align: middle;
-	height: 40px;
-	padding: 5px;
-}
-
-.scroll-to-fixed-fixed .mobile_table_nav_wrap tr>td {
-	background: #fff;
-	border-right: 1px solid rgba(33, 33, 33, 0.65);
-	border-bottom: 1px solid rgba(33, 33, 33, 0.65);
-}
-
-.scroll-to-fixed-fixed .mobile_table_nav_wrap tr>td a {
-	color: #777;
-}
-
-.scroll-to-fixed-fixed .mobile_table_nav_wrap tr>td.use_sub_name:hover>a>.plain_name:before
-	{
-	color: #777;
-}
-
-.mobile_table_nav_wrap tr td:last-child {
-	border-right: 0;
-}
-
-.mobile_table_nav_wrap tr>td a {
-	color: #777;
-	font-weight:;
-	font-style:;
-	font-size: 13px;
-	display: block;
-	word-wrap: break-word;
-	line-height: 1.2;
-}
-
-.mobile_table_nav_wrap tr>td.use_sub_name:hover>a>.plain_name:before {
-	color: #777;
-}
-
-.mobile_table_nav_wrap tr>td.active {
-	background: #212121;
-}
-
-.scroll-to-fixed-fixed .mobile_table_nav_wrap tr>td.active {
-	background: #212121;
-}
-
-.mobile_table_nav_wrap tr>td.active a {
-	color: #eeeeee;
-	font-weight:;
-	font-style:;
-	font-size: 13px;
-}
-
-.scroll-to-fixed-fixed .mobile_table_nav_wrap tr>td.active a {
-	color: #eeeeee;
-}
-
-.shop_view .s2022112892053a957d98f.xzoom-preview {;
+.shop_view .s20221128785d3e46ff7d7.xzoom-preview {;
 	background:;
 }
 
-.shop_view #s2022112892053a957d98f select.form-control option {
+.shop_view #s20221128785d3e46ff7d7 select.form-control option {
 	color: !important;
 	background:;
 }
 
-.is-ie .shop_view #s2022112892053a957d98f select.form-control option {
+.is-ie .shop_view #s20221128785d3e46ff7d7 select.form-control option {
 	color: #000 !important;
 }
 
-.admin #s2022112892053a957d98f .widget.padding>div {;
+.admin #s20221128785d3e46ff7d7 .widget.padding>div {;
 	
 }
 
-.admin #s2022112892053a957d98f .ibg-bg {
+.admin #s20221128785d3e46ff7d7 .ibg-bg {
 	height: 100% !important;
 }
 
-.admin #s2022112892053a957d98f .widget_drag_bar, .admin .doz_sys #s2022112892053a957d98f .ui-resizable-handle.ui-resizable-e:hover:after,
-	.admin .doz_sys #s2022112892053a957d98f .ui-resizable-handle.ui-resizable-w:hover:after,
-	.admin .doz_sys #s2022112892053a957d98f .ui-resizable-handle.ui-resizable-e.active:after,
-	.admin .doz_sys #s2022112892053a957d98f .ui-resizable-handle.ui-resizable-w.active:after,
-	.admin .doz_sys #s2022112892053a957d98f .drop_line {
+.admin #s20221128785d3e46ff7d7 .widget_drag_bar, .admin .doz_sys #s20221128785d3e46ff7d7 .ui-resizable-handle.ui-resizable-e:hover:after,
+	.admin .doz_sys #s20221128785d3e46ff7d7 .ui-resizable-handle.ui-resizable-w:hover:after,
+	.admin .doz_sys #s20221128785d3e46ff7d7 .ui-resizable-handle.ui-resizable-e.active:after,
+	.admin .doz_sys #s20221128785d3e46ff7d7 .ui-resizable-handle.ui-resizable-w.active:after,
+	.admin .doz_sys #s20221128785d3e46ff7d7 .drop_line {
 	background-color:;
 }
 
-.admin .doz_sys #s2022112892053a957d98f .ui-resizable-handle.ui-resizable-n:hover:after,
-	.admin .doz_sys #s2022112892053a957d98f .ui-resizable-handle.ui-resizable-s:hover:after
+.admin .doz_sys #s20221128785d3e46ff7d7 .ui-resizable-handle.ui-resizable-n:hover:after,
+	.admin .doz_sys #s20221128785d3e46ff7d7 .ui-resizable-handle.ui-resizable-s:hover:after
 	{
 	border-bottom: 2px solid;
 }
 
-#s2022112892053a957d98f {
+#s20221128785d3e46ff7d7 {
 	color:;
 }
 
-#s2022112892053a957d98f.side_basic main .inside, #s2022112892053a957d98f .site_prod_nav_wrap.scroll-to-fixed-fixed ul.site_prod_nav,
-	.doz_sys #s2022112892053a957d98f .col-dz-12 .extend_thumbs {
+#s20221128785d3e46ff7d7.side_basic main .inside, #s20221128785d3e46ff7d7 .site_prod_nav_wrap.scroll-to-fixed-fixed ul.site_prod_nav,
+	.doz_sys #s20221128785d3e46ff7d7 .col-dz-12 .extend_thumbs {
 	max-width: 1400px;
 }
 
-.modal_site_modal_menu #s2022112892053a957d98f.side_basic main .inside,
-	.menu_type_modal #s2022112892053a957d98f.side_basic main .inside {
+.modal_site_modal_menu #s20221128785d3e46ff7d7.side_basic main .inside,
+	.menu_type_modal #s20221128785d3e46ff7d7.side_basic main .inside {
 	max-width: 550px;
 }
 
@@ -1496,7 +1428,7 @@
 	;
 }
 
-.menu_type_modal #s2022112892053a957d98f, .menu_type_modal .doz_modal_header
+.menu_type_modal #s20221128785d3e46ff7d7, .menu_type_modal .doz_modal_header
 	{;
 	background:;;
 	color:;
@@ -1506,398 +1438,398 @@
 	color:;
 }
 
-.doz_sys #s2022112892053a957d98f .col-dz-12 .inside .extend_thumbs {
+.doz_sys #s20221128785d3e46ff7d7 .col-dz-12 .inside .extend_thumbs {
 	max-width: inherit;
 }
 
-#s2022112892053a957d98f.extend_section main {
+#s20221128785d3e46ff7d7.extend_section main {
 	padding-left: 15px;
 	padding-right: 15px;
 }
 
-#s2022112892053a957d98f.section_wrap.extend_section main .widget.board .grid_ignore.bg_on
+#s20221128785d3e46ff7d7.section_wrap.extend_section main .widget.board .grid_ignore.bg_on
 	{
 	margin-left: -15px;
 	margin-right: -15px;
 	width: calc(100% + 15px + 15px);
 }
 
-#s2022112892053a957d98f .booking_day .body_font_color_20,
-	#s2022112892053a957d98f .booking_list.waiting .title {;
+#s20221128785d3e46ff7d7 .booking_day .body_font_color_20,
+	#s20221128785d3e46ff7d7 .booking_list.waiting .title {;
 	
 }
 
-#s2022112892053a957d98f.extend_section main>.inside {
+#s20221128785d3e46ff7d7.extend_section main>.inside {
 	max-width: 100% !important;
 }
 
-#s2022112892053a957d98f .li_table ul:nth-of-type(2),
-	#s2022112892053a957d98f .li_board ul li, #s2022112892053a957d98f .radio-styled:not(ie8).radio_color_option.small input 
+#s20221128785d3e46ff7d7 .li_table ul:nth-of-type(2),
+	#s20221128785d3e46ff7d7 .li_board ul li, #s20221128785d3e46ff7d7 .radio-styled:not(ie8).radio_color_option.small input 
 	~ span span {;
 	
 }
 
-#s2022112892053a957d98f .checkbox-styled:not(ie8) input ~ span:before,
-	#s2022112892053a957d98f .radio-styled:not(ie8) input ~ span:before {
+#s20221128785d3e46ff7d7 .checkbox-styled:not(ie8) input ~ span:before,
+	#s20221128785d3e46ff7d7 .radio-styled:not(ie8) input ~ span:before {
 	
 }
 
-#s2022112892053a957d98f .board_view .grid_ignore header a,
-	#s2022112892053a957d98f .widget.board .grid_ignore .author .date,
-	#s2022112892053a957d98f .widget.board .grid_ignore a.board,
-	#s2022112892053a957d98f .widget.board .grid_ignore .author .write,
-	.editor_box .add_map .info>div.phone, #s2022112892053a957d98f .content-tit .board
+#s20221128785d3e46ff7d7 .board_view .grid_ignore header a,
+	#s20221128785d3e46ff7d7 .widget.board .grid_ignore .author .date,
+	#s20221128785d3e46ff7d7 .widget.board .grid_ignore a.board,
+	#s20221128785d3e46ff7d7 .widget.board .grid_ignore .author .write,
+	.editor_box .add_map .info>div.phone, #s20221128785d3e46ff7d7 .content-tit .board
 	{;
 	
 }
 
-#s2022112892053a957d98f select.form-control, #s2022112892053a957d98f input.form-control,
-	#s2022112892053a957d98f textarea.form-control {;
+#s20221128785d3e46ff7d7 select.form-control, #s20221128785d3e46ff7d7 input.form-control,
+	#s20221128785d3e46ff7d7 textarea.form-control {;
 	color: #eeeeee;
 	background:;
 }
 
-#s2022112892053a957d98f .input_block .select-block .selectbox select {
+#s20221128785d3e46ff7d7 .input_block .select-block .selectbox select {
 	border: none;
 	background: none;
 	color: #212121;
 }
 
-#s2022112892053a957d98f .phonenumber_wrap .line {
+#s20221128785d3e46ff7d7 .phonenumber_wrap .line {
 	
 }
 
-#s2022112892053a957d98f .shop-content.shop-style-b.open .opt-group .btn_clse>span
+#s20221128785d3e46ff7d7 .shop-content.shop-style-b.open .opt-group .btn_clse>span
 	{
 	
 }
 
-.shop_view #s2022112892053a957d98f .shop-content select.form-control,
-	.shop_view #s2022112892053a957d98f .shop-content input.form-control,
-	.shop_view #s2022112892053a957d98f .shop-content textarea.form-control,
-	.booking_view #s2022112892053a957d98f .booking_opt select.form-control,
-	.shop_view #s2022112892053a957d98f .form-select-wrap .dropdown-menu,
-	.shop_view #s2022112892053a957d98f .form-select-wrap .dropdown-menu .dropdown-item
+.shop_view #s20221128785d3e46ff7d7 .shop-content select.form-control,
+	.shop_view #s20221128785d3e46ff7d7 .shop-content input.form-control,
+	.shop_view #s20221128785d3e46ff7d7 .shop-content textarea.form-control,
+	.booking_view #s20221128785d3e46ff7d7 .booking_opt select.form-control,
+	.shop_view #s20221128785d3e46ff7d7 .form-select-wrap .dropdown-menu,
+	.shop_view #s20221128785d3e46ff7d7 .form-select-wrap .dropdown-menu .dropdown-item
 	{;
 	background:;
 }
 
-#s2022112892053a957d98f .seemore_wrap .open:before {
+#s20221128785d3e46ff7d7 .seemore_wrap .open:before {
 	background-image: linear-gradient(to bottom,, 66%, 83%, 98%,);
 }
 
-#s2022112892053a957d98f .item_detail select.form-control,
-	#s2022112892053a957d98f .item_detail input.form-control,
-	#s2022112892053a957d98f .item_detail textarea.form-control,
-	#s2022112892053a957d98f .booking_opt select.form-control,
-	#s2022112892053a957d98f .goods_select textarea.form-control,
-	#s2022112892053a957d98f .goods_select select.form-control,
-	#s2022112892053a957d98f .goods_select input.form-control,
-	#s2022112892053a957d98f .form-select-wrap:before { !important;
+#s20221128785d3e46ff7d7 .item_detail select.form-control,
+	#s20221128785d3e46ff7d7 .item_detail input.form-control,
+	#s20221128785d3e46ff7d7 .item_detail textarea.form-control,
+	#s20221128785d3e46ff7d7 .booking_opt select.form-control,
+	#s20221128785d3e46ff7d7 .goods_select textarea.form-control,
+	#s20221128785d3e46ff7d7 .goods_select select.form-control,
+	#s20221128785d3e46ff7d7 .goods_select input.form-control,
+	#s20221128785d3e46ff7d7 .form-select-wrap:before { !important;
 	color:;
 }
 
-#s2022112892053a957d98f .form-select-wrap .dropdown-menu .dropdown-item:hover
+#s20221128785d3e46ff7d7 .form-select-wrap .dropdown-menu .dropdown-item:hover
 	{;
 	
 }
 
-#s2022112892053a957d98f .board_summary .write, #s2022112892053a957d98f .board_view .grid_ignore .author .date,
-	#s2022112892053a957d98f .board_view .grid_ignore .author .hit-count,
-	.doz_sys #s2022112892053a957d98f label, .doz_sys #s2022112892053a957d98f label.control-label,
-	#s2022112892053a957d98f .shop-table>tbody>tr.payment-info>td.pay-txt,
-	#s2022112892053a957d98f .nick.text-default-dark,
-	#s2022112892053a957d98f .text-default-dark, #s2022112892053a957d98f .shop_mypage .mypage .my-box a,
-	#s2022112892053a957d98f .shop_mypage .item-detail a,
-	#s2022112892053a957d98f .shop_mypage .item-detail p,
-	#s2022112892053a957d98f .shop_mypage h6, #s2022112892053a957d98f .shop_mypage .table-wrap p,
-	#s2022112892053a957d98f .shop_payment h1, #s2022112892053a957d98f .shop_payment h6,
-	#s2022112892053a957d98f .shop-content p, #s2022112892053a957d98f .shop_payment,
-	#s2022112892053a957d98f .shop-content span, #s2022112892053a957d98f .shop-content .shop-item .item-icon .im-icon.im-ico-liked,
-	#s2022112892053a957d98f .shop-content .price, #s2022112892053a957d98f,
-	#s2022112892053a957d98f .shop-tit, #s2022112892053a957d98f .board_view .board_txt_area,
-	#s2022112892053a957d98f .board.widget .grid_ignore .view_tit, .doz_sys #s2022112892053a957d98f .shop-content input.form-control,
-	.doz_sys #s2022112892053a957d98f .shop-content select.form-control,
-	#s2022112892053a957d98f .widget_menu_title, #s2022112892053a957d98f .comment_area,
-	body.shop_mypage #s2022112892053a957d98f .comment_area,
-	#s2022112892053a957d98f .list_review_inner .use_summary,
-	#s2022112892053a957d98f .list_review_inner .use_summary a,
-	#s2022112892053a957d98f .list_review_inner .fold,
-	#s2022112892053a957d98f .list_review_inner .comment_area,
-	#s2022112892053a957d98f .booking_nav_tools span {;
+#s20221128785d3e46ff7d7 .board_summary .write, #s20221128785d3e46ff7d7 .board_view .grid_ignore .author .date,
+	#s20221128785d3e46ff7d7 .board_view .grid_ignore .author .hit-count,
+	.doz_sys #s20221128785d3e46ff7d7 label, .doz_sys #s20221128785d3e46ff7d7 label.control-label,
+	#s20221128785d3e46ff7d7 .shop-table>tbody>tr.payment-info>td.pay-txt,
+	#s20221128785d3e46ff7d7 .nick.text-default-dark,
+	#s20221128785d3e46ff7d7 .text-default-dark, #s20221128785d3e46ff7d7 .shop_mypage .mypage .my-box a,
+	#s20221128785d3e46ff7d7 .shop_mypage .item-detail a,
+	#s20221128785d3e46ff7d7 .shop_mypage .item-detail p,
+	#s20221128785d3e46ff7d7 .shop_mypage h6, #s20221128785d3e46ff7d7 .shop_mypage .table-wrap p,
+	#s20221128785d3e46ff7d7 .shop_payment h1, #s20221128785d3e46ff7d7 .shop_payment h6,
+	#s20221128785d3e46ff7d7 .shop-content p, #s20221128785d3e46ff7d7 .shop_payment,
+	#s20221128785d3e46ff7d7 .shop-content span, #s20221128785d3e46ff7d7 .shop-content .shop-item .item-icon .im-icon.im-ico-liked,
+	#s20221128785d3e46ff7d7 .shop-content .price, #s20221128785d3e46ff7d7,
+	#s20221128785d3e46ff7d7 .shop-tit, #s20221128785d3e46ff7d7 .board_view .board_txt_area,
+	#s20221128785d3e46ff7d7 .board.widget .grid_ignore .view_tit, .doz_sys #s20221128785d3e46ff7d7 .shop-content input.form-control,
+	.doz_sys #s20221128785d3e46ff7d7 .shop-content select.form-control,
+	#s20221128785d3e46ff7d7 .widget_menu_title, #s20221128785d3e46ff7d7 .comment_area,
+	body.shop_mypage #s20221128785d3e46ff7d7 .comment_area,
+	#s20221128785d3e46ff7d7 .list_review_inner .use_summary,
+	#s20221128785d3e46ff7d7 .list_review_inner .use_summary a,
+	#s20221128785d3e46ff7d7 .list_review_inner .fold,
+	#s20221128785d3e46ff7d7 .list_review_inner .comment_area,
+	#s20221128785d3e46ff7d7 .booking_nav_tools span {;
 	color:;
 }
 
-.doz_sys #s2022112892053a957d98f .shop-content .down-btn select.form-control
+.doz_sys #s20221128785d3e46ff7d7 .shop-content .down-btn select.form-control
 	{;
 	color: !important;
 }
 
-#s2022112892053a957d98f .shop-content.mypage .bg-bright a,
-	#s2022112892053a957d98f .shop-content.mypage .bg-bright p,
-	#s2022112892053a957d98f .shop-content.mypage .bg-bright span,
-	#s2022112892053a957d98f .shop-content.mypage .bg-bright div {
+#s20221128785d3e46ff7d7 .shop-content.mypage .bg-bright a,
+	#s20221128785d3e46ff7d7 .shop-content.mypage .bg-bright p,
+	#s20221128785d3e46ff7d7 .shop-content.mypage .bg-bright span,
+	#s20221128785d3e46ff7d7 .shop-content.mypage .bg-bright div {
 	color: #212121;
 }
 
-#s2022112892053a957d98f .shop-content.mypage .bg-bright .use_grade .ug_btn .btn
+#s20221128785d3e46ff7d7 .shop-content.mypage .bg-bright .use_grade .ug_btn .btn
 	{
 	border-color: #D5D5D5;
 }
 
-#s2022112892053a957d98f .shop-content h6 span {;
+#s20221128785d3e46ff7d7 .shop-content h6 span {;
 	color:;
 }
 
-#s2022112892053a957d98f .left-menu ul li.on a, .doz_sys #s2022112892053a957d98f .paging_type_count .owl-dots .owl-dot span:before,
-	.menu_type_modal #s2022112892053a957d98f, #s2022112892053a957d98f .list_review_inner .comment .tools .text-gray-bright
+#s20221128785d3e46ff7d7 .left-menu ul li.on a, .doz_sys #s20221128785d3e46ff7d7 .paging_type_count .owl-dots .owl-dot span:before,
+	.menu_type_modal #s20221128785d3e46ff7d7, #s20221128785d3e46ff7d7 .list_review_inner .comment .tools .text-gray-bright
 	{;
 	color: !important;
 }
 
-.doz_sys #s2022112892053a957d98f .paging_type_count.slide_02 .owl-dots .owl-dot.active span:before
+.doz_sys #s20221128785d3e46ff7d7 .paging_type_count.slide_02 .owl-dots .owl-dot.active span:before
 	{
 	color: #fff !important;
 }
 
-.doz_sys #s2022112892053a957d98f .paging_type_dot .owl-dots .owl-dot span,
-	.doz_sys #s2022112892053a957d98f .paging_type_big_dot .owl-dots .owl-dot span,
-	.doz_sys #s2022112892053a957d98f .paging_type_line .owl-dots .owl-dot span,
-	.doz_sys #s2022112892053a957d98f .paging_type_count.paging_type_count02 .owl-dots .owl-dot.active span:before,
-	#s2022112892053a957d98f .list_review_inner, #s2022112892053a957d98f .list_review_inner .fold.cmt,
-	#s2022112892053a957d98f .list_review_wrap, #s2022112892053a957d98f .list_review_inner .textarea_block,
-	#s2022112892053a957d98f .list_review_inner .comment .main_comment,
-	#s2022112892053a957d98f .list_review_inner .txt_delete:before,
-	#s2022112892053a957d98f .form-select-wrap.open .dropdown-toggle,
-	#s2022112892053a957d98f .form-select-wrap.open .dropdown-menu,
-	#s2022112892053a957d98f .form-select-wrap.open .dropdown-menu .dropdown-item
+.doz_sys #s20221128785d3e46ff7d7 .paging_type_dot .owl-dots .owl-dot span,
+	.doz_sys #s20221128785d3e46ff7d7 .paging_type_big_dot .owl-dots .owl-dot span,
+	.doz_sys #s20221128785d3e46ff7d7 .paging_type_line .owl-dots .owl-dot span,
+	.doz_sys #s20221128785d3e46ff7d7 .paging_type_count.paging_type_count02 .owl-dots .owl-dot.active span:before,
+	#s20221128785d3e46ff7d7 .list_review_inner, #s20221128785d3e46ff7d7 .list_review_inner .fold.cmt,
+	#s20221128785d3e46ff7d7 .list_review_wrap, #s20221128785d3e46ff7d7 .list_review_inner .textarea_block,
+	#s20221128785d3e46ff7d7 .list_review_inner .comment .main_comment,
+	#s20221128785d3e46ff7d7 .list_review_inner .txt_delete:before,
+	#s20221128785d3e46ff7d7 .form-select-wrap.open .dropdown-toggle,
+	#s20221128785d3e46ff7d7 .form-select-wrap.open .dropdown-menu,
+	#s20221128785d3e46ff7d7 .form-select-wrap.open .dropdown-menu .dropdown-item
 	{
 	border-color:;
 }
 
-.doz_sys #s2022112892053a957d98f .paging_type_dot02 .owl-dots .owl-dot span,
-	.doz_sys #s2022112892053a957d98f .paging_type_dot .owl-dots .owl-dot.active span,
-	.doz_sys #s2022112892053a957d98f .paging_type_line .owl-dots .owl-dot.active span,
-	.doz_sys #s2022112892053a957d98f .paging_type_big_dot .owl-dots .owl-dot span,
-	.doz_sys #s2022112892053a957d98f .paging_type_line .owl-dots .owl-dot span
+.doz_sys #s20221128785d3e46ff7d7 .paging_type_dot02 .owl-dots .owl-dot span,
+	.doz_sys #s20221128785d3e46ff7d7 .paging_type_dot .owl-dots .owl-dot.active span,
+	.doz_sys #s20221128785d3e46ff7d7 .paging_type_line .owl-dots .owl-dot.active span,
+	.doz_sys #s20221128785d3e46ff7d7 .paging_type_big_dot .owl-dots .owl-dot span,
+	.doz_sys #s20221128785d3e46ff7d7 .paging_type_line .owl-dots .owl-dot span
 	{
 	background:;
 }
 
-#s2022112892053a957d98f .form-control:focus {
+#s20221128785d3e46ff7d7 .form-control:focus {
 	border-color: #363636;
 }
 
-#s2022112892053a957d98f .sub_depth li a, #s2022112892053a957d98f .sub_depth li span
+#s20221128785d3e46ff7d7 .sub_depth li a, #s20221128785d3e46ff7d7 .sub_depth li span
 	{;
 	
 }
 
-#s2022112892053a957d98f .slide_03.owl-theme .owl-dots .owl-dot span {;
+#s20221128785d3e46ff7d7 .slide_03.owl-theme .owl-dots .owl-dot span {;
 	
 }
 
-#s2022112892053a957d98f .pagination>li>a, #s2022112892053a957d98f .pagination>li>span,
-	#s2022112892053a957d98f .pagination>li>a:focus, #s2022112892053a957d98f .pagination>li>span:focus,
-	#s2022112892053a957d98f .map-inner .pagination li.active a,
-	#s2022112892053a957d98f .pagination li>a.disabled:hover,
-	#s2022112892053a957d98f .pagination li>a.disabled:focus {;
+#s20221128785d3e46ff7d7 .pagination>li>a, #s20221128785d3e46ff7d7 .pagination>li>span,
+	#s20221128785d3e46ff7d7 .pagination>li>a:focus, #s20221128785d3e46ff7d7 .pagination>li>span:focus,
+	#s20221128785d3e46ff7d7 .map-inner .pagination li.active a,
+	#s20221128785d3e46ff7d7 .pagination li>a.disabled:hover,
+	#s20221128785d3e46ff7d7 .pagination li>a.disabled:focus {;
 	
 }
 
-#s2022112892053a957d98f .form-select-wrap.open .dropdown-menu .dropdown-item
+#s20221128785d3e46ff7d7 .form-select-wrap.open .dropdown-menu .dropdown-item
 	{;
 	
 }
 
-#s2022112892053a957d98f .pagination>.active>a, #s2022112892053a957d98f .pagination>.active>span,
-	#s2022112892053a957d98f .pagination>.active>a:hover,
-	#s2022112892053a957d98f .pagination>.active>span:hover,
-	#s2022112892053a957d98f .pagination>.active>a:focus,
-	#s2022112892053a957d98f .pagination>.active>span:focus,
-	#s2022112892053a957d98f .pagination>li>a:hover, #s2022112892053a957d98f .pagination>li>span:hover,
-	#s2022112892053a957d98f .sub_depth li a.active, .doz_sys #s2022112892053a957d98f a,
-	#s2022112892053a957d98f .li_table ul li, #s2022112892053a957d98f .list-style .list.line>small,
-	.doz_sys #s2022112892053a957d98f div[data-widget-type="board"] .title.title-block a
+#s20221128785d3e46ff7d7 .pagination>.active>a, #s20221128785d3e46ff7d7 .pagination>.active>span,
+	#s20221128785d3e46ff7d7 .pagination>.active>a:hover,
+	#s20221128785d3e46ff7d7 .pagination>.active>span:hover,
+	#s20221128785d3e46ff7d7 .pagination>.active>a:focus,
+	#s20221128785d3e46ff7d7 .pagination>.active>span:focus,
+	#s20221128785d3e46ff7d7 .pagination>li>a:hover, #s20221128785d3e46ff7d7 .pagination>li>span:hover,
+	#s20221128785d3e46ff7d7 .sub_depth li a.active, .doz_sys #s20221128785d3e46ff7d7 a,
+	#s20221128785d3e46ff7d7 .li_table ul li, #s20221128785d3e46ff7d7 .list-style .list.line>small,
+	.doz_sys #s20221128785d3e46ff7d7 div[data-widget-type="board"] .title.title-block a
 	{;
 	color:;
 }
 
-.doz_sys #s2022112892053a957d98f .board_contents a:not(.btn), .doz_sys #s2022112892053a957d98f .board_contents a:not(.btn):hover,
-	#s2022112892053a957d98f .board_txt_area a, #s2022112892053a957d98f .board_txt_area a:hover,
-	#s2022112892053a957d98f .board_txt_area a:active,
-	#s2022112892053a957d98f .board_txt_area a:focus,
-	#s2022112892053a957d98f .editor_box .fr-view a {
+.doz_sys #s20221128785d3e46ff7d7 .board_contents a:not(.btn), .doz_sys #s20221128785d3e46ff7d7 .board_contents a:not(.btn):hover,
+	#s20221128785d3e46ff7d7 .board_txt_area a, #s20221128785d3e46ff7d7 .board_txt_area a:hover,
+	#s20221128785d3e46ff7d7 .board_txt_area a:active,
+	#s20221128785d3e46ff7d7 .board_txt_area a:focus,
+	#s20221128785d3e46ff7d7 .editor_box .fr-view a {
 	color: #363636;
 }
 
-#s2022112892053a957d98f div[data-widget-type="icon"] i {
+#s20221128785d3e46ff7d7 div[data-widget-type="icon"] i {
 	color:;
 }
 
-.doz_sys #s2022112892053a957d98f a.body_font_color_30:not(.active) {;
+.doz_sys #s20221128785d3e46ff7d7 a.body_font_color_30:not(.active) {;
 	
 }
 
-#s2022112892053a957d98f .text_tab .after_line:not(:last-child):after {;
+#s20221128785d3e46ff7d7 .text_tab .after_line:not(:last-child):after {;
 	
 }
 
-#s2022112892053a957d98f .text_tab ul.site_prod_nav>li a.active {
+#s20221128785d3e46ff7d7 .text_tab ul.site_prod_nav>li a.active {
 	background: none;
 }
 
-#s2022112892053a957d98f .map-toolbar select.form-control {;
+#s20221128785d3e46ff7d7 .map-toolbar select.form-control {;
 	color: !important;
 	font-size: 14px;
 }
 
-.doz_sys #s2022112892053a957d98f .body_font_color_40,
-	#s2022112892053a957d98f .li_board ul.li_body li.name,
-	#s2022112892053a957d98f .li_board ul.li_body li.time,
-	#s2022112892053a957d98f .li_board ul.li_body li.like,
-	#s2022112892053a957d98f .li_board ul.li_body li.read {;
+.doz_sys #s20221128785d3e46ff7d7 .body_font_color_40,
+	#s20221128785d3e46ff7d7 .li_board ul.li_body li.name,
+	#s20221128785d3e46ff7d7 .li_board ul.li_body li.time,
+	#s20221128785d3e46ff7d7 .li_board ul.li_body li.like,
+	#s20221128785d3e46ff7d7 .li_board ul.li_body li.read {;
 	
 }
 
-#s2022112892053a957d98f .review_table .summary, #s2022112892053a957d98f .review_table.li_board ul.li_body li,
-	#s2022112892053a957d98f .review_table .list_text_title.lock_on {;
+#s20221128785d3e46ff7d7 .review_table .summary, #s20221128785d3e46ff7d7 .review_table.li_board ul.li_body li,
+	#s20221128785d3e46ff7d7 .review_table .list_text_title.lock_on {;
 	
 }
 
-.doz_sys #s2022112892053a957d98f .body_font_color_50 {;
+.doz_sys #s20221128785d3e46ff7d7 .body_font_color_50 {;
 	
 }
 
-#s2022112892053a957d98f .li_board, #s2022112892053a957d98f .acd_row:first-child,
-	#s2022112892053a957d98f .acd_row {
+#s20221128785d3e46ff7d7 .li_board, #s20221128785d3e46ff7d7 .acd_row:first-child,
+	#s20221128785d3e46ff7d7 .acd_row {
 	border-color:;
 }
 
-#s2022112892053a957d98f .list-style .list-header,
-	#s2022112892053a957d98f .list-style .list, #s2022112892053a957d98f .list-style .list.line,
-	#s2022112892053a957d98f .list-style .list.line>.table-cell,
-	#s2022112892053a957d98f .li_table.row_04 .acd_collapse[aria-expanded="true"],
+#s20221128785d3e46ff7d7 .list-style .list-header,
+	#s20221128785d3e46ff7d7 .list-style .list, #s20221128785d3e46ff7d7 .list-style .list.line,
+	#s20221128785d3e46ff7d7 .list-style .list.line>.table-cell,
+	#s20221128785d3e46ff7d7 .li_table.row_04 .acd_collapse[aria-expanded="true"],
 	.li_table.row_04 .acd_collapse.in {;
 	
 }
 
-#s2022112892053a957d98f .btn, #s2022112892053a957d98f .visual_section a
+#s20221128785d3e46ff7d7 .btn, #s20221128785d3e46ff7d7 .visual_section a
 	{;
 	background-color:;;
 	color:;
 	;
 }
 
-#s2022112892053a957d98f .btn:hover, #s2022112892053a957d98f .visual_section a:hover
+#s20221128785d3e46ff7d7 .btn:hover, #s20221128785d3e46ff7d7 .visual_section a:hover
 	{
 	border-color:;
 }
 
-#s2022112892053a957d98f .widget_text_wrap .btn {
+#s20221128785d3e46ff7d7 .widget_text_wrap .btn {
 	background-color: #363636;
 	border-color: #363636;
 	color: #ffffff;
 	border-width: 1px;
 }
 
-.doz_sys #s2022112892053a957d98f .btn-primary {;
+.doz_sys #s20221128785d3e46ff7d7 .btn-primary {;
 	background-color: #363636;
 	border-color: #363636;
 	color: #ffffff;
 	border-width: 1px;
 }
 
-.doz_sys.shop_view #s2022112892053a957d98f .btn-primary span, .doz_sys.booking_view #s2022112892053a957d98f .btn-primary span,
-	.doz_sys.shop_mypage #s2022112892053a957d98f .btn-primary span {
+.doz_sys.shop_view #s20221128785d3e46ff7d7 .btn-primary span, .doz_sys.booking_view #s20221128785d3e46ff7d7 .btn-primary span,
+	.doz_sys.shop_mypage #s20221128785d3e46ff7d7 .btn-primary span {
 	color: #ffffff;
 }
 
-#s2022112892053a957d98f .coupon-wrap:after, #s2022112892053a957d98f .board_view .file_area ul li
+#s20221128785d3e46ff7d7 .coupon-wrap:after, #s20221128785d3e46ff7d7 .board_view .file_area ul li
 	{
 	background:;
 }
 
-#s2022112892053a957d98f .text-gray-dark, #s2022112892053a957d98f .shop-table>thead>tr>th,
-	#s2022112892053a957d98f .shop_mypage .left-menu ul li a,
-	#s2022112892053a957d98f .shop_mypage .item-detail p.sale_pay, .doz_sys #s2022112892053a957d98f .product-notify-group .product-notify-label
+#s20221128785d3e46ff7d7 .text-gray-dark, #s20221128785d3e46ff7d7 .shop-table>thead>tr>th,
+	#s20221128785d3e46ff7d7 .shop_mypage .left-menu ul li a,
+	#s20221128785d3e46ff7d7 .shop_mypage .item-detail p.sale_pay, .doz_sys #s20221128785d3e46ff7d7 .product-notify-group .product-notify-label
 	{;
 	
 }
 
-#s2022112892053a957d98f .mypage .my-box a, #s2022112892053a957d98f .mypage .shop-table>tbody>tr,
-	#s2022112892053a957d98f .mypage .tip-off, #s2022112892053a957d98f .im-order-detail-table,
-	#s2022112892053a957d98f .im-order-price {;
+#s20221128785d3e46ff7d7 .mypage .my-box a, #s20221128785d3e46ff7d7 .mypage .shop-table>tbody>tr,
+	#s20221128785d3e46ff7d7 .mypage .tip-off, #s20221128785d3e46ff7d7 .im-order-detail-table,
+	#s20221128785d3e46ff7d7 .im-order-price {;
 	
 }
 
-#s2022112892053a957d98f .mypage .my-box.on a {
+#s20221128785d3e46ff7d7 .mypage .my-box.on a {
 	background-color: #363636;;
 	color: #fff;
 }
 
-#s2022112892053a957d98f .mypage .my-box.on a p {
+#s20221128785d3e46ff7d7 .mypage .my-box.on a p {
 	color: #fff;
 }
 
-#s2022112892053a957d98f .option_btn_tools a, #s2022112892053a957d98f .map-inner .pagination li a
+#s20221128785d3e46ff7d7 .option_btn_tools a, #s20221128785d3e46ff7d7 .map-inner .pagination li a
 	{
 	color: #212121;
 }
 
-.doz_sys #s2022112892053a957d98f .list-style-card .card-body .text a {
+.doz_sys #s20221128785d3e46ff7d7 .list-style-card .card-body .text a {
 	color: #757575;
 }
 
-#s2022112892053a957d98f .card .title a {
+#s20221128785d3e46ff7d7 .card .title a {
 	color: #212121;
 }
 
-#s2022112892053a957d98f .section_bg.fixed_bg {;
+#s20221128785d3e46ff7d7 .section_bg.fixed_bg {;
 	
 }
 
-#s2022112892053a957d98f .section_bg.fixed_bg.fixed_bg_none {
+#s20221128785d3e46ff7d7 .section_bg.fixed_bg.fixed_bg_none {
 	background-attachment: inherit;
 }
 
-#s2022112892053a957d98f ul.site_prod_nav>li, #s2022112892053a957d98f .prod_detail_badge
+#s20221128785d3e46ff7d7 ul.site_prod_nav>li, #s20221128785d3e46ff7d7 .prod_detail_badge
 	{;
 	
 }
 
-#s2022112892053a957d98f .site_prod_nav_wrap.scroll-to-fixed-fixed {
+#s20221128785d3e46ff7d7 .site_prod_nav_wrap.scroll-to-fixed-fixed {
 	background:;
 	box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
 }
 
-#s2022112892053a957d98f .buy_footer_fixed {
+#s20221128785d3e46ff7d7 .buy_footer_fixed {
 	background:;
 	border-width: 1px 0 0 0;
 	border-style: solid;
 	;
 }
 
-#s2022112892053a957d98f .opt-group {
+#s20221128785d3e46ff7d7 .opt-group {
 	background:;
 }
 
-#s2022112892053a957d98f ul.site_prod_nav>li a.active {;
+#s20221128785d3e46ff7d7 ul.site_prod_nav>li a.active {;
 	
 }
 
-#s2022112892053a957d98f .background_tab ul.site_prod_nav>li a.active>span.braket-badge
+#s20221128785d3e46ff7d7 .background_tab ul.site_prod_nav>li a.active>span.braket-badge
 	{
 	background-color: none;;
 	color:;
 }
 
-#s2022112892053a957d98f .input-block .checkbox-styled:not(ie8) input ~
+#s20221128785d3e46ff7d7 .input-block .checkbox-styled:not(ie8) input ~
 	span {;
 	color:;
 }
 
-.section_fixed_disable #s2022112892053a957d98f, .section_fixed_disable #s2022112892053a957d98f .doz_aside
+.section_fixed_disable #s20221128785d3e46ff7d7, .section_fixed_disable #s20221128785d3e46ff7d7 .doz_aside
 	{
 	position: relative !important;
 	top: 0 !important;
@@ -1905,130 +1837,130 @@
 	z-index: auto !important;
 }
 
-.section_fixed_disable #s2022112892053a957d98f .doz_aside.scroll-to-fixed-fixed 
-	~ .spacer, .section_fixed_disable #s2022112892053a957d98f.scroll-to-fixed-fixed 
+.section_fixed_disable #s20221128785d3e46ff7d7 .doz_aside.scroll-to-fixed-fixed 
+	~ .spacer, .section_fixed_disable #s20221128785d3e46ff7d7.scroll-to-fixed-fixed 
 	~ .spacer {
 	height: 0 !important;
 	display: none !important;
 }
 
-#s2022112892053a957d98f.scroll-to-fixed-fixed {
+#s20221128785d3e46ff7d7.scroll-to-fixed-fixed {
 	width: 100% !important;
 }
 
-#s2022112892053a957d98f .doz_aside.scroll-to-fixed-fixed-end {
+#s20221128785d3e46ff7d7 .doz_aside.scroll-to-fixed-fixed-end {
 	bottom: 0 !important;
 	top: auto !important;
 }
 
-.device_type_m #s2022112892053a957d98f.mobile_section main .inside {
+.device_type_m #s20221128785d3e46ff7d7.mobile_section main .inside {
 	padding-left: 15px;
 	padding-right: 15px;
 }
 
-.device_type_m #s2022112892053a957d98f .mypage .left-menu ul li a,
-	.device_type_m #s2022112892053a957d98f .cart .left-menu ul li a {;
+.device_type_m #s20221128785d3e46ff7d7 .mypage .left-menu ul li a,
+	.device_type_m #s20221128785d3e46ff7d7 .cart .left-menu ul li a {;
 	
 }
 
-#s2022112892053a957d98f .im-cart-result-table {
+#s20221128785d3e46ff7d7 .im-cart-result-table {
 	border-top: 1px solid;
 	border-bottom: 1px solid;
 }
 
-#s2022112892053a957d98f .shop-table>tbody>tr>td.img .opt .more {;
+#s20221128785d3e46ff7d7 .shop-table>tbody>tr>td.img .opt .more {;
 	
 }
 
-#s2022112892053a957d98f .im-cart-info {;
+#s20221128785d3e46ff7d7 .im-cart-info {;
 	
 }
 
-#s2022112892053a957d98f .shop-table>thead>tr>th, #s2022112892053a957d98f .shop-table>tbody>tr>td,
-	#s2022112892053a957d98f .mypage .shop-table>tbody>tr,
-	#s2022112892053a957d98f .shop-table>tbody>tr>td.img img,
-	#s2022112892053a957d98f .shop-table>tbody>tr>td+td,
-	#s2022112892053a957d98f .mypage .tip-off, #s2022112892053a957d98f .mypage .shop-table img,
-	#s2022112892053a957d98f .im-order-detail-table, #s2022112892053a957d98f .im-order-price,
-	#s2022112892053a957d98f .im-order-detail-table thead tr,
-	#s2022112892053a957d98f .im-order-detail-table tr+tr,
-	#s2022112892053a957d98f .im-order-detail-table img,
-	#s2022112892053a957d98f .im-order-detail-table .im-deliv-price,
-	#s2022112892053a957d98f .im-order-price-header, #s2022112892053a957d98f .im-order-price-body
+#s20221128785d3e46ff7d7 .shop-table>thead>tr>th, #s20221128785d3e46ff7d7 .shop-table>tbody>tr>td,
+	#s20221128785d3e46ff7d7 .mypage .shop-table>tbody>tr,
+	#s20221128785d3e46ff7d7 .shop-table>tbody>tr>td.img img,
+	#s20221128785d3e46ff7d7 .shop-table>tbody>tr>td+td,
+	#s20221128785d3e46ff7d7 .mypage .tip-off, #s20221128785d3e46ff7d7 .mypage .shop-table img,
+	#s20221128785d3e46ff7d7 .im-order-detail-table, #s20221128785d3e46ff7d7 .im-order-price,
+	#s20221128785d3e46ff7d7 .im-order-detail-table thead tr,
+	#s20221128785d3e46ff7d7 .im-order-detail-table tr+tr,
+	#s20221128785d3e46ff7d7 .im-order-detail-table img,
+	#s20221128785d3e46ff7d7 .im-order-detail-table .im-deliv-price,
+	#s20221128785d3e46ff7d7 .im-order-price-header, #s20221128785d3e46ff7d7 .im-order-price-body
 	{;
 	
 }
 
-#s2022112892053a957d98f .shop-table .list_badge {
+#s20221128785d3e46ff7d7 .shop-table .list_badge {
 	border-color:;
 }
 
-#s2022112892053a957d98f .im-cart-result-table thead>tr>th,
-	#s2022112892053a957d98f #shop_cart_list .shop-table>colgroup+thead>tr:first-child>th,
-	#s2022112892053a957d98f #shop_cart_list .shop-table>tbody>tr>td+td,
-	#s2022112892053a957d98f #shop_cart_list .shop-table>thead>tr>th,
-	#s2022112892053a957d98f #shop_cart_list .shop-table>tbody>tr>td {;
+#s20221128785d3e46ff7d7 .im-cart-result-table thead>tr>th,
+	#s20221128785d3e46ff7d7 #shop_cart_list .shop-table>colgroup+thead>tr:first-child>th,
+	#s20221128785d3e46ff7d7 #shop_cart_list .shop-table>tbody>tr>td+td,
+	#s20221128785d3e46ff7d7 #shop_cart_list .shop-table>thead>tr>th,
+	#s20221128785d3e46ff7d7 #shop_cart_list .shop-table>tbody>tr>td {;
 	
 }
 
-#s2022112892053a957d98f .shop-content.mypage .shop-item .item-icon .im-icon.im-ico-liked
+#s20221128785d3e46ff7d7 .shop-content.mypage .shop-item .item-icon .im-icon.im-ico-liked
 	{
 	color: #363636
 }
 
 @media ( min-width : 991px) {
-	.doz_sys #s2022112892053a957d98f .btn-primary:hover,
-		#s2022112892053a957d98f .widget_text_wrap .btn:hover {;
+	.doz_sys #s20221128785d3e46ff7d7 .btn-primary:hover,
+		#s20221128785d3e46ff7d7 .widget_text_wrap .btn:hover {;
 		background-color: #ffffff;
 		border-color: #363636;
 		color: #363636;
 		border-width: 1px;
 	}
-	.doz_sys.shop_view #s2022112892053a957d98f .btn-primary:hover span,
-		.doz_sys.booking_view #s2022112892053a957d98f .btn-primary:hover span,
-		.doz_sys.shop_mypage #s2022112892053a957d98f .btn-primary:hover span {
+	.doz_sys.shop_view #s20221128785d3e46ff7d7 .btn-primary:hover span,
+		.doz_sys.booking_view #s20221128785d3e46ff7d7 .btn-primary:hover span,
+		.doz_sys.shop_mypage #s20221128785d3e46ff7d7 .btn-primary:hover span {
 		color: #363636;
 	}
 }
 
 @media all and (max-width : 768px) {
-	.doz_sys #s2022112892053a957d98f .fixed_view a, .doz_sys #s2022112892053a957d98f .fixed_view select.form-control,
-		.doz_sys #s2022112892053a957d98f .fixed_view .form-select-wrap:before
+	.doz_sys #s20221128785d3e46ff7d7 .fixed_view a, .doz_sys #s20221128785d3e46ff7d7 .fixed_view select.form-control,
+		.doz_sys #s20221128785d3e46ff7d7 .fixed_view .form-select-wrap:before
 		{
 		color: #212121;
 	}
-	.doz_sys #s2022112892053a957d98f .fixed_view .body_font_color_50 {
+	.doz_sys #s20221128785d3e46ff7d7 .fixed_view .body_font_color_50 {
 		color: rgba(33, 33, 33, 0.5);
 	}
-	.doz_sys #s2022112892053a957d98f .fixed_view .body_font_color_20 {
+	.doz_sys #s20221128785d3e46ff7d7 .fixed_view .body_font_color_20 {
 		color: rgba(33, 33, 33, 0.2);
 	}
-	.booking_view #s2022112892053a957d98f .fixed_view .booking_opt select.form-control
+	.booking_view #s20221128785d3e46ff7d7 .fixed_view .booking_opt select.form-control
 		{
 		background-color: #fff;
 	}
-	#s2022112892053a957d98f #shop_cart_list .shop-tit,
-		#s2022112892053a957d98f #shop_cart_list .shop-table>thead>tr,
-		#s2022112892053a957d98f #shop_cart_list .shop-table>tfoot .payment-info,
-		#s2022112892053a957d98f .im-price-result {;
+	#s20221128785d3e46ff7d7 #shop_cart_list .shop-tit,
+		#s20221128785d3e46ff7d7 #shop_cart_list .shop-table>thead>tr,
+		#s20221128785d3e46ff7d7 #shop_cart_list .shop-table>tfoot .payment-info,
+		#s20221128785d3e46ff7d7 .im-price-result {;
 		
 	}
-	#s2022112892053a957d98f .shop-table>tbody>tr>td.img .opt .more+.more,
-		#s2022112892053a957d98f .im-order-row+.im-order-row {;
+	#s20221128785d3e46ff7d7 .shop-table>tbody>tr>td.img .opt .more+.more,
+		#s20221128785d3e46ff7d7 .im-order-row+.im-order-row {;
 		
 	}
-	#s2022112892053a957d98f #shop_cart_list .shop-table,
-		#s2022112892053a957d98f #shop_cart_list .shop-table>tbody>tr.im-tr-shipping+tr,
-		#s2022112892053a957d98f #shop_cart_list .shop-table>tfoot,
-		#s2022112892053a957d98f #shop_cart_list .shop-table>tfoot .payment-info
+	#s20221128785d3e46ff7d7 #shop_cart_list .shop-table,
+		#s20221128785d3e46ff7d7 #shop_cart_list .shop-table>tbody>tr.im-tr-shipping+tr,
+		#s20221128785d3e46ff7d7 #shop_cart_list .shop-table>tfoot,
+		#s20221128785d3e46ff7d7 #shop_cart_list .shop-table>tfoot .payment-info
 		{;
 		
 	}
-	#s2022112892053a957d98f #shop_cart_list .shop-table>thead>tr,
-		#s2022112892053a957d98f .im-order-detail-table .im-space {
+	#s20221128785d3e46ff7d7 #shop_cart_list .shop-table>thead>tr,
+		#s20221128785d3e46ff7d7 .im-order-detail-table .im-space {
 		background-color:;
 	}
-	#s2022112892053a957d98f #shop_cart_list .shop-table>thead>tr.scroll-to-fixed-fixed-end
+	#s20221128785d3e46ff7d7 #shop_cart_list .shop-table>thead>tr.scroll-to-fixed-fixed-end
 		{
 		top: auto !important;
 		bottom: 0;
@@ -2036,35 +1968,35 @@
 }
 
 @media ( max-width : 991px) {
-	#s2022112892053a957d98f
+	#s20221128785d3e46ff7d7
 	 
 	.buy_btns
 	 
 	.social_btn
 	,
-	#s2022112892053a957d98f
+	#s20221128785d3e46ff7d7
 	 
 	.buy_btns
 	 
 	.cart_btn
 	,
-	#s2022112892053a957d98f
+	#s20221128785d3e46ff7d7
 	 
 	.layer_pop
 	 
 	.bottom-btn
 	,
-	#s2022112892053a957d98f
+	#s20221128785d3e46ff7d7
 	 
 	.shop-table
 	>
 	thead
 	,
-	#s2022112892053a957d98f
+	#s20221128785d3e46ff7d7
 	 
 	.left-menu
 	,
-	#s2022112892053a957d98f
+	#s20221128785d3e46ff7d7
 	 
 	.shop-table
 	>
@@ -2076,18 +2008,18 @@
 	;
 }
 
-#s2022112892053a957d98f
+#s20221128785d3e46ff7d7
  
 main
 ,
-#s2022112892053a957d98f
+#s20221128785d3e46ff7d7
  
 .section_wrap
 .extend_section
  
 main
 ,
-#s2022112892053a957d98f
+#s20221128785d3e46ff7d7
  
 .doz_sys
 .shop_payment
@@ -2115,21 +2047,21 @@ padding-right
 
 				
 }
-#s2022112892053a957d98f.mobile_section main .inside {
+#s20221128785d3e46ff7d7.mobile_section main .inside {
 	padding-left: 15px;
 	padding-right: 15px;
 }
 
-#s2022112892053a957d98f.section_wrap.extend_section main .widget.board .grid_ignore.bg_on
+#s20221128785d3e46ff7d7.section_wrap.extend_section main .widget.board .grid_ignore.bg_on
 	{
 	margin-left: -15px;
 	margin-right: -15px;
 	width: calc(100% + 30px);
 }
 
-#s2022112892053a957d98f .mypage .left-menu ul li a,
-	#s2022112892053a957d98f .cart .left-menu ul li a,
-	#s2022112892053a957d98f .mypage .left-menu .cart-menu-slide {;
+#s20221128785d3e46ff7d7 .mypage .left-menu ul li a,
+	#s20221128785d3e46ff7d7 .cart .left-menu ul li a,
+	#s20221128785d3e46ff7d7 .mypage .left-menu .cart-menu-slide {;
 	
 }
 
@@ -2137,49 +2069,49 @@ padding-right
 	display: none !important;
 }
 
-#s2022112892053a957d98f .coupon-wrap:after {
+#s20221128785d3e46ff7d7 .coupon-wrap:after {
 	background: !important;
 }
 
 }
 @media ( max-width : 767px) {
-	#s2022112892053a957d98f .nav_gradient.slide_left {
+	#s20221128785d3e46ff7d7 .nav_gradient.slide_left {
 		background: linear-gradient(to left, rgba(255, 255, 255, 0),
 			rgba(255, 255, 255, 1));
 	}
-	#s2022112892053a957d98f .nav_gradient.slide_right {
+	#s20221128785d3e46ff7d7 .nav_gradient.slide_right {
 		background: linear-gradient(to right, rgba(255, 255, 255, 0),
 			rgba(255, 255, 255, 1));
 	}
-	#s2022112892053a957d98f .button_tab .scroll-to-fixed-fixed ul.site_prod_nav>li
+	#s20221128785d3e46ff7d7 .button_tab .scroll-to-fixed-fixed ul.site_prod_nav>li
 		{
 		border-top: 0;
 		border-bottom: 0;
 	}
-	#s2022112892053a957d98f .background_tab .scroll-to-fixed-fixed ul.site_prod_nav>li a.active
+	#s20221128785d3e46ff7d7 .background_tab .scroll-to-fixed-fixed ul.site_prod_nav>li a.active
 		{
 		box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
 	}
 }
 
 @media ( min-width : 768px) {
-	#s2022112892053a957d98f .opt-group .btn_clse {
+	#s20221128785d3e46ff7d7 .opt-group .btn_clse {
 		background-color:;
 	}
-	#s2022112892053a957d98f .opt-group .btn_clse:after {;
+	#s20221128785d3e46ff7d7 .opt-group .btn_clse:after {;
 		
 	}
 }
 
-.doz_sys #s2022112892053a957d98f .bg-brand, .doz_sys #s2022112892053a957d98f .bg-brand span,
-	.doz_sys #s2022112892053a957d98f .btn-brand {;
+.doz_sys #s20221128785d3e46ff7d7 .bg-brand, .doz_sys #s20221128785d3e46ff7d7 .bg-brand span,
+	.doz_sys #s20221128785d3e46ff7d7 .btn-brand {;
 	background-color: #363636;
 	border-color: #363636;
 	border-width: 1px;
 	color: #fff;
 }
 
-.doz_sys #s2022112892053a957d98f .bg-brand:hover {
+.doz_sys #s20221128785d3e46ff7d7 .bg-brand:hover {
 	background-color: rgba(28, 28, 28, 1);
 	-ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff282828,
 		endColorstr=#ff282828);
@@ -2190,1328 +2122,281 @@ padding-right
 	border-color: rgba(28, 28, 28, 1);;
 }
 
-.device_type_m .pc_section #padding_w20221128f6801cf92601a {
-	height: 21.5px !important;
+.device_type_m .pc_section #padding_w202211289fe8ab36a7e95 {
+	height: 40px !important;
 }
 
 @media all and (max-width:768px) {
-	.pc_section #padding_w20221128f6801cf92601a {
-		height: 21.5px !important;
+	.pc_section #padding_w202211289fe8ab36a7e95 {
+		height: 40px !important;
 	}
 }
 
-.device_type_m .pc_section #padding_w20221128a39537baa1b07 {
-	height: 3.5px !important;
+body.doz_sys {
+	padding-bottom: 80px;
 }
 
-@media all and (max-width:768px) {
-	.pc_section #padding_w20221128a39537baa1b07 {
-		height: 3.5px !important;
+.talk_preview_area .talk_banner_preview {
+	bottom: 100px;
+}
+
+.shop_view #ch-plugin-core>div {
+	bottom: 100px !important;
+	background: transparent !important;
+}
+
+.buy_btns.mobile .width-100 a.btn-soldout-before {
+	margin: 4px;
+}
+
+.im-ico-cart {
+	margin-top: 1px;
+}
+
+.shop-content .select_wrap {
+	margin-left: 0;
+}
+
+.shop-content .select_wrap>div.inline-blocked {
+	margin-left: 0;
+	margin-right: 8px;
+	margin-bottom: 0;
+	float: left;
+	position: relative;
+}
+
+@media ( max-width : 768px) {
+	.shop_view #ch-plugin-core>div {
+		bottom: 85px !important;
+	}
+	.shop-content.open:not(.detail-regularly) .opt-group {
+		padding-bottom: 62px !important;
+	}
+	.form-select-wrap .dropdown-toggle {
+		font-size: 16px !important;
+	}
+	.open .pay-box.btn-soldout .cart_btn_child {
+		width: 0% !important;
+	}
+	.goods_form .goods_wrap {
+		height: calc(100% - 112px) !important;
+	}
+	.buy_btns.mobile .defualt-cart.one_pay {
+		max-width: 50px !important;
 	}
 }
 
-#text_w20221128b11ffa1da604c {
-	border-radius: 0px;
-	border: 0px none transparent;;
-	min-height: 0px;;
-	line-height: inherit;
+@media ( min-width : 768px) {
+	#kakao-talk-channel-chat-button, .fb_dialog_content>iframe {
+		bottom: 100px !important;
+	}
 }
 
-#text_w20221128b11ffa1da604c .fr-code-view {
-	line-height: 1.6;
+@media ( max-width :991px) {
+	#kakao-talk-channel-chat-button, .fb_dialog_content>iframe {
+		bottom: 85px !important;
+	}
+	.fb_dialog_content>div {
+		bottom: 85px !important;
+	}
 }
 
-#text_w20221128b11ffa1da604c .text_bg_img, #text_w20221128b11ffa1da604c .text_bg_color
-	{
-	position: absolute;
-	top: 0;
-	left: 0;
-	height: 100%;
-	width: 100%;
-	border-radius: 0px;
-}
-
-.admin #text_w20221128b11ffa1da604c, #text_w20221128b11ffa1da604c .text-table
-	{
-	min-height: 0px;;
+.custom_tooltip .btn_tooltip ~ .tooltip .tooltip-inner, .mobile .btn_tooltip 
+	~ .tooltip .tooltip-inner {
+	background-color: #383838;
+	color: #fff;
+	white-space: nowrap;
 	word-break: normal;
 	word-wrap: break-word;
 }
 
-#text_w20221128b11ffa1da604c, #text_w20221128b11ffa1da604c .text-table {
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
+.custom_tooltip .btn_tooltip ~ .tooltip.top .tooltip-arrow, .mobile .btn_tooltip 
+	~ .tooltip.top .tooltip-arrow {
+	border-top-color: #383838;
 }
 
-.doz_sys main>.doz_row #text_w20221128b11ffa1da604c.default_padding {
-	padding-left: 32px;
-	padding-right: 32px;
+.custom_tooltip .btn_tooltip ~ .tooltip.left .tooltip-arrow, .mobile .btn_tooltip 
+	~ .tooltip.left .tooltip-arrow {
+	border-left-color: #383838;
 }
 
-@media all and (max-width : 767px) {
-	.doz_sys main>.doz_row #text_w20221128b11ffa1da604c.default_padding {
-		padding-left: 15px;
-		padding-right: 15px;
-	}
+.custom_tooltip .btn_tooltip ~ .tooltip.right .tooltip-arrow, .mobile .btn_tooltip 
+	~ .tooltip.right .tooltip-arrow {
+	border-right-color: #383838;
 }
 
-.device_type_m .pc_section #padding_w20221128b13adc266863c {
-	height: 1px !important;
+.custom_tooltip .btn_tooltip ~ .tooltip.bottom .tooltip-arrow, .mobile .btn_tooltip 
+	~ .tooltip.bottom .tooltip-arrow {
+	border-bottom-color: #383838;
 }
 
-@media all and (max-width:768px) {
-	.pc_section #padding_w20221128b13adc266863c {
-		height: 1px !important;
-	}
+.goods_detail {
+	padding: 0 15px;
 }
 
-.device_type_m .pc_section #padding_w2022112860b0b066f12df {
-	height: 13.5px !important;
+.goods_detail .text-primary {
+	color: #00B8FF !important;
 }
 
-@media all and (max-width:768px) {
-	.pc_section #padding_w2022112860b0b066f12df {
-		height: 13.5px !important;
-	}
-}
-
-.shop_view .s202211282dc25758e0523.xzoom-preview {;
-	background:;
-}
-
-.shop_view #s202211282dc25758e0523 select.form-control option {
-	color: !important;
-	background:;
-}
-
-.is-ie .shop_view #s202211282dc25758e0523 select.form-control option {
-	color: #000 !important;
-}
-
-.admin #s202211282dc25758e0523 .widget.padding>div {;
-	
-}
-
-.admin #s202211282dc25758e0523 .ibg-bg {
-	height: 100% !important;
-}
-
-.admin #s202211282dc25758e0523 .widget_drag_bar, .admin .doz_sys #s202211282dc25758e0523 .ui-resizable-handle.ui-resizable-e:hover:after,
-	.admin .doz_sys #s202211282dc25758e0523 .ui-resizable-handle.ui-resizable-w:hover:after,
-	.admin .doz_sys #s202211282dc25758e0523 .ui-resizable-handle.ui-resizable-e.active:after,
-	.admin .doz_sys #s202211282dc25758e0523 .ui-resizable-handle.ui-resizable-w.active:after,
-	.admin .doz_sys #s202211282dc25758e0523 .drop_line {
-	background-color:;
-}
-
-.admin .doz_sys #s202211282dc25758e0523 .ui-resizable-handle.ui-resizable-n:hover:after,
-	.admin .doz_sys #s202211282dc25758e0523 .ui-resizable-handle.ui-resizable-s:hover:after
-	{
-	border-bottom: 2px solid;
-}
-
-#s202211282dc25758e0523 {
-	color:;
-}
-
-#s202211282dc25758e0523.side_basic main .inside, #s202211282dc25758e0523 .site_prod_nav_wrap.scroll-to-fixed-fixed ul.site_prod_nav,
-	.doz_sys #s202211282dc25758e0523 .col-dz-12 .extend_thumbs {
-	max-width: 1310px;
-}
-
-.modal_site_modal_menu #s202211282dc25758e0523.side_basic main .inside,
-	.menu_type_modal #s202211282dc25758e0523.side_basic main .inside {
-	max-width: 460px;
-}
-
-.doz_sys .modal_site_modal_menu .modal-header, .menu_type_modal .doz_modal_header
-	{
-	border-width: 0 0 1px 0;
-	border-style: solid;
-	;
-}
-
-.menu_type_modal #s202211282dc25758e0523, .menu_type_modal .doz_modal_header
-	{;
-	background:;;
-	color:;
-}
-
-.menu_type_modal .doz_modal_header .bt.bt-flat.bt-default {;
-	color:;
-}
-
-.doz_sys #s202211282dc25758e0523 .col-dz-12 .inside .extend_thumbs {
-	max-width: inherit;
-}
-
-#s202211282dc25758e0523.extend_section main {
-	padding-left: 60px;
-	padding-right: 60px;
-}
-
-#s202211282dc25758e0523.section_wrap.extend_section main .widget.board .grid_ignore.bg_on
-	{
-	margin-left: -60px;
-	margin-right: -60px;
-	width: calc(100% + 60px + 60px);
-}
-
-#s202211282dc25758e0523 .booking_day .body_font_color_20,
-	#s202211282dc25758e0523 .booking_list.waiting .title {;
-	
-}
-
-#s202211282dc25758e0523.extend_section main>.inside {
-	max-width: 100% !important;
-}
-
-#s202211282dc25758e0523 .li_table ul:nth-of-type(2),
-	#s202211282dc25758e0523 .li_board ul li, #s202211282dc25758e0523 .radio-styled:not(ie8).radio_color_option.small input 
-	~ span span {;
-	
-}
-
-#s202211282dc25758e0523 .checkbox-styled:not(ie8) input ~ span:before,
-	#s202211282dc25758e0523 .radio-styled:not(ie8) input ~ span:before {
-	
-}
-
-#s202211282dc25758e0523 .board_view .grid_ignore header a,
-	#s202211282dc25758e0523 .widget.board .grid_ignore .author .date,
-	#s202211282dc25758e0523 .widget.board .grid_ignore a.board,
-	#s202211282dc25758e0523 .widget.board .grid_ignore .author .write,
-	.editor_box .add_map .info>div.phone, #s202211282dc25758e0523 .content-tit .board
-	{;
-	
-}
-
-#s202211282dc25758e0523 select.form-control, #s202211282dc25758e0523 input.form-control,
-	#s202211282dc25758e0523 textarea.form-control {;
-	color: #eeeeee;
-	background:;
-}
-
-#s202211282dc25758e0523 .input_block .select-block .selectbox select {
-	border: none;
-	background: none;
-	color: #212121;
-}
-
-#s202211282dc25758e0523 .phonenumber_wrap .line {
-	
-}
-
-#s202211282dc25758e0523 .shop-content.shop-style-b.open .opt-group .btn_clse>span
-	{
-	
-}
-
-.shop_view #s202211282dc25758e0523 .shop-content select.form-control,
-	.shop_view #s202211282dc25758e0523 .shop-content input.form-control,
-	.shop_view #s202211282dc25758e0523 .shop-content textarea.form-control,
-	.booking_view #s202211282dc25758e0523 .booking_opt select.form-control,
-	.shop_view #s202211282dc25758e0523 .form-select-wrap .dropdown-menu,
-	.shop_view #s202211282dc25758e0523 .form-select-wrap .dropdown-menu .dropdown-item
-	{;
-	background:;
-}
-
-#s202211282dc25758e0523 .seemore_wrap .open:before {
-	background-image: linear-gradient(to bottom,, 66%, 83%, 98%,);
-}
-
-#s202211282dc25758e0523 .item_detail select.form-control,
-	#s202211282dc25758e0523 .item_detail input.form-control,
-	#s202211282dc25758e0523 .item_detail textarea.form-control,
-	#s202211282dc25758e0523 .booking_opt select.form-control,
-	#s202211282dc25758e0523 .goods_select textarea.form-control,
-	#s202211282dc25758e0523 .goods_select select.form-control,
-	#s202211282dc25758e0523 .goods_select input.form-control,
-	#s202211282dc25758e0523 .form-select-wrap:before { !important;
-	color:;
-}
-
-#s202211282dc25758e0523 .form-select-wrap .dropdown-menu .dropdown-item:hover
-	{;
-	
-}
-
-#s202211282dc25758e0523 .board_summary .write, #s202211282dc25758e0523 .board_view .grid_ignore .author .date,
-	#s202211282dc25758e0523 .board_view .grid_ignore .author .hit-count,
-	.doz_sys #s202211282dc25758e0523 label, .doz_sys #s202211282dc25758e0523 label.control-label,
-	#s202211282dc25758e0523 .shop-table>tbody>tr.payment-info>td.pay-txt,
-	#s202211282dc25758e0523 .nick.text-default-dark,
-	#s202211282dc25758e0523 .text-default-dark, #s202211282dc25758e0523 .shop_mypage .mypage .my-box a,
-	#s202211282dc25758e0523 .shop_mypage .item-detail a,
-	#s202211282dc25758e0523 .shop_mypage .item-detail p,
-	#s202211282dc25758e0523 .shop_mypage h6, #s202211282dc25758e0523 .shop_mypage .table-wrap p,
-	#s202211282dc25758e0523 .shop_payment h1, #s202211282dc25758e0523 .shop_payment h6,
-	#s202211282dc25758e0523 .shop-content p, #s202211282dc25758e0523 .shop_payment,
-	#s202211282dc25758e0523 .shop-content span, #s202211282dc25758e0523 .shop-content .shop-item .item-icon .im-icon.im-ico-liked,
-	#s202211282dc25758e0523 .shop-content .price, #s202211282dc25758e0523,
-	#s202211282dc25758e0523 .shop-tit, #s202211282dc25758e0523 .board_view .board_txt_area,
-	#s202211282dc25758e0523 .board.widget .grid_ignore .view_tit, .doz_sys #s202211282dc25758e0523 .shop-content input.form-control,
-	.doz_sys #s202211282dc25758e0523 .shop-content select.form-control,
-	#s202211282dc25758e0523 .widget_menu_title, #s202211282dc25758e0523 .comment_area,
-	body.shop_mypage #s202211282dc25758e0523 .comment_area,
-	#s202211282dc25758e0523 .list_review_inner .use_summary,
-	#s202211282dc25758e0523 .list_review_inner .use_summary a,
-	#s202211282dc25758e0523 .list_review_inner .fold,
-	#s202211282dc25758e0523 .list_review_inner .comment_area,
-	#s202211282dc25758e0523 .booking_nav_tools span {;
-	color:;
-}
-
-.doz_sys #s202211282dc25758e0523 .shop-content .down-btn select.form-control
-	{;
-	color: !important;
-}
-
-#s202211282dc25758e0523 .shop-content.mypage .bg-bright a,
-	#s202211282dc25758e0523 .shop-content.mypage .bg-bright p,
-	#s202211282dc25758e0523 .shop-content.mypage .bg-bright span,
-	#s202211282dc25758e0523 .shop-content.mypage .bg-bright div {
-	color: #212121;
-}
-
-#s202211282dc25758e0523 .shop-content.mypage .bg-bright .use_grade .ug_btn .btn
-	{
-	border-color: #D5D5D5;
-}
-
-#s202211282dc25758e0523 .shop-content h6 span {;
-	color:;
-}
-
-#s202211282dc25758e0523 .left-menu ul li.on a, .doz_sys #s202211282dc25758e0523 .paging_type_count .owl-dots .owl-dot span:before,
-	.menu_type_modal #s202211282dc25758e0523, #s202211282dc25758e0523 .list_review_inner .comment .tools .text-gray-bright
-	{;
-	color: !important;
-}
-
-.doz_sys #s202211282dc25758e0523 .paging_type_count.slide_02 .owl-dots .owl-dot.active span:before
-	{
-	color: #fff !important;
-}
-
-.doz_sys #s202211282dc25758e0523 .paging_type_dot .owl-dots .owl-dot span,
-	.doz_sys #s202211282dc25758e0523 .paging_type_big_dot .owl-dots .owl-dot span,
-	.doz_sys #s202211282dc25758e0523 .paging_type_line .owl-dots .owl-dot span,
-	.doz_sys #s202211282dc25758e0523 .paging_type_count.paging_type_count02 .owl-dots .owl-dot.active span:before,
-	#s202211282dc25758e0523 .list_review_inner, #s202211282dc25758e0523 .list_review_inner .fold.cmt,
-	#s202211282dc25758e0523 .list_review_wrap, #s202211282dc25758e0523 .list_review_inner .textarea_block,
-	#s202211282dc25758e0523 .list_review_inner .comment .main_comment,
-	#s202211282dc25758e0523 .list_review_inner .txt_delete:before,
-	#s202211282dc25758e0523 .form-select-wrap.open .dropdown-toggle,
-	#s202211282dc25758e0523 .form-select-wrap.open .dropdown-menu,
-	#s202211282dc25758e0523 .form-select-wrap.open .dropdown-menu .dropdown-item
-	{
-	border-color:;
-}
-
-.doz_sys #s202211282dc25758e0523 .paging_type_dot02 .owl-dots .owl-dot span,
-	.doz_sys #s202211282dc25758e0523 .paging_type_dot .owl-dots .owl-dot.active span,
-	.doz_sys #s202211282dc25758e0523 .paging_type_line .owl-dots .owl-dot.active span,
-	.doz_sys #s202211282dc25758e0523 .paging_type_big_dot .owl-dots .owl-dot span,
-	.doz_sys #s202211282dc25758e0523 .paging_type_line .owl-dots .owl-dot span
-	{
-	background:;
-}
-
-#s202211282dc25758e0523 .form-control:focus {
-	border-color: #363636;
-}
-
-#s202211282dc25758e0523 .sub_depth li a, #s202211282dc25758e0523 .sub_depth li span
-	{;
-	
-}
-
-#s202211282dc25758e0523 .slide_03.owl-theme .owl-dots .owl-dot span {;
-	
-}
-
-#s202211282dc25758e0523 .pagination>li>a, #s202211282dc25758e0523 .pagination>li>span,
-	#s202211282dc25758e0523 .pagination>li>a:focus, #s202211282dc25758e0523 .pagination>li>span:focus,
-	#s202211282dc25758e0523 .map-inner .pagination li.active a,
-	#s202211282dc25758e0523 .pagination li>a.disabled:hover,
-	#s202211282dc25758e0523 .pagination li>a.disabled:focus {;
-	
-}
-
-#s202211282dc25758e0523 .form-select-wrap.open .dropdown-menu .dropdown-item
-	{;
-	
-}
-
-#s202211282dc25758e0523 .pagination>.active>a, #s202211282dc25758e0523 .pagination>.active>span,
-	#s202211282dc25758e0523 .pagination>.active>a:hover,
-	#s202211282dc25758e0523 .pagination>.active>span:hover,
-	#s202211282dc25758e0523 .pagination>.active>a:focus,
-	#s202211282dc25758e0523 .pagination>.active>span:focus,
-	#s202211282dc25758e0523 .pagination>li>a:hover, #s202211282dc25758e0523 .pagination>li>span:hover,
-	#s202211282dc25758e0523 .sub_depth li a.active, .doz_sys #s202211282dc25758e0523 a,
-	#s202211282dc25758e0523 .li_table ul li, #s202211282dc25758e0523 .list-style .list.line>small,
-	.doz_sys #s202211282dc25758e0523 div[data-widget-type="board"] .title.title-block a
-	{;
-	color:;
-}
-
-.doz_sys #s202211282dc25758e0523 .board_contents a:not(.btn), .doz_sys #s202211282dc25758e0523 .board_contents a:not(.btn):hover,
-	#s202211282dc25758e0523 .board_txt_area a, #s202211282dc25758e0523 .board_txt_area a:hover,
-	#s202211282dc25758e0523 .board_txt_area a:active,
-	#s202211282dc25758e0523 .board_txt_area a:focus,
-	#s202211282dc25758e0523 .editor_box .fr-view a {
-	color: #363636;
-}
-
-#s202211282dc25758e0523 div[data-widget-type="icon"] i {
-	color:;
-}
-
-.doz_sys #s202211282dc25758e0523 a.body_font_color_30:not(.active) {;
-	
-}
-
-#s202211282dc25758e0523 .text_tab .after_line:not(:last-child):after {;
-	
-}
-
-#s202211282dc25758e0523 .text_tab ul.site_prod_nav>li a.active {
-	background: none;
-}
-
-#s202211282dc25758e0523 .map-toolbar select.form-control {;
-	color: !important;
-	font-size: 14px;
-}
-
-.doz_sys #s202211282dc25758e0523 .body_font_color_40,
-	#s202211282dc25758e0523 .li_board ul.li_body li.name,
-	#s202211282dc25758e0523 .li_board ul.li_body li.time,
-	#s202211282dc25758e0523 .li_board ul.li_body li.like,
-	#s202211282dc25758e0523 .li_board ul.li_body li.read {;
-	
-}
-
-#s202211282dc25758e0523 .review_table .summary, #s202211282dc25758e0523 .review_table.li_board ul.li_body li,
-	#s202211282dc25758e0523 .review_table .list_text_title.lock_on {;
-	
-}
-
-.doz_sys #s202211282dc25758e0523 .body_font_color_50 {;
-	
-}
-
-#s202211282dc25758e0523 .li_board, #s202211282dc25758e0523 .acd_row:first-child,
-	#s202211282dc25758e0523 .acd_row {
-	border-color:;
-}
-
-#s202211282dc25758e0523 .list-style .list-header,
-	#s202211282dc25758e0523 .list-style .list, #s202211282dc25758e0523 .list-style .list.line,
-	#s202211282dc25758e0523 .list-style .list.line>.table-cell,
-	#s202211282dc25758e0523 .li_table.row_04 .acd_collapse[aria-expanded="true"],
-	.li_table.row_04 .acd_collapse.in {;
-	
-}
-
-#s202211282dc25758e0523 .btn, #s202211282dc25758e0523 .visual_section a
-	{;
-	background-color:;;
-	color:;
-	;
-}
-
-#s202211282dc25758e0523 .btn:hover, #s202211282dc25758e0523 .visual_section a:hover
-	{
-	border-color:;
-}
-
-#s202211282dc25758e0523 .widget_text_wrap .btn {
-	background-color: #363636;
-	border-color: #363636;
-	color: #ffffff;
-	border-width: 1px;
-}
-
-.doz_sys #s202211282dc25758e0523 .btn-primary {;
-	background-color: #363636;
-	border-color: #363636;
-	color: #ffffff;
-	border-width: 1px;
-}
-
-.doz_sys.shop_view #s202211282dc25758e0523 .btn-primary span, .doz_sys.booking_view #s202211282dc25758e0523 .btn-primary span,
-	.doz_sys.shop_mypage #s202211282dc25758e0523 .btn-primary span {
-	color: #ffffff;
-}
-
-#s202211282dc25758e0523 .coupon-wrap:after, #s202211282dc25758e0523 .board_view .file_area ul li
-	{
-	background:;
-}
-
-#s202211282dc25758e0523 .text-gray-dark, #s202211282dc25758e0523 .shop-table>thead>tr>th,
-	#s202211282dc25758e0523 .shop_mypage .left-menu ul li a,
-	#s202211282dc25758e0523 .shop_mypage .item-detail p.sale_pay, .doz_sys #s202211282dc25758e0523 .product-notify-group .product-notify-label
-	{;
-	
-}
-
-#s202211282dc25758e0523 .mypage .my-box a, #s202211282dc25758e0523 .mypage .shop-table>tbody>tr,
-	#s202211282dc25758e0523 .mypage .tip-off, #s202211282dc25758e0523 .im-order-detail-table,
-	#s202211282dc25758e0523 .im-order-price {;
-	
-}
-
-#s202211282dc25758e0523 .mypage .my-box.on a {
-	background-color: #363636;;
-	color: #fff;
-}
-
-#s202211282dc25758e0523 .mypage .my-box.on a p {
-	color: #fff;
-}
-
-#s202211282dc25758e0523 .option_btn_tools a, #s202211282dc25758e0523 .map-inner .pagination li a
-	{
-	color: #212121;
-}
-
-.doz_sys #s202211282dc25758e0523 .list-style-card .card-body .text a {
-	color: #757575;
-}
-
-#s202211282dc25758e0523 .card .title a {
-	color: #212121;
-}
-
-#s202211282dc25758e0523 .section_bg.fixed_bg {;
-	
-}
-
-#s202211282dc25758e0523 .section_bg.fixed_bg.fixed_bg_none {
-	background-attachment: inherit;
-}
-
-#s202211282dc25758e0523 ul.site_prod_nav>li, #s202211282dc25758e0523 .prod_detail_badge
-	{;
-	
-}
-
-#s202211282dc25758e0523 .site_prod_nav_wrap.scroll-to-fixed-fixed {
-	background:;
-	box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
-}
-
-#s202211282dc25758e0523 .buy_footer_fixed {
-	background:;
-	border-width: 1px 0 0 0;
-	border-style: solid;
-	;
-}
-
-#s202211282dc25758e0523 .opt-group {
-	background:;
-}
-
-#s202211282dc25758e0523 ul.site_prod_nav>li a.active {;
-	
-}
-
-#s202211282dc25758e0523 .background_tab ul.site_prod_nav>li a.active>span.braket-badge
-	{
-	background-color: none;;
-	color:;
-}
-
-#s202211282dc25758e0523 .input-block .checkbox-styled:not(ie8) input ~
-	span {;
-	color:;
-}
-
-.section_fixed_disable #s202211282dc25758e0523, .section_fixed_disable #s202211282dc25758e0523 .doz_aside
-	{
-	position: relative !important;
-	top: 0 !important;
-	left: 0 !important;
-	z-index: auto !important;
-}
-
-.section_fixed_disable #s202211282dc25758e0523 .doz_aside.scroll-to-fixed-fixed 
-	~ .spacer, .section_fixed_disable #s202211282dc25758e0523.scroll-to-fixed-fixed 
-	~ .spacer {
-	height: 0 !important;
-	display: none !important;
-}
-
-#s202211282dc25758e0523.scroll-to-fixed-fixed {
-	width: 100% !important;
-}
-
-#s202211282dc25758e0523 .doz_aside.scroll-to-fixed-fixed-end {
-	bottom: 0 !important;
-	top: auto !important;
-}
-
-.device_type_m #s202211282dc25758e0523.mobile_section main .inside {
-	padding-left: 60px;
-	padding-right: 60px;
-}
-
-.device_type_m #s202211282dc25758e0523 .mypage .left-menu ul li a,
-	.device_type_m #s202211282dc25758e0523 .cart .left-menu ul li a {;
-	
-}
-
-#s202211282dc25758e0523 .im-cart-result-table {
-	border-top: 1px solid;
-	border-bottom: 1px solid;
-}
-
-#s202211282dc25758e0523 .shop-table>tbody>tr>td.img .opt .more {;
-	
-}
-
-#s202211282dc25758e0523 .im-cart-info {;
-	
-}
-
-#s202211282dc25758e0523 .shop-table>thead>tr>th, #s202211282dc25758e0523 .shop-table>tbody>tr>td,
-	#s202211282dc25758e0523 .mypage .shop-table>tbody>tr,
-	#s202211282dc25758e0523 .shop-table>tbody>tr>td.img img,
-	#s202211282dc25758e0523 .shop-table>tbody>tr>td+td,
-	#s202211282dc25758e0523 .mypage .tip-off, #s202211282dc25758e0523 .mypage .shop-table img,
-	#s202211282dc25758e0523 .im-order-detail-table, #s202211282dc25758e0523 .im-order-price,
-	#s202211282dc25758e0523 .im-order-detail-table thead tr,
-	#s202211282dc25758e0523 .im-order-detail-table tr+tr,
-	#s202211282dc25758e0523 .im-order-detail-table img,
-	#s202211282dc25758e0523 .im-order-detail-table .im-deliv-price,
-	#s202211282dc25758e0523 .im-order-price-header, #s202211282dc25758e0523 .im-order-price-body
-	{;
-	
-}
-
-#s202211282dc25758e0523 .shop-table .list_badge {
-	border-color:;
-}
-
-#s202211282dc25758e0523 .im-cart-result-table thead>tr>th,
-	#s202211282dc25758e0523 #shop_cart_list .shop-table>colgroup+thead>tr:first-child>th,
-	#s202211282dc25758e0523 #shop_cart_list .shop-table>tbody>tr>td+td,
-	#s202211282dc25758e0523 #shop_cart_list .shop-table>thead>tr>th,
-	#s202211282dc25758e0523 #shop_cart_list .shop-table>tbody>tr>td {;
-	
-}
-
-#s202211282dc25758e0523 .shop-content.mypage .shop-item .item-icon .im-icon.im-ico-liked
-	{
-	color: #363636
-}
-
-@media ( min-width : 991px) {
-	.doz_sys #s202211282dc25758e0523 .btn-primary:hover,
-		#s202211282dc25758e0523 .widget_text_wrap .btn:hover {;
-		background-color: #ffffff;
-		border-color: #363636;
-		color: #363636;
-		border-width: 1px;
-	}
-	.doz_sys.shop_view #s202211282dc25758e0523 .btn-primary:hover span,
-		.doz_sys.booking_view #s202211282dc25758e0523 .btn-primary:hover span,
-		.doz_sys.shop_mypage #s202211282dc25758e0523 .btn-primary:hover span {
-		color: #363636;
-	}
-}
-
-@media all and (max-width : 768px) {
-	.doz_sys #s202211282dc25758e0523 .fixed_view a, .doz_sys #s202211282dc25758e0523 .fixed_view select.form-control,
-		.doz_sys #s202211282dc25758e0523 .fixed_view .form-select-wrap:before
-		{
-		color: #212121;
-	}
-	.doz_sys #s202211282dc25758e0523 .fixed_view .body_font_color_50 {
-		color: rgba(33, 33, 33, 0.5);
-	}
-	.doz_sys #s202211282dc25758e0523 .fixed_view .body_font_color_20 {
-		color: rgba(33, 33, 33, 0.2);
-	}
-	.booking_view #s202211282dc25758e0523 .fixed_view .booking_opt select.form-control
-		{
-		background-color: #fff;
-	}
-	#s202211282dc25758e0523 #shop_cart_list .shop-tit,
-		#s202211282dc25758e0523 #shop_cart_list .shop-table>thead>tr,
-		#s202211282dc25758e0523 #shop_cart_list .shop-table>tfoot .payment-info,
-		#s202211282dc25758e0523 .im-price-result {;
-		
-	}
-	#s202211282dc25758e0523 .shop-table>tbody>tr>td.img .opt .more+.more,
-		#s202211282dc25758e0523 .im-order-row+.im-order-row {;
-		
-	}
-	#s202211282dc25758e0523 #shop_cart_list .shop-table,
-		#s202211282dc25758e0523 #shop_cart_list .shop-table>tbody>tr.im-tr-shipping+tr,
-		#s202211282dc25758e0523 #shop_cart_list .shop-table>tfoot,
-		#s202211282dc25758e0523 #shop_cart_list .shop-table>tfoot .payment-info
-		{;
-		
-	}
-	#s202211282dc25758e0523 #shop_cart_list .shop-table>thead>tr,
-		#s202211282dc25758e0523 .im-order-detail-table .im-space {
-		background-color:;
-	}
-	#s202211282dc25758e0523 #shop_cart_list .shop-table>thead>tr.scroll-to-fixed-fixed-end
-		{
-		top: auto !important;
-		bottom: 0;
-	}
-}
-
-@media ( max-width : 991px) {
-	#s202211282dc25758e0523
-	 
-	.buy_btns
-	 
-	.social_btn
-	,
-	#s202211282dc25758e0523
-	 
-	.buy_btns
-	 
-	.cart_btn
-	,
-	#s202211282dc25758e0523
-	 
-	.layer_pop
-	 
-	.bottom-btn
-	,
-	#s202211282dc25758e0523
-	 
-	.shop-table
-	>
-	thead
-	,
-	#s202211282dc25758e0523
-	 
-	.left-menu
-	,
-	#s202211282dc25758e0523
-	 
-	.shop-table
-	>
-	tbody
-	>
-	tr
-	,
-	{
-	;
-}
-
-#s202211282dc25758e0523
- 
-main
-,
-#s202211282dc25758e0523
- 
-.section_wrap
-.extend_section
- 
-main
-,
-#s202211282dc25758e0523
- 
-.doz_sys
-.shop_payment
- 
-.inside
-,
-.doz_sys
-.shop_payment
- 
-.inside
- 
-.col-dz
-,
-{
-padding-left
-:
-0
-;
-
-					
-padding-right
-:
-0
-;
-
-				
-}
-#s202211282dc25758e0523.mobile_section main .inside {
-	padding-left: 60px;
-	padding-right: 60px;
-}
-
-#s202211282dc25758e0523.section_wrap.extend_section main .widget.board .grid_ignore.bg_on
-	{
-	margin-left: -15px;
-	margin-right: -15px;
-	width: calc(100% + 30px);
-}
-
-#s202211282dc25758e0523 .mypage .left-menu ul li a,
-	#s202211282dc25758e0523 .cart .left-menu ul li a,
-	#s202211282dc25758e0523 .mypage .left-menu .cart-menu-slide {;
-	
-}
-
-.section_wrap .side_gutter {
-	display: none !important;
-}
-
-#s202211282dc25758e0523 .coupon-wrap:after {
-	background: !important;
-}
-
-}
-@media ( max-width : 767px) {
-	#s202211282dc25758e0523 .nav_gradient.slide_left {
-		background: linear-gradient(to left, rgba(255, 255, 255, 0),
-			rgba(255, 255, 255, 1));
-	}
-	#s202211282dc25758e0523 .nav_gradient.slide_right {
-		background: linear-gradient(to right, rgba(255, 255, 255, 0),
-			rgba(255, 255, 255, 1));
-	}
-	#s202211282dc25758e0523 .button_tab .scroll-to-fixed-fixed ul.site_prod_nav>li
-		{
-		border-top: 0;
-		border-bottom: 0;
-	}
-	#s202211282dc25758e0523 .background_tab .scroll-to-fixed-fixed ul.site_prod_nav>li a.active
-		{
-		box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
-	}
-}
-
-@media ( min-width : 768px) {
-	#s202211282dc25758e0523 .opt-group .btn_clse {
-		background-color:;
-	}
-	#s202211282dc25758e0523 .opt-group .btn_clse:after {;
-		
-	}
-}
-
-.doz_sys #s202211282dc25758e0523 .bg-brand, .doz_sys #s202211282dc25758e0523 .bg-brand span,
-	.doz_sys #s202211282dc25758e0523 .btn-brand {;
-	background-color: #363636;
-	border-color: #363636;
-	border-width: 1px;
-	color: #fff;
-}
-
-.doz_sys #s202211282dc25758e0523 .bg-brand:hover {
-	background-color: rgba(28, 28, 28, 1);
-	-ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff282828,
-		endColorstr=#ff282828);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff282828,
-		endColorstr=#ff282828);
-	zoom: 1;;
-	border-color: rgb(28, 28, 28);
-	border-color: rgba(28, 28, 28, 1);;
-}
-
-.device_type_m .pc_section #padding_w202211282920c4aa16628 {
-	height: 15px !important;
-}
-
-@media all and (max-width:768px) {
-	.pc_section #padding_w202211282920c4aa16628 {
-		height: 15px !important;
-	}
-}
-
-/* 공통 적용 */
-#w20221128cdc7aebb6358d .nav li a {
-	font-size: 13px;
-	color: rgba(54, 54, 54, 0.7);
-	letter-spacing: px;
-}
-
-#w20221128cdc7aebb6358d .nav li.use_sub_name:hover>a>.plain_name:before
-	{
-	color: #363636;
-}
-
-#w20221128cdc7aebb6358d .nav li li a {
-	font-size: 10.4px;
-}
-
-@media ( min-width : 991px) {
-	#w20221128cdc7aebb6358d .nav li a:hover {
-		color: #363636
-	}
-}
-/* 타입 별 적용 */
-/* h 타입*/
-#w20221128cdc7aebb6358d li.active>ul>li {
-	display: block;
-}
-
-#w20221128cdc7aebb6358d .nav {
-	width: 100%;
-	text-align: left
-}
-
-#w20221128cdc7aebb6358d .nav li a {
-	display: inline-block;
-	margin-left: 0;
-	margin-right: 15px;
-}
-
-#w20221128cdc7aebb6358d .nav li .active {
-	color: #363636;
-}
-
-#w20221128cdc7aebb6358d .nav li .active {
-	background-color:;
-}
-
-#w20221128cdc7aebb6358d .nav a.active {
-	border-color: #363636
-}
-
-#w20221128cdc7aebb6358d ul {
-	width: auto;
-	display: inline-block;
-}
-
-#w20221128cdc7aebb6358d .h-menu-type3 ul li.depth-01 {
-	width: 150px;
-	margin-left: 0 !important;
-}
-
-#w20221128cdc7aebb6358d .h-menu-type4.row-cnt-1 ul li {
-	width: 100%;
-}
-
-#w20221128cdc7aebb6358d .h-menu-type4.row-cnt-2 ul li {
-	width: 50%;
-}
-
-#w20221128cdc7aebb6358d .h-menu-type4.row-cnt-3 ul li {
-	width: 33.33333333%;
-}
-
-#w20221128cdc7aebb6358d .h-menu-type4.row-cnt-4 ul li {
-	width: 25%;
-}
-
-#w20221128cdc7aebb6358d .h-menu-type4.row-cnt-5 ul li {
-	width: 20%;
-}
-
-#w20221128cdc7aebb6358d .h-menu-type4 ul {
-	display: block;
-	table-layout: unset;
-	border-width: 1px 0 0 1px;
-	border-style: solid;
-	border-color: #D0D0D0;
-}
-
-#w20221128cdc7aebb6358d .h-menu-type4 ul li {
-	display: inline-block;
-}
-
-#w20221128cdc7aebb6358d .h-menu-type4 ul li.depth-01 {
-	display: inline-block;
-	height: 40px;
-	float: left;
-	border-width: 0 1px 1px 0;
-}
-
-#w20221128cdc7aebb6358d .h-menu-type4 ul li.depth-01>a {
-	padding: 0;
-	display: table;
-	width: 100%;
-	height: 100%;
-	font-size: 13px;
-}
-
-#w20221128cdc7aebb6358d .h-menu-type4 ul li.depth-01>a .plain_name {
-	display: table-cell;
+.ns-icon {
 	vertical-align: middle;
+	font-size: initial;
+	margin-top: -5px;
 }
 
-#w20221128cdc7aebb6358d .h-menu-type4 ul li.depth-01+li.depth-01 {
-	margin-left: 0;
+.ns-icon>div {
+	margin: 0 5px 0 0;
 }
 
-@media all and (max-width: 767px) {
-	#w20221128cdc7aebb6358d .h-menu-type4.row-cnt-mobile-1 ul li {
-		width: 100% !important;
-	}
-	#w20221128cdc7aebb6358d .h-menu-type4.row-cnt-mobile-2 ul li {
-		width: 50% !important;
-	}
-	#w20221128cdc7aebb6358d .h-menu-type4.row-cnt-mobile-3 ul li {
-		width: 33.3333% !important;
-	}
-	#w20221128cdc7aebb6358d .h-menu-type4.row-cnt-mobile-4 ul li {
-		width: 25% !important;
-	}
-	#w20221128cdc7aebb6358d .h-menu-type4.row-cnt-mobile-5 ul li {
-		width: 20% !important;
-	}
+.ns-icon>div img {
+	vertical-align: middle;
+	max-width: 100%;
 }
 
-#w20221128906c1bc38547e .color_tools {
-	margin-top: -2px;
-	margin-bottom: 12px;
-	line-height: 9px;
-	letter-spacing: -1px;
+.buy_btns.btns_hide button {
+	display: none;
 }
 
-#w20221128906c1bc38547e .radio-styled:not(ie8).radio_color_option.small input 
-	~ span {
-	cursor: auto;
-	width: 9px;
-	height: 9px;
+.buy_btns.pc.width-50 a {
+	width: calc(100%/ 2 - 4px);
 }
 
-#w20221128906c1bc38547e .radio-styled:not(ie8).radio_color_option {
-	margin: 0 2px 0 0;
-}
-
-#w20221128906c1bc38547e .shop-content .shop-tools .down-btn,
-	#w20221128906c1bc38547e .shop-content .shop-tools .float_l {
-	margin: 5px 0;
-}
-
-#w20221128906c1bc38547e .thumb-row {
-	margin: 0 -7.5px;
-	clear: both;
-}
-
-#w20221128906c1bc38547e .thumb-row .shop-item {
-	padding: 0 7.5px;
-}
-
-#w20221128906c1bc38547e .thumb-fluid.show_rendering .shop-item a>img {
-	image-rendering: -webkit-optimize-contrast;
-}
-
-#w20221128906c1bc38547e .shop-item .shop-item-thumb img {
-	border: 0px solid;
-}
-
-#w20221128906c1bc38547e .shop-item .item-icon .im-ico-liked {
-	color: #363636;
-}
-
-#w20221128906c1bc38547e .thumb-row .shop-item.off {
-	padding: 7.5px !important;
-}
-
-#w20221128906c1bc38547e .shop-item .item-detail {
-	text-align: center;
-}
-
-#w20221128906c1bc38547e .shop-item .item-summary {
-	text-align: center;
-}
-
-#w20221128906c1bc38547e .shop-item .item-summary .item-summary-link {
-	position: absolute;
+.buy_btns.pc.width-100 a {
 	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
 }
 
-#w20221128906c1bc38547e  .shop-item .item-overlay {
-	color:;
+.buy_btns.mobile .width-100 a {
+	width: 100%;
+	margin: 0;
 }
 
-#w20221128906c1bc38547e  .shop-item .item-pay>h2,
-	#w20221128906c1bc38547e  .shop-item .item-overlay h2 {
-	font-size: 15px;
-	font-weight: bold
+.shop_view_body {
+	margin: 0 auto;
+	width: 100%;
 }
 
-#w20221128906c1bc38547e .shop-item .item-detail .item-icon {
-	margin-top: 0.75em;
-}
-
-#w20221128906c1bc38547e .shop-item .item-detail .item-icon>span {
-	margin-top: 0.75em;
-	display: inline-block;
-}
-
-#w20221128906c1bc38547e .shop-item .item-detail .item-icon>span,
-	#w20221128906c1bc38547e .shop-item .item-detail .item-icon>span a {
+.pay_detail .pay_label {
 	font-size: 15px;
 }
 
-#w20221128906c1bc38547e  .shop-item .item-pay>h2>a {
-	color:;
+.pay_detail .sale_price {
+	opacity: 0.7;
+	font-size: 14px !important;
+	line-height: 1.7;
 }
 
-#w20221128906c1bc38547e .shop-item .item-summary>p,
-	#w20221128906c1bc38547e .shop-item .item-summary>ul {
-	margin-bottom: 0;
+.pay_detail .real_price {
+	color: #000000 !important;
+	font-size: 20px;
+	font-weight: normal;
+	line-height: 1;
 }
 
-#w20221128906c1bc38547e .shop-item .item-summary,
-	#w20221128906c1bc38547e .shop-item .item-summary p,
-	#w20221128906c1bc38547e .shop-item .item-summary span {
-	font-size: 13px !important;
-	color:;
+.pay_detail .sale_percentage {
+	color: #fe5356 !important;
+	font-size: 20px;
+	font-weight: normal;
+	margin-right: 5px;
 }
 
-#w20221128906c1bc38547e .shop-item .item-detail .item-pay-detail .pay,
-	#w20221128906c1bc38547e .shop-item .item-overlay .item-pay p.pay {
-	font-size: 13px;
-	color: #212121 !important;
+.pay_detail .member_pay, .pay_detail .text-brand.member_pay {
+	font-size: 20px !important;
+	color: !important;
+	font-weight: normal;
 }
 
-#w20221128906c1bc38547e .shop-item .item-detail .item-pay-detail .sale_pay,
-	#w20221128906c1bc38547e .shop-item .item-detail .item-pay-detail .sale_pay
-	{
-	font-size: 9.1px;
+.shop-content .total_price {
+	color: #000000 !important;
+	font-size: 20px;
+	font-weight: normal;
 }
 
-#w20221128906c1bc38547e .shop-item .item-detail .item-pay .member_pay {
-	font-size: 15px;
+.opt_block.total .total_price.non_member {
+	color: #000000 !important;
+	font-size: 20px !important;
+	width: 6.5em;
+	min-width: 120px;
+}
+
+.opt_block.total .total_price.non_member.member_pay {
 	color: !important;
 }
 
-#w20221128906c1bc38547e .shop-item .sale_price {
-	text-decoration: line-through;
-	font-size: 11px;
-	opacity: 0.7;
-}
-
-#w20221128906c1bc38547e .shop-item .sale_percentage {
-	color: #fe5356 !important;
-	font-weight: normal;
-	font-size: 13px;
-}
-
-.device_type_m #w20221128906c1bc38547e .thumb-row .shop-item.off>.item-summary
-	{
-	display: none !important;
-}
-
-#w20221128906c1bc38547e .shop-item .item-detail .ns-icon>div {
-	float: left;
-}
-
-#w20221128906c1bc38547e .shop-item .item-detail .ns-icon>div {
-	float: none;
-	vertical-align: top;
-}
-
-#w20221128906c1bc38547e .shop-item .item-overlay .ns-icon>div,
-	#w20221128906c1bc38547e .shop-item .item-detail .ns-icon>div {
-	margin: 0 5px 5px 0;
-}
-
-#w20221128906c1bc38547e .shop-item .item-overlay .ns-icon>div:last-child,
-	#w20221128906c1bc38547e .shop-item .item-detail .ns-icon>div:last-child
-	{
-	margin: 0 0 5px 0;
-}
-
-#w20221128906c1bc38547e .shop-item .item-detail .ns-icon>div {
+.shop-item .item-detail .ns-icon>div {
 	margin-left: -1px;
 	vertical-align: middle;
 }
 
-#w20221128906c1bc38547e .shop-item .item-detail .ns-icon>div:first-child
-	{
+.shop-item .item-detail .ns-icon>div:first-child {
 	margin-left: 0;
 }
 
-#w20221128906c1bc38547e .shop-item .item-detail .ns-icon .prod_use_icon
-	{
-	display: inline-block;
-}
-
-#w20221128906c1bc38547e .shop-item .item-detail .ns-icon .prod_use_icon img
-	{
-	width: auto;
-	max-width: 100%;
-	vertical-align: top;
-}
-
-#w20221128906c1bc38547e .paging-block .more_btn {
-	margin: 20px 0;
-}
-
-#w20221128906c1bc38547e .paging-block .more_btn_page {
-	display: none;
-}
-
-#w20221128906c1bc38547e .shop-content .li_footer .prod_write {
-	text-align: right;
-}
-
-@media ( max-width : 991px) {
-	#w20221128906c1bc38547e .radio-styled:not(ie8).radio_color_option {
-		margin: 0 1px 4px 0;
-	}
-	#w20221128906c1bc38547e .thumb-row .shop-item.off,
-		#w20221128906c1bc38547e .thumb-row .shop-item {
-		padding: 0 7.5px !important;
-	}
-	#w20221128906c1bc38547e .thumb-row .shop-item {
-		margin-bottom: 30px;
-	}
-	#w20221128906c1bc38547e .options_hide_class .thumb-row .shop-item,
-		#w20221128906c1bc38547e .thumb-row.m-list-type3  .shop-item {
-		margin-bottom: 15px;
-	}
-	#w20221128906c1bc38547e .thumb-row {
-		margin: 0 -7.5px !important;
-		clear: both;
-	}
-	#w20221128906c1bc38547e .thumb-fluid.show_rendering .shop-item a>img {
-		image-rendering: auto;
-	}
-	#w20221128906c1bc38547e .thumb-row .shop-item.off>.item-summary {
-		display: none !important;
-	}
-}
-
-#w20221128906c1bc38547e .shop-item .item-detail {
-	height: auto;
-}
-
-#w20221128906c1bc38547e .shop-item {
-	margin-bottom: 40px;
-}
-
-@media ( min-width : 768px) {
-	#w20221128906c1bc38547e .thumb-row.hover_none .shop-item a:hover .item-overlay
+@media ( max-width : 768px) {
+	.shop-content.open .opt-group span, .shop-content.open .form-select-wrap:before
 		{
-		opacity: 0;
+		color: #333 !important;
 	}
-	#w20221128906c1bc38547e .thumb-row.hover_dark .shop-item a:hover .item-overlay
+	.shop-content.open .opt-group, .shop-content.open .opt-group .btn_clse,
+		.shop-content .opt-group .opt-group-top-bg, .shop-content.open select.form-control
 		{
-		background-color: rgba(0, 0, 0, 0.5);
+		background-color: #fff !important;
 	}
-	#w20221128906c1bc38547e .hover_bright .shop-item a .item-overlay .item-pay,
-		#w20221128906c1bc38547e .hover_image .shop-item a .item-overlay {
-		display: none !important;
+	.shop-content .opt-group .opt-group-top-bg {
+		box-shadow: 0 5px 10px rgba(255, 255, 255, 1);
 	}
-	#w20221128906c1bc38547e .hover_detail .shop-item a .item-overlay .item-pay,
-		#w20221128906c1bc38547e .hover_detail .shop-item a:hover .item-overlay .item-pay
+	.shop-content.open select.form-control, .shop-content.open select.form-control option
 		{
-		display: table;
-		position: absolute;
-		left: 0;
-		width: 100%;
-		height: 100%;
+		color: #333 !important;
 	}
-	#w20221128906c1bc38547e .hover_detail .shop-item a .item-overlay .item-pay>div,
-		#w20221128906c1bc38547e .hover_detail .shop-item a:hover .item-overlay .item-pay>div
-		{
-		height: 100%;
-		display: table-cell;
-		vertical-align: middle;
-	}
-	#w20221128906c1bc38547e .hover_detail.hover_name_price .shop-item a .item-overlay .item-pay .ns-icon
-		{
-		display: none;
-	}
-	#w20221128906c1bc38547e .hover_image .shop-item a .hover_img,
-		#w20221128906c1bc38547e .hover_image .shop-item a:hover .org_img {
-		position: absolute;
-		left: 0;
-		opacity: 0;
-		display: none;
-		top: 0;
-		-webkit-transition: .3s;
-		-moz-transition: .3s;
-		-o-transition: .3s;
-		transition: .3s;
-	}
-	#w20221128906c1bc38547e .hover_image .shop-item a:hover .hover_img {
-		position: static;
-		opacity: 1;
-		display: block;
-		-webkit-transition: .3s;
-		-moz-transition: .3s;
-		-o-transition: .3s;
-		transition: .3s;
-	}
-	#w20221128906c1bc38547e .hover_image .shop-item a.hover_img_none .org_img
-		{
-		position: static;
-		opacity: 1;
+	.shop-content.open .opt-group .opt_block.total .total_price {
+		color: #000000;
+		font-size: 20px;
+		font-weight: normal;
 	}
 }
 
-@media ( max-width : 767px) {
-	#w20221128906c1bc38547e .hover_image .shop-item a .hover_img {
-		display: none;
-	}
-	#w20221128906c1bc38547e .paging-block .more_btn {
-		width: 100%;
-	}
+#prod_image_list .prod-owl-list {
+	opacity: 1;
+	transition: 0.3s opacity, 0.3s visibility;
 }
 
-@media ( max-width : 991px) {
-	#w20221128906c1bc38547e .color_tools {
-		margin: 0 0 8px;
-	}
-}
-
-#w20221128906c1bc38547e ._color_option_img {
-	-webkit-transition: .3s opacity, .3s visibility;
-	-moz-transition: .3s opacity, .3s visibility;
-	-o-transition: .3s opacity, .3s visibility;
-	transition
-	.3s
-	opacity,
-	.3s
-	visibility;
-}
-
-#w20221128906c1bc38547e ._color_option_img[data-visible="false"] {
+#prod_image_list[data-preview-type="option"] .prod-owl-list {
 	opacity: 0;
 	visibility: hidden;
 }
 
-#w20221128906c1bc38547e ._color_option_img[data-visible="true"] {
+#prod_image_list ._color_option_img {
+	height: auto;
+	left: 50%;
+	max-width: 100%;
+	max-height: 100%;
+	opacity: 0;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	transition: 0.3s opacity, 0.3s visibility;
+	visibility: hidden;
+	width: 100%;
+	z-index: 2;
+}
+
+#prod_image_list[data-preview-type="option"] ._color_option_img[data-visible="true"]
+	{
 	opacity: 1;
 	visibility: visible;
 }
 
-.device_type_m .pc_section #padding_w202211284ae49cad1f15e {
-	height: 46px !important;
+#prod_image_list ._color_option_img[data-size-type="A"] {
+	width: 100%;
+	height: 100%;
 }
 
-@media all and (max-width:768px) {
-	.pc_section #padding_w202211284ae49cad1f15e {
-		height: 46px !important;
-	}
-}
-
-.device_type_m .pc_section #padding_w20221128f8ecaa4d3c82f {
-	height: 15px !important;
-}
-
-@media all and (max-width:768px) {
-	.pc_section #padding_w20221128f8ecaa4d3c82f {
-		height: 15px !important;
-	}
+#prod_image_list ._color_option_img[data-size-type="B"],
+	#prod_image_list ._color_option_img[data-size-type="C"] {
+	width: auto;
+	top: 0;
+	left: 0;
+	transform: none;
 }
 
 .shop_view .s20221128a62bc67223c9e.xzoom-preview {;
@@ -4521,7 +3406,7 @@ padding-right
 	var UPLOAD_URL = '/upload/';
 	var CDN_UPLOAD_URL = 'https://cdn.imweb.me/upload/';
 	var IS_MAIN = false;
-	var CURRENT_URL = 'L3Nob3A%3D';
+	var CURRENT_URL = 'L2JlZW5zLz9pZHg9Mg%3D%3D';
 	var CURRENT_DOMAIN = 'onoffline.imweb.me';
 	var THUMBNAIL_URL = '/thumbnail/';
 	var CDN_THUMBNAIL_URL = 'https://cdn.imweb.me/thumbnail/';
@@ -4541,11 +3426,11 @@ padding-right
 	var MENU_SNS_INIT_DATA = {
 		"_main_url" : "https:\/\/onoffline.imweb.me",
 		"_site_name" : "onoffline",
-		"_subject" : "onoffline",
+		"_subject" : "Signature coffee beens : onoffline",
 		"_body" : "",
-		"_post_url" : "https:\/\/onoffline.imweb.me\/shop",
-		"_img" : "https:\/\/cdn.imweb.me\/upload\/S20190909897bd4d3191f1\/1d63f1fc805ea.png",
-		"_security_post_url" : "aHR0cHM6Ly9vbm9mZmxpbmUuaW13ZWIubWUvc2hvcA=="
+		"_post_url" : "https:\/\/onoffline.imweb.me\/beens\/?idx=2",
+		"_img" : "https:\/\/cdn.imweb.me\/thumbnail\/20190919\/2276438f9ed5d.png",
+		"_security_post_url" : "aHR0cHM6Ly9vbm9mZmxpbmUuaW13ZWIubWUvYmVlbnMvP2lkeD0y"
 	};
 	var LIMIT_API_LIST = [ "kakao_link", "kakaostory_link" ];
 	var NO_IMAGE_URL = '/img/transparency.png';
@@ -4561,9 +3446,10 @@ padding-right
 <script
 	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://player.vimeo.com/api/player.js"></script>
+<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"Product","name":"Signature coffee beens","image":["https:\/\/cdn.imweb.me\/thumbnail\/20190919\/9a46b50147235.png"],"description":"","offers":{"@type":"Offer","price":18000,"priceCurrency":"KRW","url":"http:\/\/onoffline.imweb.me\/shop_view\/?idx=2","availability":"http:\/\/schema.org\/InStock"}}</script>
 </head>
 <body
-	class="doz_sys  _body_menu_m20221128e445c75c466cd  mobile-nav-on  mobile_nav_dep2  shopping  new_header_site   new_fixed_header_disable fixed-menu-on"
+	class="doz_sys  _body_menu_m202211287faae98d6ec58  shop_view  new_header_site"
 	style="" id="doz_body">
 
 
@@ -4684,8 +3570,8 @@ padding-right
 			href="javascript:;"
 			onclick="SITE_MEMBER.openLogin('L3Nob3BfbXlwYWdl','mypage');"
 			class="btn btn-flat">마이페이지</a> <a
-			href="/logout.cm?back_url=L3Nob3A%3D" class="btn btn-flat right">로그아웃</a>
-		</li>
+			href="/logout.cm?back_url=L2JlZW5zLz9pZHg9Mg%3D%3D"
+			class="btn btn-flat right">로그아웃</a></li>
 	</ul>
 	<div id="mobile_slide_menu_wrap" class="mobile_slide_menu_container">
 		<div id="mobile_slide_menu"
@@ -4699,7 +3585,7 @@ padding-right
 						id="imagepath">
 					<div class="profile-area">
 						<a href="javascript:;"
-							onclick="SITE_MEMBER.openLogin('L3Nob3A%3D', 'null', null, 'Y');"
+							onclick="SITE_MEMBER.openLogin('L2JlZW5zLz9pZHg9Mg%3D%3D', 'null', null, 'Y');"
 							class="btn nav-btn-icon profile no-padding btn-flat full-width">
 							<div class="member-info guest full-width">
 								<span>로그인이 필요합니다.</span>
@@ -4711,22 +3597,24 @@ padding-right
 
 
 
-					<li style="" class="depth-01  " data-code="m20221128e445c75c466cd">
+					<li style="" class="depth-01" data-code="m20221128e445c75c466cd">
 						<a href="/shop" data-url="shop" data-has_child="Y"
-						data-is_folder_menu="N"
-						class="active   active-real  open has_child" onclick=""> <span
-							class="plain_name" data-hover="">SHOP</span> <span
+						data-is_folder_menu="N" class="active   open has_child" onclick="">
+							<span class="plain_name" data-hover="">SHOP</span> <span
 							class="_toggle_btn toggle-btn"></span>
 					</a>
 
 						<ul data-index="1" class="in" style="display: block;">
 
-							<li class="depth-02  " style=""
-								data-code="m202211287faae98d6ec58"><a tabindex="-1"
-								data-url="beens" data-has_child="N" data-is_folder_menu="N"
-								href="/beens" class=" " onclick=""> <span class="plain_name"
-									data-hover="">Beens</span> <span class="_toggle_btn toggle-btn"></span>
-							</a></li>
+							<li class="depth-02" style="" data-code="m202211287faae98d6ec58">
+								<a tabindex="-1" data-url="beens" data-has_child="N"
+								data-is_folder_menu="N" href="/beens"
+								class=" active   active-real " onclick=""> <span
+									class="plain_name" data-hover="">Beens</span> <span
+									class="_toggle_btn toggle-btn"></span>
+							</a>
+
+							</li>
 
 							<li class="depth-02  " style=""
 								data-code="m20221128f891a721454d6"><a tabindex="-1"
@@ -4956,12 +3844,10 @@ padding-right
 	<header id="doz_header_wrap">
 		<div id="doz_header" data-newheader="Y">
 			<div class="new_org_header _new_org_header">
-				<div id="inline_header_normal" style="min-height: 30px;"
-					class="tansparent_bg">
+				<div id="inline_header_normal" style="min-height: 30px;" class="">
 					<div data-type="section-wrap"
-						class="extend  inline-section-wrap fixed_transform _fixed_header_section scroll-to-fixed-fixed"
-						id="s20221128a044c05215371"
-						style="z-index: 999; position: fixed; top: 0px; margin-left: 0px; width: 1691px; left: 0px;">
+						class="extend  inline-section-wrap fixed_transform"
+						id="s20221128a044c05215371">
 						<div
 							class="section_bg _section_bg fixed_transform _interactive_bg  "></div>
 						<div class="section_bg_color _section_bg_color fixed_transform"
@@ -4980,7 +3866,7 @@ padding-right
 													id="logo_w20221128580f6db37b928">
 													<div class="logo_title ">
 														<a class=" fixed_transform" style="display: block"
-															href="/">ONOFF</a>
+															href="/">${board.writer }</a>
 													</div>
 												</div>
 
@@ -4998,8 +3884,8 @@ padding-right
 												<ul class="nav navbar-nav _inline_menu_container "
 													style="visibility: visible;">
 													<div class="viewport-nav desktop _main_menu">
-														<li class="dropdown _show_m20221128e445c75c466cd   "
-															style="" id="dropdown_m20221128e445c75c466cd"
+														<li class="dropdown _show_m20221128e445c75c466cd" style=""
+															id="dropdown_m20221128e445c75c466cd"
 															data-code="m20221128e445c75c466cd"><a href="/shop"
 															class="fixed_transform dropdown-toggle disabled _header_dropdown  active   _fade_link "
 															data-url="shop" data-toggle="dropdown"> <span
@@ -5011,10 +3897,10 @@ padding-right
 															<ul class="dropdown-menu" role="menu">
 
 																<li
-																	class="dropdown-submenu _show_m202211287faae98d6ec58   "
+																	class="dropdown-submenu _show_m202211287faae98d6ec58"
 																	data-code="m202211287faae98d6ec58" style=""><a
 																	tabindex="-1" href="/beens" data-url="beens"
-																	class="_txt_m202211287faae98d6ec58   _fade_link "><span
+																	class="_txt_m202211287faae98d6ec58  active   _fade_link "><span
 																		class="plain_name" data-hover="">Beens</span></a></li>
 
 																<li
@@ -5057,7 +3943,7 @@ padding-right
 															class="viewport-nav desktop _main_clone_menu main_clone_menu">
 
 
-															<li class="dropdown _show_m20221128e445c75c466cd   "
+															<li class="dropdown _show_m20221128e445c75c466cd"
 																style="" id="dropdown_m20221128e445c75c466cd"
 																data-code="m20221128e445c75c466cd"><a href="/shop"
 																class="fixed_transform dropdown-toggle disabled _header_dropdown  active   _fade_link "
@@ -5070,10 +3956,10 @@ padding-right
 																<ul class="dropdown-menu" role="menu">
 
 																	<li
-																		class="dropdown-submenu _show_m202211287faae98d6ec58   "
+																		class="dropdown-submenu _show_m202211287faae98d6ec58"
 																		data-code="m202211287faae98d6ec58" style=""><a
 																		tabindex="-1" href="/beens" data-url="beens"
-																		class="_txt_m202211287faae98d6ec58   _fade_link "><span
+																		class="_txt_m202211287faae98d6ec58  active   _fade_link "><span
 																			class="plain_name" data-hover="">Beens</span></a></li>
 
 																	<li
@@ -5148,7 +4034,7 @@ padding-right
 															<a
 																class="_fade_link   btn_text btn_DC0whb10io   btn_custom "
 																href="javascript:;"
-																onclick="SITE_MEMBER.openLogin('L3Nob3A%3D', 'null', null, 'N');"
+																onclick="SITE_MEMBER.openLogin('L2JlZW5zLz9pZHg9Mg%3D%3D', 'null', null, 'N');"
 																style="border-radius: 0px;"><span class="sr-only">로그인
 																	위젯 문구</span><span class="icon_class "><i
 																	class="fixed_transform simple icon-user"
@@ -5182,12 +4068,10 @@ padding-right
 							</div>
 						</div>
 					</div>
-					<div class="spacer"
-						style="display: block; width: 1690.67px; height: 90px; float: none;"></div>
 				</div>
 				<div id="inline_header_mobile" style="min-height: 30px;" class="">
 					<div data-type="section-wrap"
-						class="inline-section-wrap fixed_transform _fixed_header_section"
+						class="  inline-section-wrap fixed_transform"
 						id="s202211283545d93b4ca7e">
 						<div
 							class="section_bg _section_bg fixed_transform _interactive_bg  "></div>
@@ -5275,53 +4159,13 @@ padding-right
 							</div>
 						</div>
 					</div>
-					<div></div>
-					<div data-type="carousel_menu" class="inline-section-wrap"
-						id="mobile_carousel_menu">
-						<div class="inline-inside _inline-inside">
-							<div class="mobile_table_nav fixed_transform _mobile_nav ">
-								<table class="mobile_table_nav_wrap _mobile_table_nav_wrap st00"
-									data-table_line_count="3">
-									<tbody>
-										<tr>
-											<td class="nav-item _item  active"
-												data-code="m20221128e445c75c466cd" data-rel="table_nav"
-												data-url="shop"><a href="/shop" class="_fade_link"
-												style=""> <span class="plain_name" data-hover="">SHOP</span>
-											</a></td>
-											<td class="nav-item _item" data-code="m202211289139f5b8e8e58"
-												data-rel="table_nav" data-url="about"><a href="/about"
-												class="_fade_link" style=""> <span class="plain_name"
-													data-hover="">ABOUT</span>
-											</a></td>
-											<td class="nav-item _item" data-code="m202211289f03dd30c2a75"
-												data-rel="table_nav" data-url="notice"><a
-												href="/notice" class="_fade_link" style=""> <span
-													class="plain_name" data-hover="">NOTICE</span>
-											</a></td>
-										</tr>
-										<tr>
-											<td class="nav-item _item" data-code="m20221128c203d4c6c0226"
-												data-rel="table_nav" data-url="contact"><a
-												href="/contact" class="_fade_link" style=""> <span
-													class="plain_name" data-hover="">CONTACT</span>
-											</a></td>
-											<td class="nav-item empty_item "></td>
-											<td class="nav-item empty_item "></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
 	</header>
 	<div doz_type="section"
-		class="section_wrap  pc_section    section_first _section_first   mobile_section_first    side_basic     "
-		id="s2022112892053a957d98f" style="" doz_change_mobile="N"
+		class="section_wrap  pc_section    section_first _section_first   mobile_section_first    side_     "
+		id="s20221128785d3e46ff7d7" style="" doz_change_mobile="Y"
 		doz_aside="N" doz_side_width="230" doz_side_margin="0" doz_extend="N"
 		doz_mobile_section="N" doz_mobile_hide="N" doz_header_repeat="N"
 		doz_footer_repeat="N" doz_category="default">
@@ -5334,423 +4178,738 @@ padding-right
 
 		<main>
 			<div doz_type="inside" class="inside">
-				<div doz_type="row" doz_grid="12" class="doz_row">
-					<div doz_type="grid" doz_grid="12" class="col-dz col-dz-12">
-						<div doz_type="widget" id="w20221128f6801cf92601a">
-							<div class="_widget_data _ds_animated_except"
-								data-widget-name="여백" data-widget-type="padding"
-								data-widget-parent-is-mobile="N">
-								<div class="widget padding" data-height="43"
-									style="margin-top: px; margin-bottom: px;">
-									<div id="padding_w20221128f6801cf92601a"
-										style="width: 100%; min-height: 1px; height: 43px;"></div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div doz_type="row" doz_grid="12" hidden_xs="Y"
+				<div doz_type="row" doz_grid="12" doz_flexible="N" hidden_xs="Y"
 					class="doz_row  hidden-xs">
-					<div doz_type="grid" doz_grid="12" class="col-dz col-dz-12">
-						<div doz_type="widget" id="w20221128a39537baa1b07">
+					<div doz_type="grid" doz_grid="12" doz_flexible="N"
+						class="col-dz col-dz-12">
+						<div doz_type="widget" id="w202211289fe8ab36a7e95">
 							<div class="_widget_data _ds_animated_except"
 								data-widget-name="여백" data-widget-type="padding"
 								data-widget-parent-is-mobile="N">
-								<div class="widget padding" data-height="7"
+								<div class="widget padding" data-height="80"
 									style="margin-top: px; margin-bottom: px;">
-									<div id="padding_w20221128a39537baa1b07"
-										style="width: 100%; min-height: 1px; height: 7px;"></div>
+									<div id="padding_w202211289fe8ab36a7e95"
+										style="width: 100%; min-height: 1px; height: 80px;"></div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div doz_type="row" doz_grid="12" class="doz_row">
-					<div doz_type="grid" doz_grid="12" class="col-dz col-dz-12">
-						<div doz_type="widget" id="w20221128b11ffa1da604c">
-							<div class="_widget_data " data-widget-name="텍스트"
-								data-widget-type="text" data-widget-anim="none"
-								data-widget-anim-duration="0.7" data-widget-anim-delay="0"
-								data-widget-parent-is-mobile="N">
-								<div doz_type="text"
-									class="widget _text_wrap widget_text_wrap fr-view  default_padding "
-									id="text_w20221128b11ffa1da604c">
-
-									<div class="text-table ">
-										<div>
-											<h3 style="text-align: center; line-height: 1.5;">${boardList[0].title}<br>&nbsp;Arcu
-												ac tortor.
-											</h3>
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</div>
-					</div>
-				</div>
-				<div doz_type="row" doz_grid="12" hidden_xs="Y"
-					class="doz_row  hidden-xs">
-					<div doz_type="grid" doz_grid="12" class="col-dz col-dz-12">
-						<div doz_type="widget" id="w20221128b13adc266863c">
+				<div doz_type="row" doz_grid="12" doz_flexible="N" class="doz_row">
+					<div doz_type="grid" doz_grid="12" doz_flexible="N"
+						class="col-dz col-dz-12">
+						<div doz_type="widget" id="w20221128a54f2734017f0">
 							<div class="_widget_data _ds_animated_except"
-								data-widget-name="여백" data-widget-type="padding"
+								data-widget-name="쇼핑 상품 뷰" data-widget-type="shop_view"
 								data-widget-parent-is-mobile="N">
-								<div class="widget padding" data-height="2"
-									style="margin-top: px; margin-bottom: px;">
-									<div id="padding_w20221128b13adc266863c"
-										style="width: 100%; min-height: 1px; height: 2px;"></div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div doz_type="row" doz_grid="12" class="doz_row">
-					<div doz_type="grid" doz_grid="12" class="col-dz col-dz-12">
-						<div doz_type="widget" id="w2022112860b0b066f12df">
-							<div class="_widget_data _ds_animated_except"
-								data-widget-name="여백" data-widget-type="padding"
-								data-widget-parent-is-mobile="N">
-								<div class="widget padding" data-height="27"
-									style="margin-top: px; margin-bottom: px;">
-									<div id="padding_w2022112860b0b066f12df"
-										style="width: 100%; min-height: 1px; height: 27px;"></div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</main>
-	</div>
-	<div doz_type="section"
-		class="section_wrap  pc_section       side_basic grid_gutter_0 grid_v_gutter_0 extend_section   "
-		id="s202211282dc25758e0523" style="" doz_change_mobile="N"
-		doz_aside="N" doz_side_width="230" doz_side_margin="0" doz_extend="Y"
-		doz_mobile_section="N" doz_mobile_hide="N" doz_header_repeat="N"
-		doz_footer_repeat="N" doz_category="default">
-		<div class="section_bg _section_bg _interactive_bg   "
-			style="background-size: cover; background-repeat: no-repeat; position: absolute; left: 0; top: 0; right: 0; bottom: 0;"></div>
-		<div class="section_bg_color _section_bg_color"
-			style="position: absolute; left: 0; top: 0; right: 0; bottom: 0;"></div>
-
-
-
-		<main>
-			<div doz_type="inside" class="inside">
-				<div doz_type="row" doz_grid="12" class="doz_row">
-					<div doz_type="grid" doz_grid="12" class="col-dz col-dz-12">
-						<div doz_type="widget" id="w202211282920c4aa16628">
-							<div class="_widget_data _ds_animated_except"
-								data-widget-name="여백" data-widget-type="padding"
-								data-widget-parent-is-mobile="N">
-								<div class="widget padding" data-height="30"
-									style="margin-top: px; margin-bottom: px;">
-									<div id="padding_w202211282920c4aa16628"
-										style="width: 100%; min-height: 1px; height: 30px;"></div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div doz_type="inside" class="inside"></div>
-			<div doz_type="inside" class="inside">
-				<div doz_type="row" doz_grid="12" class="doz_row">
-					<div doz_type="grid" doz_grid="12" class="col-dz col-dz-12">
-						<div doz_type="widget" id="w20221128cdc7aebb6358d">
-							<div class="_widget_data " data-widget-name="메뉴/카테고리"
-								data-widget-type="sub_menu" data-widget-anim="none"
-								data-widget-anim-duration="0.7" data-widget-anim-delay="0"
-								data-widget-parent-is-mobile="N">
-								<div class="widget">
-									<div
-										class="nav sub-menu sub_menu_hide  h-menu-type1 menu-horizontal row-cnt-3 row-cnt-mobile-3">
-										<ul class="">
-
-											<li style="" class="depth-01    "
-												data-code="m202211287faae98d6ec58"><a href="/beens"
-												data-url="beens" data-has_child="N" data-is_folder_menu="N"
-												class=" _fade_link   "> <span class="plain_name"
-													data-hover="">Beens</span>
-											</a></li>
-
-											<li style="" class="depth-01    "
-												data-code="m20221128f891a721454d6"><a href="/goods"
-												data-url="goods" data-has_child="N" data-is_folder_menu="N"
-												class=" _fade_link   "> <span class="plain_name"
-													data-hover="">Goods</span>
-											</a></li>
-
-										</ul>
-									</div>
-								</div>
-
-							</div>
-						</div>
-					</div>
-				</div>
-				<div doz_type="row" doz_grid="12" class="doz_row">
-					<div doz_type="grid" doz_grid="12" class="col-dz col-dz-12">
-						<div doz_type="widget" id="w20221128906c1bc38547e">
-							<div class="_widget_data " data-widget-name="쇼핑"
-								data-widget-type="shopping" data-widget-anim="none"
-								data-widget-anim-duration="0.7" data-widget-anim-delay="0"
-								data-widget-parent-is-mobile="N">
-								<div class="shop-content widget">
-									<div class="shop-grid">
-										<div class="thumb-fluid _item_container  ">
-											<div class="shop-tools clearfix" style="display:">
-												<div class="down-btn" style="display: none">
-													<select class="form-control" name="deliv_option_type"
-														onchange="document.location.href = encodeURI('/shop/?sort='+$(this).val())"
-														title="정렬 바꾸기">
-														<option value="recent">등록순</option>
-														<option value="like">인기순</option>
-														<option value="min_price">낮은가격순</option>
-														<option value="max_price">높은가격순</option>
-														<option value="comment">상품평 많은순</option>
-														<option value="abc">이름순</option>
-														<option value="descabc">이름역순</option>
-													</select>
-												</div>
-											</div>
-
-											<div
-												class="thumb-row  hover_dark thumb-item-3 _item_wrap extend_count"
-												id="container_w20221128906c1bc38547e"
-												style="visibility: visible; margin: 0px -7.5px;">
-												
-												<%--게시물 배치 --%>
-												<c:forEach items="${boardList }" var="boardList">
-												<c:url value="/ydsBoard/get" var="getLink">
-													<c:param name="num" value="${boardList.num}"></c:param>
-												</c:url>
-												<div class="shop-item _shop_item"
-													style="width: 377px; padding: 0px 7.5px; height: 469px;">
-													<div class="item-wrap" style="position: relative;">
-														<a href="${getLink}" class="_fade_link shop-item-thumb " target="_blank">
-														<img src="${path}/assets/img/home2.jpg" alt="picture1"
-															class="home__img"> 
-
-														<!-- <img data-prodcode="s20221128cbc2f1144c480" alt="" src="https://cdn.imweb.me/thumbnail/20200805/54c1b5e109a18.png" class="_org_img org_img _lazy_img" data-original="https://cdn.imweb.me/thumbnail/20200805/54c1b5e109a18.png" data-src="https://cdn.imweb.me/thumbnail/20200805/54c1b5e109a18.png" style="display: inline;"> -->
-														<div class="item-overlay">
-
-															<div class="item-pay">
-																<div>
-																	<a href="${getLink }">${boardList.title}</a>
-																	<p class="pay inline-blocked" style="">18,000원</p>
-																	<div class="ns-icon clearfix">
-																		<!--<span class="new bg-brand">NEW</span>-->
-																	</div>
-																</div>
-															</div>
-														</div>
-														</a>	
-													</div>
-													<div class="item-detail" style="">
-														<div class="item-pay">
-															<h2 style="display:">
-																<a class="_fade_link" href="${getLink }">${boardList.title}</a>
-															</h2>
-															<div class="item-pay-detail">
-																<p class="no-margin"></p>
-																<p class="pay inline-blocked" style="">18,000원</p>
-																<p></p>
-															</div>
-														</div>
-														<div class="item-icon _unit_list unit-list"></div>
-													</div>
-												</div>
-												</c:forEach>
-												
-												<div class="shop-item _shop_item"
-													style="width: 377px; padding: 0px 7.5px; height: 469px;">
-													<div class="item-wrap" style="position: relative;">
-														<a href="/shop/?idx=3" class="_fade_link shop-item-thumb ">
-															<img data-prodcode="s202211283088b711d9f10" alt=""
-															src="https://cdn.imweb.me/thumbnail/20200805/2dde5f18694b9.png"
-															class="_org_img org_img _lazy_img"
-															data-original="https://cdn.imweb.me/thumbnail/20200805/2dde5f18694b9.png"
-															data-src="https://cdn.imweb.me/thumbnail/20200805/2dde5f18694b9.png"
-															style="display: inline;">
-															<div class="item-overlay">
-																<div class="item-pay">
-																	<div>
-																		<h2>Single Origin</h2>
-																		<p class="pay inline-blocked" style="">20,000원</p>
-																		<div class="ns-icon clearfix">
-																			<!--<span class="new bg-brand">NEW</span>-->
+								<div class="shop-content shop-style-b shop-align-center     "
+									id="prod_detail">
+									<!--모바일에서 open class 삽입시 하단에 구매상품 상세정보 노출됨 -->
+									<div class="clearfix">
+										<div class="row goods_wrapper">
+											<div class="col-xs-12 col-sm-12 col-md-12 goods_thumbs_wrap">
+												<div
+													class="_carousel_count_numbering carousel-count-numbering"></div>
+												<div class="goods_thumbs" id="prod_image_list">
+													<div class="holder">
+														<div
+															class="owl-carousel prod-owl-list owl-theme owl-loaded"
+															style="width: 750px; height: 750px;">
+															<div class="owl-stage-outer owl-height"
+																style="height: 750px;">
+																<div class="owl-stage"
+																	style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 750px;">
+																	<div class="owl-item active"
+																		style="width: 750px; margin-right: 0px; height: 750px;">
+																		<div class="item _item">
+																			<img alt="상품 이미지" style="opacity: 1;"
+																				src="https://cdn.imweb.me/thumbnail/20190919/2276438f9ed5d.png">
 																		</div>
 																	</div>
 																</div>
 															</div>
-														</a>
-													</div>
-													<div class="item-detail" style="">
-														<div class="item-pay">
-															<h2 style="display:">
-																<a class="_fade_link" href="/shop/?idx=3">Single
-																	Origin</a>
-															</h2>
-															<div class="item-pay-detail">
-																<p class="no-margin"></p>
-																<p class="pay inline-blocked" style="">20,000원</p>
-																<p></p>
-															</div>
-														</div>
-														<div class="item-icon _unit_list unit-list"></div>
-													</div>
-												</div>
-												<div class="shop-item _shop_item"
-													style="width: 377px; padding: 0px 7.5px; height: 469px;">
-													<div class="item-wrap" style="position: relative;">
-														<a href="/shop/?idx=1" class="_fade_link shop-item-thumb ">
-															<img data-prodcode="s20221128a1d094f9d93f9" alt=""
-															src="https://cdn.imweb.me/thumbnail/20200805/318df0f35edae.png"
-															class="_org_img org_img _lazy_img"
-															data-original="https://cdn.imweb.me/thumbnail/20200805/318df0f35edae.png"
-															data-src="https://cdn.imweb.me/thumbnail/20200805/318df0f35edae.png"
-															style="display: inline;">
-															<div class="item-overlay">
-																<div class="item-pay">
-																	<div>
-																		<h2>monday hand drip</h2>
-																		<p class="pay inline-blocked" style="">39,000원</p>
-																		<div class="ns-icon clearfix">
-																			<!--<span class="new bg-brand">NEW</span>-->
-																		</div>
-																	</div>
+															<div class="owl-controls">
+																<div class="owl-nav">
+																	<div class="owl-prev" style="display: none;">prev</div>
+																	<div class="owl-next" style="display: none;">next</div>
 																</div>
-															</div>
-														</a>
-													</div>
-													<div class="item-detail" style="">
-														<div class="item-pay">
-															<h2 style="display:">
-																<a class="_fade_link" href="/shop/?idx=1">monday
-																	hand drip</a>
-															</h2>
-															<div class="item-pay-detail">
-																<p class="no-margin"></p>
-																<p class="pay inline-blocked" style="">39,000원</p>
-																<p></p>
+																<div class="owl-dots" style="display: none;"></div>
 															</div>
 														</div>
-														<div class="item-icon _unit_list unit-list"></div>
 													</div>
-												</div>
-												<div class="shop-item _shop_item"
-													style="width: 377px; padding: 0px 7.5px; height: 469px;">
-													<div class="item-wrap" style="position: relative;">
-														<a href="/shop/?idx=6" class="_fade_link shop-item-thumb ">
-															<img data-prodcode="s202211283104047d50749" alt=""
-															src="https://cdn.imweb.me/thumbnail/20200805/8b67ef9f7b587.png"
-															class="_org_img org_img _lazy_img"
-															data-original="https://cdn.imweb.me/thumbnail/20200805/8b67ef9f7b587.png"
-															data-src="https://cdn.imweb.me/thumbnail/20200805/8b67ef9f7b587.png"
-															style="display: inline;">
-															<div class="item-overlay">
-																<div class="item-pay">
-																	<div>
-																		<h2>Leather Cover</h2>
-																		<p class="pay inline-blocked" style="">28,000원</p>
-																		<div class="ns-icon clearfix">
-																			<!--<span class="new bg-brand">NEW</span>-->
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</a>
-													</div>
-													<div class="item-detail" style="">
-														<div class="item-pay">
-															<h2 style="display:">
-																<a class="_fade_link" href="/shop/?idx=6">Leather
-																	Cover</a>
-															</h2>
-															<div class="item-pay-detail">
-																<p class="no-margin"></p>
-																<p class="pay inline-blocked" style="">28,000원</p>
-																<p></p>
-															</div>
-														</div>
-														<div class="item-icon _unit_list unit-list"></div>
-													</div>
-												</div>
-												<div class="shop-item _shop_item"
-													style="width: 377px; padding: 0px 7.5px; height: auto;">
-													<div class="item-wrap" style="position: relative;">
-														<a href="/shop/?idx=5" class="_fade_link shop-item-thumb ">
-															<img data-prodcode="s20221128c75db0c640256" alt=""
-															src="https://cdn.imweb.me/thumbnail/20200805/d8ae137106e40.png"
-															class="_org_img org_img _lazy_img"
-															data-original="https://cdn.imweb.me/thumbnail/20200805/d8ae137106e40.png"
-															data-src="https://cdn.imweb.me/thumbnail/20200805/d8ae137106e40.png">
-															<div class="item-overlay">
-																<div class="item-pay">
-																	<div>
-																		<h2>Monday coffee mug</h2>
-																		<p class="pay inline-blocked" style="">15,000원</p>
-																		<div class="ns-icon clearfix">
-																			<!--<span class="new bg-brand">NEW</span>-->
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</a>
-													</div>
-													<div class="item-detail" style="">
-														<div class="item-pay">
-															<h2 style="display:">
-																<a class="_fade_link" href="/shop/?idx=5">Monday
-																	coffee mug</a>
-															</h2>
-															<div class="item-pay-detail">
-																<p class="no-margin"></p>
-																<p class="pay inline-blocked" style="">15,000원</p>
-																<p></p>
-															</div>
-														</div>
-														<div class="item-icon _unit_list unit-list"></div>
+													<div class="shop_goods_img" style="display: none">
+														<ul class="clearfix">
+															<li class="owl-dot" id="btn_owl_0"><a
+																href="javascript:;"
+																onmouseover="SITE_SHOP_DETAIL.changeProdImageRolling(0)"
+																onclick="SITE_SHOP_DETAIL.changeProdImageRolling(0)"
+																style="background: url('https://cdn.imweb.me/thumbnail/20190919/2276438f9ed5d.png') no-repeat center;"
+																class="active"></a></li>
+														</ul>
 													</div>
 												</div>
 											</div>
+											<div class="col-sm-12 col-xs-12 col-md-12 goods_form_wrap">
+												<div class="goods_form" id="prod_goods_form">
+													<header style="border: none; padding-bottom: 0;">
+														<div class="shop_sub_depth hidden-xs hidden-sm"
+															style="display: inline-block">
+															<ul class="sub_depth">
+																<li><a href="/" data-catecnt="2">Home</a> <span
+																	class="icon-arrow-right" data-cnt=""></span></li>
+																<li><a href="/shop" class=" ">Shop</a><span
+																	class="icon-arrow-right"></span></li>
+																<li><a href="/beens" class="active ">Beens</a></li>
+															</ul>
+														</div>
+														<div class="view_tit title_font_style "
+															style="color: #212121; font-size: 22px !important;">
+															Signature coffee beens
+															<div class="ns-icon inline-blocked clearfix"></div>
+														</div>
+														<div class="pay_detail full-width" style="margin: 0 auto;">
+															<div class="">
+																<span class="text-brand pay_number"> <span
+																	class="real_price inline-blocked" style="">18,000원</span>
+																</span>
+															</div>
+														</div>
+													</header>
+													<div class="goods_summary body_font_color_70">
+														<div class="fr-view"></div>
+													</div>
+													<div class="m-btn-group buy_btns">
+														<a href="javascript:" class="like_box "
+															onclick="SITE_SHOP_DETAIL.addProdWish('s20221128d84b66e56259f', 'L2JlZW5zLz9pZHg9Mg%3D%3D')">
+															<i aria-hidden="true"
+															class="wish-icon-s20221128d84b66e56259f im-icon im-ico-like text-17"></i>
+															<span id="prod_detail_wish_count_mobile"
+															class="prod_detail_wish_count"> 0 </span>
+														</a>
+														<button class="comment_num btn btn-flat" type="button"
+															onclick="SNS.showDefalutSnsShareList();"
+															style="margin-left: 15px; padding: 0;">
+															<i aria-hidden="true"
+																class="btl bt-share board-summary-icon"></i>
+														</button>
+													</div>
+													<div class="_today_arrival_wrap"></div>
+													
+													<button type="button" class="btn btn-primary">Primary</button>
+													<button type="button" class="btn btn-secondary">Secondary</button>
+													<button type="button" class="btn btn-success">Success</button>
+													<button type="button" class="btn btn-danger">Danger</button>
+													<button type="button" class="btn btn-warning">Warning</button>
+													<button type="button" class="btn btn-info">Info</button>
+													<button type="button" class="btn btn-light">Light</button>
+													<button type="button" class="btn btn-dark">Dark</button>
+													<button type="button" class="btn btn-link">Link</button>
+													
+													<h2>프로그램 소개</h2>
+													<hr>
+													<p>Lorem ipsum.</p>
+													<hr>
+													<input class="form-control-plaintext" type="text" value="${board.content }" aria-label="Disabled input example" readonly>
+													
+													<h2>호스트 소개</h2>
+													<input value="${board.writer }"class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example">
+													
+																<%-- 댓글 리스트 출력되는 곳 --%>
+													<div class="row mt-3">
+														<div class="col">
+															<div class="list-group" id="replyListContainer">
+																<input type="text" id="boardNum" value="${board.num}">		
+															</div>
+														</div>
+													</div>
+																									
+													<!-- 모바일용 상세 정보 버튼 시작 -->
+													<div class="m-btn-group underline_tab" id="tab_offset">
+														<div class="site_prod_nav_wrap _prod_detail_tab_fixed"
+															id="prod_detail_content_tab_mobile" style="display:;">
+															<ul class="site_nav site_prod_nav">
+																<li
+																	class="after_line holder table-cell prod_tab_3 activeborder">
+																	<a class="_detail body_font_color_30"
+																	href="#prod_detail_detail" role="button"
+																	onclick="SITE_SHOP_DETAIL.changeContentTab('detail', 0,0)">상세정보</a>
+																</li>
+																<li
+																	class="after_line holder right_margin table-cell prod_tab_3">
+																	<a class="_review body_font_color_30 active"
+																	href="#prod_detail_review" role="button"
+																	onclick="SITE_SHOP_DETAIL.changeContentTab('review', 0,0)"
+																	style="display:">구매평 <span
+																		class="braket-badge badge _review_count_text">0</span>
+																</a>
+																</li>
+																<li class="after_line table-cell prod_tab_3"><a
+																	class="_qna right_margin body_font_color_30"
+																	href="#prod_detail_qna" role="button"
+																	onclick="SITE_SHOP_DETAIL.changeContentTab('qna', 0,0)"
+																	style="display:">Q&amp;A <span
+																		class="braket-badge badge _qna_count_text">0</span>
+																</a></li>
+															</ul>
+														</div>
+														<div></div>
+														<div class="unused_tab_hr" style="display: none"></div>
+														<div
+															class="product_body _prod_detail_detail_lazy_load_mobile fr-view  product_detail_mobile"
+															id="prod_detail_content_mobile" style="text-align: left;">
+														</div>
+														<!-- 상세정보 일부만 뿌리기 -->
+														<!--미구현<a class="btn more" role="button">상품정보 더보기</a>-->
+													</div>
+													<!-- //모바일용 상세 정보 버튼 종료 // -->
+													<div class="opt-group-bg"></div>
+													<div class="opt-group">
+														<div class="opt-group-top-bg"></div>
+														<a href="javascript:" class="btn_clse _style_b_clse"
+															onclick="SITE_SHOP_DETAIL.hidePCOptions()"><span
+															class="text-default-dark"><i aria-hidden="true"
+																class="btl bt-angle-down"></i></span></a>
+														<div class="goods_container">
+															<div id="goods_wrap"
+																class="goods_wrap _goods_wrap no-margin-top no-padding-top">
+																<!-- 필수 옵션, 선택 옵션이 둘다 없을경우 태그가 출력되면 안됨(여백, 가로선)-->
+																<div class="goods_section goods_left">
+																	<div class="goods_select" id="prod_options"></div>
+																	<div class="goods_detail" id="prod_deliv_setting">
+																		<div class="margin-bottom-xxl select_wrap  clearfix">
+																			<div class="inline-blocked form-delivery"
+																				style="display: inline-block">
+																				<div class="form-select-wrap "
+																					style="display: none;">
+																					<select class="countryList">
+																						<option value="KR" selected=""></option>
+																					</select>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="option_wrap"
+																			style="display: block; font-size: 12px;">
+																			<div class="inline-blocked vertical-middle">
+																				<span class="option_title text-bold">배송 방법</span>
+																			</div>
+																			<div class="inline-blocked vertical-middle">
+																				<span class="option_data"> 택배 </span>
+																			</div>
+																		</div>
+																		<div class="option_wrap"
+																			style="display: none; font-size: 12px;">
+																			<div class="inline-blocked vertical-middle">
+																				<span class="option_title text-bold">배송 안내</span>
+																			</div>
+																			<div class="inline-blocked vertical-middle">
+																				<span class="option_data"></span>
+																			</div>
+																		</div>
+																		<div class="option_wrap"
+																			style="display: block; font-size: 12px;">
+																			<div class="inline-blocked vertical-middle">
+																				<span class="option_title text-bold">배송비</span>
+																			</div>
+																			<div class="inline-blocked vertical-middle">
+																				<span class="option_data">2,500원 (50,000원 이상
+																					무료배송) </span>
+																			</div>
+																		</div>
+																		<div class="margin-top-xl"></div>
+
+																		<script>
+																			$(
+																					'.btn-popover')
+																					.popover();
+																			$(
+																					'.html-popover')
+																					.popover(
+																							{
+																								html : true,
+																								container : 'body'
+																							});
+																			SITE_SHOP_DETAIL
+																					.addDelivType('parcel');
+																			SITE_SHOP_DETAIL
+																					.addDelivPayType('price');
+																		</script>
+																		<style>
+.shipping_way .btn {
+	padding: 8px 12px;
+	height: 37px;
+	border-radius: 0;
+	font-size: 14px;
+	letter-spacing: 0;
+	text-align: center;
+	border-color: rgb(221, 221, 221);
+}
+
+#prod_deliv_setting {
+	padding-bottom: 20px;
+	text-align: left;
+	margin: 0 -15px;
+	text-align: left;
+}
+
+#prod_deliv_setting .select_wrap {
+	display: none;
+}
+</style>
+
+																	</div>
+																</div>
+																<div class="goods_section goods_right">
+																	<div class="goods_payment" id="prod_selected_options">
+																		<div class="opt_block no-border order_quantity_area"
+																			style="height: auto;">
+																			<div class="area_tit holder">
+																				<span class="option_title inline-blocked"
+																					style="margin-bottom: 7px">수량</span>
+																			</div>
+																			<div class="area_count holder">
+																				<div class="option_btn_wrap" style="top: 0;">
+																					<div class="option_btn_tools" style="float: none;">
+																						<a href="javascript:;"
+																							onclick="SITE_SHOP_DETAIL.decreaseOrderCount('mobile', function(){SITE_SHOP_DETAIL.updateSelectedOptions('prod')})"><i
+																							class="btl bt-minus" aria-hidden="true"></i><span
+																							class="sr-only">minus</span></a> <input type="text"
+																							title="number" value="1"
+																							class="form-control _order_count_mobile"
+																							onchange="SITE_SHOP_DETAIL.changeOrderCount('mobile', $(this).val(), function(){SITE_SHOP_DETAIL.updateSelectedOptions('prod')})">
+																						<a href="javascript:;"
+																							onclick="SITE_SHOP_DETAIL.increaseOrderCount('mobile', function(){SITE_SHOP_DETAIL.updateSelectedOptions('prod')})"><i
+																							class="btl bt-plus" aria-hidden="true"></i><span
+																							class="sr-only">plus</span></a>
+																					</div>
+																					<div
+																						class="area_price absolute absolute_right absolute_middle">
+																						<span>18,000원</span>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="opt_block total bottom">
+																			<p class="no-margin text-right">
+																				<span class="body_font_color_70 text-left"
+																					style="padding: 16px 0">총 상품금액(1개)</span> <span
+																					class="total_price " style="padding: 16px 0">18,000원</span>
+																			</p>
+																		</div>
+																	</div>
+																	<div class="_social_pc_position">
+
+																		<div class="social-pay _social_pay"></div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="buy_btns pc clearfix    talkpay_pc">
+														<div class="buy_footer_fixed _buy_footer_fixed">
+															<div class="_buy_footer_wrap"
+																style="display: block; vertical-align: middle; height: 100%; position: relative;">
+																<a href="javascript:"
+																	style="width: auto; border: none; background: none; margin: 18px 10px !important; font-size: 15px;"
+																	class="btn like_box "
+																	onclick="SITE_SHOP_DETAIL.addProdWish('s20221128d84b66e56259f', 'L2JlZW5zLz9pZHg9Mg%3D%3D')">
+																	<i aria-hidden="true"
+																	class="wish-icon-s20221128d84b66e56259f im-icon im-ico-like text-17"></i>
+																	<span id="prod_detail_wish_count"
+																	class="prod_detail_wish_count text-14"> 0 </span>
+																</a> <a href="javascript:"
+																	style="width: auto; border: none; background: none; margin: 18px 10px !important;"
+																	class="btn" onclick="SNS.showDefalutSnsShareList();">
+																	<i aria-hidden="true"
+																	class="btm bt-share board-summary-icon text-16 active"></i>
+																</a>
+																<!-- 판매가 세팅 시작 -->
+																<a class="btn cart _btn_cart"
+																	onclick="SITE_SHOP_DETAIL.showPCOptions('cart');"><i
+																	aria-hidden="true"
+																	class="simple im-icon im-ico-cart text-18"></i> 장바구니</a>
+																<div class="clearfix"
+																	style="position: absolute; top: 15px;">
+																	<div class="float_l style_b_left_pc">
+																		<div class="_footer_price_wrap footer-price-wrap"
+																			style="display: inline-block; padding: 10px; float: left;">
+																			<span
+																				class="_pay_org_label pay_label body_font_color_50"
+																				style="display: none;"></span><span
+																				class="_pay_org_number pay_number holder total_price"
+																				style="font-size: 20px; display: none;"></span><span
+																				class="_pay_label pay_label body_font_color_50"
+																				style="">총 상품금액(1개)</span><span
+																				class="_pay_number pay_number holder total_price"
+																				style="font-size: 20px;" display:="" none;"="">18,000원</span>
+																		</div>
+																	</div>
+																	<div class="float_l holder">
+																		<a href="javascript:"
+																			class="btn defualt buy bg-brand "
+																			onclick="SITE_SHOP_DETAIL.showPCOptions('order')">구매하기</a>
+																		<a class="btn opt buy bg-brand _btn_buy"
+																			href="javascript:;"
+																			onclick="SITE_MEMBER.openLogin('L2JlZW5zLz9pZHg9Mg%3D%3D','payment',function(){SITE_SHOP_DETAIL.addOrder('normal', 'https://onoffline.imweb.me/beens/?idx=2')}, 'N', 'payment');">구매하기</a>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+
+
+
+													<div class="buy_btns mobile _mobile_action_btn_wrap">
+														<div class="cart_btn  " style="">
+															<!-- naver pay 사용시 'n_pay' class 추가 -->
+															<div class="pay-box no-pay-btn  ">
+																<div class="cart_btn_child _cart_btn_child ">
+																	<a href="javascript:" class="btn defualt-cart"
+																		onclick="SITE_SHOP_DETAIL.showMobileOptions('buy')">장바구니</a><a
+																		href="javascript:" class="btn cart opt _btn_cart"
+																		onclick="SITE_SHOP_DETAIL.addCart()">장바구니</a>
+																</div>
+																<a href="javascript:" class="btn defualt buy bg-brand "
+																	onclick="SITE_SHOP_DETAIL.showMobileOptions('buy')">구매하기</a>
+																<a class="btn opt buy bg-brand _btn_buy"
+																	href="javascript:;"
+																	onclick="SITE_MEMBER.openLogin('L2JlZW5zLz9pZHg9Mg%3D%3D','payment',function(){SITE_SHOP_DETAIL.addOrder('normal', 'https://onoffline.imweb.me/beens/?idx=2')}, 'N', 'payment');">구매하기</a>
+															</div>
+															<div class="_social_m_position social-m-position"></div>
+														</div>
+													</div>
+												</div>
+											</div>
 										</div>
+										<!-- PC용 상세 정보 버튼 시작 -->
+										<div class="categorize review-box" style="padding-top: 0;">
+											<div class="_detail_detail_wrap fr-view" id="fixed_tab">
+												<div class="underline_tab tansparent_bg">
+													<div
+														class="_prod_detail_tab_fixed site_prod_nav_wrap scroll-to-fixed-fixed"
+														style="width: 1181px; z-index: 999; position: fixed; top: 0px; margin-left: 0px; left: 15px;">
+														<ul class="site_nav site_prod_nav" style="">
+															<li
+																class="after_line holder table-cell prod_tab_3 activeborder">
+																<a class="_detail  body_font_color_30"
+																href="#prod_detail_detail"
+																onclick="SITE_SHOP_DETAIL.scrollPCTab('detail'); return false;">상세정보</a>
+															</li>
+															<li
+																class="after_line holder right_margin table-cell prod_tab_3">
+																<a class="_review body_font_color_30 active"
+																href="#prod_detail_review"
+																onclick="SITE_SHOP_DETAIL.scrollPCTab('review'); return false;">구매평
+																	<span class="braket-badge badge _review_count_text">0</span>
+															</a>
+															</li>
+															<li class="after_line table-cell prod_tab_3"><a
+																class="_qna right_margin body_font_color_30"
+																href="#prod_detail_qna"
+																onclick="SITE_SHOP_DETAIL.scrollPCTab('qna'); return false;">Q&amp;A
+																	<span class="braket-badge badge _qna_count_text">0</span>
+															</a></li>
+														</ul>
+													</div>
+													<div class="spacer"
+														style="display: block; width: 1180.67px; height: 43px; float: none;"></div>
+
+												</div>
+											</div>
+											<div class="detail_detail_wrap">
+												<a
+													class="prod_detail_detail _prod_detail_tab_target is_target"
+													name="prod_detail_detail"></a>
+												<div
+													class="_prod_detail_detail_lazy_load clearfix shop_view_body fr-view "
+													id="prod_detail_body">
+													<div class="item_detail" style="margin: 50px 0;">
+														<div class="_item_detail_wrap">
+															<div class="margin-bottom-xxl">
+																<div class="option_wrap"
+																	style="display: none; font-size: 12px;">
+																	<div class="inline-blocked vertical-middle">
+																		<span class="option_title text-bold">구매혜택</span>
+																	</div>
+																	<div class="inline-blocked vertical-middle">
+																		<span class="option_data"> 0 적립예정 <a
+																			href="javascript:;" class="btn-popover" role="button"
+																			tabindex="0" data-trigger="focus"
+																			data-toggle="popover" title=""
+																			data-content="적립금액은 할인 쿠폰 적용 및 옵션 가격, 수량을 기준으로 적립되므로 최종 적립금액은 쿠폰 사용 여부 및 옵션 가격, 수량에 따라 달라질 수 있습니다."
+																			data-original-title="" data-placement="auto"><i
+																				class="btm bt-question-circle"></i></a>
+																		</span>
+																	</div>
+																</div>
+
+																<div class="option_wrap"
+																	style="display: none; font-size: 12px;">
+																	<div class="inline-blocked vertical-middle">
+																		<span class="option_title text-bold">주문안내</span>
+																	</div>
+																	<div class="inline-blocked vertical-middle">
+																		<span class="option_data">최소 주문금액 0원</span>
+
+																	</div>
+																</div>
+
+																<div class="option_wrap"
+																	style="display: none; font-size: 12px;">
+																	<div class="inline-blocked vertical-middle">
+																		<span class="option_title text-bold">무게</span>
+																	</div>
+																	<div class="inline-blocked vertical-middle">
+																		<span class="option_data">1kg</span>
+																	</div>
+																</div>
+															</div>
+
+															<script>
+																$(
+																		'.btn-popover')
+																		.popover();
+																$(
+																		'.html-popover')
+																		.popover(
+																				{
+																					html : true
+																				});
+															</script>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- 구매평 -->
+											<div class="detail_review_wrap">
+												<div class="_detail_review_wrap" id="first_review">
+													<a
+														class="prod_detail_review _prod_detail_tab_target is_target"
+														name="prod_detail_review"></a>
+													<div class="text-bold prod_detail_badge text-16">
+														구매평 <span class="braket-badge badge _review_count_text">0</span>
+													</div>
+													<div class="_review_wrap">
+														<div class="text-13 body_font_color_70 margin-bottom-xl">
+															상품을 구매하신 분들이 작성한 리뷰입니다.</div>
+
+														<a class="btn btn-primary" role="button"
+															onclick="SITE_MEMBER.openLogin('L2JlZW5zLz9pZHg9Mg%3D%3D', 'null', null, 'N');">구매평
+															작성</a>
+														<div class="review_top margin-top-xxxl margin-bottom-xl"
+															id="review_top">
+															<a class="text-14" href="javascript:;"
+																style="color: rgba(54, 54, 54, 0.6);"
+																onclick="SITE_SHOP_DETAIL.getOnlyPhotoReview('Y','N','Y');">
+																<i class="fixed_transform simple icon-picture text-16"></i>
+																<div class="inline-blocked">포토 구매평만 보기</div>
+															</a>
+														</div>
+
+														<div class="no_comment_box text-center">
+															<div class="body_font_color_40">등록된 구매평이 없습니다.</div>
+														</div>
+														<nav class="paging-block"></nav>
+														<script>
+															$(function() {
+																var $body = $('body');
+																var $container = $body
+																		.find('._show_more_review');
+																var review_max_height = 0;
+																var more_height = 0;
+
+																$container
+																		.off(
+																				'click')
+																		.on(
+																				'click',
+																				function() {
+																					var $this = $(this);
+																					if ($this
+																							.hasClass('active')) {
+																						$this
+																								.removeClass('active');
+																					} else {
+																						$this
+																								.addClass('active');
+																					}
+																					if ($body
+																							.hasClass('modal-open')) {
+																						$this
+																								.removeClass('active');
+																					}
+																				})
+																		.each(
+																				function(
+																						k,
+																						v) {
+																					var $this = $(this);
+																					var $txt = $this
+																							.find('._txt');
+																					if (review_max_height <= 0) {
+																						// 더미를 사용해 7줄의 높이값 계산
+																						var $dummy = $txt
+																								.find('._dummy');
+																						review_max_height = $dummy
+																								.height();
+																					}
+																					var current_height = $txt
+																							.height();
+																					if (review_max_height < current_height) {
+																						// 더보기 추가
+																						$this
+																								.addClass('overflow');
+																						$txt
+																								.css(
+																										'max-height',
+																										review_max_height
+																												+ 'px');
+																						var $more_inline = $txt
+																								.find('._more_inline');
+																						if ($more_inline.length > 0
+																								&& more_height <= 0) {
+																							// 더보기 높이값 계산
+																							more_height = $more_inline
+																									.height();
+																						}
+																						$more_inline
+																								.css(
+																										'margin-top',
+																										(review_max_height - more_height)
+																												+ 'px');
+																					}
+																				});
+															});
+														</script>
+													</div>
+												</div>
+											</div>
+											<!-- 구매평 -->
+											<!-- Q&A-->
+											<div class="detail_qna_wrap">
+												<div class="_detail_qna_wrap " id="first_qna">
+													<a
+														class="prod_detail_qna _prod_detail_tab_target is_target"
+														name="prod_detail_qna"></a>
+													<div class="text-bold  prod_detail_badge text-16">
+														Q&amp;A <span class="braket-badge badge _qna_count_text">0</span>
+													</div>
+													<div class="_qna_wrap">
+														<div class="margin-bottom-xxxl btn_group">
+															<div class="text-13 body_font_color_70 margin-bottom-xl">
+																구매하시려는 상품에 대해 궁금한 점이 있으면 문의주세요.</div>
+															<div class="flexed">
+																<a
+																	class="btn btn-primary product_qna flexed align-item-center"
+																	role="button"
+																	onclick="window.location.href = '/?prod_code=s20221128d84b66e56259f&amp;qmode=write&amp;idx=0'"
+																	style="margin-right: 3px;">상품문의</a> <a
+																	href="/shop_mypage/?m2=qna" class="btn one_qna"
+																	role="button">1:1 문의</a>
+															</div>
+														</div>
+														<div style="text-align: center; padding: 50px 0;"
+															class="no_comment_box">
+															<div class="body_font_color_40" style="margin: 30px">등록된
+																문의가 없습니다</div>
+														</div>
+														<nav class="paging-block">
+															<!-- 페이징 버튼 -->
+														</nav>
+														<script>
+															$(window)
+																	.off(
+																			'keydown')
+																	.on(
+																			'keydown',
+																			function(
+																					key) {
+																				if (isEsc(key)) {
+																					$.cocoaDialog
+																							.close();
+																				}
+																			});
+														</script>
+													</div>
+												</div>
+											</div>
+											<!-- Q&A-->
+										</div>
+										<!--// PC용 상세 정보 버튼 종료 //-->
 									</div>
 								</div>
 
+								<!-- 장바구니로 이동 alert 시작 -->
+								<div tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+									aria-hidden="false" class="modal in modal_site_alert"
+									style="display: none;" id="shop_detail_add_cart_alarm">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="layer_pop">
+												<div class="container-fluid">
+													<p class="text-center" style="margin-bottom: 0;"
+														id="cart_add_result_msg">선택하신 상품을 장바구니에 담았습니다.</p>
+												</div>
+												<div class="btn-group-justified">
+													<a href="javascript:" class="btn"
+														onclick="SITE_SHOP_DETAIL.hideAddCartAlarm();">계속쇼핑</a> <a
+														href="javascript:" class="btn right"
+														onclick="SITE_SHOP_DETAIL.moveCart();">장바구니</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- // 장바구니로 이동 alert 종료 -->
 
-							</div>
-						</div>
-					</div>
-				</div>
-				<div doz_type="row" doz_grid="12" class="doz_row">
-					<div doz_type="grid" doz_grid="12" class="col-dz col-dz-12">
-						<div doz_type="widget" id="w202211284ae49cad1f15e">
-							<div class="_widget_data _ds_animated_except"
-								data-widget-name="여백" data-widget-type="padding"
-								data-widget-parent-is-mobile="N">
-								<div class="widget padding" data-height="92"
-									style="margin-top: px; margin-bottom: px;">
-									<div id="padding_w202211284ae49cad1f15e"
-										style="width: 100%; min-height: 1px; height: 92px;"></div>
+								<!--배송방법이 방문수령인 경우 관리자 정보 확인창-->
+								<div tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+									aria-hidden="false"
+									class="modal in modal_site_alert site_modal"
+									style="display: none;" id="deliv_visit_wrap">
+									<div class="modal-dialog ">
+										<div class="modal-content">
+											<div class="layer_pop">
+												<div class="top-block">
+													<div class="text-center text-brand text-15">위치확인</div>
+													<a href="javascript:" data-dismiss="modal"
+														onclick="$('#deliv_visit_wrap').hide()"><i
+														class="btl bt-times" aria-hidden="true"></i><span
+														class="sr-only">닫기</span></a>
+												</div>
+												<div class="container full-width">
+													<div class="site-form-group">
+														<label class="col-md-2 col-xs-4 text-right">전화번호</label>
+														<div class="col-md-10 col-xs-8"></div>
+													</div>
+
+													<div class="site-form-group">
+														<label class="col-md-2 col-xs-4 text-right">주소</label> <input
+															type="hidden" value="">
+														<div class="col-md-10 col-xs-8"></div>
+													</div>
+													<div class="site-form-group">
+														<label class="col-md-2 col-xs-4 text-right">상세주소</label>
+														<div class="col-md-10 col-xs-8"></div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div doz_type="row" doz_grid="12" class="doz_row">
-					<div doz_type="grid" doz_grid="12" class="col-dz col-dz-12">
-						<div doz_type="widget" id="w20221128f8ecaa4d3c82f">
-							<div class="_widget_data _ds_animated_except"
-								data-widget-name="여백" data-widget-type="padding"
-								data-widget-parent-is-mobile="N">
-								<div class="widget padding" data-height="30"
-									style="margin-top: px; margin-bottom: px;">
-									<div id="padding_w20221128f8ecaa4d3c82f"
-										style="width: 100%; min-height: 1px; height: 30px;"></div>
-								</div>
+								<!--END-->
+
+
+
+
+
+								<script id="prodDetailPC" type="application/template"><div class="item_detail" style="margin: 50px 0;"><div class="_item_detail_wrap"></div></div></script>
+								<script id="prodDetailMobile" type="application/template">
+</script>
+
+
+								<!--페이스북 픽셀 추적-->
+								<!-- 채널 넛지 -->
+								<!--모비온 리타게팅 추적-->
 							</div>
 						</div>
 					</div>
@@ -6314,6 +5473,10 @@ End Function
 	<script
 		src="https://vendor-cdn.imweb.me/js/jquery.chosen.js?1619084781"></script>
 	<script src="https://wcs.naver.net/wcslog.js"></script>
+	<script src="/js/post_comment.js?1637030472"></script>
+	<script src="https://vendor-cdn.imweb.me/js/xzoom.js?1577682292"></script>
+	<script
+		src="https://sstatic-g.rmcnmv.naver.net/resources/js/naver_web_player_ugc_min.js"></script>
 	<script></script>
 	<script></script>
 	<script>
@@ -6352,30 +5515,9 @@ End Function
 				easing : 'easeInOutExpo'
 			});
 			$('.pms_check').remove();
-			var recentScrollUrl = IMWEB_SESSIONSTORAGE
-					.get('RECENT_PROD_SCROLL_URL');
-			if (recentScrollUrl && recentScrollUrl !== document.location.href) {
-				IMWEB_SESSIONSTORAGE.remove('RECENT_PROD_SCROLL');
-				IMWEB_SESSIONSTORAGE.remove('RECENT_PROD_SCROLL_URL');
-			}
 		});
 	</script>
 	<script>
-		$(function() {
-			SITE.firstScrollFixed('inline_header_normal');
-		});
-		$(function() {
-			$("#s20221128a044c05215371").scrollToFixed({
-				marginTop : ""
-			});
-			$("#s20221128a044c05215371").toggleClass("_fixed_header_section",
-					true);
-		});
-		$(function() {
-			$("body").toggleClass("new_fixed_header_disable", true);
-			$("body").toggleClass("fixed-menu-on", true);
-		});
-
 		$(function() {
 			var more_menu_w20221128b396043bbee26 = new HEADER_MORE_MENU();
 			more_menu_w20221128b396043bbee26
@@ -6469,17 +5611,6 @@ End Function
 					})
 		});
 
-		$(function() {
-			SITE.firstScrollFixed('inline_header_mobile');
-		});
-		$(function() {
-			$("#s202211283545d93b4ca7e").scrollToFixed({
-				marginTop : ""
-			});
-			$("#s202211283545d93b4ca7e").toggleClass("_fixed_header_section",
-					true);
-		});
-
 		$('.join_tooltip[data-toggle="tooltip"]').tooltip({
 			delay : {
 				show : 500,
@@ -6531,393 +5662,135 @@ End Function
 					})
 		});
 
-		$("#text_w20221128b11ffa1da604c").find("._table_responsive").addClass(
-				"table").wrap($("<div />").addClass("table-responsive"));
+		if ($(window).width() > 787) {
+			$('._style_b_clse').removeAttr('onclick');
+			$('._style_b_clse').attr('onclick',
+					'SITE_SHOP_DETAIL.hidePCOptions()');
+		} else {
+			$('._style_b_clse').removeAttr('onclick');
+			$('._style_b_clse').attr('onclick',
+					'SITE_SHOP_DETAIL.hideMobileOptions()');
+		}
 
-		$(function() {
-			$('._unit_list ._unit').each(function(index, item) {
-				var data = item.dataset;
-				item.innerHTML = nFormatter(Number(data.value), 1);
-			});
-		});
+		$('#prod_detail ._prod_detail_tab_fixed').scrollToFixed();
+		$(document)
+				.ready(
+						function() {
+							var $_window = $(window);
+							var $_prod_detail_tab_targets = $('#prod_detail ._prod_detail_tab_target');
+							var $_tab_target_a_tags = $('#prod_detail ._prod_detail_tab_fixed ul li a');
 
-		$(function() {
-			$('._unit_list ._unit').each(function(index, item) {
-				var data = item.dataset;
-				item.innerHTML = nFormatter(Number(data.value), 1);
-			});
-		});
-
-		$(function() {
-			$('._unit_list ._unit').each(function(index, item) {
-				var data = item.dataset;
-				item.innerHTML = nFormatter(Number(data.value), 1);
-			});
-		});
-
-		$(function() {
-			$('._unit_list ._unit').each(function(index, item) {
-				var data = item.dataset;
-				item.innerHTML = nFormatter(Number(data.value), 1);
-			});
-		});
-
-		$(function() {
-			$('._unit_list ._unit').each(function(index, item) {
-				var data = item.dataset;
-				item.innerHTML = nFormatter(Number(data.value), 1);
-			});
-		});
-
-		$(function() {
-			$('._unit_list ._unit').each(function(index, item) {
-				var data = item.dataset;
-				item.innerHTML = nFormatter(Number(data.value), 1);
-			});
-		});
-
-		$(function() {
-			$('._unit_list ._unit').each(function(index, item) {
-				var data = item.dataset;
-				item.innerHTML = nFormatter(Number(data.value), 1);
-			});
-		});
-
-		$(function() {
-			var $list_wrap = $('#container_w20221128906c1bc38547e');
-			var set_margin = 7.5;
-			var set_width = 446;
-			var set_prod_list_count = 3;
-			var $item_wrap = $list_wrap.find('._shop_item');
-			var $section_obj = $list_wrap.closest('div[doz_type=section]');
-			var extend_section = $section_obj.attr('doz_extend') == 'Y';
-			var extend_count = $list_wrap.hasClass('extend_count');
-			var target_more_page = 1;
-
-			function shopListResize() {
-				$list_wrap.css({
-					'margin' : '0 -' + set_margin + 'px'
-				});
-				if ($item_wrap.length === 0)
-					return;
-				var real_inner_width = parseFloat(window
-						.getComputedStyle($list_wrap.get(0)).width);
-				var inner_width = $list_wrap.innerWidth();
-
-				if (extend_section && !extend_count) // 섹션 확장이면서 갯수 유지가 아니면
-					set_prod_list_count = Math.floor(inner_width / set_width);
-
-				if (inner_width < 750) {
-					$item_wrap.css({
-						'width' : ''
-					});
-					$list_wrap.css('visibility', 'visible');
-					return;
-				}
-
-				var sss = Math.floor(real_inner_width / set_prod_list_count);
-				$item_wrap.css({
-					'width' : sss,
-					'padding' : '0 ' + set_margin + 'px'
-				});
-				$list_wrap.css('visibility', 'visible');
-			}
-
-			$('#container_w20221128906c1bc38547e')
-					.imagesLoaded()
-					.always(
-							function(ins) {
-								shopListResize();
-								shopListHeight();
-
-								$list_wrap.find('img._org_img').lazyload({ // ie 속도 문제로 예외처리 되었으나, http 환경에서 DOM7009(이미지 디코드 불가)에러로 인해 엑스박스가 나오는 문제로 롤백
-									threshold : 100,
-									effect : "fadeIn"
-								});
-								// lazyload로 인한 뒤로가기 스크롤 오차 보정
-								var recentScroll = IMWEB_SESSIONSTORAGE
-										.get('RECENT_PROD_SCROLL');
-								var recentScrollUrl = IMWEB_SESSIONSTORAGE
-										.get('RECENT_PROD_SCROLL_URL');
-								if (recentScroll && recentScrollUrl) {
-									if (recentScroll > 0
-											&& recentScrollUrl === document.location.href) {
-										if (history.scrollRestoration) {
-											history.scrollRestoration = 'manual';
+							$_window.on('scroll', function() {
+								if ($_window.width() > 768) {
+									$_prod_detail_tab_targets.each(function() {
+										if ($_window.scrollTop() >= $(this)
+												.offset().top - 0.75) {
+											var name = $(this).attr('name');
+											$_tab_target_a_tags
+													.removeClass('active');
+											$_tab_target_a_tags.filter(
+													'[href="#' + name + '"]')
+													.addClass('active');
 										}
-										$(window).scrollTop(recentScroll);
-									}
-									if (history.scrollRestoration) {
-										history.scrollRestoration = 'auto';
-									}
-									IMWEB_SESSIONSTORAGE
-											.remove('RECENT_PROD_SCROLL');
-									IMWEB_SESSIONSTORAGE
-											.remove('RECENT_PROD_SCROLL_URL');
+									});
 								}
-
-								$('#w20221128906c1bc38547e ._shop_item a')
-										.off('click')
-										.on(
-												'click',
-												function() {
-													IMWEB_SESSIONSTORAGE
-															.set(
-																	'RECENT_PROD_SCROLL',
-																	$(window)
-																			.scrollTop(),
-																	60);
-													IMWEB_SESSIONSTORAGE
-															.set(
-																	'RECENT_PROD_SCROLL_URL',
-																	document.location.href,
-																	60);
-												});
 							});
-			$(window).on('resize.shop_list', function() {
-				shopListResize();
-				shopListHeight();
-			});
-
-			$('body').off('gridChange.w20221128906c1bc38547e').on(
-					'gridChange.w20221128906c1bc38547e', function() {
-						$(window).trigger('shop_width.w20221128906c1bc38547e');
-						shopListResize();
-						shopListHeight();
-					});
-
-			function shopListHeight() {
-				$item_wrap.height('auto');
-				var be = 0;
-				var ar = [];
-				$item_wrap.each(function() {
-					if (be == $(this).position().top) {
-						ar.push($(this));
-					} else {
-						var height = 0;
-						$.each(ar, function(e, $o) {
-							if ($o.height() > height)
-								height = $o.height();
 						});
-						$.each(ar, function(e, $o) {
-							$o.height(height);
-						});
-						ar = [];
-						ar.push($(this));
-						be = $(this).position().top;
+
+		$('[data-toggle="popover"]').popover(
+				{
+					container : 'body',
+					html : true,
+					content : function() {
+						var clone = $($(this).data('popover-content')).clone(
+								true).css('display', 'block');
+						return clone;
 					}
 				});
-			}
 
-			var is_load_more = false;
-			function shopListViewMore() {
-				// 더보기 버튼 누를 때 노출 수만큼 추가로 불러와서 아래에 출력
-				if (!is_load_more) {
-					is_load_more = true;
-					var $more_btn = $('#w20221128906c1bc38547e ._more_btn');
-					var page = $more_btn.data('page');
-					var page_count = 1;
-					$.ajax({
-						type : 'GET',
-						url : ('/ajax/get_shop_list_view.cm'),
-						dataType : 'json',
-						async : false,
-						cache : true,
-						data : {
-							'page' : page + 1,
-							'pagesize' : 25,
-							'category' : 's201909197ed0e1d732aaf',
-							'sort' : '',
-							'menu_url' : '/shop/'
-						},
-						success : function(res) {
-							if (res.msg === 'SUCCESS') {
-								// Chrome에서 Scroll Anchoring 기능이 더보기 다음 내용을 기준으로 동작하는 문제가 있어 잠시 기능 해제
-								$('body.doz_sys')
-										.css('overflow-anchor', 'none');
-								$('#w20221128906c1bc38547e ._item_wrap')
-										.append(res.html);
-								if (page + 1 < page_count) {
-									$more_btn.data('page', page + 1);
-									$more_btn.find('._more_btn_page').text(
-											' (' + (page + 1) + '/'
-													+ page_count + ')');
-								} else {
-									$more_btn.hide();
-								}
-								$item_wrap = $(
-										'#container_w20221128906c1bc38547e')
-										.find('._shop_item');
-								setParameterByName('page', page + 1);
-								$('#container_w20221128906c1bc38547e')
-										.imagesLoaded().always(
-												function(ins) {
-													shopListResize();
-													shopListHeight();
-													$('body.doz_sys').css(
-															'overflow-anchor',
-															'');
-												});
+		SITE_SHOP_DETAIL.loadDelivSetting(2, $(
+				'#prod_deliv_setting .countryList').val(), $('#deliv_type')
+				.val(), $('#deliv_pay_type').val());
+
+		SITE_SHOP_DETAIL.changeInput();
+		SITE_SHOP_DETAIL.socialBtnResize();
+
+		$(function() {
+			$('#prod_detail_body').find("._table_responsive").addClass("table")
+					.wrap($("<div />").addClass("table-responsive"));
+			$('#prod_detail_content_mobile').find("._table_responsive")
+					.addClass("table").wrap(
+							$("<div />").addClass("table-responsive"));
+		})
+
+		SITE_SHOP_DETAIL
+				.initDetail({
+					"prod_idx" : 2,
+					"prod_price" : 18000,
+					"options_hash" : "5e04553a9b325f7728e1329f88e0411bf9591272",
+					"require_option_count" : 0,
+					"require_input_option_count" : 0,
+					"shop_use_full_load" : true,
+					"shop_pc_tab_type_one_page" : "Y",
+					"is_site_page" : true,
+					"prod_type" : "normal",
+					"is_prod_detail_page" : false,
+					"is_price_view_permission" : true,
+					"cm_style" : "{\"one_page\":\"N\",\"brand_color\":\"#363636\",\"badge_color\":\"#363636\",\"font_family\":\"system\",\"font_family_en\":\"notoserif\",\"h_font_family\":\"none\",\"h_font_family_en\":\"none\",\"body_color\":\"#363636\",\"body_size\":\"15\",\"body_line_height\":\"1.6\",\"body_italic\":\"N\",\"body_use_bold\":\"normal\",\"body_use_title_bold\":\"normal\",\"memo_color\":\"\",\"memo_size\":\"\",\"memo_line_height\":\"\",\"memo_indent\":\"\",\"memo_bold\":\"\",\"memo_italic\":\"\",\"memo_underline\":\"\",\"title4_color\":\"\",\"title4_size\":\"\",\"title4_line_height\":\"\",\"title4_indent\":\"\",\"title4_bold\":\"\",\"title4_italic\":\"\",\"title4_underline\":\"\",\"title3_color\":\"\",\"title3_size\":\"\",\"title3_line_height\":\"\",\"title3_indent\":\"\",\"title3_bold\":\"\",\"title3_italic\":\"\",\"title3_underline\":\"\",\"title2_color\":\"\",\"title2_size\":\"\",\"title2_line_height\":\"\",\"title2_indent\":\"\",\"title2_bold\":\"\",\"title2_italic\":\"\",\"title2_underline\":\"\",\"title1_color\":\"\",\"title1_size\":\"\",\"title1_line_height\":\"\",\"title1_indent\":\"\",\"title1_bold\":\"\",\"title1_italic\":\"\",\"title1_underline\":\"\",\"background_color\":\"rgba(255,255,255,1)\",\"max_width\":\"1400\",\"grid_margin_top_bottom\":\"15\",\"grid_margin_left_right\":\"7\",\"split_border_width\":\"1\",\"split_border_style\":\"solid\",\"split_border_color\":\"rgba(0, 0, 0, 0.05)\",\"tooltip_font_size\":12,\"tooltip_font_color\":\"#fff\",\"tooltip_background_color\":\"#000\",\"tooltip_bold\":\"N\",\"tooltip_italic\":\"N\",\"no_image\":\"\",\"block_no_image\":null,\"button_style\":\"st01\",\"button_font_size\":\"14\",\"button_letter_spacing\":1,\"button_radius\":2,\"button_italic\":\"N\",\"button_bold\":\"N\",\"button_margin\":20,\"button_font_color\":\"#ffffff\",\"button_background_color\":\"#363636\",\"button_border_color\":\"#363636\",\"button_hover_font_color\":\"#363636\",\"button_hover_background_color\":\"#ffffff\",\"button_hover_border_color\":\"#363636\",\"button_border_width\":1,\"button_hover_border_width\":1,\"button_sb_font_color\":\"#ffffff\",\"button_sb_background_color\":\"#363636\",\"button_sb_border_width\":0,\"button_sb_border_color\":\"#363636\",\"button_sb_hover_font_color\":\"#ffffff\",\"button_sb_hover_background_color\":\"#363636\",\"button_sb_hover_border_width\":0,\"button_sb_hover_border_color\":\"#363636\",\"button_sb_use_set\":\"N\",\"paging_style_type\":\"st02\",\"paging_default_style_type\":\"st00\",\"paging_active_style_type\":\"st00\",\"paging_dot_width\":10,\"paging_dot_margin\":14,\"paging_big_dot_width\":11,\"paging_big_dot_margin\":14,\"paging_line_width\":20,\"paging_line_height\":2,\"paging_line_margin\":14,\"paging_count_font_size\":13,\"paging_count_margin\":13,\"paging_count_bold\":\"N\",\"paging_count_italic\":\"N\",\"paging_use_mobile_size\":\"N\",\"nav_style_select\":\"st00\",\"nav_style_type\":\"st03\",\"nav_type_angle\":\"round\",\"nav_type_arrow\":\"normal\",\"nav_type_long_arrow\":\"normal\",\"nav_type_caret\":\"normal\",\"nav_font_size\":15,\"nav_round\":80,\"nav_square_round\":0,\"nav_bold\":\"N\",\"nav_italic\":\"N\",\"nav_text_transform\":\"N\",\"form_style_type\":\"line\",\"form_background_color\":\"rgba(255, 255, 255, 0)\",\"form_border_color\":\"#eeeeee\",\"form_color\":\"#eeeeee\",\"use_mobile_font\":\"Y\",\"use_pc_mode_btn\":\"N\",\"use_login_popup\":\"Y\",\"use_after_join_menu\":\"N\",\"after_join_menu\":\"\",\"use_after_login_menu\":\"N\",\"after_login_menu\":\"\",\"use_smooth_scroll\":\"N\",\"use_page_loader\":\"N\",\"use_animation\":\"N\",\"use_animation_load\":\"Y\",\"instagram_code\":\"\",\"use_fixed_menu\":\"N\",\"slide_menu_font_size\":\"14\",\"slide_menu_font_color\":\"rgba(238, 238, 238, 0.65)\",\"slide_menu_background_color\":\"#212121\",\"slide_menu_letter_spacing\":\"0\",\"slide_menu_border_size\":\"0\",\"slide_menu_border_color\":\"rgba(243, 243, 243, 0.5)\",\"slide_menu_active_font_color\":\"#212121\",\"slide_menu_active_background_color\":\"#f5f5f5\",\"slide_menu_hover_font_color\":\"#111\",\"slide_menu_hover_background_color\":\"#f5f5f5\",\"slide_menu_use_login\":\"Y\",\"slide_menu_login_font_color\":\"#eeeeee\",\"slide_menu_login_background_color\":\"#2b2b2b\",\"slide_menu_use_profile\":\"N\",\"slide_menu_use_alarm\":\"Y\",\"slide_menu_use_global\":\"N\",\"slide_menu_global_type\":\"icon\",\"slide_menu_global_flag_type\":\"\",\"slide_menu_global_icon_type\":\"\",\"pc_slide_menu_logo_code\":\"\",\"pc_slide_menu_active_style\":\"st00\",\"pc_slide_menu_active_border_width\":\"0\",\"pc_slide_menu_active_border_width2\":\"1\",\"pc_slide_menu_active_border_radius\":\"3\",\"pc_slide_menu_active_border_color\":\"#222222\",\"pc_slide_menu_active_color\":\"#ffffff\",\"pc_slide_menu_active_color2\":\"#222222\",\"pc_slide_menu_active_color3\":\"\",\"pc_slide_menu_active_color4\":\"\",\"pc_slide_menu_active_background_color\":\"\",\"pc_slide_menu_logo_v_padding\":\"10\",\"pc_slide_menu_logo_font_color\":\"#fff\",\"pc_slide_menu_v_padding\":\"3\",\"pc_slide_menu_h_padding\":\"15\",\"pc_slide_menu_align\":\"center\",\"pc_slide_menu_background_color\":\"#2f2f2f\",\"pc_slide_menu_font_size\":\"13\",\"pc_slide_menu_font_color\":\"rgba(255, 255, 255, 0.5)\",\"pc_slide_menu_hover_font_color\":\"#ffffff\",\"pc_slide_menu_indent\":\"1\",\"pc_slide_menu_gap\":\"2\",\"pc_slide_menu_font_family\":\"system\",\"pc_slide_menu_font_family_en\":\"none\",\"pc_slide_menu_bold\":\"N\",\"pc_slide_menu_italic\":\"N\",\"pc_slide_menu_shadow\":\"N\",\"pc_slide_menu_vertical_border\":\"N\",\"pc_slide_menu_vertical_border_color\":\"rgba(56, 56, 56, 0.52)\",\"pc_slide_menu_show_child_menu\":\"N\",\"pc_slide_menu_use_logo_text\":\"Y\",\"pc_slide_menu_logo_title\":\"\",\"pc_slide_menu_logo_bold\":\"Y\",\"pc_slide_menu_logo_italic\":\"N\",\"pc_slide_menu_logo_font\":\"montserrat\",\"pc_slide_menu_logo_font_size\":\"38\",\"pc_slide_menu_logo_image_rendering\":\"block\",\"pc_slide_menu_logo_height\":\"64\",\"pc_slide_menu_logo_letter_spacing\":\"0\",\"pc_slide_menu_use_logo_icon\":\"N\",\"pc_slide_menu_logo_icon\":\"l2017101359e02dbd8c0b9\",\"mega_dropdown_font_size\":\"13\",\"mega_dropdown_font_color\":\"#ffffff\",\"mega_dropdown_sub_font_size\":\"12\",\"mega_dropdown_sub_font_color\":\"rgba(255, 255, 255, 0.5)\",\"mega_dropdown_sub_hover_color\":\"#fff\",\"mega_dropdown_background\":\"#2a2a2a\",\"mega_dropdown_width\":\"130\",\"mega_dropdown_v_margin\":\"5\",\"mega_dropdown_align\":\"left\",\"mega_dropdown_line_count\":\"8\",\"mega_dropdown_padding\":\"30\",\"mega_dropdown_offset_top\":\"\",\"mega_dropdown_border_width\":\"\",\"mega_dropdown_border_color\":\"\",\"mega_dropdown_font_family\":\"system\",\"mega_dropdown_font_family_en\":\"montserrat\",\"mega_dropdown_shadow\":\"N\",\"mega_dropdown_bold\":\"N\",\"mega_dropdown_italic\":\"N\",\"prod_list_line_count\":3,\"prod_list_extend_count\":\"Y\",\"prod_list_row_count\":0,\"prod_list_item_width\":\"446\",\"prod_list_mobile_type\":\"A\",\"prod_list_pc_type\":\"A\",\"prod_list_line_interval\":15,\"prod_list_line_interval_y\":40,\"prod_list_font_size\":0,\"prod_list_color\":\"\",\"prod_list_border_width\":0,\"prod_list_border_color\":\"\",\"prod_list_price_font_size\":13,\"prod_list_price_color\":\"#212121\",\"prod_list_membership_price_font_size\":0,\"prod_list_membership_price_color\":\"\",\"prod_list_summary_font_size\":13,\"prod_list_summary_color\":\"\",\"prod_list_sale_percentage_color\":\"\",\"prod_list_bold\":\"Y\",\"prod_list_price_bold\":\"N\",\"prod_list_membership_price_bold\":\"\",\"prod_list_align\":\"center\",\"prod_list_rendering\":\"\",\"prod_list_hover_type\":\"dark\",\"prod_list_thumb_type\":\"\",\"prod_list_pc_paging_type\":\"\",\"prod_list_mobile_paging_type\":\"\",\"prod_list_more_btn_text\":\"\",\"prod_list_default_order\":\"\",\"prod_list_show_category\":\"\",\"prod_list_show_item_align\":\"\",\"prod_list_show_name\":\"Y\",\"prod_list_show_price\":\"Y\",\"prod_list_show_membership_price\":\"\",\"prod_list_show_review\":\"\",\"prod_list_show_badge\":\"N\",\"prod_list_show_like\":\"\",\"prod_list_show_summary\":\"\",\"prod_list_show_cart\":\"\",\"prod_list_show_option_color\":\"Y\",\"prod_list_show_prod_add_btn\":\"N\",\"prod_option_color_style_type\":\"S\",\"prod_list_is_soldout_last_sorting\":\"\",\"shop_view_style\":\"b\",\"shop_view_font_size\":\"22\",\"shop_view_color\":\"#212121\",\"shop_view_price_font_size\":\"20\",\"shop_view_label_font_size\":\"12\",\"shop_view_membership_price_font_size\":\"20\",\"shop_view_body_width\":100,\"shop_view_price_color\":\"#000000\",\"shop_view_sale_percentage_color\":\"#fe5356\",\"shop_view_membership_price_color\":\"\",\"shop_view_title_bold\":\"N\",\"shop_view_price_bold\":\"N\",\"shop_view_membership_price_bold\":\"N\",\"shop_view_align\":\"center\",\"shop_view_nav_style\":\"NORMAL\",\"shop_view_category\":\"Y\",\"shop_view_origin\":\"Y\",\"shop_view_point\":\"Y\",\"shop_view_method\":\"Y\",\"shop_view_today_deliv\":\"Y\",\"shop_view_weight\":\"N\",\"shop_view_maker\":\"N\",\"shop_view_brand\":\"N\",\"shop_view_thumbnail\":\"Y\",\"shop_view_prod_title\":\"Y\",\"shop_view_order_count\":\"N\",\"shop_view_review_summary\":\"N\",\"shop_view_shop_view_price\":\"Y\",\"shop_view_stock_count\":\"N\",\"shop_view_order_minimum_price\":\"N\",\"shop_view_membership_price\":\"N\",\"shop_view_simple_content\":\"Y\",\"shop_view_delivery\":\"Y\",\"shop_view_review\":\"Y\",\"shop_view_qna\":\"Y\",\"shop_view_buy_item_show\":\"Y\",\"shop_view_buy_item_hide\":\"N\",\"shop_view_buy_item_use\":\"N\",\"shop_pc_tab_type_one_page\":\"Y\",\"shop_pc_tab_type_use_tab\":\"N\",\"shop_pc_tab_type_unfixed\":\"N\",\"shop_view_buy_item_title\":\"\",\"shop_view_buy_item_link\":[],\"shop_view_buy_regularly_item_title\":\"\",\"shop_view_buy_regularly_item_link\":[],\"shop_view_buy_item_tooltip\":\"N\",\"shop_view_buy_item_tooltip_title\":\"\",\"shop_view_buy_regularly_item_tooltip_title\":\"\",\"shop_view_buy_item_tooltip_position\":\"top\",\"shop_view_buy_item_tooltip_color\":\"#383838\",\"shop_view_buy_item_tooltip_animate\":\"N\",\"shop_view_cart_item_show\":\"Y\",\"shop_view_cart_item_hide\":\"N\",\"shop_view_cart_item_use\":\"N\",\"shop_view_cart_item_link\":[],\"shop_view_cart_item_title\":\"\",\"shop_view_cart_regularly_item_link\":[],\"shop_view_cart_regularly_item_title\":\"\",\"shop_view_like_item_show\":\"Y\",\"shop_view_like_item_hide\":\"N\",\"shop_view_like_item_use\":\"N\",\"shop_secret_qna_use\":\"N\",\"qna_secret_type\":\"select_secret\",\"shop_allow_guest_review\":\"N\",\"shop_allow_guest_qna\":\"Y\",\"shop_time_hide\":\"N\",\"shop_review_badge_hide\":\"N\",\"shop_review_scope_hide\":\"N\",\"shop_masking_review_writer\":\"N\",\"shop_show_writer_type_id\":\"N\",\"shop_use_full_load\":\"N\",\"shop_use_tab_style\":\"underline\",\"shop_use_mobile_font_size\":\"N\",\"shop_use_img_zoom\":\"N\",\"shop_use_seemore\":\"N\",\"shop_review_writer_type\":\"nick\",\"shop_qna_writer_type\":\"nick\",\"shop_review_comment_permission\":\"manager\",\"shop_qna_comment_permission\":\"manager\",\"shop_masking_qna_writer\":\"N\",\"shop_view_tab_sorts\":[\"prod_detail\",\"prod_review\",\"prod_qna\",\"prod_return\"],\"shop_detail_tab\":\"active\",\"shop_return_tab\":\"none\",\"shop_review_permission\":\"buyer\",\"shop_qna_permission\":\"guest\",\"shop_review_pc_paging\":\"10\",\"shop_review_mobile_paging\":\"5\",\"shop_qna_pc_paging\":\"5\",\"shop_qna_mobile_paging\":\"5\",\"shop_review_guide\":\"Y\",\"shop_review_guide_text\":\"\",\"shop_qna_guide\":\"Y\",\"shop_qna_guide_text\":\"\",\"show_review_wtime\":\"Y\",\"show_review_view_count\":\"N\",\"shop_first_photo_review\":\"N\",\"shop_photo_review_summary\":\"Y\",\"shop_photo_review_sort\":\"recent\",\"shop_review_option\":true,\"show_qna_wtime\":\"\",\"shop_qna_time_hide\":\"\",\"show_qna_view_count\":\"\",\"shop_qna_secret_title_same_ck\":\"Y\",\"prod_badge_new_period\":\"\",\"prod_badge_icon_margin\":\"\",\"prod_badge_new\":\"\",\"prod_badge_new_width\":0,\"prod_badge_new_height\":0,\"prod_badge_sale\":\"\",\"prod_badge_sale_width\":0,\"prod_badge_sale_height\":0,\"prod_badge_timesale\":\"\",\"prod_badge_timesale_width\":0,\"prod_badge_timesale_height\":0,\"prod_badge_wait\":\"\",\"prod_badge_wait_width\":0,\"prod_badge_wait_height\":0,\"prod_badge_soldout\":\"\",\"prod_badge_soldout_width\":0,\"prod_badge_soldout_height\":0,\"prod_badge_best\":\"\",\"prod_badge_best_width\":0,\"prod_badge_best_height\":0,\"prod_badge_md\":\"\",\"prod_badge_md_width\":0,\"prod_badge_md_height\":0,\"prod_badge_hot\":\"\",\"prod_badge_hot_width\":0,\"prod_badge_hot_height\":0,\"prod_badge_coupon\":\"\",\"prod_badge_coupon_width\":0,\"prod_badge_coupon_height\":0,\"booking_review_permission\":\"member\",\"booking_review_paging\":\"5\",\"booking_review_writer_type\":\"nick\",\"booking_review_comment_permission\":\"manager\",\"booking_review_wtime\":\"Y\",\"booking_review_time_hide\":\"N\",\"booking_qna_permission\":\"guest\",\"booking_qna_paging\":\"5\",\"booking_qna_writer_type\":\"nick\",\"booking_qna_comment_permission\":\"manager\",\"booking_qna_secret_type\":\"select_secret\",\"booking_qna_wtime\":\"Y\",\"booking_qna_time_hide\":\"N\",\"booking_view_stock_count\":\"Y\",\"booking_show_price\":\"Y\",\"booking_show_badge\":\"N\",\"booking_available_color\":\"#8EC31F\",\"booking_pending_color\":\"#4A90E2\",\"booking_complete_color\":\"#FA565A\",\"prod_list_show_brand_name\":\"N\",\"shop_view_price\":\"Y\"}",
+					"section_code" : "s20221128785d3e46ff7d7",
+					"exist_color_option" : false,
+					"is_exist_color_option_images" : false,
+					"prod_edit_time" : 1568619624,
+					"shop_view_style" : "b",
+					"first_tab" : "prod_detail",
+					"use_tab_list" : [ "prod_detail", "prod_review", "prod_qna" ],
+					"only_regularly" : null
+				})
+		SITE_SHOP_DETAIL.initProdStock(false, 0, false);
+		SITE_SHOP_DETAIL.initLocalize('총금액');
+		SITE_SHOP_DETAIL.loadOption('prod', 2, function() {
+		});
+		$(function() {
+			SNS
+					.init({
+						"_main_url" : "https:\/\/onoffline.imweb.me",
+						"_site_name" : "onoffline",
+						"_subject" : "Signature coffee beens",
+						"_body" : "",
+						"_post_url" : "https:\/\/onoffline.imweb.me\/beens\/?idx=2",
+						"_security_post_url" : "aHR0cHM6Ly9vbm9mZmxpbmUuaW13ZWIubWUvYmVlbnMvP2lkeD0y",
+						"_img" : "https:\/\/cdn.imweb.me\/thumbnail\/20190919\/2276438f9ed5d.png",
+						"_share_type" : "commerce",
+						"_pin_page" : "Y",
+						"_additional" : {
+							"commerce" : {
+								"orig_price" : 18000
 							}
-						},
-						complete : function() {
-							is_load_more = false;
 						}
 					});
-				}
-			}
+		});
+		$(document).ready(function() {
+			SITE_SHOP_DETAIL.startProdImageRolling(true);
+		});
+		$(document).ready(function() {
+			SITE_SHOP_REVIEW.createHtml(2, 0, 0);
+			SITE_SHOP_QNA.createHtml(2, 0, 0);
+		});
+		SITE_SHOP_DETAIL.getReviewSummary();
+		SITE_SHOP_DETAIL.changeOrderCount("pc", 1, function() {
+			SITE_SHOP_DETAIL.updateSelectedOptions("prod");
+		}, false);
+		SITE_SHOP_DETAIL.changeOrderCount("mobile", 1, function() {
+			SITE_SHOP_DETAIL.updateSelectedOptions("prod");
+		}, false);
+		SITE_SHOP_DETAIL.loadDelivSetting(2, 'KR');
 
-			function shopListViewMoreLoop(target_page) {
-				// 더보기 버튼 추가 페이지를 불러옴
-				var $more_btn = $('#w20221128906c1bc38547e ._more_btn');
-				var page_count = 1;
-				if (target_page <= page_count) {
-					$
-							.ajax({
-								type : 'GET',
-								url : ('/ajax/get_shop_list_view.cm'),
-								dataType : 'json',
-								async : false,
-								cache : true,
-								data : {
-									'page' : target_page,
-									'pagesize' : 25,
-									'category' : 's201909197ed0e1d732aaf',
-									'sort' : '',
-									'menu_url' : '/shop/'
-								},
-								success : function(res) {
-									if (res.msg === 'SUCCESS') {
-										// Chrome에서 Scroll Anchoring 기능이 더보기 다음 내용을 기준으로 동작하는 문제가 있어 잠시 기능 해제
-										$('body.doz_sys').css(
-												'overflow-anchor', 'none');
-										$('#w20221128906c1bc38547e ._item_wrap')
-												.append(res.html);
-										if (target_page === target_more_page) {
-											if (target_page < page_count) {
-												$more_btn.data('page',
-														target_page);
-												$more_btn
-														.find('._more_btn_page')
-														.text(
-																' ('
-																		+ (target_page)
-																		+ '/'
-																		+ page_count
-																		+ ')');
-											} else {
-												$more_btn.hide();
-											}
-											$item_wrap = $(
-													'#container_w20221128906c1bc38547e')
-													.find('._shop_item');
-											setParameterByName('page',
-													target_page);
-											$(
-													'#container_w20221128906c1bc38547e')
-													.imagesLoaded()
-													.always(
-															function(ins) {
-																shopListResize();
-																shopListHeight();
-																$(
-																		'body.doz_sys')
-																		.css(
-																				'overflow-anchor',
-																				'');
-															});
-											is_load_more = false;
-										} else if (target_page + 1 <= target_more_page) {
-											shopListViewMoreLoop(target_page + 1);
-										}
-									}
-								},
-								error : function() {
-									is_load_more = false;
-								}
-							});
-				}
-			}
-
-			$('#w20221128906c1bc38547e ._more_btn').on('click', function() {
-				shopListViewMore();
-			});
-
-			// 더보기 버튼 사용 중이고 2페이지 이상일 때 추가 페이지 불러옴
-			if (target_more_page > 1)
-				shopListViewMoreLoop(2);
-
-			var setTimesale = function() {
-				// 페이지 이동 등으로 새 interval 사용 시에는 기존 interval은 삭제되어야 함
-				var $doz_timesale_wrap = $('#w20221128906c1bc38547e ._doz_timesale_wrap');
-				if ($doz_timesale_wrap.length > 0) {
-					$doz_timesale_wrap
-							.each(function() {
-								var $that = $(this);
-								var start_time = ($that.find('._doz_timesale')
-										.attr('data-start-time') * 1000);
-								var $doz_timesale = $that
-										.find('._doz_timesale');
-								var timesale_interval = setInterval(
-										function() {
-											if ($doz_timesale.length > 0) {
-												var remain_ms = ($doz_timesale
-														.attr('data-end-time') * 1000)
-														- start_time;
-												if (remain_ms > 0) {
-													var remain_d = Math
-															.floor(remain_ms / 86400000);
-													var remain_h = Math
-															.floor((remain_ms % 86400000) / 3600000);
-													var remain_m = Math
-															.floor((remain_ms % 3600000) / 60000);
-													var remain_s = Math
-															.floor((remain_ms % 60000) / 1000);
-
-													var remain_hh = remain_h < 10 ? '0'
-															+ remain_h
-															: '' + remain_h;
-													var remain_mm = remain_m < 10 ? '0'
-															+ remain_m
-															: '' + remain_m;
-													var remain_ss = remain_s < 10 ? '0'
-															+ remain_s
-															: '' + remain_s;
-
-													if (remain_d >= 1) {
-														$doz_timesale
-																.text(getLocalizeString(
-																		'설명_타임세일종료까지n일',
-																		[ remain_d ],
-																		'타임세일 종료까지 %1일'));
-													} else {
-														$doz_timesale
-																.text(getLocalizeString(
-																		'설명_종류까지n1시n2분n3초남음',
-																		[
-																				remain_hh,
-																				remain_mm,
-																				remain_ss ],
-																		'종료까지 %1:%2:%3 남음'));
-													}
-													start_time = start_time + 1000;
-												} else {
-													/* 타임세일 종료 */
-													clearInterval(timesale_interval);
-													$that.remove();
-												}
-											} else {
-												/* 페이지 이동 등으로 대상이 없으면 inverval 제거 */
-												clearInterval(timesale_interval);
-											}
-										}, 1000);
-							});
-				}
-			}
-
-			setTimesale();
+		$(function() {
+			SITE_SHOP_DETAIL.setReviewQnaCountText($("._qna_count_text"), 0);
+			SITE_SHOP_DETAIL.setReviewQnaCountText($("._review_count_text"), 0);
 		});
 
+		SITE_SHOP_DETAIL.setSelectedProd(false);
 		$("#text_w202211285622030fa19bd").find("._table_responsive").addClass(
 				"table").wrap($("<div />").addClass("table-responsive"));
 		$("#text_w20221128aa8064894aa86").find("._table_responsive").addClass(
@@ -6934,8 +5807,8 @@ End Function
 			SITE_VISIT_LOG
 					.addVisitLog(
 							document.referrer,
-							'OK9CVzPXlZWTMsPmOAmxbZ1VUQfdj9zMi9S0iFgj5DB2OmRp39n5++AruWXYQnxO/fFTYOv77/TDeQWicL+asdrMuxKC1G+l+J8qJJ/R/S5GLFTX8ci/TjJWaDzMjX8S',
-							'9031', 'm20221128e445c75c466cd');
+							'OK9CVzPXlZWTMsPmOAmxbZ1VUQfdj9zMi9S0iFgj5DDsZsre3GNaXB+L/Jr7IIF+GPVekQpEGAy2VAAXTpthMS0U5UJJKo5DXj2u39PrFH/tB+GHz7xLllryT2zWBqAy',
+							'511', 'm202211287faae98d6ec58');
 		});
 	</script>
 	<script>
@@ -7321,27 +6194,67 @@ body.doz_sys {
 </style>
 
 	<div id="doz_ad" class="free_ad_block free_banner_wrap"
-		style="z-index: 2147483647;">
+		style="z-index: 2147483647; display: block;">
 		<div id="doz_free_ad" class="free_ad_block free_banner_wrap"
 			style="z-index: 2147483647;">
-			<%--
-<div class="holder">
-<a class="_free_banner free_site_banner inline-blocked " href="https://goo.gl/CNffhw" target="_blank">
-<img class="hidden-xs hidden-sm" src="https://vendor-cdn.imweb.me/images/site/imweb_new_logo_blue_2x_360.png" width="95">
-<img class="hidden-md hidden-lg" src="https://vendor-cdn.imweb.me/images/site/imweb_new_logo_white2.png?454848 " width="70">
-<div class="inline-blocked">
-<span class="free_ad_text">이 사이트는 아임웹으로 제작되었습니다.</span>
-</div>
-
-</a>
-<a href="https://imweb.me/theme" target="_blank" class="inline-blocked free_ad_btn btn-brand hidden-xs hidden-sm">무료 시작하기
-</a>
-<a href="https://imweb.me/best_production_list" target="_blank" class="inline-blocked free_ad_right hidden-xs hidden-sm"><span>고객사례 확인하기
-<i class="icon-arrow-right vertical-middle" style="font-size:14px;">
---%>
-			</i> </span> </a>
+			<div class="holder">
+				<a class="_free_banner free_site_banner inline-blocked "
+					href="https://goo.gl/CNffhw" target="_blank"> <img
+					class="hidden-xs hidden-sm"
+					src="https://vendor-cdn.imweb.me/images/site/imweb_new_logo_blue_2x_360.png"
+					width="95"> <img class="hidden-md hidden-lg"
+					src="https://vendor-cdn.imweb.me/images/site/imweb_new_logo_white2.png?454848 "
+					width="70">
+					<div class="inline-blocked">
+						<span class="free_ad_text">이 사이트는 아임웹으로 제작되었습니다.</span>
+					</div>
+				</a> <a href="https://imweb.me/theme" target="_blank"
+					class="inline-blocked free_ad_btn btn-brand hidden-xs hidden-sm">무료
+					시작하기 </a> <a href="https://imweb.me/best_production_list"
+					target="_blank"
+					class="inline-blocked free_ad_right hidden-xs hidden-sm"><span>고객사례
+						확인하기 <i class="icon-arrow-right vertical-middle"
+						style="font-size: 14px;"> </i>
+				</span> </a>
+			</div>
 		</div>
 	</div>
-	</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>	
 </body>
+<script>
+const ctx = "${pageContext.request.contextPath}"
+listReply();
+
+
+function listReply(){
+	const boardNum = document.querySelector("#boardNum").value;
+	fetch(`\${ctx}/ydsReply/listReply/\${boardNum}`)
+	.then(res => res.json())
+	.then(list => {
+		const replyListContainer = document.querySelector("#replyListContainer");
+		replyListContainer.innerHTML = "";
+		
+		for(const item of list) {
+			const replyDiv = 
+				`<div class="list-group-item d-flex">
+					<div class="me-auto">
+						<h5>
+							<i class="fa-solid fa-user"></i>
+							\${item.writer}
+						</h5>
+						<div>
+							\${item.content}
+						</div>
+						<small class="text-muted">
+						<i class="fa-regular fa-clock"></i> 
+							\${item.createDate}
+						</small>
+				</div>
+				replyListContainer.insertAdjacentHTML("beforeend", replyDiv);	
+		}
+	})
+}
+	
+
+</script>
 </html>

@@ -13,4 +13,6 @@ public interface ydsBoardMapper {
 
 	public TripsBoardDto getBoard(int num);
 
+	public int removeBoard(int num);
+
 }

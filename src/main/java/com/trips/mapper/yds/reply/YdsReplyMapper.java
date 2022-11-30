@@ -11,4 +11,12 @@ public interface YdsReplyMapper {
 
 	List<TripsReplyDto> listReply(int boardNum);
 
+	int insertReply(TripsReplyDto replyDto);
+
+	int deleteReply(int replyNum);
+
+	int updateReply(TripsReplyDto reply);
+
+	void deleteReplybyBoardId(int num);
+
 }

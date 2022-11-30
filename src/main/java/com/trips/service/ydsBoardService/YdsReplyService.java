@@ -19,4 +19,19 @@ public class YdsReplyService {
 		// TODO Auto-generated method stub
 		return mapper.listReply(boardNum);
 	}
+
+	public int insertReply(TripsReplyDto replyDto) {
+		// TODO Auto-generated method stub
+		return mapper.insertReply(replyDto);
+	}
+
+	public int deleteReply(int replyNum) {
+		// TODO Auto-generated method stub
+		return mapper.deleteReply(replyNum);
+	}
+
+	public int updateReply(TripsReplyDto reply) {
+		// TODO Auto-generated method stub
+		return mapper.updateReply(reply);
+	}
 }

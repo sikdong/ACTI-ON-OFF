@@ -7,7 +7,7 @@
 <select id="listReply" resultType = "com.trips.domain.yds.TripsReplyDto">
 SELECT 
 	R_NO replyNum,
-	R_WRITER writer,
+	M_ID writer,
 	R_CONTENT content,
 	R_CREATEDATE createDate
 FROM ACTI_REPLY
@@ -15,6 +15,31 @@ WHERE B_NO = #{boardNum}
 ORDER BY R_NO DESC;
 </select>
 
+<insert id="insertReply">
+INSERT INTO ACTI_REPLY(
+	M_ID,
+    R_CONTENT,
+    B_NO
+)
+VALUE(#{writer}, #{content},#{boardNum});
 
+</insert>
+
+<delete id="deleteReply">
+DELETE FROM ACTI_REPLY
+WHERE R_NO = #{replyNum}
+</delete>
+
+<update id="updateReply">
+UPDATE ACTI_REPLY
+SET
+	R_CONTENT = #{content}
+WHERE R_NO = #{replyNum}
+</update>
+
+<delete id="deleteReplybyBoardId">
+DELETE FROM ACTI_REPLY
+WHERE B_NO = #{num}
+</delete>
 
 </mapper>
