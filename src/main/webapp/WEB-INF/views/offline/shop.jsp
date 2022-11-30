@@ -17,7 +17,7 @@
 
 <meta property="og:url"
 	content="https://onoffline.imweb.me/shop_view/?idx=2">
-<title>Signature coffee beens : onoffline</title>
+<title>${board.title }</title>
 <meta name="application-name"
 	content="Signature coffee beens : onoffline">
 <meta name="msapplication-tooltip"
@@ -4056,7 +4056,7 @@ padding-right
 													id="logo_w20221128580f6db37b928">
 													<div class="logo_title ">
 														<a class=" fixed_transform" style="display: block"
-															href="/">MONDAY COFFEE</a>
+															href="/">${board.writer }</a>
 													</div>
 												</div>
 
@@ -4474,6 +4474,16 @@ padding-right
                             </button>
                         </div> -->
 													<div class="_today_arrival_wrap"></div>
+													
+													
+													<h2>프로그램 소개</h2>
+													<hr>
+													<p>Lorem ipsum.</p>
+													<hr>
+													<input class="form-control-plaintext" type="text" value="${board.content }" aria-label="Disabled input example" readonly>
+													
+													<h2>호스트 소개</h2>
+													<input value="${board.writer }"class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example">
 													
 													<!-- 모바일용 상세 정보 버튼 시작 -->
 													<div class="m-btn-group underline_tab" id="tab_offset">
