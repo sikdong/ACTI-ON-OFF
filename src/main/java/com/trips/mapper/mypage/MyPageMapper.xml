@@ -76,6 +76,21 @@
 	WHERE
 		M_ID = #{id}
 	</update>
+	
+	<select id="getRes1ById" resultType="com.trips.domain.mypage.Res1Dto">
+	SELECT 
+		r.M_ID id,
+	    b.B_TITLE title,
+	    b.M_ID host,
+	    d.DATE date,
+	    b.B_FILENAME fileName
+	FROM
+	    ACTI_RESERVATION r
+	JOIN ACTI_BOARD b ON r.B_NO = b.B_NO
+	JOIN ACTI_DATE d ON r.B_NO = d.B_NO
+	WHERE r.M_ID = #{id};
+	</select>
+
 </mapper>
 
 

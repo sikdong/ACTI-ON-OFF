@@ -1,5 +1,7 @@
 package com.trips.controller.mypage;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.fasterxml.jackson.databind.ser.std.StdKeySerializers.Default;
 import com.trips.domain.mypage.BoardDto;
 import com.trips.domain.mypage.MemberDto;
+import com.trips.domain.mypage.Res1Dto;
 import com.trips.service.mypage.MyPageService;
 
 @Controller
@@ -105,15 +108,16 @@ public class MyPageController {
 				rttr.addFlashAttribute("message", member.getId() + "님의 호스트 여부가 수정되지 않았습니다.");
 			}
 		}
-		return "redirect:/mypage/mypage2";
+		return "redirect:/mypage/mypage2 ";
 	}
 	
 	@GetMapping("reservation")
 	public void res(
-			@RequestParam(name = "id", defaultValue = "aa") String id,
+			@RequestParam(name = "id", defaultValue = "dd") String id,
 			Model model
 			) {
-		MemberDto member = service.getById(id);
-		model.addAttribute("member", member);
+		
+		List<Res1Dto> res1 = service.getRes1ById(id);
+		model.addAttribute("res1", res1);
 	}
 }

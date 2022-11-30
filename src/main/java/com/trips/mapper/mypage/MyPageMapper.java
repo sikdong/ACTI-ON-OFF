@@ -1,6 +1,9 @@
 package com.trips.mapper.mypage;
 
+import java.util.List;
+
 import com.trips.domain.mypage.MemberDto;
+import com.trips.domain.mypage.Res1Dto;
 
 public interface MyPageMapper {
 
@@ -17,5 +20,7 @@ public interface MyPageMapper {
 	int updateByGender(String id, String gender);
 
 	int updateByHost(String id, Boolean host);
+
+	List<Res1Dto> getRes1ById(String id);
 
 }

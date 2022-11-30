@@ -17,7 +17,7 @@ background-color:black;
 
 }
 .container-md{
- padding:0 0 0 220px !important; 
+ padding:0 0 0 220px; 
 }
 .font{
 color: #ffffff;

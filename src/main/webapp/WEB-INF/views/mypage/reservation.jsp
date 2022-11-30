@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +21,9 @@
 	font-family: "Malgun Gothic";
 	font-weight: bold;
 }
-
+#res{
+ padding:0 0 0 140px; 
+}
 </style>
 
 <meta charset="UTF-8">
@@ -33,17 +36,51 @@
 <c:url value="/mypage/reservation" var="resLink" />
 
 	<my:navbar></my:navbar>
-	<my:navbar-mypage></my:navbar-mypage>
+	<my:myReservation></my:myReservation>
 	
-	<div class="container-md" style="width:800px">
+	<div id="res" class="container-md" style="width:1500px">
 		
-		<strong style="padding:170px 0 43px 0;display:block">${member.id }님의 예약내역</strong>
+		<strong style="padding:70px 0 43px 0;display:block">${res1[0].id }님의 예약내역</strong>
 		<div class="row">
 			<div class="col">
+				<jsp:useBean id="now" class="java.util.Date" />
+				<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" />
+				
+				<div class="future">
+					<h1>예정된 예약</h1>
+					<c:forEach var="res" items="${res1}">
+					 
+						<c:if test="${res.date > today }">
+							<div style="display:flex;">
+								<div style="padding-right: 130px;">
+									<img style="width:128px; height:128px;border-radius: 30%" 
+									src="${imgUrl }/${res.fileName}">
+								</div>
+								<div>
+									<h1>${res.title }</h1>
+									<h1>${res.host }</h1>
+									<h1>${res.date }</h1>
+									<h1>${res.fileName }</h1>
+								</div>
+							</div>						
+						</c:if>
+					</c:forEach>		
+				</div>	
+				<hr>
+				<div class="past">
+					<h1>지난 예약</h1>
+					<c:forEach var="res" items="${res1}">
+						<c:if test="${res.date <= today }">
+							<h1>${res.title }</h1>
+							<h1>${res.host }</h1>
+							<h1>${res.date }</h1>
+							<h1>${res.fileName }</h1>						
+						</c:if>
+					</c:forEach>
+				
+				</div>		
 					
-					
-			
-					
+	
 			</div>
 		</div>
 	</div>

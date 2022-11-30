@@ -1,5 +1,7 @@
 package com.trips.service.mypage;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -7,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.trips.domain.mypage.BoardDto;
 import com.trips.domain.mypage.MemberDto;
+import com.trips.domain.mypage.Res1Dto;
 import com.trips.mapper.mypage.MyPageMapper;
 
 import software.amazon.awssdk.services.s3.S3Client;
@@ -55,5 +58,9 @@ public class MyPageService {
 	public int updateByHost(String id, Boolean host) {
 
 		return mapper.updateByHost(id, host);
+	}
+
+	public List<Res1Dto> getRes1ById(String id) {
+		return mapper.getRes1ById(id);
 	}
 }

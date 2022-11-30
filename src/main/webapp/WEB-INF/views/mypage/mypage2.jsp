@@ -307,6 +307,7 @@ document.querySelector("#reservation").addEventListener("click", function() {
 	location.href="/mypage/reservation"
 });
 /* --------------예약페이지 이동 기능 끝-------------------------------------------------------------------------------------------------- */
+ /* --------------sticky navbar scroll 기능-------------------------------------------------------------------------------------------------- */
 function navigo (){
   const header = document.querySelector('#nav2'); //헤더부분획득
   const headerheight = header.clientHeight;//헤더높이
@@ -321,9 +322,9 @@ document.addEventListener('scroll', onScroll, { passive: true });//스크롤 이
      nav.classList.remove('fix');//fix클래스를 네비에서 제거
    }
  } 
-  
 }
 navigo()
+/* --------------sticky navbar scroll 기능 끝-------------------------------------------------------------------------------------------------- */
 </script>
 </body>
 </html>
