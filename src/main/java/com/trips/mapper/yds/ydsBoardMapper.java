@@ -15,4 +15,6 @@ public interface ydsBoardMapper {
 
 	public int removeBoard(int num);
 
+	public List<TripsBoardDto> getFiveFiles();
+
 }

@@ -42,4 +42,10 @@ public class YdsBoardController {
 		return "redirect:/ydsBoard/list";
 	}
 	
+	@GetMapping("getFiveFiles")
+	public void getFiveFiles(Model model){
+		List<TripsBoardDto> list = service.getFiveFiles();
+		model.addAttribute("fiveList", list);
+	}
+	
 }

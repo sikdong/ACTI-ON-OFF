@@ -41,8 +41,8 @@ public class YdsReplyController {
 		return service.deleteReply(replyNum);
 	}
 	
-	@PutMapping("changeReply")
-	public int changeReply(@RequestBody TripsReplyDto reply) {
+	@PutMapping("modifyReply")
+	public int modifyReply(@RequestBody TripsReplyDto reply) {
 		return service.updateReply(reply);
 	}
 	

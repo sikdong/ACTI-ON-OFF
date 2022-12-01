@@ -5,13 +5,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-body {
-font-family : Malgun Gothic !important;
-
-}
-
-</style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
@@ -24,101 +17,74 @@ font-family : Malgun Gothic !important;
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
 	integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="${path}/assets/css/ydsCss.css" />
 </head>
 <body>
+	<my:navbar></my:navbar>
 	<c:url value="/ydsBoard/remove" var="removeLink">
 		<c:param name="num" value="${board.num }" ></c:param>
 	</c:url>
 	<%--체험 제목 보여주기 --%>
 	<div class="container-fluid">
-		<h2>제주 앞바다를 즐겨 보세요!</h2>
-		<a href="${removeLink}" class="btn btn-danger">삭제</a>
+		<span>제주 앞바다를 즐겨 보세요!</span>
+		
+		<span>
+			<a href="${removeLink}" class="btn btn-outline-secondary btn-sm">게시물 삭제</a>
+		</span>
 	</div>
 	
-
-	<%-- 이미지 보여주기 --%>
-	<div id="carouselExampleControls" class="carousel slide">
-		<div class="carousel-indicators">
-			<button type="button" data-bs-target="#carouselExampleIndicators"
-				data-bs-slide-to="0" class="active" aria-current="true"
-				aria-label="Slide 1"></button>
-			<button type="button" data-bs-target="#carouselExampleIndicators"
-				data-bs-slide-to="1" aria-label="Slide 2"></button>
-			<button type="button" data-bs-target="#carouselExampleIndicators"
-				data-bs-slide-to="2" aria-label="Slide 3"></button>
-		</div>
-		<div class="carousel-inner">
-			<div class="carousel-item active">
-				<img src="${path}/assets/img/home2.jpg" class="d-block w-50"
-					 data-bs-interval="100000"
-					alt="...">
-			</div>
-			<div class="carousel-item">
-				<img src="${path}/assets/img/about1.jpg" class="d-block w-50"
-					data-bs-interval="100000" alt="...">
-			</div>
-			<div class="carousel-item">
-				<img src="${path}/assets/img/home1.jpg" class="d-block w-50"
-					data-bs-interval="100000" alt="...">
-			</div>
-		</div>
-		<button class="carousel-control-prev" type="button"
-			data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-				class="visually-hidden">Previous</span>
-		</button>
-		<button class="carousel-control-next" type="button"
-			data-bs-target="#carouselExampleControls" data-bs-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span> <span
-				class="visually-hidden">Next</span>
-		</button>
-	</div>
+	<img src="${path}/assets/img/home2.jpg" class="size" alt="...">
+	<img src="${path}/assets/img/about1.jpg" class="size" alt="...">
+	<img src="${path}/assets/img/home1.jpg" class="size" alt="...">
+	<img src="${path}/assets/img/about2.jpg" class="size" alt="...">
 
 
 	<div class="container-fluid">
 		<div class="mb-3">
-			<h3>호스트 소개</h3>
-			<p3>${board.writer }</p3>
-			<textarea rows="5" readonly class="form-control">${board.content }</textarea>
-
-			<h3>프로그램 소개</h3>
+			<h4>호스트 소개</h4>
+			<textarea style="resize: none" rows="5"  
+			readonly class="form-control">${board.content }</textarea>
+			<div class="mt">
+				<h4>프로그램 소개</h4>
+			</div>
 			<hr width="50%" />
 			${board.content } welcome everyone
 			<hr width="50%" />
-			<h3>프로그램 후기</h3>
-			<div class="form-floating">
-				<div class="col-sm-7">
-					<input type="text" class="form-control" placeholder="Leave a comment here" 
-						id="content"></input>
-					<%-- 로그인 기능 수정되면 지울 것 --%>
-					<input type="hidden" value="bb" id="temperId"/>
-					<input id="boardNum" type="hidden" value="${board.num}" />
-					<button class="btn btn-dark btn-sm" id="enrollReply" type="button" >등록</button>
-				</div>
-			</div>
-		</div>
-	</div>
-			<div class="row mt-3">
-				<div class="col-sm-7">
-					<div class="list-group" id="replyListContainer">
-						<input type="hidden" id="boardNum" value="${board.num}">
+			<h4>프로그램 후기</h4>
+			<div class="col-sm-7">
+				<input type="text" class="form-control" placeholder="여러분의 소중한 후기를 남겨주세요" 
+					id="content"></input>
+				<%-- 로그인 기능 수정되면 지울 것 --%>
+				<input type="hidden" value="bb" id="temperId"/>
+				<input id="boardNum" type="hidden" value="${board.num}" />
+				<button class="btn btn-dark btn-sm" id="enrollReply" type="button" >등록</button>
+				<div class="row mt-3">
+					<div class="col-sm-12">
+						<div class="list-group" id="replyListContainer">
+							<input type="hidden" id="boardNum" value="${board.num}">
+						</div>
+					</div>
+					<div class="mt">
+						<h5 id="moreFiles">체험 더보기</h5>
 					</div>
 				</div>
 			</div>
-	
-
-
-
-
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-		crossorigin="anonymous"></script>
+			
+			
+		</div>
+	</div>
+			
+			
+<script
+src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+crossorigin="anonymous"></script>
 </body>
 <script>
 const ctx = "${pageContext.request.contextPath}";
 
 listReply();
+getFiveFils();
 <%--댓글 등록 기능 --%>
 document.querySelector("#enrollReply").addEventListener("click", function(){
 	const boardNum = document.querySelector("#boardNum").value;
@@ -146,6 +112,18 @@ document.querySelector("#enrollReply").addEventListener("click", function(){
 	
 })
 
+<%-- 체험 더보기 기능 --%>
+function getFiveFils(){
+	fetch(ctx+"/ydsBoard/getFiveFiles")
+	.then(res => res.json())
+	.then(list => {
+		for (file of list){
+			const filelist = 
+				<%-- 집가서 작성 --%>
+			  document.querySelector("#moreFiles").insertAdjacentHTML("afterbegin", fileList);
+		}
+	})
+}
 
 <%--댓글 출력 기능 --%>
 function listReply(){
@@ -179,21 +157,47 @@ function listReply(){
 						</small>
 					</div>
 					<div>
-						<button class="btn btn-outline-secondary" id="\${updateReplyButtonNum}" data-reply-num="\${item.replyNum}">
-							<i class="fa-solid fa-pencil" ></i>
+						<%--댓글 수정 버튼 --%>
+						<button class="btn btn-outline-secondary" data-reply-num="\${item.replyNum}">
+							<i class="fa-solid fa-pencil" data-bs-toggle="modal" data-bs-target="#modifyReplyModal"></i>
 						</button>
+						<%--댓글 삭제 버튼 --%>
 						<button id="\${removeReplyButtonNum}" class="btn btn-outline-secondary"
 						 data-reply-num="\${item.replyNum}">
 							<i class="fa-solid fa-trash-can"></i>
 						</button>
 					</div>
-				</div>`
+				</div>
+					<%-- 댓글 수정 Modal --%>
+					<div class="modal fade" id="modifyReplyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					  <div class="modal-dialog modal-dialog-centered">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h3 class="modal-title fs-5" id="exampleModalLabel">후기를 수정하세요</h3>
+					        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					      </div>
+					      <div class="modal-body">
+					        <input id="modifyReplyInput" class="form-control"></input>
+					        <input type="hidden" value="\${item.replyNum}" id="hiddenNum" />
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+					        <button type="button" id="\${updateReplyButtonNum}" 
+					        	data-bs-dismiss="modal" data-reply-num="\${item.replyNum}" class="btn btn-dark">수정</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>`
 				replyListContainer.insertAdjacentHTML("beforeend", replyDiv);
 				
 				document.querySelector("#"+removeReplyButtonNum).addEventListener("click", function(){
-					console.log(this.dataset.replyNum);
 					removeReply(this.dataset.replyNum);
 				})
+				
+				document.querySelector("#"+updateReplyButtonNum).addEventListener("click", function(){
+					modifyReply();
+				})
+				
 		}
 	})
 }
@@ -205,9 +209,20 @@ function removeReply(replyNum){
 	.then(() => listReply());
 }
 
-function updateReply(replyNum){
-	fetch(ctx+"/ydsReply/deleteReply/" + replyNum, {
-		method : "put"	
+function modifyReply(){
+	const content = document.querySelector("#modifyReplyInput").value;
+	const replyNum = document.querySelector("#hiddenNum").value;
+	
+	const data = {
+			content,
+			replyNum
+	}
+	fetch(ctx+"/ydsReply/modifyReply" , {
+		method : "put", 
+		headers : {
+			"Content-Type" : "application/json"	
+		},
+		body : JSON.stringify(data)
 	})
 	.then(() => listReply());
 }

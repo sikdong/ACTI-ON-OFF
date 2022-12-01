@@ -1,0 +1,15 @@
+@charset "UTF-8";
+.size {
+	height : 400px;
+	width : 300px; 
+	border-radius : 30px;
+	margin : 10px;
+}
+
+.container-fluid {
+	margin-bottom : 10px !important;
+}
+
+.mt {
+	margin-top : 10px !important;
+}

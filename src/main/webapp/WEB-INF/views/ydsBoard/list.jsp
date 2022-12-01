@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 
 <html lang="ko" class=" js cssanimations">
 <head>
@@ -4566,7 +4567,7 @@ padding-right
 	class="doz_sys  _body_menu_m20221128e445c75c466cd  mobile-nav-on  mobile_nav_dep2  shopping  new_header_site   new_fixed_header_disable fixed-menu-on"
 	style="" id="doz_body">
 
-
+<my:navbar></my:navbar>
 
 	<div id="site_alarm_slidemenu_container"
 		class="notification-canvas-container">
@@ -4775,7 +4776,7 @@ padding-right
 			<i class="btm bt-times" aria-hidden="true"></i><span class="sr-only">닫기</span>
 		</button>
 
-		<style>
+<style>
 .new_header_site .mobile_slide_menu_container.slide_open .mobile_slide_menu,
 	.new_header_site .mobile_slide_menu_container .mobile_slide_menu,
 	.admin.new_header_mode .mobile_slide_menu_container.slide_open .mobile_slide_menu,
@@ -5530,7 +5531,7 @@ padding-right
 													style="width: 377px; padding: 0px 7.5px; height: 469px;">
 													<div class="item-wrap" style="position: relative;">
 														<a href="${getLink}" class="_fade_link shop-item-thumb " target="_blank">
-														<img src="${path}/assets/img/home2.jpg" alt="picture1"
+														<img src="${path}/assets/img/home1.jpg" alt="picture1"
 															class="home__img"> 
 
 														<!-- <img data-prodcode="s20221128cbc2f1144c480" alt="" src="https://cdn.imweb.me/thumbnail/20200805/54c1b5e109a18.png" class="_org_img org_img _lazy_img" data-original="https://cdn.imweb.me/thumbnail/20200805/54c1b5e109a18.png" data-src="https://cdn.imweb.me/thumbnail/20200805/54c1b5e109a18.png" style="display: inline;"> -->

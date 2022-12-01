@@ -9,6 +9,7 @@ import lombok.Data;
 
 @Data
 public class TripsBoardDto {
+	private int replyNum;
 	private int B_ACCEPT;
 	private String writer;
 	private int num;

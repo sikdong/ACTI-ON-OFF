@@ -34,4 +34,9 @@ public class ydsBoardService {
 		return mapper.removeBoard(num);
 	}
 
+	public List<TripsBoardDto> getFiveFiles() {
+		// TODO Auto-generated method stub
+		return mapper.getFiveFiles();
+	}
+
 }
