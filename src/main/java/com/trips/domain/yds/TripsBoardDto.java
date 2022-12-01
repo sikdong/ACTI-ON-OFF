@@ -10,15 +10,14 @@ import lombok.Data;
 @Data
 public class TripsBoardDto {
 	private int replyNum;
-	private int B_ACCEPT;
+	private int accept;
 	private String writer;
 	private int num;
 	private String title;
 	private String content;
-	private String B_FILENAME;
-	private String B_RFILENAME;
-	private String B_READCOUNT;
-	private String B_STATUS;
+	private String fileName;
+	private String readCount;
+	private String status;
 	@JsonFormat(shape = Shape.STRING)
 	private LocalDateTime B_CREATEDATE;
 	@JsonFormat(shape = Shape.STRING)

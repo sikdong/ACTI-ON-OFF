@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.trips.domain.yds.TripsBoardDto;
 import com.trips.service.ydsBoardService.ydsBoardService;
@@ -43,9 +45,9 @@ public class YdsBoardController {
 	}
 	
 	@GetMapping("getFiveFiles")
-	public void getFiveFiles(Model model){
-		List<TripsBoardDto> list = service.getFiveFiles();
-		model.addAttribute("fiveList", list);
+	@ResponseBody
+	public List<TripsBoardDto> getFiveFiles(){
+		return service.getFiveFiles();
 	}
 	
 }

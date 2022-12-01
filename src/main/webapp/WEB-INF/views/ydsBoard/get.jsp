@@ -64,13 +64,13 @@
 							<input type="hidden" id="boardNum" value="${board.num}">
 						</div>
 					</div>
-					<div class="mt">
-						<h5 id="moreFiles">체험 더보기</h5>
-					</div>
 				</div>
+					<div class="mt">
+						<h5>체험 더보기</h5>
+					</div>
+						<div class="flex-container">
+					</div>
 			</div>
-			
-			
 		</div>
 	</div>
 			
@@ -84,7 +84,7 @@ crossorigin="anonymous"></script>
 const ctx = "${pageContext.request.contextPath}";
 
 listReply();
-getFiveFils();
+getFiveFiles();
 <%--댓글 등록 기능 --%>
 document.querySelector("#enrollReply").addEventListener("click", function(){
 	const boardNum = document.querySelector("#boardNum").value;
@@ -113,14 +113,19 @@ document.querySelector("#enrollReply").addEventListener("click", function(){
 })
 
 <%-- 체험 더보기 기능 --%>
-function getFiveFils(){
+function getFiveFiles(){
 	fetch(ctx+"/ydsBoard/getFiveFiles")
 	.then(res => res.json())
 	.then(list => {
-		for (file of list){
-			const filelist = 
+		for (const file of list){
+			const fileList = 
+				`<div class="flex-child">
+					<img src="${path}/assets/img/\${file.fileName}" class="size1" alt="...">
+					<h5 class="text-center">\${file.title}</h5>
+					<h5 class="text-center">\${file.content}</h5>
+				</div>`
 				<%-- 집가서 작성 --%>
-			  document.querySelector("#moreFiles").insertAdjacentHTML("afterbegin", fileList);
+			  document.querySelector(".flex-container").insertAdjacentHTML("afterbegin", fileList);
 		}
 	})
 }

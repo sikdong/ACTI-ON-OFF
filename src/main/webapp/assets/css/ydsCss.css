@@ -1,6 +1,6 @@
 @charset "UTF-8";
 .size {
-	height : 400px;
+	height : 350px;
 	width : 300px; 
 	border-radius : 30px;
 	margin : 10px;
@@ -12,4 +12,23 @@
 
 .mt {
 	margin-top : 10px !important;
+}
+
+.size1 {
+	height : 250px;
+	width : 250px; 
+	border-radius : 20px;
+	margin : 10px;
+}
+.flex-container {
+	display : flex;
+}
+
+/* 좀더 생각해보기 .flex-child {
+	justify-content : center;
+	flex : 1;
+} */
+
+.text-center {
+	text-align : center;
 }
