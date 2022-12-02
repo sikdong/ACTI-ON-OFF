@@ -78,19 +78,55 @@
 	</update>
 	
 	<select id="getRes1ById" resultType="com.trips.domain.mypage.Res1Dto">
-	SELECT 
+	SELECT
+		r.RES_NO resNo, 
 		r.M_ID id,
 	    b.B_TITLE title,
 	    b.M_ID host,
 	    d.DATE date,
-	    b.B_FILENAME fileName
+	    f.B_FILENAME fileName
 	FROM
 	    ACTI_RESERVATION r
 	JOIN ACTI_BOARD b ON r.B_NO = b.B_NO
 	JOIN ACTI_DATE d ON r.B_NO = d.B_NO
-	WHERE r.M_ID = #{id};
+	JOIN ACTI_FILE f ON r.B_NO = f.B_NO
+	WHERE r.M_ID = #{id}
+	ORDER BY DATE DESC;
 	</select>
-
+	
+	<select id="getByResNo" resultType="com.trips.domain.mypage.Res2Dto">
+	SELECT 
+		r.RES_NO resNo, 
+		r.M_ID id,
+	    b.B_TITLE title,
+	    b.M_ID host,
+	    d.DATE date,
+	    f.B_FILENAME fileName,
+        b.B_CONTENT content,
+        m.MAP_TEXT mapText,
+        m.MAP_LL mapLL,
+        b.B_NO boardNo,
+        COUNT(CASE WHEN r.B_NO = 1001 AND d.DATE = '2022-10-30' THEN 1 END) count
+	FROM
+    	ACTI_RESERVATION r
+	JOIN ACTI_BOARD b ON r.B_NO = b.B_NO
+	JOIN ACTI_DATE d ON r.B_NO = d.B_NO
+	JOIN ACTI_MAP m ON r.B_NO = m.B_NO
+	JOIN ACTI_FILE f ON r.B_NO = f.B_NO
+	WHERE r.RES_NO= #{resNo};
+	</select>
+	
+	<select id="getCountByBD" resultType="int">
+	SELECT 
+        COUNT(*)
+	FROM
+    	ACTI_RESERVATION r
+	JOIN ACTI_BOARD b ON r.B_NO = b.B_NO
+	JOIN ACTI_DATE d ON r.B_NO = d.B_NO
+	JOIN ACTI_MAP m ON r.B_NO = m.B_NO
+	JOIN ACTI_FILE f ON r.B_NO = f.B_NO
+	WHERE r.B_NO = #{boardNo} AND d.DATE = #{date};
+	</select>
 </mapper>
 
 

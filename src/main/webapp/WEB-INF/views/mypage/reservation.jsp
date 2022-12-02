@@ -24,6 +24,38 @@
 #res{
  padding:0 0 0 140px; 
 }
+#res_fp{
+	padding: 0 0 20px 0;
+	font-weight: bold;
+	font-family: "Palatino Linotype";
+}
+#res_title1{
+	font-weight: bold;
+	font-size: 24px;
+	padding:14px 0 7px 0; 
+	color: #282828;
+}
+#res_info1{
+	padding:0 0 7px 0; 
+	font-size: 18px;
+	font-weight: bold;
+	color: #787878; 
+}
+.fix {
+  background-color:rgb(60, 60, 60) !important;	
+  width:100%;
+  position:fixed !important;
+  animation: down 0.5s ease !important;
+}
+
+@keyframes down {
+  0%{
+    transform: translateY(-50px)
+  }
+  100%{
+    transform: translateY(0px)
+  }
+}
 </style>
 
 <meta charset="UTF-8">
@@ -47,37 +79,46 @@
 				<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" />
 				
 				<div class="future">
-					<h1>예정된 예약</h1>
+					<h3 id="res_fp">Scheduled Reservation</h3>
+					<hr>
 					<c:forEach var="res" items="${res1}">
-					 
 						<c:if test="${res.date > today }">
-							<div style="display:flex;">
-								<div style="padding-right: 130px;">
-									<img style="width:128px; height:128px;border-radius: 30%" 
+							<div onclick="location.href='/mypage/resDetail?resNo=${res.resNo}'" style="display:flex;">
+								<div style="padding-right: 70px;">
+									<img style="width:200px; height:135px;border-radius: 30%" 
 									src="${imgUrl }/${res.fileName}">
 								</div>
 								<div>
-									<h1>${res.title }</h1>
-									<h1>${res.host }</h1>
-									<h1>${res.date }</h1>
-									<h1>${res.fileName }</h1>
+									<div id="res_title1">${res.title }</div>
+									<div id="res_info1">host : ${res.host }</div>
+									<div id="res_info1">date : ${res.date }</div>
 								</div>
-							</div>						
+							</div>	
+							<hr>					
 						</c:if>
 					</c:forEach>		
-				</div>	
-				<hr>
+				</div>
+				<br><br><br><br>	
 				<div class="past">
-					<h1>지난 예약</h1>
+					<h3 id="res_fp">Last Reservation</h3>
+					<hr>
 					<c:forEach var="res" items="${res1}">
 						<c:if test="${res.date <= today }">
-							<h1>${res.title }</h1>
-							<h1>${res.host }</h1>
-							<h1>${res.date }</h1>
-							<h1>${res.fileName }</h1>						
+							<div  onclick="location.href='/mypage/resDetail?resNo=${res.resNo}'" style="display:flex;">
+								<div style="padding-right: 70px;">
+									<img style="width:200px; height:135px;border-radius: 30%" 
+									src="${imgUrl }/${res.fileName}">
+								</div>
+								<div>
+									<div id="res_title1">${res.title }</div>
+									<div id="res_info1">host : ${res.host }</div>
+									<div id="res_info1">date : ${res.date }</div>
+									
+								</div>
+							</div>	
+							<hr>					
 						</c:if>
-					</c:forEach>
-				
+					</c:forEach>	
 				</div>		
 					
 	
@@ -90,6 +131,25 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script>
+/* --------------sticky navbar scroll 기능-------------------------------------------------------------------------------------------------- */
+function navigo (){
+  const header = document.querySelector('#nav2'); //헤더부분획득
+  const headerheight = header.clientHeight;//헤더높이
+document.addEventListener('scroll', onScroll, { passive: true });//스크롤 이벤트
+ function onScroll () {
+     const scrollposition = pageYOffset;//스크롤 위치
+   const nav = document.querySelector('#nav');//네비게이션
+   if (headerheight<=scrollposition){//만약 헤더높이<=스크롤위치라면
+     nav.classList.add('fix')//fix클래스를 네비에 추가
+   }
+   else {//그 외의 경우
+     nav.classList.remove('fix');//fix클래스를 네비에서 제거
+   }
+ } 
+}
+navigo()
+/* --------------sticky navbar scroll 기능 끝-------------------------------------------------------------------------------------------------- */
+
 </script>
 </body>
 </html>
