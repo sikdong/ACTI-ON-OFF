@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,15 +18,19 @@ import com.trips.service.jjhMember.jjhMemberService;
 
 
 @Controller
-@RequestMapping("member")
+@RequestMapping("jjhLogin")
 public class jjhMemberController {
 
 	@Autowired
 	private jjhMemberService service;
 
-	@Autowired
-	private PasswordEncoder passwordEncoder;
-
+	
+	@GetMapping("index")
+	public void index() {
+		
+	}
+	
+	
 	@GetMapping("login")
 	public void login() {
 
@@ -35,18 +38,20 @@ public class jjhMemberController {
 	
 	@GetMapping("signup")
 	public void signup() {
-
+		
 	}
-
+	
+	
 	@PostMapping("signup")
 	public String signup(jjhMemberDto member, RedirectAttributes rttr) {
-		System.out.println(member);
+			System.out.println(member);
+		  
+		  int cnt = service.insert(member);
+		  
+		  //가입 잘되면 
+		  rttr.addFlashAttribute("message", "회원가입 되었습니다."); 
+		  return "redirect:/jjhLogin/login";
 
-		int cnt = service.insert(member);
-
-		// 가입 잘되면
-		rttr.addFlashAttribute("message", "회원가입 되었습니다.");
-		return "redirect:/board/list";
 	}
 
 	
@@ -55,7 +60,7 @@ public class jjhMemberController {
 	@ResponseBody
 	public Map<String, Object> existId(@PathVariable String id) {
 		Map<String, Object> map = new HashMap<>();
-
+		System.out.println(id);
 		jjhMemberDto member = service.getById(id);
 
 		if (member == null) {

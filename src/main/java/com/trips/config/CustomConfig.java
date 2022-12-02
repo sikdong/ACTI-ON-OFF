@@ -4,15 +4,16 @@ package com.trips.config;
 //import javax.servlet.ServletContext;
 //
 import org.mybatis.spring.annotation.MapperScan;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.beans.factory.annotation.Value;
-//import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-//import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
-//import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-//import org.springframework.security.crypto.password.PasswordEncoder;
-//import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 //
 //import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
 //import software.amazon.awssdk.auth.credentials.AwsCredentials;
@@ -23,7 +24,7 @@ import org.springframework.context.annotation.Configuration;
 //
 @Configuration
 @MapperScan("com.trips.mapper")
-//@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class CustomConfig {
 //
 //	@Value("${aws.accessKeyId}")
@@ -44,20 +45,19 @@ public class CustomConfig {
 //		servletContext.setAttribute("imgUrl", imgUrl);
 //	}
 //	
-//	@Bean
-//	public PasswordEncoder passwordEncoder() {
-//		
-//		return new BCryptPasswordEncoder();
-//	}
-//	
-//	@Bean
-//	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//		http.formLogin().loginPage("/member/login").defaultSuccessUrl("/board/list", true);
-//		http.logout().logoutUrl("/member/logout");
-//		http.csrf().disable();
-//		http.rememberMe();
-//		return http.build();
-//	}
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		
+		return new BCryptPasswordEncoder();
+	}
+	
+	@Bean
+	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+		http.formLogin().loginPage("/jjhLogin/login").defaultSuccessUrl("/home", true);
+		http.logout().logoutUrl("/jjhLogin/logout");
+		http.csrf().disable();
+		return http.build();
+	}
 //
 //	@Bean
 //	public S3Client s3Client() {
