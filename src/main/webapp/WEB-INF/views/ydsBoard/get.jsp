@@ -7,7 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Insert title here</title>
+<title>Trips</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -18,18 +19,25 @@
 	integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="${path}/assets/css/ydsCss.css" />
+<link rel="stylesheet" href="${path}/assets/css/calendar.css" />
 </head>
 <body>
 	<my:navbar></my:navbar>
 	<c:url value="/ydsBoard/remove" var="removeLink">
 		<c:param name="num" value="${board.num }" ></c:param>
 	</c:url>
+<div id="showCalendar">
+</div>
+	
 	<%--체험 제목 보여주기 --%>
 	<div class="container-fluid">
 		<span>제주 앞바다를 즐겨 보세요!</span>
 		
 		<span>
 			<a href="${removeLink}" class="btn btn-outline-secondary btn-sm">게시물 삭제</a>
+		</span>
+		<span>
+			<a id="reserveButton" onclick="buildCalendar()" class="btn btn-dark btn-sm">예약하기</a>
 		</span>
 	</div>
 	
@@ -79,7 +87,6 @@
 src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
 integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
 crossorigin="anonymous"></script>
-</body>
 <script>
 const ctx = "${pageContext.request.contextPath}";
 
@@ -121,7 +128,6 @@ function getFiveFiles(){
 			const fileList = 
 				`<div class="flex-child">
 					<img src="${path}/assets/img/\${file.fileName}" class="size1" alt="...">
-					<h5 class="text-center">\${file.title}</h5>
 					<h5 class="text-center">\${file.content}</h5>
 				</div>`
 				<%-- 집가서 작성 --%>
@@ -235,4 +241,6 @@ function modifyReply(){
 	
 
 </script>
+<script  src="${path }/assets/js/calendar.js"></script>
+</body>
 </html>

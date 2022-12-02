@@ -17,18 +17,23 @@
 .size1 {
 	height : 250px;
 	width : 250px; 
-	border-radius : 20px;
+	border-radius : 15px;
 	margin : 10px;
 }
 .flex-container {
 	display : flex;
 }
-
-/* 좀더 생각해보기 .flex-child {
+.flex-child {
 	justify-content : center;
 	flex : 1;
-} */
+	font-family : 'Palatino';
+} 
 
 .text-center {
 	text-align : center;
 }
+
+body {
+	font-family : 'Palatino'; 
+} 
+
