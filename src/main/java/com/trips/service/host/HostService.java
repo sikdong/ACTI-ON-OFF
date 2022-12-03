@@ -1,6 +1,8 @@
 package com.trips.service.host;
 
-import java.util.Date;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -33,10 +35,11 @@ public class HostService {
 //		Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.executor.ExecutorException: Error getting generated key or setting result to parameter object. Cause: org.apache.ibatis.executor.ExecutorException: No setter found for the keyProperty 'b_no' in 'java.lang.String'.] with root cause
 //
 //		org.apache.ibatis.executor.ExecutorException: No setter found for the keyProperty 'b_no' in 'java.lang.String'.
-
+//  	?? 근데 알아낸 b_id를 어떻게 다른 컨트롤러한테 알려주지?
 		
 		System.out.println("###########");
 		System.out.println(dto);
+		com.trips.controller.host.HostController.b_no=dto.getB_no();
 		return cnt;
 	} 
 
@@ -54,7 +57,7 @@ public class HostService {
 	@Value("${aws.s3.bucket}")
 	private String bucketName;
 	
-	public void listingImage( MultipartFile[] files, Date date) {
+	public void listingImageDate( MultipartFile[] files, Date[] dates, int b_no) throws ParseException {
 		// db에 게시물 정보 저장하면서 여테 모은 보드프로퍼티합쳐서 보드디티오로.
 	//	hostMapper.listingContents();
 		
@@ -63,13 +66,23 @@ public class HostService {
 				// db에 파일 정보 저장
 				hostMapper.insertImage(file.getOriginalFilename());
 				
-				uploadFile(file);
+				uploadFile(file,b_no);
 			}
 		}
-		hostMapper.listingDate(date);
+//		for (Date date : dates) {
+//			if (date != null ) {
+//				// db에 날짜 정보 저장
+//				hostMapper.listingDate(date,b_no);	
+//				System.out.println(date+"################");
+//			}else {System.out.println(date+"################");
+//			}
+//		}
+		String s="11/11/1111";
+		Date date=(Date) new SimpleDateFormat("dd/MM/yyyy").parse(s);  
+		hostMapper.listingDate(date, b_no);
 	}
 
-	private void uploadFile(MultipartFile file) {
+	private void uploadFile(MultipartFile file, int b_no) {
 		try {
 			// S3에 파일 저장
 			// 키 생성

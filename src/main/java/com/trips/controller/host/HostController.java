@@ -1,7 +1,9 @@
 package com.trips.controller.host;
 
 
-import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 import com.trips.domain.host.BoardDto;
 import com.trips.domain.host.Host;
 import com.trips.service.host.HostService;
@@ -23,7 +27,7 @@ import com.trips.service.host.HostService;
 @RequestMapping("host")
 public class HostController {
 
-
+	public static int b_no; 
 	@Autowired
 	private HostService hostService;
 	
@@ -157,14 +161,24 @@ public class HostController {
 		
 	}
 	@PostMapping("listing/image")
-	public String listingImage(
-			MultipartFile[] files, Date date) {
+	public String listingImage( MultipartFile[] files, String[] date) throws ParseException {
+		//매개변수 date는 String[]
+		System.out.println(date.toString()+"@@@@@@@@");
+		int i=0;
+	//	@JsonFormat(shape = Shape.STRING)
+		Date[] dates= new Date[100];
+		for (String dateString : date) {
+		Date acti_date=(Date) new SimpleDateFormat("dd/MM/yyyy").parse(dateString);  
+		dates[i]=acti_date;
+		}
+//		String s="11/11/1111";
+//		Date date2=(Date) new SimpleDateFormat("dd/MM/yyyy").parse(s);  		
 		
-		for (MultipartFile file : files) {
-		System.out.println(file.getOriginalFilename());
-		hostService.listingImage( files,date);
-		
-	}
+	//	dates=(11/11/1111);
+		hostService.listingImageDate(files,dates,b_no);	
+//		for (MultipartFile file : files) {
+//		System.out.println(file.getOriginalFilename());	
+//	}
 		return "redirect:/host/listing/complete";}
 	
 		// * 파일업로드

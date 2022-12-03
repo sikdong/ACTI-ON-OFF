@@ -4,7 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.trips.mapper.host.HostMapper">
-<insert id="listingTopic" useGeneratedKeys="true" keyProperty="b_no" keyColumn="B_NO">	
+<insert id="listingTopic" useGeneratedKeys="true" keyProperty="b_no" keyColumn="B_NO">	 <!-- db에만 담는게 아니라 dto에도 같이 담는 -->
 	insert into ACTI_BOARD (b_topic,b_accept) values(#{b_topic},0)
 </insert>
 <insert id="listingContents">
@@ -14,12 +14,15 @@
 
 <insert id="insertImage" >
 	insert into ACTI_FILE (b_filename) values(#{b_filename})
-
 </insert>
+<insert id="listingDate">
+	insert into ACTI_DATE (date,b_no) values(#{date},#{b_no})
+</insert>
+
+
 <insert id="becomeHost" >
 	insert into ACTI_HOST (m_id,h_experience,h_introduction) 
-	values(#{m_id},#{h_experience},#{h_introduction}) 
-	
+	values(#{m_id},#{h_experience},#{h_introduction}) 	
 </insert>
 
 

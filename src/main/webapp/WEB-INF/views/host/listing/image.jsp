@@ -51,14 +51,14 @@
 						<input multiple type="file" accept="image/*" class="form-control" name="files">
 					</div>
 					
-					<div class="mb-3">
-						<label for="" class="form-label">호스트할 날짜를 선택해주세요/ 최대 몇달 ? 날짜기능 나중에</label> 
-						<input type= date name="date"> 
+<!-- 					<div class="mb-3"> -->
+<!-- 						<label for="" class="form-label">호스트할 날짜를 선택해주세요/ 최대 몇달 ? 날짜기능 나중에</label>  -->
+<!-- 						<input type= date name="date">  -->
 							
-					</div>
+<!-- 					</div> -->
 					
 					<div style="width: 22%;margin:20px;">
-					        <input type="text" id="selectedValues" class="date-values" readonly/>
+					        <input type="text" id="selectedValues" class="date-values" name="date" readonly/>
 					        <div id="parent" class="container" style="display:none;">
 					            <div class="row header-row">
 					                <div class="col-xs previous">
