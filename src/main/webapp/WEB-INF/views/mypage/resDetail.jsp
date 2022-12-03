@@ -26,7 +26,7 @@
  float: left;
  box-sizing: border-box;
  overflow:scroll; 
- height:755px;
+ height:100%;
 }
 .resD_right{
  width: 70%;
@@ -54,6 +54,10 @@
  color: #6e6e6e	;
  font-weight: bold;
 }
+html, body {
+ width: 100%;
+ height: 100%;
+}
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -65,7 +69,7 @@
 
 	<my:navbar></my:navbar>
 	
-	<div>
+	<div style="height: 100%">
 		<div class="resD_left">
 			<div style="width:100%; position:relative; height: 300px" >
 				<div style="
@@ -232,7 +236,7 @@ navigo()
 
 /* --------------구글 맵 api 기능 끝--------------------------------------------------------------------------------------------------------------- */
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpGl0OYxKqDAHJ_BAvWeRChX7uI8-wLy8&callback=myMap"></script> 
+<script src="https://maps.googleapis.com/maps/api/js?key=${gKey }_BAvWeRChX7uI8-wLy8&callback=myMap"></script> 
 <script>
 /* --------------description 열고 닫는 기능--------------------------------------------------------------------------------------------------------- */
 document.querySelector("#open").addEventListener("click", function() {
