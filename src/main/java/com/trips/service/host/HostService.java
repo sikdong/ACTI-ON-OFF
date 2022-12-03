@@ -1,5 +1,7 @@
 package com.trips.service.host;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -7,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.trips.domain.host.BoardDto;
+import com.trips.domain.host.Host;
 import com.trips.mapper.host.HostMapper;
 
 import software.amazon.awssdk.core.sync.RequestBody;
@@ -44,53 +47,56 @@ public class HostService {
 	
 	
 	//--- 이미지파일 저장
-	// >> 컨트롤러가 다르니까 쿼리문에 where써서(보드아이디나 멤버아이디만 가능할듯) 이전쿼리와 같은 row에 삽입되도록
-//	@Autowired
-//	private S3Client s3Client;
-//	
-//	@Value("${aws.s3.bucket}")
-//	private String bucketName;
-//	
-//	public int register(BoardDto board, MultipartFile[] files) {
-//		// db에 게시물 정보 저장
-//		int cnt = hostMapper.insertFile(board);
-//		
-//		for (MultipartFile file : files) {
-//			if (file != null && file.getSize() > 0) {
-//				// db에 파일 정보 저장
-//				hostMapper.insertFile(board.getId(), file.getOriginalFilename());
-//				
-//				uploadFile(board.getId(), file);
-//			}
-//		}
-//		
-//		return cnt;
-//	}
-//
-//	private void uploadFile(int id, MultipartFile file) {
-//		try {
-//			// S3에 파일 저장
-//			// 키 생성
-//			String key = "prj1/board/" + id + "/" + file.getOriginalFilename();
-//			
-//			// putObjectRequest
-//			PutObjectRequest putObjectRequest = PutObjectRequest.builder()
-//					.bucket(bucketName)
-//					.key(key)
-//					.acl(ObjectCannedACL.PUBLIC_READ)
-//					.build();
-//			
-//			// requestBody
-//			RequestBody requestBody = RequestBody.fromInputStream(file.getInputStream(), file.getSize());
-//			
-//			// object(파일) 올리기
-//			s3Client.putObject(putObjectRequest, requestBody);
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			throw new RuntimeException(e);
-//		}
-//	}
+	
+	@Autowired
+	private S3Client s3Client;
+	
+	@Value("${aws.s3.bucket}")
+	private String bucketName;
+	
+	public void listingImage( MultipartFile[] files, Date date) {
+		// db에 게시물 정보 저장하면서 여테 모은 보드프로퍼티합쳐서 보드디티오로.
+	//	hostMapper.listingContents();
+		
+		for (MultipartFile file : files) {
+			if (file != null && file.getSize() > 0) {
+				// db에 파일 정보 저장
+				hostMapper.insertImage(file.getOriginalFilename());
+				
+				uploadFile(file);
+			}
+		}
+		hostMapper.listingDate(date);
+	}
 
+	private void uploadFile(MultipartFile file) {
+		try {
+			// S3에 파일 저장
+			// 키 생성
+//			String key = "trips/board/" + id + "/" + file.getOriginalFilename();
+			String key = "trips/board/"  + file.getOriginalFilename();
+			
+			// putObjectRequest
+			PutObjectRequest putObjectRequest = PutObjectRequest.builder()
+					.bucket(bucketName)
+					.key(key)
+					.acl(ObjectCannedACL.PUBLIC_READ)
+					.build();
+			
+			// requestBody
+			RequestBody requestBody = RequestBody.fromInputStream(file.getInputStream(), file.getSize());
+			
+			// object(파일) 올리기
+			s3Client.putObject(putObjectRequest, requestBody);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
 
+	public void becomeHost(Host host) {
+		hostMapper.becomeHost(host);
+		
+	}
 }

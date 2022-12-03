@@ -11,8 +11,8 @@ public class BoardDto {
 	private String b_content;
 	private String b_filename;
 	private int cost;
-	private String min_person;
-	private String max_person;
+	private int min_person;
+	private int max_person;
 	private int min_age;
 
 }
