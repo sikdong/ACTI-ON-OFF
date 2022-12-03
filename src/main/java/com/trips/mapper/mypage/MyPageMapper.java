@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.trips.domain.mypage.MemberDto;
 import com.trips.domain.mypage.Res1Dto;
+import com.trips.domain.mypage.Res2Dto;
 
 public interface MyPageMapper {
 
@@ -22,5 +23,9 @@ public interface MyPageMapper {
 	int updateByHost(String id, Boolean host);
 
 	List<Res1Dto> getRes1ById(String id);
+
+	Res2Dto getByResNo(int resNo);
+
+	int getCountByBD(int boardNo, String date);
 
 }

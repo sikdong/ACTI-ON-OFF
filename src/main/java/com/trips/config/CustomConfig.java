@@ -36,12 +36,16 @@ public class CustomConfig {
 	@Value("${aws.s3.file.url.prefix}")
 	private String imgUrl;
 	
+	@Value("${gKey}")
+	private String gKey;
+	
 	@Autowired
 	private ServletContext servletContext;
 	
 	@PostConstruct
 	public void init() {
 		servletContext.setAttribute("imgUrl", imgUrl);
+		servletContext.setAttribute("gKey", gKey);
 	}
 	
 //	@Bean

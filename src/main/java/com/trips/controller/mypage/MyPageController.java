@@ -15,6 +15,7 @@ import com.fasterxml.jackson.databind.ser.std.StdKeySerializers.Default;
 import com.trips.domain.mypage.BoardDto;
 import com.trips.domain.mypage.MemberDto;
 import com.trips.domain.mypage.Res1Dto;
+import com.trips.domain.mypage.Res2Dto;
 import com.trips.service.mypage.MyPageService;
 
 @Controller
@@ -119,5 +120,27 @@ public class MyPageController {
 		
 		List<Res1Dto> res1 = service.getRes1ById(id);
 		model.addAttribute("res1", res1);
+	}
+	
+	@GetMapping("resDetail")
+	public void resD(
+			@RequestParam(name = "resNo") int resNo,
+			Model model
+			) {
+		Res2Dto res2 = service.getByResNo(resNo);
+		String shorts = res2.getContent().substring(0, 20);
+		int boardNo = res2.getBoardNo();
+		String date = res2.getDate();
+		int count = service.getCountByBD(boardNo, date);
+		model.addAttribute("resNo", res2);
+		model.addAttribute("shorts", shorts);
+		model.addAttribute("count", count);
+	}
+	
+	@GetMapping("chat")
+	public void chat(
+			
+			) {
+		
 	}
 }
