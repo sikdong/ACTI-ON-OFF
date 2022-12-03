@@ -6,12 +6,12 @@ function buildCalendar(){
 const calendarFrame = 	
 	`<div class="calendar">
 		<div class="header">
-			<button class="prevBtn" onclick="prevCal()">이전 달</button>
+			<button class="btn btn-outline-danger btn-sm" onclick="prevCal()">이전 달</button>
 			<div class="title">
 				<div class="yearTitle"></div>
 				<div class="monthTitle"></div>
 			</div>
-			<button class="nextBtn" onclick="nextCal()">이후 달</button>
+			<button class="btn btn-outline-danger btn-sm" onclick="nextCal()">이후 달</button>
 		</div>
 		<div class="main">
 			<div class="days">
@@ -30,8 +30,8 @@ document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calenda
 	let prevLast = new Date(CDate.getFullYear(), CDate.getMonth(), 0);
 	let thisFirst = new Date(CDate.getFullYear(),CDate.getMonth(), 1);
 	let thisLast = new Date(CDate.getFullYear(), CDate.getMonth()+1, 0);
-	document.querySelector(".yearTitle").innerHTML = CDate.getFullYear();
-	document.querySelector(".monthTitle").innerHTML = CDate.getMonth() + 1;
+	document.querySelector(".yearTitle").innerHTML = CDate.getFullYear()+"년 ";
+	document.querySelector(".monthTitle").innerHTML = CDate.getMonth() + 1+"월";
 	let dates = [];
 	if(thisFirst.getDay()!=0){
 		for(let i=0; i < thisFirst.getDay(); i++){
@@ -46,15 +46,25 @@ document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calenda
 	for(let i=1; i <= 6-thisLast.getDay(); i++){
 		dates.push('');
 	}// 이번달 달력에 보이는 다음달 날짜를 공백으로 처리
-	let htmlDates ='';
+	const weekDiv = `<div class="week"></div>`
+
 	for(let i=0; i < 35; i++){
+		if(i == 0 || i % 7 == 0){
+			document.querySelector(".dates").insertAdjacentHTML("beforeend", weekDiv)	
+		}
 		if(today.getDate()==dates[i] &&today.getMonth()==CDate.getMonth()&&
 		today.getFullYear()==CDate.getFullYear()){
-			htmlDates += `<div class="date today">${dates[i]}</div>`;
+			const todayDiv =`<div class="date today">${dates[i]}</div>`;
+				document.querySelector(".week").insertAdjacentHTML("beforeend", todayDiv);
 			}else {
-				htmlDates += `<div class="date">${dates[i]}</div>`
+				//htmlDates += `<div class="date">${dates[i]}</div>`
+				const dateDiv =`<div class="date">${dates[i]}</div>`;
+				document.querySelector(".week").insertAdjacentHTML("beforeend", dateDiv); 
 			}
-			document.querySelector(".dates").innerHTML = htmlDates;
+			
+			//document.querySelector(".dates").innerHTML = htmlDates;
+			
+		
 		}
 	}
 

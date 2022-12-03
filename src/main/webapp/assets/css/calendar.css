@@ -16,29 +16,21 @@ body {
     font-family: var(--font);
 }
 
-button {
-  /*버튼에는 따로 폰트를 적용시켜줘야됩니다.
-      테두리선을 없애고 적당히 높이를 지정해줍시다.
-  */
-    font-family: var(--font);
-    border:none;
-    height: 32px;;
-}
 
 .header {
+	width : 50%;
     display: flex;
-    font-size: 48px;
-    justify-content: space-around;/*아이템들을 일정한 간격으로 벌려 배치합니다.*/
+    font-size: 12px;
+    justify-content: space-between; /* /아이템들을 일정한 간격으로 벌려 배치합니다. */
     align-items: center;
-    padding-bottom: 12px;
-    margin: 12px 24px 12px 24px;
+    padding-bottom: 3px;
+    margin: 6px 12px 6px 12px;
     border-bottom: 2px solid var(--line-color);/*header쪽과 달력을 구분하기 위해 밑에만 선을 넣어줍시다.*/
 }
 
 .title {
       /*년, 월이 세로로 정렬되게 하기 위함입니다.*/
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -47,24 +39,25 @@ button {
       /*요일과 날짜는 가로가아니라 세로로 정렬되야 하므로 flex-diretion: column;을 해줍시다.*/
     display: flex;
     flex-direction: column;
-    margin: 12px 24px 0px 24px;
+    margin: 6px 12px 0px 12px;
 }
 .days {
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
+    width: 50%;
 }
 .dates {
       /*wrap을 주어서 한줄에 날짜가 7개만 나오게 만들겁니다.*/
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
-    width: 100%;
+    width: 50%;
 }
 .date, .day{
       /*width가 100/7을 가지기 때문에 한 줄에 7개의 날짜와 요일이 정렬됩니다.*/
     text-align: center;
-    width: calc(100%/7);
-    padding: 16px 0 16px 0;
+    width: calc(50%/7);
+    padding: 10px 0 10px 0;
     box-sizing: border-box;
 }
 .date:nth-child(7n),
@@ -82,4 +75,8 @@ button {
 .today {
       /*오늘 날짜에 테두리를 줍니다. !important로 border의 우선순위를 1순위로 만들 수 있습니다.*/
     border: 2px solid var(--today-color) !important;
+}
+.week{
+	display : flex;
+	
 }
