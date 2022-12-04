@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.trips.domain.mypage.BoardDto;
+import com.trips.domain.mypage.ChatDto;
 import com.trips.domain.mypage.MemberDto;
 import com.trips.domain.mypage.Res1Dto;
 import com.trips.domain.mypage.Res2Dto;
@@ -72,5 +72,9 @@ public class MyPageService {
 
 	public int getCountByBD(int boardNo, String date) {
 		return mapper.getCountByBD(boardNo, date); 
+	}
+
+	public List<ChatDto> getChat(int chatRoom) {
+		return mapper.getChat(chatRoom);
 	}
 }

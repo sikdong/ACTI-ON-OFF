@@ -127,6 +127,25 @@
 	JOIN ACTI_FILE f ON r.B_NO = f.B_NO
 	WHERE r.B_NO = #{boardNo} AND d.DATE = #{date};
 	</select>
+	
+	<select id="getChat" resultType="com.trips.domain.mypage.ChatDto">
+	SELECT 
+		CHAT_ID chatId, 
+		M_ID writer, 
+		CHAT_DATE date, 
+		CHAT_CONTENTS content, 
+		CHAT_ROOM chatRoom
+	FROM M_CHAT WHERE CHAT_ROOM = #{chatRoom}
+	UNION ALL
+	SELECT 
+		CHAT_ID chatId, 
+		M_ID writer, 
+		CHAT_DATE date, 
+		CHAT_CONTENTS content, 
+		CHAT_ROOM chatRoom
+	FROM H_CHAT WHERE CHAT_ROOM = #{chatRoom}
+	ORDER BY date;
+	</select>
 </mapper>
 
 

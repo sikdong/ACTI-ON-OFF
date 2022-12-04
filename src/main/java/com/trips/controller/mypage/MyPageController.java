@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fasterxml.jackson.databind.ser.std.StdKeySerializers.Default;
-import com.trips.domain.mypage.BoardDto;
+import com.trips.domain.mypage.ChatDto;
 import com.trips.domain.mypage.MemberDto;
 import com.trips.domain.mypage.Res1Dto;
 import com.trips.domain.mypage.Res2Dto;
@@ -34,7 +34,7 @@ public class MyPageController {
 	
 	@GetMapping("mypage2")
 	public void myPage2(
-			@RequestParam(name = "id", defaultValue = "aa") String id,
+			@RequestParam(name = "id", defaultValue = "dd") String id,
 			Model model
 			) {
 		MemberDto member = service.getById(id);
@@ -114,7 +114,7 @@ public class MyPageController {
 	
 	@GetMapping("reservation")
 	public void res(
-			@RequestParam(name = "id", defaultValue = "dd") String id,
+			@RequestParam(name = "id") String id,
 			Model model
 			) {
 		
@@ -139,8 +139,15 @@ public class MyPageController {
 	
 	@GetMapping("chat")
 	public void chat(
-			
+			@RequestParam(name = "chatRoom") int chatRoom,
+			@RequestParam(name = "id") String id,
+			@RequestParam(name = "host") String host,
+			Model model
 			) {
 		
+		List<ChatDto> chat = service.getChat(chatRoom);
+		model.addAttribute("chat", chat);
+		model.addAttribute("id", id);
+		model.addAttribute("host", host);
 	}
 }

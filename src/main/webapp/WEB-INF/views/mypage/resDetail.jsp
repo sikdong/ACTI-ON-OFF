@@ -32,6 +32,7 @@
  width: 70%;
  float: right;
  box-sizing: border-box;
+ height: 100%;
 }
 .white_bold{
  padding: 7px 0 0 10px;
@@ -113,7 +114,7 @@ html, body {
 			
 			<hr class="shortLine">
 			
-			<div style="display:flex;">
+			<div id="goToChat" style="display:flex;">
 				<i id="icon_base" class="fa-regular fa-message fa-2x" style="padding-top: 20px"></i>
 				<div id="description">
 					<div style="font-weight: bold;">
@@ -192,7 +193,7 @@ html, body {
 		
 		
 		<div class="resD_right">
-			<div id="googleMap" style="width:100%; height: 755px;">
+			<div id="googleMap" style="width:100%; height: 92%;">
 			</div>
 		</div>
 	</div>
@@ -250,6 +251,13 @@ document.querySelector("#close").addEventListener("click", function() {
 	document.querySelector("#des").style.display="none";
 });
 /* --------------description 열고 닫는 기능 끝------------------------------------------------------------------------------------------------------- */
+
+
+/* --------------채팅 페이지 이동 기능---------------------------------------------------------------------------------------------------- */
+document.querySelector("#goToChat").addEventListener("click", function() {
+	location.href="/mypage/chat?chatRoom=${resNo.resNo}&id=${resNo.id}&host=${resNo.host}"
+});
+/* --------------채팅 페이지 이동 기능 끝-------------------------------------------------------------------------------------------------- */
 </script>
 <!-- 구글 map api -->
 </body>
