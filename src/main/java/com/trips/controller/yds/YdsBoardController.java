@@ -1,6 +1,7 @@
 package com.trips.controller.yds;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -54,9 +55,11 @@ public class YdsBoardController {
 	}
 	
 	@PostMapping("plusLike")
-	public void plusLike(@RequestBody int num) {
-		System.out.println(num);
-		service.plusLike(num);
+	@ResponseBody
+	public Map<String, Object> plusLike(@RequestBody Map<String, Integer> req,
+			TripsBoardDto board) {
+		return service.plusLike(req.get("num"), board);
+		
 	}
 	
 }

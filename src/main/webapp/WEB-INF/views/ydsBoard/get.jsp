@@ -113,7 +113,6 @@
 	<c:url value="/ydsBoard/remove" var="removeLink">
 		<c:param name="num" value="${board.num }" ></c:param>
 	</c:url>
-</div>
 	<input type="hidden" id="numInput" value="${board.num }" />
 	<%--체험 제목 보여주기 --%>
 	<div class="container-fluid">
@@ -124,7 +123,11 @@
 		</span>
 		<span>
 			<button id="solidHeart">임시</button>
-			<i class="fa-regular fa-heart fa-2x"></i> ${board.countLike}
+				<span id="countLike">
+					${board.countLike}
+				</span>
+			<button id="minusLike"></button>
+			<i class="fa-regular fa-heart fa-2x"></i> 
 			<i class="fa-solid fa-heart"></i>
 		</span>
 	</div>
@@ -211,19 +214,21 @@ integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbs
 crossorigin="anonymous"></script>
 <script>
 const ctx = "${pageContext.request.contextPath}";
-<%-----------------좋아요 기능-------------------------------------------%>
+<%-----------------------------------------좋아요 기능-------------------------------------------%>
 document.querySelector("#solidHeart").addEventListener("click", () => {
 	const num = document.querySelector("#numInput").value;
-	const data = {
-			num
-	}
-	fetch(ctx+"/ydsBoard/plusLike/", {
+/* 	const data = {
+			num : '${board.num}'
+	} */
+	fetch(ctx+"/ydsBoard/plusLike", {
 		method : "POST",
 		headers : {
 			"Content-Type" : "application/json"
 		},
-		body : JSON.stringify(data)
+		body : JSON.stringify({num})
 	})
+	.then(res => res.json())
+	.then(data => document.querySelector("#countLike").innerHTML = data.countLike)
 })
 
 

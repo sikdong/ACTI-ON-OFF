@@ -17,11 +17,12 @@ public class MyPageService {
 	@Autowired
 	private MyPageMapper mapper;
 
-//	@Autowired
-//	private S3Client s3Client;
+	@Autowired
+	private S3Client s3Client;
 	
-	@Value("${aws.s3.bucket}")
-	private String bucketName;
+	
+	  @Value("${aws.s3.bucket}") private String bucketName;
+	 
 	
 	public BoardDto getById(int id) {
 		return mapper.select(id);

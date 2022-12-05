@@ -9,7 +9,7 @@ INSERT INTO ACTI_LIKE (
 	L_CLICK,
     B_NO
 )
-VALUES(1,#{num});
+VALUES(1, #{num});
 	
 </insert>
 
@@ -48,7 +48,7 @@ SELECT
 	B_TITLE title,
 	M_ID writer,
 	B_CONTENT content,
-	(SELECT COUNT(L_CLICK) FROM ACTI_LIKE WHERE B_NO= #{num}) countLike
+	(SELECT COUNT(*) FROM ACTI_LIKE WHERE B_NO= #{num}) countLike
 FROM ACTI_BOARD
 WHERE B_NO = #{num}
 </select>
@@ -58,7 +58,10 @@ DELETE FROM ACTI_BOARD
 WHERE B_NO = #{num}
 </delete>
 
+<select id="getLikeByBNO" resultType="int">
+SELECT COUNT(*) FROM ACTI_LIKE WHERE B_NO= #{num}
 
+</select>
 
 
 </mapper>
