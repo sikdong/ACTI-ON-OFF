@@ -5,6 +5,93 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+@charset "UTF-8";
+:root {
+    --bg-color: #FFFFFF;/*배경색*/
+    --line-color: #aaaaaa;/*상단과 하단을 나눠줄 줄 색*/
+    --sat-color: #FFE2E2;/*토요일 배경색*/
+    --sun-color: #FFC7C7;/*일요일 배경색*/
+    --today-color: #EFBBCF;/*오늘 날짜의 테투리색*/
+    --font: 'Raleway';/*폰트 정의*/
+}
+
+.calendar {
+  /*padding과 margin을 없애고 body태그 전체에 배경색과 폰트를 넣어줍니다.*/
+  	width : 50%;
+    padding: 0;
+    margin-left: 0;
+    background-color: var(--bg-color);
+    font-family: var(--font);
+}
+
+
+.header {
+	width : 100%;
+    display: flex;
+    font-size: 12px;
+    justify-content: space-between; /* /아이템들을 일정한 간격으로 벌려 배치합니다. */
+    align-items: center;
+    padding-bottom: 3px;
+    margin: 6px 12px 6px 0px;
+    border-bottom: 2px solid var(--line-color);/*header쪽과 달력을 구분하기 위해 밑에만 선을 넣어줍시다.*/
+}
+
+.title {
+      /*년, 월이 세로로 정렬되게 하기 위함입니다.*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main {
+      /*요일과 날짜는 가로가아니라 세로로 정렬되야 하므로 flex-diretion: column;을 해줍시다.*/
+    display: flex;
+    flex-direction: column;
+    margin: 6px 12px 0px 12px;
+}
+.days {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.dates {
+      /*wrap을 주어서 한줄에 날짜가 7개만 나오게 만들겁니다.*/
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.date, .day{
+      /*width가 100/7을 가지기 때문에 한 줄에 7개의 날짜와 요일이 정렬됩니다.*/
+    text-align: center;
+    width: calc(100%/7);
+    padding: 10px 0 10px 0;
+    box-sizing: border-box;
+   
+}
+.date:nth-child(7n),
+.day:nth-child(7n) {
+      /*.date와 .day의 7n번째 요소만 적용시킵니다. 즉 토요일의 세로줄만 적용합니다.*/
+    background-color: var(--sat-color);
+    color: blue;/*글자색입니다.*/
+}
+.date:nth-child(7n+1),
+.day:nth-child(7n+1) {
+      /*.date와 .day의 7n+1번째 요소만 적용시킵니다. 즉 일요일의 세로줄만 적용합니다.*/
+    background-color: var(--sun-color);
+    color: red;
+}
+.today {
+      /*오늘 날짜에 테두리를 줍니다. !important로 border의 우선순위를 1순위로 만들 수 있습니다.*/
+    border: 2px solid var(--today-color) !important;
+}
+.week{
+	display : flex;
+	
+}
+
+</style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Trips</title>
@@ -27,13 +114,18 @@
 		<c:param name="num" value="${board.num }" ></c:param>
 	</c:url>
 </div>
-	
+	<input type="hidden" id="numInput" value="${board.num }" />
 	<%--체험 제목 보여주기 --%>
 	<div class="container-fluid">
 		<span>제주 앞바다를 즐겨 보세요!</span>
 		
 		<span>
 			<a href="${removeLink}" class="btn btn-outline-secondary btn-sm">게시물 삭제</a>
+		</span>
+		<span>
+			<button id="solidHeart">임시</button>
+			<i class="fa-regular fa-heart fa-2x"></i> ${board.countLike}
+			<i class="fa-solid fa-heart"></i>
 		</span>
 	</div>
 	
@@ -46,16 +138,16 @@
 	<div class="container-fluid">
 		<div class="mb-3">
 			<h4>호스트 소개</h4>
-			<textarea style="resize: none" rows="5"  
+			<textarea style="resize: none; width : 50% !important;" rows="5"  
 			readonly class="form-control">${board.content }</textarea>
 			<div class="mt">
 				<h4>프로그램 소개</h4>
 			</div>
 			<hr width="50%" />
-			${board.content } welcome everyone
-			<span>
+			${board.content }
+			<div>
 				<a id="reserveButton" onclick="buildCalendar()" class="btn btn-dark btn-sm">예약하기</a>
-			</span>
+			</div>
 			<span>
 				<a id="noneButton" style="display : none" onclick="none()" class="btn btn-secondary btn-sm">달력접기</a>
 			</span>
@@ -85,6 +177,32 @@
 			</div>
 		</div>
 	</div>
+<%------------------------------댓글 수정, 삭제 토스트----------------------------%>	
+<div class="toast-container align-items-center top-0 start-50 translate-middle-x position-fixed">
+  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <strong class="me-auto">댓글 수정 확인</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      댓글이 수정되었습니다
+    </div>
+  </div>
+</div>
+
+<div class="toast-container align-items-center top-0 start-50 translate-middle-x position-fixed">
+  <div id="liveToast1" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <strong class="me-auto">댓글 삭제 확인</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      댓글이 삭제되었습니다
+    </div>
+  </div>
+</div>
+	
+
 			
 			
 <script
@@ -93,6 +211,21 @@ integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbs
 crossorigin="anonymous"></script>
 <script>
 const ctx = "${pageContext.request.contextPath}";
+<%-----------------좋아요 기능-------------------------------------------%>
+document.querySelector("#solidHeart").addEventListener("click", () => {
+	const num = document.querySelector("#numInput").value;
+	const data = {
+			num
+	}
+	fetch(ctx+"/ydsBoard/plusLike/", {
+		method : "POST",
+		headers : {
+			"Content-Type" : "application/json"
+		},
+		body : JSON.stringify(data)
+	})
+})
+
 
 listReply();
 getFiveFiles();
@@ -207,10 +340,19 @@ function listReply(){
 				
 				document.querySelector("#"+removeReplyButtonNum).addEventListener("click", function(){
 					removeReply(this.dataset.replyNum);
+					
+					const toastLiveExample1 = document.getElementById('liveToast1')
+					const toast = new bootstrap.Toast(toastLiveExample1)
+
+				    toast.show()
 				})
 				
 				document.querySelector("#"+updateReplyButtonNum).addEventListener("click", function(){
 					modifyReply();
+					const toastLiveExample = document.getElementById('liveToast')
+					const toast = new bootstrap.Toast(toastLiveExample)
+
+				    toast.show()
 				})
 				
 		}
@@ -242,6 +384,93 @@ function modifyReply(){
 	.then(() => listReply());
 }
 
+
+
+<%--------------------------------달력 코드 %------------------------------------------------------%>
+let CDate = new Date();
+let today = new Date();
+
+function none(){
+	document.querySelector("#showCalendar").innerHTML='',
+	document.querySelector("#noneButton").style.display="none"
+};
+function buildCalendar(){
+	document.querySelector("#noneButton").style.display="inline-block"
+	document.querySelector("#showCalendar").innerHTML=''
+const calendarFrame = 	
+	`<div class="calendar">
+		<div class="header">
+			<button class="btn btn-outline-danger btn-sm" onclick="prevCal()">&laquo;</button>
+			<div class="title">
+				<div style="margin : 0 3px 0 0" class="yearTitle"></div>
+				<div class="monthTitle"></div>
+			</div>
+			<button class="btn btn-outline-danger btn-sm" onclick="nextCal()">&raquo;</button>
+		</div>
+		<div class="main">
+			<div class="days">
+				<div class="day">Sun</div>
+				<div class="day">Mon</div>
+				<div class="day">Tue</div>
+				<div class="day">Wed</div>
+				<div class="day">Thu</div>
+				<div class="day">Fri</div>
+				<div class="day">Sat</div>
+			</div>
+			<div class="dates"></div>
+		<hr>
+		</div>
+	</div>`
+document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calendarFrame)
+	let prevLast = new Date(CDate.getFullYear(), CDate.getMonth(), 0);
+	let thisFirst = new Date(CDate.getFullYear(),CDate.getMonth(), 1);
+	let thisLast = new Date(CDate.getFullYear(), CDate.getMonth()+1, 0);
+	console.log(CDate.getMonth()+1);
+	document.querySelector(".yearTitle").innerHTML = CDate.getFullYear()+"년 ";
+	document.querySelector(".monthTitle").innerHTML = CDate.getMonth() + 1+"월";
+	let dates = [];
+		
+	for(let i=1; i <= 6-thisLast.getDay(); i++){
+		dates.unshift('');
+	}// 이번달 달력에 보이는 다음달 날짜를 공백으로 처리'
+	
+	for(let i = thisLast.getDate(); i >= 1; i--){
+		dates.push(i);
+	}// 이번달의 날짜 표시
+	
+	if(thisFirst.getDay()!=0){
+		for(let i=0; i < thisFirst.getDay(); i++){
+			dates.push('');
+		}
+	} // 이번 달 달력에 보이는 전월의 날짜를 공백으로 처리
+		
+	const weekDiv = `<div class="week"></div>`
+
+	for(let i=0; i < 35; i++){
+		if(i == 0 || i % 7 == 0){
+			document.querySelector(".dates").insertAdjacentHTML("afterbegin", weekDiv)	
+		}
+		if(today.getDate()==dates[i] &&today.getMonth()==CDate.getMonth()&&
+		today.getFullYear()==CDate.getFullYear()){
+			const todayDiv =`<div class="date today">\${dates[i]}</div>`;
+				document.querySelector(".week").insertAdjacentHTML("afterbegin", todayDiv);
+			}else {
+				const dateDiv =`<div class="date">\${dates[i]}</div>`;
+				document.querySelector(".week").insertAdjacentHTML("afterbegin", dateDiv); 
+			}
+		}
+	}
+<%-- 이전 달 버튼 누르면 실행 되는 함수 --%>
+function prevCal(){
+	CDate.setMonth(CDate.getMonth()-1);
+	buildCalendar();
+}
+
+<%-- 다음 달 버튼 누르면 실행 되는 함수 --%>
+function nextCal(){
+	CDate.setMonth(CDate.getMonth()+1);
+	buildCalendar();
+}	
 	
 
 </script>

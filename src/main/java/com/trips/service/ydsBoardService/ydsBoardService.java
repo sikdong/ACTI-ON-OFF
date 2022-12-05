@@ -39,4 +39,9 @@ public class ydsBoardService {
 		return mapper.getFiveFiles();
 	}
 
+	public void plusLike(int num) {
+		// TODO Auto-generated method stub
+		mapper.plusLike(num);
+	}
+
 }

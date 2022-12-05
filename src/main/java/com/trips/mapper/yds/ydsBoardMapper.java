@@ -17,4 +17,6 @@ public interface ydsBoardMapper {
 
 	public List<TripsBoardDto> getFiveFiles();
 
+	public int plusLike(int num);
+
 }

@@ -7,6 +7,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -48,6 +51,12 @@ public class YdsBoardController {
 	@ResponseBody
 	public List<TripsBoardDto> getFiveFiles(){
 		return service.getFiveFiles();
+	}
+	
+	@PostMapping("plusLike")
+	public void plusLike(@RequestBody int num) {
+		System.out.println(num);
+		service.plusLike(num);
 	}
 	
 }

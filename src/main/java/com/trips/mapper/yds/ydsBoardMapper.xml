@@ -4,6 +4,15 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.trips.mapper.yds.ydsBoardMapper">
+<insert id="plusLike">
+INSERT INTO ACTI_LIKE (
+	L_CLICK,
+    B_NO
+)
+VALUES(1,#{num});
+	
+</insert>
+
 <select id="getBoardList" resultType="com.trips.domain.yds.TripsBoardDto">
 SELECT
 	b.B_NO num,
@@ -38,7 +47,8 @@ SELECT
 	B_NO num,
 	B_TITLE title,
 	M_ID writer,
-	B_CONTENT content
+	B_CONTENT content,
+	(SELECT COUNT(L_CLICK) FROM ACTI_LIKE WHERE B_NO= #{num}) countLike
 FROM ACTI_BOARD
 WHERE B_NO = #{num}
 </select>
@@ -47,6 +57,8 @@ WHERE B_NO = #{num}
 DELETE FROM ACTI_BOARD
 WHERE B_NO = #{num}
 </delete>
+
+
 
 
 </mapper>
