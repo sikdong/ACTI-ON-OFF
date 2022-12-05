@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.trips.mapper.qna.QnaMapper">
+
+	<!-- OR,WHERE 다음 컬럼명이 들어감 -->
+
+<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+	INSERT INTO QNA (Q_TITLE, Q_CONTENT,M_ID)
+	VALUES (#{title},#{content},#{memberId})
+</insert>
+
+<select id="list" resultType="com.trips.domain.qna.QnaDto">
+SELECT
+	Q_ID id,
+	Q_TITLE title,
+	M_ID memberId,
+	Q_inserted inserted
+FROM QNA
+WHERE
+	<trim prefixOverrides="OR">
+	<if test="type=='all' or type=='title'">
+	OR Q_TITLE LIKE #{keyword}
+	</if>
+	
+	<if test="type=='all' or type=='content'">
+	OR Q_CONTENT LIKE #{keyword}
+	</if>
+	<if test="type=='all' or type=='memberId'">
+	OR M_ID LIKE #{keyword}
+	</if>
+	</trim>
+	
+ORDER BY Q_ID DESC
+LIMIT #{offset},#{records} 
+</select>
+
+<select id="select" resultType="com.trips.domain.qna.QnaDto">
+SELECT
+	Q_ID id,
+	Q_TITLE title,
+	Q_CONTENT content,
+	M_ID memberId,
+	Q_INSERTED inserted
+FROM 
+	QNA
+WHERE
+	Q_ID=#{id}
+</select>
+
+<update id="update">
+UPDATE QNA
+SET
+	Q_TITLE = #{title},
+	Q_CONTENT  = #{content},
+	M_ID  = #{memberId}
+WHERE
+ Q_ID=#{id}
+</update>
+
+<delete id="delete">
+DELETE FROM QNA
+WHERE Q_ID =#{id}
+
+</delete>
+ <!-- 총 레코드 수  확인하는 xml -->
+<select id="countAll" resultType="int">
+	SELECT COUNT(*) FROM QNA
+	WHERE
+	<trim prefixOverrides="OR">
+	<if test="type=='all' or type=='title'">
+	OR Q_TITLE LIKE #{keyword}
+	</if>
+	
+	<if test="type=='all' or type=='content'">
+	OR Q_CONTENT LIKE #{keyword}
+	</if>
+	
+	<if test="type=='all' or type=='memberId'">
+	OR M_ID LIKE #{keyword}
+	</if>
+	</trim>
+</select>
+
+
+
+	
+	
+		
+		
+</mapper>
