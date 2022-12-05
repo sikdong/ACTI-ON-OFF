@@ -5,13 +5,9 @@ import java.time.LocalDateTime;
 import lombok.Data;
 
 @Data
-public class QnaDto {
-	//변수명
+public class AnswerDto {
 	private int id;
-	private String title;
+	private int qnaId;
 	private String content;
-	private String memberId;
 	private LocalDateTime inserted;
-
-
 }
