@@ -18,7 +18,7 @@ body {
 
 
 .header {
-	width : 50%;
+	width : 25%;
     display: flex;
     font-size: 12px;
     justify-content: space-between; /* /아이템들을 일정한 간격으로 벌려 배치합니다. */

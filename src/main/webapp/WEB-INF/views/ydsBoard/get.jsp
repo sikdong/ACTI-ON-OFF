@@ -26,7 +26,6 @@
 	<c:url value="/ydsBoard/remove" var="removeLink">
 		<c:param name="num" value="${board.num }" ></c:param>
 	</c:url>
-<div id="showCalendar">
 </div>
 	
 	<%--체험 제목 보여주기 --%>
@@ -35,9 +34,6 @@
 		
 		<span>
 			<a href="${removeLink}" class="btn btn-outline-secondary btn-sm">게시물 삭제</a>
-		</span>
-		<span>
-			<a id="reserveButton" onclick="buildCalendar()" class="btn btn-dark btn-sm">예약하기</a>
 		</span>
 	</div>
 	
@@ -57,7 +53,15 @@
 			</div>
 			<hr width="50%" />
 			${board.content } welcome everyone
+			<span>
+				<a id="reserveButton" onclick="buildCalendar()" class="btn btn-dark btn-sm">예약하기</a>
+			</span>
+			<span>
+				<a id="noneButton" style="display : none" onclick="none()" class="btn btn-secondary btn-sm">달력접기</a>
+			</span>
 			<hr width="50%" />
+			<div id="showCalendar">
+			</div>
 			<h4>프로그램 후기</h4>
 			<div class="col-sm-7">
 				<input type="text" class="form-control" placeholder="여러분의 소중한 후기를 남겨주세요" 
