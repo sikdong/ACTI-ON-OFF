@@ -23,4 +23,10 @@ public class OfflineService {
 		
 		return mapper.getBoard(num);
 	}
+
+
+	public List<offlineDto> getFiveFiles() {
+		// TODO Auto-generated method stub
+		return mapper.getFiveFiles();
+	}
 }
