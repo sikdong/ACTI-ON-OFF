@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.trips.mapper.offlineMapper.offlineMapper">
+<select id="getBoardList" resultType="com.trips.domain.offline.offlineDto">
+SELECT
+	B_NO num,
+	B_TITLE title,
+	B_WRITER writer,
+	B_CONTENT content,
+	B_FILENAME fileName,
+	B_RFILENAME,
+	B_STATUS,
+	B_CREATEDATE,
+	B_MODIFYDATE
+FROM ACTI_BOARD
+</select>
+
+<select id="getBoard" resultType="com.trips.domain.offline.offlineDto">
+SELECT
+	B_TITLE title,
+	B_WRITER writer,
+	B_CONTENT content
+FROM ACTI_BOARD
+WHERE B_NO = #{num}
+</select>
+
+
+</mapper>

@@ -79,9 +79,3 @@ public class CustomConfig {
 		return AwsBasicCredentials.create(accessKeyId, secretAccessKey);
 	}
 }
-//
-//
-//
-//
-//
-//
