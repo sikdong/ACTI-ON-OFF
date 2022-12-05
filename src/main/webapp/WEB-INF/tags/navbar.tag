@@ -7,33 +7,40 @@
 #searchTypeSelect {
 	width: auto;
 }
-.navbar{
- background-color:#f7323f !important;
- height:70px;
-}
-/* .nav li a{
-background-color:blue;
+#nav{
+background-color:black;
 } 
-.nav .active a{
-background-color:orange !important;
-} */
+.navbar{
+ background-color:black;
+ height:80px;
+ margin:0 0 0 0 !important;
+
+}
+.container-md{
+ padding:0 0 0 220px; 
+}
 .font{
-color: #fcb9bd;
-font-family: "Malgun Gothic";
-font-weight: bold
+color: #ffffff;
+font-family: "Palatino Linotype" !important;
+font-weight: bold;
+font-size: 20px;
 }
 .font-main{
 color: #ffffff;
-font-family: "Malgun Gothic";
-font-weight: bold
+font-family: "Palatino Linotype" !important;
+font-weight: bold;
+font-size: 30px;
+}
+.nav-item{
+padding: 0 15px 0 15px;
 }
 </style>
 
 
-<c:url value="/mypage/mypage1" var="myPageLink" />
+<c:url value="/mypage/mypage2" var="myPageLink" />
 
 
-<nav class="navbar navbar-expand-md bg-light mb-3">
+<nav id="nav" class="navbar navbar-expand-md mb-3">
   <div class="container-md">
     <a class="navbar-brand" href="${listLink }">
     <span class="font-main">Main</span>
@@ -41,22 +48,22 @@ font-weight: bold
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div style="padding-left: 200px"class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
          <a class="nav-link">
-          <span class="font">체험페이지</span>
-          </a>
+          <span class="font">Activity</span>
+         </a>
         </li>
         <li class="nav-item">
          <a class="nav-link">
-		  <span class="font">로그인</span>
+		  <span class="font">Log In</span>
 		  </a>
         </li>
         
         <li class="nav-item">
           <a class="nav-link">
-          <span class="font">회원가입</span>
+          <span class="font">Sign Up</span>
           </a>
         </li>
         
@@ -64,36 +71,26 @@ font-weight: bold
           <a class="nav-link"
           <%-- ${active eq 'signup' ? 'active' : '' } --%>
           href="${myPageLink}">
-          <span class="font">마이페이지</span
+          <span class="font">My Page</span
           ></a>
         </li>
         
          <li class="nav-item">
           <a class="nav-link">
-          <span class="font">관리자페이지</span
+          <span class="font">Admin Page</span
           ></a>
         </li>
         
          <li class="nav-item">
           <a class="nav-link">
-          <span class="font">호스트페이지</span
+          <span class="font">Host Page</span
           ></a>
         </li>
         
       </ul>
       <form action="${listLink }" class="d-flex" role="search">
       
-      	<select name="t" id="searchTypeSelect" class="form-select">
-      		<option value="all">전체</option>
-      		<option value="title" ${param.t == 'title' ? 'selected' : '' }>제목</option>
-      		<option value="content" ${param.t == 'content' ? 'selected' : '' }>본문</option>
-      		<option value="writer" ${param.t == 'writer' ? 'selected' : '' }>작성자</option>
-      	</select>
-      
-        <input value="${param.q }" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
-        <button class="btn btn-outline-success" type="submit" style="color:red;background-color:white;">
-        	<i class="fa-solid fa-magnifying-glass"></i>
-        </button>
+      	
       </form>
     </div>
   </div>

@@ -16,7 +16,8 @@ public class BoardDto {
 	private LocalDateTime inserted;
 	private int countReply;
 	private int countFile;
-	
+	private int countLike;
+	private boolean liked;
 	private List<String> fileName;
 
 	public String getAgo() {

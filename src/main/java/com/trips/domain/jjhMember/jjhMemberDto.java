@@ -5,13 +5,13 @@ import lombok.Data;
 @Data
 public class jjhMemberDto {
 
-	private String id;
-	private String password;
-	private String name;
-	private String gender;
-	private String phone;
-	private String email;
-	private Boolean host;
+	private String M_ID;
+	private String M_PASSWORD;
+	private String M_NAME;
+	private String M_GENDER;
+	private String M_PHONE;
+	private String M_EMAIL;
+	private Boolean M_HOST;
 	
 }
 

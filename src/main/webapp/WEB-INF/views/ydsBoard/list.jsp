@@ -1,7118 +1,7348 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%-- <%@ taglib prefix="my" tagdir="/WEB-INF/tags" %> --%>
-<!DOCTYPE html>
-<html lang="ko"><head>
-    <!-- Google Tag Manager -->
-    <script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=AW-802163829&amp;l=dataLayer&amp;cx=c"></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-W1B7E2Q96P&amp;l=dataLayer&amp;cx=c"></script><script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-PF7DJTT"></script><script>
-    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push(
-    {'gtm.start': new Date().getTime(),event:'gtm.js'}
-    );var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-PF7DJTT');</script>
-    <!-- End Google Tag Manager -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Type">
-    <meta name="csrf-name" content="yeogi_token">
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 
-    <meta name="description" content="서울지역의 모텔 인기숙소를 예약해보세요!  | 전국 호텔, 펜션, 모텔부터 해외 호텔, 항공권 까지 실시간 최저가로 예약 하세요.">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-
-    <link rel="apple-touch-icon" href="//image.goodchoice.kr/images/web_v3/h1_logo_mo.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="//image.goodchoice.kr/images/web_v3/icon_76.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="//image.goodchoice.kr/images/web_v3/icon_120.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="//image.goodchoice.kr/images/web_v3/icon_152.png">
-
-    <meta name="apple-mobile-web-app-title" content="모텔 > 서울지역 인기숙소 | 여기어때">
-    <meta name="apple-touch-fullscreen" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no,address=no,email=no">
-
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="모텔 > 서울지역 인기숙소 | 여기어때">
-    <meta property="og:description" content="서울지역의 모텔 인기숙소를 예약해보세요!  | 전국 호텔, 펜션, 모텔부터 해외 호텔, 항공권 까지 실시간 최저가로 예약 하세요.">
-    <meta property="og:image" content="//image.goodchoice.kr/images/web_v3/h1_logo_mo_share.png">
-    <meta property="og:url" content="https://www.goodchoice.kr/product/home/1">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="모텔 > 서울지역 인기숙소 | 여기어때">
-    <meta name="twitter:description" content="서울지역의 모텔 인기숙소를 예약해보세요!  | 전국 호텔, 펜션, 모텔부터 해외 호텔, 항공권 까지 실시간 최저가로 예약 하세요.">
-    <meta name="twitter:image" content="//image.goodchoice.kr/images/web_v3/h1_logo_mo_share.png">
-    <meta name="twitter:domain" content="https://www.goodchoice.kr/product/home/1">
-
-    <meta property="al:ios:url" content="https://itunes.apple.com/kr/app/id884043462?mt=8">
-    <meta property="al:ios:app_store_id" content="884043462">
-    <meta property="al:ios:app_name" content="여행할때 여기어때">
-    <meta property="al:android:url" content="https://play.google.com/store/apps/details?id=kr.goodchoice.abouthere">
-    <meta property="al:android:app_name" content="여기어때">
-    <meta property="al:android:package" content="kr.goodchoice.abouthere">
-    <meta property="al:web:url" content="https://www.goodchoice.kr">
-
-    <meta name="naver-site-verification" content="27e1bd094d2f12af942addbf4afdb3f479ad0273">
-
-    <link rel="shortcut icon" href="//image.goodchoice.kr/images/web_v3/favicon_170822.ico" type="image/x-icon">
-    <link rel="stylesheet preload" href="https://static.goodchoice.kr/fonts/css/font.css" as="style" type="text/css" crossorigin="">
-
-	<!-- CSS -->
-    <title>모텔 &gt; 서울지역 인기숙소 | 여기어때</title>
-    <link rel="stylesheet" href="https://www.goodchoice.kr/css/common.css?rand=1669339876">
-    <link rel="canonical" href="https://www.goodchoice.kr/product/home/1">
-    <script type="text/javascript" src="/js/library/jquery-1.12.4.min.js"></script>
-    
-    <script>
-var _BASE_URL = 'https://www.goodchoice.kr/';
-var _MOBILE = 'W';
-var _KAKAOTALK_APP_KEY = 'f6ffb505bb11d7cc3584d443ce35f704';
-var _FACEBOOK_APP_ID = '607467975974643';
+<html lang="ko" class=" js cssanimations">
+<head>
+<script type="text/javascript" id="www-widgetapi-script"
+	src="https://www.youtube.com/s/player/4eb6b35d/www-widgetapi.vflset/www-widgetapi.js"
+	async="">
+	
 </script>
-    <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d    =d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
-<meta http-equiv="origin-trial" content="Aztnbi8n1mx+fiNBvCifn6XCZv+TIzPcAuIDgq7i8sAG5PMj9ZN7lufengcGK3nHLCS5JfXzwgDSY+MDBQHuWAoAAACKeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZWFkc2VydmljZXMuY29tOjQ0MyIsImZlYXR1cmUiOiJQcml2YWN5U2FuZGJveEFkc0FQSXMiLCJleHBpcnkiOjE2ODA2NTI3OTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><script type="text/javascript" async="" src="https://www.googleadservices.com/pagead/conversion/964418007/?random=1669423876907&amp;cv=9&amp;fst=1669423876907&amp;num=1&amp;label=6YMHCM_i81wQ17PvywM&amp;bg=ffffff&amp;hl=en&amp;guid=ON&amp;resp=GooglemKTybQhCsO&amp;eid=375603261&amp;u_h=864&amp;u_w=1536&amp;u_ah=824&amp;u_aw=1536&amp;u_cd=24&amp;u_his=4&amp;u_tz=540&amp;u_java=false&amp;u_nplug=5&amp;u_nmime=2&amp;sendb=1&amp;ig=1&amp;frm=0&amp;url=https%3A%2F%2Fwww.goodchoice.kr%2Fproduct%2Fhome%2F1&amp;ref=https%3A%2F%2Fwww.goodchoice.kr%2F&amp;tiba=%EB%AA%A8%ED%85%94%20%3E%20%EC%84%9C%EC%9A%B8%EC%A7%80%EC%97%AD%20%EC%9D%B8%EA%B8%B0%EC%88%99%EC%86%8C%20%7C%20%EC%97%AC%EA%B8%B0%EC%96%B4%EB%95%8C&amp;hn=www.googleadservices.com&amp;rfmt=3&amp;fmt=4"></script><meta http-equiv="origin-trial" content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A751Xsk4ZW3DVQ8WZng2Dk5s3YzAyqncTzgv+VaE6wavgTY0QHkDvUTET1o7HanhuJO8lgv1Vvc88Ij78W1FIAAAAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjgwNjUyNzk5LCJpc1RoaXJkUGFydHkiOnRydWV9"><script type="text/javascript" async="" src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/802163829/?random=1669423877033&amp;cv=11&amp;fst=1669423877033&amp;bg=ffffff&amp;guid=ON&amp;async=1&amp;gtm=2oab90&amp;u_w=1536&amp;u_h=864&amp;hn=www.googleadservices.com&amp;frm=0&amp;url=https%3A%2F%2Fwww.goodchoice.kr%2Fproduct%2Fhome%2F1&amp;ref=https%3A%2F%2Fwww.goodchoice.kr%2F&amp;tiba=%EB%AA%A8%ED%85%94%20%3E%20%EC%84%9C%EC%9A%B8%EC%A7%80%EC%97%AD%20%EC%9D%B8%EA%B8%B0%EC%88%99%EC%86%8C%20%7C%20%EC%97%AC%EA%B8%B0%EC%96%B4%EB%95%8C&amp;auid=940825114.1669420199&amp;uaa=x86&amp;uab=64&amp;uafvl=Google%2520Chrome%3B107.0.5304.108%7CChromium%3B107.0.5304.108%7CNot%253DA%253FBrand%3B24.0.0.0&amp;uap=Windows&amp;uapv=10.0.0&amp;uaw=0&amp;data=event%3Dgtag.config&amp;rfmt=3&amp;fmt=4"></script></head>
-<body class="mobile">
-<!-- Google Tag Manager (noscript) -->
-<noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PF7DJTT" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-</noscript>
-<!-- End Google Tag Manager (noscript) -->
 
-<!-- Wrap -->
-<div class="wrap show">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="theme-color" content="#363636">
+<meta name="msapplication-navbutton-color" content="#363636">
+<meta name="apple-mobile-web-app-status-bar-style"
+	content="black-translucent">
 
-    <!-- Header -->
-    <header class="recommend_header scroll">
+<meta property="og:url" content="https://onoffline.imweb.me/shop">
+<title>onoffline</title>
+<meta name="application-name" content="onoffline">
+<meta name="msapplication-tooltip" content="onoffline">
+<meta id="meta_og_title" property="og:title" content="onoffline">
+<meta id="meta_og_image" property="og:image"
+	content="https://cdn.imweb.me/upload/S20190909897bd4d3191f1/1d63f1fc805ea.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<link rel="canonical" href="https://onoffline.imweb.me/shop">
+<link rel="apple-touch-icon-precomposed" sizes="57x57"
+	href="https://cdn.imweb.me/thumbnail/20191014/355c5a32f3364.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72"
+	href="https://cdn.imweb.me/thumbnail/20191014/3381b07b0c505.png">
+<link rel="apple-touch-icon-precomposed" sizes="60x60"
+	href="https://cdn.imweb.me/thumbnail/20191014/6320c1bfb93d7.png">
+<link rel="apple-touch-icon-precomposed" sizes="76x76"
+	href="https://cdn.imweb.me/thumbnail/20191014/f1120cc13f93f.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114"
+	href="https://cdn.imweb.me/thumbnail/20191014/5cf26f29b32e8.png">
+<link rel="apple-touch-icon-precomposed" sizes="120x120"
+	href="https://cdn.imweb.me/thumbnail/20191014/d94c779afe33c.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144"
+	href="https://cdn.imweb.me/thumbnail/20191014/7c2396acc1f32.png">
+<link rel="apple-touch-icon-precomposed" sizes="152x152"
+	href="https://cdn.imweb.me/thumbnail/20191014/1f049942b3d13.png">
+<link rel="icon" type="image/png"
+	href="https://cdn.imweb.me/thumbnail/20191014/959d1e99f4465.png"
+	sizes="16x16">
+<link rel="icon" type="image/png"
+	href="https://cdn.imweb.me/thumbnail/20191014/b9041d0578f28.png"
+	sizes="32x32">
+<link rel="icon" type="image/png"
+	href="https://cdn.imweb.me/thumbnail/20191014/8d64a43e61dd5.png"
+	sizes="96x96">
+<link rel="icon" type="image/png"
+	href="https://cdn.imweb.me/thumbnail/20191014/0b0af46cc214f.png"
+	sizes="128x128">
+<link rel="icon" type="image/png"
+	href="https://cdn.imweb.me/thumbnail/20191014/88c3a8f5d07d6.png"
+	sizes="196x196">
+<meta name="msapplication-TileImage"
+	content="https://cdn.imweb.me/thumbnail/20191014/7c2396acc1f32.png">
+<meta name="msapplication-square70x70logo"
+	content="https://cdn.imweb.me/thumbnail/20191014/0dec7e2aea80c.png">
+<meta name="msapplication-square150x150logo"
+	content="https://cdn.imweb.me/thumbnail/20191014/effed40225f60.png">
+<meta name="msapplication-square310x150logo"
+	content="https://cdn.imweb.me/thumbnail/20191014/5c536525980a0.png">
+<meta name="msapplication-square310x310logo"
+	content="https://cdn.imweb.me/thumbnail/20191014/beeb560301b59.png">
+<meta property="og:type" content="website">
+<meta name="viewport"
+	content="width=device-width,viewport-fit=cover,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" type="text/css"
+	href="https://vendor-cdn.imweb.me/minify_css/vendor_blue_10.css?1653367465">
+<link rel="stylesheet" type="text/css"
+	href="https://vendor-cdn.imweb.me/minify_css/vendor_red_10.css?1653367465">
+<!--[if lte IE 9]>
+<link rel='stylesheet' type='text/css' href='https://vendor-cdn.imweb.me/css/site/bootstrap.css?1590627710'/>
+<![endif]-->
+<!--[if lte IE 9]>
+<link rel='stylesheet' type='text/css' href='https://vendor-cdn.imweb.me/css/owl.carousel1.css?1577682282'/>
+<![endif]-->
+<link rel="stylesheet" type="text/css"
+	href="https://vendor-cdn.imweb.me/css/im_component.css?1636689958">
+<link rel="stylesheet" type="text/css"
+	href="https://vendor-cdn.imweb.me/css/site/alarm_menu.css?1648796493">
+<link rel="stylesheet" type="text/css"
+	href="https://vendor-cdn.imweb.me/css/function.css?1654567141">
+<link rel="stylesheet" type="text/css"
+	href="https://vendor-cdn.imweb.me/css/site/site.css?1666757608">
+<link rel="stylesheet" type="text/css"
+	href="https://vendor-cdn.imweb.me/css/site/site2.css?1669168466">
+<!--[if lte IE 9]>
+<link rel='stylesheet' type='text/css' href='https://vendor-cdn.imweb.me/css/site/iefix.css?1590627710'/>
+<![endif]-->
+<link rel="stylesheet" type="text/css"
+	href="https://vendor-cdn.imweb.me/css/site/iefix2.css?1590627710">
+<link rel="stylesheet" type="text/css"
+	href="https://vendor-cdn.imweb.me/css/animate.css?1577682282">
+<link rel="stylesheet" type="text/css"
+	href="https://vendor-cdn.imweb.me/css/chosen.css?1617331870">
+<link rel="stylesheet" type="text/css"
+	href="https://vendor-cdn.imweb.me/css/chosenImage.css?1617331762">
+<link rel="stylesheet" type="text/css"
+	href="https://vendor-cdn.imweb.me/fonts/im-icon/style.css?1666251299">
+<link rel="stylesheet" type="text/css"
+	href="https://vendor-cdn.imweb.me/fonts/froala-emoji-tap/style.css?1660095148">
+<link rel="stylesheet" type="text/css" href="/css/custom.cm?1669601096">
+<link rel="stylesheet" type="text/css"
+	href="https://vendor-cdn.imweb.me/css/tailwind.css?1669340906">
+<link rel="stylesheet" type="text/css"
+	href="https://vendor-cdn.imweb.me/css/emoji.css?1660095097">
+<link rel="stylesheet" type="text/css"
+	href="https://vendor-cdn.imweb.me/css/font-awesome5.min.css?1660780829">
+<style>
+@import url("//vendor-cdn.imweb.me/css/notoserif.css");
 
-        <section>
-                        <h1><a class="" href="https://www.goodchoice.kr/" title="여기어때">여기어때</a></h1>
-            <button type="button" class="btn_menu nav_open ">메뉴</button>
-            <button type="button" class="btn_srch srch_open ">검색</button>
-            <ul class="gnb_pc">
-                                    <li><a href="https://www.goodchoice.kr/product/srp">내주변</a></li>
-                    <li><a href="https://www.goodchoice.kr/user/login?returnUrl=my%2FreserveList">예약내역</a></li>
-                    <li class="over">
-                        <button type="button"><span>더보기</span></button>
-                        <ul class="list_03">
-                            <li><a href="https://www.goodchoice.kr/more/notice">공지사항</a></li>
-                            <li><a href="https://www.goodchoice.kr/more/event">이벤트</a></li>
-                            <!-- <li><a href="https://www.goodchoice.kr/more/project">혁신 프로젝트</a></li> -->
-                            <li><a href="https://www.goodchoice.kr/more/faq">자주 묻는 질문</a></li>
-                            <li><a href="https://www.goodchoice.kr/more/inquiry">1:1 문의</a></li>
-                            <li><a href="https://www.goodchoice.kr/more/terms">약관 및 정책</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="https://www.goodchoice.kr/user/login"><span>로그인</span></a></li>
-                            </ul>
+@import url("//vendor-cdn.imweb.me/css/droidserif.css");
 
-            <!-- Search -->
-            <div class="srch_bar">
-                <div class="wrap_inp">
-                    <input type="text" id="keyword" placeholder="지역, 숙소명" autocomplete="off">
-                    <button type="button" class="btn_srch">검색</button>
-                </div>
-                <button class="btn_cancel" onclick="srch_close()">취소</button>
-            </div>
-            <!-- //Search -->
+@media ( min-width : 992px) {
+	.doz_sys .section_first.visual_section .full_screen_show .owl-theme .item .op,
+		.doz_sys .section_first.visual_section .full_screen_show .owl-theme .item .op .header-content
+		{
+		height: calc(100vh - 90px) !important;
+	}
+}
 
-        </section>
-    </header>
+.doz_sys #logo_w20221128580f6db37b928.logo .logo_title a {
+	font-family: Malgun Gothic;
+	font-size: 22px;
+	letter-spacing: 0px;
+	font-weight: bold;
+	font-style: normal;;
+	color: #212121;
+	line-height: inherit;
+}
 
-    <!-- Bg Dimm -->
-    <div class="bg_dimm" onclick="close_layer();">&nbsp;</div>
-    <div class="bg_dimm_prevent">&nbsp;</div>
+@media ( min-width : 767px) {
+	.doz_sys .hover_section_bg:hover #logo_w20221128580f6db37b928.logo .logo_title a
+		{
+		color: #212121
+	}
+}
 
-    <!-- 추천검색어 -->
-    <div class="recommend_srch">
-        <div class="scroll_srch">
-            <div class="scroller">
-                <div class="default" style="display:block">
-                    <strong>추천 검색어</strong>
-                    <ul></ul>
-                </div>
-                <!-- 연관검색어 -->
-                <div class="chain">
-                    <ul></ul>
-                </div>
-            </div>
-        </div>
-    </div>
+.scroll-to-fixed-fixed #logo_w20221128580f6db37b928 .logo_title a { !important;
+	color: #212121 !important;
+}
 
-    <!-- Mobile Menu -->
-    <div class="gnb_opacity"><button class="btn_close">닫기</button></div>
-    <div class="menu_wrap">
+#logo_w20221128580f6db37b928>div {
+	display: inline-block;
+}
 
-        <div class="menu">
-            <div class="top">
-                                    <!-- 비회원 -->
-                    <div class="guest">
-                        <div class="btn_join">
-                            로그인 후 예약하시면<br>할인 쿠폰과 추가 혜택을 받을 수 있어요.<br>
-                            <a href="https://www.goodchoice.kr/user/login"><span>로그인</span></a>
-                        </div>
-                        <div class="bot">
-                            <!-- 스크립트 링크 -->
-                            <a href="https://www.goodchoice.kr/user/login"><p>-<br><span>포인트</span></p></a>
-                            <a href="https://www.goodchoice.kr/user/login"><p>-<br><span>쿠폰함</span></p></a>
-                        </div>
-                    </div>
-                            </div>
-            <!-- Iscroll -->
-            <div class="scroll_nav">
-                <div class="scroller">
-                    <ul>
-                        <li><a href="https://www.goodchoice.kr/">홈</a></li>
-                        <li class="depth_2">
-                            <button type="button" class="has_ul"><span>숙소유형</span></button>
-                            <ul>
-                                <li><a href="https://www.goodchoice.kr/product/home/1">모텔</a></li>
-                                <li><a href="https://www.goodchoice.kr/product/search/2">호텔·리조트</a></li>
-                                <li><a href="https://www.goodchoice.kr/product/search/3">펜션</a></li>
-                                <li><a href="https://www.goodchoice.kr/product/search/6">게스트하우스</a></li>
-                                <li><a href="https://www.goodchoice.kr/product/search/5">캠핑·글램핑</a></li>
-                                <li><a href="https://www.goodchoice.kr/product/search/7">한옥 </a></li>
-                            </ul>
-                        </li>
-                        <li><a href="https://www.goodchoice.kr/product/srp">내주변</a></li>
-                    </ul>
-                                            <ul>
-                            <li><a href="https://www.goodchoice.kr/user/login?returnUrl=my%2FreserveList">예약 내역</a></li>
-                        </ul>
-                                        <ul>
-                        <li class="depth_2"><button type="button" class="has_ul"><span>더보기</span></button>
-                            <ul>
-                                <li><a href="https://www.goodchoice.kr/more/notice">공지사항</a></li>
-                                <li><a href="https://www.goodchoice.kr/more/event">이벤트</a></li>
-                                <!-- <li><a href="https://www.goodchoice.kr/more/project">혁신 프로젝트</a></li> -->
-                                <li><a href="https://www.goodchoice.kr/more/faq">고객문의</a></li>
-                                <li><a href="https://www.goodchoice.kr/my/notiSetting">알림설정</a></li>
-                                <li>
-                                    <a href="https://q.egiftcard.kr/couponstatus/" target="_blank">
-                                        여기어때 상품권 잔액 조회
-                                    </a>
-                                </li>
-                                <li><a href="https://www.goodchoice.kr/more/terms">약관 및 정책</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <div class="center">
-                        <p>여기어때 고객행복센터</p>
-                        <p><a href="tel:1670-6250">1670-6250</a></p>
-                        <p>오전 9시 - 새벽 3시</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- //Mobile Menu -->
+#logo_w20221128580f6db37b928 .img_box ~ .logo_title {
+	padding-left: 10px;
+}
+/*@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {*/
+/*	#logo_*/ /* .normal_logo,*/
+/*	#logo_*/ /* .scroll_logo {*/
+/*		width: auto;*/
+/*	}*/
+/*}*/
+@import url("");
 
-    	<!-- CSS -->
-    <link rel="stylesheet" href="/css/owl.carousel.css">
-    <link rel="stylesheet" href="/css/jquery-ui.css?rand=1669339876">      
-    <link rel="stylesheet" href="/css/product.css?rand=1669339876">      
+#w20221128b396043bbee26 .viewport-nav>li:last-child>a {
+	
+}
 
-    <div class="listpage recommend_wrap bg_area_01">
+@media ( min-width : 767px) {
+	.doz_sys .hover_section_bg:hover #w20221128b396043bbee26 .viewport-nav>li.dropdown>a
+		{
+		color: #212121
+	}
+	.doz_sys .hover_section_bg:hover #w20221128b396043bbee26 .viewport-nav>li.dropdown>a:hover
+		{
+		color: rgba(33, 33, 33, 0.5)
+	}
+}
 
-        <!-- Result Top -->
-        <div class="fix_srch">
-            <div class="srch_bar">
-                <div class="wrap_inp">
-                    <input type="text" placeholder="지역, 숙소명">
-                </div>
-                <button class="btn_cancel" onclick="srch_close()">취소</button>
-            </div>
-        </div>
-        <!-- //Result Top -->
+#w20221128b396043bbee26 .viewport-nav>li.dropdown>.notranslate a.active,
+	#w20221128b396043bbee26 .viewport-nav>li.dropdown>a.active {
+	font-weight: normal;
+	border: 0;
+	border-style: solid;;
+	color: #363636;
+	color: #363636;
+}
 
-        <!-- Sub Top -->
-        <div class="sub_top_wrap">
-            <div class="sub_top bg_kong_1">
-                <h2>서울지역편</h2>
-                <div class="area">
-                    <div class="btn_area"><span>서울</span>서울 인기숙소</div>
-                </div>
-                <span class="keyword"></span>
-            </div>
-        </div>
-        <!-- //Sub Top -->
+.scroll-to-fixed-fixed #w20221128b396043bbee26 .viewport-nav>li.dropdown>.notranslate a.active,
+	.scroll-to-fixed-fixed #w20221128b396043bbee26 .viewport-nav>li.dropdown>a.active
+	{;
+	color: #363636;
+	color: #363636;
+}
 
-        <!-- Content  -->
-        <div id="content" class="sub_wrap">
-            <!-- Area -->
-            <div class="area_pop">
-                <div class="fix_title">
-                    지역 선택<button type="button" onclick="area_close();">닫기</button>
-                </div>
+#w20221128b396043bbee26 .viewport-nav>li.dropdown>.notranslate a.active span,
+	#w20221128b396043bbee26 .viewport-nav>li.dropdown>a.active span {
+	border: 0;
+	border-style: solid;
+}
 
-                <!-- 지역필터 (리조트/캠핑/한옥 클래스추가 area_etc)-->
-                <div class="area_wrap">
-                    <div class="iscroll_01 depth_01">
-                        <div class="scroller">
-                                        <ul class="city"><!-- 지역 고정 클래스 fix / 오버시 on -->
-                                    <li>
-                        <a href="https://www.goodchoice.kr/product/home/1" class="fix on">
-                            서울                        </a>
-                    </li>
-                                    <li>
-                        <a href="https://www.goodchoice.kr/product/home/2">
-                            경기                        </a>
-                    </li>
-                                    <li>
-                        <a href="https://www.goodchoice.kr/product/home/3">
-                            인천                        </a>
-                    </li>
-                                    <li>
-                        <a href="https://www.goodchoice.kr/product/home/4">
-                            강원                        </a>
-                    </li>
-                                    <li>
-                        <a href="https://www.goodchoice.kr/product/home/51">
-                            제주                        </a>
-                    </li>
-                                    <li>
-                        <a href="https://www.goodchoice.kr/product/home/12">
-                            부산                        </a>
-                    </li>
-                                    <li>
-                        <a href="https://www.goodchoice.kr/product/home/10">
-                            경남                        </a>
-                    </li>
-                                    <li>
-                        <a href="https://www.goodchoice.kr/product/home/9">
-                            대구                        </a>
-                    </li>
-                                    <li>
-                        <a href="https://www.goodchoice.kr/product/home/8">
-                            경북                        </a>
-                    </li>
-                                    <li>
-                        <a href="https://www.goodchoice.kr/product/home/11">
-                            울산                        </a>
-                    </li>
-                                    <li>
-                        <a href="https://www.goodchoice.kr/product/home/7">
-                            대전                        </a>
-                    </li>
-                                    <li>
-                        <a href="https://www.goodchoice.kr/product/home/6">
-                            충남                        </a>
-                    </li>
-                                    <li>
-                        <a href="https://www.goodchoice.kr/product/home/5">
-                            충북                        </a>
-                    </li>
-                                    <li>
-                        <a href="https://www.goodchoice.kr/product/home/47">
-                            광주                        </a>
-                    </li>
-                                    <li>
-                        <a href="https://www.goodchoice.kr/product/home/48">
-                            전남                        </a>
-                    </li>
-                                    <li>
-                        <a href="https://www.goodchoice.kr/product/home/49">
-                            전북                        </a>
-                    </li>
-                            </ul>
-                                    </div>
-                    </div>
-                    <div class="iscroll_02">
-                        <div class="scroller">
-                            <ul class="city_child" style="display: block;"><li><a href="https://www.goodchoice.kr/product/home/1" class="on">서울 인기숙소<span>HOT</span></a></li><li><a href="https://www.goodchoice.kr/product/search/1/7052">강남/역삼/삼성/논현</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7053">서초/신사/방배</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7040">잠실/방이</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7041">잠실새내/신천</a></li><li><a href="https://www.goodchoice.kr/product/search/1/122">영등포/여의도</a></li><li><a href="https://www.goodchoice.kr/product/search/1/20">구로/금천/오류/신도림</a></li><li><a href="https://www.goodchoice.kr/product/search/1/45">강서/화곡/까치산역/목동</a></li><li><a href="https://www.goodchoice.kr/product/search/1/17">천호/길동/둔촌</a></li><li><a href="https://www.goodchoice.kr/product/search/1/19">서울대/신림/사당/동작</a></li><li><a href="https://www.goodchoice.kr/product/search/1/14">종로/대학로</a></li><li><a href="https://www.goodchoice.kr/product/search/1/120">용산/중구/명동/이태원</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7026">성신여대/성북/월곡</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7027">노원/도봉/창동</a></li><li><a href="https://www.goodchoice.kr/product/search/1/95">강북/수유/미아</a></li><li><a href="https://www.goodchoice.kr/product/search/1/96">왕십리/성수/금호</a></li><li><a href="https://www.goodchoice.kr/product/search/1/135">건대/광진/구의</a></li><li><a href="https://www.goodchoice.kr/product/search/1/97">동대문/장안/청량리/답십리</a></li><li><a href="https://www.goodchoice.kr/product/search/1/125">중랑/상봉/면목/태릉</a></li><li><a href="https://www.goodchoice.kr/product/search/1/123">신촌/홍대/서대문/마포</a></li><li><a href="https://www.goodchoice.kr/product/search/1/46">은평/연신내/불광</a></li></ul><ul class="city_child"><li><a href="https://www.goodchoice.kr/product/home/2">경기 인기숙소<span>HOT</span></a></li><li><a href="https://www.goodchoice.kr/product/search/1/89">수원/인계</a></li><li><a href="https://www.goodchoice.kr/product/search/1/160">수원시청/권선/영통</a></li><li><a href="https://www.goodchoice.kr/product/search/1/88">수원역/세류/팔달문/구운/장안</a></li><li><a href="https://www.goodchoice.kr/product/search/1/161">대부도/제부도</a></li><li><a href="https://www.goodchoice.kr/product/search/1/100">안성/평택/송탄</a></li><li><a href="https://www.goodchoice.kr/product/search/1/99">오산/화성/동탄</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7042">파주/금촌/헤이리/통일동산</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7043">김포/장기/구래/대명항</a></li><li><a href="https://www.goodchoice.kr/product/search/1/21">고양/일산</a></li><li><a href="https://www.goodchoice.kr/product/search/1/22">의정부</a></li><li><a href="https://www.goodchoice.kr/product/search/1/53">부천</a></li><li><a href="https://www.goodchoice.kr/product/search/1/128">안양/평촌/인덕원/과천</a></li><li><a href="https://www.goodchoice.kr/product/search/1/28">군포/금정/산본/의왕</a></li><li><a href="https://www.goodchoice.kr/product/search/1/31">안산</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7034">광명/철산/시흥신천역</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7035">시흥/월곶/정왕/오이도</a></li><li><a href="https://www.goodchoice.kr/product/search/1/27">용인</a></li><li><a href="https://www.goodchoice.kr/product/search/1/127">이천/광주/여주</a></li><li><a href="https://www.goodchoice.kr/product/search/1/25">성남/분당</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7036">구리/하남</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7037">남양주</a></li><li><a href="https://www.goodchoice.kr/product/search/1/136">가평/양평</a></li><li><a href="https://www.goodchoice.kr/product/search/1/162">양주/동두천/연천/장흥</a></li><li><a href="https://www.goodchoice.kr/product/search/1/23">포천</a></li></ul><ul class="city_child"><li><a href="https://www.goodchoice.kr/product/home/3">인천 인기숙소<span>HOT</span></a></li><li><a href="https://www.goodchoice.kr/product/search/1/90">부평</a></li><li><a href="https://www.goodchoice.kr/product/search/1/93">주안</a></li><li><a href="https://www.goodchoice.kr/product/search/1/172">구월/소래포구</a></li><li><a href="https://www.goodchoice.kr/product/search/1/94">동암/간석</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7028">을왕리/인천공항</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7029">월미도/차이나타운/신포/동인천</a></li><li><a href="https://www.goodchoice.kr/product/search/1/171">작전/경인교대</a></li><li><a href="https://www.goodchoice.kr/product/search/1/170">용현/숭의/도화/송림</a></li><li><a href="https://www.goodchoice.kr/product/search/1/91">송도/연수</a></li><li><a href="https://www.goodchoice.kr/product/search/1/119">서구/검단</a></li><li><a href="https://www.goodchoice.kr/product/search/1/173">강화/옹진/백령도</a></li></ul><ul class="city_child"><li><a href="https://www.goodchoice.kr/product/home/4">강원 인기숙소<span>HOT</span></a></li><li><a href="https://www.goodchoice.kr/product/search/1/150">강릉역/교동택지/옥계</a></li><li><a href="https://www.goodchoice.kr/product/search/1/36">경포대/사천/주문진</a></li><li><a href="https://www.goodchoice.kr/product/search/1/180">양양/낙산/하조대/인제</a></li><li><a href="https://www.goodchoice.kr/product/search/1/33">속초/설악/동명항/고성</a></li><li><a href="https://www.goodchoice.kr/product/search/1/32">춘천/홍천/철원/화천</a></li><li><a href="https://www.goodchoice.kr/product/search/1/34">원주/횡성</a></li><li><a href="https://www.goodchoice.kr/product/search/1/37">정동진/동해/삼척</a></li><li><a href="https://www.goodchoice.kr/product/search/1/35">평창/영월/정선/태백</a></li></ul><ul class="city_child"><li><a href="https://www.goodchoice.kr/product/home/51">제주 인기숙소<span>HOT</span></a></li><li><a href="https://www.goodchoice.kr/product/search/1/7030">제주시</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7031">애월/협재</a></li><li><a href="https://www.goodchoice.kr/product/search/1/87">서귀포/마라도</a></li></ul><ul class="city_child"><li><a href="https://www.goodchoice.kr/product/home/12">부산 인기숙소<span>HOT</span></a></li><li><a href="https://www.goodchoice.kr/product/search/1/101">해운대/재송</a></li><li><a href="https://www.goodchoice.kr/product/search/1/102">송정/기장/정관</a></li><li><a href="https://www.goodchoice.kr/product/search/1/103">서면/초읍/양정/부산시민공원/범천</a></li><li><a href="https://www.goodchoice.kr/product/search/1/43">남포동/부산역/송도/영도/범일동</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7044">광안리/수영/민락</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7045">경성대/대연/용호/문현</a></li><li><a href="https://www.goodchoice.kr/product/search/1/41">동래/온천장/부산대/구서/사직</a></li><li><a href="https://www.goodchoice.kr/product/search/1/104">연산/토곡</a></li><li><a href="https://www.goodchoice.kr/product/search/1/44">사상(공항경전철)/학장/엄궁</a></li><li><a href="https://www.goodchoice.kr/product/search/1/82">강서/하단/사하/명지/신호/다대포</a></li><li><a href="https://www.goodchoice.kr/product/search/1/133">덕천/만덕/구포/화명/북구</a></li></ul><ul class="city_child"><li><a href="https://www.goodchoice.kr/product/home/10">경남 인기숙소<span>HOT</span></a></li><li><a href="https://www.goodchoice.kr/product/search/1/105">김해/장유/율하</a></li><li><a href="https://www.goodchoice.kr/product/search/1/106">양산/밀양</a></li><li><a href="https://www.goodchoice.kr/product/search/1/107">거제/통영/고성군</a></li><li><a href="https://www.goodchoice.kr/product/search/1/108">진주</a></li><li><a href="https://www.goodchoice.kr/product/search/1/132">사천/남해/하동</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7013">창원 상남/용호/중앙</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7014">창원 명서/팔용/봉곡/북면</a></li><li><a href="https://www.goodchoice.kr/product/search/1/109">마산/진해</a></li><li><a href="https://www.goodchoice.kr/product/search/1/79">거창/함안/창녕/합천/의령</a></li></ul><ul class="city_child"><li><a href="https://www.goodchoice.kr/product/home/9">대구 인기숙소<span>HOT</span></a></li><li><a href="https://www.goodchoice.kr/product/search/1/7017">동성로/시청/서문시장</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7018">대구역/경북대/엑스코/칠곡3지구/태전동/금호지구</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7054">동대구역/신암/신천/동촌유원지/대구공항/혁신도시/팔공산</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7055">수성구/수성못/범어/알파시티/남구/대명/봉덕/성당못</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7056">두류공원/두류/본리/죽전/감삼</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7022">평리/내당/비산/원대</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7025">성서공단/계명대/달성군</a></li></ul><ul class="city_child"><li><a href="https://www.goodchoice.kr/product/home/8">경북 인기숙소<span>HOT</span></a></li><li><a href="https://www.goodchoice.kr/product/search/1/70">경주/보문단지/황리단길/불국사/안강/감포/양남</a></li><li><a href="https://www.goodchoice.kr/product/search/1/71">구미</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7015">포항남구/시청/시외버스터미널/구룡포/문덕/오천</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7016">포항북구/영일대/죽도시장/여객터미널</a></li><li><a href="https://www.goodchoice.kr/product/search/1/129">울진/울릉도/청송/영덕</a></li><li><a href="https://www.goodchoice.kr/product/search/1/73">경산/하양/영천/청도</a></li><li><a href="https://www.goodchoice.kr/product/search/1/190">문경/상주/영주/예천</a></li><li><a href="https://www.goodchoice.kr/product/search/1/72">안동</a></li><li><a href="https://www.goodchoice.kr/product/search/1/191">김천/성주/칠곡/의성/군위</a></li></ul><ul class="city_child"><li><a href="https://www.goodchoice.kr/product/home/11">울산 인기숙소<span>HOT</span></a></li><li><a href="https://www.goodchoice.kr/product/search/1/117">동구/북구/울주군/일산/정자/진하/영남알프스</a></li><li><a href="https://www.goodchoice.kr/product/search/1/116">남구/중구/삼산/성남/무거/신정</a></li></ul><ul class="city_child"><li><a href="https://www.goodchoice.kr/product/home/7">대전 인기숙소<span>HOT</span></a></li><li><a href="https://www.goodchoice.kr/product/search/1/67">유성 봉명/도안/장대</a></li><li><a href="https://www.goodchoice.kr/product/search/1/68">중구 은행/대흥/선화/유천</a></li><li><a href="https://www.goodchoice.kr/product/search/1/66">동구 용전/복합터미널</a></li><li><a href="https://www.goodchoice.kr/product/search/1/250">대덕구 신탄진/중리</a></li><li><a href="https://www.goodchoice.kr/product/search/1/69">서구 둔산/용문/월평</a></li></ul><ul class="city_child"><li><a href="https://www.goodchoice.kr/product/home/6">충남 인기숙소<span>HOT</span></a></li><li><a href="https://www.goodchoice.kr/product/search/1/65">천안 서북구</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7012">천안 동남구</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7057">계룡/금산/논산</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7058">공주/동학사</a></li><li><a href="https://www.goodchoice.kr/product/search/1/63">아산</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7059">태안/안면도</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7061">서산</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7060">당진</a></li><li><a href="https://www.goodchoice.kr/product/search/1/200">서천/부여</a></li><li><a href="https://www.goodchoice.kr/product/search/1/64">대천/보령</a></li><li><a href="https://www.goodchoice.kr/product/search/1/138">예산/청양/홍성</a></li><li><a href="https://www.goodchoice.kr/product/search/1/50">세종</a></li></ul><ul class="city_child"><li><a href="https://www.goodchoice.kr/product/home/5">충북 인기숙소<span>HOT</span></a></li><li><a href="https://www.goodchoice.kr/product/search/1/58">청주 흥덕구/서원구</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7011">청주 상당구/청원구</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7050">진천/음성</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7051">제천/단양</a></li><li><a href="https://www.goodchoice.kr/product/search/1/59">충주/수안보</a></li><li><a href="https://www.goodchoice.kr/product/search/1/60">증평/괴산/영동/보은/옥천</a></li></ul><ul class="city_child"><li><a href="https://www.goodchoice.kr/product/home/47">광주 인기숙소<span>HOT</span></a></li><li><a href="https://www.goodchoice.kr/product/search/1/111">북구/챔피언스필드/광주역/전남대학교</a></li><li><a href="https://www.goodchoice.kr/product/search/1/112">서구/유스퀘어터미널/상무지구</a></li><li><a href="https://www.goodchoice.kr/product/search/1/220">동구/남구/국립아시아문화전당/충장로</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7046">광산구 하남/송정역</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7047">광산구 첨단지구</a></li></ul><ul class="city_child"><li><a href="https://www.goodchoice.kr/product/home/48">전남 인기숙소<span>HOT</span></a></li><li><a href="https://www.goodchoice.kr/product/search/1/113">여수</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7048">순천</a></li><li><a href="https://www.goodchoice.kr/product/search/1/7049">광양</a></li><li><a href="https://www.goodchoice.kr/product/search/1/114">목포/무안/영암</a></li><li><a href="https://www.goodchoice.kr/product/search/1/240">나주/담양/곡성/구례/영광/장성/함평</a></li><li><a href="https://www.goodchoice.kr/product/search/1/115">화순/보성/해남/완도/강진/고흥/진도</a></li></ul><ul class="city_child"><li><a href="https://www.goodchoice.kr/product/home/49">전북 인기숙소<span>HOT</span></a></li><li><a href="https://www.goodchoice.kr/product/search/1/85">전주 덕진구</a></li><li><a href="https://www.goodchoice.kr/product/search/1/140">전주 완산구/완주</a></li><li><a href="https://www.goodchoice.kr/product/search/1/83">군산/비응도</a></li><li><a href="https://www.goodchoice.kr/product/search/1/230">남원/임실/순창/무주/진안/장수</a></li><li><a href="https://www.goodchoice.kr/product/search/1/134">익산/익산터미널/익산역</a></li><li><a href="https://www.goodchoice.kr/product/search/1/84">김제/부안/고창/정읍</a></li></ul>                        </div>
-                    </div>
-                </div>
+.scroll-to-fixed-fixed #w20221128b396043bbee26 .viewport-nav>li.dropdown>.notranslate a.active span,
+	.scroll-to-fixed-fixed #w20221128b396043bbee26 .viewport-nav>li.dropdown>a.active span
+	{
+	border: 0;
+	border-style: solid;
+}
 
-            </div>
-            <!-- //Area -->
+#w20221128b396043bbee26 .viewport-nav>li>a {
+	padding: 15px;
+}
 
-            <!-- List -->
-            <div class="list_wrap">
-                <div id="poduct_list_area">
-                    <div class="title">
-                        <h3>지역추천</h3>
-                        <span>광고</span>
-                    </div>
-                    <ul>
-                            <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=69041&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="69041" data-adcno="1" data-alat="37.567989010246" data-alng="126.97816078488" data-distance="0.153" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/69041/19415/76471771556d9ece792699bf7c21c31c.jpg" src="//image.goodchoice.kr/resize_1000X500x0/adimg_new/69041/19415/76471771556d9ece792699bf7c21c31c.jpg" alt="명동 뉴서울호텔" style="margin-top: -107.5px; display: block;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>명동 뉴서울호텔</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(410)                    </p>
-                    <p>
-                        중구 태평로1가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<b>55,000원</b></p>                    </div>
-                    <p>대실&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<b>55,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=68065&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="68065" data-adcno="1" data-alat="37.561053335309" data-alng="126.9845198937" data-distance="0.821" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/68065/381552/536f3a7ee6b4bba14b3c710645062570.jpg" src="//image.goodchoice.kr/resize_1000X500x0/adimg_new/68065/381552/536f3a7ee6b4bba14b3c710645062570.jpg" alt="명동 밀리오레호텔" style="margin-top: -107.5px; display: block;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>무료주차,넷플릭스 고객 개인 계정 로그인 필수                                                             ~</span></div>                <div class="name">
-                                        <strong>명동 밀리오레호텔</strong>
-                    <p class="score">
-                        <em>9.0</em>&nbsp;<span>추천해요</span>&nbsp;(3133)                    </p>
-                    <p>
-                        중구 충무로1가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<b>90,000원</b></p>                    </div>
-                    <p>대실&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<b>90,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=1742&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="1742" data-adcno="1" data-alat="37.56928526" data-alng="126.9882594" data-distance="0.917" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/1742/104937/a6a12c63b7b24ad6b5f91366fc69829d.jpg" src="//image.goodchoice.kr/resize_1000X500x0/adimg_new/1742/104937/a6a12c63b7b24ad6b5f91366fc69829d.jpg" alt="종로 부티크 호텔K" style="margin-top: -107.5px; display: block;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>무한대실                                                             ~ 외 3개</span></div>                <div class="name">
-                                        <strong>종로 부티크 호텔K</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(6400)                    </p>
-                    <p>
-                        종로구 관철동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<b>70,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<b>70,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=881&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="881" data-adcno="1" data-alat="37.56936102" data-alng="126.9890246" data-distance="0.984" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/881/34089/211b0318091c6505e477fe593bd75a8e.jpg" src="//image.goodchoice.kr/resize_1000X500x0/adimg_new/881/34089/211b0318091c6505e477fe593bd75a8e.jpg" alt="종로 더 디자이너스" style="margin-top: -107.5px; display: block;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>혼숙 불가 호텔 외 3개</span></div>                <div class="name">
-                                        <strong>종로 더 디자이너스</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(2122)                    </p>
-                    <p>
-                        종로구 관수동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>27,778원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>166,670원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>27,778원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>166,670원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=65944&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="65944" data-adcno="1" data-alat="37.569231292502" data-alng="126.99017655357" data-distance="1.077" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/65944/323971/f647e75279eea85581405e3f70c98d89.jpg" src="//image.goodchoice.kr/resize_1000X500x0/adimg_new/65944/323971/f647e75279eea85581405e3f70c98d89.jpg" alt="종로 다나호텔" style="margin-top: -107.5px; display: block;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>새단장 오픈 마스크 증정 넓은주차장</span></div>                <div class="name">
-                                        <strong>종로 다나호텔</strong>
-                    <p class="score">
-                        <em>9.7</em>&nbsp;<span>최고에요</span>&nbsp;(1235)                    </p>
-                    <p>
-                        종로구 관수동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>160,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>160,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=56944&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="56944" data-adcno="1" data-alat="37.56943684011" data-alng="126.99055052127" data-distance="1.115" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/56944/212991/8b9d60558f372c930e2d732f33c82827.jpg" src="//image.goodchoice.kr/resize_1000X500x0/adimg_new/56944/212991/8b9d60558f372c930e2d732f33c82827.jpg" alt="종로 호텔 더 포스트" style="margin-top: -107.5px; display: block;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>VIP,프리미엄 숙박 생일고객 와인제공 외 3개</span></div>                <div class="name">
-                                        <strong>종로 호텔 더 포스트</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(3918)                    </p>
-                    <p>
-                        종로구 관수동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>34,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>34,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=4642&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="4642" data-adcno="1" data-alat="37.57274154" data-alng="126.988929" data-distance="1.15" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/4642/198835/3b5007248b9e0c0964f651803a9db384.jpg" src="//image.goodchoice.kr/resize_1000X500x0/adimg_new/4642/198835/3b5007248b9e0c0964f651803a9db384.jpg" alt="종로 Hertz-헤르츠" style="margin-top: -107.5px; display: block;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>주중 12시 이전 입실 시 최대 5시간</span></div>                <div class="name">
-                                        <strong>종로 Hertz-헤르츠</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(4010)                    </p>
-                    <p>
-                        종로구 낙원동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=64334&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="64334" data-adcno="1" data-alat="37.571983151216" data-alng="126.98957827831" data-distance="1.151" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/64334/298288/ff0773914a91a6806b40e93b707c5ca7.jpg" src="//image.goodchoice.kr/resize_1000X500x0/adimg_new/64334/298288/ff0773914a91a6806b40e93b707c5ca7.jpg" alt="종로 THE MAY HOTEL" style="margin-top: -107.5px; display: block;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>여기어때 회원에게 대실숙박 3%적립</span></div>                <div class="name">
-                                        <strong>종로 THE MAY HOTEL</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(1918)                    </p>
-                    <p>
-                        종로구 돈의동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=65523&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="65523" data-adcno="1" data-alat="37.569206150933" data-alng="126.99127521951" data-distance="1.17" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/65523/314424/93146aaccf4ce20a0de969202c79d49d.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="종로 K-World" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>객실 랜덤 배정</span></div>                <div class="name">
-                                        <strong>종로 K-World</strong>
-                    <p class="score">
-                        <em>9.7</em>&nbsp;<span>최고에요</span>&nbsp;(2350)                    </p>
-                    <p>
-                        종로구 관수동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=45758&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="45758" data-adcno="1" data-alat="37.5623802435" data-alng="126.990605741" data-distance="1.174" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/45758/102096/9c990a1dc158985e4437d2cb5312ac0b.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="명동 New Stay inn" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>넷플릭스룸 넷플릭스 무료 시청</span></div>                <div class="name">
-                                        <strong>명동 New Stay inn</strong>
-                    <p class="score">
-                        <em>9.0</em>&nbsp;<span>추천해요</span>&nbsp;(750)                    </p>
-                    <p>
-                        중구 충무로3가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>38,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>180,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>38,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>180,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=68321&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="68321" data-adcno="1" data-alat="37.567079771685" data-alng="127.00636506701" data-distance="2.465" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/68321/417606/f6f15b584a5c0b3278e83d111bb12d32.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="동대문 대경" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전 객실 Netflix 무료시청 숙소</span></div>                <div class="name">
-                                        <strong>동대문 대경</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(429)                    </p>
-                    <p>
-                        중구 을지로6가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=48183&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="48183" data-adcno="1" data-alat="37.5404110065" data-alng="126.972196628" data-distance="2.966" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/48183/386401/5c851f5ce2c9f203cf275ccdba16992f.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="용산 엘르인" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>용산 엘르인</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(494)                    </p>
-                    <p>
-                        용산구 갈월동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                    </div>
-                    <p>대실&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=2816&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="2816" data-adcno="1" data-alat="37.55805616" data-alng="126.9423384" data-distance="3.319" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/2816/442956/ae723778664e3517b94d1a0ed8036b0f.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신촌 앨리 - ALLEY" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>주중 숙박 이용 시 다양한 간식 제공</span></div>                <div class="name">
-                                        <strong>신촌 앨리 - ALLEY</strong>
-                    <p class="score">
-                        <em>8.8</em>&nbsp;<span>만족해요</span>&nbsp;(4223)                    </p>
-                    <p>
-                        서대문구 대현동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=71450&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="71450" data-adcno="1" data-alat="37.556240322492" data-alng="126.94257342088" data-distance="3.363" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/71450/460318/5f388df73e1a55afaea9938ce6eea4eb.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신촌 에이치에비뉴-H-AVENUE-이대점" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>신촌 에이치에비뉴-H-AVENUE-이대점</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(68)                    </p>
-                    <p>
-                        마포구 노고산동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>50,000원</b></p><p>숙박&nbsp;<b>110,000원</b></p>                    </div>
-                    <p>대실&nbsp;<b>50,000원</b></p><p>숙박&nbsp;<b>110,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=54862&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="54862" data-adcno="1" data-alat="37.5570844549" data-alng="126.9379207942" data-distance="3.723" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/54862/182040/f12ba85b456ca78d8fff69b67e40b079.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신촌 포레스타" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전객실 넷플릭스 이용가능 외 2개</span></div>                <div class="name">
-                                        <strong>신촌 포레스타</strong>
-                    <p class="score">
-                        <em>9.0</em>&nbsp;<span>추천해요</span>&nbsp;(1738)                    </p>
-                    <p>
-                        서대문구 창천동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=781&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="781" data-adcno="1" data-alat="37.5567061" data-alng="126.9380569" data-distance="3.724" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/781/2265/a6a5eb6710c2d1f3ae5c47f3129de18a.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신촌 가을" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>신촌 가을</strong>
-                    <p class="score">
-                        <em>8.9</em>&nbsp;<span>만족해요</span>&nbsp;(4925)                    </p>
-                    <p>
-                        서대문구 창천동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=1697&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="1697" data-adcno="1" data-alat="37.55638875" data-alng="126.9376814" data-distance="3.766" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/1697/1028/ca0c9f3e8bdcdf61ab2e1e3fe030e3f7.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신촌 호텔 루씨르" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>넷플릭스 무료시청 외 1개</span></div>                <div class="name">
-                                        <strong>신촌 호텔 루씨르</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(2721)                    </p>
-                    <p>
-                        서대문구 창천동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>150,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>150,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=779&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="779" data-adcno="1" data-alat="37.55349397" data-alng="126.9362216" data-distance="3.995" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/779/203463/71325338f503e141b7d061d0eeb01053.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신촌 라뉘호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>세미스페셜룸 이상 넷플릭스 무료이용가능 외 1개</span></div>                <div class="name">
-                                        <strong>신촌 라뉘호텔</strong>
-                    <p class="score">
-                        <em>8.8</em>&nbsp;<span>만족해요</span>&nbsp;(2873)                    </p>
-                    <p>
-                        마포구 노고산동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                    </div>
-                    <p>대실&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=48255&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="48255" data-adcno="1" data-alat="37.5733234945" data-alng="127.023898869" data-distance="4.078" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/48255/367942/63e027af75558d9c5c142a316dec9d9b.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="동대문 다락 - 多樂" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>넷플릭스, 유튜브 시청가능</span></div>                <div class="name">
-                                        <strong>동대문 다락 - 多樂</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(2234)                    </p>
-                    <p>
-                        동대문구 신설동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>55,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>55,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=810&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="810" data-adcno="1" data-alat="37.59251931" data-alng="127.0179536" data-distance="4.521" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/810/181710/eca595e6ce3fb98ba615fc5cbdd90ace.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="성신여대 샤미소" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>성신여대 샤미소</strong>
-                    <p class="score">
-                        <em>9.0</em>&nbsp;<span>추천해요</span>&nbsp;(1373)                    </p>
-                    <p>
-                        성북구 동선동1가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=1142&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="1142" data-adcno="1" data-alat="37.59392498" data-alng="127.0171115" data-distance="4.566" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/1142/408791/308da2f05fddd03cc8531e27de8d479c.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="성신여대역 더월-THE WALL" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>최신 리모델링, 전체 넷플릭스 디지니 이용가능 외 1개</span></div>                <div class="name">
-                                        <strong>성신여대역 더월-THE WALL</strong>
-                    <p class="score">
-                        <em>9.6</em>&nbsp;<span>최고에요</span>&nbsp;(904)                    </p>
-                    <p>
-                        성북구 동선동4가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>150,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>150,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=47284&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="47284" data-adcno="1" data-alat="37.5939067152" data-alng="127.018755678" data-distance="4.674" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/47284/7765/20b2aa07a67d2f9f5919bf5dc409e6a6.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="성신여대 호텔 디 아티스트" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>포인트적립10%,넷플릭스  디즈니 시청가능</span></div>                <div class="name">
-                                        <strong>성신여대 호텔 디 아티스트</strong>
-                    <p class="score">
-                        <em>9.6</em>&nbsp;<span>최고에요</span>&nbsp;(2677)                    </p>
-                    <p>
-                        성북구 동선동1가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=805&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="805" data-adcno="1" data-alat="37.56263136" data-alng="127.0348154" data-distance="4.992" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/805/2370/01.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="왕십리 컬리넌" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>주중 무한대실 이벤트 외 1개</span></div>                <div class="name">
-                                        <strong>왕십리 컬리넌</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(3935)                    </p>
-                    <p>
-                        성동구 도선동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=63580&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="63580" data-adcno="1" data-alat="37.563611554418" data-alng="127.03514189809" data-distance="5.012" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/63580/452899/daf2cbe9a0eff70f3681e01f366fe9f9.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="왕십리 Full Moon" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>발렛주차,리프트 주차장 총 18대 완비 외 2개</span></div>                <div class="name">
-                                        <strong>왕십리 Full Moon</strong>
-                    <p class="score">
-                        <em>9.6</em>&nbsp;<span>최고에요</span>&nbsp;(992)                    </p>
-                    <p>
-                        성동구 도선동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>125,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>125,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=3954&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="3954" data-adcno="1" data-alat="37.56371242" data-alng="127.0352913" data-distance="5.024" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/3954/450190/7f31f77a447c7309d98af2964a76f49d.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="왕십리 호텔 아모렉스" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>리모델링 오픈기념 리뷰이벤트</span></div>                <div class="name">
-                                        <strong>왕십리 호텔 아모렉스</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(459)                    </p>
-                    <p>
-                        성동구 도선동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=13226&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="13226" data-adcno="1" data-alat="37.5625988184" data-alng="127.035195751" data-distance="5.025" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/13226/164128/b5632486206dd41c8625a910c1d6d67f.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="왕십리 H" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>업체 전체적인 방역검사를 매일 실시합니다</span></div>                <div class="name">
-                                        <strong>왕십리 H</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(1481)                    </p>
-                    <p>
-                        성동구 도선동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=5666&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="5666" data-adcno="1" data-alat="37.56240778" data-alng="127.0352635" data-distance="5.033" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/5666/34724/8e5c06c78a2c60cd163960f835d44623.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="왕십리 포레스타" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>왕십리 포레스타 무한대실 이벤트 외 1개</span></div>                <div class="name">
-                                        <strong>왕십리 포레스타</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(4175)                    </p>
-                    <p>
-                        성동구 도선동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=47247&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="47247" data-adcno="1" data-alat="37.5990988142" data-alng="126.936427379" data-distance="5.169" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/47247/452182/544c4ddd740eab9b0f93b36fb3aaeb9b.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="은평 씨에스에비뉴 호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>70인치TV,불멍바베큐글램핑,고사양커플PC 외 2개</span></div>                <div class="name">
-                                        <strong>은평 씨에스에비뉴 호텔</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(1209)                    </p>
-                    <p>
-                        은평구 응암동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=52008&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="52008" data-adcno="1" data-alat="37.5887280138" data-alng="126.915675502" data-distance="6.05" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/52008/215819/78693ff0ce0568b7d4cdfba322b7d4f6.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="응암 시크" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>Imax로 넷플릭스와 최신사양 커플pc</span></div>                <div class="name">
-                                        <strong>응암 시크</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(1990)                    </p>
-                    <p>
-                        은평구 응암동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=3757&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="3757" data-adcno="1" data-alat="37.58171356" data-alng="127.0476446" data-distance="6.328" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/3757/391681/dd329baffbcb221205bdc8b8fe107dfd.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="청량리 더 디자이너스" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>매트리스 침구류 교체! 스낵바 넷플릭스 무료!                                                             ~ 외 1개</span></div>                <div class="name">
-                                        <strong>청량리 더 디자이너스</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(2213)                    </p>
-                    <p>
-                        동대문구 전농동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>210,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>210,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=62217&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="62217" data-adcno="1" data-alat="37.608594881947" data-alng="126.92943833231" data-distance="6.356" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/62217/272120/9f13e29ce4a87369cca46b2a5d806307.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="불광 포레스타" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전 객실 넷플릭스  유투브 무료시청가능 외 3개</span></div>                <div class="name">
-                                        <strong>불광 포레스타</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(2758)                    </p>
-                    <p>
-                        은평구 대조동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>105,000원</b></p>                    </div>
-                    <div class="earlybird soldout">페이백 SOLD OUT</div><p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>105,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=72823&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="72823" data-adcno="1" data-alat="37.609174489393" data-alng="126.9301976105" data-distance="6.358" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/72823/479903/5ec5d932084451bc4cf096f15482a9e7.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="불광 3S호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                    <div class="badge"><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(62,201,189,1);">뉴</span></div>                    <strong>불광 3S호텔</strong>
-                    <p class="score">
-                                            </p>
-                    <p>
-                        은평구 대조동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실 <b>숙소에 문의</b></p><p>숙박&nbsp;<b>80,000원</b></p>                    </div>
-                    <p>대실 <b>숙소에 문의</b> </p><p>숙박&nbsp;<b>80,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=3589&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="3589" data-adcno="1" data-alat="37.58245198" data-alng="127.0486232" data-distance="6.434" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/3589/3735/86c0bec6a09635f71ade6afee9ac9be9.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="청량리 호텔 31PAGE" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>침구류교체넷플릭스전객실시청본인계정있을시이용가능</span></div>                <div class="name">
-                                        <strong>청량리 호텔 31PAGE</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(1756)                    </p>
-                    <p>
-                        동대문구 전농동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>65,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>65,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=45577&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="45577" data-adcno="1" data-alat="37.5303215093" data-alng="126.920452255" data-distance="6.511" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/45577/96838/d0e7adbda0dec930310e55926687935b.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="여의도 벤허" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전 객실 넷플릭스 설치이용전 문의</span></div>                <div class="name">
-                                        <strong>여의도 벤허</strong>
-                    <p class="score">
-                        <em>9.0</em>&nbsp;<span>추천해요</span>&nbsp;(1142)                    </p>
-                    <p>
-                        영등포구 여의도동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=765&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="765" data-adcno="1" data-alat="37.56671847" data-alng="127.0535616" data-distance="6.624" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/765/111503/111e6c1c3cadce778a873f4fbea61174.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="답십리 SM 부티크" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>SM부티크 업체 이용시 적립금 추가 이벤트 외 1개</span></div>                <div class="name">
-                                        <strong>답십리 SM 부티크</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(3944)                    </p>
-                    <p>
-                        동대문구 답십리동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<b>60,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<b>60,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=2807&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="2807" data-adcno="1" data-alat="37.51876197" data-alng="127.0267818" data-distance="6.82" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/2807/28006/19669a49cb68e7a6f346150978d7f851.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신사 하이랜드" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>신사 하이랜드</strong>
-                    <p class="score">
-                        <em>8.7</em>&nbsp;<span>만족해요</span>&nbsp;(3033)                    </p>
-                    <p>
-                        강남구 논현동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>77,000원</b></p>                    </div>
-                    <p>대실&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>77,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=4060&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="4060" data-adcno="1" data-alat="37.51833835" data-alng="126.9106192" data-distance="8.034" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/4060/4252/d180ebeddf2df7e11db456f0fa6de2c3.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="영등포 Blvd 호텔오라" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>꽁꽁 얼음물 무한,퇴실시 아이스크림 증정 외 2개</span></div>                <div class="name">
-                                        <strong>영등포 Blvd 호텔오라</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(6155)                    </p>
-                    <p>
-                        영등포구 영등포동3가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=51604&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="51604" data-adcno="1" data-alat="37.540559401" data-alng="127.063473099" data-distance="8.04" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/51604/161153/9e71c572fa7a8c26b13883e307ef7f41.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="건대 호텔 K-World" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>조식 서비스 무료 제공 외 1개</span></div>                <div class="name">
-                                        <strong>건대 호텔 K-World</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(2874)                    </p>
-                    <p>
-                        광진구 자양동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>180,000원</b></p>                    </div>
-                    <div class="earlybird soldout">페이백 SOLD OUT</div><p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>180,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=46319&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="46319" data-adcno="1" data-alat="37.5701806623" data-alng="127.069742098" data-distance="8.06" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/46319/468667/4c674221919a452c62bbb2358dc58f38.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="장안 시그니처" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>장안 시그니처</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(1159)                    </p>
-                    <p>
-                        동대문구 장안동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=1592&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="1592" data-adcno="1" data-alat="37.5181039" data-alng="126.9103661" data-distance="8.068" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/1592/9301/579519d4b4557eee8814a9d1c80da8f7.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="영등포 부띠크 Hotel SB" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>영등포 부띠크 Hotel SB</strong>
-                    <p class="score">
-                        <em>9.1</em>&nbsp;<span>추천해요</span>&nbsp;(8090)                    </p>
-                    <p>
-                        영등포구 영등포동3가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>29,990원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>139,990원</b></p>                    </div>
-                    <div class="earlybird soldout">페이백 SOLD OUT</div><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>29,990원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>139,990원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=57845&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="57845" data-adcno="1" data-alat="37.622485312653" data-alng="126.91942529868" data-distance="8.099" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/57845/214158/6bad40fc1291eb09bde762085e7e7b9f.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="연신내 호텔 디 아티스트" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>넷플릭스, 디즈니등 개인계정으로 시청 가능 외 1개</span></div>                <div class="name">
-                                        <strong>연신내 호텔 디 아티스트</strong>
-                    <p class="score">
-                        <em>9.6</em>&nbsp;<span>최고에요</span>&nbsp;(1832)                    </p>
-                    <p>
-                        은평구 갈현동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>300,000원</b></p>                    </div>
-                    <p>대실&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>300,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=4279&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="4279" data-adcno="1" data-alat="37.51804867" data-alng="126.9088368" data-distance="8.173" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/4279/121807/eb42641773aaaf70a7c82cb0dffea6e8.JPG" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="영등포 CC" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>TV86인치,넷플릭스,공기청정기,4PC6PC</span></div>                <div class="name">
-                                        <strong>영등포 CC</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(2607)                    </p>
-                    <p>
-                        영등포구 영등포동3가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=2078&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="2078" data-adcno="1" data-alat="37.51844829" data-alng="126.9082843" data-distance="8.18" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/2078/447932/4cd1426d525b7e11377ad0e29727db0a.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="영등포 호텔 더 휴" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>무제한 라인업 쿠폰으로 가성비 있게 즐겨요 외 3개</span></div>                <div class="name">
-                                        <strong>영등포 호텔 더 휴</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(4842)                    </p>
-                    <p>
-                        영등포구 영등포동3가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>135,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>135,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=1102&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="1102" data-adcno="1" data-alat="37.55055735" data-alng="127.0690538" data-distance="8.188" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/1102/6131/01.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="건대 컬리넌-1호점" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>신관로얄스위트,본관스위트 평일4,주말3시간제공 외 3개</span></div>                <div class="name">
-                                        <strong>건대 컬리넌-1호점</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(9124)                    </p>
-                    <p>
-                        광진구 군자동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>28,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>28,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=46256&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="46256" data-adcno="1" data-alat="37.5507842983" data-alng="127.069244196" data-distance="8.199" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/46256/7078/bade7b412de51bf0adc366cf75764e45.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="건대 컬리넌-2호점" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>포인트 적립금 EVENT 외 2개</span></div>                <div class="name">
-                                        <strong>건대 컬리넌-2호점</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(2122)                    </p>
-                    <p>
-                        광진구 군자동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=714&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="714" data-adcno="1" data-alat="37.63408305" data-alng="127.0219288" data-distance="8.424" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/714/381757/abad6015102e57803dd16ec228b9e4df.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="수유 온앤오프" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>수유 온앤오프</strong>
-                    <p class="score">
-                        <em>9.7</em>&nbsp;<span>최고에요</span>&nbsp;(1078)                    </p>
-                    <p>
-                        강북구 수유동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>999,999원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>999,999원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=710&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="710" data-adcno="1" data-alat="37.6339928" data-alng="127.0227219" data-distance="8.447" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/710/1899/0a96a72883912155d3b03c65baf3dea1.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="수유 유리아" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>수유 유리아</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(773)                    </p>
-                    <p>
-                        강북구 수유동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=68527&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="68527" data-adcno="1" data-alat="37.492326413297" data-alng="127.01342112073" data-distance="8.82" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/68527/391309/08ebf1a83fb8c688e312b2cca1b49ddd.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="서초 제이에스-J.S호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>커플 게이밍 룸 외 1개</span></div>                <div class="name">
-                                        <strong>서초 제이에스-J.S호텔</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(550)                    </p>
-                    <p>
-                        서초구 서초동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>45,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>160,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>45,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>160,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=1824&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="1824" data-adcno="1" data-alat="37.50252991" data-alng="127.0382753" data-distance="8.869" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/1824/182031/f548520417580511897f4c4daeec7cc8.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="강남 더 뮤즈" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>배틀그라운드 커플 pc 게이밍 최적화</span></div>                <div class="name">
-                                        <strong>강남 더 뮤즈</strong>
-                    <p class="score">
-                        <em>9.8</em>&nbsp;<span>최고에요</span>&nbsp;(2684)                    </p>
-                    <p>
-                        강남구 역삼동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>170,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>170,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=5675&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="5675" data-adcno="1" data-alat="37.50241452" data-alng="127.0384878" data-distance="8.891" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/5675/77695/2e5be50fdaeaf537f9ee544b6a621158.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="역삼 호텔 디 아티스트" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>역삼 호텔 디 아티스트</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(4237)                    </p>
-                    <p>
-                        강남구 역삼동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>170,000원</b></p>                    </div>
-                    <div class="earlybird soldout">페이백 SOLD OUT</div><p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>170,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=68198&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="68198" data-adcno="1" data-alat="37.637398011233" data-alng="127.02569418346" data-distance="8.904" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/68198/384133/1123c127257b6342ff78945fb93a5635.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="수유 H호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>수유 H호텔</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(780)                    </p>
-                    <p>
-                        강북구 번동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=3805&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="3805" data-adcno="1" data-alat="37.5029727" data-alng="127.0398226" data-distance="8.912" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/3805/22612/4f17fa78f58cba0f79dfbf12115a3c9b.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="역삼 리치웰" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>넷플릭스 프리존 외 1개</span></div>                <div class="name">
-                                        <strong>역삼 리치웰</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(3480)                    </p>
-                    <p>
-                        강남구 역삼동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>129,800원</b></p>                    </div>
-                    <div class="earlybird soldout">페이백 SOLD OUT</div><p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>129,800원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=4988&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="4988" data-adcno="1" data-alat="37.49731028" data-alng="127.0291896" data-distance="8.914" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/4988/31328/e13e9ca5a6796ccd14841168f0de4b64.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="강남 캠퍼스" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>실물 신분증미지참시 입실및 취소불가</span></div>                <div class="name">
-                                        <strong>강남 캠퍼스</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(2505)                    </p>
-                    <p>
-                        강남구 역삼동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                    </div>
-                    <div class="earlybird soldout">페이백 SOLD OUT</div><p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=2084&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="2084" data-adcno="1" data-alat="37.50138975" data-alng="127.0420836" data-distance="9.173" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/2084/13542/f830edbc9f2e3a24be580fa1f15eb739.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="역삼 컬리넌" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>넷플릭스 프리존</span></div>                <div class="name">
-                                        <strong>역삼 컬리넌</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(888)                    </p>
-                    <p>
-                        강남구 역삼동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>129,800원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>129,800원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=2164&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="2164" data-adcno="1" data-alat="37.64751233" data-alng="127.0155782" data-distance="9.572" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/2164/2248/4704e3a570d54677114b59b1ad7e3400.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="수유 리치다이아몬드" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전객실 리모델링 GRAND OPEN</span></div>                <div class="name">
-                                        <strong>수유 리치다이아몬드</strong>
-                    <p class="score">
-                        <em>9.8</em>&nbsp;<span>최고에요</span>&nbsp;(298)                    </p>
-                    <p>
-                        강북구 수유동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>280,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>280,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=739&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="739" data-adcno="1" data-alat="37.4850658" data-alng="126.9319245" data-distance="9.952" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/739/381786/c2b1730c6b50c6a91e5ee9c3776ac437.JPG" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신림 루쏘호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>넷플릭스 전객실 무료시청가능 외 2개</span></div>                <div class="name">
-                                        <strong>신림 루쏘호텔</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(5101)                    </p>
-                    <p>
-                        관악구 신림동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>60,000원</b></p>                    </div>
-                    <div class="earlybird soldout">페이백 SOLD OUT</div><p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>60,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=1093&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="1093" data-adcno="1" data-alat="37.48523847" data-alng="126.9313635" data-distance="9.955" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/1093/150195/c114bf019481b65caa10c344e8c4fdae.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신림 K2" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>Netflix 무료시청 가능</span></div>                <div class="name">
-                                        <strong>신림 K2</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(4015)                    </p>
-                    <p>
-                        관악구 신림동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>90,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>90,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=5621&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="5621" data-adcno="1" data-alat="37.48453656" data-alng="126.9268234" data-distance="10.198" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/5621/36012/653db8f7d31c2fce78442b49a08cbe89.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신림 뜨랑블루" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>광화문 씨네큐브 영화관람권 리뷰이벤트</span></div>                <div class="name">
-                                        <strong>신림 뜨랑블루</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(1088)                    </p>
-                    <p>
-                        관악구 신림동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                    </div>
-                    <p>대실&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=3603&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="3603" data-adcno="1" data-alat="37.5960546" data-alng="127.0895868" data-distance="10.329" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/3603/465148/ddf392c383404d04c790d36b29270ee8.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="상봉 호텔버스" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>현장 결제시 더 특별한 할인!회원카드적립가능! 외 3개</span></div>                <div class="name">
-                                        <strong>상봉 호텔버스</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(1905)                    </p>
-                    <p>
-                        중랑구 상봉동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>45,000원</b></p><p>숙박&nbsp;<b>80,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>45,000원</b></p><p>숙박&nbsp;<b>80,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=5531&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="5531" data-adcno="1" data-alat="37.59680086" data-alng="127.0892661" data-distance="10.329" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/5531/450818/a3c67ea07892e6d56c161cad0079edc8.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="상봉 테마" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전 객실 65인치 LG스마트 TV 교체</span></div>                <div class="name">
-                                        <strong>상봉 테마</strong>
-                    <p class="score">
-                        <em>9.6</em>&nbsp;<span>최고에요</span>&nbsp;(2458)                    </p>
-                    <p>
-                        중랑구 상봉동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<b>70,000원</b></p>                    </div>
-                    <p>대실&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<b>70,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=62336&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="62336" data-adcno="1" data-alat="37.595734364364" data-alng="127.09357232317" data-distance="10.652" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/62336/365879/c91b8a5a7d9af074c6c052c9564a69e0.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="상봉 호텔그레이튼" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전 객실 무료 넷플릭스,웨이브,유튜브,스벅원두 외 2개</span></div>                <div class="name">
-                                        <strong>상봉 호텔그레이튼</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(707)                    </p>
-                    <p>
-                        중랑구 망우동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>60,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>160,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>60,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>160,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=1154&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="1154" data-adcno="1" data-alat="37.59794706" data-alng="127.0937426" data-distance="10.744" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/1154/33951/d158275e50592bb661e83e6f2f52eb74.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="상봉 호텔 스타" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>넷플릭스 이용가능 외 2개</span></div>                <div class="name">
-                                        <strong>상봉 호텔 스타</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(2266)                    </p>
-                    <p>
-                        중랑구 망우동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=50263&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="50263" data-adcno="1" data-alat="37.5108193971" data-alng="127.080739539" data-distance="10.951" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/50263/262041/8984eb9a0456af0ec0ed62807f63d278.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신천 NU" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>신천 NU</strong>
-                    <p class="score">
-                        <em>9.1</em>&nbsp;<span>추천해요</span>&nbsp;(2052)                    </p>
-                    <p>
-                        송파구 잠실동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>23,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>95,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>23,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>95,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=55324&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="55324" data-adcno="1" data-alat="37.5109703217" data-alng="127.081386669" data-distance="10.988" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/55324/9161/f0cae3d9859854706702dcb524bcaf25.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신천 Forestar 2" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>포레스타 잠실점 전용 리뷰 EVENT</span></div>                <div class="name">
-                                        <strong>신천 Forestar 2</strong>
-                    <p class="score">
-                        <em>8.9</em>&nbsp;<span>만족해요</span>&nbsp;(1636)                    </p>
-                    <p>
-                        송파구 잠실동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=49962&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="49962" data-adcno="1" data-alat="37.5109629388" data-alng="127.081640019" data-distance="11.007" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/49962/135939/be930d86186c8d48d425b8d3cfbce7eb.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신천 Forestar 1" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>포레스타 잠실점 전용 리뷰 EVENT</span></div>                <div class="name">
-                                        <strong>신천 Forestar 1</strong>
-                    <p class="score">
-                        <em>9.0</em>&nbsp;<span>추천해요</span>&nbsp;(2666)                    </p>
-                    <p>
-                        송파구 잠실동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=1929&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="1929" data-adcno="1" data-alat="37.50493242" data-alng="127.0880347" data-distance="11.853" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/1929/398125/2e54909fe3b5bf1b52d20c890555b046.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="잠실 Stay hotel" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>잠실 Stay hotel</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(917)                    </p>
-                    <p>
-                        송파구 잠실동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>38,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>160,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>38,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>160,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=1408&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="1408" data-adcno="1" data-alat="37.65489798" data-alng="127.0579856" data-distance="12.062" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/1408/99863/56cbf0abd59289ecfcbd5e1a95583b23.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="노원 필름 37.2 호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전객실 넷플릭스, 특실 디즈니 무료 시청가능 외 3개</span></div>                <div class="name">
-                                        <strong>노원 필름 37.2 호텔</strong>
-                    <p class="score">
-                        <em>9.9</em>&nbsp;<span>최고에요</span>&nbsp;(487)                    </p>
-                    <p>
-                        노원구 상계동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=5792&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="5792" data-adcno="1" data-alat="37.52927608" data-alng="126.8469797" data-distance="12.308" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/5792/35420/3ced9774dd9b65dee9218d228cf85014.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="화곡 Ms hotel" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>1만원 무제한쿠폰 지급 이벤트</span></div>                <div class="name">
-                                        <strong>화곡 Ms hotel</strong>
-                    <p class="score">
-                        <em>9.6</em>&nbsp;<span>최고에요</span>&nbsp;(279)                    </p>
-                    <p>
-                        강서구 화곡동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=67882&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="67882" data-adcno="1" data-alat="37.528984316264" data-alng="126.84709939902" data-distance="12.309" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/67882/391038/68f7597db81cd8980f369722d07012e1.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="화곡 HOTEL N" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전객실UHD스마트TV넷플릭스,1대1안심 방역                                                             ~</span></div>                <div class="name">
-                                        <strong>화곡 HOTEL N</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(722)                    </p>
-                    <p>
-                        강서구 화곡동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span>&nbsp;<b>20,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span>&nbsp;<b>20,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=725&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="725" data-adcno="1" data-alat="37.52926493" data-alng="126.8467218" data-distance="12.33" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/725/439297/98390489a506decdd798efca283d3f40.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="화곡 초콜릿" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>화곡 초콜릿</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(5021)                    </p>
-                    <p>
-                        강서구 화곡동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>85,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>85,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=1369&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="1369" data-adcno="1" data-alat="37.47884703" data-alng="126.8910259" data-distance="12.436" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/1369/331889/38235c5d4f4aeb440970d4f9a5c43919.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="가산 마인드 호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>마인드호텔의 대형티비와 월드컵을 함께 하세요 외 3개</span></div>                <div class="name">
-                                        <strong>가산 마인드 호텔</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(3404)                    </p>
-                    <p>
-                        금천구 가산동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=46946&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="46946" data-adcno="1" data-alat="37.6678134243" data-alng="127.043650949" data-distance="12.634" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/46946/436379/332099677f05a6bf8197c5183885d4c8.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="도봉 Hotel BAY 204" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>도봉 Hotel BAY 204</strong>
-                    <p class="score">
-                        <em>9.6</em>&nbsp;<span>최고에요</span>&nbsp;(1778)                    </p>
-                    <p>
-                        도봉구 방학동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<b>120,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=64487&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="64487" data-adcno="1" data-alat="37.471162935725" data-alng="126.89891232689" data-distance="12.721" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/64487/297342/2beae3349879d94a913a48841e4eeb68.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="독산 호텔 인 카페" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>무제한 라인업 쿠폰으로 가성비 있게 즐겨요 외 3개</span></div>                <div class="name">
-                                        <strong>독산 호텔 인 카페</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(2730)                    </p>
-                    <p>
-                        금천구 독산동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>20,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>20,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=823&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="823" data-adcno="1" data-alat="37.51584895" data-alng="127.1096205" data-distance="12.873" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/823/2456/fa077c2a31738789461805a1c29033fa.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="잠실 첼로" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전객실 월풀욕조,공기청정기,월리암로렌스고급침대 외 2개</span></div>                <div class="name">
-                                        <strong>잠실 첼로</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(4573)                    </p>
-                    <p>
-                        송파구 방이동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=3540&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="3540" data-adcno="1" data-alat="37.51556792" data-alng="127.1095341" data-distance="12.88" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/3540/3710/992c14e91195703a35a053078c3e2864.jpeg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="잠실 호텔 톰지" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>정성스러운 리뷰 작성 시 무료초대권 증정 외 1개</span></div>                <div class="name">
-                                        <strong>잠실 호텔 톰지</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(700)                    </p>
-                    <p>
-                        송파구 방이동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=55388&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="55388" data-adcno="1" data-alat="37.5155854951" data-alng="127.1100138181" data-distance="12.917" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/55388/425465/7393ba0920aedce18a635707e1f0415f.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="잠실 HL Hotel" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>고데기대여 리뉴액 렌즈케이스 무료제공</span></div>                <div class="name">
-                                        <strong>잠실 HL Hotel</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(1894)                    </p>
-                    <p>
-                        송파구 방이동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>150,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>150,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=46775&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="46775" data-adcno="1" data-alat="37.515990063" data-alng="127.112860352" data-distance="13.124" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/46775/107279/3b06a16189c185d7f3becf1c12a3d701.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="잠실 동그라미" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>선주차 및 연박 이용시 이벤트 공지사항 확인</span></div>                <div class="name">
-                                        <strong>잠실 동그라미</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(1617)                    </p>
-                    <p>
-                        송파구 방이동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=700&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="700" data-adcno="1" data-alat="37.53977029" data-alng="127.126112" data-distance="13.359" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/700/195044/1c3c7e2d7693b3efd9ca1def02c223c1.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="천호 HOTEL H" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전 객실 넷플릭스 시청 가능합니다</span></div>                <div class="name">
-                                        <strong>천호 HOTEL H</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(3162)                    </p>
-                    <p>
-                        강동구 천호동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<b>75,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<b>75,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=2528&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="2528" data-adcno="1" data-alat="37.46522925" data-alng="126.8971497" data-distance="13.359" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/2528/2712/17da7489927cc9b482f04f0bd83edade.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="독산 3S HOTEL" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>월드컵은 3S 대형스크린에서 보자 외 3개</span></div>                <div class="name">
-                                        <strong>독산 3S HOTEL</strong>
-                    <p class="score">
-                        <em>9.8</em>&nbsp;<span>최고에요</span>&nbsp;(458)                    </p>
-                    <p>
-                        금천구 독산동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=4721&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="4721" data-adcno="1" data-alat="37.54857656" data-alng="126.8196545" data-distance="14.137" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/4721/27362/077ae8faa881f32a94b375cd7dc46433.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="강서 넘버25호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>강서 넘버25호텔</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(1698)                    </p>
-                    <p>
-                        강서구 외발산동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>95,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>95,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=63639&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="63639" data-adcno="1" data-alat="37.45262321165" data-alng="126.90248786255" data-distance="14.336" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/63639/282125/994cdfa307dbf7dc8750b53c1d149f20.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="금천 호텔 트리플8" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>시흥사거리먹자골목,넷플릭스,노하드PC,안마의자 외 1개</span></div>                <div class="name">
-                                        <strong>금천 호텔 트리플8</strong>
-                    <p class="score">
-                        <em>9.6</em>&nbsp;<span>최고에요</span>&nbsp;(874)                    </p>
-                    <p>
-                        금천구 시흥동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=2158&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="2158" data-adcno="1" data-alat="37.53621921" data-alng="127.1368502" data-distance="14.371" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/2158/473043/aacff89fd346d5110530a4af5189efb7.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="길동 아르고" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>무한대실,무한숙박 이벤트 운영중</span></div>                <div class="name">
-                                        <strong>길동 아르고</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(88)                    </p>
-                    <p>
-                        강동구 길동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>95,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>95,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=895&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="895" data-adcno="1" data-alat="37.5374755" data-alng="127.1381424" data-distance="14.45" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/895/215496/77a25401c750b8c1140c2c3bf4cb66d8.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="길동 IMT 1,2" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>주중 10시 입실 시 최대12시간 이용가능</span></div>                <div class="name">
-                                        <strong>길동 IMT 1,2</strong>
-                    <p class="score">
-                        <em>9.1</em>&nbsp;<span>추천해요</span>&nbsp;(6827)                    </p>
-                    <p>
-                        강동구 길동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>90,000원</b></p>                    </div>
-                    <div class="earlybird soldout">페이백 SOLD OUT</div><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>90,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=67703&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="67703" data-adcno="1" data-alat="37.536553540141" data-alng="127.13888939212" data-distance="14.537" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/67703/371857/0605ff63a7cf8bd24a1a78ba7fea4b3d.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="길동 오라-ORA" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>스페셜 전객실 2PC 3060,3070넷플릭스</span></div>                <div class="name">
-                                        <strong>길동 오라-ORA</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(553)                    </p>
-                    <p>
-                        강동구 길동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>45,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>95,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>45,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>95,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=51465&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="51465" data-adcno="1" data-alat="37.5367645504" data-alng="127.138969324" data-distance="14.539" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/51465/152408/6dc12474491441095828aa985e934fb6.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="길동 일루와" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>키오스크 이용시 마일리지 적립</span></div>                <div class="name">
-                                        <strong>길동 일루와</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(2031)                    </p>
-                    <p>
-                        강동구 길동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>95,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>95,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=69308&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="69308" data-adcno="1" data-alat="37.566809807737" data-alng="126.98202443566" data-distance="0.32" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/69308/409781/235a34f1656bc95ef0c207d45e97341f.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="중구 요기는 무인텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>모든 객실 현장판매 할인</span></div>                <div class="name">
-                                        <strong>중구 요기는 무인텔</strong>
-                    <p class="score">
-                        <em>9.0</em>&nbsp;<span>추천해요</span>&nbsp;(117)                    </p>
-                    <p>
-                        중구 다동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>50,000원</b></p>                    </div>
-                    <p>대실&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>50,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=3232&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="3232" data-adcno="1" data-alat="37.56886362" data-alng="126.9884904" data-distance="0.923" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/3232/3278/f0167fe6cfd269a27cfc9993aefb63b3.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="종로 HOTEL MONG" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>2023년 달력, 크리스마스 카드, 신년 카드</span></div>                <div class="name">
-                                        <strong>종로 HOTEL MONG</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(6946)                    </p>
-                    <p>
-                        종로구 관철동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실 <b>숙소에 문의</b></p><p>숙박&nbsp;<b>130,000원</b></p>                    </div>
-                    <p>대실 <b>숙소에 문의</b> </p><p>숙박&nbsp;<b>130,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=4638&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="4638" data-adcno="1" data-alat="37.55870178335" data-alng="126.97443981724" data-distance="0.948" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/4638/26976/6f4d0b309a2395b29f5be665d2453fe0.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="서울역 요우커" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>객실UP후기이벤트</span></div>                <div class="name">
-                                        <strong>서울역 요우커</strong>
-                    <p class="score">
-                        <em>7.8</em>&nbsp;<span>만족해요</span>&nbsp;(173)                    </p>
-                    <p>
-                        중구 남대문로5가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>22,000원</b></p><p>숙박&nbsp;<b>50,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>22,000원</b></p><p>숙박&nbsp;<b>50,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=885&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="885" data-adcno="1" data-alat="37.56907641" data-alng="126.9902607" data-distance="1.08" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/885/406143/7d84ae02369eba1fbac20f44fabe8e87.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="종로 IMT" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>종로 IMT</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(3863)                    </p>
-                    <p>
-                        종로구 관수동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>70,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>70,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=4338&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="4338" data-adcno="1" data-alat="37.55691485" data-alng="126.9776319" data-distance="1.082" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/4338/4361/43a40b3fdecffd2065e201e5ded3528b.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="명동 MUST STAY 호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>넷플릭스룸 넷플릭스 무료시청                                                             ~</span></div>                <div class="name">
-                                        <strong>명동 MUST STAY 호텔</strong>
-                    <p class="score">
-                        <em>8.3</em>&nbsp;<span>만족해요</span>&nbsp;(578)                    </p>
-                    <p>
-                        중구 남창동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>19,000원</b></p><p>숙박&nbsp;<b>45,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>19,000원</b></p><p>숙박&nbsp;<b>45,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=884&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="884" data-adcno="1" data-alat="37.57098287" data-alng="126.9896673" data-distance="1.105" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/884/2734/91c9f2eb32d9b22eaf4a924cae73d825.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="종로 누누" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>제주도에 가자 비행기가 공짜니까</span></div>                <div class="name">
-                                        <strong>종로 누누</strong>
-                    <p class="score">
-                        <em>8.5</em>&nbsp;<span>만족해요</span>&nbsp;(3392)                    </p>
-                    <p>
-                        종로구 낙원동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>22,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>22,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=67002&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="67002" data-adcno="1" data-alat="37.571568425233" data-alng="126.98960188123" data-distance="1.13" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/67002/350783/7b99ca3642aae0dfd9fe91b09ace414d.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="종로 HOTEL LABOUM" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>종로 HOTEL LABOUM</strong>
-                    <p class="score">
-                        <em>9.7</em>&nbsp;<span>최고에요</span>&nbsp;(1397)                    </p>
-                    <p>
-                        종로구 낙원동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=60477&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="60477" data-adcno="1" data-alat="37.572226205775" data-alng="126.98920083983" data-distance="1.137" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/60477/10137/08a218eaa24f2138eb5c25019cd88cd8.JPG" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="종로 호텔라와" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>마스크제공                                                             ~ 외 1개</span></div>                <div class="name">
-                                        <strong>종로 호텔라와</strong>
-                    <p class="score">
-                        <em>9.8</em>&nbsp;<span>최고에요</span>&nbsp;(1142)                    </p>
-                    <p>
-                        종로구 낙원동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>200,000원</b></p><p>숙박&nbsp;<b>120,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>200,000원</b></p><p>숙박&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=873&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="873" data-adcno="1" data-alat="37.5715126673" data-alng="126.989757875" data-distance="1.139" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/873/397061/96a23edc46c61f62e44f4b04b4df7bc4.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="종로 AMARE 아마레" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>종로 AMARE 아마레</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(6007)                    </p>
-                    <p>
-                        종로구 낙원동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>150,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>150,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=2939&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="2939" data-adcno="1" data-alat="37.57176493" data-alng="126.9896355" data-distance="1.143" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/2939/114324/bb7838f9999533649caa482b498c75eb.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="종로 헬로인" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>클린존 안심공간 외 1개</span></div>                <div class="name">
-                                        <strong>종로 헬로인</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(3317)                    </p>
-                    <p>
-                        종로구 낙원동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>23,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>23,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=857&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="857" data-adcno="1" data-alat="37.5710586" data-alng="126.9902061" data-distance="1.151" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/857/2636/0a362fd4743564b6f29bc86493a6ae13.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="종로 호텔팝 리즈 프리미어" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>숙박 1만원 할인쿠폰 외 2개</span></div>                <div class="name">
-                                        <strong>종로 호텔팝 리즈 프리미어</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(3603)                    </p>
-                    <p>
-                        종로구 낙원동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=4444&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="4444" data-adcno="1" data-alat="37.57221181" data-alng="126.9894679" data-distance="1.156" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/4444/25388/ea0f5825ef2af54cc02eab8e3890b5b6.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="종로 HOTEL NOVA" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>주중 무한대실 최대 12시간 이용가능</span></div>                <div class="name">
-                                        <strong>종로 HOTEL NOVA</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(3926)                    </p>
-                    <p>
-                        종로구 낙원동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>22,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>22,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=4966&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="4966" data-adcno="1" data-alat="37.57328571" data-alng="126.9885712" data-distance="1.163" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/4966/4994/cebf16d2cd057b02517a5a742e649f86.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="종로 비즈" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>넷플릭스, 유튜브 OPEN 전 객실 무료이용 외 1개</span></div>                <div class="name">
-                                        <strong>종로 비즈</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(135)                    </p>
-                    <p>
-                        종로구 낙원동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>70,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>70,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=856&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="856" data-adcno="1" data-alat="37.57153792" data-alng="126.9900748" data-distance="1.165" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/856/361725/7af3fa588ea9a12bcb6baaa4fa53dfe1.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="종로 HOTEL STAR" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>주중 대실 최대 12시간 이용 가능</span></div>                <div class="name">
-                                        <strong>종로 HOTEL STAR</strong>
-                    <p class="score">
-                        <em>9.1</em>&nbsp;<span>추천해요</span>&nbsp;(2337)                    </p>
-                    <p>
-                        종로구 낙원동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=55868&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="55868" data-adcno="1" data-alat="37.572215428" data-alng="126.9895811891" data-distance="1.165" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/55868/9330/4dcbf33ce2dbe27111f18497bf75a4a6.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="종로 호텔그림" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>주중 무한대실 최대8시간 이용가능 외 2개</span></div>                <div class="name">
-                                        <strong>종로 호텔그림</strong>
-                    <p class="score">
-                        <em>9.0</em>&nbsp;<span>추천해요</span>&nbsp;(778)                    </p>
-                    <p>
-                        종로구 낙원동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>20,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>20,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=917&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="917" data-adcno="1" data-alat="37.57318846" data-alng="126.9891871" data-distance="1.198" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/917/380897/b12e9c943047512b6098a5f24df016bf.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="종로 시네마" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>종로 시네마</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(1686)                    </p>
-                    <p>
-                        종로구 낙원동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>100,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=4716&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="4716" data-adcno="1" data-alat="37.56504732" data-alng="126.9924299" data-distance="1.248" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/4716/27370/1c6ce49d62a5e1f9d6d85dfdc72a4502.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="명동 HOTEL BENE" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>모든 객실 NETFLIX 무료 서비스 외 1개</span></div>                <div class="name">
-                                        <strong>명동 HOTEL BENE</strong>
-                    <p class="score">
-                        <em>8.2</em>&nbsp;<span>만족해요</span>&nbsp;(214)                    </p>
-                    <p>
-                        중구 초동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>60,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>60,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=1580&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="1580" data-adcno="1" data-alat="37.57642127" data-alng="126.9895987" data-distance="1.47" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/1580/423586/42a99f4dcc6d90d3fc7a0e4ef0e6ca2c.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="종로 아비숑" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>신형에어컨교체 지상주차100% 넷플릭스ID제공 외 1개</span></div>                <div class="name">
-                                        <strong>종로 아비숑</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(4328)                    </p>
-                    <p>
-                        종로구 운니동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>75,000원</b></p>                    </div>
-                    <p>대실&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>75,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=66375&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="66375" data-adcno="1" data-alat="37.556531869677" data-alng="126.99320293591" data-distance="1.721" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/66375/335773/9a13c95df71a368ab549e992d5fc5e29.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="명동 부띠끄 영인 호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>명동 부띠끄 영인 호텔</strong>
-                    <p class="score">
-                        <em>8.9</em>&nbsp;<span>만족해요</span>&nbsp;(290)                    </p>
-                    <p>
-                        중구 예장동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<b>89,000원</b></p>                    </div>
-                    <p>대실&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<b>89,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=66045&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="66045" data-adcno="1" data-alat="37.562595321042" data-alng="126.99906577785" data-distance="1.875" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/66045/329755/3c53fdd61a4398ee562a4edb7e10c102.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="명동 멀린 호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>명동 멀린 호텔</strong>
-                    <p class="score">
-                        <em>8.8</em>&nbsp;<span>만족해요</span>&nbsp;(174)                    </p>
-                    <p>
-                        중구 충무로5가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실 <b>숙소에 문의</b></p><p>숙박&nbsp;<b>41,000원</b></p>                    </div>
-                    <p>대실 <b>숙소에 문의</b> </p><p>숙박&nbsp;<b>41,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=49914&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="49914" data-adcno="1" data-alat="37.5638113284" data-alng="127.004101861" data-distance="2.286" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/49914/135644/806cac017bc9051697365f4e4d753188.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="동대문 더 디자이너스 DDP" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전 객실 Netflix 시청</span></div>                <div class="name">
-                                        <strong>동대문 더 디자이너스 DDP</strong>
-                    <p class="score">
-                        <em>9.0</em>&nbsp;<span>추천해요</span>&nbsp;(1863)                    </p>
-                    <p>
-                        중구 쌍림동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=5308&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="5308" data-adcno="1" data-alat="37.56535015" data-alng="127.0059582" data-distance="2.433" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/5308/103534/37e7d415a062626719e92e1e28509a07.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="동대문 트리쉐이드 호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>주차가능,65TV,2PC룸,넷플릭스,무비룸 외 3개</span></div>                <div class="name">
-                                        <strong>동대문 트리쉐이드 호텔</strong>
-                    <p class="score">
-                        <em>8.9</em>&nbsp;<span>만족해요</span>&nbsp;(786)                    </p>
-                    <p>
-                        중구 광희동1가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=788&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="788" data-adcno="1" data-alat="37.55643656" data-alng="126.9395238" data-distance="3.61" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/788/5557/6eb364cdb4f13804461c21df8ac3a284.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신촌 모모-구 이젠" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전 객실 넷플릭스 무료 시청 가능 외 1개</span></div>                <div class="name">
-                                        <strong>신촌 모모-구 이젠</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(4249)                    </p>
-                    <p>
-                        서대문구 창천동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                    </div>
-                    <p>대실&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=3659&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="3659" data-adcno="1" data-alat="37.55638604" data-alng="126.9393881" data-distance="3.623" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/3659/266879/035b9944011cac87894b00d4cd0e82a0.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신촌 MAC" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>신촌 MAC</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(2114)                    </p>
-                    <p>
-                        서대문구 창천동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=3834&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="3834" data-adcno="1" data-alat="37.5569547637" data-alng="126.9380204964" data-distance="3.719" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/3834/26249/bdc760476f285fabe0fb819c9e6ab451.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신촌 림" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>주중 무한대실 8시간 이용가능 외 2개</span></div>                <div class="name">
-                                        <strong>신촌 림</strong>
-                    <p class="score">
-                        <em>9.0</em>&nbsp;<span>추천해요</span>&nbsp;(3696)                    </p>
-                    <p>
-                        서대문구 창천동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>28,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>28,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=3605&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="3605" data-adcno="1" data-alat="37.55635661" data-alng="126.9382337" data-distance="3.72" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/3605/21319/01.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신촌 루이" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>신촌 루이</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(1438)                    </p>
-                    <p>
-                        서대문구 창천동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>28,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>28,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=1627&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="1627" data-adcno="1" data-alat="37.55685738" data-alng="126.9378847" data-distance="3.733" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/1627/9536/e119d7671018ee6d4de5d409f4599fde.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신촌 신디호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전 객실 Netflix Youtube 시청 외 1개</span></div>                <div class="name">
-                                        <strong>신촌 신디호텔</strong>
-                    <p class="score">
-                        <em>9.1</em>&nbsp;<span>추천해요</span>&nbsp;(3493)                    </p>
-                    <p>
-                        서대문구 창천동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=882&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="882" data-adcno="1" data-alat="37.57381073" data-alng="127.020109" data-distance="3.761" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/882/400592/01d4f18349b3f4b8ad34f13932602da9.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="종로 Olive HOTEL" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>종로 Olive HOTEL</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(630)                    </p>
-                    <p>
-                        종로구 숭인동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=145&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="145" data-adcno="1" data-alat="37.55710941" data-alng="126.9374092" data-distance="3.765" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/145/476353/aa994ab8b6896b8dada7471dda315ea6.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신촌 어반노드-urbannord" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>신촌 어반노드-urbannord</strong>
-                    <p class="score">
-                        <em>9.1</em>&nbsp;<span>추천해요</span>&nbsp;(28)                    </p>
-                    <p>
-                        서대문구 창천동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>140,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>140,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=4354&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="4354" data-adcno="1" data-alat="37.556111089" data-alng="126.937373838" data-distance="3.801" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/4354/24465/90e1e317e0b5a9c2c7cbb7828c8faced.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신촌 라싸" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전 객실 NETFLIX 설치 완료 외 1개</span></div>                <div class="name">
-                                        <strong>신촌 라싸</strong>
-                    <p class="score">
-                        <em>9.1</em>&nbsp;<span>추천해요</span>&nbsp;(4585)                    </p>
-                    <p>
-                        서대문구 창천동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=1977&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="1977" data-adcno="1" data-alat="37.5659644" data-alng="127.0226786" data-distance="3.903" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/1977/12626/25.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신당 호텔 크리스티" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>매월 리뷰 당첨자에게는 무료초대권 증정</span></div>                <div class="name">
-                                        <strong>신당 호텔 크리스티</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(888)                    </p>
-                    <p>
-                        중구 황학동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=55312&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="55312" data-adcno="1" data-alat="37.5738463954" data-alng="127.0222417709" data-distance="3.946" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/55312/9151/b625871765de7c3fda7a7515ce8f014e.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="종로 루미아 호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>종로 루미아 호텔</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(172)                    </p>
-                    <p>
-                        종로구 숭인동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>33,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>33,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=66666&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="66666" data-adcno="1" data-alat="37.553901718156" data-alng="126.93629852512" data-distance="3.972" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/66666/341294/bb3b648052b41cdcc9a2c6a0a6bb2ed5.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신촌 NO.25" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>신촌 NO.25</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(905)                    </p>
-                    <p>
-                        마포구 노고산동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>38,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>38,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=51497&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="51497" data-adcno="1" data-alat="37.5531228522" data-alng="126.936384971" data-distance="3.997" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/51497/150530/dcdcc90ae7df9531faba5ce006ec23ea.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신촌 Hotel Ludi - 루디" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>넷플릭스 마음껏 시청하기 외 2개</span></div>                <div class="name">
-                                        <strong>신촌 Hotel Ludi - 루디</strong>
-                    <p class="score">
-                        <em>9.0</em>&nbsp;<span>추천해요</span>&nbsp;(2072)                    </p>
-                    <p>
-                        마포구 노고산동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span>&nbsp;<b>26,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <div class="earlybird soldout">페이백 SOLD OUT</div><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span>&nbsp;<b>26,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=775&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="775" data-adcno="1" data-alat="37.55388645" data-alng="126.9355604" data-distance="4.033" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/775/34287/6bbc5b99b2aa4defff8c891a404fb308.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신촌 위드" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전객실 새 매트리스로 교체</span></div>                <div class="name">
-                                        <strong>신촌 위드</strong>
-                    <p class="score">
-                        <em>8.9</em>&nbsp;<span>만족해요</span>&nbsp;(584)                    </p>
-                    <p>
-                        마포구 노고산동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=749&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="749" data-adcno="1" data-alat="37.55331704" data-alng="126.9355971" data-distance="4.053" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/749/338777/916d8655e0a4cbdd3bb284371b84074d.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신촌 파르페" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>신촌 파르페</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(272)                    </p>
-                    <p>
-                        마포구 노고산동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>45,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>45,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=778&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="778" data-adcno="1" data-alat="37.55349352" data-alng="126.9353887" data-distance="4.063" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/778/28640/ba5ae5eb761c7104560523a7e4cf8aa0.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신촌 메이저" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>게이밍룸 체험 할인 행사중 외 2개</span></div>                <div class="name">
-                                        <strong>신촌 메이저</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(5394)                    </p>
-                    <p>
-                        마포구 노고산동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>20,000원</b></p><p>숙박&nbsp;<b>75,000원</b></p>                    </div>
-                    <div class="earlybird soldout">페이백 SOLD OUT</div><p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>20,000원</b></p><p>숙박&nbsp;<b>75,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=776&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="776" data-adcno="1" data-alat="37.55361949" data-alng="126.9350762" data-distance="4.084" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/776/282603/42f475ff7b7a5d21731036a00d6c1099.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신촌 S호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>무료 조식 제공</span></div>                <div class="name">
-                                        <strong>신촌 S호텔</strong>
-                    <p class="score">
-                        <em>9.1</em>&nbsp;<span>추천해요</span>&nbsp;(2550)                    </p>
-                    <p>
-                        마포구 노고산동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=2971&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="2971" data-adcno="1" data-alat="37.5814797" data-alng="127.0217911" data-distance="4.165" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/2971/18470/f97277463f8685d0cf13a514726a21ec.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="성북 피아노" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>성북 피아노</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(2170)                    </p>
-                    <p>
-                        성북구 보문동4가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>75,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>75,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=69453&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="69453" data-adcno="1" data-alat="37.557121449771" data-alng="126.93212491396" data-distance="4.214" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/69453/414973/841df3ad11c24f45bd8f719d57a2cf7f.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신촌 테마" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>신촌 테마</strong>
-                    <p class="score">
-                        <em>8.7</em>&nbsp;<span>만족해요</span>&nbsp;(149)                    </p>
-                    <p>
-                        서대문구 창천동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<b>100,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=57920&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="57920" data-adcno="1" data-alat="37.589282845394" data-alng="127.01861864839" data-distance="4.348" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/57920/409242/62d8b6963757baaa6a1463ffa0db568a.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="성신여대역 RG" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전객실넷플릭스시청,커플PC 고사양게임룸,노래방                                                             ~ 외 1개</span></div>                <div class="name">
-                                        <strong>성신여대역 RG</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(1311)                    </p>
-                    <p>
-                        성북구 동선동2가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<b>70,000원</b></p>                    </div>
-                    <p>대실&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<b>70,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=46038&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="46038" data-adcno="1" data-alat="37.5925877371" data-alng="127.018284312" data-distance="4.548" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/46038/101092/bb6d1d5c508c25d1d7ba8cf068f63390.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="성신여대 리비에르" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>코로나19 예방을 위한 고객 안내 외 1개</span></div>                <div class="name">
-                                        <strong>성신여대 리비에르</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(4429)                    </p>
-                    <p>
-                        성북구 동선동1가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>70,000원</b></p>                    </div>
-                    <div class="earlybird soldout">페이백 SOLD OUT</div><p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>70,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=3450&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="3450" data-adcno="1" data-alat="37.59394658" data-alng="127.0173063" data-distance="4.581" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/3450/24745/673e64e100f549fdc8c7aa8cecaf9a42.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="성신여대역 브라운도트" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>세스코 안심숙소 외 1개</span></div>                <div class="name">
-                                        <strong>성신여대역 브라운도트</strong>
-                    <p class="score">
-                        <em>9.7</em>&nbsp;<span>최고에요</span>&nbsp;(1680)                    </p>
-                    <p>
-                        성북구 동선동4가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=65726&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="65726" data-adcno="1" data-alat="37.563042887325" data-alng="127.0350010554" data-distance="5.004" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/65726/318913/ea1ca8d39cc8e2766086c02ad9b1134c.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="왕십리 저스트스테이-왕십리역점" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>왕십리 저스트스테이-왕십리역점</strong>
-                    <p class="score">
-                        <em>9.7</em>&nbsp;<span>최고에요</span>&nbsp;(504)                    </p>
-                    <p>
-                        성동구 도선동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=72182&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="72182" data-adcno="1" data-alat="37.555549517746" data-alng="126.92035878668" data-distance="5.263" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/72182/22665/99cddd03a672f896efebf34941d184c5.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="홍대 더휴식 아늑" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>2022년 9월 26일 Grand Open</span></div>                <div class="name">
-                                        <strong>홍대 더휴식 아늑</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(91)                    </p>
-                    <p>
-                        마포구 서교동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>55,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>190,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>55,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>190,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=46118&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="46118" data-adcno="1" data-alat="37.5523620692" data-alng="126.91826505" data-distance="5.533" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/46118/101114/7f4979c02b3947ab1195b1990821ac6e.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="홍대 보보호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>홍대 보보호텔</strong>
-                    <p class="score">
-                        <em>8.7</em>&nbsp;<span>만족해요</span>&nbsp;(394)                    </p>
-                    <p>
-                        마포구 서교동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실 <b>숙소에 문의</b></p><p>숙박&nbsp;<b>180,000원</b></p>                    </div>
-                    <p>대실 <b>숙소에 문의</b> </p><p>숙박&nbsp;<b>180,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=1337&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="1337" data-adcno="1" data-alat="37.55190388" data-alng="126.9175774" data-distance="5.606" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/1337/647/6fe65a9de8453818af2c2777abc41235.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="홍대 더 디자이너스" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>넷플릭스 and 유튜브 이용가능</span></div>                <div class="name">
-                                        <strong>홍대 더 디자이너스</strong>
-                    <p class="score">
-                        <em>8.6</em>&nbsp;<span>만족해요</span>&nbsp;(1688)                    </p>
-                    <p>
-                        마포구 서교동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>59,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>255,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>59,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>255,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=1739&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="1739" data-adcno="1" data-alat="37.60277944" data-alng="126.925761" data-distance="6.139" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/1739/1072/c9b47e7fdecad0cb84128e0ca591c7c3.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="은평 opposite standard" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>은평 opposite standard</strong>
-                    <p class="score">
-                        <em>9.7</em>&nbsp;<span>최고에요</span>&nbsp;(278)                    </p>
-                    <p>
-                        은평구 녹번동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<b>85,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<b>85,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=5779&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="5779" data-adcno="1" data-alat="37.59990412" data-alng="126.9211935" data-distance="6.254" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/5779/35735/633f9b985c81f0e0147d1c9b3789106e.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="은평 브릭스 호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>여기어때 고객 선착순 최대 10000원 쿠폰 외 1개</span></div>                <div class="name">
-                                        <strong>은평 브릭스 호텔</strong>
-                    <p class="score">
-                        <em>9.6</em>&nbsp;<span>최고에요</span>&nbsp;(1305)                    </p>
-                    <p>
-                        은평구 응암동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>310,000원</b></p>                    </div>
-                    <p>대실&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>310,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=3914&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="3914" data-adcno="1" data-alat="37.60952221" data-alng="126.931322" data-distance="6.322" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/3914/23017/f5904896bf5188358f6e8f16cdb79788.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="불광 리츠 호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>불광 리츠 호텔</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(120)                    </p>
-                    <p>
-                        은평구 불광동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=1861&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="1861" data-adcno="1" data-alat="37.60861679" data-alng="126.9299185" data-distance="6.329" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/1861/226827/b5fc27c224c68994afe453e0be81d688.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="은평 CS" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전 객실 넷플릭스 무료 시청 가능</span></div>                <div class="name">
-                                        <strong>은평 CS</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(2566)                    </p>
-                    <p>
-                        은평구 대조동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span>&nbsp;<b>23,000원</b></p><p>숙박&nbsp;<b>70,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span>&nbsp;<b>23,000원</b></p><p>숙박&nbsp;<b>70,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=2841&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="2841" data-adcno="1" data-alat="37.60903394" data-alng="126.928414" data-distance="6.453" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/2841/389002/67ec0e7a4aabc34a91923d9e23315389.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="은평 티파니" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>은평 티파니</strong>
-                    <p class="score">
-                        <em>9.0</em>&nbsp;<span>추천해요</span>&nbsp;(127)                    </p>
-                    <p>
-                        은평구 대조동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>22,000원</b></p><p>숙박&nbsp;<b>80,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>22,000원</b></p><p>숙박&nbsp;<b>80,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=771&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="771" data-adcno="1" data-alat="37.58897957" data-alng="127.0549997" data-distance="7.193" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/771/239138/deff929b2444627f8e87a93ddb594021.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="경희대 수-SOO" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>럭키투데이 랜덤, 요금DOWN 시간,객실UP                                                             ~ 외 3개</span></div>                <div class="name">
-                                        <strong>경희대 수-SOO</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(3044)                    </p>
-                    <p>
-                        동대문구 휘경동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>70,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>70,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=852&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="852" data-adcno="1" data-alat="37.61800336" data-alng="126.9214553" data-distance="7.604" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/852/392/29f68b8509eba25893b0a248cd793acf.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="연신내 만토바" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>연신내 만토바</strong>
-                    <p class="score">
-                        <em>9.1</em>&nbsp;<span>추천해요</span>&nbsp;(1974)                    </p>
-                    <p>
-                        은평구 대조동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>22,500원</b></p><p>숙박&nbsp;<b>69,500원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>22,500원</b></p><p>숙박&nbsp;<b>69,500원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=59085&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="59085" data-adcno="1" data-alat="37.536639218288" data-alng="126.89699739708" data-distance="7.913" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/59085/229050/f8c7ee7ede5bb640d3c62aca619b84cc.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="선유도역 머스트스테이" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>선착순 쿠폰 1만원,5천원 3천 로그인후 다운                                                             ~ 외 1개</span></div>                <div class="name">
-                                        <strong>선유도역 머스트스테이</strong>
-                    <p class="score">
-                        <em>8.8</em>&nbsp;<span>만족해요</span>&nbsp;(244)                    </p>
-                    <p>
-                        영등포구 양평동4가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>22,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>105,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>22,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>105,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=71693&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="71693" data-adcno="1" data-alat="37.505022019763" data-alng="127.02339788708" data-distance="7.916" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/71693/460761/84a9ded61bba5208c9ca51ea775716c3.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="강남 봄" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>강남 봄</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(66)                    </p>
-                    <p>
-                        서초구 반포동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>50,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>180,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>50,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>180,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=3845&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="3845" data-adcno="1" data-alat="37.50521107" data-alng="127.0258586" data-distance="8.009" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/3845/22536/06.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="강남 더 디자이너스 리즈 프리미어" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>강남 더 디자이너스 리즈 프리미어</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(891)                    </p>
-                    <p>
-                        강남구 논현동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<b>192,400원</b></p>                    </div>
-                    <p>대실&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<b>192,400원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=53459&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="53459" data-adcno="1" data-alat="37.4942748529" data-alng="126.9859055857" data-distance="8.072" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/53459/173888/9f967fd4dcdf44207a22e6129f1458c4.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="방배 스타일-구 방배쉴" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>주중 무한대실 최대8시간,전 객실 넷플릭스</span></div>                <div class="name">
-                                        <strong>방배 스타일-구 방배쉴</strong>
-                    <p class="score">
-                        <em>9.6</em>&nbsp;<span>최고에요</span>&nbsp;(1192)                    </p>
-                    <p>
-                        서초구 방배동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>32,000원</b></p><p>숙박&nbsp;<b>80,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>32,000원</b></p><p>숙박&nbsp;<b>80,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=902&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="902" data-adcno="1" data-alat="37.51794154" data-alng="126.9101265" data-distance="8.096" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/902/2785/5e884b1f58d8c47964f9e2accaccc0d5.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="영등포 페트라" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전객실넷플릭스무료시청 트윈배드 특실안마의자</span></div>                <div class="name">
-                                        <strong>영등포 페트라</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(5553)                    </p>
-                    <p>
-                        영등포구 영등포동3가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>27,900원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>99,900원</b></p>                    </div>
-                    <div class="earlybird soldout">페이백 SOLD OUT</div><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>27,900원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>99,900원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=49461&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="49461" data-adcno="1" data-alat="37.547339917" data-alng="127.067453065" data-distance="8.137" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/49461/8046/17a48e6759fbbd5e0db7f5195d52db07.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="건대 더 디자이너스 프리미어-화양동" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>호텔,라운지 이용시 가져 오시는 차량 소독 외 1개</span></div>                <div class="name">
-                                        <strong>건대 더 디자이너스 프리미어-화양동</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(3322)                    </p>
-                    <p>
-                        광진구 화양동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>150,000원</b></p>                    </div>
-                    <div class="earlybird soldout">페이백 SOLD OUT</div><p>대실&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>150,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=69527&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="69527" data-adcno="1" data-alat="37.551339077566" data-alng="127.068876803" data-distance="8.154" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/69527/20135/abd8a25a1482e643570cfac1a40c5ccd.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="건대 드가자" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전 객실 Netflix 가능</span></div>                <div class="name">
-                                        <strong>건대 드가자</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(311)                    </p>
-                    <p>
-                        성동구 송정동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>27,000원</b></p><p>숙박&nbsp;<b>80,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>27,000원</b></p><p>숙박&nbsp;<b>80,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=2944&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="2944" data-adcno="1" data-alat="37.56994904" data-alng="127.0713537" data-distance="8.2" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/2944/27812/b4b9aacefd19a951abb62d72ef8b9972.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="장안 길벗 호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>길벗 숙박,대실 10 플러스 1 이벤트</span></div>                <div class="name">
-                                        <strong>장안 길벗 호텔</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(1904)                    </p>
-                    <p>
-                        동대문구 장안동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>23,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>90,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>23,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>90,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=1105&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="1105" data-adcno="1" data-alat="37.51798702" data-alng="126.9083437" data-distance="8.21" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/1105/303847/6365546acdb8a058340e2325fa1af1f7.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="영등포 NO.25-테마" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>무제한 라인업 쿠폰으로 가성비 있게 즐겨요</span></div>                <div class="name">
-                                        <strong>영등포 NO.25-테마</strong>
-                    <p class="score">
-                        <em>9.7</em>&nbsp;<span>최고에요</span>&nbsp;(900)                    </p>
-                    <p>
-                        영등포구 영등포동3가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실 <b>숙소에 문의</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p>대실 <b>숙소에 문의</b> </p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=5193&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="5193" data-adcno="1" data-alat="37.51855913" data-alng="126.907153" data-distance="8.248" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/5193/330078/dc100f7c062ae23dfff5791a4905d89c.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="영등포 더 문" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>트윈객실,게이밍룸2PC,넷플릭스</span></div>                <div class="name">
-                                        <strong>영등포 더 문</strong>
-                    <p class="score">
-                        <em>8.7</em>&nbsp;<span>만족해요</span>&nbsp;(3652)                    </p>
-                    <p>
-                        영등포구 영등포동3가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>23,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>90,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>23,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>90,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=66388&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="66388" data-adcno="1" data-alat="37.517803987757" data-alng="126.90794208265" data-distance="8.25" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/66388/464013/54f2ea4b122c8ffe6a8383717b820b8e.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="영등포 호텔 베이직" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>1만원 무제한쿠폰 지급 이벤트 외 3개</span></div>                <div class="name">
-                                        <strong>영등포 호텔 베이직</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(811)                    </p>
-                    <p>
-                        영등포구 영등포동3가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=833&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="833" data-adcno="1" data-alat="37.51864854" data-alng="126.9062887" data-distance="8.3" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/833/4259/15fbf0fcf0c3bab281a38af89037de4a.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="영등포 샵" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>파티룸 게임PC 넷플릭스 외 1개</span></div>                <div class="name">
-                                        <strong>영등포 샵</strong>
-                    <p class="score">
-                        <em>8.9</em>&nbsp;<span>만족해요</span>&nbsp;(258)                    </p>
-                    <p>
-                        영등포구 영등포동3가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>23,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>95,900원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>23,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>95,900원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=1147&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="1147" data-adcno="1" data-alat="37.517924612282" data-alng="126.90688237102" data-distance="8.312" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/1147/397789/92e2aa6b8394719e83cefa9ec91a9c6d.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="영등포 코모도" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전 객실 넷플릭스 시청가능 외 1개</span></div>                <div class="name">
-                                        <strong>영등포 코모도</strong>
-                    <p class="score">
-                        <em>8.9</em>&nbsp;<span>만족해요</span>&nbsp;(3564)                    </p>
-                    <p>
-                        영등포구 영등포동3가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>90,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>90,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=2563&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="2563" data-adcno="1" data-alat="37.52061785" data-alng="126.903689" data-distance="8.34" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/2563/etc/2656/01.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="영등포 프리호텔-Free Hotel" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>무제한 라인업 쿠폰으로 가성비 있게 즐겨요 외 4개</span></div>                <div class="name">
-                                        <strong>영등포 프리호텔-Free Hotel</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(3010)                    </p>
-                    <p>
-                        영등포구 영등포동6가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>32,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>90,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>32,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>90,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=52763&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="52763" data-adcno="1" data-alat="37.6021124233" data-alng="127.0622660844" data-distance="8.377" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/52763/161669/45cffd0a8c1a366e3a796d582c0b7be9.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="외대 LIFE HOTEL RAHA" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>외대 LIFE HOTEL RAHA</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(1167)                    </p>
-                    <p>
-                        동대문구 이문동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>70,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>70,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=67568&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="67568" data-adcno="1" data-alat="37.633813687261" data-alng="127.02226597653" data-distance="8.411" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/67568/366932/551afc3bf7450c650f20810fcd4f4e3b.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="수유 르레브" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>수유 르레브</strong>
-                    <p class="score">
-                        <em>9.9</em>&nbsp;<span>최고에요</span>&nbsp;(1089)                    </p>
-                    <p>
-                        강북구 수유동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<b>70,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<b>70,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=62013&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="62013" data-adcno="1" data-alat="37.633765504075" data-alng="127.02400431501" data-distance="8.478" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/62013/10384/e13a0ecd67db149dc44e9194ef3f491a.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="수유 호텔 넘버25" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>사진 리뷰 이벤트 외 1개</span></div>                <div class="name">
-                                        <strong>수유 호텔 넘버25</strong>
-                    <p class="score">
-                        <em>9.6</em>&nbsp;<span>최고에요</span>&nbsp;(1089)                    </p>
-                    <p>
-                        강북구 미아동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>70,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>70,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=69246&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="69246" data-adcno="1" data-alat="37.563708460548" data-alng="127.07586134197" data-distance="8.596" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/69246/407603/eb5196bb5229c842ce965332e23860b1.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="건대 샐몬" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>건대 샐몬</strong>
-                    <p class="score">
-                        <em>9.1</em>&nbsp;<span>추천해요</span>&nbsp;(225)                    </p>
-                    <p>
-                        광진구 중곡동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>60,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>60,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=717&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="717" data-adcno="1" data-alat="37.63581964" data-alng="127.0245306" data-distance="8.701" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/717/480530/f18d9923caa6414d3e09312c9349c05c.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="수유 호텔 클래시" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>수유 호텔 클래시</strong>
-                    <p class="score">
-                        <em>9.1</em>&nbsp;<span>추천해요</span>&nbsp;(2466)                    </p>
-                    <p>
-                        강북구 번동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실 <b>숙소에 문의</b></p><p>숙박 <b>숙소에 문의</b></p>                    </div>
-                    <p>대실 <b>숙소에 문의</b> </p><p>숙박 <b>숙소에 문의</b> </p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=63391&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="63391" data-adcno="1" data-alat="37.635938563336" data-alng="127.02457602251" data-distance="8.715" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/63391/310999/53d3a7c6bd5554dc4a28640169291fea.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="수유 포시즌" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>수유 포시즌</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(1146)                    </p>
-                    <p>
-                        강북구 번동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>22,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>90,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>22,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>90,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=2954&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="2954" data-adcno="1" data-alat="37.49999098" data-alng="127.031855" data-distance="8.781" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/2954/331035/75babf67e5aa3987a376fae3f00f88e9.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="강남 648호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>강남 648호텔</strong>
-                    <p class="score">
-                        <em>8.2</em>&nbsp;<span>만족해요</span>&nbsp;(442)                    </p>
-                    <p>
-                        강남구 역삼동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<b>105,000원</b></p>                    </div>
-                    <p>대실&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<b>105,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=71160&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="71160" data-adcno="1" data-alat="37.502493818318" data-alng="127.03873810178" data-distance="8.897" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/71160/454604/44c53e50306fe5e1160c30f156e47f47.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="역삼 H Avenue-역삼점" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>실물 신분증 미지참 시 입실불가 외 1개</span></div>                <div class="name">
-                                        <strong>역삼 H Avenue-역삼점</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(156)                    </p>
-                    <p>
-                        강남구 역삼동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>130,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>130,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=4718&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="4718" data-adcno="1" data-alat="37.63747358" data-alng="127.0257774" data-distance="8.915" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/4718/27936/9bef2ce75d6412e5a957c7c015f72ce4.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="수유 다니엘캄파넬라" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>숙박대전 스위트 에피큐리언 패키지 외 2개</span></div>                <div class="name">
-                                        <strong>수유 다니엘캄파넬라</strong>
-                    <p class="score">
-                        <em>9.7</em>&nbsp;<span>최고에요</span>&nbsp;(1060)                    </p>
-                    <p>
-                        강북구 번동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실 <b>숙소에 문의</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p>대실 <b>숙소에 문의</b> </p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=891&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="891" data-adcno="1" data-alat="37.50269882" data-alng="127.0397456" data-distance="8.932" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/891/2747/85f56df24bdb6f8e7e105b63b7265314.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="강남 녹스 호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>정성스런 리뷰 작성 시 무료초대권 증정</span></div>                <div class="name">
-                                        <strong>강남 녹스 호텔</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(2298)                    </p>
-                    <p>
-                        강남구 역삼동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=72748&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="72748" data-adcno="1" data-alat="37.502753543996" data-alng="127.03992345865" data-distance="8.937" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/72748/479210/ab94afc451c0ce2b72d429d267e60525.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="역삼 인트로호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                    <div class="badge"><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(62,201,189,1);">뉴</span></div>                    <strong>역삼 인트로호텔</strong>
-                    <p class="score">
-                        <em>10.0</em>&nbsp;<span>최고에요</span>&nbsp;(2)                    </p>
-                    <p>
-                        강남구 역삼동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=692&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="692" data-adcno="1" data-alat="37.50286082" data-alng="127.0402795" data-distance="8.946" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/692/21762/3e921b3f02c2a4026a187ff215741452.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="역삼 브라운도트" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>당첨자발표,주차시 차량에 따라 추가 요금 발생</span></div>                <div class="name">
-                                        <strong>역삼 브라운도트</strong>
-                    <p class="score">
-                        <em>9.7</em>&nbsp;<span>최고에요</span>&nbsp;(422)                    </p>
-                    <p>
-                        강남구 역삼동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>45,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>150,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>45,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>150,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=6235&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="6235" data-adcno="1" data-alat="37.50269861" data-alng="127.0403473" data-distance="8.964" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/6235/79301/a804ea650d7f331644a2b39a7fc1a496.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="역삼 스타 프리미어" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전 객실 최고급 침대 매트리스, 베개 비치                                                             ~ 외 1개</span></div>                <div class="name">
-                                        <strong>역삼 스타 프리미어</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(4123)                    </p>
-                    <p>
-                        강남구 역삼동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=12500&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="12500" data-adcno="1" data-alat="37.63841755" data-alng="127.0269334" data-distance="9.056" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/12500/84762/b1c0d08379700567710d6ac244949413.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="수유 솔리드" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>로비에 비치된 미니BAR 이용 가능</span></div>                <div class="name">
-                                        <strong>수유 솔리드</strong>
-                    <p class="score">
-                        <em>9.6</em>&nbsp;<span>최고에요</span>&nbsp;(247)                    </p>
-                    <p>
-                        강북구 번동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=47883&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="47883" data-adcno="1" data-alat="37.5008862049" data-alng="127.039129471" data-distance="9.061" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/47883/413610/fc9d3a6a5cdf613cb116bd4e1f49192b.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="역삼 아드리게" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>오픈기념 특가 이벤트</span></div>                <div class="name">
-                                        <strong>역삼 아드리게</strong>
-                    <p class="score">
-                        <em>9.1</em>&nbsp;<span>추천해요</span>&nbsp;(298)                    </p>
-                    <p>
-                        강남구 역삼동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>139,800원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>139,800원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=5803&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="5803" data-adcno="1" data-alat="37.501041" data-alng="127.0396361" data-distance="9.074" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/5803/36302/abefe5e5cfe982a83cab428cdc824be7.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="역삼 PREMIER XYM" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>넷플릭스 프리존</span></div>                <div class="name">
-                                        <strong>역삼 PREMIER XYM</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(2566)                    </p>
-                    <p>
-                        강남구 역삼동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>129,800원</b></p>                    </div>
-                    <div class="earlybird soldout">페이백 SOLD OUT</div><p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>129,800원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=2183&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="2183" data-adcno="1" data-alat="37.50069879" data-alng="127.0391384" data-distance="9.078" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/2183/141573/65f98b7d1894fa8fb11d6abecf815a95.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="역삼 린" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>노하드,I5 9400,16G,RTX2060 외 4개</span></div>                <div class="name">
-                                        <strong>역삼 린</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(2072)                    </p>
-                    <p>
-                        강남구 역삼동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=1721&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="1721" data-adcno="1" data-alat="37.50118487" data-alng="127.0405183" data-distance="9.107" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/1721/311853/71858a6189929ae40479fb8f01a4856b.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="역삼 A-NA HOTEL" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>역삼 A-NA HOTEL</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(1129)                    </p>
-                    <p>
-                        강남구 역삼동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>90,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>90,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=4973&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="4973" data-adcno="1" data-alat="37.50154145" data-alng="127.0411247" data-distance="9.108" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/4973/5105/27979e4e4f66f72ca7a9fc405fd990a9.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="강남 카파쓰" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전객실 넷플릭스 설치 본인 계정 사용</span></div>                <div class="name">
-                                        <strong>강남 카파쓰</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(1914)                    </p>
-                    <p>
-                        강남구 역삼동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>48,800원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>178,800원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>48,800원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>178,800원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=688&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="688" data-adcno="1" data-alat="37.50072377" data-alng="127.0398803" data-distance="9.115" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/688/445838/66ce227678d2fc88807bd8d563ac9ead.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="역삼 벤" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>역삼 벤</strong>
-                    <p class="score">
-                        <em>9.6</em>&nbsp;<span>최고에요</span>&nbsp;(322)                    </p>
-                    <p>
-                        강남구 역삼동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>60,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>60,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=5842&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="5842" data-adcno="1" data-alat="37.59418141" data-alng="127.0782251" data-distance="9.315" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/5842/35415/5c3a80419956d73ff19f701df65df963.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="중랑 샐몬" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>중랑 샐몬</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(1058)                    </p>
-                    <p>
-                        중랑구 상봉동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>75,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>75,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=55261&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="55261" data-adcno="1" data-alat="37.5063557744" data-alng="127.0519442025" data-distance="9.325" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/55261/186668/f6f282d79523eef603bdf75e53c2208a.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="선릉 베드스테이션" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>커플PC,넷플릭스,유튜브,웨이브,무비넷 완비</span></div>                <div class="name">
-                                        <strong>선릉 베드스테이션</strong>
-                    <p class="score">
-                        <em>9.1</em>&nbsp;<span>추천해요</span>&nbsp;(537)                    </p>
-                    <p>
-                        강남구 삼성동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=4451&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="4451" data-adcno="1" data-alat="37.4864938" data-alng="127.013618" data-distance="9.436" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/4451/25465/4651f1f445259c5af6a596c45523b5c2.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="서초 라바" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>포토 리뷰 무료 대실 증정 이벤트 외 3개</span></div>                <div class="name">
-                                        <strong>서초 라바</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(2820)                    </p>
-                    <p>
-                        서초구 서초동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=63362&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="63362" data-adcno="1" data-alat="37.504910134892" data-alng="127.05290678749" data-distance="9.5" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/63362/280325/387391c080114fd4ce88ebc390393dfe.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="선릉 그레이호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>고급 베이커리 및 아메리카노 서비스제공</span></div>                <div class="name">
-                                        <strong>선릉 그레이호텔</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(1389)                    </p>
-                    <p>
-                        강남구 대치동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>27,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>27,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=5625&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="5625" data-adcno="1" data-alat="37.50511135" data-alng="127.054246" data-distance="9.566" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/5625/34459/7afe31b21aeb886d02e189f9dd559b45.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="대치 컬리넌" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>대치 컬리넌</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(2423)                    </p>
-                    <p>
-                        강남구 대치동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=70287&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="70287" data-adcno="1" data-alat="37.485075549748" data-alng="126.93210839877" data-distance="9.944" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/70287/437760/be1e238acc0484ffd51441850b2f45e5.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신림 THE MAY" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>신림 THE MAY</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(484)                    </p>
-                    <p>
-                        관악구 신림동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>50,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>95,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>50,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>95,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=5291&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="5291" data-adcno="1" data-alat="37.48507647" data-alng="126.9316803" data-distance="9.96" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/5291/349614/a112373c5bec59f9e1c72e7883ead750.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신림 볼륨" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>화물차량은 주차 불가합니다</span></div>                <div class="name">
-                                        <strong>신림 볼륨</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(333)                    </p>
-                    <p>
-                        관악구 신림동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>37,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>105,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>37,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>105,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=51850&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="51850" data-adcno="1" data-alat="37.4926892752" data-alng="127.043078422" data-distance="10.006" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/51850/287734/1af4e6e79f113ff684d5f4ec1988b61a.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="강남 데미안" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전객실 넷플릭스 무료시청</span></div>                <div class="name">
-                                        <strong>강남 데미안</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(1513)                    </p>
-                    <p>
-                        강남구 도곡동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>124,800원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>124,800원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=5469&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="5469" data-adcno="1" data-alat="37.47614945" data-alng="126.980826" data-distance="10.063" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/5469/33115/275e84cb2cf78d9829bd02405ae1a91f.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="사당 M" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>사당 M</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(6373)                    </p>
-                    <p>
-                        관악구 남현동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=5155&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="5155" data-adcno="1" data-alat="37.61595811" data-alng="127.0758059" data-distance="10.185" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/5155/5254/7c3aabf5d1b16cff3d3e41b1eee57162.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="태릉 인" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>리뷰 외 1개</span></div>                <div class="name">
-                                        <strong>태릉 인</strong>
-                    <p class="score">
-                        <em>8.6</em>&nbsp;<span>만족해요</span>&nbsp;(932)                    </p>
-                    <p>
-                        중랑구 묵동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>60,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>60,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=5390&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="5390" data-adcno="1" data-alat="37.5954135" data-alng="127.089047" data-distance="10.262" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/5390/303981/ff90cb9575fab067ee1a2816a23f4488.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="상봉 Zoom-줌" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>음료생수 무한 제공</span></div>                <div class="name">
-                                        <strong>상봉 Zoom-줌</strong>
-                    <p class="score">
-                        <em>9.1</em>&nbsp;<span>추천해요</span>&nbsp;(2308)                    </p>
-                    <p>
-                        중랑구 상봉동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>20,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>60,000원</b></p>                    </div>
-                    <div class="earlybird soldout">페이백 SOLD OUT</div><p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>20,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>60,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=59759&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="59759" data-adcno="1" data-alat="37.474278985307" data-alng="126.98100293439" data-distance="10.271" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/59759/10059/2d8fa3a8c7da24b924da1e8c34182b6f.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="사당 티트리 호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>사당 티트리 호텔</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(2427)                    </p>
-                    <p>
-                        관악구 남현동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>22,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>70,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>22,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>70,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=4681&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="4681" data-adcno="1" data-alat="37.50260475" data-alng="126.8909914" data-distance="10.492" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/4681/341879/5d62eb4e1a4c2e0e7d7042117ce88870.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신도림 NO.25" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>무제한 라인업 쿠폰으로 가성비 있게 즐겨요 외 1개</span></div>                <div class="name">
-                                        <strong>신도림 NO.25</strong>
-                    <p class="score">
-                        <em>9.7</em>&nbsp;<span>최고에요</span>&nbsp;(632)                    </p>
-                    <p>
-                        구로구 구로동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<b>70,000원</b></p>                    </div>
-                    <p>대실&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<b>70,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=65803&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="65803" data-adcno="1" data-alat="37.542198273554" data-alng="127.0942938263" data-distance="10.571" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/65803/13174/5d2aa238c24bd404e71e999b602abad1.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="건대 위시앤스테이" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>건대 위시앤스테이</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(478)                    </p>
-                    <p>
-                        광진구 구의동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=46426&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="46426" data-adcno="1" data-alat="37.4826310179" data-alng="126.917386815" data-distance="10.779" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/46426/103772/0fe5030acea4d0333336fa0e0e1a3467.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신림 도미니크" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>도미니크 루프탑 오픈</span></div>                <div class="name">
-                                        <strong>신림 도미니크</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(875)                    </p>
-                    <p>
-                        관악구 신림동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=58992&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="58992" data-adcno="1" data-alat="37.51109977556" data-alng="127.08180756517" data-distance="11.011" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/58992/253294/43af811ab4ceefd610bd16dd8da279b0.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신천 호텔 더 캐슬-잠실새내점" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>금연으로 운영중인 호텔입니다 외 1개</span></div>                <div class="name">
-                                        <strong>신천 호텔 더 캐슬-잠실새내점</strong>
-                    <p class="score">
-                        <em>9.7</em>&nbsp;<span>최고에요</span>&nbsp;(2087)                    </p>
-                    <p>
-                        송파구 잠실동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>135,000원</b></p>                    </div>
-                    <div class="earlybird soldout">페이백 SOLD OUT</div><p>대실&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>135,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=5470&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="5470" data-adcno="1" data-alat="37.51108143" data-alng="127.082269" data-distance="11.046" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/5470/34173/dcfab2c49dac4ad3d56da1374603d1f4.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신천 라비앙" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>결제금액의 최대 10% 적립가능</span></div>                <div class="name">
-                                        <strong>신천 라비앙</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(1842)                    </p>
-                    <p>
-                        송파구 잠실동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=52376&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="52376" data-adcno="1" data-alat="37.5112389944" data-alng="127.083716956" data-distance="11.142" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/52376/158504/9296f59cd16afcd346f598820955b6bf.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신천 라몬" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>신천 라몬</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(1530)                    </p>
-                    <p>
-                        송파구 잠실동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>115,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>115,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=57663&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="57663" data-adcno="1" data-alat="37.599845621288" data-alng="127.09904925445" data-distance="11.254" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/57663/437774/f63e370b54e44832fbe8529443c592e1.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="상봉 그랜드젬" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>상봉 그랜드젬</strong>
-                    <p class="score">
-                        <em>9.7</em>&nbsp;<span>최고에요</span>&nbsp;(774)                    </p>
-                    <p>
-                        중랑구 망우동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=45087&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="45087" data-adcno="1" data-alat="37.5531689865" data-alng="126.851376259" data-distance="11.297" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/45087/451456/fb47bcdc9e5834b3d55eec6d2f88aaee.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="화곡 드림" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>화곡 드림</strong>
-                    <p class="score">
-                        <em>9.7</em>&nbsp;<span>최고에요</span>&nbsp;(338)                    </p>
-                    <p>
-                        강서구 화곡동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=1141&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="1141" data-adcno="1" data-alat="37.65373345" data-alng="127.051199" data-distance="11.616" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/1141/6430/f325499cde1e3370d3d82dc51691fc06.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="창동 론스타" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>무한대실 런칭 한정 이벤트</span></div>                <div class="name">
-                                        <strong>창동 론스타</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(3738)                    </p>
-                    <p>
-                        도봉구 창동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>100,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=3625&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="3625" data-adcno="1" data-alat="37.65382338" data-alng="127.0515889" data-distance="11.644" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/3625/466019/5dd0864f45fa351ee4ae9a70f717bfad.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="창동 호텔99프레스티지" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전객실 신규 천장형 LG 에어컨 교체 완료 외 2개</span></div>                <div class="name">
-                                        <strong>창동 호텔99프레스티지</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(1101)                    </p>
-                    <p>
-                        도봉구 창동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=67390&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="67390" data-adcno="1" data-alat="37.476324076378" data-alng="127.04641610083" data-distance="11.696" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/67390/360297/0e07c06b1e6d1785be86071956446171.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="양재 데님 호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>양재 데님 호텔</strong>
-                    <p class="score">
-                        <em>8.8</em>&nbsp;<span>만족해요</span>&nbsp;(204)                    </p>
-                    <p>
-                        강남구 개포동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>50,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>150,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>50,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>150,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=47127&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="47127" data-adcno="1" data-alat="37.5457547792" data-alng="126.847919274" data-distance="11.734" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/47127/424987/1e21e671293897781caa274af7c57725.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="화곡 HOTEL A" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>화곡 HOTEL A</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(1694)                    </p>
-                    <p>
-                        강서구 화곡동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>20,000원</b></p><p>숙박&nbsp;<b>60,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>20,000원</b></p><p>숙박&nbsp;<b>60,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=48146&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="48146" data-adcno="1" data-alat="37.5472202256" data-alng="126.846852585" data-distance="11.795" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/48146/123483/5d3d13eecc5cdbbf488fd645d6d73c35.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="화곡 소설스미스" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>1만원 무제한쿠폰 지급 이벤트</span></div>                <div class="name">
-                                        <strong>화곡 소설스미스</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(2621)                    </p>
-                    <p>
-                        강서구 화곡동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span>&nbsp;<b>32,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>99,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span>&nbsp;<b>32,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>99,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=68367&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="68367" data-adcno="1" data-alat="37.654596926219" data-alng="127.05789094183" data-distance="12.03" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/68367/399963/12d0640be1ffa79d62663647f86579e4.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="노원 호텔 어반" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>백병원 원자력병원 환자 보호자 특별할인이벤트 외 1개</span></div>                <div class="name">
-                                        <strong>노원 호텔 어반</strong>
-                    <p class="score">
-                        <em>9.8</em>&nbsp;<span>최고에요</span>&nbsp;(577)                    </p>
-                    <p>
-                        노원구 상계동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>28,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>28,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=68330&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="68330" data-adcno="1" data-alat="37.654635672715" data-alng="127.05806560376" data-distance="12.042" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/68330/408760/19e887ff825dc7243f0fd43b6b64b911.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="노원 모모 호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전객실 5성급 린넨 이불 교체 외 2개</span></div>                <div class="name">
-                                        <strong>노원 모모 호텔</strong>
-                    <p class="score">
-                        <em>9.7</em>&nbsp;<span>최고에요</span>&nbsp;(258)                    </p>
-                    <p>
-                        노원구 상계동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>70,000원</b></p>                    </div>
-                    <p>대실&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>70,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=59345&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="59345" data-adcno="1" data-alat="37.654757127905" data-alng="127.05860659331" data-distance="12.081" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/59345/350711/5f8a0786f5ce2bfe9688e58d1d09a810.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="노원 호텔리버" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>2020 12월 그랜드 오픈완료</span></div>                <div class="name">
-                                        <strong>노원 호텔리버</strong>
-                    <p class="score">
-                        <em>9.7</em>&nbsp;<span>최고에요</span>&nbsp;(616)                    </p>
-                    <p>
-                        노원구 상계동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=870&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="870" data-adcno="1" data-alat="37.65499148" data-alng="127.0584027" data-distance="12.092" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/870/215279/2dff4c078e668f5f105fee86568bbb31.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="노원 에이플러스호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>노원 에이플러스호텔</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(2300)                    </p>
-                    <p>
-                        노원구 상계동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=47482&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="47482" data-adcno="1" data-alat="37.4766836276" data-alng="126.897997743" data-distance="12.26" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/47482/116113/7de5a2359f983bfe3a60c0e312a7a3f5.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="독산 미니멀시즌" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>독산 미니멀시즌</strong>
-                    <p class="score">
-                        <em>9.6</em>&nbsp;<span>최고에요</span>&nbsp;(2504)                    </p>
-                    <p>
-                        금천구 독산동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>55,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>55,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=55236&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="55236" data-adcno="1" data-alat="37.5182271424" data-alng="126.8534047751" data-distance="12.265" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/55236/423888/5d4914dcf40e4d374f7cd22446010dbb.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="양천 머스트스테이" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>21년 12월15일 Grand Open!! 외 2개</span></div>                <div class="name">
-                                        <strong>양천 머스트스테이</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(137)                    </p>
-                    <p>
-                        양천구 신정동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>24,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>95,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>24,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>95,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=55918&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="55918" data-adcno="1" data-alat="37.5290027091" data-alng="126.8473876251" data-distance="12.285" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/55918/331827/ca9f15a6f08103b042b53041ca930ba0.JPG" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="화곡 드어반 호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>화곡 드어반 호텔</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(1070)                    </p>
-                    <p>
-                        강서구 화곡동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<b>75,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<b>75,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=735&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="735" data-adcno="1" data-alat="37.52875306" data-alng="126.8466369" data-distance="12.357" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/735/429218/85a15fc86363b09d7710948cac0f63dd.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="화곡 VOLL" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>1만원 무제한쿠폰 지급 이벤트 외 4개</span></div>                <div class="name">
-                                        <strong>화곡 VOLL</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(1867)                    </p>
-                    <p>
-                        강서구 화곡동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=2656&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="2656" data-adcno="1" data-alat="37.5292139" data-alng="126.8462784" data-distance="12.369" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/2656/379765/f1ea4e34de5bbe84a9f3ed269e577934.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="화곡 거기" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>화곡 거기</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(3227)                    </p>
-                    <p>
-                        강서구 화곡동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=728&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="728" data-adcno="1" data-alat="37.53024257" data-alng="126.8446879" data-distance="12.463" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/728/303164/1f2fb0bb04ecf729db4a1c92c2e48a1a.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="화곡 S" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>1만원 무제한쿠폰 지급 이벤트</span></div>                <div class="name">
-                                        <strong>화곡 S</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(2944)                    </p>
-                    <p>
-                        강서구 화곡동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>50,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>50,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=50369&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="50369" data-adcno="1" data-alat="37.530104656" data-alng="126.841253466" data-distance="12.755" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/50369/141006/2ea8db9264b57f8c8d09e14575f5ce4d.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="화곡 엔-ANNE" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>화곡 엔-ANNE</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(4)                    </p>
-                    <p>
-                        강서구 화곡동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=826&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="826" data-adcno="1" data-alat="37.51472619" data-alng="127.1077819" data-distance="12.784" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/826/475474/06d5922d7d7a50f1d8748aa7d8070ed5.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="잠실 와우" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>20221015 리모델링 GRAND OPEN 외 1개</span></div>                <div class="name">
-                                        <strong>잠실 와우</strong>
-                    <p class="score">
-                        <em>8.0</em>&nbsp;<span>만족해요</span>&nbsp;(21)                    </p>
-                    <p>
-                        송파구 방이동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=62917&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="62917" data-adcno="1" data-alat="37.515453019622" data-alng="127.10907252442" data-distance="12.849" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/62917/282071/451137ec4b3a6d37b3188eb12b3f2954.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="잠실 호텔 더 캐슬-방이1호점" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>차량 객실별 1대만 이용가능 외 1개</span></div>                <div class="name">
-                                        <strong>잠실 호텔 더 캐슬-방이1호점</strong>
-                    <p class="score">
-                        <em>9.7</em>&nbsp;<span>최고에요</span>&nbsp;(1164)                    </p>
-                    <p>
-                        송파구 방이동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>45,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>165,000원</b></p>                    </div>
-                    <div class="earlybird soldout">페이백 SOLD OUT</div><p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>45,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>165,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=3872&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="3872" data-adcno="1" data-alat="37.52839548" data-alng="126.8406054" data-distance="12.871" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/3872/362397/1f969cf9d46af8a968af0d007d936f36.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="화곡 CL" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>14시입실,포인트적립,롤,배그PC,넷플릭스 외 1개</span></div>                <div class="name">
-                                        <strong>화곡 CL</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(1383)                    </p>
-                    <p>
-                        강서구 화곡동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>40,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>40,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=67954&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="67954" data-adcno="1" data-alat="37.515249198094" data-alng="127.10938057266" data-distance="12.884" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/67954/378177/d59706a0496318052bb53fd20e88096d.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="잠실 라비호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>잠실 라비호텔</strong>
-                    <p class="score">
-                        <em>9.7</em>&nbsp;<span>최고에요</span>&nbsp;(780)                    </p>
-                    <p>
-                        송파구 방이동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>45,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>150,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>45,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>150,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=60976&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="60976" data-adcno="1" data-alat="37.51592438142" data-alng="127.1098966774" data-distance="12.891" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/60976/255771/7a7108c7530aa1314ef704f09b3cf37a.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="잠실 호텔 어반" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전객실 에이스 듀오테크3, 욕조스파 외 4개</span></div>                <div class="name">
-                                        <strong>잠실 호텔 어반</strong>
-                    <p class="score">
-                        <em>9.6</em>&nbsp;<span>최고에요</span>&nbsp;(1718)                    </p>
-                    <p>
-                        송파구 방이동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=2925&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="2925" data-adcno="1" data-alat="37.51580542" data-alng="127.1099191" data-distance="12.899" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/2925/406594/30482b97c5ecc58804c66964dd674d01.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="잠실 월" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>주중 무한대실 최대 12시간이용가능 외 3개</span></div>                <div class="name">
-                                        <strong>잠실 월</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(3294)                    </p>
-                    <p>
-                        송파구 방이동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=3205&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="3205" data-adcno="1" data-alat="37.51531914" data-alng="127.1096378" data-distance="12.9" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/3205/459367/39d80bc2e609a7c2a6c625972ee07a1a.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="잠실 루이체" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전객실넷플릭스무료시청가능</span></div>                <div class="name">
-                                        <strong>잠실 루이체</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(1660)                    </p>
-                    <p>
-                        송파구 방이동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>50,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>50,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=45853&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="45853" data-adcno="1" data-alat="37.5163414948" data-alng="127.110915317" data-distance="12.952" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/45853/6942/22aac6b254c647f2a5d35bf32f56d606.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="잠실 아이다" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>잠실 아이다</strong>
-                    <p class="score">
-                        <em>8.8</em>&nbsp;<span>만족해요</span>&nbsp;(1792)                    </p>
-                    <p>
-                        송파구 방이동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>20,000원</b></p><p>숙박&nbsp;<b>80,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>20,000원</b></p><p>숙박&nbsp;<b>80,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=1981&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="1981" data-adcno="1" data-alat="37.51586571" data-alng="127.1109689" data-distance="12.979" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/1981/416347/6c69a1a588ca67c5f4fdbf1e401a841d.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="잠실 머니" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>잠실 머니</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(2855)                    </p>
-                    <p>
-                        송파구 방이동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=55239&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="55239" data-adcno="1" data-alat="37.5399446283" data-alng="127.1248541256" data-distance="13.246" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/55239/391400/78e5517213fd07a3fb02ee8411b2d0b5.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="천호 럭셔리 호텔 라 뷰" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>영화관인가 노래방인가 PC방인가 외 3개</span></div>                <div class="name">
-                                        <strong>천호 럭셔리 호텔 라 뷰</strong>
-                    <p class="score">
-                        <em>8.9</em>&nbsp;<span>만족해요</span>&nbsp;(461)                    </p>
-                    <p>
-                        강동구 천호동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=4449&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="4449" data-adcno="1" data-alat="37.53952296" data-alng="127.1248488" data-distance="13.257" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/4449/156473/4a4cea65508e269a51eb520dd4293c63.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="천호 호텔 더블루" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>넷플릭스전용룸,커플PC룸                                                             ~ 외 3개</span></div>                <div class="name">
-                                        <strong>천호 호텔 더블루</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(1355)                    </p>
-                    <p>
-                        강동구 천호동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>135,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>135,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=49680&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="49680" data-adcno="1" data-alat="37.5396453533" data-alng="127.124989406" data-distance="13.266" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/49680/134808/cabfddcdc0b231a4bfb8275d9e06ca0f.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="천호 이너스" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>준특실65인치UHD TV특실75인치TV스파욕조 외 3개</span></div>                <div class="name">
-                                        <strong>천호 이너스</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(2978)                    </p>
-                    <p>
-                        강동구 천호동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=49400&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="49400" data-adcno="1" data-alat="37.539432713" data-alng="127.124993577" data-distance="13.271" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/49400/224656/ab1ccab97d2ff67f02ec854a62f9e767.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="천호 월" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>주중 무한대실 20시까지 최대10시간 전화문의</span></div>                <div class="name">
-                                        <strong>천호 월</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(1538)                    </p>
-                    <p>
-                        강동구 천호동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>135,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>135,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=61630&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="61630" data-adcno="1" data-alat="37.538052562829" data-alng="127.1281865442" data-distance="13.581" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/61630/254798/e768451a64580c6b198ea18e48f23c8b.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="천호 아리아" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>넷플릭스 시청</span></div>                <div class="name">
-                                        <strong>천호 아리아</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(993)                    </p>
-                    <p>
-                        강동구 천호동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<b>85,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<b>85,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=754&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="754" data-adcno="1" data-alat="37.49629417" data-alng="126.8457624" data-distance="14.07" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/754/5594/7fda6cbde901b7b5f6a16c9a6c2f3f72.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="오류 쎄비앙 호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전객실 넷플릭스 무료 시청 게이밍 헤드셋대여 외 2개</span></div>                <div class="name">
-                                        <strong>오류 쎄비앙 호텔</strong>
-                    <p class="score">
-                        <em>9.6</em>&nbsp;<span>최고에요</span>&nbsp;(1963)                    </p>
-                    <p>
-                        구로구 오류동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=1695&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="1695" data-adcno="1" data-alat="37.5381212568" data-alng="127.1376005" data-distance="14.387" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/1695/471863/07cee3669088744e43e98221c3dd7bff.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="길동 NO.25" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>길동 NO.25</strong>
-                    <p class="score">
-                        <em>9.0</em>&nbsp;<span>추천해요</span>&nbsp;(32)                    </p>
-                    <p>
-                        강동구 길동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=46608&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="46608" data-adcno="1" data-alat="37.5614955343" data-alng="126.977698519" data-distance="0.574" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/46608/467428/39ede234b6896d702de5829ec66d7dab.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="명동 스타힐스 호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>명동 스타힐스 호텔</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(73)                    </p>
-                    <p>
-                        중구 북창동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<b>88,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<b>88,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=65598&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="65598" data-adcno="1" data-alat="37.562630260085" data-alng="126.98596492995" data-distance="0.801" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/65598/320817/c7628ae440dca1f863ba2a797daa11c1.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="명동 메이원 호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>특급호텔 침구류 사용</span></div>                <div class="name">
-                                        <strong>명동 메이원 호텔</strong>
-                    <p class="score">
-                        <em>8.0</em>&nbsp;<span>만족해요</span>&nbsp;(136)                    </p>
-                    <p>
-                        중구 명동2가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실 <b>숙소에 문의</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p>대실 <b>숙소에 문의</b> </p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=69394&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="69394" data-adcno="1" data-alat="37.561907216574" data-alng="126.98680035707" data-distance="0.907" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/69394/413376/823de90cd8d1d9bbf511e4f804d4d413.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="명동 The stay 호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>명동 The stay 호텔</strong>
-                    <p class="score">
-                        <em>8.5</em>&nbsp;<span>만족해요</span>&nbsp;(185)                    </p>
-                    <p>
-                        중구 충무로2가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>70,000원</b></p><p>숙박&nbsp;<b>160,000원</b></p>                    </div>
-                    <p>대실&nbsp;<b>70,000원</b></p><p>숙박&nbsp;<b>160,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=5020&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="5020" data-adcno="1" data-alat="37.57132164" data-alng="126.9896356" data-distance="1.119" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/5020/288149/6aabd198fd1bce036744a4ef37d25c26.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="종로 브라운도트 호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>종로 브라운도트 호텔</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(1673)                    </p>
-                    <p>
-                        종로구 낙원동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>130,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>130,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=860&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="860" data-adcno="1" data-alat="37.57109463" data-alng="126.9900884" data-distance="1.143" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/860/4301/dadf2cc8c1e321edbd7405d03e4b7b57.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="종로 POP2" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>종로 POP2</strong>
-                    <p class="score">
-                        <em>8.6</em>&nbsp;<span>만족해요</span>&nbsp;(947)                    </p>
-                    <p>
-                        종로구 낙원동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실 <b>숙소에 문의</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p>대실 <b>숙소에 문의</b> </p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=4705&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="4705" data-adcno="1" data-alat="37.57113071" data-alng="126.9906272" data-distance="1.188" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/4705/27302/cdbbffd372a867f0772ae3fc6947588a.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="종로 T" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전객실 넷플릭스이용가능</span></div>                <div class="name">
-                                        <strong>종로 T</strong>
-                    <p class="score">
-                        <em>9.1</em>&nbsp;<span>추천해요</span>&nbsp;(5246)                    </p>
-                    <p>
-                        종로구 돈의동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>105,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>105,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=65001&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="65001" data-adcno="1" data-alat="37.571346257682" data-alng="126.99090990821" data-distance="1.221" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/65001/306213/87f3758a70caf347147744c33e878f81.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="종로 M&amp;LUCKY HOTEL" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>주중, 주말 최대 8시간 이용 외 3개</span></div>                <div class="name">
-                                        <strong>종로 M&amp;LUCKY HOTEL</strong>
-                    <p class="score">
-                        <em>9.7</em>&nbsp;<span>최고에요</span>&nbsp;(2168)                    </p>
-                    <p>
-                        종로구 돈의동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=58273&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="58273" data-adcno="1" data-alat="37.576778173508" data-alng="126.99088921054" data-distance="1.576" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/58273/419550/4ae66433a570cc20a37e076088de6807.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="종로 호텔순라" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>사진 후기 이벤트 외 1개</span></div>                <div class="name">
-                                        <strong>종로 호텔순라</strong>
-                    <p class="score">
-                        <em>7.4</em>&nbsp;<span>만족해요</span>&nbsp;(55)                    </p>
-                    <p>
-                        종로구 와룡동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<b>50,000원</b></p>                    </div>
-                    <p>대실&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<b>50,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=64774&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="64774" data-adcno="1" data-alat="37.56694912002" data-alng="127.0064983946" data-distance="2.476" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/64774/299512/a2d997823245dcfcafff11aac5b0ed5d.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="동대문 DDK 호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>1만원 무제한쿠폰 지급 이벤트 외 1개</span></div>                <div class="name">
-                                        <strong>동대문 DDK 호텔</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(381)                    </p>
-                    <p>
-                        중구 을지로6가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=3021&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="3021" data-adcno="1" data-alat="37.55697658" data-alng="126.9383916" data-distance="3.687" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/3021/362026/55525ef7d2dcaceb253026ac6dd12c17.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신촌 MONET-모네" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>신촌 MONET-모네</strong>
-                    <p class="score">
-                        <em>9.0</em>&nbsp;<span>추천해요</span>&nbsp;(5025)                    </p>
-                    <p>
-                        서대문구 창천동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=1777&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="1777" data-adcno="1" data-alat="37.55652244" data-alng="126.9383196" data-distance="3.708" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/1777/27509/56b778c4c6a3a376027f3bed026c7662.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신촌 바론드파리" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전객실 넷플릭스 설치완료 외 2개</span></div>                <div class="name">
-                                        <strong>신촌 바론드파리</strong>
-                    <p class="score">
-                        <em>9.1</em>&nbsp;<span>추천해요</span>&nbsp;(4523)                    </p>
-                    <p>
-                        서대문구 창천동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=1629&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="1629" data-adcno="1" data-alat="37.58891986" data-alng="127.0103305" data-distance="3.75" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/1629/457263/01fa7bc074251bfc8803393880dba9ad.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="성북 메이" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>프런트앞 시원한 아이스크림 제공</span></div>                <div class="name">
-                                        <strong>성북 메이</strong>
-                    <p class="score">
-                        <em>9.6</em>&nbsp;<span>최고에요</span>&nbsp;(32)                    </p>
-                    <p>
-                        성북구 삼선동4가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=57211&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="57211" data-adcno="1" data-alat="37.553699573332" data-alng="126.93653839272" data-distance="3.96" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/57211/204269/9596d88cca60bf5c6b717342e2e0c68c.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신촌 도로시" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>신촌 도로시</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(571)                    </p>
-                    <p>
-                        마포구 노고산동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=2091&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="2091" data-adcno="1" data-alat="37.55269751" data-alng="126.936254" data-distance="4.025" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/2091/170942/1083c69341886729097cd88694ded241.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신촌 호텔 고구마" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전객실 NETFLIX 가능 개인 ID</span></div>                <div class="name">
-                                        <strong>신촌 호텔 고구마</strong>
-                    <p class="score">
-                        <em>8.5</em>&nbsp;<span>만족해요</span>&nbsp;(682)                    </p>
-                    <p>
-                        마포구 노고산동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>18,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                    </div>
-                    <div class="earlybird soldout">페이백 SOLD OUT</div><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>18,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=3718&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="3718" data-adcno="1" data-alat="37.56339887" data-alng="127.0352821" data-distance="5.026" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/3718/22055/05b4b4873a64c41e88ea38ed911a3dd4.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="왕십리 스위트" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>무비넷 설치</span></div>                <div class="name">
-                                        <strong>왕십리 스위트</strong>
-                    <p class="score">
-                        <em>8.7</em>&nbsp;<span>만족해요</span>&nbsp;(1516)                    </p>
-                    <p>
-                        성동구 도선동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>20,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>20,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=62056&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="62056" data-adcno="1" data-alat="37.606954091657" data-alng="127.01041912436" data-distance="5.298" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/62056/456308/22043ef5cdec4474f342f57df965b94f.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="정릉 머스트 스테이-Wave" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>정릉 머스트 스테이-Wave</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(17)                    </p>
-                    <p>
-                        성북구 정릉동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>23,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>85,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>23,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>85,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=46255&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="46255" data-adcno="1" data-alat="37.5895640432" data-alng="126.915547747" data-distance="6.098" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/46255/103880/d156432b92cb777cc916a64689a232f9.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="응암 래플즈 호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전 객실 넷플릭스 시청 가능 외 4개</span></div>                <div class="name">
-                                        <strong>응암 래플즈 호텔</strong>
-                    <p class="score">
-                        <em>9.0</em>&nbsp;<span>추천해요</span>&nbsp;(1124)                    </p>
-                    <p>
-                        은평구 응암동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=764&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="764" data-adcno="1" data-alat="37.58122772" data-alng="127.0458781" data-distance="6.164" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/764/11656/51cb7d258d1b2fa9eae12f5337207c0e.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="청량리 부티크 호텔 XYM" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>청량리 부티크 호텔 XYM</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(2029)                    </p>
-                    <p>
-                        동대문구 청량리동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>65,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>65,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=5108&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="5108" data-adcno="1" data-alat="37.5213187" data-alng="127.0191447" data-distance="6.187" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/5108/233688/b6de7880eca8b90844515507a0ed1e78.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신사 애인 무인호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>코로나19 안심존 방역소독 완료 외 2개</span></div>                <div class="name">
-                                        <strong>신사 애인 무인호텔</strong>
-                    <p class="score">
-                        <em>9.1</em>&nbsp;<span>추천해요</span>&nbsp;(555)                    </p>
-                    <p>
-                        강남구 신사동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>160,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>160,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=3955&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="3955" data-adcno="1" data-alat="37.51597768" data-alng="127.018347" data-distance="6.642" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/3955/24044/4e2f5e3a3c267b3bc46ed35a5ac326a5.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신사 라트리" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>프리미엄 넷플릭스 채널 이용가능 외 1개</span></div>                <div class="name">
-                                        <strong>신사 라트리</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(1434)                    </p>
-                    <p>
-                        서초구 잠원동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<b>90,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<b>90,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=5446&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="5446" data-adcno="1" data-alat="37.6019052" data-alng="127.0418005" data-distance="6.826" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/5446/32787/27b15142b770717d6ce4556ea9ecbbee.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="월곡 갤럭시투" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>월곡 갤럭시투</strong>
-                    <p class="score">
-                        <em>8.8</em>&nbsp;<span>만족해요</span>&nbsp;(428)                    </p>
-                    <p>
-                        성북구 하월곡동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>20,000원</b></p><p>숙박&nbsp;<b>55,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>20,000원</b></p><p>숙박&nbsp;<b>55,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=2565&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="2565" data-adcno="1" data-alat="37.49470737" data-alng="126.9862492" data-distance="8.027" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/2565/16171/9cdc6b86a94fb4175beef0ea8a894489.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="방배 HOTEL 2001" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>넷플릭스 수량한정 입실 전 프론트로 문의</span></div>                <div class="name">
-                                        <strong>방배 HOTEL 2001</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(597)                    </p>
-                    <p>
-                        서초구 방배동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=2710&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="2710" data-adcno="1" data-alat="37.51852522" data-alng="126.9099086" data-distance="8.067" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/2710/17043/01.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="영등포 CF" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>적립 이벤트 실시</span></div>                <div class="name">
-                                        <strong>영등포 CF</strong>
-                    <p class="score">
-                        <em>8.8</em>&nbsp;<span>만족해요</span>&nbsp;(5164)                    </p>
-                    <p>
-                        영등포구 영등포동3가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>28,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>85,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>28,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>85,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=51964&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="51964" data-adcno="1" data-alat="37.5698448181" data-alng="127.070873736" data-distance="8.158" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/51964/156070/72a411a718cc0e04762ee141c7da789e.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="장안 A366" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>평일 대실 6시간 제공 외 1개</span></div>                <div class="name">
-                                        <strong>장안 A366</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(1903)                    </p>
-                    <p>
-                        동대문구 장안동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>90,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>90,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=2086&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="2086" data-adcno="1" data-alat="37.551478135381" data-alng="127.06897323636" data-distance="8.159" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/2086/2238/6c70487178a7377ae4228eee35534804.JPG" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="건대 쁠랑" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전객실 스파욕조  에쁜욕조 이용 가능 외 1개</span></div>                <div class="name">
-                                        <strong>건대 쁠랑</strong>
-                    <p class="score">
-                        <em>9.0</em>&nbsp;<span>추천해요</span>&nbsp;(400)                    </p>
-                    <p>
-                        성동구 송정동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=47236&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="47236" data-adcno="1" data-alat="37.5706410275" data-alng="127.071322748" data-distance="8.201" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/47236/110659/9861725c137dcb783316a209bb11f8b0.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="장안 호텔 Nine-9" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>장안 호텔 Nine-9</strong>
-                    <p class="score">
-                        <em>9.6</em>&nbsp;<span>최고에요</span>&nbsp;(5890)                    </p>
-                    <p>
-                        동대문구 장안동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>90,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>90,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=71262&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="71262" data-adcno="1" data-alat="37.51815697972" data-alng="126.90826244876" data-distance="8.203" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/71262/454344/a5225f69b191004dd83aa88da6b74ae6.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="영등포 라움" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>무제한 라인업 쿠폰으로 가성비 있게 즐겨요</span></div>                <div class="name">
-                                        <strong>영등포 라움</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(196)                    </p>
-                    <p>
-                        영등포구 영등포동3가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>85,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>85,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=767&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="767" data-adcno="1" data-alat="37.57005712" data-alng="127.0714172" data-distance="8.207" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/767/2170/7a60b9de9153c6b1d8d8b565fde98d21.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="장안 이지호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>고객감사이벤트 외 1개</span></div>                <div class="name">
-                                        <strong>장안 이지호텔</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(3571)                    </p>
-                    <p>
-                        동대문구 장안동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                    </div>
-                    <p>대실&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=47509&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="47509" data-adcno="1" data-alat="37.5217787249" data-alng="126.904158118" data-distance="8.229" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/47509/413519/954895bbab99db634753cd0fa989032a.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="영등포 YOLO" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>넷플릭스 ,웨이브 무료시청  철저한 방역소독 외 1개</span></div>                <div class="name">
-                                        <strong>영등포 YOLO</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(1984)                    </p>
-                    <p>
-                        영등포구 영등포동6가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=843&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="843" data-adcno="1" data-alat="37.51765906" data-alng="126.9083532" data-distance="8.234" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/843/16559/3b57c24a3f2dff24262bbe6c9ddcb15d.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="영등포 호텔 르오 HOTEL LE O" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>무제한 라인업 쿠폰으로 가성비 있게 즐겨요 외 2개</span></div>                <div class="name">
-                                        <strong>영등포 호텔 르오 HOTEL LE O</strong>
-                    <p class="score">
-                        <em>9.7</em>&nbsp;<span>최고에요</span>&nbsp;(763)                    </p>
-                    <p>
-                        영등포구 영등포동3가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>42,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>42,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=4470&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="4470" data-adcno="1" data-alat="37.53953111" data-alng="127.0655677" data-distance="8.253" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/4470/25723/6e6e4f74f8bdc7a22a2d0834245b978e.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="건대 시마" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전 객실 넷플릭스 설치</span></div>                <div class="name">
-                                        <strong>건대 시마</strong>
-                    <p class="score">
-                        <em>8.6</em>&nbsp;<span>만족해요</span>&nbsp;(951)                    </p>
-                    <p>
-                        광진구 자양동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>80,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>80,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=4833&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="4833" data-adcno="1" data-alat="37.51769115" data-alng="126.9079097" data-distance="8.261" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/4833/410508/c7a3422ea5a41459789182762d5756cc.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="영등포 그곳에" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>영등포 그곳에</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(3953)                    </p>
-                    <p>
-                        영등포구 영등포동3가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=57908&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="57908" data-adcno="1" data-alat="37.517802591393" data-alng="126.90753859801" data-distance="8.277" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/57908/213128/b1120b0b41c8b1a06c7f5eb08a996356.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="영등포 데쟈트" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>무제한 라인업 쿠폰으로 가성비 있게 즐겨요 외 1개</span></div>                <div class="name">
-                                        <strong>영등포 데쟈트</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(1437)                    </p>
-                    <p>
-                        영등포구 영등포동3가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=61967&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="61967" data-adcno="1" data-alat="37.520642939784" data-alng="126.9035170449" data-distance="8.351" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/61967/10368/7e2a947c84ca3205e2657361908f78bc.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="영등포 코코" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전객실 넷플릭스 무료시청</span></div>                <div class="name">
-                                        <strong>영등포 코코</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(1426)                    </p>
-                    <p>
-                        영등포구 영등포동6가                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>43,000원</b></p><p>숙박&nbsp;<b>70,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>43,000원</b></p><p>숙박&nbsp;<b>70,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=716&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="716" data-adcno="1" data-alat="37.63473561" data-alng="127.0205876" data-distance="8.436" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/716/105917/02208c15cf845704e909b44cd8975ee7.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="수유 호텔 수" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>프런트 앞 상시 간식 제공 외 2개</span></div>                <div class="name">
-                                        <strong>수유 호텔 수</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(1293)                    </p>
-                    <p>
-                        강북구 수유동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>22,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>90,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>22,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>90,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=4541&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="4541" data-adcno="1" data-alat="37.49904037" data-alng="127.0285163" data-distance="8.718" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/4541/158693/37a36175d5bb220a8abb064f7849b7d8.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="강남 제리스플래닛" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>강남 제리스플래닛</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(2386)                    </p>
-                    <p>
-                        강남구 역삼동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>70,000원</b></p>                    </div>
-                    <p>대실&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>70,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=708&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="708" data-adcno="1" data-alat="37.63646103" data-alng="127.0250293" data-distance="8.785" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/708/343882/ade2b0960974f704ec889580da20df94.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="수유 M" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>넷플릭스 ,디즈니플러스, 웨이브, 무료스트리밍 외 3개</span></div>                <div class="name">
-                                        <strong>수유 M</strong>
-                    <p class="score">
-                        <em>9.6</em>&nbsp;<span>최고에요</span>&nbsp;(1545)                    </p>
-                    <p>
-                        강북구 번동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=52242&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="52242" data-adcno="1" data-alat="37.5028467014" data-alng="127.039406443" data-distance="8.901" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/52242/164441/31e35e28aac77ee4a59063df926dbdf5.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="역삼 트리아" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전객실 넷플릭스 유튜브 시청 가능                                                             ~</span></div>                <div class="name">
-                                        <strong>역삼 트리아</strong>
-                    <p class="score">
-                        <em>8.9</em>&nbsp;<span>만족해요</span>&nbsp;(2315)                    </p>
-                    <p>
-                        강남구 역삼동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                    </div>
-                    <div class="earlybird soldout">페이백 SOLD OUT</div><p>대실&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=63624&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="63624" data-adcno="1" data-alat="37.49722015035" data-alng="127.02931626635" data-distance="8.928" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/63624/281556/1be6d279cb0dc33457eaa3fac97a788d.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="강남 멜리샤호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>멜리샤호텔 이벤트룸 OPEN                                                             ~</span></div>                <div class="name">
-                                        <strong>강남 멜리샤호텔</strong>
-                    <p class="score">
-                        <em>9.6</em>&nbsp;<span>최고에요</span>&nbsp;(1717)                    </p>
-                    <p>
-                        강남구 역삼동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<b>110,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<b>110,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=1896&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="1896" data-adcno="1" data-alat="37.49880827" data-alng="127.0339851" data-distance="8.993" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/1896/285570/b4615a6d1498d40f57eddc700773c5e4.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="강남 렉시" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>주차문의 외 1개</span></div>                <div class="name">
-                                        <strong>강남 렉시</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(2185)                    </p>
-                    <p>
-                        강남구 역삼동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<b>90,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<b>90,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=12495&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="12495" data-adcno="1" data-alat="37.55654379" data-alng="127.0801414" data-distance="9.037" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/12495/84165/41ce983a0fc4421cf72d77e65cf62200.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="건대 부띠끄나인 호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>건대 부띠끄나인 호텔</strong>
-                    <p class="score">
-                        <em>9.6</em>&nbsp;<span>최고에요</span>&nbsp;(3482)                    </p>
-                    <p>
-                        광진구 능동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>170,000원</b></p>                    </div>
-                    <p>대실&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>170,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=67575&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="67575" data-adcno="1" data-alat="37.50169239574" data-alng="127.0418435379" data-distance="9.133" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/67575/364939/48a1b436074ddd700960a2747104085d.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="역삼 사월호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>역삼 사월호텔</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(48)                    </p>
-                    <p>
-                        강남구 역삼동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실 <b>숙소에 문의</b></p><p>숙박&nbsp;<b>130,000원</b></p>                    </div>
-                    <p>대실 <b>숙소에 문의</b> </p><p>숙박&nbsp;<b>130,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=67576&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="67576" data-adcno="1" data-alat="37.501647889504" data-alng="127.04208745272" data-distance="9.15" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/67576/364934/4cd35c30e0da3eb23ae43e43e34a1460.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="역삼 마리호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>역삼 마리호텔</strong>
-                    <p class="score">
-                        <em>9.7</em>&nbsp;<span>최고에요</span>&nbsp;(217)                    </p>
-                    <p>
-                        강남구 역삼동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실 <b>숙소에 문의</b></p><p>숙박&nbsp;<b>70,000원</b></p>                    </div>
-                    <p>대실 <b>숙소에 문의</b> </p><p>숙박&nbsp;<b>70,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=12013&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="12013" data-adcno="1" data-alat="37.49915292" data-alng="126.9188794" data-distance="9.156" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/12013/79902/2a05cfe75ad7d81e12fb469f63f19256.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="보라매 봄-2호점" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>코로나 예방</span></div>                <div class="name">
-                                        <strong>보라매 봄-2호점</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(1057)                    </p>
-                    <p>
-                        영등포구 신길동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>65,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>65,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=11995&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="11995" data-adcno="1" data-alat="37.501234707" data-alng="127.042287167" data-distance="9.198" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/11995/396142/1185a79d1a9dbb0fd95a35a63c39ae09.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="역삼 CF호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>역삼 CF호텔</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(487)                    </p>
-                    <p>
-                        강남구 역삼동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>150,000원</b></p>                    </div>
-                    <p>대실&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>150,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=55443&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="55443" data-adcno="1" data-alat="37.5053044951" data-alng="127.049391992" data-distance="9.256" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/55443/189108/e02953d87a1a301fefdaabb004512170.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="선릉 호텔 스타" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>스탠다드B객실넷플릭스시청가능 본인계정으로시청                                                             ~</span></div>                <div class="name">
-                                        <strong>선릉 호텔 스타</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(2121)                    </p>
-                    <p>
-                        강남구 삼성동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=4953&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="4953" data-adcno="1" data-alat="37.48711005" data-alng="127.0140026" data-distance="9.382" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/4953/29018/607d153835f8ff4038a7d0ae6671a68e.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="서초 H" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>준비중입니다 외 1개</span></div>                <div class="name">
-                                        <strong>서초 H</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(1273)                    </p>
-                    <p>
-                        서초구 서초동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=5302&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="5302" data-adcno="1" data-alat="37.50694949" data-alng="127.0540347" data-distance="9.407" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/5302/294820/8223830a59be638ac62df369a1309f9e.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="삼성 디에이스" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>고대기대여, 대실예약 Earlybird이벤트 외 3개</span></div>                <div class="name">
-                                        <strong>삼성 디에이스</strong>
-                    <p class="score">
-                        <em>9.0</em>&nbsp;<span>추천해요</span>&nbsp;(3555)                    </p>
-                    <p>
-                        강남구 삼성동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>27,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>27,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=66476&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="66476" data-adcno="1" data-alat="37.516843856778" data-alng="127.06579833336" data-distance="9.487" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/66476/338236/6818f41d543912a308037218ff732090.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="삼성 라엠-LaM" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>삼성 라엠-LaM</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(182)                    </p>
-                    <p>
-                        강남구 삼성동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=4032&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="4032" data-adcno="1" data-alat="37.48070503" data-alng="126.9813223" data-distance="9.557" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/4032/245362/bdcd948f5df8ce829cf772a28c2efadd.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="사당 MRG" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전객실 넷플릭스 설치 외 1개</span></div>                <div class="name">
-                                        <strong>사당 MRG</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(2162)                    </p>
-                    <p>
-                        동작구 사당동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=1693&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="1693" data-adcno="1" data-alat="37.50422528" data-alng="127.0531008" data-distance="9.567" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/1693/10436/03.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="선릉 프린스" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>무한대실 월요일 부터 일요일 현금 30000원 외 2개</span></div>                <div class="name">
-                                        <strong>선릉 프린스</strong>
-                    <p class="score">
-                        <em>8.9</em>&nbsp;<span>만족해요</span>&nbsp;(2563)                    </p>
-                    <p>
-                        강남구 대치동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>23,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>23,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=2093&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="2093" data-adcno="1" data-alat="37.48706109" data-alng="126.9296296" data-distance="9.837" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/2093/13559/082a05bfc843ab347365124ba5aa24cc.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신림 릴" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>코로나19 방역을 위해 주 3회 스팀살균 시행</span></div>                <div class="name">
-                                        <strong>신림 릴</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(4215)                    </p>
-                    <p>
-                        관악구 신림동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>22,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>85,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>22,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>85,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=1686&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="1686" data-adcno="1" data-alat="37.48069257" data-alng="126.950588" data-distance="9.865" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/1686/12089/03.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="서울대 54번가" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>후기글 무료대실권 이벤트 당첨자 발표 외 2개</span></div>                <div class="name">
-                                        <strong>서울대 54번가</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(2851)                    </p>
-                    <p>
-                        관악구 봉천동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>90,000원</b></p>                    </div>
-                    <p>대실&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>90,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=5151&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="5151" data-adcno="1" data-alat="37.48049075" data-alng="126.9505881" data-distance="9.887" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/5151/30544/2ebb43a6b221adb87fe73055ead4d69f.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="서울대 클리오" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전객실 넷플릭스 서비스 무료 이용 가능 외 1개</span></div>                <div class="name">
-                                        <strong>서울대 클리오</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(2430)                    </p>
-                    <p>
-                        관악구 봉천동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>70,000원</b></p>                    </div>
-                    <p>대실&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>70,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=11866&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="11866" data-adcno="1" data-alat="37.60774289" data-alng="127.0785655" data-distance="9.94" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/11866/79584/3bba81c95f396e28771777a13222679a.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="태릉 호텔 드씨엘" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>원두커피,모닝빵 등 다양한 먹거리 제공</span></div>                <div class="name">
-                                        <strong>태릉 호텔 드씨엘</strong>
-                    <p class="score">
-                        <em>9.6</em>&nbsp;<span>최고에요</span>&nbsp;(1682)                    </p>
-                    <p>
-                        중랑구 묵동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<b>90,000원</b></p>                    </div>
-                    <p>대실&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<b>90,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=3883&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="3883" data-adcno="1" data-alat="37.48533529" data-alng="126.9305358" data-distance="9.976" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/3883/25057/9ccf4921a4bd4206e6a84754a912bdaf.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신림 호텔신트라" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>무한대실 평일 최대 12시간 , 주말7시간 외 4개</span></div>                <div class="name">
-                                        <strong>신림 호텔신트라</strong>
-                    <p class="score">
-                        <em>9.6</em>&nbsp;<span>최고에요</span>&nbsp;(2768)                    </p>
-                    <p>
-                        관악구 신림동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=66726&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="66726" data-adcno="1" data-alat="37.486158300441" data-alng="126.92816233786" data-distance="9.984" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/66726/355334/e3499892cd7575d448bcf910b53a42ff.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신림 U 호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>3인 4인 프라이빗룸   고사양게임룸 오픈</span></div>                <div class="name">
-                                        <strong>신림 U 호텔</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(34)                    </p>
-                    <p>
-                        관악구 신림동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=1692&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="1692" data-adcno="1" data-alat="37.484891942988" data-alng="126.93043675886" data-distance="10.024" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/1692/10453/3588b421ec0be58d9ef17f50b5f3e6fb.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신림 르네상스" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>신림 르네상스</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(2033)                    </p>
-                    <p>
-                        관악구 신림동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>70,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>70,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=64296&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="64296" data-adcno="1" data-alat="37.475212408248" data-alng="126.98085799124" data-distance="10.167" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/64296/11853/68060b6269a79ac38a085cda5b3815c8.png" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="사당 카리스" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>사당 카리스</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(590)                    </p>
-                    <p>
-                        관악구 남현동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>28,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>95,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>28,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>95,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=4889&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="4889" data-adcno="1" data-alat="37.47414924" data-alng="126.98103" data-distance="10.285" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/4889/29058/b2b996bd4989d75e3952814ca83f0aec.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="사당 메트로21" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전객실 넷플릭스 무료 시청 가능 외 2개</span></div>                <div class="name">
-                                        <strong>사당 메트로21</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(2898)                    </p>
-                    <p>
-                        관악구 남현동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=56002&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="56002" data-adcno="1" data-alat="37.5959033835" data-alng="127.0893964441" data-distance="10.308" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/56002/443454/ca3067c6b059e9ed786a30d6394bfcac.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="상봉 Y" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>전객실 전기장판 구비완료 외 2개</span></div>                <div class="name">
-                                        <strong>상봉 Y</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(663)                    </p>
-                    <p>
-                        중랑구 상봉동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>60,000원</b></p>                    </div>
-                    <p>대실&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>60,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=5395&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="5395" data-adcno="1" data-alat="37.59568329" data-alng="127.0943422" data-distance="10.715" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/5395/5528/b1f9a4ff285b3f9468ccd27cc243c61e.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="상봉 칼튼" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>야간 대실 밤 22시 이후 이용가능 이벤트 외 1개</span></div>                <div class="name">
-                                        <strong>상봉 칼튼</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(1771)                    </p>
-                    <p>
-                        중랑구 망우동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>20,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>96,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>20,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>96,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=4789&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="4789" data-adcno="1" data-alat="37.59813809" data-alng="127.0937112" data-distance="10.748" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/4789/4888/82cf0ce01c9aa40d2ce0cc739b76873a.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="상봉 호텔 코안도르-구 하이눈" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>프런트 앞 간식 제공 외 1개</span></div>                <div class="name">
-                                        <strong>상봉 호텔 코안도르-구 하이눈</strong>
-                    <p class="score">
-                        <em>9.0</em>&nbsp;<span>추천해요</span>&nbsp;(1491)                    </p>
-                    <p>
-                        중랑구 망우동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>80,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>80,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=50963&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="50963" data-adcno="1" data-alat="37.5108344557" data-alng="127.07979399" data-distance="10.881" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/50963/342479/cd51517dc34e41e1ce058abb2c13522b.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신천 칸" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>5월  Grand open 외 1개</span></div>                <div class="name">
-                                        <strong>신천 칸</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(1239)                    </p>
-                    <p>
-                        송파구 잠실동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=13375&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="13375" data-adcno="1" data-alat="37.5110645103" data-alng="127.080680988" data-distance="10.931" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/13375/156526/ea06f8edf46ce20768c01c9d98269267.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신천 A+ 무인호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>랜덤 객실 이벤트                                                             ~</span></div>                <div class="name">
-                                        <strong>신천 A+ 무인호텔</strong>
-                    <p class="score">
-                        <em>9.0</em>&nbsp;<span>추천해요</span>&nbsp;(1920)                    </p>
-                    <p>
-                        송파구 잠실동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>90,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>90,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=5629&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="5629" data-adcno="1" data-alat="37.48134626" data-alng="126.9149732" data-distance="11.01" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/5629/382664/cb12d4494979a681c8641471ce02b2f4.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신림 URBAN HOTEL&amp;GOLF" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>최대 20인 프라이빗 파티룸</span></div>                <div class="name">
-                                        <strong>신림 URBAN HOTEL&amp;GOLF</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(1505)                    </p>
-                    <p>
-                        관악구 신림동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>33,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>33,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=812&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="812" data-adcno="1" data-alat="37.51129773" data-alng="127.0821787" data-distance="11.026" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/812/163156/e5274bf18cd75cdc1a6a397654979df1.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신천 퍼니" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>신천 퍼니</strong>
-                    <p class="score">
-                        <em>9.1</em>&nbsp;<span>추천해요</span>&nbsp;(2765)                    </p>
-                    <p>
-                        송파구 잠실동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=1425&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="1425" data-adcno="1" data-alat="37.51129043" data-alng="127.0823144" data-distance="11.036" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/1425/16697/147009c33f105ca93afd1d08d5757f13.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신천 식스티" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>숙박35000원, 무한대실 도보결제 이벤트 외 1개</span></div>                <div class="name">
-                                        <strong>신천 식스티</strong>
-                    <p class="score">
-                        <em>9.0</em>&nbsp;<span>추천해요</span>&nbsp;(1461)                    </p>
-                    <p>
-                        송파구 잠실동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>22,000원</b></p><p>숙박&nbsp;<b>80,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>22,000원</b></p><p>숙박&nbsp;<b>80,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=3049&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="3049" data-adcno="1" data-alat="37.51128673" data-alng="127.0824547" data-distance="11.046" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/3049/82816/82d6874c72a8a229ba23399890641831.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신천 테레즈" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>정성스런 응원글 작성 시 무료초대권 증정</span></div>                <div class="name">
-                                        <strong>신천 테레즈</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(1550)                    </p>
-                    <p>
-                        송파구 잠실동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=3514&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="3514" data-adcno="1" data-alat="37.51120596" data-alng="127.0845493" data-distance="11.205" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/3514/20841/01.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신천 로즈마리" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>모든 객실 내에 넷플릭스 설치 완료</span></div>                <div class="name">
-                                        <strong>신천 로즈마리</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(4276)                    </p>
-                    <p>
-                        송파구 잠실동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>22,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약특가</span>&nbsp;<b>22,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=3717&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="3717" data-adcno="1" data-alat="37.51101128" data-alng="127.0846351" data-distance="11.224" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/3717/333183/4f1d12d6294d52e754b1151c22d7d081.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="신천 마쯔&amp;2060" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>게이밍2PC, 넷플릭스, 무한대실</span></div>                <div class="name">
-                                        <strong>신천 마쯔&amp;2060</strong>
-                    <p class="score">
-                        <em>8.6</em>&nbsp;<span>만족해요</span>&nbsp;(145)                    </p>
-                    <p>
-                        송파구 잠실동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=68271&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="68271" data-adcno="1" data-alat="37.545776947788" data-alng="127.10446881079" data-distance="11.352" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/68271/388780/58317644f1c431bc7512bfae46f4c1c3.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="광진 대하" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>광진 대하</strong>
-                    <p class="score">
-                        <em>8.4</em>&nbsp;<span>만족해요</span>&nbsp;(61)                    </p>
-                    <p>
-                        광진구 광장동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>53,000원</b></p>                    </div>
-                    <p>대실&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>53,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=46529&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="46529" data-adcno="1" data-alat="37.4768484765" data-alng="127.045922828" data-distance="11.623" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/46529/126099/ec71477d8e975c8e08db5d4bd1b8f204.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="개포 컬리넌" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>개포 컬리넌</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(944)                    </p>
-                    <p>
-                        강남구 개포동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>130,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=729&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="729" data-adcno="1" data-alat="37.54631395" data-alng="126.8483526" data-distance="11.685" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/729/145655/36347a9ed14368fec0622b2e853ea65c.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="화곡 블루힐" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>주중 대실 08시부터 무한대실 7시간 외 3개</span></div>                <div class="name">
-                                        <strong>화곡 블루힐</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(6435)                    </p>
-                    <p>
-                        강서구 화곡동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>32,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>85,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>32,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>85,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=4431&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="4431" data-adcno="1" data-alat="37.54609663" data-alng="126.8475157" data-distance="11.762" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/4431/407667/9bc60254bbc3d987bc14dca255bd0a77.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="화곡 르 아브르" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>퇴실연장 리뷰 EVENT !!</span></div>                <div class="name">
-                                        <strong>화곡 르 아브르</strong>
-                    <p class="score">
-                        <em>9.8</em>&nbsp;<span>최고에요</span>&nbsp;(764)                    </p>
-                    <p>
-                        강서구 화곡동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p>대실&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=54372&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="54372" data-adcno="1" data-alat="37.4811575484" data-alng="126.8995292931" data-distance="11.777" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/54372/9068/50d0ec98290b48081e2e7ecddda19897.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="구로 컬리넌" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>현장판매객실보유,23시간 STAY,세스코 방역</span></div>                <div class="name">
-                                        <strong>구로 컬리넌</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(3253)                    </p>
-                    <p>
-                        구로구 구로동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=47878&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="47878" data-adcno="1" data-alat="37.5469165082" data-alng="126.846097295" data-distance="11.867" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/47878/118460/1106df01e3191386dc4df2d1e3112e1d.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="화곡 랑부띠끄" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>화곡 랑부띠끄</strong>
-                    <p class="score">
-                        <em>9.6</em>&nbsp;<span>최고에요</span>&nbsp;(1254)                    </p>
-                    <p>
-                        강서구 화곡동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>20,000원</b></p><p>숙박&nbsp;<b>50,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>20,000원</b></p><p>숙박&nbsp;<b>50,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=2539&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="2539" data-adcno="1" data-alat="37.54629607" data-alng="126.8456821" data-distance="11.916" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/2539/372368/a9aff7fe6cceefd8164ffceabed2a752.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="화곡 구름성" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>연박 숙박 희망시 구름성 연락 부탁 드립니다</span></div>                <div class="name">
-                                        <strong>화곡 구름성</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(1114)                    </p>
-                    <p>
-                        강서구 화곡동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>20,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>70,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>20,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>70,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=48119&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="48119" data-adcno="1" data-alat="37.4907320421" data-alng="126.88237421" data-distance="11.955" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/48119/119478/adca0c7892416a8016f8baef9883291f.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="남구로 봄-3호점" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>더위야 가라  대실 3 1 이벤트 진행</span></div>                <div class="name">
-                                        <strong>남구로 봄-3호점</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(1641)                    </p>
-                    <p>
-                        구로구 구로동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>28,000원</b></p><p>숙박&nbsp;<b>65,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>28,000원</b></p><p>숙박&nbsp;<b>65,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=762&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="762" data-adcno="1" data-alat="37.65517486" data-alng="127.059237" data-distance="12.151" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/762/372404/2ba1f8ee80820c3067b31339cd5a5eb5.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="노원 노블레스호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>스코어 및 첫골선수 맟추기 외 3개</span></div>                <div class="name">
-                                        <strong>노원 노블레스호텔</strong>
-                    <p class="score">
-                        <em>8.8</em>&nbsp;<span>만족해요</span>&nbsp;(235)                    </p>
-                    <p>
-                        노원구 상계동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<b>55,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<b>55,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=2750&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="2750" data-adcno="1" data-alat="37.52897693" data-alng="126.8469622" data-distance="12.321" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/2750/181638/8d180144e405b20b3f95b87a43b53d69.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="화곡 그레이스호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>1만원 무제한쿠폰 지급 이벤트 외 1개</span></div>                <div class="name">
-                                        <strong>화곡 그레이스호텔</strong>
-                    <p class="score">
-                        <em>9.2</em>&nbsp;<span>추천해요</span>&nbsp;(1631)                    </p>
-                    <p>
-                        강서구 화곡동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>55,000원</b></p>                    </div>
-                    <p>대실&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>55,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=55053&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="55053" data-adcno="1" data-alat="37.479502945963" data-alng="126.89100236199" data-distance="12.38" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/55053/182869/b359c5e3b25ae4c479754f684402b576.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="가산 JS호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>오픈 특가 선착순 쿠폰발급</span></div>                <div class="name">
-                                        <strong>가산 JS호텔</strong>
-                    <p class="score">
-                        <em>9.7</em>&nbsp;<span>최고에요</span>&nbsp;(988)                    </p>
-                    <p>
-                        구로구 가리봉동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>100,000원</b></p>                    </div>
-                    <p>대실&nbsp;<b>25,000원</b></p><p>숙박&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=62398&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="62398" data-adcno="1" data-alat="37.47943214016" data-alng="126.88850613177" data-distance="12.524" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/62398/266667/49a2156d0bd155ad11047ec952b86860.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="가산 H" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>코로나완벽방역실시 외 1개</span></div>                <div class="name">
-                                        <strong>가산 H</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(1027)                    </p>
-                    <p>
-                        금천구 가산동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>110,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=54124&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="54124" data-adcno="1" data-alat="37.4784997492" data-alng="126.889629044" data-distance="12.543" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/54124/176657/3bb6da920783a89a603496a5a55be417.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="가산 자기야" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>1만원 무제한쿠폰 지급 이벤트</span></div>                <div class="name">
-                                        <strong>가산 자기야</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(621)                    </p>
-                    <p>
-                        금천구 가산동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>22,000원</b></p><p>숙박&nbsp;<b>60,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>22,000원</b></p><p>숙박&nbsp;<b>60,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=49466&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="49466" data-adcno="1" data-alat="37.4717240378" data-alng="126.897498032" data-distance="12.738" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/49466/132492/a376bbf6051d9c2b20e0561b0c8bf5fb.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="독산 이사벨호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>시트,이불커버 새제품교체 완료!  넷플릭스!!                                                             ~ 외 1개</span></div>                <div class="name">
-                                        <strong>독산 이사벨호텔</strong>
-                    <p class="score">
-                        <em>9.7</em>&nbsp;<span>최고에요</span>&nbsp;(2043)                    </p>
-                    <p>
-                        금천구 독산동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=965&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="965" data-adcno="1" data-alat="37.51524468" data-alng="127.1083166" data-distance="12.8" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/965/26532/67ee94cfff9db82df0b1adadd4250a19.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="잠실 체리" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>넷플릭스,왓챠,티빙,웨이브 무료시청 외 1개</span></div>                <div class="name">
-                                        <strong>잠실 체리</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(2628)                    </p>
-                    <p>
-                        송파구 방이동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>160,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>160,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=67021&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="67021" data-adcno="1" data-alat="37.530025481807" data-alng="126.84060220324" data-distance="12.812" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/67021/351772/b4c45c905fde64faaedb44707bccb273.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="화곡 해담채" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>늦은퇴실,배그PC, 넷플릭스,브람스최신안마의자</span></div>                <div class="name">
-                                        <strong>화곡 해담채</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(1412)                    </p>
-                    <p>
-                        강서구 화곡동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<b>60,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>40,000원</b></p><p>숙박&nbsp;<b>60,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=13483&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="13483" data-adcno="1" data-alat="37.51562227" data-alng="127.10922208" data-distance="12.853" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/13483/427143/f22c679cb8380027209920abdbada505.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="잠실 셀레네" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>에이스침구류 및 전객실 방역</span></div>                <div class="name">
-                                        <strong>잠실 셀레네</strong>
-                    <p class="score">
-                        <em>9.3</em>&nbsp;<span>추천해요</span>&nbsp;(349)                    </p>
-                    <p>
-                        송파구 방이동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>125,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>35,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>125,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=68089&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="68089" data-adcno="1" data-alat="37.515346839252" data-alng="127.10911818054" data-distance="12.858" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/68089/382682/993f13f0299f38b826435782b7d447e8.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="잠실 호텔 더 캐슬-방이2호점" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>2호점 오픈 기념 할인                                                             ~</span></div>                <div class="name">
-                                        <strong>잠실 호텔 더 캐슬-방이2호점</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(415)                    </p>
-                    <p>
-                        송파구 방이동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>45,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>165,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>45,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>165,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=61523&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="61523" data-adcno="1" data-alat="37.51552132015" data-alng="127.10926265364" data-distance="12.861" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/61523/253262/8566b70668e2ad08386bcd272a821179.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="잠실 호텔 넘버25" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>평일 무한대실, 넷플릭스, 디즈니 외 1개</span></div>                <div class="name">
-                                        <strong>잠실 호텔 넘버25</strong>
-                    <p class="score">
-                        <em>9.7</em>&nbsp;<span>최고에요</span>&nbsp;(1607)                    </p>
-                    <p>
-                        송파구 방이동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span>&nbsp;<b>35,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>140,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=55470&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="55470" data-adcno="1" data-alat="37.4712719639" data-alng="126.8878354539" data-distance="13.275" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/55470/9314/3db6c40c0d7d2e29bc6d5f66b5c1d2e5.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="독산 씨 호텔-SI" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>도보결제 포인트적립</span></div>                <div class="name">
-                                        <strong>독산 씨 호텔-SI</strong>
-                    <p class="score">
-                        <em>9.6</em>&nbsp;<span>최고에요</span>&nbsp;(4521)                    </p>
-                    <p>
-                        금천구 독산동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>23,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>90,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>23,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>90,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=67397&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="67397" data-adcno="1" data-alat="37.540047927755" data-alng="127.12625249254" data-distance="13.364" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/67397/361351/48fdc3c2102a2ff3e05f90c356a5f1ab.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="천호 호텔8월" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>시네마룸 그리고 파티룸 리모델링 완료                                                             ~</span></div>                <div class="name">
-                                        <strong>천호 호텔8월</strong>
-                    <p class="score">
-                        <em>9.4</em>&nbsp;<span>추천해요</span>&nbsp;(331)                    </p>
-                    <p>
-                        강동구 천호동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>120,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=5359&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="5359" data-adcno="1" data-alat="37.53574753" data-alng="127.1364647" data-distance="14.351" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/5359/5487/d1ad0fe038b4b537f0d9d27c090f08fd.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="길동 레미-Remi" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>길동 레미-Remi</strong>
-                    <p class="score">
-                        <em>9.6</em>&nbsp;<span>최고에요</span>&nbsp;(150)                    </p>
-                    <p>
-                        강동구 길동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>95,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>95,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=4938&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="4938" data-adcno="1" data-alat="37.53789016" data-alng="127.1379757" data-distance="14.425" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/4938/406319/1445edea226563d8ec7e2e09735945b2.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="길동 Love is" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>길동 Love is</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(2390)                    </p>
-                    <p>
-                        강동구 길동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>25,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=46427&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="46427" data-adcno="1" data-alat="37.685111468" data-alng="127.045642793" data-distance="14.445" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/46427/104391/1141cfb951e2bf7f8f9ad42bfdde61bf.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="도봉 더데이 호텔" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>정성스런 리뷰 작성 시 무료초대권 증정</span></div>                <div class="name">
-                                        <strong>도봉 더데이 호텔</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(1433)                    </p>
-                    <p>
-                        도봉구 도봉동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<b>70,000원</b></p>                    </div>
-                    <p>대실&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<b>70,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=2556&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="2556" data-adcno="1" data-alat="37.53557256" data-alng="127.1381705" data-distance="14.501" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/2556/293041/d1a29f6a2aa9a050fa4d01fb473513fe.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="길동 오리엔트" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                                <div class="name">
-                                        <strong>길동 오리엔트</strong>
-                    <p class="score">
-                        <em>9.5</em>&nbsp;<span>추천해요</span>&nbsp;(1989)                    </p>
-                    <p>
-                        강동구 길동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>95,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>30,000원</b></p><p>숙박&nbsp;<span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>95,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-    <li class="list_2 adcno1">
-        <a href="https://www.goodchoice.kr/product/detail?ano=55127&amp;adcno=1&amp;sel_date=2022-11-26&amp;sel_date2=2022-11-27" data-ano="55127" data-adcno="1" data-alat="37.5411395181" data-alng="127.1422362114" data-distance="14.718" data-affiliate="1">
-            <p class="pic">
-                <img class="lazy align" data-original="//image.goodchoice.kr/resize_1000X500x0/adimg_new/55127/469520/062bf5a4c5ee468bf9bee5bde42878ff.jpg" src="//image.goodchoice.kr/images/web_v3/bg_trans.png" alt="길동 호텔 샘" style="margin-top: -215px;">
-            </p>
-            <div class="stage gra_black_vertical">
-                <div class="evt_info"><span>코로나 방역 99% 상시소독 청정관리숙소 외 1개</span></div>                <div class="name">
-                                        <strong>길동 호텔 샘</strong>
-                    <p class="score">
-                        <em>9.6</em>&nbsp;<span>최고에요</span>&nbsp;(861)                    </p>
-                    <p>
-                        강동구 길동                    </p>
-                </div>
-                <div class="price">
-                    <div class="map_html">
-                        <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>23,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                    </div>
-                    <p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">무한대실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>23,000원</b></p><p><span class="build_badge" style="color: rgba(255,255,255,0.8); background-color: rgba(62,76,103,1);">숙박빠른입실</span><span class="build_badge" style="color: rgba(255,255,255,1); background-color: rgba(248,113,111,1);">예약</span>&nbsp;<b>100,000원</b></p>                </div>
-            </div>
-        </a>
-    </li>
-                    </ul>
-                </div>
+#w20221128b396043bbee26 .viewport-nav>.active>a, #w20221128b396043bbee26 .viewport-nav>.active>a:hover,
+	#w20221128b396043bbee26 .viewport-nav>.active>a:focus {;
+	color:;
+	background-color: transparent;
+}
 
-            </div>
-            <!-- //List -->
+#w20221128b396043bbee26 .viewport-nav>.disabled>a,
+	#w20221128b396043bbee26 .viewport-nav>.disabled>a:hover,
+	#w20221128b396043bbee26 .viewport-nav>.disabled>a:focus {
+	color: #ccc;
+	background-color: transparent;
+}
 
-        </div>
+#w20221128b396043bbee26 .dropdown-menu a {
+	font-weight: inherit;
+	font-style: normal;
+}
 
-    </div>
-    <!-- //Content  -->
-</div>
+#w20221128b396043bbee26 .viewport-nav>li>a.dropdown-more {
+	cursor: pointer;
+}
 
-    <!-- Footer -->
-    <footer>
-        <div class="align">
-            <ul class="link">
-                <li><a href="http://www.withinnovation.co.kr/" target="_blank">회사소개</a><span>|</span></li>
-                <li><a href="https://www.goodchoice.kr/more/terms" data-default="term">이용약관</a><span>|</span></li>
-                <li><a href="https://www.goodchoice.kr/more/terms/privacy" data-default="privacy">개인정보처리방침</a><span>|</span></li>
-                <li><a href="https://www.goodchoice.kr/more/terms/consumer" data-default="consumer">소비자 분쟁해결 기준</a><span>|</span></li>
-                <li><button type="button" onclick="pop_licence();return false;">사업자 정보확인</button><span>|</span></li>
-                <li><a href="//ad.goodchoice.kr/" target="_blank">여기어때 마케팅센터</a><span>|</span></li>
-                <li><a href="//host.goodchoice.kr/" target="_blank">액티비티 호스트센터</a><span>|</span></li>
-                <li><a href="//hotel.goodchoice.kr/" target="_blank">HOTEL 여기어때</a><span>|</span></li>
-                <li><a href="https://www.goodchoice.kr/more/contentsInfo">콘텐츠산업진흥법에의한 표시</a></li>
-            </ul>
-            <p><b>고객행복센터 1670-6250</b><span>오전 9시 - 새벽 3시</span></p>
-            <address>
-                <span>(주) 여기어때컴퍼니</span>
-                주소 : 서울특별시 강남구 봉은사로 479, 479타워 11층 | 대표이사 : 정명훈 | 사업자등록번호: 742-86-00224<br>
-                통신판매번호 : 2017-서울강남-01779 | 관광사업자 등록번호: 제1026-24호 | 전화번호 : 1670-6250 | 전자우편주소 : help@goodchoice.kr<br>
-                <span class="order">(주) 여기어때컴퍼니는 통신판매중개자로서 통신판매의 당사자가 아니며, 상품의 예약, 이용 및 환불 등과 관련한 의무와 책임은 각 판매자에게 있습니다.</span><br>
-                Copyright GC COMPANY Corp. All rights reserved.
-            </address>
-            
-            <div class="ico">
-                <a href="//www.facebook.com/goodchoiceofficial" target="_black" class="icon-icn_login_facebook"><span>여기어때 페이스북</span></a>
-                <a href="//blog.gccompany.co.kr" target="_black" class="icon-ic_blog"><span>여기어때 블로그</span></a>
-                <a href="//post.naver.com/my.nhn?memberNo=25599212" target="_black" class="icon-ic_naverpost"><span>네이버포스트</span></a>
-            </div>
-            
-        </div>
+#w20221128b396043bbee26 {;
+	background:;
+	font-family: Droid Serif, Apple SD Gothic Neo, Malgun Gothic,
+		Nanum Gothic, Meiryo, sans-serif, serif, Arial, sans-serif;
+	height: 90px;
+	min-height: auto;
+	display: table-cell;
+	vertical-align: middle;
+}
 
-    </footer>
+#w20221128b396043bbee26 .viewport-nav {
+	height: 90px;
+}
+
+#w20221128b396043bbee26 .viewport-nav>li.dropdown>.notranslate a,
+	#w20221128b396043bbee26 .viewport-nav>li.dropdown>a {;
+	color: #212121;
+	font-size: 14px;
+	letter-spacing: 0px;
+	padding: 0 18px;
+	font-weight: inherit;
+	font-style: normal;
+	height: 90px;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.scroll-to-fixed-fixed #w20221128b396043bbee26 .viewport-nav>li.dropdown>.notranslate a,
+	.scroll-to-fixed-fixed #w20221128b396043bbee26 .viewport-nav>li.dropdown>a
+	{
+	color: #212121;
+}
+
+#w20221128b396043bbee26 .viewport-nav>li.dropdown.use_sub_name:hover>a>.plain_name:before
+	{
+	color: rgba(33, 33, 33, 0.5);
+}
+
+.scroll-to-fixed-fixed #w20221128b396043bbee26 .viewport-nav>li.dropdown.use_sub_name:hover>a>.plain_name:before
+	{
+	color: rgba(33, 33, 33, 0.5);
+}
+/*	#doz_header #*/ /* .viewport-nav > li:first-child > a{*/
+/*											 padding-left: */ /*px !important;*/
+/*										 }*/
+/*	#doz_header #*/ /* .viewport-nav > li:last-child > a {*/
+/*											 padding-right: */ /*px !important;*/
+/*										 }*/
+#doz_header #w20221128b396043bbee26 .sub_mega_drop .viewport-nav>li {
+	float: left;
+	display: table;
+}
+/*	#doz_header #*/ /* .sub_mega_drop .viewport-nav > li a{*/
+/*											 text-align: center;*/
+/*										 }*/
+#w20221128b396043bbee26 .dropdown-menu {
+	
+}
+
+#w20221128b396043bbee26 .dropdown-menu {
+	margin-top: 0;
+	left: 18px;
+}
+
+#w20221128b396043bbee26 .viewport-nav>li.dropdown>.notranslate a:hover,
+	#w20221128b396043bbee26 .viewport-nav>li.dropdown>a:hover {
+	color: #212121;;
+	color: rgba(33, 33, 33, 0.5);
+}
+
+.scroll-to-fixed-fixed #w20221128b396043bbee26 .viewport-nav>li.dropdown>.notranslate a:hover,
+	.scroll-to-fixed-fixed #w20221128b396043bbee26 .viewport-nav>li.dropdown>a:hover,
+	.scroll-to-fixed-fixed #w20221128b396043bbee26 {
+	color: #212121;;
+	color: rgba(33, 33, 33, 0.5);
+}
+
+#w20221128b396043bbee26 .viewport-nav>li.dropdown>.notranslate a.active:before,
+	#w20221128b396043bbee26 .viewport-nav>li.dropdown>a.active:before {
+	
+}
+
+.scroll-to-fixed-fixed #w20221128b396043bbee26 .viewport-nav>li.dropdown>.notranslate a.active:before,
+	.scroll-to-fixed-fixed #w20221128b396043bbee26 .viewport-nav>li.dropdown>a.active:before
+	{
+	
+}
+
+#w20221128b396043bbee26 li.dropdown>ul.dropdown-menu {
+	visibility: hidden;
+	display: block;
+	opacity: 0;
+	-o-transition: .3s;
+	-ms-transition: .3s;
+	-moz-transition: .3s;
+	-webkit-transition: .3s;
+	transition: .3s;
+}
+
+.inline-col-group-right #w20221128b396043bbee26 li.dropdown:last-child>ul.dropdown-menu
+	{
+	right: 0;
+	left: auto;
+}
+
+#w20221128b396043bbee26 li.dropdown:hover>ul.dropdown-menu {
+	visibility: visible;
+	opacity: 1;
+	display: block;
+}
+
+#w20221128b396043bbee26 li.dropdown.pulldown-hide>ul.dropdown-menu,
+	#w20221128b396043bbee26 li.dropdown.pulldown-hide:hover>ul.dropdown-menu
+	{
+	display: none;
+}
+
+#w20221128b396043bbee26 li.dropdown-icon:focus>ul.dropdown-menu {
+	visibility: visible;
+	opacity: 1;
+	display: block;
+}
+
+#w20221128b396043bbee26 .dropdown-menu {;
+	background: #ffffff;
+	font-size: 13px;
+	border-radius: 0px;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	padding: 0;
+	border: 0px solid #e5e5e5;
+}
+
+.scroll-to-fixed-fixed #w20221128b396043bbee26 .dropdown-menu {;
+	background: #ffffff;
+	border: 0px solid #e5e5e5;
+}
+
+#w20221128b396043bbee26 .dropdown-menu>li>a {
+	font-size: 13px;;
+	color: #212121;
+	padding: 10px 20px;
+	letter-spacing: 0px;
+	border-top: 0px solid #e5e5e5;
+}
+
+#w20221128b396043bbee26 .dropdown-menu>li.dropdown-submenu.sub-active>a
+	{
+	padding-right: 30px;
+}
+
+#w20221128b396043bbee26 .dropdown-menu>li>a:focus {
+	outline: none;
+}
+
+#w20221128b396043bbee26 .dropdown-menu>li.use_sub_name:hover>a>.plain_name:before
+	{
+	color: #eeeeee !important;
+}
+
+.scroll-to-fixed-fixed #w20221128b396043bbee26 .dropdown-menu>li>a {;
+	color: #212121;
+	border-top: 0px solid #e5e5e5;
+}
+
+#w20221128b396043bbee26 .dropdown-menu>li:first-child>a {
+	border-top: 0;
+}
+
+.scroll-to-fixed-fixed #w20221128b396043bbee26 .dropdown-menu>li.use_sub_name:hover>a>.plain_name:before
+	{
+	color: #eeeeee !important;
+}
+
+#w20221128b396043bbee26 .dropdown-menu>li>a:hover,
+	#w20221128b396043bbee26 .dropdown-menu>li>a:active,
+	#w20221128b396043bbee26 .dropdown-menu>li>a:focus {;
+	color: #eeeeee !important;;
+	background-color: #212121 !important;
+	font-size: 13px;
+}
+
+.scroll-to-fixed-fixed #w20221128b396043bbee26 .dropdown-menu>li>a:hover,
+	.scroll-to-fixed-fixed #w20221128b396043bbee26 .dropdown-menu>li>a:active,
+	.scroll-to-fixed-fixed #w20221128b396043bbee26 .dropdown-menu>li>a:focus
+	{;
+	color: #eeeeee !important;;
+	background-color: #212121 !important;
+}
+
+#w20221128b396043bbee26 .dropdown-menu>li:last-child>a,
+	#w20221128b396043bbee26 .dropdown-menu>li:last-child>a:hover {
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+#w20221128b396043bbee26 .dropdown-menu>li:first-child>a,
+	#w20221128b396043bbee26 .dropdown-menu>li:first-child>a:hover {
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+}
+
+#w20221128b396043bbee26 .nav .open>a, #w20221128b396043bbee26  .nav .open>a:hover,
+	#w20221128b396043bbee26  .nav .open>a:focus {
+	background: transparent;
+	border-color: transparent;
+}
+
+.dropdown-menu.preview_drop_down>li>a.hover {;
+	color: #eeeeee !important;;
+	background-color: #212121 !important;
+}
+
+#w20221128b396043bbee26 .viewport-nav>li.dropdown>.notranslate a,
+	#w20221128b396043bbee26 .viewport-nav>li.dropdown>a {
+	text-transform: uppercase;
+}
+
+#w20221128b54f172ff3ac0 .btn_DC0whb10io span {
+	color: #212121 !important;
+}
+
+#w20221128b54f172ff3ac0 .btn_38CT35044M span {
+	color: #212121 !important;
+}
+
+#w20221128b54f172ff3ac0 .inline_widget i.simple {
+	vertical-align: initial;
+}
+
+#w20221128b54f172ff3ac0 .inline_widget a.btn {
+	position: relative;
+}
+
+#w20221128b54f172ff3ac0 .inline_widget .line {
+	margin-left: 2.5px;
+	margin-right: 2.5px;
+}
+
+#w20221128b54f172ff3ac0 .inline_widget .login_btn_item {
+	margin: 0 5px;
+}
+
+#w20221128b54f172ff3ac0 .inline_widget .login_btn_item.badge_class>a .badge_wrap
+	{
+	padding-left: 2px;
+}
+
+#w20221128b54f172ff3ac0 .inline_widget a.btn_text {
+	position: relative;
+	background: transparent !important;
+	color: #212121 !important;
+	display: inline-block;
+}
+
+#w20221128b54f172ff3ac0 .inline_widget a.btn_text i {
+	color: #212121 !important;
+}
+
+#w20221128b54f172ff3ac0 .inline_widget a.btn_text:hover .text,
+	#w20221128b54f172ff3ac0 .inline_widget a.btn_text:hover i,
+	#w20221128b54f172ff3ac0 .inline_widget a.info_name:hover {
+	color: #ccc !important;
+	-o-transition: .3s;
+	-ms-transition: .3s;
+	-moz-transition: .3s;
+	-webkit-transition: .3s;
+	transition: .3s;
+}
+
+.scroll-to-fixed-fixed #w20221128b54f172ff3ac0 .inline_widget a.btn_text,
+	.scroll-to-fixed-fixed #w20221128b54f172ff3ac0 .inline_widget a.btn_text span,
+	.scroll-to-fixed-fixed #w20221128b54f172ff3ac0 .inline_widget a.btn_text i
+	{
+	color: #212121 !important;
+}
+
+.scroll-to-fixed-fixed #w20221128b54f172ff3ac0 .inline_widget a.btn_text:hover .text,
+	.scroll-to-fixed-fixed #w20221128b54f172ff3ac0 .inline_widget a.btn_text:hover i,
+	.scroll-to-fixed-fixed #w20221128b54f172ff3ac0 .inline_widget a.info_name:hover
+	{
+	color: #ccc !important;
+}
+
+#w20221128b54f172ff3ac0 .inline_widget a span.text,
+	#w20221128b54f172ff3ac0 .inline_widget .use_info .info_name {
+	font-size: 13px;
+}
+
+#w20221128b54f172ff3ac0 .inline_widget a span.icon_class {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 17px;
+	line-height: 1;
+}
+
+#w20221128b54f172ff3ac0 .inline_widget .use_info .info_img ~ .info_name
+	{
+	padding-left: 0.4em;
+}
+
+#w20221128b54f172ff3ac0 .inline_widget a.btn.custom_class .text {
+	font-size: 13px;
+}
+
+#w20221128b54f172ff3ac0 .inline_widget a.btn .text {
+	font-size: 14px;
+}
+
+#w20221128b54f172ff3ac0 .inline_widget a span.icon_class ~ .text {
+	padding-left: 0.4em;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#w20221128b54f172ff3ac0 .inline_widget a span.icon_class ~ .text.no_text
+	{
+	padding-left: 0;
+}
+
+#w20221128b54f172ff3ac0 .inline_widget.button_text .inline-blocked {
+	position: relative;
+}
+
+#w20221128b54f172ff3ac0 .inline_widget.button_text .inline-blocked .tooltip
+	{
+	z-index: 99;
+}
+
+#w20221128b54f172ff3ac0 .inline_widget.button_text .inline-blocked .use_info img
+	{
+	border-radius: 50%;
+}
+
+#w20221128b54f172ff3ac0 .inline_widget.login_btn .inline-blocked:first-child
+	{
+	margin-left: 0 !important;
+}
+
+#w20221128b54f172ff3ac0 .inline_widget.login_btn .inline-blocked:last-child
+	{
+	margin-right: 0 !important;
+}
+
+#w20221128b54f172ff3ac0 .inline_widget.login_btn div.tooltip-inner {
+	min-width: auto;
+	white-space: nowrap;
+}
+
+#w20221128b54f172ff3ac0 .inline_widget.login_btn a .badge {
+	position: absolute;
+	top: 0;
+	color: #ffffff;
+	font-family: Arial;
+	right: 0;
+	letter-spacing: 0;
+	padding: 0;
+	width: 15px;
+	height: 15px;
+	text-align: center;
+	line-height: 15px;
+	font-size: 10px;
+	z-index: 10;
+	cursor: pointer;
+}
+
+#w20221128b54f172ff3ac0 .inline_widget.login_btn a.btn_text .badge {
+	left: auto;
+	margin-top: 0;
+}
+
+#w20221128b54f172ff3ac0 .inline_widget.login_btn a.info_img .badge {
+	margin-top: 0;
+}
+
+#w20221128b54f172ff3ac0 .inline_widget.login_btn .nameimg a .badge {
+	left: auto;
+	right: -10px;
+}
+
+#w20221128b54f172ff3ac0 .inline_widget.login_btn .badge {
+	display:;
+}
+
+#w20221128b54f172ff3ac0 .inline_widget .login_btn_item .join_tooltip ~
+	.tooltip {
+	word-wrap: break-word;
+	word-break: keep-all;
+}
+
+#w20221128b54f172ff3ac0 .inline_widget .login_btn_item .join_tooltip ~
+	.tooltip .tooltip-inner {
+	background-color: !important;
+	color: #fff !important;
+}
+
+#w20221128b54f172ff3ac0 .inline_widget .login_btn_item .join_tooltip ~
+	.tooltip.top .tooltip-arrow {
+	border-top-color:;
+}
+
+#w20221128b54f172ff3ac0 .inline_widget .login_btn_item .join_tooltip ~
+	.tooltip.bottom .tooltip-arrow {
+	border-bottom-color:;
+}
+
+#w20221128b54f172ff3ac0 .inline_widget .login_btn_item .join_tooltip ~
+	.tooltip.left .tooltip-arrow {
+	border-left-color:;
+}
+
+#w20221128b54f172ff3ac0 .inline_widget .login_btn_item .join_tooltip ~
+	.tooltip.right .tooltip-arrow {
+	border-right-color:;
+}
+
+.new_fixed_header #w20221128b54f172ff3ac0 .inline_widget .login_btn_item .join_tooltip 
+	~ .tooltip.left .tooltip-arrow, .new_fixed_header #w20221128b54f172ff3ac0 .inline_widget .login_btn_item .join_tooltip 
+	~ .tooltip.right .tooltip-arrow {
+	top: 50% !important;
+}
+
+.new_fixed_header #w20221128b54f172ff3ac0 .inline_widget .login_btn_item .join_tooltip 
+	~ .tooltip.left, .new_fixed_header #w20221128b54f172ff3ac0 .inline_widget .login_btn_item .join_tooltip 
+	~ .tooltip.right {
+	top: 0 !important;
+}
+
+@media ( max-width : 991px) {
+	#w20221128b54f172ff3ac0 .inline_widget.button_text .inline-blocked .tooltip
+		{
+		display: none !important;
+	}
+	#w20221128b54f172ff3ac0 .inline_widget .login_btn_item .join_tooltip ~
+		.tooltip {
+		display: block !important;
+	}
+}
+
+@media ( min-width : 767px) {
+	.doz_sys .hover_section_bg:hover #w20221128b54f172ff3ac0 .inline_widget a.btn_text,
+		.doz_sys .hover_section_bg:hover #w20221128b54f172ff3ac0 .inline_widget a.btn_text span,
+		.doz_sys .hover_section_bg:hover #w20221128b54f172ff3ac0 .inline_widget a.btn_text i,
+		.doz_sys .hover_section_bg:hover #w20221128b54f172ff3ac0 .info_name {
+		color: #212121 !important;
+	}
+	.doz_sys .hover_section_bg:hover #w20221128b54f172ff3ac0 .inline_widget .line
+		{
+		border-color: rgba(0, 0, 0, 0.2) !important;
+	}
+	.doz_sys .hover_section_bg:hover #w20221128b54f172ff3ac0 .inline_widget a.btn_text:hover,
+		.doz_sys .hover_section_bg:hover #w20221128b54f172ff3ac0 .inline_widget a.btn_text:hover span,
+		.doz_sys .hover_section_bg:hover #w20221128b54f172ff3ac0 .inline_widget a.btn_text:hover i,
+		.doz_sys .hover_section_bg:hover #w20221128b54f172ff3ac0 .info_name:hover
+		{
+		color: #ccc !important;
+	}
+}
+
+#s20221128a044c05215371 .inline-inside {
+	max-width: 1400px;
+	margin: 0 auto;
+	padding-left: 60px;
+	padding-right: 60px;
+}
+
+.admin.new_header_mode {
+	overflow-x: auto;
+}
+
+.new_header_mode #edit_wrap {
+	min-width: 1400px;
+}
+
+#s20221128a044c05215371 .section_bg {;
+	background-position:;
+	background-size: cover;
+	background-repeat: no-repeat;;
+}
+
+.new_header_overlay #s20221128a044c05215371 .section_bg {
+	background-image: none;;
+}
+
+.new_header_overlay .new_fixed_header #s20221128a044c05215371 .section_bg
+	{;
+	
+}
+
+.scroll-to-fixed-fixed#s20221128a044c05215371 .section_bg {;
+	background-position:;
+	background-size: cover;
+	background-repeat: no-repeat;;
+}
+
+#s20221128a044c05215371 .inline-col-group {
+	padding-top: 0px;
+	padding-bottom: 0px;
+	height: 90px;
+}
+
+#s20221128a044c05215371 .inline-col-group>.inline-col:first-child {
+	margin-left: 0 !important;
+}
+
+#s20221128a044c05215371 .inline-col-group>.inline-col {
+	margin-left: 10px;
+}
+
+#s20221128a044c05215371 .inline-row>.inline-col:first-child {
+	margin-left: 0 !important;
+}
+
+#s20221128a044c05215371 .inline-row>.inline-col {
+	margin-left: 10px;
+}
+
+#s20221128a044c05215371.extend .inline-inside {
+	max-width: 100% !important;
+}
+
+#s20221128a044c05215371 .inline_widget.image .text,
+	#s20221128a044c05215371 .inline_widget.logo a, #s20221128a044c05215371 .inline_widget.icon,
+	#s20221128a044c05215371 .inline_widget.login_btn a,
+	#s20221128a044c05215371 .viewport-nav>li>a, #s20221128a044c05215371 .inline-col .inline_global_dropdown a,
+	#s20221128a044c05215371 .inline_widget.widget_text_wrap {
+	color: #212121;
+}
+
+.new_header_overlay #s20221128a044c05215371.scroll-to-fixed-fixed .viewport-nav>li>a
+	{
+	color: #212121;
+}
+
+.new_header_overlay #s20221128a044c05215371.scroll-to-fixed-fixed .section_bg_color
+	{
+	background-color: #fff !important;
+}
+
+#s20221128a044c05215371 .inline_widget.padding>div {;
+	
+}
+
+#s20221128a044c05215371 .inline-col .inline_global_dropdown a i.arrow {
+	border-top-color: #212121;
+}
+
+#s20221128a044c05215371 {
+	border-width: 0 0 0px;
+	border-color: rgba(33, 33, 33, 0.45);
+	border-style: solid;
+}
+
+.scroll-to-fixed-fixed#s20221128a044c05215371 {
+	border-color: rgba(33, 33, 33, 0.45);
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+}
+
+#s20221128a044c05215371 .inline-col-group, #s20221128a044c05215371 .inline-col-group .inline-col
+	{
+	vertical-align: middle;
+}
+
+#inline_header_mobile #s20221128a044c05215371 .inline-inside {
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+}
+
+@media all and (min-width: 768px) {
+	#s20221128a044c05215371.hover_section_bg:hover .section_bg_color {
+		background-color: !important;
+	}
+	#s20221128a044c05215371.hover_section_bg:hover .section_bg {;
+		
+	}
+	#s20221128a044c05215371.hover_section_bg:hover img.normal_logo {
+		opacity: 0;
+	}
+	#s20221128a044c05215371.hover_section_bg:hover img.scroll_logo {
+		opacity: 1;
+	}
+}
+
+@media all and (max-width: 767px) {
+	.inline_header_design {
+		overflow-x: hidden;
+	}
+}
+
+.fixed-menu-on .scroll_position {
+	top: -90px;
+}
+
+@media ( max-width : 991px) {
+	.doz_sys .section_first.visual_section .full_screen_show .owl-theme .item .op,
+		.doz_sys .section_first.visual_section .full_screen_show .owl-theme .item .op .header-content
+		{
+		height: calc(100vh - 129px) !important;
+	}
+}
+
+#w2022112834416b9ffbce6 .icon_type_menu {
+	line-height: 1;
+}
+
+#w2022112834416b9ffbce6 .icon_type_menu .badge {
+	width: 15px;
+	font-size: 10px;
+	display: inline-block;
+	position: absolute;
+	color: #ffffff;
+	font-family: Arial;
+	left: auto;
+	right: -8px;;
+	letter-spacing: 0;
+	padding: 0;
+	height: 15px;
+	text-align: center;
+	line-height: 15px;
+	z-index: 10;
+	top: 35%;
+	margin-top: -10px;
+}
+
+#w2022112834416b9ffbce6 .icon_type_menu a {
+	font-size: 18px;
+	color: #212121;
+	background: rgba(255, 255, 255, 0);
+	border: 0px solid #ccc;
+	border-radius: 0px;
+	text-align: center;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 15px;
+	padding-bottom: 15px
+}
+
+#w2022112834416b9ffbce6 .icon_type_menu a .icon_code {
+	vertical-align: top;
+}
+
+.scroll-to-fixed-fixed #w2022112834416b9ffbce6 .icon_type_menu a {
+	color: #212121;
+	background: rgba(255, 255, 255, 0);
+	border: 0px solid #ccc;
+}
+
+#w2022112834416b9ffbce6 .icon_type_menu a span.text {
+	display: none;
+}
+
+#w2022112834416b9ffbce6 .icon_type_menu a .fa {
+	width: auto;
+	height: auto;
+}
+
+#w2022112834416b9ffbce6 .icon_type_menu.st01 a {
+	border-radius: 50%;
+	padding: 5px;
+}
+
+#w2022112834416b9ffbce6 .icon_type_menu.st02 a {
+	color: #212121;
+	padding: 15px 5px;
+}
+
+.scroll-to-fixed-fixed #w2022112834416b9ffbce6 .icon_type_menu.st02 a {
+	color: #212121;
+}
+
+#w2022112834416b9ffbce6 .icon_type_menu.st02 a:before {
+	content: "";
+	display: inline-block;
+	vertical-align: middle;
+	height: 100%;
+}
+
+#w2022112834416b9ffbce6 .icon_type_menu.st02 a .icon_code {
+	display: none;
+}
+
+#w2022112834416b9ffbce6 .icon_type_menu.st02 .badge {
+	right: -10px;
+}
+
+#w2022112834416b9ffbce6 .icon_type_menu.st02 a span.text {
+	max-width: 100%;
+	max-height: 100%;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+@media ( min-width : 991px) {
+	#w2022112834416b9ffbce6 .icon_type_menu a:hover {
+		color: rgba(0, 0, 0, 0.5);
+		background: rgba(0, 0, 0, 0);
+		border-color: rgba(0, 0, 0, 0);
+	}
+	.scroll-to-fixed-fixed #w2022112834416b9ffbce6 .icon_type_menu a:hover {
+		color: rgba(0, 0, 0, 0.5);
+		background: rgba(0, 0, 0, 0);
+		border-color: rgba(0, 0, 0, 0);
+	}
+	#w2022112834416b9ffbce6 .icon_type_menu.st02 a:hover {
+		color: rgba(0, 0, 0, 0.5);
+	}
+	.scroll-to-fixed-fixed #w2022112834416b9ffbce6 .icon_type_menu.st02 a:hover
+		{
+		color: rgba(0, 0, 0, 0.5);
+	}
+}
+
+@media ( min-width : 767px) {
+	.doz_sys .hover_section_bg:hover #w2022112834416b9ffbce6 .icon_type_menu a
+		{
+		color: #212121 !important;
+	}
+	.doz_sys .hover_section_bg:hover #w2022112834416b9ffbce6 .icon_type_menu a:hover
+		{
+		color: rgba(0, 0, 0, 0.5) !important;
+	}
+}
+
+.doz_sys #logo_w20221128ae0c2df54d009.logo .logo_title a {
+	font-family: Noto Serif;
+	font-size: 20px;
+	letter-spacing: 0px;
+	font-weight: bold;
+	font-style: normal;;
+	color: #212121;
+	line-height: inherit;
+}
+
+@media ( min-width : 767px) {
+	.doz_sys .hover_section_bg:hover #logo_w20221128ae0c2df54d009.logo .logo_title a
+		{
+		color: #212121
+	}
+}
+
+.scroll-to-fixed-fixed #logo_w20221128ae0c2df54d009 .logo_title a { !important;
+	color: #212121 !important;
+}
+
+#logo_w20221128ae0c2df54d009>div {
+	display: inline-block;
+}
+
+#logo_w20221128ae0c2df54d009 .img_box ~ .logo_title {
+	padding-left: 10px;
+}
+/*@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {*/
+/*	#logo_*/ /* .normal_logo,*/
+/*	#logo_*/ /* .scroll_logo {*/
+/*		width: auto;*/
+/*	}*/
+/*}*/
+#w2022112839ed0ba1f0ddf .btn_59e036883ad24 span {
+	color: #212121 !important;
+}
+
+#w2022112839ed0ba1f0ddf .inline_widget i.simple {
+	vertical-align: initial;
+}
+
+#w2022112839ed0ba1f0ddf .inline_widget a.btn {
+	position: relative;
+}
+
+#w2022112839ed0ba1f0ddf .inline_widget .line {
+	margin-left: 2.5px;
+	margin-right: 2.5px;
+}
+
+#w2022112839ed0ba1f0ddf .inline_widget .login_btn_item {
+	margin: 0 5px;
+}
+
+#w2022112839ed0ba1f0ddf .inline_widget .login_btn_item.badge_class>a .badge_wrap
+	{
+	padding-left: 2px;
+}
+
+#w2022112839ed0ba1f0ddf .inline_widget a.btn_text {
+	position: relative;
+	background: transparent !important;
+	color: #212121 !important;
+	display: inline-block;
+}
+
+#w2022112839ed0ba1f0ddf .inline_widget a.btn_text i {
+	color: #212121 !important;
+}
+
+#w2022112839ed0ba1f0ddf .inline_widget a.btn_text:hover .text,
+	#w2022112839ed0ba1f0ddf .inline_widget a.btn_text:hover i,
+	#w2022112839ed0ba1f0ddf .inline_widget a.info_name:hover {
+	color: #ccc !important;
+	-o-transition: .3s;
+	-ms-transition: .3s;
+	-moz-transition: .3s;
+	-webkit-transition: .3s;
+	transition: .3s;
+}
+
+.scroll-to-fixed-fixed #w2022112839ed0ba1f0ddf .inline_widget a.btn_text,
+	.scroll-to-fixed-fixed #w2022112839ed0ba1f0ddf .inline_widget a.btn_text span,
+	.scroll-to-fixed-fixed #w2022112839ed0ba1f0ddf .inline_widget a.btn_text i
+	{
+	color: #212121 !important;
+}
+
+.scroll-to-fixed-fixed #w2022112839ed0ba1f0ddf .inline_widget a.btn_text:hover .text,
+	.scroll-to-fixed-fixed #w2022112839ed0ba1f0ddf .inline_widget a.btn_text:hover i,
+	.scroll-to-fixed-fixed #w2022112839ed0ba1f0ddf .inline_widget a.info_name:hover
+	{
+	color: #ccc !important;
+}
+
+#w2022112839ed0ba1f0ddf .inline_widget a span.text,
+	#w2022112839ed0ba1f0ddf .inline_widget .use_info .info_name {
+	font-size: 12px;
+}
+
+#w2022112839ed0ba1f0ddf .inline_widget a span.icon_class {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 20px;
+	line-height: 1;
+}
+
+#w2022112839ed0ba1f0ddf .inline_widget .use_info .info_img ~ .info_name
+	{
+	padding-left: 0.4em;
+}
+
+#w2022112839ed0ba1f0ddf .inline_widget a.btn.custom_class .text {
+	font-size: 12px;
+}
+
+#w2022112839ed0ba1f0ddf .inline_widget a.btn .text {
+	font-size: 14px;
+}
+
+#w2022112839ed0ba1f0ddf .inline_widget a span.icon_class ~ .text {
+	padding-left: 0.4em;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#w2022112839ed0ba1f0ddf .inline_widget a span.icon_class ~ .text.no_text
+	{
+	padding-left: 0;
+}
+
+#w2022112839ed0ba1f0ddf .inline_widget.button_text .inline-blocked {
+	position: relative;
+}
+
+#w2022112839ed0ba1f0ddf .inline_widget.button_text .inline-blocked .tooltip
+	{
+	z-index: 99;
+}
+
+#w2022112839ed0ba1f0ddf .inline_widget.button_text .inline-blocked .use_info img
+	{
+	border-radius: 50%;
+}
+
+#w2022112839ed0ba1f0ddf .inline_widget.login_btn .inline-blocked:first-child
+	{
+	margin-left: 0 !important;
+}
+
+#w2022112839ed0ba1f0ddf .inline_widget.login_btn .inline-blocked:last-child
+	{
+	margin-right: 0 !important;
+}
+
+#w2022112839ed0ba1f0ddf .inline_widget.login_btn div.tooltip-inner {
+	min-width: auto;
+	white-space: nowrap;
+}
+
+#w2022112839ed0ba1f0ddf .inline_widget.login_btn a .badge {
+	position: absolute;
+	top: 0;
+	color: #ffffff;
+	font-family: Arial;
+	right: 0;
+	letter-spacing: 0;
+	padding: 0;
+	width: 15px;
+	height: 15px;
+	text-align: center;
+	line-height: 15px;
+	font-size: 10px;
+	z-index: 10;
+	cursor: pointer;
+}
+
+#w2022112839ed0ba1f0ddf .inline_widget.login_btn a.btn_text .badge {
+	left: auto;
+	margin-top: 0;
+}
+
+#w2022112839ed0ba1f0ddf .inline_widget.login_btn a.info_img .badge {
+	margin-top: 0;
+}
+
+#w2022112839ed0ba1f0ddf .inline_widget.login_btn .nameimg a .badge {
+	left: auto;
+	right: -10px;
+}
+
+#w2022112839ed0ba1f0ddf .inline_widget.login_btn .badge {
+	display:;
+}
+
+#w2022112839ed0ba1f0ddf .inline_widget .login_btn_item .join_tooltip ~
+	.tooltip {
+	word-wrap: break-word;
+	word-break: keep-all;
+}
+
+#w2022112839ed0ba1f0ddf .inline_widget .login_btn_item .join_tooltip ~
+	.tooltip .tooltip-inner {
+	background-color: !important;
+	color: #fff !important;
+}
+
+#w2022112839ed0ba1f0ddf .inline_widget .login_btn_item .join_tooltip ~
+	.tooltip.top .tooltip-arrow {
+	border-top-color:;
+}
+
+#w2022112839ed0ba1f0ddf .inline_widget .login_btn_item .join_tooltip ~
+	.tooltip.bottom .tooltip-arrow {
+	border-bottom-color:;
+}
+
+#w2022112839ed0ba1f0ddf .inline_widget .login_btn_item .join_tooltip ~
+	.tooltip.left .tooltip-arrow {
+	border-left-color:;
+}
+
+#w2022112839ed0ba1f0ddf .inline_widget .login_btn_item .join_tooltip ~
+	.tooltip.right .tooltip-arrow {
+	border-right-color:;
+}
+
+.new_fixed_header #w2022112839ed0ba1f0ddf .inline_widget .login_btn_item .join_tooltip 
+	~ .tooltip.left .tooltip-arrow, .new_fixed_header #w2022112839ed0ba1f0ddf .inline_widget .login_btn_item .join_tooltip 
+	~ .tooltip.right .tooltip-arrow {
+	top: 50% !important;
+}
+
+.new_fixed_header #w2022112839ed0ba1f0ddf .inline_widget .login_btn_item .join_tooltip 
+	~ .tooltip.left, .new_fixed_header #w2022112839ed0ba1f0ddf .inline_widget .login_btn_item .join_tooltip 
+	~ .tooltip.right {
+	top: 0 !important;
+}
+
+@media ( max-width : 991px) {
+	#w2022112839ed0ba1f0ddf .inline_widget.button_text .inline-blocked .tooltip
+		{
+		display: none !important;
+	}
+	#w2022112839ed0ba1f0ddf .inline_widget .login_btn_item .join_tooltip ~
+		.tooltip {
+		display: block !important;
+	}
+}
+
+@media ( min-width : 767px) {
+	.doz_sys .hover_section_bg:hover #w2022112839ed0ba1f0ddf .inline_widget a.btn_text,
+		.doz_sys .hover_section_bg:hover #w2022112839ed0ba1f0ddf .inline_widget a.btn_text span,
+		.doz_sys .hover_section_bg:hover #w2022112839ed0ba1f0ddf .inline_widget a.btn_text i,
+		.doz_sys .hover_section_bg:hover #w2022112839ed0ba1f0ddf .info_name {
+		color: #212121 !important;
+	}
+	.doz_sys .hover_section_bg:hover #w2022112839ed0ba1f0ddf .inline_widget .line
+		{
+		border-color: rgba(0, 0, 0, 0.2) !important;
+	}
+	.doz_sys .hover_section_bg:hover #w2022112839ed0ba1f0ddf .inline_widget a.btn_text:hover,
+		.doz_sys .hover_section_bg:hover #w2022112839ed0ba1f0ddf .inline_widget a.btn_text:hover span,
+		.doz_sys .hover_section_bg:hover #w2022112839ed0ba1f0ddf .inline_widget a.btn_text:hover i,
+		.doz_sys .hover_section_bg:hover #w2022112839ed0ba1f0ddf .info_name:hover
+		{
+		color: #ccc !important;
+	}
+}
+
+#s202211283545d93b4ca7e .inline-inside {
+	max-width: 1400px;
+	margin: 0 auto;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.admin.new_header_mode {
+	overflow-x: auto;
+}
+
+.new_header_mode #edit_wrap {
+	min-width: 1400px;
+}
+
+#s202211283545d93b4ca7e .section_bg {;
+	background-position:;
+	background-size: cover;
+	background-repeat: no-repeat;;
+}
+
+.new_header_overlay_mobile #s202211283545d93b4ca7e .section_bg {
+	background-image: none;;
+}
+
+.new_header_overlay_mobile .new_fixed_header #s202211283545d93b4ca7e .section_bg
+	{;
+	
+}
+
+.scroll-to-fixed-fixed#s202211283545d93b4ca7e .section_bg {;
+	background-position:;
+	background-size: cover;
+	background-repeat: no-repeat;;
+}
+
+#s202211283545d93b4ca7e .inline-col-group {
+	padding-top: 0px;
+	padding-bottom: 0px;
+	height: 48px;
+}
+
+#s202211283545d93b4ca7e .inline-col-group>.inline-col:first-child {
+	margin-left: 0 !important;
+}
+
+#s202211283545d93b4ca7e .inline-col-group>.inline-col {
+	margin-left: 10px;
+}
+
+#s202211283545d93b4ca7e .inline-row>.inline-col:first-child {
+	margin-left: 0 !important;
+}
+
+#s202211283545d93b4ca7e .inline-row>.inline-col {
+	margin-left: 10px;
+}
+
+#s202211283545d93b4ca7e.extend .inline-inside {
+	max-width: 100% !important;
+}
+
+#s202211283545d93b4ca7e .inline_widget.image .text,
+	#s202211283545d93b4ca7e .inline_widget.logo a, #s202211283545d93b4ca7e .inline_widget.icon,
+	#s202211283545d93b4ca7e .inline_widget.login_btn a,
+	#s202211283545d93b4ca7e .viewport-nav>li>a, #s202211283545d93b4ca7e .inline-col .inline_global_dropdown a,
+	#s202211283545d93b4ca7e .inline_widget.widget_text_wrap {
+	color:;
+}
+
+.new_header_overlay_mobile #s202211283545d93b4ca7e.scroll-to-fixed-fixed .viewport-nav>li>a
+	{
+	color:;
+}
+
+.new_header_overlay_mobile #s202211283545d93b4ca7e.scroll-to-fixed-fixed .section_bg_color
+	{
+	background-color: #ffffff !important;
+}
+
+#s202211283545d93b4ca7e .inline_widget.padding>div {;
+	
+}
+
+#s202211283545d93b4ca7e .inline-col .inline_global_dropdown a i.arrow {
+	border-top-color:;
+}
+
+#s202211283545d93b4ca7e {
+	border-width: 0 0 1px;
+	border-color: #e7e7e7;
+	border-style: solid;
+}
+
+.scroll-to-fixed-fixed#s202211283545d93b4ca7e {
+	border-color: #e7e7e7;
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+}
+
+#s202211283545d93b4ca7e .inline-col-group, #s202211283545d93b4ca7e .inline-col-group .inline-col
+	{
+	vertical-align: middle;
+}
+
+#inline_header_mobile #s202211283545d93b4ca7e .inline-inside {
+	padding-left: 20px !important;
+	padding-right: 20px !important;
+}
+
+@media all and (min-width: 768px) {
+	#s202211283545d93b4ca7e.hover_section_bg:hover .section_bg_color {
+		background-color: !important;
+	}
+	#s202211283545d93b4ca7e.hover_section_bg:hover .section_bg {;
+		
+	}
+	#s202211283545d93b4ca7e.hover_section_bg:hover img.normal_logo {
+		opacity: 0;
+	}
+	#s202211283545d93b4ca7e.hover_section_bg:hover img.scroll_logo {
+		opacity: 1;
+	}
+}
+
+@media all and (max-width: 767px) {
+	.inline_header_design {
+		overflow-x: hidden;
+	}
+}
+
+@media all and (max-width : 767px) {
+	.fixed-menu-on .scroll_position {
+		top: -129px !important;
+	}
+	.fixed-menu-on.new_fixed_header_disable .scroll_position {
+		top: 0 !important;
+	}
+}
+
+.mobile_table_nav_wrap {
+	border-top: 1px solid rgba(33, 33, 33, 0.65);
+	width: 100%;
+	table-layout: fixed;
+}
+
+.scroll-to-fixed-fixed .mobile_table_nav_wrap {
+	border-top: 1px solid rgba(33, 33, 33, 0.65);
+}
+
+.mobile_table_nav_wrap tr>td {
+	width: 33.3%;
+	border-right: 1px solid rgba(33, 33, 33, 0.65);
+	border-bottom: 1px solid rgba(33, 33, 33, 0.65);
+	text-align: center;
+	background: #fff;
+	vertical-align: middle;
+	height: 40px;
+	padding: 5px;
+}
+
+.scroll-to-fixed-fixed .mobile_table_nav_wrap tr>td {
+	background: #fff;
+	border-right: 1px solid rgba(33, 33, 33, 0.65);
+	border-bottom: 1px solid rgba(33, 33, 33, 0.65);
+}
+
+.scroll-to-fixed-fixed .mobile_table_nav_wrap tr>td a {
+	color: #777;
+}
+
+.scroll-to-fixed-fixed .mobile_table_nav_wrap tr>td.use_sub_name:hover>a>.plain_name:before
+	{
+	color: #777;
+}
+
+.mobile_table_nav_wrap tr td:last-child {
+	border-right: 0;
+}
+
+.mobile_table_nav_wrap tr>td a {
+	color: #777;
+	font-weight:;
+	font-style:;
+	font-size: 13px;
+	display: block;
+	word-wrap: break-word;
+	line-height: 1.2;
+}
+
+.mobile_table_nav_wrap tr>td.use_sub_name:hover>a>.plain_name:before {
+	color: #777;
+}
+
+.mobile_table_nav_wrap tr>td.active {
+	background: #212121;
+}
+
+.scroll-to-fixed-fixed .mobile_table_nav_wrap tr>td.active {
+	background: #212121;
+}
+
+.mobile_table_nav_wrap tr>td.active a {
+	color: #eeeeee;
+	font-weight:;
+	font-style:;
+	font-size: 13px;
+}
+
+.scroll-to-fixed-fixed .mobile_table_nav_wrap tr>td.active a {
+	color: #eeeeee;
+}
+
+.shop_view .s2022112892053a957d98f.xzoom-preview {;
+	background:;
+}
+
+.shop_view #s2022112892053a957d98f select.form-control option {
+	color: !important;
+	background:;
+}
+
+.is-ie .shop_view #s2022112892053a957d98f select.form-control option {
+	color: #000 !important;
+}
+
+.admin #s2022112892053a957d98f .widget.padding>div {;
+	
+}
+
+.admin #s2022112892053a957d98f .ibg-bg {
+	height: 100% !important;
+}
+
+.admin #s2022112892053a957d98f .widget_drag_bar, .admin .doz_sys #s2022112892053a957d98f .ui-resizable-handle.ui-resizable-e:hover:after,
+	.admin .doz_sys #s2022112892053a957d98f .ui-resizable-handle.ui-resizable-w:hover:after,
+	.admin .doz_sys #s2022112892053a957d98f .ui-resizable-handle.ui-resizable-e.active:after,
+	.admin .doz_sys #s2022112892053a957d98f .ui-resizable-handle.ui-resizable-w.active:after,
+	.admin .doz_sys #s2022112892053a957d98f .drop_line {
+	background-color:;
+}
+
+.admin .doz_sys #s2022112892053a957d98f .ui-resizable-handle.ui-resizable-n:hover:after,
+	.admin .doz_sys #s2022112892053a957d98f .ui-resizable-handle.ui-resizable-s:hover:after
+	{
+	border-bottom: 2px solid;
+}
+
+#s2022112892053a957d98f {
+	color:;
+}
+
+#s2022112892053a957d98f.side_basic main .inside, #s2022112892053a957d98f .site_prod_nav_wrap.scroll-to-fixed-fixed ul.site_prod_nav,
+	.doz_sys #s2022112892053a957d98f .col-dz-12 .extend_thumbs {
+	max-width: 1400px;
+}
+
+.modal_site_modal_menu #s2022112892053a957d98f.side_basic main .inside,
+	.menu_type_modal #s2022112892053a957d98f.side_basic main .inside {
+	max-width: 550px;
+}
+
+.doz_sys .modal_site_modal_menu .modal-header, .menu_type_modal .doz_modal_header
+	{
+	border-width: 0 0 1px 0;
+	border-style: solid;
+	;
+}
+
+.menu_type_modal #s2022112892053a957d98f, .menu_type_modal .doz_modal_header
+	{;
+	background:;;
+	color:;
+}
+
+.menu_type_modal .doz_modal_header .bt.bt-flat.bt-default {;
+	color:;
+}
+
+.doz_sys #s2022112892053a957d98f .col-dz-12 .inside .extend_thumbs {
+	max-width: inherit;
+}
+
+#s2022112892053a957d98f.extend_section main {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+#s2022112892053a957d98f.section_wrap.extend_section main .widget.board .grid_ignore.bg_on
+	{
+	margin-left: -15px;
+	margin-right: -15px;
+	width: calc(100% + 15px + 15px);
+}
+
+#s2022112892053a957d98f .booking_day .body_font_color_20,
+	#s2022112892053a957d98f .booking_list.waiting .title {;
+	
+}
+
+#s2022112892053a957d98f.extend_section main>.inside {
+	max-width: 100% !important;
+}
+
+#s2022112892053a957d98f .li_table ul:nth-of-type(2),
+	#s2022112892053a957d98f .li_board ul li, #s2022112892053a957d98f .radio-styled:not(ie8).radio_color_option.small input 
+	~ span span {;
+	
+}
+
+#s2022112892053a957d98f .checkbox-styled:not(ie8) input ~ span:before,
+	#s2022112892053a957d98f .radio-styled:not(ie8) input ~ span:before {
+	
+}
+
+#s2022112892053a957d98f .board_view .grid_ignore header a,
+	#s2022112892053a957d98f .widget.board .grid_ignore .author .date,
+	#s2022112892053a957d98f .widget.board .grid_ignore a.board,
+	#s2022112892053a957d98f .widget.board .grid_ignore .author .write,
+	.editor_box .add_map .info>div.phone, #s2022112892053a957d98f .content-tit .board
+	{;
+	
+}
+
+#s2022112892053a957d98f select.form-control, #s2022112892053a957d98f input.form-control,
+	#s2022112892053a957d98f textarea.form-control {;
+	color: #eeeeee;
+	background:;
+}
+
+#s2022112892053a957d98f .input_block .select-block .selectbox select {
+	border: none;
+	background: none;
+	color: #212121;
+}
+
+#s2022112892053a957d98f .phonenumber_wrap .line {
+	
+}
+
+#s2022112892053a957d98f .shop-content.shop-style-b.open .opt-group .btn_clse>span
+	{
+	
+}
+
+.shop_view #s2022112892053a957d98f .shop-content select.form-control,
+	.shop_view #s2022112892053a957d98f .shop-content input.form-control,
+	.shop_view #s2022112892053a957d98f .shop-content textarea.form-control,
+	.booking_view #s2022112892053a957d98f .booking_opt select.form-control,
+	.shop_view #s2022112892053a957d98f .form-select-wrap .dropdown-menu,
+	.shop_view #s2022112892053a957d98f .form-select-wrap .dropdown-menu .dropdown-item
+	{;
+	background:;
+}
+
+#s2022112892053a957d98f .seemore_wrap .open:before {
+	background-image: linear-gradient(to bottom,, 66%, 83%, 98%,);
+}
+
+#s2022112892053a957d98f .item_detail select.form-control,
+	#s2022112892053a957d98f .item_detail input.form-control,
+	#s2022112892053a957d98f .item_detail textarea.form-control,
+	#s2022112892053a957d98f .booking_opt select.form-control,
+	#s2022112892053a957d98f .goods_select textarea.form-control,
+	#s2022112892053a957d98f .goods_select select.form-control,
+	#s2022112892053a957d98f .goods_select input.form-control,
+	#s2022112892053a957d98f .form-select-wrap:before { !important;
+	color:;
+}
+
+#s2022112892053a957d98f .form-select-wrap .dropdown-menu .dropdown-item:hover
+	{;
+	
+}
+
+#s2022112892053a957d98f .board_summary .write, #s2022112892053a957d98f .board_view .grid_ignore .author .date,
+	#s2022112892053a957d98f .board_view .grid_ignore .author .hit-count,
+	.doz_sys #s2022112892053a957d98f label, .doz_sys #s2022112892053a957d98f label.control-label,
+	#s2022112892053a957d98f .shop-table>tbody>tr.payment-info>td.pay-txt,
+	#s2022112892053a957d98f .nick.text-default-dark,
+	#s2022112892053a957d98f .text-default-dark, #s2022112892053a957d98f .shop_mypage .mypage .my-box a,
+	#s2022112892053a957d98f .shop_mypage .item-detail a,
+	#s2022112892053a957d98f .shop_mypage .item-detail p,
+	#s2022112892053a957d98f .shop_mypage h6, #s2022112892053a957d98f .shop_mypage .table-wrap p,
+	#s2022112892053a957d98f .shop_payment h1, #s2022112892053a957d98f .shop_payment h6,
+	#s2022112892053a957d98f .shop-content p, #s2022112892053a957d98f .shop_payment,
+	#s2022112892053a957d98f .shop-content span, #s2022112892053a957d98f .shop-content .shop-item .item-icon .im-icon.im-ico-liked,
+	#s2022112892053a957d98f .shop-content .price, #s2022112892053a957d98f,
+	#s2022112892053a957d98f .shop-tit, #s2022112892053a957d98f .board_view .board_txt_area,
+	#s2022112892053a957d98f .board.widget .grid_ignore .view_tit, .doz_sys #s2022112892053a957d98f .shop-content input.form-control,
+	.doz_sys #s2022112892053a957d98f .shop-content select.form-control,
+	#s2022112892053a957d98f .widget_menu_title, #s2022112892053a957d98f .comment_area,
+	body.shop_mypage #s2022112892053a957d98f .comment_area,
+	#s2022112892053a957d98f .list_review_inner .use_summary,
+	#s2022112892053a957d98f .list_review_inner .use_summary a,
+	#s2022112892053a957d98f .list_review_inner .fold,
+	#s2022112892053a957d98f .list_review_inner .comment_area,
+	#s2022112892053a957d98f .booking_nav_tools span {;
+	color:;
+}
+
+.doz_sys #s2022112892053a957d98f .shop-content .down-btn select.form-control
+	{;
+	color: !important;
+}
+
+#s2022112892053a957d98f .shop-content.mypage .bg-bright a,
+	#s2022112892053a957d98f .shop-content.mypage .bg-bright p,
+	#s2022112892053a957d98f .shop-content.mypage .bg-bright span,
+	#s2022112892053a957d98f .shop-content.mypage .bg-bright div {
+	color: #212121;
+}
+
+#s2022112892053a957d98f .shop-content.mypage .bg-bright .use_grade .ug_btn .btn
+	{
+	border-color: #D5D5D5;
+}
+
+#s2022112892053a957d98f .shop-content h6 span {;
+	color:;
+}
+
+#s2022112892053a957d98f .left-menu ul li.on a, .doz_sys #s2022112892053a957d98f .paging_type_count .owl-dots .owl-dot span:before,
+	.menu_type_modal #s2022112892053a957d98f, #s2022112892053a957d98f .list_review_inner .comment .tools .text-gray-bright
+	{;
+	color: !important;
+}
+
+.doz_sys #s2022112892053a957d98f .paging_type_count.slide_02 .owl-dots .owl-dot.active span:before
+	{
+	color: #fff !important;
+}
+
+.doz_sys #s2022112892053a957d98f .paging_type_dot .owl-dots .owl-dot span,
+	.doz_sys #s2022112892053a957d98f .paging_type_big_dot .owl-dots .owl-dot span,
+	.doz_sys #s2022112892053a957d98f .paging_type_line .owl-dots .owl-dot span,
+	.doz_sys #s2022112892053a957d98f .paging_type_count.paging_type_count02 .owl-dots .owl-dot.active span:before,
+	#s2022112892053a957d98f .list_review_inner, #s2022112892053a957d98f .list_review_inner .fold.cmt,
+	#s2022112892053a957d98f .list_review_wrap, #s2022112892053a957d98f .list_review_inner .textarea_block,
+	#s2022112892053a957d98f .list_review_inner .comment .main_comment,
+	#s2022112892053a957d98f .list_review_inner .txt_delete:before,
+	#s2022112892053a957d98f .form-select-wrap.open .dropdown-toggle,
+	#s2022112892053a957d98f .form-select-wrap.open .dropdown-menu,
+	#s2022112892053a957d98f .form-select-wrap.open .dropdown-menu .dropdown-item
+	{
+	border-color:;
+}
+
+.doz_sys #s2022112892053a957d98f .paging_type_dot02 .owl-dots .owl-dot span,
+	.doz_sys #s2022112892053a957d98f .paging_type_dot .owl-dots .owl-dot.active span,
+	.doz_sys #s2022112892053a957d98f .paging_type_line .owl-dots .owl-dot.active span,
+	.doz_sys #s2022112892053a957d98f .paging_type_big_dot .owl-dots .owl-dot span,
+	.doz_sys #s2022112892053a957d98f .paging_type_line .owl-dots .owl-dot span
+	{
+	background:;
+}
+
+#s2022112892053a957d98f .form-control:focus {
+	border-color: #363636;
+}
+
+#s2022112892053a957d98f .sub_depth li a, #s2022112892053a957d98f .sub_depth li span
+	{;
+	
+}
+
+#s2022112892053a957d98f .slide_03.owl-theme .owl-dots .owl-dot span {;
+	
+}
+
+#s2022112892053a957d98f .pagination>li>a, #s2022112892053a957d98f .pagination>li>span,
+	#s2022112892053a957d98f .pagination>li>a:focus, #s2022112892053a957d98f .pagination>li>span:focus,
+	#s2022112892053a957d98f .map-inner .pagination li.active a,
+	#s2022112892053a957d98f .pagination li>a.disabled:hover,
+	#s2022112892053a957d98f .pagination li>a.disabled:focus {;
+	
+}
+
+#s2022112892053a957d98f .form-select-wrap.open .dropdown-menu .dropdown-item
+	{;
+	
+}
+
+#s2022112892053a957d98f .pagination>.active>a, #s2022112892053a957d98f .pagination>.active>span,
+	#s2022112892053a957d98f .pagination>.active>a:hover,
+	#s2022112892053a957d98f .pagination>.active>span:hover,
+	#s2022112892053a957d98f .pagination>.active>a:focus,
+	#s2022112892053a957d98f .pagination>.active>span:focus,
+	#s2022112892053a957d98f .pagination>li>a:hover, #s2022112892053a957d98f .pagination>li>span:hover,
+	#s2022112892053a957d98f .sub_depth li a.active, .doz_sys #s2022112892053a957d98f a,
+	#s2022112892053a957d98f .li_table ul li, #s2022112892053a957d98f .list-style .list.line>small,
+	.doz_sys #s2022112892053a957d98f div[data-widget-type="board"] .title.title-block a
+	{;
+	color:;
+}
+
+.doz_sys #s2022112892053a957d98f .board_contents a:not(.btn), .doz_sys #s2022112892053a957d98f .board_contents a:not(.btn):hover,
+	#s2022112892053a957d98f .board_txt_area a, #s2022112892053a957d98f .board_txt_area a:hover,
+	#s2022112892053a957d98f .board_txt_area a:active,
+	#s2022112892053a957d98f .board_txt_area a:focus,
+	#s2022112892053a957d98f .editor_box .fr-view a {
+	color: #363636;
+}
+
+#s2022112892053a957d98f div[data-widget-type="icon"] i {
+	color:;
+}
+
+.doz_sys #s2022112892053a957d98f a.body_font_color_30:not(.active) {;
+	
+}
+
+#s2022112892053a957d98f .text_tab .after_line:not(:last-child):after {;
+	
+}
+
+#s2022112892053a957d98f .text_tab ul.site_prod_nav>li a.active {
+	background: none;
+}
+
+#s2022112892053a957d98f .map-toolbar select.form-control {;
+	color: !important;
+	font-size: 14px;
+}
+
+.doz_sys #s2022112892053a957d98f .body_font_color_40,
+	#s2022112892053a957d98f .li_board ul.li_body li.name,
+	#s2022112892053a957d98f .li_board ul.li_body li.time,
+	#s2022112892053a957d98f .li_board ul.li_body li.like,
+	#s2022112892053a957d98f .li_board ul.li_body li.read {;
+	
+}
+
+#s2022112892053a957d98f .review_table .summary, #s2022112892053a957d98f .review_table.li_board ul.li_body li,
+	#s2022112892053a957d98f .review_table .list_text_title.lock_on {;
+	
+}
+
+.doz_sys #s2022112892053a957d98f .body_font_color_50 {;
+	
+}
+
+#s2022112892053a957d98f .li_board, #s2022112892053a957d98f .acd_row:first-child,
+	#s2022112892053a957d98f .acd_row {
+	border-color:;
+}
+
+#s2022112892053a957d98f .list-style .list-header,
+	#s2022112892053a957d98f .list-style .list, #s2022112892053a957d98f .list-style .list.line,
+	#s2022112892053a957d98f .list-style .list.line>.table-cell,
+	#s2022112892053a957d98f .li_table.row_04 .acd_collapse[aria-expanded="true"],
+	.li_table.row_04 .acd_collapse.in {;
+	
+}
+
+#s2022112892053a957d98f .btn, #s2022112892053a957d98f .visual_section a
+	{;
+	background-color:;;
+	color:;
+	;
+}
+
+#s2022112892053a957d98f .btn:hover, #s2022112892053a957d98f .visual_section a:hover
+	{
+	border-color:;
+}
+
+#s2022112892053a957d98f .widget_text_wrap .btn {
+	background-color: #363636;
+	border-color: #363636;
+	color: #ffffff;
+	border-width: 1px;
+}
+
+.doz_sys #s2022112892053a957d98f .btn-primary {;
+	background-color: #363636;
+	border-color: #363636;
+	color: #ffffff;
+	border-width: 1px;
+}
+
+.doz_sys.shop_view #s2022112892053a957d98f .btn-primary span, .doz_sys.booking_view #s2022112892053a957d98f .btn-primary span,
+	.doz_sys.shop_mypage #s2022112892053a957d98f .btn-primary span {
+	color: #ffffff;
+}
+
+#s2022112892053a957d98f .coupon-wrap:after, #s2022112892053a957d98f .board_view .file_area ul li
+	{
+	background:;
+}
+
+#s2022112892053a957d98f .text-gray-dark, #s2022112892053a957d98f .shop-table>thead>tr>th,
+	#s2022112892053a957d98f .shop_mypage .left-menu ul li a,
+	#s2022112892053a957d98f .shop_mypage .item-detail p.sale_pay, .doz_sys #s2022112892053a957d98f .product-notify-group .product-notify-label
+	{;
+	
+}
+
+#s2022112892053a957d98f .mypage .my-box a, #s2022112892053a957d98f .mypage .shop-table>tbody>tr,
+	#s2022112892053a957d98f .mypage .tip-off, #s2022112892053a957d98f .im-order-detail-table,
+	#s2022112892053a957d98f .im-order-price {;
+	
+}
+
+#s2022112892053a957d98f .mypage .my-box.on a {
+	background-color: #363636;;
+	color: #fff;
+}
+
+#s2022112892053a957d98f .mypage .my-box.on a p {
+	color: #fff;
+}
+
+#s2022112892053a957d98f .option_btn_tools a, #s2022112892053a957d98f .map-inner .pagination li a
+	{
+	color: #212121;
+}
+
+.doz_sys #s2022112892053a957d98f .list-style-card .card-body .text a {
+	color: #757575;
+}
+
+#s2022112892053a957d98f .card .title a {
+	color: #212121;
+}
+
+#s2022112892053a957d98f .section_bg.fixed_bg {;
+	
+}
+
+#s2022112892053a957d98f .section_bg.fixed_bg.fixed_bg_none {
+	background-attachment: inherit;
+}
+
+#s2022112892053a957d98f ul.site_prod_nav>li, #s2022112892053a957d98f .prod_detail_badge
+	{;
+	
+}
+
+#s2022112892053a957d98f .site_prod_nav_wrap.scroll-to-fixed-fixed {
+	background:;
+	box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+#s2022112892053a957d98f .buy_footer_fixed {
+	background:;
+	border-width: 1px 0 0 0;
+	border-style: solid;
+	;
+}
+
+#s2022112892053a957d98f .opt-group {
+	background:;
+}
+
+#s2022112892053a957d98f ul.site_prod_nav>li a.active {;
+	
+}
+
+#s2022112892053a957d98f .background_tab ul.site_prod_nav>li a.active>span.braket-badge
+	{
+	background-color: none;;
+	color:;
+}
+
+#s2022112892053a957d98f .input-block .checkbox-styled:not(ie8) input ~
+	span {;
+	color:;
+}
+
+.section_fixed_disable #s2022112892053a957d98f, .section_fixed_disable #s2022112892053a957d98f .doz_aside
+	{
+	position: relative !important;
+	top: 0 !important;
+	left: 0 !important;
+	z-index: auto !important;
+}
+
+.section_fixed_disable #s2022112892053a957d98f .doz_aside.scroll-to-fixed-fixed 
+	~ .spacer, .section_fixed_disable #s2022112892053a957d98f.scroll-to-fixed-fixed 
+	~ .spacer {
+	height: 0 !important;
+	display: none !important;
+}
+
+#s2022112892053a957d98f.scroll-to-fixed-fixed {
+	width: 100% !important;
+}
+
+#s2022112892053a957d98f .doz_aside.scroll-to-fixed-fixed-end {
+	bottom: 0 !important;
+	top: auto !important;
+}
+
+.device_type_m #s2022112892053a957d98f.mobile_section main .inside {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.device_type_m #s2022112892053a957d98f .mypage .left-menu ul li a,
+	.device_type_m #s2022112892053a957d98f .cart .left-menu ul li a {;
+	
+}
+
+#s2022112892053a957d98f .im-cart-result-table {
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+}
+
+#s2022112892053a957d98f .shop-table>tbody>tr>td.img .opt .more {;
+	
+}
+
+#s2022112892053a957d98f .im-cart-info {;
+	
+}
+
+#s2022112892053a957d98f .shop-table>thead>tr>th, #s2022112892053a957d98f .shop-table>tbody>tr>td,
+	#s2022112892053a957d98f .mypage .shop-table>tbody>tr,
+	#s2022112892053a957d98f .shop-table>tbody>tr>td.img img,
+	#s2022112892053a957d98f .shop-table>tbody>tr>td+td,
+	#s2022112892053a957d98f .mypage .tip-off, #s2022112892053a957d98f .mypage .shop-table img,
+	#s2022112892053a957d98f .im-order-detail-table, #s2022112892053a957d98f .im-order-price,
+	#s2022112892053a957d98f .im-order-detail-table thead tr,
+	#s2022112892053a957d98f .im-order-detail-table tr+tr,
+	#s2022112892053a957d98f .im-order-detail-table img,
+	#s2022112892053a957d98f .im-order-detail-table .im-deliv-price,
+	#s2022112892053a957d98f .im-order-price-header, #s2022112892053a957d98f .im-order-price-body
+	{;
+	
+}
+
+#s2022112892053a957d98f .shop-table .list_badge {
+	border-color:;
+}
+
+#s2022112892053a957d98f .im-cart-result-table thead>tr>th,
+	#s2022112892053a957d98f #shop_cart_list .shop-table>colgroup+thead>tr:first-child>th,
+	#s2022112892053a957d98f #shop_cart_list .shop-table>tbody>tr>td+td,
+	#s2022112892053a957d98f #shop_cart_list .shop-table>thead>tr>th,
+	#s2022112892053a957d98f #shop_cart_list .shop-table>tbody>tr>td {;
+	
+}
+
+#s2022112892053a957d98f .shop-content.mypage .shop-item .item-icon .im-icon.im-ico-liked
+	{
+	color: #363636
+}
+
+@media ( min-width : 991px) {
+	.doz_sys #s2022112892053a957d98f .btn-primary:hover,
+		#s2022112892053a957d98f .widget_text_wrap .btn:hover {;
+		background-color: #ffffff;
+		border-color: #363636;
+		color: #363636;
+		border-width: 1px;
+	}
+	.doz_sys.shop_view #s2022112892053a957d98f .btn-primary:hover span,
+		.doz_sys.booking_view #s2022112892053a957d98f .btn-primary:hover span,
+		.doz_sys.shop_mypage #s2022112892053a957d98f .btn-primary:hover span {
+		color: #363636;
+	}
+}
+
+@media all and (max-width : 768px) {
+	.doz_sys #s2022112892053a957d98f .fixed_view a, .doz_sys #s2022112892053a957d98f .fixed_view select.form-control,
+		.doz_sys #s2022112892053a957d98f .fixed_view .form-select-wrap:before
+		{
+		color: #212121;
+	}
+	.doz_sys #s2022112892053a957d98f .fixed_view .body_font_color_50 {
+		color: rgba(33, 33, 33, 0.5);
+	}
+	.doz_sys #s2022112892053a957d98f .fixed_view .body_font_color_20 {
+		color: rgba(33, 33, 33, 0.2);
+	}
+	.booking_view #s2022112892053a957d98f .fixed_view .booking_opt select.form-control
+		{
+		background-color: #fff;
+	}
+	#s2022112892053a957d98f #shop_cart_list .shop-tit,
+		#s2022112892053a957d98f #shop_cart_list .shop-table>thead>tr,
+		#s2022112892053a957d98f #shop_cart_list .shop-table>tfoot .payment-info,
+		#s2022112892053a957d98f .im-price-result {;
+		
+	}
+	#s2022112892053a957d98f .shop-table>tbody>tr>td.img .opt .more+.more,
+		#s2022112892053a957d98f .im-order-row+.im-order-row {;
+		
+	}
+	#s2022112892053a957d98f #shop_cart_list .shop-table,
+		#s2022112892053a957d98f #shop_cart_list .shop-table>tbody>tr.im-tr-shipping+tr,
+		#s2022112892053a957d98f #shop_cart_list .shop-table>tfoot,
+		#s2022112892053a957d98f #shop_cart_list .shop-table>tfoot .payment-info
+		{;
+		
+	}
+	#s2022112892053a957d98f #shop_cart_list .shop-table>thead>tr,
+		#s2022112892053a957d98f .im-order-detail-table .im-space {
+		background-color:;
+	}
+	#s2022112892053a957d98f #shop_cart_list .shop-table>thead>tr.scroll-to-fixed-fixed-end
+		{
+		top: auto !important;
+		bottom: 0;
+	}
+}
+
+@media ( max-width : 991px) {
+	#s2022112892053a957d98f
+	 
+	.buy_btns
+	 
+	.social_btn
+	,
+	#s2022112892053a957d98f
+	 
+	.buy_btns
+	 
+	.cart_btn
+	,
+	#s2022112892053a957d98f
+	 
+	.layer_pop
+	 
+	.bottom-btn
+	,
+	#s2022112892053a957d98f
+	 
+	.shop-table
+	>
+	thead
+	,
+	#s2022112892053a957d98f
+	 
+	.left-menu
+	,
+	#s2022112892053a957d98f
+	 
+	.shop-table
+	>
+	tbody
+	>
+	tr
+	,
+	{
+	;
+}
+
+#s2022112892053a957d98f
+ 
+main
+,
+#s2022112892053a957d98f
+ 
+.section_wrap
+.extend_section
+ 
+main
+,
+#s2022112892053a957d98f
+ 
+.doz_sys
+.shop_payment
+ 
+.inside
+,
+.doz_sys
+.shop_payment
+ 
+.inside
+ 
+.col-dz
+,
+{
+padding-left
+:
+0
+;
+
+					
+padding-right
+:
+0
+;
+
+				
+}
+#s2022112892053a957d98f.mobile_section main .inside {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+#s2022112892053a957d98f.section_wrap.extend_section main .widget.board .grid_ignore.bg_on
+	{
+	margin-left: -15px;
+	margin-right: -15px;
+	width: calc(100% + 30px);
+}
+
+#s2022112892053a957d98f .mypage .left-menu ul li a,
+	#s2022112892053a957d98f .cart .left-menu ul li a,
+	#s2022112892053a957d98f .mypage .left-menu .cart-menu-slide {;
+	
+}
+
+.section_wrap .side_gutter {
+	display: none !important;
+}
+
+#s2022112892053a957d98f .coupon-wrap:after {
+	background: !important;
+}
+
+}
+@media ( max-width : 767px) {
+	#s2022112892053a957d98f .nav_gradient.slide_left {
+		background: linear-gradient(to left, rgba(255, 255, 255, 0),
+			rgba(255, 255, 255, 1));
+	}
+	#s2022112892053a957d98f .nav_gradient.slide_right {
+		background: linear-gradient(to right, rgba(255, 255, 255, 0),
+			rgba(255, 255, 255, 1));
+	}
+	#s2022112892053a957d98f .button_tab .scroll-to-fixed-fixed ul.site_prod_nav>li
+		{
+		border-top: 0;
+		border-bottom: 0;
+	}
+	#s2022112892053a957d98f .background_tab .scroll-to-fixed-fixed ul.site_prod_nav>li a.active
+		{
+		box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+	}
+}
+
+@media ( min-width : 768px) {
+	#s2022112892053a957d98f .opt-group .btn_clse {
+		background-color:;
+	}
+	#s2022112892053a957d98f .opt-group .btn_clse:after {;
+		
+	}
+}
+
+.doz_sys #s2022112892053a957d98f .bg-brand, .doz_sys #s2022112892053a957d98f .bg-brand span,
+	.doz_sys #s2022112892053a957d98f .btn-brand {;
+	background-color: #363636;
+	border-color: #363636;
+	border-width: 1px;
+	color: #fff;
+}
+
+.doz_sys #s2022112892053a957d98f .bg-brand:hover {
+	background-color: rgba(28, 28, 28, 1);
+	-ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff282828,
+		endColorstr=#ff282828);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff282828,
+		endColorstr=#ff282828);
+	zoom: 1;;
+	border-color: rgb(28, 28, 28);
+	border-color: rgba(28, 28, 28, 1);;
+}
+
+.device_type_m .pc_section #padding_w20221128f6801cf92601a {
+	height: 21.5px !important;
+}
+
+@media all and (max-width:768px) {
+	.pc_section #padding_w20221128f6801cf92601a {
+		height: 21.5px !important;
+	}
+}
+
+.device_type_m .pc_section #padding_w20221128a39537baa1b07 {
+	height: 3.5px !important;
+}
+
+@media all and (max-width:768px) {
+	.pc_section #padding_w20221128a39537baa1b07 {
+		height: 3.5px !important;
+	}
+}
+
+#text_w20221128b11ffa1da604c {
+	border-radius: 0px;
+	border: 0px none transparent;;
+	min-height: 0px;;
+	line-height: inherit;
+}
+
+#text_w20221128b11ffa1da604c .fr-code-view {
+	line-height: 1.6;
+}
+
+#text_w20221128b11ffa1da604c .text_bg_img, #text_w20221128b11ffa1da604c .text_bg_color
+	{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	border-radius: 0px;
+}
+
+.admin #text_w20221128b11ffa1da604c, #text_w20221128b11ffa1da604c .text-table
+	{
+	min-height: 0px;;
+	word-break: normal;
+	word-wrap: break-word;
+}
+
+#text_w20221128b11ffa1da604c, #text_w20221128b11ffa1da604c .text-table {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+.doz_sys main>.doz_row #text_w20221128b11ffa1da604c.default_padding {
+	padding-left: 32px;
+	padding-right: 32px;
+}
+
+@media all and (max-width : 767px) {
+	.doz_sys main>.doz_row #text_w20221128b11ffa1da604c.default_padding {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+}
+
+.device_type_m .pc_section #padding_w20221128b13adc266863c {
+	height: 1px !important;
+}
+
+@media all and (max-width:768px) {
+	.pc_section #padding_w20221128b13adc266863c {
+		height: 1px !important;
+	}
+}
+
+.device_type_m .pc_section #padding_w2022112860b0b066f12df {
+	height: 13.5px !important;
+}
+
+@media all and (max-width:768px) {
+	.pc_section #padding_w2022112860b0b066f12df {
+		height: 13.5px !important;
+	}
+}
+
+.shop_view .s202211282dc25758e0523.xzoom-preview {;
+	background:;
+}
+
+.shop_view #s202211282dc25758e0523 select.form-control option {
+	color: !important;
+	background:;
+}
+
+.is-ie .shop_view #s202211282dc25758e0523 select.form-control option {
+	color: #000 !important;
+}
+
+.admin #s202211282dc25758e0523 .widget.padding>div {;
+	
+}
+
+.admin #s202211282dc25758e0523 .ibg-bg {
+	height: 100% !important;
+}
+
+.admin #s202211282dc25758e0523 .widget_drag_bar, .admin .doz_sys #s202211282dc25758e0523 .ui-resizable-handle.ui-resizable-e:hover:after,
+	.admin .doz_sys #s202211282dc25758e0523 .ui-resizable-handle.ui-resizable-w:hover:after,
+	.admin .doz_sys #s202211282dc25758e0523 .ui-resizable-handle.ui-resizable-e.active:after,
+	.admin .doz_sys #s202211282dc25758e0523 .ui-resizable-handle.ui-resizable-w.active:after,
+	.admin .doz_sys #s202211282dc25758e0523 .drop_line {
+	background-color:;
+}
+
+.admin .doz_sys #s202211282dc25758e0523 .ui-resizable-handle.ui-resizable-n:hover:after,
+	.admin .doz_sys #s202211282dc25758e0523 .ui-resizable-handle.ui-resizable-s:hover:after
+	{
+	border-bottom: 2px solid;
+}
+
+#s202211282dc25758e0523 {
+	color:;
+}
+
+#s202211282dc25758e0523.side_basic main .inside, #s202211282dc25758e0523 .site_prod_nav_wrap.scroll-to-fixed-fixed ul.site_prod_nav,
+	.doz_sys #s202211282dc25758e0523 .col-dz-12 .extend_thumbs {
+	max-width: 1310px;
+}
+
+.modal_site_modal_menu #s202211282dc25758e0523.side_basic main .inside,
+	.menu_type_modal #s202211282dc25758e0523.side_basic main .inside {
+	max-width: 460px;
+}
+
+.doz_sys .modal_site_modal_menu .modal-header, .menu_type_modal .doz_modal_header
+	{
+	border-width: 0 0 1px 0;
+	border-style: solid;
+	;
+}
+
+.menu_type_modal #s202211282dc25758e0523, .menu_type_modal .doz_modal_header
+	{;
+	background:;;
+	color:;
+}
+
+.menu_type_modal .doz_modal_header .bt.bt-flat.bt-default {;
+	color:;
+}
+
+.doz_sys #s202211282dc25758e0523 .col-dz-12 .inside .extend_thumbs {
+	max-width: inherit;
+}
+
+#s202211282dc25758e0523.extend_section main {
+	padding-left: 60px;
+	padding-right: 60px;
+}
+
+#s202211282dc25758e0523.section_wrap.extend_section main .widget.board .grid_ignore.bg_on
+	{
+	margin-left: -60px;
+	margin-right: -60px;
+	width: calc(100% + 60px + 60px);
+}
+
+#s202211282dc25758e0523 .booking_day .body_font_color_20,
+	#s202211282dc25758e0523 .booking_list.waiting .title {;
+	
+}
+
+#s202211282dc25758e0523.extend_section main>.inside {
+	max-width: 100% !important;
+}
+
+#s202211282dc25758e0523 .li_table ul:nth-of-type(2),
+	#s202211282dc25758e0523 .li_board ul li, #s202211282dc25758e0523 .radio-styled:not(ie8).radio_color_option.small input 
+	~ span span {;
+	
+}
+
+#s202211282dc25758e0523 .checkbox-styled:not(ie8) input ~ span:before,
+	#s202211282dc25758e0523 .radio-styled:not(ie8) input ~ span:before {
+	
+}
+
+#s202211282dc25758e0523 .board_view .grid_ignore header a,
+	#s202211282dc25758e0523 .widget.board .grid_ignore .author .date,
+	#s202211282dc25758e0523 .widget.board .grid_ignore a.board,
+	#s202211282dc25758e0523 .widget.board .grid_ignore .author .write,
+	.editor_box .add_map .info>div.phone, #s202211282dc25758e0523 .content-tit .board
+	{;
+	
+}
+
+#s202211282dc25758e0523 select.form-control, #s202211282dc25758e0523 input.form-control,
+	#s202211282dc25758e0523 textarea.form-control {;
+	color: #eeeeee;
+	background:;
+}
+
+#s202211282dc25758e0523 .input_block .select-block .selectbox select {
+	border: none;
+	background: none;
+	color: #212121;
+}
+
+#s202211282dc25758e0523 .phonenumber_wrap .line {
+	
+}
+
+#s202211282dc25758e0523 .shop-content.shop-style-b.open .opt-group .btn_clse>span
+	{
+	
+}
+
+.shop_view #s202211282dc25758e0523 .shop-content select.form-control,
+	.shop_view #s202211282dc25758e0523 .shop-content input.form-control,
+	.shop_view #s202211282dc25758e0523 .shop-content textarea.form-control,
+	.booking_view #s202211282dc25758e0523 .booking_opt select.form-control,
+	.shop_view #s202211282dc25758e0523 .form-select-wrap .dropdown-menu,
+	.shop_view #s202211282dc25758e0523 .form-select-wrap .dropdown-menu .dropdown-item
+	{;
+	background:;
+}
+
+#s202211282dc25758e0523 .seemore_wrap .open:before {
+	background-image: linear-gradient(to bottom,, 66%, 83%, 98%,);
+}
+
+#s202211282dc25758e0523 .item_detail select.form-control,
+	#s202211282dc25758e0523 .item_detail input.form-control,
+	#s202211282dc25758e0523 .item_detail textarea.form-control,
+	#s202211282dc25758e0523 .booking_opt select.form-control,
+	#s202211282dc25758e0523 .goods_select textarea.form-control,
+	#s202211282dc25758e0523 .goods_select select.form-control,
+	#s202211282dc25758e0523 .goods_select input.form-control,
+	#s202211282dc25758e0523 .form-select-wrap:before { !important;
+	color:;
+}
+
+#s202211282dc25758e0523 .form-select-wrap .dropdown-menu .dropdown-item:hover
+	{;
+	
+}
+
+#s202211282dc25758e0523 .board_summary .write, #s202211282dc25758e0523 .board_view .grid_ignore .author .date,
+	#s202211282dc25758e0523 .board_view .grid_ignore .author .hit-count,
+	.doz_sys #s202211282dc25758e0523 label, .doz_sys #s202211282dc25758e0523 label.control-label,
+	#s202211282dc25758e0523 .shop-table>tbody>tr.payment-info>td.pay-txt,
+	#s202211282dc25758e0523 .nick.text-default-dark,
+	#s202211282dc25758e0523 .text-default-dark, #s202211282dc25758e0523 .shop_mypage .mypage .my-box a,
+	#s202211282dc25758e0523 .shop_mypage .item-detail a,
+	#s202211282dc25758e0523 .shop_mypage .item-detail p,
+	#s202211282dc25758e0523 .shop_mypage h6, #s202211282dc25758e0523 .shop_mypage .table-wrap p,
+	#s202211282dc25758e0523 .shop_payment h1, #s202211282dc25758e0523 .shop_payment h6,
+	#s202211282dc25758e0523 .shop-content p, #s202211282dc25758e0523 .shop_payment,
+	#s202211282dc25758e0523 .shop-content span, #s202211282dc25758e0523 .shop-content .shop-item .item-icon .im-icon.im-ico-liked,
+	#s202211282dc25758e0523 .shop-content .price, #s202211282dc25758e0523,
+	#s202211282dc25758e0523 .shop-tit, #s202211282dc25758e0523 .board_view .board_txt_area,
+	#s202211282dc25758e0523 .board.widget .grid_ignore .view_tit, .doz_sys #s202211282dc25758e0523 .shop-content input.form-control,
+	.doz_sys #s202211282dc25758e0523 .shop-content select.form-control,
+	#s202211282dc25758e0523 .widget_menu_title, #s202211282dc25758e0523 .comment_area,
+	body.shop_mypage #s202211282dc25758e0523 .comment_area,
+	#s202211282dc25758e0523 .list_review_inner .use_summary,
+	#s202211282dc25758e0523 .list_review_inner .use_summary a,
+	#s202211282dc25758e0523 .list_review_inner .fold,
+	#s202211282dc25758e0523 .list_review_inner .comment_area,
+	#s202211282dc25758e0523 .booking_nav_tools span {;
+	color:;
+}
+
+.doz_sys #s202211282dc25758e0523 .shop-content .down-btn select.form-control
+	{;
+	color: !important;
+}
+
+#s202211282dc25758e0523 .shop-content.mypage .bg-bright a,
+	#s202211282dc25758e0523 .shop-content.mypage .bg-bright p,
+	#s202211282dc25758e0523 .shop-content.mypage .bg-bright span,
+	#s202211282dc25758e0523 .shop-content.mypage .bg-bright div {
+	color: #212121;
+}
+
+#s202211282dc25758e0523 .shop-content.mypage .bg-bright .use_grade .ug_btn .btn
+	{
+	border-color: #D5D5D5;
+}
+
+#s202211282dc25758e0523 .shop-content h6 span {;
+	color:;
+}
+
+#s202211282dc25758e0523 .left-menu ul li.on a, .doz_sys #s202211282dc25758e0523 .paging_type_count .owl-dots .owl-dot span:before,
+	.menu_type_modal #s202211282dc25758e0523, #s202211282dc25758e0523 .list_review_inner .comment .tools .text-gray-bright
+	{;
+	color: !important;
+}
+
+.doz_sys #s202211282dc25758e0523 .paging_type_count.slide_02 .owl-dots .owl-dot.active span:before
+	{
+	color: #fff !important;
+}
+
+.doz_sys #s202211282dc25758e0523 .paging_type_dot .owl-dots .owl-dot span,
+	.doz_sys #s202211282dc25758e0523 .paging_type_big_dot .owl-dots .owl-dot span,
+	.doz_sys #s202211282dc25758e0523 .paging_type_line .owl-dots .owl-dot span,
+	.doz_sys #s202211282dc25758e0523 .paging_type_count.paging_type_count02 .owl-dots .owl-dot.active span:before,
+	#s202211282dc25758e0523 .list_review_inner, #s202211282dc25758e0523 .list_review_inner .fold.cmt,
+	#s202211282dc25758e0523 .list_review_wrap, #s202211282dc25758e0523 .list_review_inner .textarea_block,
+	#s202211282dc25758e0523 .list_review_inner .comment .main_comment,
+	#s202211282dc25758e0523 .list_review_inner .txt_delete:before,
+	#s202211282dc25758e0523 .form-select-wrap.open .dropdown-toggle,
+	#s202211282dc25758e0523 .form-select-wrap.open .dropdown-menu,
+	#s202211282dc25758e0523 .form-select-wrap.open .dropdown-menu .dropdown-item
+	{
+	border-color:;
+}
+
+.doz_sys #s202211282dc25758e0523 .paging_type_dot02 .owl-dots .owl-dot span,
+	.doz_sys #s202211282dc25758e0523 .paging_type_dot .owl-dots .owl-dot.active span,
+	.doz_sys #s202211282dc25758e0523 .paging_type_line .owl-dots .owl-dot.active span,
+	.doz_sys #s202211282dc25758e0523 .paging_type_big_dot .owl-dots .owl-dot span,
+	.doz_sys #s202211282dc25758e0523 .paging_type_line .owl-dots .owl-dot span
+	{
+	background:;
+}
+
+#s202211282dc25758e0523 .form-control:focus {
+	border-color: #363636;
+}
+
+#s202211282dc25758e0523 .sub_depth li a, #s202211282dc25758e0523 .sub_depth li span
+	{;
+	
+}
+
+#s202211282dc25758e0523 .slide_03.owl-theme .owl-dots .owl-dot span {;
+	
+}
+
+#s202211282dc25758e0523 .pagination>li>a, #s202211282dc25758e0523 .pagination>li>span,
+	#s202211282dc25758e0523 .pagination>li>a:focus, #s202211282dc25758e0523 .pagination>li>span:focus,
+	#s202211282dc25758e0523 .map-inner .pagination li.active a,
+	#s202211282dc25758e0523 .pagination li>a.disabled:hover,
+	#s202211282dc25758e0523 .pagination li>a.disabled:focus {;
+	
+}
+
+#s202211282dc25758e0523 .form-select-wrap.open .dropdown-menu .dropdown-item
+	{;
+	
+}
+
+#s202211282dc25758e0523 .pagination>.active>a, #s202211282dc25758e0523 .pagination>.active>span,
+	#s202211282dc25758e0523 .pagination>.active>a:hover,
+	#s202211282dc25758e0523 .pagination>.active>span:hover,
+	#s202211282dc25758e0523 .pagination>.active>a:focus,
+	#s202211282dc25758e0523 .pagination>.active>span:focus,
+	#s202211282dc25758e0523 .pagination>li>a:hover, #s202211282dc25758e0523 .pagination>li>span:hover,
+	#s202211282dc25758e0523 .sub_depth li a.active, .doz_sys #s202211282dc25758e0523 a,
+	#s202211282dc25758e0523 .li_table ul li, #s202211282dc25758e0523 .list-style .list.line>small,
+	.doz_sys #s202211282dc25758e0523 div[data-widget-type="board"] .title.title-block a
+	{;
+	color:;
+}
+
+.doz_sys #s202211282dc25758e0523 .board_contents a:not(.btn), .doz_sys #s202211282dc25758e0523 .board_contents a:not(.btn):hover,
+	#s202211282dc25758e0523 .board_txt_area a, #s202211282dc25758e0523 .board_txt_area a:hover,
+	#s202211282dc25758e0523 .board_txt_area a:active,
+	#s202211282dc25758e0523 .board_txt_area a:focus,
+	#s202211282dc25758e0523 .editor_box .fr-view a {
+	color: #363636;
+}
+
+#s202211282dc25758e0523 div[data-widget-type="icon"] i {
+	color:;
+}
+
+.doz_sys #s202211282dc25758e0523 a.body_font_color_30:not(.active) {;
+	
+}
+
+#s202211282dc25758e0523 .text_tab .after_line:not(:last-child):after {;
+	
+}
+
+#s202211282dc25758e0523 .text_tab ul.site_prod_nav>li a.active {
+	background: none;
+}
+
+#s202211282dc25758e0523 .map-toolbar select.form-control {;
+	color: !important;
+	font-size: 14px;
+}
+
+.doz_sys #s202211282dc25758e0523 .body_font_color_40,
+	#s202211282dc25758e0523 .li_board ul.li_body li.name,
+	#s202211282dc25758e0523 .li_board ul.li_body li.time,
+	#s202211282dc25758e0523 .li_board ul.li_body li.like,
+	#s202211282dc25758e0523 .li_board ul.li_body li.read {;
+	
+}
+
+#s202211282dc25758e0523 .review_table .summary, #s202211282dc25758e0523 .review_table.li_board ul.li_body li,
+	#s202211282dc25758e0523 .review_table .list_text_title.lock_on {;
+	
+}
+
+.doz_sys #s202211282dc25758e0523 .body_font_color_50 {;
+	
+}
+
+#s202211282dc25758e0523 .li_board, #s202211282dc25758e0523 .acd_row:first-child,
+	#s202211282dc25758e0523 .acd_row {
+	border-color:;
+}
+
+#s202211282dc25758e0523 .list-style .list-header,
+	#s202211282dc25758e0523 .list-style .list, #s202211282dc25758e0523 .list-style .list.line,
+	#s202211282dc25758e0523 .list-style .list.line>.table-cell,
+	#s202211282dc25758e0523 .li_table.row_04 .acd_collapse[aria-expanded="true"],
+	.li_table.row_04 .acd_collapse.in {;
+	
+}
+
+#s202211282dc25758e0523 .btn, #s202211282dc25758e0523 .visual_section a
+	{;
+	background-color:;;
+	color:;
+	;
+}
+
+#s202211282dc25758e0523 .btn:hover, #s202211282dc25758e0523 .visual_section a:hover
+	{
+	border-color:;
+}
+
+#s202211282dc25758e0523 .widget_text_wrap .btn {
+	background-color: #363636;
+	border-color: #363636;
+	color: #ffffff;
+	border-width: 1px;
+}
+
+.doz_sys #s202211282dc25758e0523 .btn-primary {;
+	background-color: #363636;
+	border-color: #363636;
+	color: #ffffff;
+	border-width: 1px;
+}
+
+.doz_sys.shop_view #s202211282dc25758e0523 .btn-primary span, .doz_sys.booking_view #s202211282dc25758e0523 .btn-primary span,
+	.doz_sys.shop_mypage #s202211282dc25758e0523 .btn-primary span {
+	color: #ffffff;
+}
+
+#s202211282dc25758e0523 .coupon-wrap:after, #s202211282dc25758e0523 .board_view .file_area ul li
+	{
+	background:;
+}
+
+#s202211282dc25758e0523 .text-gray-dark, #s202211282dc25758e0523 .shop-table>thead>tr>th,
+	#s202211282dc25758e0523 .shop_mypage .left-menu ul li a,
+	#s202211282dc25758e0523 .shop_mypage .item-detail p.sale_pay, .doz_sys #s202211282dc25758e0523 .product-notify-group .product-notify-label
+	{;
+	
+}
+
+#s202211282dc25758e0523 .mypage .my-box a, #s202211282dc25758e0523 .mypage .shop-table>tbody>tr,
+	#s202211282dc25758e0523 .mypage .tip-off, #s202211282dc25758e0523 .im-order-detail-table,
+	#s202211282dc25758e0523 .im-order-price {;
+	
+}
+
+#s202211282dc25758e0523 .mypage .my-box.on a {
+	background-color: #363636;;
+	color: #fff;
+}
+
+#s202211282dc25758e0523 .mypage .my-box.on a p {
+	color: #fff;
+}
+
+#s202211282dc25758e0523 .option_btn_tools a, #s202211282dc25758e0523 .map-inner .pagination li a
+	{
+	color: #212121;
+}
+
+.doz_sys #s202211282dc25758e0523 .list-style-card .card-body .text a {
+	color: #757575;
+}
+
+#s202211282dc25758e0523 .card .title a {
+	color: #212121;
+}
+
+#s202211282dc25758e0523 .section_bg.fixed_bg {;
+	
+}
+
+#s202211282dc25758e0523 .section_bg.fixed_bg.fixed_bg_none {
+	background-attachment: inherit;
+}
+
+#s202211282dc25758e0523 ul.site_prod_nav>li, #s202211282dc25758e0523 .prod_detail_badge
+	{;
+	
+}
+
+#s202211282dc25758e0523 .site_prod_nav_wrap.scroll-to-fixed-fixed {
+	background:;
+	box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+#s202211282dc25758e0523 .buy_footer_fixed {
+	background:;
+	border-width: 1px 0 0 0;
+	border-style: solid;
+	;
+}
+
+#s202211282dc25758e0523 .opt-group {
+	background:;
+}
+
+#s202211282dc25758e0523 ul.site_prod_nav>li a.active {;
+	
+}
+
+#s202211282dc25758e0523 .background_tab ul.site_prod_nav>li a.active>span.braket-badge
+	{
+	background-color: none;;
+	color:;
+}
+
+#s202211282dc25758e0523 .input-block .checkbox-styled:not(ie8) input ~
+	span {;
+	color:;
+}
+
+.section_fixed_disable #s202211282dc25758e0523, .section_fixed_disable #s202211282dc25758e0523 .doz_aside
+	{
+	position: relative !important;
+	top: 0 !important;
+	left: 0 !important;
+	z-index: auto !important;
+}
+
+.section_fixed_disable #s202211282dc25758e0523 .doz_aside.scroll-to-fixed-fixed 
+	~ .spacer, .section_fixed_disable #s202211282dc25758e0523.scroll-to-fixed-fixed 
+	~ .spacer {
+	height: 0 !important;
+	display: none !important;
+}
+
+#s202211282dc25758e0523.scroll-to-fixed-fixed {
+	width: 100% !important;
+}
+
+#s202211282dc25758e0523 .doz_aside.scroll-to-fixed-fixed-end {
+	bottom: 0 !important;
+	top: auto !important;
+}
+
+.device_type_m #s202211282dc25758e0523.mobile_section main .inside {
+	padding-left: 60px;
+	padding-right: 60px;
+}
+
+.device_type_m #s202211282dc25758e0523 .mypage .left-menu ul li a,
+	.device_type_m #s202211282dc25758e0523 .cart .left-menu ul li a {;
+	
+}
+
+#s202211282dc25758e0523 .im-cart-result-table {
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+}
+
+#s202211282dc25758e0523 .shop-table>tbody>tr>td.img .opt .more {;
+	
+}
+
+#s202211282dc25758e0523 .im-cart-info {;
+	
+}
+
+#s202211282dc25758e0523 .shop-table>thead>tr>th, #s202211282dc25758e0523 .shop-table>tbody>tr>td,
+	#s202211282dc25758e0523 .mypage .shop-table>tbody>tr,
+	#s202211282dc25758e0523 .shop-table>tbody>tr>td.img img,
+	#s202211282dc25758e0523 .shop-table>tbody>tr>td+td,
+	#s202211282dc25758e0523 .mypage .tip-off, #s202211282dc25758e0523 .mypage .shop-table img,
+	#s202211282dc25758e0523 .im-order-detail-table, #s202211282dc25758e0523 .im-order-price,
+	#s202211282dc25758e0523 .im-order-detail-table thead tr,
+	#s202211282dc25758e0523 .im-order-detail-table tr+tr,
+	#s202211282dc25758e0523 .im-order-detail-table img,
+	#s202211282dc25758e0523 .im-order-detail-table .im-deliv-price,
+	#s202211282dc25758e0523 .im-order-price-header, #s202211282dc25758e0523 .im-order-price-body
+	{;
+	
+}
+
+#s202211282dc25758e0523 .shop-table .list_badge {
+	border-color:;
+}
+
+#s202211282dc25758e0523 .im-cart-result-table thead>tr>th,
+	#s202211282dc25758e0523 #shop_cart_list .shop-table>colgroup+thead>tr:first-child>th,
+	#s202211282dc25758e0523 #shop_cart_list .shop-table>tbody>tr>td+td,
+	#s202211282dc25758e0523 #shop_cart_list .shop-table>thead>tr>th,
+	#s202211282dc25758e0523 #shop_cart_list .shop-table>tbody>tr>td {;
+	
+}
+
+#s202211282dc25758e0523 .shop-content.mypage .shop-item .item-icon .im-icon.im-ico-liked
+	{
+	color: #363636
+}
+
+@media ( min-width : 991px) {
+	.doz_sys #s202211282dc25758e0523 .btn-primary:hover,
+		#s202211282dc25758e0523 .widget_text_wrap .btn:hover {;
+		background-color: #ffffff;
+		border-color: #363636;
+		color: #363636;
+		border-width: 1px;
+	}
+	.doz_sys.shop_view #s202211282dc25758e0523 .btn-primary:hover span,
+		.doz_sys.booking_view #s202211282dc25758e0523 .btn-primary:hover span,
+		.doz_sys.shop_mypage #s202211282dc25758e0523 .btn-primary:hover span {
+		color: #363636;
+	}
+}
+
+@media all and (max-width : 768px) {
+	.doz_sys #s202211282dc25758e0523 .fixed_view a, .doz_sys #s202211282dc25758e0523 .fixed_view select.form-control,
+		.doz_sys #s202211282dc25758e0523 .fixed_view .form-select-wrap:before
+		{
+		color: #212121;
+	}
+	.doz_sys #s202211282dc25758e0523 .fixed_view .body_font_color_50 {
+		color: rgba(33, 33, 33, 0.5);
+	}
+	.doz_sys #s202211282dc25758e0523 .fixed_view .body_font_color_20 {
+		color: rgba(33, 33, 33, 0.2);
+	}
+	.booking_view #s202211282dc25758e0523 .fixed_view .booking_opt select.form-control
+		{
+		background-color: #fff;
+	}
+	#s202211282dc25758e0523 #shop_cart_list .shop-tit,
+		#s202211282dc25758e0523 #shop_cart_list .shop-table>thead>tr,
+		#s202211282dc25758e0523 #shop_cart_list .shop-table>tfoot .payment-info,
+		#s202211282dc25758e0523 .im-price-result {;
+		
+	}
+	#s202211282dc25758e0523 .shop-table>tbody>tr>td.img .opt .more+.more,
+		#s202211282dc25758e0523 .im-order-row+.im-order-row {;
+		
+	}
+	#s202211282dc25758e0523 #shop_cart_list .shop-table,
+		#s202211282dc25758e0523 #shop_cart_list .shop-table>tbody>tr.im-tr-shipping+tr,
+		#s202211282dc25758e0523 #shop_cart_list .shop-table>tfoot,
+		#s202211282dc25758e0523 #shop_cart_list .shop-table>tfoot .payment-info
+		{;
+		
+	}
+	#s202211282dc25758e0523 #shop_cart_list .shop-table>thead>tr,
+		#s202211282dc25758e0523 .im-order-detail-table .im-space {
+		background-color:;
+	}
+	#s202211282dc25758e0523 #shop_cart_list .shop-table>thead>tr.scroll-to-fixed-fixed-end
+		{
+		top: auto !important;
+		bottom: 0;
+	}
+}
+
+@media ( max-width : 991px) {
+	#s202211282dc25758e0523
+	 
+	.buy_btns
+	 
+	.social_btn
+	,
+	#s202211282dc25758e0523
+	 
+	.buy_btns
+	 
+	.cart_btn
+	,
+	#s202211282dc25758e0523
+	 
+	.layer_pop
+	 
+	.bottom-btn
+	,
+	#s202211282dc25758e0523
+	 
+	.shop-table
+	>
+	thead
+	,
+	#s202211282dc25758e0523
+	 
+	.left-menu
+	,
+	#s202211282dc25758e0523
+	 
+	.shop-table
+	>
+	tbody
+	>
+	tr
+	,
+	{
+	;
+}
+
+#s202211282dc25758e0523
+ 
+main
+,
+#s202211282dc25758e0523
+ 
+.section_wrap
+.extend_section
+ 
+main
+,
+#s202211282dc25758e0523
+ 
+.doz_sys
+.shop_payment
+ 
+.inside
+,
+.doz_sys
+.shop_payment
+ 
+.inside
+ 
+.col-dz
+,
+{
+padding-left
+:
+0
+;
+
+					
+padding-right
+:
+0
+;
+
+				
+}
+#s202211282dc25758e0523.mobile_section main .inside {
+	padding-left: 60px;
+	padding-right: 60px;
+}
+
+#s202211282dc25758e0523.section_wrap.extend_section main .widget.board .grid_ignore.bg_on
+	{
+	margin-left: -15px;
+	margin-right: -15px;
+	width: calc(100% + 30px);
+}
+
+#s202211282dc25758e0523 .mypage .left-menu ul li a,
+	#s202211282dc25758e0523 .cart .left-menu ul li a,
+	#s202211282dc25758e0523 .mypage .left-menu .cart-menu-slide {;
+	
+}
+
+.section_wrap .side_gutter {
+	display: none !important;
+}
+
+#s202211282dc25758e0523 .coupon-wrap:after {
+	background: !important;
+}
+
+}
+@media ( max-width : 767px) {
+	#s202211282dc25758e0523 .nav_gradient.slide_left {
+		background: linear-gradient(to left, rgba(255, 255, 255, 0),
+			rgba(255, 255, 255, 1));
+	}
+	#s202211282dc25758e0523 .nav_gradient.slide_right {
+		background: linear-gradient(to right, rgba(255, 255, 255, 0),
+			rgba(255, 255, 255, 1));
+	}
+	#s202211282dc25758e0523 .button_tab .scroll-to-fixed-fixed ul.site_prod_nav>li
+		{
+		border-top: 0;
+		border-bottom: 0;
+	}
+	#s202211282dc25758e0523 .background_tab .scroll-to-fixed-fixed ul.site_prod_nav>li a.active
+		{
+		box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+	}
+}
+
+@media ( min-width : 768px) {
+	#s202211282dc25758e0523 .opt-group .btn_clse {
+		background-color:;
+	}
+	#s202211282dc25758e0523 .opt-group .btn_clse:after {;
+		
+	}
+}
+
+.doz_sys #s202211282dc25758e0523 .bg-brand, .doz_sys #s202211282dc25758e0523 .bg-brand span,
+	.doz_sys #s202211282dc25758e0523 .btn-brand {;
+	background-color: #363636;
+	border-color: #363636;
+	border-width: 1px;
+	color: #fff;
+}
+
+.doz_sys #s202211282dc25758e0523 .bg-brand:hover {
+	background-color: rgba(28, 28, 28, 1);
+	-ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff282828,
+		endColorstr=#ff282828);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff282828,
+		endColorstr=#ff282828);
+	zoom: 1;;
+	border-color: rgb(28, 28, 28);
+	border-color: rgba(28, 28, 28, 1);;
+}
+
+.device_type_m .pc_section #padding_w202211282920c4aa16628 {
+	height: 15px !important;
+}
+
+@media all and (max-width:768px) {
+	.pc_section #padding_w202211282920c4aa16628 {
+		height: 15px !important;
+	}
+}
+
+/* 공통 적용 */
+#w20221128cdc7aebb6358d .nav li a {
+	font-size: 13px;
+	color: rgba(54, 54, 54, 0.7);
+	letter-spacing: px;
+}
+
+#w20221128cdc7aebb6358d .nav li.use_sub_name:hover>a>.plain_name:before
+	{
+	color: #363636;
+}
+
+#w20221128cdc7aebb6358d .nav li li a {
+	font-size: 10.4px;
+}
+
+@media ( min-width : 991px) {
+	#w20221128cdc7aebb6358d .nav li a:hover {
+		color: #363636
+	}
+}
+/* 타입 별 적용 */
+/* h 타입*/
+#w20221128cdc7aebb6358d li.active>ul>li {
+	display: block;
+}
+
+#w20221128cdc7aebb6358d .nav {
+	width: 100%;
+	text-align: left
+}
+
+#w20221128cdc7aebb6358d .nav li a {
+	display: inline-block;
+	margin-left: 0;
+	margin-right: 15px;
+}
+
+#w20221128cdc7aebb6358d .nav li .active {
+	color: #363636;
+}
+
+#w20221128cdc7aebb6358d .nav li .active {
+	background-color:;
+}
+
+#w20221128cdc7aebb6358d .nav a.active {
+	border-color: #363636
+}
+
+#w20221128cdc7aebb6358d ul {
+	width: auto;
+	display: inline-block;
+}
+
+#w20221128cdc7aebb6358d .h-menu-type3 ul li.depth-01 {
+	width: 150px;
+	margin-left: 0 !important;
+}
+
+#w20221128cdc7aebb6358d .h-menu-type4.row-cnt-1 ul li {
+	width: 100%;
+}
+
+#w20221128cdc7aebb6358d .h-menu-type4.row-cnt-2 ul li {
+	width: 50%;
+}
+
+#w20221128cdc7aebb6358d .h-menu-type4.row-cnt-3 ul li {
+	width: 33.33333333%;
+}
+
+#w20221128cdc7aebb6358d .h-menu-type4.row-cnt-4 ul li {
+	width: 25%;
+}
+
+#w20221128cdc7aebb6358d .h-menu-type4.row-cnt-5 ul li {
+	width: 20%;
+}
+
+#w20221128cdc7aebb6358d .h-menu-type4 ul {
+	display: block;
+	table-layout: unset;
+	border-width: 1px 0 0 1px;
+	border-style: solid;
+	border-color: #D0D0D0;
+}
+
+#w20221128cdc7aebb6358d .h-menu-type4 ul li {
+	display: inline-block;
+}
+
+#w20221128cdc7aebb6358d .h-menu-type4 ul li.depth-01 {
+	display: inline-block;
+	height: 40px;
+	float: left;
+	border-width: 0 1px 1px 0;
+}
+
+#w20221128cdc7aebb6358d .h-menu-type4 ul li.depth-01>a {
+	padding: 0;
+	display: table;
+	width: 100%;
+	height: 100%;
+	font-size: 13px;
+}
+
+#w20221128cdc7aebb6358d .h-menu-type4 ul li.depth-01>a .plain_name {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+#w20221128cdc7aebb6358d .h-menu-type4 ul li.depth-01+li.depth-01 {
+	margin-left: 0;
+}
+
+@media all and (max-width: 767px) {
+	#w20221128cdc7aebb6358d .h-menu-type4.row-cnt-mobile-1 ul li {
+		width: 100% !important;
+	}
+	#w20221128cdc7aebb6358d .h-menu-type4.row-cnt-mobile-2 ul li {
+		width: 50% !important;
+	}
+	#w20221128cdc7aebb6358d .h-menu-type4.row-cnt-mobile-3 ul li {
+		width: 33.3333% !important;
+	}
+	#w20221128cdc7aebb6358d .h-menu-type4.row-cnt-mobile-4 ul li {
+		width: 25% !important;
+	}
+	#w20221128cdc7aebb6358d .h-menu-type4.row-cnt-mobile-5 ul li {
+		width: 20% !important;
+	}
+}
+
+#w20221128906c1bc38547e .color_tools {
+	margin-top: -2px;
+	margin-bottom: 12px;
+	line-height: 9px;
+	letter-spacing: -1px;
+}
+
+#w20221128906c1bc38547e .radio-styled:not(ie8).radio_color_option.small input 
+	~ span {
+	cursor: auto;
+	width: 9px;
+	height: 9px;
+}
+
+#w20221128906c1bc38547e .radio-styled:not(ie8).radio_color_option {
+	margin: 0 2px 0 0;
+}
+
+#w20221128906c1bc38547e .shop-content .shop-tools .down-btn,
+	#w20221128906c1bc38547e .shop-content .shop-tools .float_l {
+	margin: 5px 0;
+}
+
+#w20221128906c1bc38547e .thumb-row {
+	margin: 0 -7.5px;
+	clear: both;
+}
+
+#w20221128906c1bc38547e .thumb-row .shop-item {
+	padding: 0 7.5px;
+}
+
+#w20221128906c1bc38547e .thumb-fluid.show_rendering .shop-item a>img {
+	image-rendering: -webkit-optimize-contrast;
+}
+
+#w20221128906c1bc38547e .shop-item .shop-item-thumb img {
+	border: 0px solid;
+}
+
+#w20221128906c1bc38547e .shop-item .item-icon .im-ico-liked {
+	color: #363636;
+}
+
+#w20221128906c1bc38547e .thumb-row .shop-item.off {
+	padding: 7.5px !important;
+}
+
+#w20221128906c1bc38547e .shop-item .item-detail {
+	text-align: center;
+}
+
+#w20221128906c1bc38547e .shop-item .item-summary {
+	text-align: center;
+}
+
+#w20221128906c1bc38547e .shop-item .item-summary .item-summary-link {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+#w20221128906c1bc38547e  .shop-item .item-overlay {
+	color:;
+}
+
+#w20221128906c1bc38547e  .shop-item .item-pay>h2,
+	#w20221128906c1bc38547e  .shop-item .item-overlay h2 {
+	font-size: 15px;
+	font-weight: bold
+}
+
+#w20221128906c1bc38547e .shop-item .item-detail .item-icon {
+	margin-top: 0.75em;
+}
+
+#w20221128906c1bc38547e .shop-item .item-detail .item-icon>span {
+	margin-top: 0.75em;
+	display: inline-block;
+}
+
+#w20221128906c1bc38547e .shop-item .item-detail .item-icon>span,
+	#w20221128906c1bc38547e .shop-item .item-detail .item-icon>span a {
+	font-size: 15px;
+}
+
+#w20221128906c1bc38547e  .shop-item .item-pay>h2>a {
+	color:;
+}
+
+#w20221128906c1bc38547e .shop-item .item-summary>p,
+	#w20221128906c1bc38547e .shop-item .item-summary>ul {
+	margin-bottom: 0;
+}
+
+#w20221128906c1bc38547e .shop-item .item-summary,
+	#w20221128906c1bc38547e .shop-item .item-summary p,
+	#w20221128906c1bc38547e .shop-item .item-summary span {
+	font-size: 13px !important;
+	color:;
+}
+
+#w20221128906c1bc38547e .shop-item .item-detail .item-pay-detail .pay,
+	#w20221128906c1bc38547e .shop-item .item-overlay .item-pay p.pay {
+	font-size: 13px;
+	color: #212121 !important;
+}
+
+#w20221128906c1bc38547e .shop-item .item-detail .item-pay-detail .sale_pay,
+	#w20221128906c1bc38547e .shop-item .item-detail .item-pay-detail .sale_pay
+	{
+	font-size: 9.1px;
+}
+
+#w20221128906c1bc38547e .shop-item .item-detail .item-pay .member_pay {
+	font-size: 15px;
+	color: !important;
+}
+
+#w20221128906c1bc38547e .shop-item .sale_price {
+	text-decoration: line-through;
+	font-size: 11px;
+	opacity: 0.7;
+}
+
+#w20221128906c1bc38547e .shop-item .sale_percentage {
+	color: #fe5356 !important;
+	font-weight: normal;
+	font-size: 13px;
+}
+
+.device_type_m #w20221128906c1bc38547e .thumb-row .shop-item.off>.item-summary
+	{
+	display: none !important;
+}
+
+#w20221128906c1bc38547e .shop-item .item-detail .ns-icon>div {
+	float: left;
+}
+
+#w20221128906c1bc38547e .shop-item .item-detail .ns-icon>div {
+	float: none;
+	vertical-align: top;
+}
+
+#w20221128906c1bc38547e .shop-item .item-overlay .ns-icon>div,
+	#w20221128906c1bc38547e .shop-item .item-detail .ns-icon>div {
+	margin: 0 5px 5px 0;
+}
+
+#w20221128906c1bc38547e .shop-item .item-overlay .ns-icon>div:last-child,
+	#w20221128906c1bc38547e .shop-item .item-detail .ns-icon>div:last-child
+	{
+	margin: 0 0 5px 0;
+}
+
+#w20221128906c1bc38547e .shop-item .item-detail .ns-icon>div {
+	margin-left: -1px;
+	vertical-align: middle;
+}
+
+#w20221128906c1bc38547e .shop-item .item-detail .ns-icon>div:first-child
+	{
+	margin-left: 0;
+}
+
+#w20221128906c1bc38547e .shop-item .item-detail .ns-icon .prod_use_icon
+	{
+	display: inline-block;
+}
+
+#w20221128906c1bc38547e .shop-item .item-detail .ns-icon .prod_use_icon img
+	{
+	width: auto;
+	max-width: 100%;
+	vertical-align: top;
+}
+
+#w20221128906c1bc38547e .paging-block .more_btn {
+	margin: 20px 0;
+}
+
+#w20221128906c1bc38547e .paging-block .more_btn_page {
+	display: none;
+}
+
+#w20221128906c1bc38547e .shop-content .li_footer .prod_write {
+	text-align: right;
+}
+
+@media ( max-width : 991px) {
+	#w20221128906c1bc38547e .radio-styled:not(ie8).radio_color_option {
+		margin: 0 1px 4px 0;
+	}
+	#w20221128906c1bc38547e .thumb-row .shop-item.off,
+		#w20221128906c1bc38547e .thumb-row .shop-item {
+		padding: 0 7.5px !important;
+	}
+	#w20221128906c1bc38547e .thumb-row .shop-item {
+		margin-bottom: 30px;
+	}
+	#w20221128906c1bc38547e .options_hide_class .thumb-row .shop-item,
+		#w20221128906c1bc38547e .thumb-row.m-list-type3  .shop-item {
+		margin-bottom: 15px;
+	}
+	#w20221128906c1bc38547e .thumb-row {
+		margin: 0 -7.5px !important;
+		clear: both;
+	}
+	#w20221128906c1bc38547e .thumb-fluid.show_rendering .shop-item a>img {
+		image-rendering: auto;
+	}
+	#w20221128906c1bc38547e .thumb-row .shop-item.off>.item-summary {
+		display: none !important;
+	}
+}
+
+#w20221128906c1bc38547e .shop-item .item-detail {
+	height: auto;
+}
+
+#w20221128906c1bc38547e .shop-item {
+	margin-bottom: 40px;
+}
+
+@media ( min-width : 768px) {
+	#w20221128906c1bc38547e .thumb-row.hover_none .shop-item a:hover .item-overlay
+		{
+		opacity: 0;
+	}
+	#w20221128906c1bc38547e .thumb-row.hover_dark .shop-item a:hover .item-overlay
+		{
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+	#w20221128906c1bc38547e .hover_bright .shop-item a .item-overlay .item-pay,
+		#w20221128906c1bc38547e .hover_image .shop-item a .item-overlay {
+		display: none !important;
+	}
+	#w20221128906c1bc38547e .hover_detail .shop-item a .item-overlay .item-pay,
+		#w20221128906c1bc38547e .hover_detail .shop-item a:hover .item-overlay .item-pay
+		{
+		display: table;
+		position: absolute;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+	#w20221128906c1bc38547e .hover_detail .shop-item a .item-overlay .item-pay>div,
+		#w20221128906c1bc38547e .hover_detail .shop-item a:hover .item-overlay .item-pay>div
+		{
+		height: 100%;
+		display: table-cell;
+		vertical-align: middle;
+	}
+	#w20221128906c1bc38547e .hover_detail.hover_name_price .shop-item a .item-overlay .item-pay .ns-icon
+		{
+		display: none;
+	}
+	#w20221128906c1bc38547e .hover_image .shop-item a .hover_img,
+		#w20221128906c1bc38547e .hover_image .shop-item a:hover .org_img {
+		position: absolute;
+		left: 0;
+		opacity: 0;
+		display: none;
+		top: 0;
+		-webkit-transition: .3s;
+		-moz-transition: .3s;
+		-o-transition: .3s;
+		transition: .3s;
+	}
+	#w20221128906c1bc38547e .hover_image .shop-item a:hover .hover_img {
+		position: static;
+		opacity: 1;
+		display: block;
+		-webkit-transition: .3s;
+		-moz-transition: .3s;
+		-o-transition: .3s;
+		transition: .3s;
+	}
+	#w20221128906c1bc38547e .hover_image .shop-item a.hover_img_none .org_img
+		{
+		position: static;
+		opacity: 1;
+	}
+}
+
+@media ( max-width : 767px) {
+	#w20221128906c1bc38547e .hover_image .shop-item a .hover_img {
+		display: none;
+	}
+	#w20221128906c1bc38547e .paging-block .more_btn {
+		width: 100%;
+	}
+}
+
+@media ( max-width : 991px) {
+	#w20221128906c1bc38547e .color_tools {
+		margin: 0 0 8px;
+	}
+}
+
+#w20221128906c1bc38547e ._color_option_img {
+	-webkit-transition: .3s opacity, .3s visibility;
+	-moz-transition: .3s opacity, .3s visibility;
+	-o-transition: .3s opacity, .3s visibility;
+	transition
+	.3s
+	opacity,
+	.3s
+	visibility;
+}
+
+#w20221128906c1bc38547e ._color_option_img[data-visible="false"] {
+	opacity: 0;
+	visibility: hidden;
+}
+
+#w20221128906c1bc38547e ._color_option_img[data-visible="true"] {
+	opacity: 1;
+	visibility: visible;
+}
+
+.device_type_m .pc_section #padding_w202211284ae49cad1f15e {
+	height: 46px !important;
+}
+
+@media all and (max-width:768px) {
+	.pc_section #padding_w202211284ae49cad1f15e {
+		height: 46px !important;
+	}
+}
+
+.device_type_m .pc_section #padding_w20221128f8ecaa4d3c82f {
+	height: 15px !important;
+}
+
+@media all and (max-width:768px) {
+	.pc_section #padding_w20221128f8ecaa4d3c82f {
+		height: 15px !important;
+	}
+}
+
+.shop_view .s20221128a62bc67223c9e.xzoom-preview {;
+	background: #212121;
+}
+
+.shop_view #s20221128a62bc67223c9e select.form-control option {
+	color: !important;
+	background: #212121;
+}
+
+.is-ie .shop_view #s20221128a62bc67223c9e select.form-control option {
+	color: #000 !important;
+}
+
+.admin #s20221128a62bc67223c9e .widget.padding>div {;
+	
+}
+
+.admin #s20221128a62bc67223c9e .ibg-bg {
+	height: 100% !important;
+}
+
+.admin #s20221128a62bc67223c9e .widget_drag_bar, .admin .doz_sys #s20221128a62bc67223c9e .ui-resizable-handle.ui-resizable-e:hover:after,
+	.admin .doz_sys #s20221128a62bc67223c9e .ui-resizable-handle.ui-resizable-w:hover:after,
+	.admin .doz_sys #s20221128a62bc67223c9e .ui-resizable-handle.ui-resizable-e.active:after,
+	.admin .doz_sys #s20221128a62bc67223c9e .ui-resizable-handle.ui-resizable-w.active:after,
+	.admin .doz_sys #s20221128a62bc67223c9e .drop_line {
+	background-color:;
+}
+
+.admin .doz_sys #s20221128a62bc67223c9e .ui-resizable-handle.ui-resizable-n:hover:after,
+	.admin .doz_sys #s20221128a62bc67223c9e .ui-resizable-handle.ui-resizable-s:hover:after
+	{
+	border-bottom: 2px solid;
+}
+
+#s20221128a62bc67223c9e {
+	color:;
+}
+
+#s20221128a62bc67223c9e.side_basic main .inside, #s20221128a62bc67223c9e .site_prod_nav_wrap.scroll-to-fixed-fixed ul.site_prod_nav,
+	.doz_sys #s20221128a62bc67223c9e .col-dz-12 .extend_thumbs {
+	max-width: 1310px;
+}
+
+.modal_site_modal_menu #s20221128a62bc67223c9e.side_basic main .inside,
+	.menu_type_modal #s20221128a62bc67223c9e.side_basic main .inside {
+	max-width: 460px;
+}
+
+.doz_sys .modal_site_modal_menu .modal-header, .menu_type_modal .doz_modal_header
+	{
+	border-width: 0 0 1px 0;
+	border-style: solid;
+	;
+}
+
+.menu_type_modal #s20221128a62bc67223c9e, .menu_type_modal .doz_modal_header
+	{;
+	background:;;
+	color:;
+}
+
+.menu_type_modal .doz_modal_header .bt.bt-flat.bt-default {;
+	color:;
+}
+
+.doz_sys #s20221128a62bc67223c9e .col-dz-12 .inside .extend_thumbs {
+	max-width: inherit;
+}
+
+#s20221128a62bc67223c9e.extend_section main {
+	padding-left: 60px;
+	padding-right: 60px;
+}
+
+#s20221128a62bc67223c9e.section_wrap.extend_section main .widget.board .grid_ignore.bg_on
+	{
+	margin-left: -60px;
+	margin-right: -60px;
+	width: calc(100% + 60px + 60px);
+}
+
+#s20221128a62bc67223c9e .booking_day .body_font_color_20,
+	#s20221128a62bc67223c9e .booking_list.waiting .title {;
+	
+}
+
+#s20221128a62bc67223c9e.extend_section main>.inside {
+	max-width: 100% !important;
+}
+
+#s20221128a62bc67223c9e .li_table ul:nth-of-type(2),
+	#s20221128a62bc67223c9e .li_board ul li, #s20221128a62bc67223c9e .radio-styled:not(ie8).radio_color_option.small input 
+	~ span span {;
+	
+}
+
+#s20221128a62bc67223c9e .checkbox-styled:not(ie8) input ~ span:before,
+	#s20221128a62bc67223c9e .radio-styled:not(ie8) input ~ span:before {
+	
+}
+
+#s20221128a62bc67223c9e .board_view .grid_ignore header a,
+	#s20221128a62bc67223c9e .widget.board .grid_ignore .author .date,
+	#s20221128a62bc67223c9e .widget.board .grid_ignore a.board,
+	#s20221128a62bc67223c9e .widget.board .grid_ignore .author .write,
+	.editor_box .add_map .info>div.phone, #s20221128a62bc67223c9e .content-tit .board
+	{;
+	
+}
+
+#s20221128a62bc67223c9e select.form-control, #s20221128a62bc67223c9e input.form-control,
+	#s20221128a62bc67223c9e textarea.form-control {;
+	color: #eeeeee;
+	background:;
+}
+
+#s20221128a62bc67223c9e .input_block .select-block .selectbox select {
+	border: none;
+	background: none;
+	color: #212121;
+}
+
+#s20221128a62bc67223c9e .phonenumber_wrap .line {
+	
+}
+
+#s20221128a62bc67223c9e .shop-content.shop-style-b.open .opt-group .btn_clse>span
+	{
+	
+}
+
+.shop_view #s20221128a62bc67223c9e .shop-content select.form-control,
+	.shop_view #s20221128a62bc67223c9e .shop-content input.form-control,
+	.shop_view #s20221128a62bc67223c9e .shop-content textarea.form-control,
+	.booking_view #s20221128a62bc67223c9e .booking_opt select.form-control,
+	.shop_view #s20221128a62bc67223c9e .form-select-wrap .dropdown-menu,
+	.shop_view #s20221128a62bc67223c9e .form-select-wrap .dropdown-menu .dropdown-item
+	{;
+	background: #212121;
+}
+
+#s20221128a62bc67223c9e .seemore_wrap .open:before {
+	background-image: linear-gradient(to bottom, rgba(33, 33, 33, 0.01),
+		rgba(33, 33, 33, 0.8) 66%, rgba(33, 33, 33, 0.9) 83%,
+		rgba(33, 33, 33, 0.98) 98%, #212121);
+}
+
+#s20221128a62bc67223c9e .item_detail select.form-control,
+	#s20221128a62bc67223c9e .item_detail input.form-control,
+	#s20221128a62bc67223c9e .item_detail textarea.form-control,
+	#s20221128a62bc67223c9e .booking_opt select.form-control,
+	#s20221128a62bc67223c9e .goods_select textarea.form-control,
+	#s20221128a62bc67223c9e .goods_select select.form-control,
+	#s20221128a62bc67223c9e .goods_select input.form-control,
+	#s20221128a62bc67223c9e .form-select-wrap:before { !important;
+	color:;
+}
+
+#s20221128a62bc67223c9e .form-select-wrap .dropdown-menu .dropdown-item:hover
+	{;
+	
+}
+
+#s20221128a62bc67223c9e .board_summary .write, #s20221128a62bc67223c9e .board_view .grid_ignore .author .date,
+	#s20221128a62bc67223c9e .board_view .grid_ignore .author .hit-count,
+	.doz_sys #s20221128a62bc67223c9e label, .doz_sys #s20221128a62bc67223c9e label.control-label,
+	#s20221128a62bc67223c9e .shop-table>tbody>tr.payment-info>td.pay-txt,
+	#s20221128a62bc67223c9e .nick.text-default-dark,
+	#s20221128a62bc67223c9e .text-default-dark, #s20221128a62bc67223c9e .shop_mypage .mypage .my-box a,
+	#s20221128a62bc67223c9e .shop_mypage .item-detail a,
+	#s20221128a62bc67223c9e .shop_mypage .item-detail p,
+	#s20221128a62bc67223c9e .shop_mypage h6, #s20221128a62bc67223c9e .shop_mypage .table-wrap p,
+	#s20221128a62bc67223c9e .shop_payment h1, #s20221128a62bc67223c9e .shop_payment h6,
+	#s20221128a62bc67223c9e .shop-content p, #s20221128a62bc67223c9e .shop_payment,
+	#s20221128a62bc67223c9e .shop-content span, #s20221128a62bc67223c9e .shop-content .shop-item .item-icon .im-icon.im-ico-liked,
+	#s20221128a62bc67223c9e .shop-content .price, #s20221128a62bc67223c9e,
+	#s20221128a62bc67223c9e .shop-tit, #s20221128a62bc67223c9e .board_view .board_txt_area,
+	#s20221128a62bc67223c9e .board.widget .grid_ignore .view_tit, .doz_sys #s20221128a62bc67223c9e .shop-content input.form-control,
+	.doz_sys #s20221128a62bc67223c9e .shop-content select.form-control,
+	#s20221128a62bc67223c9e .widget_menu_title, #s20221128a62bc67223c9e .comment_area,
+	body.shop_mypage #s20221128a62bc67223c9e .comment_area,
+	#s20221128a62bc67223c9e .list_review_inner .use_summary,
+	#s20221128a62bc67223c9e .list_review_inner .use_summary a,
+	#s20221128a62bc67223c9e .list_review_inner .fold,
+	#s20221128a62bc67223c9e .list_review_inner .comment_area,
+	#s20221128a62bc67223c9e .booking_nav_tools span {;
+	color:;
+}
+
+.doz_sys #s20221128a62bc67223c9e .shop-content .down-btn select.form-control
+	{;
+	color: !important;
+}
+
+#s20221128a62bc67223c9e .shop-content.mypage .bg-bright a,
+	#s20221128a62bc67223c9e .shop-content.mypage .bg-bright p,
+	#s20221128a62bc67223c9e .shop-content.mypage .bg-bright span,
+	#s20221128a62bc67223c9e .shop-content.mypage .bg-bright div {
+	color: #212121;
+}
+
+#s20221128a62bc67223c9e .shop-content.mypage .bg-bright .use_grade .ug_btn .btn
+	{
+	border-color: #D5D5D5;
+}
+
+#s20221128a62bc67223c9e .shop-content h6 span {;
+	color:;
+}
+
+#s20221128a62bc67223c9e .left-menu ul li.on a, .doz_sys #s20221128a62bc67223c9e .paging_type_count .owl-dots .owl-dot span:before,
+	.menu_type_modal #s20221128a62bc67223c9e, #s20221128a62bc67223c9e .list_review_inner .comment .tools .text-gray-bright
+	{;
+	color: !important;
+}
+
+.doz_sys #s20221128a62bc67223c9e .paging_type_count.slide_02 .owl-dots .owl-dot.active span:before
+	{
+	color: #fff !important;
+}
+
+.doz_sys #s20221128a62bc67223c9e .paging_type_dot .owl-dots .owl-dot span,
+	.doz_sys #s20221128a62bc67223c9e .paging_type_big_dot .owl-dots .owl-dot span,
+	.doz_sys #s20221128a62bc67223c9e .paging_type_line .owl-dots .owl-dot span,
+	.doz_sys #s20221128a62bc67223c9e .paging_type_count.paging_type_count02 .owl-dots .owl-dot.active span:before,
+	#s20221128a62bc67223c9e .list_review_inner, #s20221128a62bc67223c9e .list_review_inner .fold.cmt,
+	#s20221128a62bc67223c9e .list_review_wrap, #s20221128a62bc67223c9e .list_review_inner .textarea_block,
+	#s20221128a62bc67223c9e .list_review_inner .comment .main_comment,
+	#s20221128a62bc67223c9e .list_review_inner .txt_delete:before,
+	#s20221128a62bc67223c9e .form-select-wrap.open .dropdown-toggle,
+	#s20221128a62bc67223c9e .form-select-wrap.open .dropdown-menu,
+	#s20221128a62bc67223c9e .form-select-wrap.open .dropdown-menu .dropdown-item
+	{
+	border-color:;
+}
+
+.doz_sys #s20221128a62bc67223c9e .paging_type_dot02 .owl-dots .owl-dot span,
+	.doz_sys #s20221128a62bc67223c9e .paging_type_dot .owl-dots .owl-dot.active span,
+	.doz_sys #s20221128a62bc67223c9e .paging_type_line .owl-dots .owl-dot.active span,
+	.doz_sys #s20221128a62bc67223c9e .paging_type_big_dot .owl-dots .owl-dot span,
+	.doz_sys #s20221128a62bc67223c9e .paging_type_line .owl-dots .owl-dot span
+	{
+	background:;
+}
+
+#s20221128a62bc67223c9e .form-control:focus {
+	border-color: #363636;
+}
+
+#s20221128a62bc67223c9e .sub_depth li a, #s20221128a62bc67223c9e .sub_depth li span
+	{;
+	
+}
+
+#s20221128a62bc67223c9e .slide_03.owl-theme .owl-dots .owl-dot span {;
+	
+}
+
+#s20221128a62bc67223c9e .pagination>li>a, #s20221128a62bc67223c9e .pagination>li>span,
+	#s20221128a62bc67223c9e .pagination>li>a:focus, #s20221128a62bc67223c9e .pagination>li>span:focus,
+	#s20221128a62bc67223c9e .map-inner .pagination li.active a,
+	#s20221128a62bc67223c9e .pagination li>a.disabled:hover,
+	#s20221128a62bc67223c9e .pagination li>a.disabled:focus {;
+	
+}
+
+#s20221128a62bc67223c9e .form-select-wrap.open .dropdown-menu .dropdown-item
+	{;
+	
+}
+
+#s20221128a62bc67223c9e .pagination>.active>a, #s20221128a62bc67223c9e .pagination>.active>span,
+	#s20221128a62bc67223c9e .pagination>.active>a:hover,
+	#s20221128a62bc67223c9e .pagination>.active>span:hover,
+	#s20221128a62bc67223c9e .pagination>.active>a:focus,
+	#s20221128a62bc67223c9e .pagination>.active>span:focus,
+	#s20221128a62bc67223c9e .pagination>li>a:hover, #s20221128a62bc67223c9e .pagination>li>span:hover,
+	#s20221128a62bc67223c9e .sub_depth li a.active, .doz_sys #s20221128a62bc67223c9e a,
+	#s20221128a62bc67223c9e .li_table ul li, #s20221128a62bc67223c9e .list-style .list.line>small,
+	.doz_sys #s20221128a62bc67223c9e div[data-widget-type="board"] .title.title-block a
+	{;
+	color:;
+}
+
+.doz_sys #s20221128a62bc67223c9e .board_contents a:not(.btn), .doz_sys #s20221128a62bc67223c9e .board_contents a:not(.btn):hover,
+	#s20221128a62bc67223c9e .board_txt_area a, #s20221128a62bc67223c9e .board_txt_area a:hover,
+	#s20221128a62bc67223c9e .board_txt_area a:active,
+	#s20221128a62bc67223c9e .board_txt_area a:focus,
+	#s20221128a62bc67223c9e .editor_box .fr-view a {
+	color: #363636;
+}
+
+#s20221128a62bc67223c9e div[data-widget-type="icon"] i {
+	color:;
+}
+
+.doz_sys #s20221128a62bc67223c9e a.body_font_color_30:not(.active) {;
+	
+}
+
+#s20221128a62bc67223c9e .text_tab .after_line:not(:last-child):after {;
+	
+}
+
+#s20221128a62bc67223c9e .text_tab ul.site_prod_nav>li a.active {
+	background: none;
+}
+
+#s20221128a62bc67223c9e .map-toolbar select.form-control {;
+	color: !important;
+	font-size: 14px;
+}
+
+.doz_sys #s20221128a62bc67223c9e .body_font_color_40,
+	#s20221128a62bc67223c9e .li_board ul.li_body li.name,
+	#s20221128a62bc67223c9e .li_board ul.li_body li.time,
+	#s20221128a62bc67223c9e .li_board ul.li_body li.like,
+	#s20221128a62bc67223c9e .li_board ul.li_body li.read {;
+	
+}
+
+#s20221128a62bc67223c9e .review_table .summary, #s20221128a62bc67223c9e .review_table.li_board ul.li_body li,
+	#s20221128a62bc67223c9e .review_table .list_text_title.lock_on {;
+	
+}
+
+.doz_sys #s20221128a62bc67223c9e .body_font_color_50 {;
+	
+}
+
+#s20221128a62bc67223c9e .li_board, #s20221128a62bc67223c9e .acd_row:first-child,
+	#s20221128a62bc67223c9e .acd_row {
+	border-color:;
+}
+
+#s20221128a62bc67223c9e .list-style .list-header,
+	#s20221128a62bc67223c9e .list-style .list, #s20221128a62bc67223c9e .list-style .list.line,
+	#s20221128a62bc67223c9e .list-style .list.line>.table-cell,
+	#s20221128a62bc67223c9e .li_table.row_04 .acd_collapse[aria-expanded="true"],
+	.li_table.row_04 .acd_collapse.in {;
+	
+}
+
+#s20221128a62bc67223c9e .btn, #s20221128a62bc67223c9e .visual_section a
+	{;
+	background-color: #212121;;
+	color:;
+	;
+}
+
+#s20221128a62bc67223c9e .btn:hover, #s20221128a62bc67223c9e .visual_section a:hover
+	{
+	border-color:;
+}
+
+#s20221128a62bc67223c9e .widget_text_wrap .btn {
+	background-color: #363636;
+	border-color: #363636;
+	color: #ffffff;
+	border-width: 1px;
+}
+
+.doz_sys #s20221128a62bc67223c9e .btn-primary {;
+	background-color: #363636;
+	border-color: #363636;
+	color: #ffffff;
+	border-width: 1px;
+}
+
+.doz_sys.shop_view #s20221128a62bc67223c9e .btn-primary span, .doz_sys.booking_view #s20221128a62bc67223c9e .btn-primary span,
+	.doz_sys.shop_mypage #s20221128a62bc67223c9e .btn-primary span {
+	color: #ffffff;
+}
+
+#s20221128a62bc67223c9e .coupon-wrap:after, #s20221128a62bc67223c9e .board_view .file_area ul li
+	{
+	background: #212121;
+}
+
+#s20221128a62bc67223c9e .text-gray-dark, #s20221128a62bc67223c9e .shop-table>thead>tr>th,
+	#s20221128a62bc67223c9e .shop_mypage .left-menu ul li a,
+	#s20221128a62bc67223c9e .shop_mypage .item-detail p.sale_pay, .doz_sys #s20221128a62bc67223c9e .product-notify-group .product-notify-label
+	{;
+	
+}
+
+#s20221128a62bc67223c9e .mypage .my-box a, #s20221128a62bc67223c9e .mypage .shop-table>tbody>tr,
+	#s20221128a62bc67223c9e .mypage .tip-off, #s20221128a62bc67223c9e .im-order-detail-table,
+	#s20221128a62bc67223c9e .im-order-price {
+	background-color: rgba(58, 58, 58, 1);
+	-ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff585858,
+		endColorstr=#ff585858);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff585858,
+		endColorstr=#ff585858);
+	zoom: 1;;
+}
+
+#s20221128a62bc67223c9e .mypage .my-box.on a {
+	background-color: #363636;;
+	color: #fff;
+}
+
+#s20221128a62bc67223c9e .mypage .my-box.on a p {
+	color: #fff;
+}
+
+#s20221128a62bc67223c9e .option_btn_tools a, #s20221128a62bc67223c9e .map-inner .pagination li a
+	{
+	color: #212121;
+}
+
+.doz_sys #s20221128a62bc67223c9e .list-style-card .card-body .text a {
+	color: #757575;
+}
+
+#s20221128a62bc67223c9e .card .title a {
+	color: #212121;
+}
+
+#s20221128a62bc67223c9e .section_bg.fixed_bg {;
+	
+}
+
+#s20221128a62bc67223c9e .section_bg.fixed_bg.fixed_bg_none {
+	background-attachment: inherit;
+}
+
+#s20221128a62bc67223c9e ul.site_prod_nav>li, #s20221128a62bc67223c9e .prod_detail_badge
+	{;
+	
+}
+
+#s20221128a62bc67223c9e .site_prod_nav_wrap.scroll-to-fixed-fixed {
+	background: #212121;
+	box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+#s20221128a62bc67223c9e .buy_footer_fixed {
+	background: #212121;
+	border-width: 1px 0 0 0;
+	border-style: solid;
+	;
+}
+
+#s20221128a62bc67223c9e .opt-group {
+	background: #212121;
+}
+
+#s20221128a62bc67223c9e ul.site_prod_nav>li a.active {;
+	
+}
+
+#s20221128a62bc67223c9e .background_tab ul.site_prod_nav>li a.active>span.braket-badge
+	{
+	background-color: none;;
+	color: #212121;
+}
+
+#s20221128a62bc67223c9e .input-block .checkbox-styled:not(ie8) input ~
+	span {;
+	color:;
+}
+
+.section_fixed_disable #s20221128a62bc67223c9e, .section_fixed_disable #s20221128a62bc67223c9e .doz_aside
+	{
+	position: relative !important;
+	top: 0 !important;
+	left: 0 !important;
+	z-index: auto !important;
+}
+
+.section_fixed_disable #s20221128a62bc67223c9e .doz_aside.scroll-to-fixed-fixed 
+	~ .spacer, .section_fixed_disable #s20221128a62bc67223c9e.scroll-to-fixed-fixed 
+	~ .spacer {
+	height: 0 !important;
+	display: none !important;
+}
+
+#s20221128a62bc67223c9e.scroll-to-fixed-fixed {
+	width: 100% !important;
+}
+
+#s20221128a62bc67223c9e .doz_aside.scroll-to-fixed-fixed-end {
+	bottom: 0 !important;
+	top: auto !important;
+}
+
+.device_type_m #s20221128a62bc67223c9e.mobile_section main .inside {
+	padding-left: 60px;
+	padding-right: 60px;
+}
+
+.device_type_m #s20221128a62bc67223c9e .mypage .left-menu ul li a,
+	.device_type_m #s20221128a62bc67223c9e .cart .left-menu ul li a {
+	background-color: rgba(58, 58, 58, 1);
+	-ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff585858,
+		endColorstr=#ff585858);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff585858,
+		endColorstr=#ff585858);
+	zoom: 1;;
+}
+
+#s20221128a62bc67223c9e .im-cart-result-table {
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+}
+
+#s20221128a62bc67223c9e .shop-table>tbody>tr>td.img .opt .more {;
+	
+}
+
+#s20221128a62bc67223c9e .im-cart-info {;
+	
+}
+
+#s20221128a62bc67223c9e .shop-table>thead>tr>th, #s20221128a62bc67223c9e .shop-table>tbody>tr>td,
+	#s20221128a62bc67223c9e .mypage .shop-table>tbody>tr,
+	#s20221128a62bc67223c9e .shop-table>tbody>tr>td.img img,
+	#s20221128a62bc67223c9e .shop-table>tbody>tr>td+td,
+	#s20221128a62bc67223c9e .mypage .tip-off, #s20221128a62bc67223c9e .mypage .shop-table img,
+	#s20221128a62bc67223c9e .im-order-detail-table, #s20221128a62bc67223c9e .im-order-price,
+	#s20221128a62bc67223c9e .im-order-detail-table thead tr,
+	#s20221128a62bc67223c9e .im-order-detail-table tr+tr,
+	#s20221128a62bc67223c9e .im-order-detail-table img,
+	#s20221128a62bc67223c9e .im-order-detail-table .im-deliv-price,
+	#s20221128a62bc67223c9e .im-order-price-header, #s20221128a62bc67223c9e .im-order-price-body
+	{;
+	
+}
+
+#s20221128a62bc67223c9e .shop-table .list_badge {
+	border-color:;
+}
+
+#s20221128a62bc67223c9e .im-cart-result-table thead>tr>th,
+	#s20221128a62bc67223c9e #shop_cart_list .shop-table>colgroup+thead>tr:first-child>th,
+	#s20221128a62bc67223c9e #shop_cart_list .shop-table>tbody>tr>td+td,
+	#s20221128a62bc67223c9e #shop_cart_list .shop-table>thead>tr>th,
+	#s20221128a62bc67223c9e #shop_cart_list .shop-table>tbody>tr>td {;
+	
+}
+
+#s20221128a62bc67223c9e .shop-content.mypage .shop-item .item-icon .im-icon.im-ico-liked
+	{
+	color: #363636
+}
+
+@media ( min-width : 991px) {
+	.doz_sys #s20221128a62bc67223c9e .btn-primary:hover,
+		#s20221128a62bc67223c9e .widget_text_wrap .btn:hover {;
+		background-color: #ffffff;
+		border-color: #363636;
+		color: #363636;
+		border-width: 1px;
+	}
+	.doz_sys.shop_view #s20221128a62bc67223c9e .btn-primary:hover span,
+		.doz_sys.booking_view #s20221128a62bc67223c9e .btn-primary:hover span,
+		.doz_sys.shop_mypage #s20221128a62bc67223c9e .btn-primary:hover span {
+		color: #363636;
+	}
+}
+
+@media all and (max-width : 768px) {
+	.doz_sys #s20221128a62bc67223c9e .fixed_view a, .doz_sys #s20221128a62bc67223c9e .fixed_view select.form-control,
+		.doz_sys #s20221128a62bc67223c9e .fixed_view .form-select-wrap:before
+		{
+		color: #212121;
+	}
+	.doz_sys #s20221128a62bc67223c9e .fixed_view .body_font_color_50 {
+		color: rgba(33, 33, 33, 0.5);
+	}
+	.doz_sys #s20221128a62bc67223c9e .fixed_view .body_font_color_20 {
+		color: rgba(33, 33, 33, 0.2);
+	}
+	.booking_view #s20221128a62bc67223c9e .fixed_view .booking_opt select.form-control
+		{
+		background-color: #fff;
+	}
+	#s20221128a62bc67223c9e #shop_cart_list .shop-tit,
+		#s20221128a62bc67223c9e #shop_cart_list .shop-table>thead>tr,
+		#s20221128a62bc67223c9e #shop_cart_list .shop-table>tfoot .payment-info,
+		#s20221128a62bc67223c9e .im-price-result {;
+		
+	}
+	#s20221128a62bc67223c9e .shop-table>tbody>tr>td.img .opt .more+.more,
+		#s20221128a62bc67223c9e .im-order-row+.im-order-row {;
+		
+	}
+	#s20221128a62bc67223c9e #shop_cart_list .shop-table,
+		#s20221128a62bc67223c9e #shop_cart_list .shop-table>tbody>tr.im-tr-shipping+tr,
+		#s20221128a62bc67223c9e #shop_cart_list .shop-table>tfoot,
+		#s20221128a62bc67223c9e #shop_cart_list .shop-table>tfoot .payment-info
+		{;
+		
+	}
+	#s20221128a62bc67223c9e #shop_cart_list .shop-table>thead>tr,
+		#s20221128a62bc67223c9e .im-order-detail-table .im-space {
+		background-color: #212121;
+	}
+	#s20221128a62bc67223c9e #shop_cart_list .shop-table>thead>tr.scroll-to-fixed-fixed-end
+		{
+		top: auto !important;
+		bottom: 0;
+	}
+}
+
+@media ( max-width : 991px) {
+	#s20221128a62bc67223c9e
+	 
+	.buy_btns
+	 
+	.social_btn
+	,
+	#s20221128a62bc67223c9e
+	 
+	.buy_btns
+	 
+	.cart_btn
+	,
+	#s20221128a62bc67223c9e
+	 
+	.layer_pop
+	 
+	.bottom-btn
+	,
+	#s20221128a62bc67223c9e
+	 
+	.shop-table
+	>
+	thead
+	,
+	#s20221128a62bc67223c9e
+	 
+	.left-menu
+	,
+	#s20221128a62bc67223c9e
+	 
+	.shop-table
+	>
+	tbody
+	>
+	tr
+	,
+	{
+	;
+}
+
+#s20221128a62bc67223c9e
+ 
+main
+,
+#s20221128a62bc67223c9e
+ 
+.section_wrap
+.extend_section
+ 
+main
+,
+#s20221128a62bc67223c9e
+ 
+.doz_sys
+.shop_payment
+ 
+.inside
+,
+.doz_sys
+.shop_payment
+ 
+.inside
+ 
+.col-dz
+,
+{
+padding-left
+:
+0
+;
+
+					
+padding-right
+:
+0
+;
+
+				
+}
+#s20221128a62bc67223c9e.mobile_section main .inside {
+	padding-left: 60px;
+	padding-right: 60px;
+}
+
+#s20221128a62bc67223c9e.section_wrap.extend_section main .widget.board .grid_ignore.bg_on
+	{
+	margin-left: -15px;
+	margin-right: -15px;
+	width: calc(100% + 30px);
+}
+
+#s20221128a62bc67223c9e .mypage .left-menu ul li a,
+	#s20221128a62bc67223c9e .cart .left-menu ul li a,
+	#s20221128a62bc67223c9e .mypage .left-menu .cart-menu-slide {
+	background-color: rgba(58, 58, 58, 1);
+	-ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff585858,
+		endColorstr=#ff585858);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff585858,
+		endColorstr=#ff585858);
+	zoom: 1;;
+}
+
+.section_wrap .side_gutter {
+	display: none !important;
+}
+
+#s20221128a62bc67223c9e .coupon-wrap:after {
+	background: #212121 !important;
+}
+
+}
+@media ( max-width : 767px) {
+	#s20221128a62bc67223c9e .nav_gradient.slide_left {
+		background: linear-gradient(to left, rgba(255, 255, 255, 0), #212121);
+	}
+	#s20221128a62bc67223c9e .nav_gradient.slide_right {
+		background: linear-gradient(to right, rgba(255, 255, 255, 0), #212121);
+	}
+	#s20221128a62bc67223c9e .button_tab .scroll-to-fixed-fixed ul.site_prod_nav>li
+		{
+		border-top: 0;
+		border-bottom: 0;
+	}
+	#s20221128a62bc67223c9e .background_tab .scroll-to-fixed-fixed ul.site_prod_nav>li a.active
+		{
+		box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+	}
+}
+
+@media ( min-width : 768px) {
+	#s20221128a62bc67223c9e .opt-group .btn_clse {
+		background-color: #212121;
+	}
+	#s20221128a62bc67223c9e .opt-group .btn_clse:after {
+		box-shadow: 0 10px 0 0 #212121;
+	}
+}
+
+.doz_sys #s20221128a62bc67223c9e .bg-brand, .doz_sys #s20221128a62bc67223c9e .bg-brand span,
+	.doz_sys #s20221128a62bc67223c9e .btn-brand {;
+	background-color: #363636;
+	border-color: #363636;
+	border-width: 1px;
+	color: #fff;
+}
+
+.doz_sys #s20221128a62bc67223c9e .bg-brand:hover {
+	background-color: rgba(28, 28, 28, 1);
+	-ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff282828,
+		endColorstr=#ff282828);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff282828,
+		endColorstr=#ff282828);
+	zoom: 1;;
+	border-color: rgb(28, 28, 28);
+	border-color: rgba(28, 28, 28, 1);;
+}
+
+.device_type_m .pc_section #padding_w20221128ba16ec9d79763 {
+	height: 15px !important;
+}
+
+@media all and (max-width:768px) {
+	.pc_section #padding_w20221128ba16ec9d79763 {
+		height: 15px !important;
+	}
+}
+
+#text_w202211285622030fa19bd {
+	border-radius: 0px;
+	border: 0px none transparent;;
+	min-height: 0px;;
+	line-height: inherit;
+}
+
+#text_w202211285622030fa19bd .fr-code-view {
+	line-height: 1.6;
+}
+
+#text_w202211285622030fa19bd .text_bg_img, #text_w202211285622030fa19bd .text_bg_color
+	{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	border-radius: 0px;
+}
+
+.admin #text_w202211285622030fa19bd, #text_w202211285622030fa19bd .text-table
+	{
+	min-height: 0px;;
+	word-break: normal;
+	word-wrap: break-word;
+}
+
+#text_w202211285622030fa19bd, #text_w202211285622030fa19bd .text-table {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+.doz_sys main>.doz_row #text_w202211285622030fa19bd.default_padding {
+	padding-left: 32px;
+	padding-right: 32px;
+}
+
+@media all and (max-width : 767px) {
+	.doz_sys main>.doz_row #text_w202211285622030fa19bd.default_padding {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+}
+
+#text_w20221128aa8064894aa86 {
+	border-radius: 0px;
+	border: 0px none transparent;;
+	min-height: 0px;;
+	line-height: inherit;
+}
+
+#text_w20221128aa8064894aa86 .fr-code-view {
+	line-height: 1.6;
+}
+
+#text_w20221128aa8064894aa86 .text_bg_img, #text_w20221128aa8064894aa86 .text_bg_color
+	{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	border-radius: 0px;
+}
+
+.admin #text_w20221128aa8064894aa86, #text_w20221128aa8064894aa86 .text-table
+	{
+	min-height: 0px;;
+	word-break: normal;
+	word-wrap: break-word;
+}
+
+#text_w20221128aa8064894aa86, #text_w20221128aa8064894aa86 .text-table {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+.doz_sys main>.doz_row #text_w20221128aa8064894aa86.default_padding {
+	padding-left: 32px;
+	padding-right: 32px;
+}
+
+@media all and (max-width : 767px) {
+	.doz_sys main>.doz_row #text_w20221128aa8064894aa86.default_padding {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+}
+
+.device_type_m .pc_section #padding_w20221128967acda90aa99 {
+	height: 23.5px !important;
+}
+
+@media all and (max-width:768px) {
+	.pc_section #padding_w20221128967acda90aa99 {
+		height: 23.5px !important;
+	}
+}
+
+#w20221128f5c07cb47e77e .btn_5bcb97f57bcf3 {
+	background-color: rgba(255, 255, 255, 0);
+	color: #eeeeee !important;
+	border-color: rgba(0, 0, 0, 0.2);
+	border-radius:;
+	border-width: 0px;
+}
+
+@media ( min-width : 991px) {
+	#w20221128f5c07cb47e77e .btn_5bcb97f57bcf3:hover {
+		background-color: rgba(255, 255, 255, 0);
+		color: rgba(238, 238, 238, 0.7) !important;
+		border-color: rgba(0, 0, 0, 0.2);
+		border-width: 0px;
+	}
+}
+
+#w20221128f5c07cb47e77e .btn_5bcb97f57bcf3 {
+	font-size: 13px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	letter-spacing: 0px;
+}
+
+#w20221128f5c07cb47e77e .btn_5O63167t8T {
+	background-color: rgba(255, 255, 255, 0);
+	color: #eeeeee !important;
+	border-color: rgba(0, 0, 0, 0.2);
+	border-radius:;
+	border-width: 0px;
+}
+
+@media ( min-width : 991px) {
+	#w20221128f5c07cb47e77e .btn_5O63167t8T:hover {
+		background-color: rgba(255, 255, 255, 0);
+		color: rgba(238, 238, 238, 0.7) !important;
+		border-color: rgba(0, 0, 0, 0.2);
+		border-width: 0px;
+	}
+}
+
+#w20221128f5c07cb47e77e .btn_5O63167t8T {
+	font-size: 13px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	letter-spacing: 0px;
+}
+
+#w20221128f5c07cb47e77e .btn_45T5tpKz6C {
+	background-color: rgba(255, 255, 255, 0);
+	color: #eeeeee !important;
+	border-color: rgba(0, 0, 0, 0.2);
+	border-radius:;
+	border-width: 0px;
+}
+
+@media ( min-width : 991px) {
+	#w20221128f5c07cb47e77e .btn_45T5tpKz6C:hover {
+		background-color: rgba(255, 255, 255, 0);
+		color: rgba(238, 238, 238, 0.7) !important;
+		border-color: rgba(0, 0, 0, 0.2);
+		border-width: 0px;
+	}
+}
+
+#w20221128f5c07cb47e77e .btn_45T5tpKz6C {
+	font-size: 13px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	letter-spacing: 0px;
+}
+
+#w20221128f5c07cb47e77e .btn-blocked .btn-group {
+	display: block;
+}
+
+#w20221128f5c07cb47e77e .btn-blocked .btn-group>.btn {
+	float: none;
+}
+
+#w20221128f5c07cb47e77e .button_wrap {
+	margin-bottom: --1px;
+}
+
+#w20221128f5c07cb47e77e .btn-group-justified.button_wrap,
+	#w20221128f5c07cb47e77e .btn-blocked.button_wrap {
+	margin-bottom: 0;
+}
+
+.device_type_m .pc_section #padding_w202211286703fc68cf031 {
+	height: 21.5px !important;
+}
+
+@media all and (max-width:768px) {
+	.pc_section #padding_w202211286703fc68cf031 {
+		height: 21.5px !important;
+	}
+}
+
+.device_type_m .pc_section #padding_w20221128a40165f40fae0 {
+	height: -2px !important;
+}
+
+@media all and (max-width:768px) {
+	.pc_section #padding_w20221128a40165f40fae0 {
+		height: -2px !important;
+	}
+}
+</style>
+<script src="https://www.youtube.com/iframe_api" id="youtube_player_api"></script>
+<script src="https://vendor-cdn.imweb.me/js/jquery.js?1627517460"></script>
+<script
+	src="https://vendor-cdn.imweb.me/js/jquery-ui.design.js?1627517437"></script>
+<script src="https://vendor-cdn.imweb.me/js/lodash.min.js?1656295899"></script>
+
+<script>
+	var IS_IADMIN = false;
+	var CUSTOM_IMAGE_WIDTH = 1600;
+	var IS_MOBILE = false;
+	var IS_IE = false;
+	var IS_SUPPORT_CSS3 = true;
+	var UPLOAD_URL = '/upload/';
+	var CDN_UPLOAD_URL = 'https://cdn.imweb.me/upload/';
+	var IS_MAIN = false;
+	var CURRENT_URL = 'L3Nob3A%3D';
+	var CURRENT_DOMAIN = 'onoffline.imweb.me';
+	var THUMBNAIL_URL = '/thumbnail/';
+	var CDN_THUMBNAIL_URL = 'https://cdn.imweb.me/thumbnail/';
+	var SITE_CODE = 'S20221128ac2a7e01edb6f';
+	var UNIT_CODE = 'u2022112863841731d5c5a';
+	var MAIN_DOMAIN = 'onoffline.imweb.me';
+	var VENDOR_DOMAIN = 'https://vendor-cdn.imweb.me';
+	var GOOGLE_API_KEY = 'AIzaSyA8CCexf9XTJcH09mStr-HRW4nin4k8J7w';
+	var FROALA_VERSION = 311;
+	var FROALA_KEY = '6LF5g1B3D3F3C6C3E2F-11SLJCKHXOSLMc1YGSGb1ZXHSe1CgB5A4D4C3E3C2A13A19B7B2==';
+	var IS_ANDROID_APP = 'N';
+	var IS_IOS_APP = 'N';
+	var APP_VERSION = '0';
+	var IS_APP = IS_ANDROID_APP == "Y" || IS_IOS_APP == "Y";
+	var IE_VERSION = '11';
+	var TEST_SERVER = false;
+	var MENU_SNS_INIT_DATA = {
+		"_main_url" : "https:\/\/onoffline.imweb.me",
+		"_site_name" : "onoffline",
+		"_subject" : "onoffline",
+		"_body" : "",
+		"_post_url" : "https:\/\/onoffline.imweb.me\/shop",
+		"_img" : "https:\/\/cdn.imweb.me\/upload\/S20190909897bd4d3191f1\/1d63f1fc805ea.png",
+		"_security_post_url" : "aHR0cHM6Ly9vbm9mZmxpbmUuaW13ZWIubWUvc2hvcA=="
+	};
+	var LIMIT_API_LIST = [ "kakao_link", "kakaostory_link" ];
+	var NO_IMAGE_URL = '/img/transparency.png';
+	var SITE_COUNTRY_CODE = 'kr';
+	var KOREA_COUNTRY_CODE = 'kr';
+	var TAIWAN_COUNTRY_CODE = 'tw';
+	var LANG_CODE = 'KR';
+	var IS_GUEST = true;
+	var MEMBER_HASH = '';
+
+	//var LOGIN_MEMBER_DATA = {"name": "", "point": ""};
+</script>
+<script
+	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="https://player.vimeo.com/api/player.js"></script>
+</head>
+<body
+	class="doz_sys  _body_menu_m20221128e445c75c466cd  mobile-nav-on  mobile_nav_dep2  shopping  new_header_site   new_fixed_header_disable fixed-menu-on"
+	style="" id="doz_body">
+
+<my:navbar></my:navbar>
+
+	<div id="site_alarm_slidemenu_container"
+		class="notification-canvas-container">
+		<div class="notification-canvas-backdrop"
+			id="site_alarm_slidemenu_backdrop" style="display: none"></div>
+		<div id="site_alarm_slidemenu"
+			class="notification-canvas alarm-pane alarm_slide" style="">
+
+			<div class="tse-scrollable _scroll_wrap">
+				<div class="tse-content tab-content _is_tse_content"
+					style="padding-top: 60px;">
+					<div class="site-alarm-head _alarm_header">
+						<header id="site_alarm_title">알림</header>
+						<a href="javascript:;" class="btn btn-flat goback "
+							onclick="ALARM_MENU.showAlarmSlide();"><i
+							class="btm bt-arrow-left" aria-hidden="true"></i><span
+							class="sr-only">뒤로</span></a>
+					</div>
+					<div class="site-alarm-head _setting_header" style="display: none">
+						<header id="site_alarm_title_setting">알림 설정</header>
+						<a href="javascript:;" class="btn btn-flat goback "
+							onclick="ALARM_MENU.toggleAlarmSetting();"><i
+							class="btm bt-arrow-left" aria-hidden="true"></i><span
+							class="sr-only">뒤로</span></a>
+					</div>
+					<div id="site_alarm_list_wrap" class="site_alarm_list_wrap">
+						<!--알림 리스트-->
+
+						<div id="site_alarm_tab" class="notify-body"></div>
+
+						<div id="site_alarm_more_btn" class="notify-body"
+							style="display: none;">
+							<a class="tile more" href="javascript:;"
+								onclick="ALARM_MENU.getHeaderAlarmList()">
+								<div class="tile-content">더보기</div>
+							</a>
+						</div>
+
+					</div>
+					<div id="site_alarm_setting_wrap" style="display: none;"
+						class="site_alarm_setting_wrap">
+
+						<div class="offcanvas-block alarm-setting">
+							<div class="_scroll_wrap" id="site_alarm_menu_tap_wrap">
+								<div class="tab-content">
+									<div class="tab-pane active">
+										<div class="notify-body">
+											<a href="javascript:;" class="board-alaram tile">게시물 알림</a> <a
+												class="tile" href="javascript:;"
+												onclick="ALARM_MENU.changeAlarmSetting($(this),'','my_post')">
+												<div class="tile-content">
+													<div class="tile-text">
+														내 글 반응
+														<div class="text-sm text-gray-bright">내가 작성한 게시물이나
+															댓글에 다른 사람이 댓글이나 답글을 작성하면 알려줍니다.</div>
+														<div class="check ">
+															<div class="checkbox checkbox-styled">
+																<label> <input title="내 글 반응" type="checkbox"
+																	value="ok"><span></span>
+																</label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</a> <a class="tile" href="javascript:;"
+												onclick="ALARM_MENU.changeAlarmSetting($(this),'','notice')">
+												<div class="tile-content">
+													<div class="tile-text">
+														공지사항
+														<div class="text-sm text-gray-bright">사이트에서 보내는 중요한
+															공지를 실시간으로 알려줍니다.</div>
+														<div class="check">
+															<div class="checkbox checkbox-styled">
+																<label> <input title="공지사항" type="checkbox"
+																	value="ok"><span></span>
+																</label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="site-alarm-body">
+
+				<!--//알림 리스트-->
+				<!--알림 설정-->
+
+			</div>
+		</div>
+	</div>
+	<!-- end#offcanvas-help -->
+	<ul class="dropdown-menu animation-dock member_profile"
+		id="member_profile">
+		<li class="dropdown-profile text-center"><a href="javascript:;"
+			class="nav-btn-icon profile alarm-toggle _show_alarm"
+			onclick="ALARM_MENU.showAlarmSlide();" id="slide-alarm"
+			style="right: 0; position: absolute; right: 0; top: 0; font-size: 20px; padding: 20px;"><i
+				class="icon-bell"></i><span class="sr-only">Alarm</span></a> <span
+			class="profile-info">
+				<div onclick="SITE_MEMBER.editProfile()">
+					<img src="/common/img/default_profile.png"
+						class="img-circle dropdown-avatar-big _profile_img" alt="프로필 이미지">
+				</div>
+				<div class="sm-padding no-padding-bottom"></div>
+		</span></li>
+		<li class="profile-footer btn-group-justified"><a
+			href="javascript:;"
+			onclick="SITE_MEMBER.openLogin('L3Nob3BfbXlwYWdl','mypage');"
+			class="btn btn-flat">마이페이지</a> <a
+			href="/logout.cm?back_url=L3Nob3A%3D" class="btn btn-flat right">로그아웃</a>
+		</li>
+	</ul>
+	<div id="mobile_slide_menu_wrap" class="mobile_slide_menu_container">
+		<div id="mobile_slide_menu"
+			class="mobile_slide_menu slide_menu _slide_menu">
+			<ul class="nav navbar-nav navbar-right">
+
+				<div class="viewport-nav mobile _menu_wrap "
+					style="position: relative">
+					<!-- 모바일 메뉴서랍내 프로필 -->
+					<input type="hidden" value="/common/img/app_login.png"
+						id="imagepath">
+					<div class="profile-area">
+						<a href="javascript:;"
+							onclick="SITE_MEMBER.openLogin('L3Nob3A%3D', 'null', null, 'Y');"
+							class="btn nav-btn-icon profile no-padding btn-flat full-width">
+							<div class="member-info guest full-width">
+								<span>로그인이 필요합니다.</span>
+								<button>로그인</button>
+							</div>
+						</a>
+						<div class="btn-group"></div>
+					</div>
 
 
 
-<!-- 상단으로 -->
-<button class="btn_go_top" onclick="moveTop();" style="display: inline-block;">상단으로</button>
+					<li style="" class="depth-01  " data-code="m20221128e445c75c466cd">
+						<a href="/shop" data-url="shop" data-has_child="Y"
+						data-is_folder_menu="N"
+						class="active   active-real  open has_child" onclick=""> <span
+							class="plain_name" data-hover="">SHOP</span> <span
+							class="_toggle_btn toggle-btn"></span>
+					</a>
 
-<!-- //Wrap -->
+						<ul data-index="1" class="in" style="display: block;">
 
-<!-- Script -->
-<!-- Library -->
-<script type="text/javascript" src="/js/library/jquery.cookie.js"></script>
-<script type="text/javascript" src="/js/library/jquery.lazyload.js?rand=1669339876"></script>
-<script type="text/javascript" src="/js/library/iscroll.js"></script>
+							<li class="depth-02  " style=""
+								data-code="m202211287faae98d6ec58"><a tabindex="-1"
+								data-url="beens" data-has_child="N" data-is_folder_menu="N"
+								href="/beens" class=" " onclick=""> <span class="plain_name"
+									data-hover="">Beens</span> <span class="_toggle_btn toggle-btn"></span>
+							</a></li>
 
-<!-- Service -->
-<script type="text/javascript" src="/js/service/common.js?rand=1669339876"></script>
-<script type="text/javascript" src="/js/service/geolocation.js?rand=1669339876"></script>
+							<li class="depth-02  " style=""
+								data-code="m20221128f891a721454d6"><a tabindex="-1"
+								data-url="goods" data-has_child="N" data-is_folder_menu="N"
+								href="/goods" class=" " onclick=""> <span class="plain_name"
+									data-hover="">Goods</span> <span class="_toggle_btn toggle-btn"></span>
+							</a></li>
 
-<!-- Module -->
-<script type="text/javascript" src="/js/modules/dialogPopup.js?rand=1669339876"></script>
+						</ul>
 
-<!-- Page Script -->
-<script type="text/javascript" src="/js/library/jquery-ui.min.js"></script>
-<script type="text/javascript" src="/js/library/jquery.ui.touch-punch.min.js"></script>
-<script type="text/javascript" src="/js/library/jquery.comiseo.daterangepicker.min.js"></script>
-<script type="text/javascript" src="/js/library/swiper.min.js"></script>
-<script type="text/javascript" src="/js/library/owl.carousel.min.js"></script>
-<script type="text/javascript" src="/js/library/moment.js"></script>
-<script type="text/javascript" src="https://www.goodchoice.kr/js/service/datepick.js?rand=1669339876"></script>
-<script type="text/javascript" src="/js/library/vue.min.js"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f6ffb505bb11d7cc3584d443ce35f704"></script><script charset="UTF-8" src="https://t1.daumcdn.net/mapjsapi/js/main/4.4.8/kakao.js"></script>
-<script type="text/javascript" src="https://www.goodchoice.kr/js/service/product.js?rand=1669339876"></script>
-<script type="text/javascript" src="https://www.goodchoice.kr/js/service/product.home.js?rand=1669339876"></script>
+					</li>
 
-<!-- Body Spinner -->
-<div class="spinner show" style="display: none;"><span></span></div>
+					<li style="" class="depth-01  " data-code="m202211289139f5b8e8e58">
+						<a href="/about" data-url="about" data-has_child="N"
+						data-is_folder_menu="N" class=" " onclick=""> <span
+							class="plain_name" data-hover="">ABOUT</span> <span
+							class="_toggle_btn toggle-btn"></span>
+					</a>
 
-<div style="display:none;">
-	<!-- 네이버 프리미엄 로그 분석(https://yeogirnd.atlassian.net/browse/SD-320)-->
-	<script type="text/javascript" src="https://wcs.naver.net/wcslog.js"></script>
+					</li>
 
+					<li style="" class="depth-01  " data-code="m202211289f03dd30c2a75">
+						<a href="/notice" data-url="notice" data-has_child="N"
+						data-is_folder_menu="N" class=" " onclick=""> <span
+							class="plain_name" data-hover="">NOTICE</span> <span
+							class="_toggle_btn toggle-btn"></span>
+					</a>
+
+					</li>
+
+					<li style="" class="depth-01  " data-code="m20221128c203d4c6c0226">
+						<a href="/contact" data-url="contact" data-has_child="N"
+						data-is_folder_menu="N" class=" " onclick=""> <span
+							class="plain_name" data-hover="">CONTACT</span> <span
+							class="_toggle_btn toggle-btn"></span>
+					</a>
+
+					</li>
+
+				</div>
+			</ul>
+			<div class="im-mobile-slide-footer"></div>
+		</div>
+		<button type="button" class="navbar-toggle close slide-close"
+			onclick="MOBILE_SLIDE_MENU.slideNavToggle();">
+			<i class="btm bt-times" aria-hidden="true"></i><span class="sr-only">닫기</span>
+		</button>
+
+<style>
+.new_header_site .mobile_slide_menu_container.slide_open .mobile_slide_menu,
+	.new_header_site .mobile_slide_menu_container .mobile_slide_menu,
+	.admin.new_header_mode .mobile_slide_menu_container.slide_open .mobile_slide_menu,
+	.admin.new_header_mode .mobile_slide_menu_container .mobile_slide_menu
+	{
+	background: #212121 !important;
+}
+
+.new_header_site .mobile_slide_menu_container .mobile_slide_menu .viewport-nav.mobile li li ul,
+	.admin.new_header_mode .mobile_slide_menu_container .mobile_slide_menu .viewport-nav.mobile li li ul
+	{
+	background: transparent;
+}
+
+.mobile_slide_menu_container .mobile_slide_menu .profile-area {
+	background: #2b2b2b;
+	margin-bottom: 0;
+}
+
+.mobile_slide_menu_container .mobile_slide_menu .profile-area .member-info,
+	.mobile_slide_menu_container .mobile_slide_menu .profile-area .btn-group,
+	.mobile_slide_menu_container .mobile_slide_menu .profile-area .member-info.guest button
+	{
+	color: #eeeeee;
+}
+
+.mobile_slide_menu_container .mobile_slide_menu .profile-area .member-info.guest button
+	{
+	border-color: rgb(238, 238, 238);
+	border-color: rgba(238, 238, 238, 0.2);
+}
+
+.mobile_slide_menu_container .viewport-nav.mobile li li a.has_child.open>span,
+	.mobile_slide_menu_container .viewport-nav.mobile li li a.has_child.open:after,
+	.mobile_slide_menu_container .viewport-nav.mobile li li a span {
+	color: rgba(238, 238, 238, 0.65);
+}
+
+.mobile_slide_menu_container .viewport-nav.mobile li a {
+	color: rgba(238, 238, 238, 0.65);
+	letter-spacing: 0px;
+}
+
+.mobile_slide_menu_container .viewport-nav.mobile li.use_sub_name:hover>a:not(.active)>.plain_name:before
+	{
+	color: rgba(238, 238, 238, 0.65);
+}
+
+.mobile_slide_menu_container .viewport-nav.mobile li li.use_sub_name:hover>a:not(.active)>.plain_name
+	{
+	color: transparent;
+}
+
+.mobile_slide_menu_container .viewport-nav.mobile li li.use_sub_name:hover>a:not(.active)>.plain_name:before
+	{
+	position: absolute;
+	color: rgba(238, 238, 238, 0.65);
+	left: auto;
+	right: auto;
+}
+
+.mobile_slide_menu_container .viewport-nav.mobile li a.active-real {
+	background: #f5f5f5;
+	color: #212121;
+}
+
+.mobile_slide_menu_container .viewport-nav.mobile li a.active-real span,
+	.mobile_slide_menu_container .viewport-nav.mobile li a.has_child.open.active-real span
+	{
+	color: #212121;
+}
+
+.mobile_slide_menu_container .viewport-nav.mobile li.depth-01 {
+	border-top: 0px solid rgba(243, 243, 243, 0.5);
+}
+
+.mobile_slide_menu_container .viewport-nav.mobile li.depth-01:last-child
+	{
+	border-bottom: 0px solid rgba(243, 243, 243, 0.5);
+}
+
+.mobile_slide_menu_container .viewport-nav.mobile li.depth-01 ul {
+	display: none;
+}
+
+.mobile_slide_menu_container .viewport-nav.mobile li.depth-01>a {
+	font-size: 14px;
+}
+
+.mobile_slide_menu_container .viewport-nav.mobile li li a {
+	font-size: 13px !important;
+}
+
+.mobile_slide_menu_container .viewport-nav.mobile li li:last-child a,
+	.mobile_slide_menu_container .viewport-nav.mobile li li li:last-child a,
+	.mobile_slide_menu_container .viewport-nav.mobile li>ul.collapse,
+	.mobile_slide_menu_container .viewport-nav.mobile li li>ul.collapse,
+	.mobile_slide_menu_container .viewport-nav.mobile li>ul.collapsing[aria-expanded=false],
+	.mobile_slide_menu_container .viewport-nav.mobile li li>ul.collapsing[aria-expanded=false]
+	{
+	margin-bottom: 0;
+}
+
+.mobile_slide_menu_container .viewport-nav.mobile li>ul,
+	.mobile_slide_menu_container .viewport-nav.mobile li li>ul,
+	.mobile_slide_menu_container .viewport-nav.mobile li>ul.collapse.in,
+	.mobile_slide_menu_container .viewport-nav.mobile li li>ul.collapse.in,
+	.mobile_slide_menu_container .viewport-nav.mobile li>ul.collapsing[aria-expanded=true],
+	.mobile_slide_menu_container .viewport-nav.mobile li li>ul.collapsing[aria-expanded=true]
+	{
+	margin-bottom: 14px;
+}
+
+.mobile_slide_menu_container .viewport-nav.mobile li li li:first-child a
+	{
+	margin-top: 0;
+}
+
+.mobile_slide_menu_container .viewport-nav.mobile li.depth-01:first-of-type
+	{
+	padding-top: 10px;
+}
+
+.mobile_slide_menu_container .viewport-nav.mobile li.depth-01>a {
+	padding: 9px 20px 10px;
+}
+
+.mobile_slide_menu_container .viewport-nav.mobile li>ul,
+	.mobile_slide_menu_container .viewport-nav.mobile li li>ul,
+	.mobile_slide_menu_container .viewport-nav.mobile li>ul.collapse.in,
+	.mobile_slide_menu_container .viewport-nav.mobile li li>ul.collapse.in,
+	.mobile_slide_menu_container .viewport-nav.mobile li>ul.collapsing[aria-expanded=true],
+	.mobile_slide_menu_container .viewport-nav.mobile li li>ul.collapsing[aria-expanded=true]
+	{
+	margin-bottom: 10px;
+}
+
+.viewport-nav.mobile li a.has_child>.toggle-btn:after {
+	padding: 9px 18px 10px;
+}
+
+.viewport-nav.mobile li a.has_child>.toggle-btn:after {
+	font-size: 13.3px;
+}
+
+.viewport-nav.mobile li li a.has_child>.toggle-btn:after {
+	font-size: 12.35px;
+}
+
+.navbar-nav .profile-more.open .dropdown-menu li>a {
+	background: transparent;
+	color: #212121;
+	padding: 8px 16px;
+}
+
+.im-globe {
+	display: none;
+}
+
+.im-globe .globe_icon {
+	display: inline-block;
+}
+
+.im-globe .globe_square, .im-globe .globe_circle {
+	display: none !important;
+}
+
+.im-mobile-slide-footer {
+	background: #212121;
+	color: rgba(238, 238, 238, 0.65);
+}
+
+.im-mobile-slide-footer .btn {
+	color: rgba(238, 238, 238, 0.65);
+}
+</style>
+	</div>
+	<header id="doz_header_wrap">
+		<div id="doz_header" data-newheader="Y">
+			<div class="new_org_header _new_org_header">
+				<div id="inline_header_normal" style="min-height: 30px;"
+					class="tansparent_bg">
+					<div data-type="section-wrap"
+						class="extend  inline-section-wrap fixed_transform _fixed_header_section scroll-to-fixed-fixed"
+						id="s20221128a044c05215371"
+						style="z-index: 999; position: fixed; top: 0px; margin-left: 0px; width: 1691px; left: 0px;">
+						<div
+							class="section_bg _section_bg fixed_transform _interactive_bg  "></div>
+						<div class="section_bg_color _section_bg_color fixed_transform"
+							style="background-color: #fff; position: absolute; left: 0; top: 0; right: 0; bottom: 0;"></div>
+						<div data-type="inside" class="inline-inside _inline-inside">
+							<div data-type="section" class="inline-section"
+								section-code="s20221128a044c05215371">
+								<div data-type="col-group" data-col-group="left"
+									class="inline-col-group inline-col-group-left"
+									style="width: 625px;">
+									<div data-type="grid" class="inline-col">
+										<div data-type="widget" id="w20221128580f6db37b928"
+											class="inline-widget">
+											<div class="_widget_data" data-widget-type="inline_logo">
+												<div class="widget inline_widget logo  text_inline"
+													id="logo_w20221128580f6db37b928">
+													<div class="logo_title ">
+														<a class=" fixed_transform" style="display: block"
+															href="/">ONOFF</a>
+													</div>
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+								<div data-type="col-group" data-col-group="right"
+									class="inline-col-group inline-col-group-right"
+									style="width: 625px; visibility: visible;">
+									<div data-type="grid" class="inline-col">
+										<div data-type="widget" id="w20221128b396043bbee26"
+											class="inline-widget">
+											<div class="_widget_data" data-widget-type="inline_menu">
+												<ul class="nav navbar-nav _inline_menu_container "
+													style="visibility: visible;">
+													<div class="viewport-nav desktop _main_menu">
+														<li class="dropdown _show_m20221128e445c75c466cd   "
+															style="" id="dropdown_m20221128e445c75c466cd"
+															data-code="m20221128e445c75c466cd"><a href="/shop"
+															class="fixed_transform dropdown-toggle disabled _header_dropdown  active   _fade_link "
+															data-url="shop" data-toggle="dropdown"> <span
+																class="_txt_m20221128e445c75c466cd plain_name"
+																data-hover="">SHOP</span>
+														</a>
+
+
+															<ul class="dropdown-menu" role="menu">
+
+																<li
+																	class="dropdown-submenu _show_m202211287faae98d6ec58   "
+																	data-code="m202211287faae98d6ec58" style=""><a
+																	tabindex="-1" href="/beens" data-url="beens"
+																	class="_txt_m202211287faae98d6ec58   _fade_link "><span
+																		class="plain_name" data-hover="">Beens</span></a></li>
+
+																<li
+																	class="dropdown-submenu _show_m20221128f891a721454d6   "
+																	data-code="m20221128f891a721454d6" style=""><a
+																	tabindex="-1" href="/goods" data-url="goods"
+																	class="_txt_m20221128f891a721454d6   _fade_link "><span
+																		class="plain_name" data-hover="">Goods</span></a></li>
+
+															</ul></li>
+														<li class="dropdown _show_m202211289139f5b8e8e58   "
+															style="" id="dropdown_m202211289139f5b8e8e58"
+															data-code="m202211289139f5b8e8e58"><a href="/about"
+															class="fixed_transform dropdown-toggle disabled _header_dropdown   _fade_link "
+															data-url="about" data-toggle="dropdown"> <span
+																class="_txt_m202211289139f5b8e8e58 plain_name"
+																data-hover="">ABOUT</span>
+														</a></li>
+														<li class="dropdown _show_m202211289f03dd30c2a75   "
+															style="" id="dropdown_m202211289f03dd30c2a75"
+															data-code="m202211289f03dd30c2a75"><a href="/notice"
+															class="fixed_transform dropdown-toggle disabled _header_dropdown   _fade_link "
+															data-url="notice" data-toggle="dropdown"> <span
+																class="_txt_m202211289f03dd30c2a75 plain_name"
+																data-hover="">NOTICE</span>
+														</a></li>
+														<li class="dropdown _show_m20221128c203d4c6c0226   "
+															style="" id="dropdown_m20221128c203d4c6c0226"
+															data-code="m20221128c203d4c6c0226"><a
+															href="/contact"
+															class="fixed_transform dropdown-toggle disabled _header_dropdown   _fade_link "
+															data-url="contact" data-toggle="dropdown"> <span
+																class="_txt_m20221128c203d4c6c0226 plain_name"
+																data-hover="">CONTACT</span>
+														</a></li>
+													</div>
+													<div
+														style="position: absolute; top: -9999px; left: -9999px;">
+														<div
+															class="viewport-nav desktop _main_clone_menu main_clone_menu">
+
+
+															<li class="dropdown _show_m20221128e445c75c466cd   "
+																style="" id="dropdown_m20221128e445c75c466cd"
+																data-code="m20221128e445c75c466cd"><a href="/shop"
+																class="fixed_transform dropdown-toggle disabled _header_dropdown  active   _fade_link "
+																data-url="shop" data-toggle="dropdown"> <span
+																	class="_txt_m20221128e445c75c466cd plain_name"
+																	data-hover="">SHOP</span>
+															</a>
+
+
+																<ul class="dropdown-menu" role="menu">
+
+																	<li
+																		class="dropdown-submenu _show_m202211287faae98d6ec58   "
+																		data-code="m202211287faae98d6ec58" style=""><a
+																		tabindex="-1" href="/beens" data-url="beens"
+																		class="_txt_m202211287faae98d6ec58   _fade_link "><span
+																			class="plain_name" data-hover="">Beens</span></a></li>
+
+																	<li
+																		class="dropdown-submenu _show_m20221128f891a721454d6   "
+																		data-code="m20221128f891a721454d6" style=""><a
+																		tabindex="-1" href="/goods" data-url="goods"
+																		class="_txt_m20221128f891a721454d6   _fade_link "><span
+																			class="plain_name" data-hover="">Goods</span></a></li>
+
+																</ul></li>
+
+															<li class="dropdown _show_m202211289139f5b8e8e58   "
+																style="" id="dropdown_m202211289139f5b8e8e58"
+																data-code="m202211289139f5b8e8e58"><a href="/about"
+																class="fixed_transform dropdown-toggle disabled _header_dropdown   _fade_link "
+																data-url="about" data-toggle="dropdown"> <span
+																	class="_txt_m202211289139f5b8e8e58 plain_name"
+																	data-hover="">ABOUT</span>
+															</a></li>
+
+															<li class="dropdown _show_m202211289f03dd30c2a75   "
+																style="" id="dropdown_m202211289f03dd30c2a75"
+																data-code="m202211289f03dd30c2a75"><a
+																href="/notice"
+																class="fixed_transform dropdown-toggle disabled _header_dropdown   _fade_link "
+																data-url="notice" data-toggle="dropdown"> <span
+																	class="_txt_m202211289f03dd30c2a75 plain_name"
+																	data-hover="">NOTICE</span>
+															</a></li>
+
+															<li class="dropdown _show_m20221128c203d4c6c0226   "
+																style="" id="dropdown_m20221128c203d4c6c0226"
+																data-code="m20221128c203d4c6c0226"><a
+																href="/contact"
+																class="fixed_transform dropdown-toggle disabled _header_dropdown   _fade_link "
+																data-url="contact" data-toggle="dropdown"> <span
+																	class="_txt_m20221128c203d4c6c0226 plain_name"
+																	data-hover="">CONTACT</span>
+															</a></li>
+
+														</div>
+													</div>
+													<div
+														style="position: absolute; top: -9999px; left: -9999px;">
+														<div class="viewport-nav desktop main_clone_menu">
+															<li class="dropdown _more_menu"><a
+																data-toggle="dropdown"
+																class="fixed_transform dropdown-toggle disabled dropdown-more _header_dropdown"
+																aria-expanded="false"><i
+																	class="icon-options vertical-middle" aria-hidden="true"></i></a>
+															<ul class="dropdown-menu more_list _more_list"></ul></li>
+														</div>
+													</div>
+												</ul>
+												<!-- 템플릿별 레이아웃 구조 -->
+												<!-- 템플릿별 레이아웃 구조 -->
+
+
+
+
+											</div>
+										</div>
+									</div>
+									<div data-type="grid" class="inline-col">
+										<div data-type="widget" id="w20221128b54f172ff3ac0"
+											class="inline-widget">
+											<div class="_widget_data" data-widget-type="inline_login_btn">
+												<div
+													class="widget inline_widget login_btn button  button_text txt_l text-xx-small">
+													<div>
+														<div class="inline-blocked login_btn_item ">
+															<a
+																class="_fade_link   btn_text btn_DC0whb10io   btn_custom "
+																href="javascript:;"
+																onclick="SITE_MEMBER.openLogin('L3Nob3A%3D', 'null', null, 'N');"
+																style="border-radius: 0px;"><span class="sr-only">로그인
+																	위젯 문구</span><span class="icon_class "><i
+																	class="fixed_transform simple icon-user"
+																	aria-hidden="true"></i></span><span
+																class="text fixed_transform no_text"></span></a>
+														</div>
+														<div class="inline-blocked login_btn_item ">
+															<a
+																class="_fade_link   btn_text btn_38CT35044M   btn_custom "
+																href="/shop_cart" style="border-radius: 0px;"><span
+																class="sr-only">로그인 위젯 문구</span><span
+																class="icon_class "><i
+																	class="fixed_transform simple icon-bag"
+																	aria-hidden="true"></i></span><span
+																class="text fixed_transform no_text"></span><span
+																class="badge_wrap"><sup
+																	class="badge _shop_cart_badge_cnt_wrap"
+																	style="top: -6px; right: -9px;"></sup></span></a>
+														</div>
+													</div>
+												</div>
+
+
+
+
+
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="spacer"
+						style="display: block; width: 1690.67px; height: 90px; float: none;"></div>
+				</div>
+				<div id="inline_header_mobile" style="min-height: 30px;" class="">
+					<div data-type="section-wrap"
+						class="inline-section-wrap fixed_transform _fixed_header_section"
+						id="s202211283545d93b4ca7e">
+						<div
+							class="section_bg _section_bg fixed_transform _interactive_bg  "></div>
+						<div class="section_bg_color _section_bg_color fixed_transform"
+							style="background-color: #ffffff; position: absolute; left: 0; top: 0; right: 0; bottom: 0;"></div>
+						<div data-type="inside" class="inline-inside _inline-inside">
+							<div data-type="section" class="inline-section"
+								section-code="s202211283545d93b4ca7e">
+								<div data-type="col-group" data-col-group="left"
+									class="inline-col-group inline-col-group-left"
+									style="width: 77px;">
+									<div data-type="grid" class="inline-col">
+										<div data-type="widget" id="w2022112834416b9ffbce6"
+											class="inline-widget">
+											<div class="_widget_data" data-widget-type="inline_menu_btn">
+												<div class="widget inline_widget icon_type_menu st00">
+													<a href="javascript:;"
+														class="_no_hover fixed_transform inline-blocked"
+														onclick="MOBILE_SLIDE_MENU.slideNavToggle($(this))"> <span
+														class="holder icon_code btm bt-bars"
+														id="inline_menu_alarm_badge"></span> <span class="text">MENU</span>
+													</a>
+												</div>
+
+
+
+
+
+											</div>
+										</div>
+									</div>
+								</div>
+								<div data-type="col-group" data-col-group="center"
+									class="inline-col-group inline-col-group-center">
+									<div data-type="grid" class="inline-col">
+										<div data-type="widget" id="w20221128ae0c2df54d009"
+											class="inline-widget">
+											<div class="_widget_data" data-widget-type="inline_logo">
+												<div class="widget inline_widget logo  text_inline"
+													id="logo_w20221128ae0c2df54d009">
+													<div class="logo_title ">
+														<a class=" fixed_transform" style="display: block"
+															href="/">MONDAY COFFEE</a>
+													</div>
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+								<div data-type="col-group" data-col-group="right"
+									class="inline-col-group inline-col-group-right"
+									style="width: 77px;">
+									<div data-type="grid" class="inline-col">
+										<div data-type="widget" id="w2022112839ed0ba1f0ddf"
+											class="inline-widget">
+											<div class="_widget_data" data-widget-type="inline_login_btn">
+												<div
+													class="widget inline_widget login_btn button  button_text txt_l text-xx-small">
+													<div>
+														<div class="inline-blocked login_btn_item ">
+															<a
+																class="_fade_link   btn_text btn_59e036883ad24   btn_custom "
+																href="/shop_cart" style="border-radius: 0px;"><span
+																class="sr-only">로그인 위젯 문구</span><span
+																class="icon_class "><i
+																	class="fixed_transform simple icon-handbag"
+																	aria-hidden="true"></i></span><span
+																class="text fixed_transform no_text"></span><span
+																class="badge_wrap"><sup
+																	class="badge _shop_cart_badge_cnt_wrap"
+																	style="top: auto; bottom: -5px; right: -5px"></sup></span></a>
+														</div>
+													</div>
+												</div>
+
+
+
+
+
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div></div>
+					<div data-type="carousel_menu" class="inline-section-wrap"
+						id="mobile_carousel_menu">
+						<div class="inline-inside _inline-inside">
+							<div class="mobile_table_nav fixed_transform _mobile_nav ">
+								<table class="mobile_table_nav_wrap _mobile_table_nav_wrap st00"
+									data-table_line_count="3">
+									<tbody>
+										<tr>
+											<td class="nav-item _item  active"
+												data-code="m20221128e445c75c466cd" data-rel="table_nav"
+												data-url="shop"><a href="/shop" class="_fade_link"
+												style=""> <span class="plain_name" data-hover="">SHOP</span>
+											</a></td>
+											<td class="nav-item _item" data-code="m202211289139f5b8e8e58"
+												data-rel="table_nav" data-url="about"><a href="/about"
+												class="_fade_link" style=""> <span class="plain_name"
+													data-hover="">ABOUT</span>
+											</a></td>
+											<td class="nav-item _item" data-code="m202211289f03dd30c2a75"
+												data-rel="table_nav" data-url="notice"><a
+												href="/notice" class="_fade_link" style=""> <span
+													class="plain_name" data-hover="">NOTICE</span>
+											</a></td>
+										</tr>
+										<tr>
+											<td class="nav-item _item" data-code="m20221128c203d4c6c0226"
+												data-rel="table_nav" data-url="contact"><a
+												href="/contact" class="_fade_link" style=""> <span
+													class="plain_name" data-hover="">CONTACT</span>
+											</a></td>
+											<td class="nav-item empty_item "></td>
+											<td class="nav-item empty_item "></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<div doz_type="section"
+		class="section_wrap  pc_section    section_first _section_first   mobile_section_first    side_basic     "
+		id="s2022112892053a957d98f" style="" doz_change_mobile="N"
+		doz_aside="N" doz_side_width="230" doz_side_margin="0" doz_extend="N"
+		doz_mobile_section="N" doz_mobile_hide="N" doz_header_repeat="N"
+		doz_footer_repeat="N" doz_category="default">
+		<div class="section_bg _section_bg _interactive_bg   "
+			style="background-size: cover; background-repeat: no-repeat; position: absolute; left: 0; top: 0; right: 0; bottom: 0;"></div>
+		<div class="section_bg_color _section_bg_color"
+			style="position: absolute; left: 0; top: 0; right: 0; bottom: 0;"></div>
+
+
+
+		<main>
+			<div doz_type="inside" class="inside">
+				<div doz_type="row" doz_grid="12" class="doz_row">
+					<div doz_type="grid" doz_grid="12" class="col-dz col-dz-12">
+						<div doz_type="widget" id="w20221128f6801cf92601a">
+							<div class="_widget_data _ds_animated_except"
+								data-widget-name="여백" data-widget-type="padding"
+								data-widget-parent-is-mobile="N">
+								<div class="widget padding" data-height="43"
+									style="margin-top: px; margin-bottom: px;">
+									<div id="padding_w20221128f6801cf92601a"
+										style="width: 100%; min-height: 1px; height: 43px;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div doz_type="row" doz_grid="12" hidden_xs="Y"
+					class="doz_row  hidden-xs">
+					<div doz_type="grid" doz_grid="12" class="col-dz col-dz-12">
+						<div doz_type="widget" id="w20221128a39537baa1b07">
+							<div class="_widget_data _ds_animated_except"
+								data-widget-name="여백" data-widget-type="padding"
+								data-widget-parent-is-mobile="N">
+								<div class="widget padding" data-height="7"
+									style="margin-top: px; margin-bottom: px;">
+									<div id="padding_w20221128a39537baa1b07"
+										style="width: 100%; min-height: 1px; height: 7px;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div doz_type="row" doz_grid="12" class="doz_row">
+					<div doz_type="grid" doz_grid="12" class="col-dz col-dz-12">
+						<div doz_type="widget" id="w20221128b11ffa1da604c">
+							<div class="_widget_data " data-widget-name="텍스트"
+								data-widget-type="text" data-widget-anim="none"
+								data-widget-anim-duration="0.7" data-widget-anim-delay="0"
+								data-widget-parent-is-mobile="N">
+								<div doz_type="text"
+									class="widget _text_wrap widget_text_wrap fr-view  default_padding "
+									id="text_w20221128b11ffa1da604c">
+
+									<div class="text-table ">
+										<div>
+											<h3 style="text-align: center; line-height: 1.5;">${boardList[0].title}<br>&nbsp;Arcu
+												ac tortor.
+											</h3>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div doz_type="row" doz_grid="12" hidden_xs="Y"
+					class="doz_row  hidden-xs">
+					<div doz_type="grid" doz_grid="12" class="col-dz col-dz-12">
+						<div doz_type="widget" id="w20221128b13adc266863c">
+							<div class="_widget_data _ds_animated_except"
+								data-widget-name="여백" data-widget-type="padding"
+								data-widget-parent-is-mobile="N">
+								<div class="widget padding" data-height="2"
+									style="margin-top: px; margin-bottom: px;">
+									<div id="padding_w20221128b13adc266863c"
+										style="width: 100%; min-height: 1px; height: 2px;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div doz_type="row" doz_grid="12" class="doz_row">
+					<div doz_type="grid" doz_grid="12" class="col-dz col-dz-12">
+						<div doz_type="widget" id="w2022112860b0b066f12df">
+							<div class="_widget_data _ds_animated_except"
+								data-widget-name="여백" data-widget-type="padding"
+								data-widget-parent-is-mobile="N">
+								<div class="widget padding" data-height="27"
+									style="margin-top: px; margin-bottom: px;">
+									<div id="padding_w2022112860b0b066f12df"
+										style="width: 100%; min-height: 1px; height: 27px;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	<div doz_type="section"
+		class="section_wrap  pc_section       side_basic grid_gutter_0 grid_v_gutter_0 extend_section   "
+		id="s202211282dc25758e0523" style="" doz_change_mobile="N"
+		doz_aside="N" doz_side_width="230" doz_side_margin="0" doz_extend="Y"
+		doz_mobile_section="N" doz_mobile_hide="N" doz_header_repeat="N"
+		doz_footer_repeat="N" doz_category="default">
+		<div class="section_bg _section_bg _interactive_bg   "
+			style="background-size: cover; background-repeat: no-repeat; position: absolute; left: 0; top: 0; right: 0; bottom: 0;"></div>
+		<div class="section_bg_color _section_bg_color"
+			style="position: absolute; left: 0; top: 0; right: 0; bottom: 0;"></div>
+
+
+
+		<main>
+			<div doz_type="inside" class="inside">
+				<div doz_type="row" doz_grid="12" class="doz_row">
+					<div doz_type="grid" doz_grid="12" class="col-dz col-dz-12">
+						<div doz_type="widget" id="w202211282920c4aa16628">
+							<div class="_widget_data _ds_animated_except"
+								data-widget-name="여백" data-widget-type="padding"
+								data-widget-parent-is-mobile="N">
+								<div class="widget padding" data-height="30"
+									style="margin-top: px; margin-bottom: px;">
+									<div id="padding_w202211282920c4aa16628"
+										style="width: 100%; min-height: 1px; height: 30px;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div doz_type="inside" class="inside"></div>
+			<div doz_type="inside" class="inside">
+				<div doz_type="row" doz_grid="12" class="doz_row">
+					<div doz_type="grid" doz_grid="12" class="col-dz col-dz-12">
+						<div doz_type="widget" id="w20221128cdc7aebb6358d">
+							<div class="_widget_data " data-widget-name="메뉴/카테고리"
+								data-widget-type="sub_menu" data-widget-anim="none"
+								data-widget-anim-duration="0.7" data-widget-anim-delay="0"
+								data-widget-parent-is-mobile="N">
+								<div class="widget">
+									<div
+										class="nav sub-menu sub_menu_hide  h-menu-type1 menu-horizontal row-cnt-3 row-cnt-mobile-3">
+										<ul class="">
+
+											<li style="" class="depth-01    "
+												data-code="m202211287faae98d6ec58"><a href="/beens"
+												data-url="beens" data-has_child="N" data-is_folder_menu="N"
+												class=" _fade_link   "> <span class="plain_name"
+													data-hover="">Beens</span>
+											</a></li>
+
+											<li style="" class="depth-01    "
+												data-code="m20221128f891a721454d6"><a href="/goods"
+												data-url="goods" data-has_child="N" data-is_folder_menu="N"
+												class=" _fade_link   "> <span class="plain_name"
+													data-hover="">Goods</span>
+											</a></li>
+
+										</ul>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div doz_type="row" doz_grid="12" class="doz_row">
+					<div doz_type="grid" doz_grid="12" class="col-dz col-dz-12">
+						<div doz_type="widget" id="w20221128906c1bc38547e">
+							<div class="_widget_data " data-widget-name="쇼핑"
+								data-widget-type="shopping" data-widget-anim="none"
+								data-widget-anim-duration="0.7" data-widget-anim-delay="0"
+								data-widget-parent-is-mobile="N">
+								<div class="shop-content widget">
+									<div class="shop-grid">
+										<div class="thumb-fluid _item_container  ">
+											<div class="shop-tools clearfix" style="display:">
+												<div class="down-btn" style="display: none">
+													<select class="form-control" name="deliv_option_type"
+														onchange="document.location.href = encodeURI('/shop/?sort='+$(this).val())"
+														title="정렬 바꾸기">
+														<option value="recent">등록순</option>
+														<option value="like">인기순</option>
+														<option value="min_price">낮은가격순</option>
+														<option value="max_price">높은가격순</option>
+														<option value="comment">상품평 많은순</option>
+														<option value="abc">이름순</option>
+														<option value="descabc">이름역순</option>
+													</select>
+												</div>
+											</div>
+
+											<div
+												class="thumb-row  hover_dark thumb-item-3 _item_wrap extend_count"
+												id="container_w20221128906c1bc38547e"
+												style="visibility: visible; margin: 0px -7.5px;">
+												
+												<%--게시물 배치 --%>
+												<c:forEach items="${boardList }" var="boardList">
+												<c:url value="/ydsBoard/get" var="getLink">
+													<c:param name="num" value="${boardList.num}"></c:param>
+												</c:url>
+												<div class="shop-item _shop_item"
+													style="width: 377px; padding: 0px 7.5px; height: 469px;">
+													<div class="item-wrap" style="position: relative;">
+														<a href="${getLink}" class="_fade_link shop-item-thumb " target="_blank">
+														<img src="${path}/assets/img/home1.jpg" alt="picture1"
+															class="home__img"> 
+
+														<!-- <img data-prodcode="s20221128cbc2f1144c480" alt="" src="https://cdn.imweb.me/thumbnail/20200805/54c1b5e109a18.png" class="_org_img org_img _lazy_img" data-original="https://cdn.imweb.me/thumbnail/20200805/54c1b5e109a18.png" data-src="https://cdn.imweb.me/thumbnail/20200805/54c1b5e109a18.png" style="display: inline;"> -->
+														<div class="item-overlay">
+
+															<div class="item-pay">
+																<div>
+																	<a href="${getLink }">${boardList.title}</a>
+																	<p class="pay inline-blocked" style="">18,000원</p>
+																	<div class="ns-icon clearfix">
+																		<!--<span class="new bg-brand">NEW</span>-->
+																	</div>
+																</div>
+															</div>
+														</div>
+														</a>	
+													</div>
+													<div class="item-detail" style="">
+														<div class="item-pay">
+															<h2 style="display:">
+																<a class="_fade_link" href="${getLink }">${boardList.title}</a>
+															</h2>
+															<div class="item-pay-detail">
+																<p class="no-margin"></p>
+																<p class="pay inline-blocked" style="">18,000원</p>
+																<p></p>
+															</div>
+														</div>
+														<div class="item-icon _unit_list unit-list"></div>
+													</div>
+												</div>
+												</c:forEach>
+												
+												<div class="shop-item _shop_item"
+													style="width: 377px; padding: 0px 7.5px; height: 469px;">
+													<div class="item-wrap" style="position: relative;">
+														<a href="/shop/?idx=3" class="_fade_link shop-item-thumb ">
+															<img data-prodcode="s202211283088b711d9f10" alt=""
+															src="https://cdn.imweb.me/thumbnail/20200805/2dde5f18694b9.png"
+															class="_org_img org_img _lazy_img"
+															data-original="https://cdn.imweb.me/thumbnail/20200805/2dde5f18694b9.png"
+															data-src="https://cdn.imweb.me/thumbnail/20200805/2dde5f18694b9.png"
+															style="display: inline;">
+															<div class="item-overlay">
+																<div class="item-pay">
+																	<div>
+																		<h2>Single Origin</h2>
+																		<p class="pay inline-blocked" style="">20,000원</p>
+																		<div class="ns-icon clearfix">
+																			<!--<span class="new bg-brand">NEW</span>-->
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</a>
+													</div>
+													<div class="item-detail" style="">
+														<div class="item-pay">
+															<h2 style="display:">
+																<a class="_fade_link" href="/shop/?idx=3">Single
+																	Origin</a>
+															</h2>
+															<div class="item-pay-detail">
+																<p class="no-margin"></p>
+																<p class="pay inline-blocked" style="">20,000원</p>
+																<p></p>
+															</div>
+														</div>
+														<div class="item-icon _unit_list unit-list"></div>
+													</div>
+												</div>
+												<div class="shop-item _shop_item"
+													style="width: 377px; padding: 0px 7.5px; height: 469px;">
+													<div class="item-wrap" style="position: relative;">
+														<a href="/shop/?idx=1" class="_fade_link shop-item-thumb ">
+															<img data-prodcode="s20221128a1d094f9d93f9" alt=""
+															src="https://cdn.imweb.me/thumbnail/20200805/318df0f35edae.png"
+															class="_org_img org_img _lazy_img"
+															data-original="https://cdn.imweb.me/thumbnail/20200805/318df0f35edae.png"
+															data-src="https://cdn.imweb.me/thumbnail/20200805/318df0f35edae.png"
+															style="display: inline;">
+															<div class="item-overlay">
+																<div class="item-pay">
+																	<div>
+																		<h2>monday hand drip</h2>
+																		<p class="pay inline-blocked" style="">39,000원</p>
+																		<div class="ns-icon clearfix">
+																			<!--<span class="new bg-brand">NEW</span>-->
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</a>
+													</div>
+													<div class="item-detail" style="">
+														<div class="item-pay">
+															<h2 style="display:">
+																<a class="_fade_link" href="/shop/?idx=1">monday
+																	hand drip</a>
+															</h2>
+															<div class="item-pay-detail">
+																<p class="no-margin"></p>
+																<p class="pay inline-blocked" style="">39,000원</p>
+																<p></p>
+															</div>
+														</div>
+														<div class="item-icon _unit_list unit-list"></div>
+													</div>
+												</div>
+												<div class="shop-item _shop_item"
+													style="width: 377px; padding: 0px 7.5px; height: 469px;">
+													<div class="item-wrap" style="position: relative;">
+														<a href="/shop/?idx=6" class="_fade_link shop-item-thumb ">
+															<img data-prodcode="s202211283104047d50749" alt=""
+															src="https://cdn.imweb.me/thumbnail/20200805/8b67ef9f7b587.png"
+															class="_org_img org_img _lazy_img"
+															data-original="https://cdn.imweb.me/thumbnail/20200805/8b67ef9f7b587.png"
+															data-src="https://cdn.imweb.me/thumbnail/20200805/8b67ef9f7b587.png"
+															style="display: inline;">
+															<div class="item-overlay">
+																<div class="item-pay">
+																	<div>
+																		<h2>Leather Cover</h2>
+																		<p class="pay inline-blocked" style="">28,000원</p>
+																		<div class="ns-icon clearfix">
+																			<!--<span class="new bg-brand">NEW</span>-->
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</a>
+													</div>
+													<div class="item-detail" style="">
+														<div class="item-pay">
+															<h2 style="display:">
+																<a class="_fade_link" href="/shop/?idx=6">Leather
+																	Cover</a>
+															</h2>
+															<div class="item-pay-detail">
+																<p class="no-margin"></p>
+																<p class="pay inline-blocked" style="">28,000원</p>
+																<p></p>
+															</div>
+														</div>
+														<div class="item-icon _unit_list unit-list"></div>
+													</div>
+												</div>
+												<div class="shop-item _shop_item"
+													style="width: 377px; padding: 0px 7.5px; height: auto;">
+													<div class="item-wrap" style="position: relative;">
+														<a href="/shop/?idx=5" class="_fade_link shop-item-thumb ">
+															<img data-prodcode="s20221128c75db0c640256" alt=""
+															src="https://cdn.imweb.me/thumbnail/20200805/d8ae137106e40.png"
+															class="_org_img org_img _lazy_img"
+															data-original="https://cdn.imweb.me/thumbnail/20200805/d8ae137106e40.png"
+															data-src="https://cdn.imweb.me/thumbnail/20200805/d8ae137106e40.png">
+															<div class="item-overlay">
+																<div class="item-pay">
+																	<div>
+																		<h2>Monday coffee mug</h2>
+																		<p class="pay inline-blocked" style="">15,000원</p>
+																		<div class="ns-icon clearfix">
+																			<!--<span class="new bg-brand">NEW</span>-->
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</a>
+													</div>
+													<div class="item-detail" style="">
+														<div class="item-pay">
+															<h2 style="display:">
+																<a class="_fade_link" href="/shop/?idx=5">Monday
+																	coffee mug</a>
+															</h2>
+															<div class="item-pay-detail">
+																<p class="no-margin"></p>
+																<p class="pay inline-blocked" style="">15,000원</p>
+																<p></p>
+															</div>
+														</div>
+														<div class="item-icon _unit_list unit-list"></div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div doz_type="row" doz_grid="12" class="doz_row">
+					<div doz_type="grid" doz_grid="12" class="col-dz col-dz-12">
+						<div doz_type="widget" id="w202211284ae49cad1f15e">
+							<div class="_widget_data _ds_animated_except"
+								data-widget-name="여백" data-widget-type="padding"
+								data-widget-parent-is-mobile="N">
+								<div class="widget padding" data-height="92"
+									style="margin-top: px; margin-bottom: px;">
+									<div id="padding_w202211284ae49cad1f15e"
+										style="width: 100%; min-height: 1px; height: 92px;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div doz_type="row" doz_grid="12" class="doz_row">
+					<div doz_type="grid" doz_grid="12" class="col-dz col-dz-12">
+						<div doz_type="widget" id="w20221128f8ecaa4d3c82f">
+							<div class="_widget_data _ds_animated_except"
+								data-widget-name="여백" data-widget-type="padding"
+								data-widget-parent-is-mobile="N">
+								<div class="widget padding" data-height="30"
+									style="margin-top: px; margin-bottom: px;">
+									<div id="padding_w20221128f8ecaa4d3c82f"
+										style="width: 100%; min-height: 1px; height: 30px;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	<div doz_type="section"
+		class="section_wrap  pc_section       side_basic grid_gutter_0 grid_v_gutter_0 extend_section   "
+		id="s20221128a62bc67223c9e" style="" doz_change_mobile="N"
+		doz_aside="N" doz_side_width="230" doz_side_margin="0" doz_extend="Y"
+		doz_mobile_section="N" doz_mobile_hide="N" doz_header_repeat="N"
+		doz_footer_repeat="Y" doz_category="default">
+		<div class="section_bg _section_bg _interactive_bg   "
+			style="background-size: cover; background-repeat: no-repeat; position: absolute; left: 0; top: 0; right: 0; bottom: 0;"></div>
+		<div class="section_bg_color _section_bg_color"
+			style="background-color: #212121; position: absolute; left: 0; top: 0; right: 0; bottom: 0;"></div>
+
+
+
+		<main>
+			<div doz_type="inside" class="inside">
+				<div doz_type="row" doz_grid="12" class="doz_row">
+					<div doz_type="grid" doz_grid="12" class="col-dz col-dz-12">
+						<div doz_type="widget" id="w20221128ba16ec9d79763">
+							<div class="_widget_data _ds_animated_except"
+								data-widget-name="여백" data-widget-type="padding"
+								data-widget-parent-is-mobile="N">
+								<div class="widget padding" data-height="30"
+									style="margin-top: px; margin-bottom: px;">
+									<div id="padding_w20221128ba16ec9d79763"
+										style="width: 100%; min-height: 1px; height: 30px;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div doz_type="row" doz_grid="12" class="doz_row">
+					<div doz_type="grid" doz_grid="6" class="col-dz col-dz-6">
+						<div doz_type="row" doz_grid="6" class="doz_row">
+							<div doz_type="grid" doz_grid="6" class="col-dz col-dz-6">
+								<div doz_type="widget" id="w202211285622030fa19bd">
+									<div class="_widget_data " data-widget-name="텍스트"
+										data-widget-type="text" data-widget-anim="none"
+										data-widget-anim-duration="0.7" data-widget-anim-delay="0"
+										data-widget-parent-is-mobile="N">
+										<div doz_type="text"
+											class="widget _text_wrap widget_text_wrap fr-view  default_padding "
+											id="text_w202211285622030fa19bd">
+
+											<div class="text-table ">
+												<div>
+													<h6>
+														<span style="color: rgb(238, 238, 238); opacity: 0.8;">MONDAY
+															COFFEE</span>
+													</h6>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<div doz_type="row" doz_grid="6" class="doz_row">
+							<div doz_type="grid" doz_grid="6" class="col-dz col-dz-6">
+								<div doz_type="widget" id="w20221128aa8064894aa86">
+									<div class="_widget_data " data-widget-name="텍스트"
+										data-widget-type="text" data-widget-anim="none"
+										data-widget-anim-duration="0.7" data-widget-anim-delay="0"
+										data-widget-parent-is-mobile="N">
+										<div doz_type="text"
+											class="widget _text_wrap widget_text_wrap fr-view  default_padding "
+											id="text_w20221128aa8064894aa86">
+
+											<div class="text-table ">
+												<div>
+													<p style="font-size: 12px; opacity: 0.6;">
+														<span style="color: rgb(238, 238, 238);">&nbsp;CEO:
+															Tomlash ㅣ Business License: 000-00-00000 ㅣ Communication
+															Sales Business Report: 0000-Seoul-0000</span><br>
+														<span style="color: rgb(238, 238, 238);">Address:
+															Seoul, Korea CS: +82 (0)0-000-0000(AM10 - PM5, Lunch PM1
+															- PM2, Weekend and Holiday Off)&nbsp;</span><br>
+														<br>
+														<a href="?mode=policy"><span
+															style="color: rgb(238, 238, 238);">Terms of Use</span></a><span
+															style="color: rgb(238, 238, 238);">&nbsp;<span
+															style="color: rgb(238, 238, 238);">&nbsp;ㅣ&nbsp;</span></span><a
+															href="?mode=privacy"><span
+															style="color: rgb(238, 238, 238);"><span
+																style="color: rgb(238, 238, 238);">Privacy</span></span></a>
+													</p>
+													<p style="font-size: 12px; opacity: 0.6;">
+														<br>
+														<a href="https://imweb.me/"
+															style="color: rgb(238, 238, 238);" target="_blank">Hosting
+															by Imweb</a>
+													</p>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<div doz_type="row" doz_grid="6" class="doz_row">
+							<div doz_type="grid" doz_grid="6" class="col-dz col-dz-6">
+								<div doz_type="widget" id="w20221128967acda90aa99">
+									<div class="_widget_data _ds_animated_except"
+										data-widget-name="여백" data-widget-type="padding"
+										data-widget-parent-is-mobile="N">
+										<div class="widget padding" data-height="47"
+											style="margin-top: px; margin-bottom: px;">
+											<div id="padding_w20221128967acda90aa99"
+												style="width: 100%; min-height: 1px; height: 47px;"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div doz_type="grid" doz_grid="6" class="col-dz col-dz-6">
+						<div doz_type="row" doz_grid="6" class="doz_row">
+							<div doz_type="grid" doz_grid="6" class="col-dz col-dz-6">
+								<div doz_type="widget" id="w20221128f5c07cb47e77e">
+									<div class="_widget_data " data-widget-name="버튼"
+										data-widget-type="button" data-widget-anim="none"
+										data-widget-anim-duration="0.7" data-widget-anim-delay="0"
+										data-widget-parent-is-mobile="N">
+										<div class="widget button txt_r">
+											<div class="button_wrap ">
+												<div class="inline-blocked ">
+													<a
+														class=" btn btn_5bcb97f57bcf3   btn-default _fade_link  "
+														href="http://instagram.com"
+														style="margin: 0 -1px -1px 0; border-radius: px">Instagram</a>
+												</div>
+												<div class="inline-blocked ">
+													<a class=" btn btn_5O63167t8T   btn-default _fade_link  "
+														href="http://facebook.com"
+														style="margin: 0 -1px -1px 0; border-radius: px">Facebook</a>
+												</div>
+												<div class="inline-blocked ">
+													<a class=" btn btn_45T5tpKz6C   btn-default _fade_link  "
+														href="http://twitter.com"
+														style="margin: 0 -1px -1px 0; border-radius: px">Twitter</a>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<div doz_type="row" doz_grid="6" class="doz_row">
+							<div doz_type="grid" doz_grid="6" class="col-dz col-dz-6">
+								<div doz_type="widget" id="w202211286703fc68cf031">
+									<div class="_widget_data _ds_animated_except"
+										data-widget-name="여백" data-widget-type="padding"
+										data-widget-parent-is-mobile="N">
+										<div class="widget padding" data-height="43"
+											style="margin-top: px; margin-bottom: px;">
+											<div id="padding_w202211286703fc68cf031"
+												style="width: 100%; min-height: 1px; height: 43px;"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div doz_type="row" doz_grid="12" class="doz_row">
+					<div doz_type="grid" doz_grid="12" class="col-dz col-dz-12">
+						<div doz_type="widget" id="w20221128a40165f40fae0">
+							<div class="_widget_data _ds_animated_except"
+								data-widget-name="여백" data-widget-type="padding"
+								data-widget-parent-is-mobile="N">
+								<div class="widget padding" data-height="-4"
+									style="margin-top: px; margin-bottom: px;">
+									<div id="padding_w20221128a40165f40fae0"
+										style="width: 100%; min-height: 1px; height: -4px;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	<iframe name="hidden_frame" id="hidden_frame" title="hidden frame"
+		src="about:blank"
+		style="position: absolute; left: -9999px; width: 1px; height: 1px; top: -9999px;"></iframe>
+	<div class="modal" id="cocoaModal" role="dialog" aria-hidden="false">
+		<div class="modal-dialog">
+			<div class="modal-content"></div>
+		</div>
+	</div>
+	<div class="modal submodal" role="dialog" id="cocoaSubModal"
+		aria-hidden="false" style="z-index: 17001">
+		<div class="modal-dialog">
+			<div class="modal-content"></div>
+		</div>
+	</div>
+	<script
+		src="https://vendor-cdn.imweb.me/js/bootstrap.min.js?1630317768"></script>
+	<!--[if lte IE 9]>
+<script src='https://vendor-cdn.imweb.me/js/html5shiv.min.js?1577682292'></script>
+<![endif]-->
+	<!--[if lte IE 9]>
+<script src='https://vendor-cdn.imweb.me/js/respond.min.js?1577682292'></script>
+<![endif]-->
+	<!--[if lte IE 9]>
+<script src='https://vendor-cdn.imweb.me/js/placeholders.min.js?1577682292'></script>
+<![endif]-->
+	<!--[if lte IE 8]>
+<script src='https://vendor-cdn.imweb.me/js/PIE_IE678.js?1577682292'></script>
+<![endif]-->
+	<script
+		src="https://vendor-cdn.imweb.me/js/jquery.fileupload.js?1577682292"></script>
+	<script
+		src="https://vendor-cdn.imweb.me/js/jquery.lazyload.min.js?1577682292"></script>
+	<script src="/js/localize/KR_KRW_currency.js?1667195977"></script>
 	<script>
+		LOCALIZE.설명_작성권한이없습니다 = function() {
+			return LOCALIZE.convArguments("작성 권한이 없습니다.", arguments);
+		};
+		LOCALIZE.버튼_더보기 = function() {
+			return LOCALIZE.convArguments("더보기", arguments);
+		};
+		LOCALIZE.설명_권한이_없습니다 = function() {
+			return LOCALIZE.convArguments("권한이 없습니다.", arguments);
+		};
+		LOCALIZE.설명_로그인이_필요합니다 = function() {
+			return LOCALIZE.convArguments("로그인이 필요합니다.", arguments);
+		};
+		LOCALIZE.설명_내용을_입력해주세요 = function() {
+			return LOCALIZE.convArguments("내용을 입력해주세요", arguments);
+		};
+		LOCALIZE.설명_삭제된_댓글_입니다 = function() {
+			return LOCALIZE.convArguments("삭제된 댓글입니다.", arguments);
+		};
+		LOCALIZE.설명_비밀번호 = function() {
+			return LOCALIZE.convArguments("비밀번호", arguments);
+		};
+		LOCALIZE.버튼_취소 = function() {
+			return LOCALIZE.convArguments("취소", arguments);
+		};
+		LOCALIZE.버튼_응답수정 = function() {
+			return LOCALIZE.convArguments("응답 수정", arguments);
+		};
+		LOCALIZE.버튼_로그인 = function() {
+			return LOCALIZE.convArguments("로그인", arguments);
+		};
+		LOCALIZE.설명_개인정보처리방침에동의하여주시기바랍니다 = function() {
+			return LOCALIZE.convArguments("개인정보 수집 및 이용에 동의하여 주시기 바랍니다.",
+					arguments);
+		};
+		LOCALIZE.설명_가입승인이_필요한_서비스입니다 = function() {
+			return LOCALIZE.convArguments("가입승인이 필요한 서비스입니다.", arguments);
+		};
+		LOCALIZE.설명_필수항목을입력하여주시기바랍니다 = function() {
+			return LOCALIZE.convArguments("필수 항목을 입력하여 주시기 바랍니다.", arguments);
+		};
+		LOCALIZE.설명_검색결과가없습니다 = function() {
+			return LOCALIZE.convArguments("검색 결과가 없습니다.", arguments);
+		};
+		LOCALIZE.설명_이메일 = function() {
+			return LOCALIZE.convArguments("이메일", arguments);
+		};
+		LOCALIZE.설명_주소 = function() {
+			return LOCALIZE.convArguments("주소", arguments);
+		};
+		LOCALIZE.설명_상세주소 = function() {
+			return LOCALIZE.convArguments("상세주소", arguments);
+		};
+		LOCALIZE.버튼_확인닫기 = function() {
+			return LOCALIZE.convArguments("확인", arguments);
+		};
+		LOCALIZE.타이틀_수량 = function() {
+			return LOCALIZE.convArguments("수량", arguments);
+		};
+		LOCALIZE.설명_품절 = function() {
+			return LOCALIZE.convArguments("품절", arguments);
+		};
+		LOCALIZE.버튼_주문하기 = function() {
+			return LOCALIZE.convArguments("주문하기", arguments);
+		};
+		LOCALIZE.설명_장바구니가비어있습니다 = function() {
+			return LOCALIZE.convArguments("장바구니가 비어있습니다.", arguments);
+		};
+		LOCALIZE.타이틀_총금액 = function() {
+			return LOCALIZE.convArguments("총금액", arguments);
+		};
+		LOCALIZE.타이틀_반품교환 = function() {
+			return LOCALIZE.convArguments("반품/교환", arguments);
+		};
+		LOCALIZE.설명_취소내역이없습니다 = function() {
+			return LOCALIZE.convArguments("취소 내역이 없습니다.", arguments);
+		};
+		LOCALIZE.설명_주문내역이없습니다 = function() {
+			return LOCALIZE.convArguments("주문 내역이 없습니다.", arguments);
+		};
+		LOCALIZE.버튼_메뉴더보기 = function() {
+			return LOCALIZE.convArguments("더보기", arguments);
+		};
+		LOCALIZE.설명_필수옵션이모두선택되어있지않습니다 = function() {
+			return LOCALIZE.convArguments("필수옵션이 모두 선택되어있지 않습니다.", arguments);
+		};
+		LOCALIZE.버튼_확인 = function() {
+			return LOCALIZE.convArguments("확인", arguments);
+		};
+		LOCALIZE.버튼_닫기 = function() {
+			return LOCALIZE.convArguments("닫기", arguments);
+		};
+		LOCALIZE.설명_수량 = function() {
+			return LOCALIZE.convArguments("수량", arguments);
+		};
+		LOCALIZE.설명_주문자연락처를입력해주세요 = function() {
+			return LOCALIZE.convArguments("주문자 연락처를 입력해주세요", arguments);
+		};
+		LOCALIZE.설명_비밀번호를입력하세요 = function() {
+			return LOCALIZE.convArguments("비밀번호를 입력 하세요.", arguments);
+		};
+		LOCALIZE.설명_동의해주세요 = function() {
+			return LOCALIZE.convArguments("이용약관 및 개인정보 처리방침에 동의하셔야 가입이 가능합니다.",
+					arguments);
+		};
+		LOCALIZE.설명_비밀글입니다 = function() {
+			return LOCALIZE.convArguments("비밀글입니다.", arguments);
+		};
+		LOCALIZE.설명_작성시등록하신비밀번호를입력해주세요 = function() {
+			return LOCALIZE.convArguments("작성시 등록하신 비밀번호를 입력해주세요.", arguments);
+		};
+		LOCALIZE.타이틀_월 = function() {
+			return LOCALIZE.convArguments("월", arguments);
+		};
+		LOCALIZE.타이틀_일 = function() {
+			return LOCALIZE.convArguments("일", arguments);
+		};
+		LOCALIZE.타이틀_대표이미지설정 = function() {
+			return LOCALIZE.convArguments("대표 이미지 설정", arguments);
+		};
+		LOCALIZE.설명_우편번호 = function() {
+			return LOCALIZE.convArguments("우편번호", arguments);
+		};
+		LOCALIZE.설명_거리주소 = function() {
+			return LOCALIZE.convArguments(
+					"거리주소 (Street address, P.O box, company name, c/o)",
+					arguments);
+		};
+		LOCALIZE.설명_건물명 = function() {
+			return LOCALIZE.convArguments(
+					"건물명 (Apartment, suite, unit, building, floor, etc.)",
+					arguments);
+		};
+		LOCALIZE.설명_도시명 = function() {
+			return LOCALIZE.convArguments("도시명 (City)", arguments);
+		};
+		LOCALIZE.설명_도시군 = function() {
+			return LOCALIZE.convArguments("도시군 (State/Province/Region)",
+					arguments);
+		};
+		LOCALIZE.타이틀_글쓰기카테고리선택 = function() {
+			return LOCALIZE.convArguments("카테고리", arguments);
+		};
+		LOCALIZE.설명_개인정보제3자제공에동의하여주시기바랍니다 = function() {
+			return LOCALIZE.convArguments("개인정보 제 3자 제공에 동의하여 주시기 바랍니다.",
+					arguments);
+		};
+		LOCALIZE.설명_현재재고부족으로N개이상구매할수없습니다 = function() {
+			return LOCALIZE.convArguments("현재 재고 부족으로 %1개 이상 구매할 수 없습니다.",
+					arguments);
+		};
+		LOCALIZE.타이틀_s회원가 = function() {
+			return LOCALIZE.convArguments("%1 회원가", arguments);
+		};
+		LOCALIZE.설명_회원등급할인 = function() {
+			return LOCALIZE.convArguments("회원등급 할인", arguments);
+		};
+		LOCALIZE.설명_결제예상금액 = function() {
+			return LOCALIZE.convArguments("총 상품금액(%1개)", arguments);
+		};
+		LOCALIZE.설명_가입승인되지않은아이디입니다 = function() {
+			return LOCALIZE.convArguments(
+					"가입승인 대기 중입니다. 운영자의 승인 후 이용하실 수 있습니다.", arguments);
+		};
+		LOCALIZE.타이틀_PC모드로보기 = function() {
+			return LOCALIZE.convArguments("PC 모드로 보기", arguments);
+		};
+		LOCALIZE.설명_군 = function() {
+			return LOCALIZE.convArguments("군", arguments);
+		};
+		LOCALIZE.설명_성 = function() {
+			return LOCALIZE.convArguments("성", arguments);
+		};
+		LOCALIZE.설명_추천인코드가복사되었습니다 = function() {
+			return LOCALIZE.convArguments("추천인 코드가 복사되었습니다!", arguments);
+		};
+		LOCALIZE.설명_결제예상금액임시 = function() {
+			return LOCALIZE.convArguments("총 상품금액(%1개)", arguments);
+		};
+		LOCALIZE.설명_다음예상결제일과에서확인가능 = function() {
+			return LOCALIZE
+					.convArguments(
+							"* 다음 예상 결제일은 %1입니다.<br>* 구독 일정은 마이페이지 > 정기구독 관리에서 확인 가능합니다.",
+							arguments);
+		};
+		LOCALIZE.설명_진행중인정기구독주문이있어카드삭제불가 = function() {
+			return LOCALIZE
+					.convArguments(
+							"현재 진행 중인 정기구독 주문이 있어 카드를 삭제할 수 없습니다.<br/>카드 변경 혹은 정기구독 해지 후 카드를 삭제해 주세요.",
+							arguments);
+		};
+		LOCALIZE.설명_등록된자동결제카드를삭제하시겠습니까 = function() {
+			return LOCALIZE
+					.convArguments(
+							"등록된 자동결제 카드를 <br class=\'hidden-lg hidden-md hidden-sm\'/>삭제하시겠습니까?",
+							arguments);
+		};
+		LOCALIZE.설명_이번배송을건너뛰겠습니까다음구독일은n입니다 = function() {
+			return LOCALIZE
+					.convArguments(
+							"이번 배송을 건너뛰겠습니까?<br/>해당 상품의 다음 구독일은<br class=\'hidden-lg hidden-md\'/> <strong>%1</strong> 입니다.",
+							arguments);
+		};
+		LOCALIZE.설명_이번배송을건너뛰겠습니까다음구독일은n입니다선택옵션도함께 = function() {
+			return LOCALIZE
+					.convArguments(
+							"이번 배송을 건너뛰겠습니까?<br/>해당 상품의 다음 구독일은<br class=\'hidden-lg hidden-md\'/> <strong>%1</strong> 입니다.<br>선택옵션도 함께 적용됩니다.",
+							arguments);
+		};
+		LOCALIZE.설명_전체상품의정기구독을해지하시겠습니까 = function() {
+			return LOCALIZE
+					.convArguments(
+							"전체 상품의 정기구독을 <br class=\'hidden-lg hidden-md hidden-sm\'/>해지하시겠습니까?",
+							arguments);
+		};
+		LOCALIZE.설명_해당상품의정기구독을해지하시겠습니까 = function() {
+			return LOCALIZE
+					.convArguments(
+							"해당 상품의 정기구독을 <br class=\'hidden-lg hidden-md hidden-sm\'/>해지하시겠습니까?",
+							arguments);
+		};
+		LOCALIZE.설명_해당상품의정기구독을해지하시겠습니까선택옵션도함께 = function() {
+			return LOCALIZE
+					.convArguments(
+							"해당 상품의 정기구독을 <br class=\'hidden-lg hidden-md hidden-sm\'/>해지하시겠습니까?<br>선택옵션도 함께 해지됩니다.",
+							arguments);
+		};
+		LOCALIZE.설명_타임세일종료까지n일 = function() {
+			return LOCALIZE.convArguments("타임세일 종료까지 %1일", arguments);
+		};
+		LOCALIZE.설명_상세페이지타임세일종료까지n일 = function() {
+			return LOCALIZE
+					.convArguments(
+							"<label class=\'text-bold text-brand\'>타임세일</label> 종료까지 <strong>%1일</strong>",
+							arguments);
+		};
+		LOCALIZE.설명_상세페이지타임세일종료까지n1시n2분n3초남음 = function() {
+			return LOCALIZE
+					.convArguments(
+							"<label class=\'text-bold text-brand\'>타임세일</label> 종료까지 <strong>%1:%2:%3</strong> 남음",
+							arguments);
+		};
+	</script>
+	<script src="https://vendor-cdn.imweb.me/js/common.js?1666222648"></script>
+	<script src="https://vendor-cdn.imweb.me/js/im_component.js?1636940317"></script>
+	<script src="https://vendor-cdn.imweb.me/js/site_common.js?1669342392"></script>
+	<script
+		src="https://vendor-cdn.imweb.me/js/imagesloaded.pkgd.min.js?1577682292"></script>
+	<script
+		src="https://vendor-cdn.imweb.me/js/jquery.smooth-scroll.min.js?1577682292"></script>
+	<script
+		src="https://vendor-cdn.imweb.me/js/gambit-smoothscroll-min.js?1577682292"></script>
+	<script src="https://vendor-cdn.imweb.me/js/ThreeCanvas.js?1577682292"></script>
+	<script src="https://vendor-cdn.imweb.me/js/snow.js?1577682292"></script>
+	<script
+		src="https://vendor-cdn.imweb.me/js/masonry.pkgd.min.js?1577682292"></script>
+	<script
+		src="https://vendor-cdn.imweb.me/js/lightgallery-all.min.js?1596595980"></script>
+	<script
+		src="https://vendor-cdn.imweb.me/js/bootstrap.slide-menu.js?1577682292"></script>
+	<script
+		src="https://vendor-cdn.imweb.me/js/bootstrap.slide-menu-alarm.js?1577682292"></script>
+	<script
+		src="https://vendor-cdn.imweb.me/js/bootstrap-hover-dropdown.min.js?1577682292"></script>
+	<script
+		src="https://vendor-cdn.imweb.me/js/jquery-scrolltofixed.js?1663719786"></script>
+	<script
+		src="https://vendor-cdn.imweb.me/js/jquery.trackpad-scroll-emulator.js?1577682292"></script>
+	<script
+		src="https://vendor-cdn.imweb.me/js/modernizr.custom.js?1577682292"></script>
+	<script src="https://vendor-cdn.imweb.me/js/classie.js?1577682292"></script>
+	<script src="https://vendor-cdn.imweb.me/js/jquery.exif.js?1577682292"></script>
+	<script type="text/vbscript">
+Function IEBinary_getByteAt(strBinary, iOffset)
+	IEBinary_getByteAt = AscB(MidB(strBinary,iOffset+1,1))
+End Function
+Function IEBinary_getLength(strBinary)
+	IEBinary_getLength = LenB(strBinary)
+End Function
+</script>
+	<script
+		src="https://vendor-cdn.imweb.me/js/jquery.canvasResize.js?1577682292"></script>
+	<script src="https://vendor-cdn.imweb.me/js/autosize.js?1577682292"></script>
+	<script
+		src="https://vendor-cdn.imweb.me/js/owl.carousel2.js?1638150602"></script>
+	<!--[if lte IE 9]>
+<script src='https://vendor-cdn.imweb.me/js/owl.carousel1.js?1577682292'></script>
+<![endif]-->
+	<script src="https://vendor-cdn.imweb.me/js/slick.min.js?1577682292"></script>
+	<script src="/js/preview_mode.js?1656296713"></script>
+	<script src="/js/site.js?1640052936"></script>
+	<script src="/js/site_member.js?1666077053"></script>
+	<script src="/js/mobile_menu.js?1648796493"></script>
+	<script src="/js/sns_share.js?1667373225"></script>
+	<script src="/js/android_image_upload.js?1660623646"></script>
+	<ul id="image_list" style="display: none"></ul>
+	<script src="/js/alarm_menu.js?1603862128"></script>
+	<script src="/js/alarm_badge.js?1602469334"></script>
+	<script src="/js/one_page.js?1577682295"></script>
+	<script src="/js/site_coupon.js?1664263439"></script>
+	<script src="/js/secret_article.js?1604286051"></script>
+	<script src="/js/article_reaction.js?1586730656"></script>
+	<script src="/js/site_shop.js?1668735616"></script>
+	<script src="/js/board_common.js?1648107937"></script>
+	<script src="/js/site_shop_mypage.js?1666250711"></script>
+	<script src="/js/site_search.js?1658822737"></script>
+	<script src="/js/zipcode_daum.js?1577682295"></script>
+	<script src="/js/site_booking.js?1661301874"></script>
+	<script src="/js/site_section.js?1653367465"></script>
+	<script
+		src="https://vendor-cdn.imweb.me/js/jquery.number.min.js?1577682292"></script>
+	<script src="https://vendor-cdn.imweb.me/js/nprogress.js?1577682292"></script>
+	<script
+		src="https://vendor-cdn.imweb.me/js/tinycolor-min.js?1577682292"></script>
+	<script src="/js/app.js?1577682295"></script>
+	<script src="/js/header_fixed_menu.js?1658822737"></script>
+	<script src="/js/header_more_menu.js?1584514029"></script>
+	<script src="/js/header_center_colgroup.js?1637043387"></script>
+	<script src="/js/mobile_carousel_menu.js?1606176609"></script>
+	<script src="/js/header_mega_dropdown.js?1648796493"></script>
+	<script src="/js/header_overlay.js?1577682295"></script>
+	<script src="/js/site_log.js?1582866622"></script>
+	<script src="/js/advanced_trace.js?1597114502"></script>
+	<script src="/js/site_animation.js?1648796493"></script>
+	<script src="/js/site_event_check.js?1596495221"></script>
+	<script src="/js/site_widget.js?1616721332"></script>
+	<script src="https://vendor-cdn.imweb.me/js/moment.min.js?1629764594"></script>
+	<script
+		src="https://vendor-cdn.imweb.me/js/moment-with-locales.js?1577682292"></script>
+	<script
+		src="https://vendor-cdn.imweb.me/js/bootstrap-datepicker.js?1577682292"></script>
+	<script
+		src="https://vendor-cdn.imweb.me/js/jquery.timepicker.min.js?1577682292"></script>
+	<script
+		src="https://vendor-cdn.imweb.me/js/ie-checker-min.js?1577682292"></script>
+	<script src="/js/channel_plugin.js?1664263429"></script>
+	<script
+		src="https://vendor-cdn.imweb.me/js/jquery.chosen.js?1619084781"></script>
+	<script src="https://wcs.naver.net/wcslog.js"></script>
+	<script></script>
+	<script></script>
+	<script>
+		// 비주얼섹션 배경 동영상 및 동영상 위젯 자동재생 환경 설정
+		var section_youtube_list = [];
+		var yt_player = {};
+		var vimeo_player = [];
+		var site_video_list = [];
+		var video_autoplay_youtube_list = [];
+		function onYouTubeIframeAPIReady() {
+			$.each(section_youtube_list, function(_e, _data) {
+				yt_player[_data.slide_code] = new SITE_SECTION_YOUTUBE();
+				yt_player[_data.slide_code].init(_data.type, _data.code,
+						_data.id, _data.slide_code);
+			});
+			$.each(video_autoplay_youtube_list, function(k, v) {
+				site_video_list[v].play();
+			})
+		}
 
-		const appsflyer = (function() {
+		$(function() {
+			/* Bootstrap Sanitizer Custom */
+			var customTooltipAllowList = $.fn.tooltip.Constructor.DEFAULTS.whiteList;
+			customTooltipAllowList.table = [];
+			customTooltipAllowList.thead = [];
+			customTooltipAllowList.tbody = [];
+			customTooltipAllowList.tr = [];
+			customTooltipAllowList.td = [ "rowspan", "colspan" ];
+			customTooltipAllowList.th = [];
+			customTooltipAllowList.caption = [];
+			customTooltipAllowList["*"].push("style");
+			/* End Bootstrap Sanitizer Custom */
+			$('body').smoothScroll({
+				delegateSelector : 'a',
+				speed : 1200,
+				easing : 'easeInOutExpo'
+			});
+			$('.pms_check').remove();
+			var recentScrollUrl = IMWEB_SESSIONSTORAGE
+					.get('RECENT_PROD_SCROLL_URL');
+			if (recentScrollUrl && recentScrollUrl !== document.location.href) {
+				IMWEB_SESSIONSTORAGE.remove('RECENT_PROD_SCROLL');
+				IMWEB_SESSIONSTORAGE.remove('RECENT_PROD_SCROLL_URL');
+			}
+		});
+	</script>
+	<script>
+		$(function() {
+			SITE.firstScrollFixed('inline_header_normal');
+		});
+		$(function() {
+			$("#s20221128a044c05215371").scrollToFixed({
+				marginTop : ""
+			});
+			$("#s20221128a044c05215371").toggleClass("_fixed_header_section",
+					true);
+		});
+		$(function() {
+			$("body").toggleClass("new_fixed_header_disable", true);
+			$("body").toggleClass("fixed-menu-on", true);
+		});
 
-			// 마케팅서비스
-			const marketingServices = {
-				yeogi: { number: 1, code: 'ye', },
-				activity: { number: 2, code: 'ac', },
-				daumDA: { number: 3, code: 'du', },
-				channelingCPC: { number: 4, code: 'ns', },
-				yeogiWebCPS: { number: 5,  code: 'yp', },
+		$(function() {
+			var more_menu_w20221128b396043bbee26 = new HEADER_MORE_MENU();
+			more_menu_w20221128b396043bbee26
+					.init($('#w20221128b396043bbee26 ._inline_menu_container'),
+							false);
+			$('#w20221128b396043bbee26 ._inline_menu_container').data(
+					'header_more_menu', more_menu_w20221128b396043bbee26);
+		});
+
+		$(function() {
+			$('#w20221128b396043bbee26')
+					.find("li.dropdown")
+					.each(
+							function(index) {
+								$(this)
+										.find("li.dropdown-submenu")
+										.each(
+												function(index) {
+													if (!$(this).hasClass(
+															'pulldown-hide')) {
+														if ($(this)
+																.find(
+																		".dropdown-menu > li").length > 0)
+															$(this)
+																	.addClass(
+																			"sub-active");
+													} else {
+														$(this)
+																.find('ul')
+																.removeClass(
+																		'dropdown-menu');
+														$(this).find('ul li')
+																.hide();
+													}
+												});
+							});
+			$('#w20221128b396043bbee26').find('._header_dropdown')
+					.dropdownHover();
+		});
+
+		$('.join_tooltip[data-toggle="tooltip"]').tooltip({
+			delay : {
+				show : 500,
+				hide : 1000000
+			}
+		});
+		var $join_tooltip = $('#w20221128b54f172ff3ac0').find('.join_tooltip');
+		$join_tooltip.tooltip('show');
+
+		$(function() {
+			var header_center_colgroup_s20221128a044c05215371 = new HEADER_CENTER_COLGROUP();
+			header_center_colgroup_s20221128a044c05215371.init(
+					's20221128a044c05215371', {
+						"top_bottom_margin" : "0",
+						"col_margin" : "10",
+						"background_color" : "#fff",
+						"design_setting_margin" : "N",
+						"hover_section_bg" : "N",
+						"border_width" : "0",
+						"border_style" : "solid",
+						"border_color" : "rgba(33, 33, 33, 0.45)",
+						"vertical-align" : "middle",
+						"scroll_fixed" : "Y",
+						"overlay_type_data" : {
+							"top_bottom_margin" : "0",
+							"col_margin" : "10",
+							"background_color" : "rgba(255,255,255,0)",
+							"design_setting_margin" : "Y",
+							"hover_section_bg" : "N",
+							"border_width" : "0",
+							"border_style" : "solid",
+							"border_color" : "rgba(255,255,255,0.5)",
+							"vertical-align" : "middle",
+							"scroll_fixed" : "N",
+							"background_repeat" : "",
+							"background_position" : "",
+							"color" : "",
+							"background_image" : ""
+						},
+						"left_width" : "625",
+						"center_width" : "",
+						"right_width" : "625",
+						"height" : "90",
+						"left_right_margin" : "60",
+						"left_right_margin_mobile" : "0",
+						"background_repeat" : "",
+						"background_position" : "",
+						"color" : "#212121",
+						"background_image" : "",
+						"extend" : "Y"
+					})
+		});
+
+		$(function() {
+			SITE.firstScrollFixed('inline_header_mobile');
+		});
+		$(function() {
+			$("#s202211283545d93b4ca7e").scrollToFixed({
+				marginTop : ""
+			});
+			$("#s202211283545d93b4ca7e").toggleClass("_fixed_header_section",
+					true);
+		});
+
+		$('.join_tooltip[data-toggle="tooltip"]').tooltip({
+			delay : {
+				show : 500,
+				hide : 1000000
+			}
+		});
+		var $join_tooltip = $('#w2022112839ed0ba1f0ddf').find('.join_tooltip');
+		$join_tooltip.tooltip('show');
+
+		$(function() {
+			var header_center_colgroup_s202211283545d93b4ca7e = new HEADER_CENTER_COLGROUP();
+			header_center_colgroup_s202211283545d93b4ca7e.init(
+					's202211283545d93b4ca7e', {
+						"top_bottom_margin" : "0",
+						"col_margin" : "10",
+						"design_setting_margin" : "N",
+						"border_width" : "1",
+						"border_style" : "solid",
+						"border_color" : "#e7e7e7",
+						"vertical-align" : "middle",
+						"scroll_fixed" : "Y",
+						"overlay_type_data" : {
+							"top_bottom_margin" : "0",
+							"col_margin" : "10",
+							"design_setting_margin" : "Y",
+							"border_width" : "0",
+							"border_style" : "solid",
+							"border_color" : "rgba(255, 255, 255, 0.3)",
+							"vertical-align" : "middle",
+							"scroll_fixed" : "N",
+							"background_repeat" : "",
+							"background_position" : "",
+							"color" : "",
+							"background_image" : ""
+						},
+						"left_width" : "77",
+						"center_width" : "0",
+						"right_width" : "77",
+						"height" : "49",
+						"background_repeat" : "",
+						"background_position" : "",
+						"color" : "",
+						"left_right_margin" : "15",
+						"left_right_margin_mobile" : "20",
+						"background_image" : "",
+						"background_color" : "#ffffff",
+						"extend" : "N",
+						"hover_section_bg" : "N"
+					})
+		});
+
+		$("#text_w20221128b11ffa1da604c").find("._table_responsive").addClass(
+				"table").wrap($("<div />").addClass("table-responsive"));
+
+		$(function() {
+			$('._unit_list ._unit').each(function(index, item) {
+				var data = item.dataset;
+				item.innerHTML = nFormatter(Number(data.value), 1);
+			});
+		});
+
+		$(function() {
+			$('._unit_list ._unit').each(function(index, item) {
+				var data = item.dataset;
+				item.innerHTML = nFormatter(Number(data.value), 1);
+			});
+		});
+
+		$(function() {
+			$('._unit_list ._unit').each(function(index, item) {
+				var data = item.dataset;
+				item.innerHTML = nFormatter(Number(data.value), 1);
+			});
+		});
+
+		$(function() {
+			$('._unit_list ._unit').each(function(index, item) {
+				var data = item.dataset;
+				item.innerHTML = nFormatter(Number(data.value), 1);
+			});
+		});
+
+		$(function() {
+			$('._unit_list ._unit').each(function(index, item) {
+				var data = item.dataset;
+				item.innerHTML = nFormatter(Number(data.value), 1);
+			});
+		});
+
+		$(function() {
+			$('._unit_list ._unit').each(function(index, item) {
+				var data = item.dataset;
+				item.innerHTML = nFormatter(Number(data.value), 1);
+			});
+		});
+
+		$(function() {
+			$('._unit_list ._unit').each(function(index, item) {
+				var data = item.dataset;
+				item.innerHTML = nFormatter(Number(data.value), 1);
+			});
+		});
+
+		$(function() {
+			var $list_wrap = $('#container_w20221128906c1bc38547e');
+			var set_margin = 7.5;
+			var set_width = 446;
+			var set_prod_list_count = 3;
+			var $item_wrap = $list_wrap.find('._shop_item');
+			var $section_obj = $list_wrap.closest('div[doz_type=section]');
+			var extend_section = $section_obj.attr('doz_extend') == 'Y';
+			var extend_count = $list_wrap.hasClass('extend_count');
+			var target_more_page = 1;
+
+			function shopListResize() {
+				$list_wrap.css({
+					'margin' : '0 -' + set_margin + 'px'
+				});
+				if ($item_wrap.length === 0)
+					return;
+				var real_inner_width = parseFloat(window
+						.getComputedStyle($list_wrap.get(0)).width);
+				var inner_width = $list_wrap.innerWidth();
+
+				if (extend_section && !extend_count) // 섹션 확장이면서 갯수 유지가 아니면
+					set_prod_list_count = Math.floor(inner_width / set_width);
+
+				if (inner_width < 750) {
+					$item_wrap.css({
+						'width' : ''
+					});
+					$list_wrap.css('visibility', 'visible');
+					return;
+				}
+
+				var sss = Math.floor(real_inner_width / set_prod_list_count);
+				$item_wrap.css({
+					'width' : sss,
+					'padding' : '0 ' + set_margin + 'px'
+				});
+				$list_wrap.css('visibility', 'visible');
 			}
 
-			// 대그룹
-			const largeGroups = {
-				channelingEvent: { number: 56, code: 'ce', },
-				kakaoShopping: { number: 49, code: 'ke', },
-				mangoPlate: { number: 44, code: 'mp', },
-				naverShopping: { number: 17,  code: 'ne', },
-				quizMedia: { number: 58, code: 'qu', },
-				testGroup: { number: 45, code: 'te', },
-				tmap: { number: 32, code: 'tm', },
-				triple: { number: 33, code: 'tr', },
+			$('#container_w20221128906c1bc38547e')
+					.imagesLoaded()
+					.always(
+							function(ins) {
+								shopListResize();
+								shopListHeight();
+
+								$list_wrap.find('img._org_img').lazyload({ // ie 속도 문제로 예외처리 되었으나, http 환경에서 DOM7009(이미지 디코드 불가)에러로 인해 엑스박스가 나오는 문제로 롤백
+									threshold : 100,
+									effect : "fadeIn"
+								});
+								// lazyload로 인한 뒤로가기 스크롤 오차 보정
+								var recentScroll = IMWEB_SESSIONSTORAGE
+										.get('RECENT_PROD_SCROLL');
+								var recentScrollUrl = IMWEB_SESSIONSTORAGE
+										.get('RECENT_PROD_SCROLL_URL');
+								if (recentScroll && recentScrollUrl) {
+									if (recentScroll > 0
+											&& recentScrollUrl === document.location.href) {
+										if (history.scrollRestoration) {
+											history.scrollRestoration = 'manual';
+										}
+										$(window).scrollTop(recentScroll);
+									}
+									if (history.scrollRestoration) {
+										history.scrollRestoration = 'auto';
+									}
+									IMWEB_SESSIONSTORAGE
+											.remove('RECENT_PROD_SCROLL');
+									IMWEB_SESSIONSTORAGE
+											.remove('RECENT_PROD_SCROLL_URL');
+								}
+
+								$('#w20221128906c1bc38547e ._shop_item a')
+										.off('click')
+										.on(
+												'click',
+												function() {
+													IMWEB_SESSIONSTORAGE
+															.set(
+																	'RECENT_PROD_SCROLL',
+																	$(window)
+																			.scrollTop(),
+																	60);
+													IMWEB_SESSIONSTORAGE
+															.set(
+																	'RECENT_PROD_SCROLL_URL',
+																	document.location.href,
+																	60);
+												});
+							});
+			$(window).on('resize.shop_list', function() {
+				shopListResize();
+				shopListHeight();
+			});
+
+			$('body').off('gridChange.w20221128906c1bc38547e').on(
+					'gridChange.w20221128906c1bc38547e', function() {
+						$(window).trigger('shop_width.w20221128906c1bc38547e');
+						shopListResize();
+						shopListHeight();
+					});
+
+			function shopListHeight() {
+				$item_wrap.height('auto');
+				var be = 0;
+				var ar = [];
+				$item_wrap.each(function() {
+					if (be == $(this).position().top) {
+						ar.push($(this));
+					} else {
+						var height = 0;
+						$.each(ar, function(e, $o) {
+							if ($o.height() > height)
+								height = $o.height();
+						});
+						$.each(ar, function(e, $o) {
+							$o.height(height);
+						});
+						ar = [];
+						ar.push($(this));
+						be = $(this).position().top;
+					}
+				});
 			}
 
-			const adSet = {
-				top : 'top',
-				bottom: 'bottom',
-			}
-
-			const targetUrls = {
-				baseURL: 'https://goodchoice.onelink.me/C4wC/',
-				species: {
-					channeling: {
-						top: {
-							pathVariable: '2a0cfe91',
-							match: function(marketingServiceNumber, marketingCodesTrailingUnderscore) {
-								return marketingServiceNumber === marketingServices.channelingCPC.number &&
-										containsMarketingCodeAndLargeCode(
-											[largeGroups.channelingEvent, largeGroups.mangoPlate, largeGroups.tmap, largeGroups.triple],
-											marketingCodesTrailingUnderscore,
-											marketingServices.channelingCPC.code
-										)
-							},
+			var is_load_more = false;
+			function shopListViewMore() {
+				// 더보기 버튼 누를 때 노출 수만큼 추가로 불러와서 아래에 출력
+				if (!is_load_more) {
+					is_load_more = true;
+					var $more_btn = $('#w20221128906c1bc38547e ._more_btn');
+					var page = $more_btn.data('page');
+					var page_count = 1;
+					$.ajax({
+						type : 'GET',
+						url : ('/ajax/get_shop_list_view.cm'),
+						dataType : 'json',
+						async : false,
+						cache : true,
+						data : {
+							'page' : page + 1,
+							'pagesize' : 25,
+							'category' : 's201909197ed0e1d732aaf',
+							'sort' : '',
+							'menu_url' : '/shop/'
+						},
+						success : function(res) {
+							if (res.msg === 'SUCCESS') {
+								// Chrome에서 Scroll Anchoring 기능이 더보기 다음 내용을 기준으로 동작하는 문제가 있어 잠시 기능 해제
+								$('body.doz_sys')
+										.css('overflow-anchor', 'none');
+								$('#w20221128906c1bc38547e ._item_wrap')
+										.append(res.html);
+								if (page + 1 < page_count) {
+									$more_btn.data('page', page + 1);
+									$more_btn.find('._more_btn_page').text(
+											' (' + (page + 1) + '/'
+													+ page_count + ')');
+								} else {
+									$more_btn.hide();
+								}
+								$item_wrap = $(
+										'#container_w20221128906c1bc38547e')
+										.find('._shop_item');
+								setParameterByName('page', page + 1);
+								$('#container_w20221128906c1bc38547e')
+										.imagesLoaded().always(
+												function(ins) {
+													shopListResize();
+													shopListHeight();
+													$('body.doz_sys').css(
+															'overflow-anchor',
+															'');
+												});
+							}
+						},
+						complete : function() {
+							is_load_more = false;
 						}
-					},
-					kakaoShopping: {
-						top: {
-							pathVariable: '873b4fab',
-							match: function(marketingServiceNumber, marketingCodesTrailingUnderscore) {
-								return marketingServiceNumber === marketingServices.channelingCPC.number &&
-										containsMarketingCodeAndLargeCode(
-											[largeGroups.kakaoShopping],
-											marketingCodesTrailingUnderscore,
-											marketingServices.channelingCPC.code
-										)
-							}
-						},
-					},
-					naverShopping: {
-						top: {
-							pathVariable: '79261d0c',
-							match: function(marketingServiceNumber, marketingCodesTrailingUnderscore) {
-								return marketingServiceNumber === marketingServices.channelingCPC.number &&
-										containsMarketingCodeAndLargeCode(
-											[largeGroups.naverShopping],
-											marketingCodesTrailingUnderscore,
-											marketingServices.channelingCPC.code
-										)
-							}
-						},
-					},
-					etc: {
-						top: {
-							pathVariable: 'dcc68a19',
-							match: function(marketingServiceNumber, marketingCodesTrailingUnderscore, isBottomPopup) {
-								return !isBottomPopup;
-							}
-						},
-						bottom: {
-							pathVariable: '307f137',
-							match: function(marketingServiceNumber, marketingCodesTrailingUnderscore, isBottomPopup) {
-								return isBottomPopup;
-							}
-						}
-					},
+					});
 				}
 			}
 
-			function getTopOrBottomKey(isBottomPopup) {
-				return isBottomPopup ? adSet.bottom : adSet.top;
+			function shopListViewMoreLoop(target_page) {
+				// 더보기 버튼 추가 페이지를 불러옴
+				var $more_btn = $('#w20221128906c1bc38547e ._more_btn');
+				var page_count = 1;
+				if (target_page <= page_count) {
+					$
+							.ajax({
+								type : 'GET',
+								url : ('/ajax/get_shop_list_view.cm'),
+								dataType : 'json',
+								async : false,
+								cache : true,
+								data : {
+									'page' : target_page,
+									'pagesize' : 25,
+									'category' : 's201909197ed0e1d732aaf',
+									'sort' : '',
+									'menu_url' : '/shop/'
+								},
+								success : function(res) {
+									if (res.msg === 'SUCCESS') {
+										// Chrome에서 Scroll Anchoring 기능이 더보기 다음 내용을 기준으로 동작하는 문제가 있어 잠시 기능 해제
+										$('body.doz_sys').css(
+												'overflow-anchor', 'none');
+										$('#w20221128906c1bc38547e ._item_wrap')
+												.append(res.html);
+										if (target_page === target_more_page) {
+											if (target_page < page_count) {
+												$more_btn.data('page',
+														target_page);
+												$more_btn
+														.find('._more_btn_page')
+														.text(
+																' ('
+																		+ (target_page)
+																		+ '/'
+																		+ page_count
+																		+ ')');
+											} else {
+												$more_btn.hide();
+											}
+											$item_wrap = $(
+													'#container_w20221128906c1bc38547e')
+													.find('._shop_item');
+											setParameterByName('page',
+													target_page);
+											$(
+													'#container_w20221128906c1bc38547e')
+													.imagesLoaded()
+													.always(
+															function(ins) {
+																shopListResize();
+																shopListHeight();
+																$(
+																		'body.doz_sys')
+																		.css(
+																				'overflow-anchor',
+																				'');
+															});
+											is_load_more = false;
+										} else if (target_page + 1 <= target_more_page) {
+											shopListViewMoreLoop(target_page + 1);
+										}
+									}
+								},
+								error : function() {
+									is_load_more = false;
+								}
+							});
+				}
 			}
 
-			function getMatchedInfo(species, marketingServiceNumber, marketingCodesTrailingUnderscore, isBottomPopup) {
-				return Object.keys(species)
-						.map(function(species) { return targetUrls.species[species][getTopOrBottomKey(isBottomPopup)]; })
-						.filter(function(type) { return !!type })
-						.filter(function(type) { return type.match(marketingServiceNumber, marketingCodesTrailingUnderscore, isBottomPopup) })[0];
+			$('#w20221128906c1bc38547e ._more_btn').on('click', function() {
+				shopListViewMore();
+			});
+
+			// 더보기 버튼 사용 중이고 2페이지 이상일 때 추가 페이지 불러옴
+			if (target_more_page > 1)
+				shopListViewMoreLoop(2);
+
+			var setTimesale = function() {
+				// 페이지 이동 등으로 새 interval 사용 시에는 기존 interval은 삭제되어야 함
+				var $doz_timesale_wrap = $('#w20221128906c1bc38547e ._doz_timesale_wrap');
+				if ($doz_timesale_wrap.length > 0) {
+					$doz_timesale_wrap
+							.each(function() {
+								var $that = $(this);
+								var start_time = ($that.find('._doz_timesale')
+										.attr('data-start-time') * 1000);
+								var $doz_timesale = $that
+										.find('._doz_timesale');
+								var timesale_interval = setInterval(
+										function() {
+											if ($doz_timesale.length > 0) {
+												var remain_ms = ($doz_timesale
+														.attr('data-end-time') * 1000)
+														- start_time;
+												if (remain_ms > 0) {
+													var remain_d = Math
+															.floor(remain_ms / 86400000);
+													var remain_h = Math
+															.floor((remain_ms % 86400000) / 3600000);
+													var remain_m = Math
+															.floor((remain_ms % 3600000) / 60000);
+													var remain_s = Math
+															.floor((remain_ms % 60000) / 1000);
+
+													var remain_hh = remain_h < 10 ? '0'
+															+ remain_h
+															: '' + remain_h;
+													var remain_mm = remain_m < 10 ? '0'
+															+ remain_m
+															: '' + remain_m;
+													var remain_ss = remain_s < 10 ? '0'
+															+ remain_s
+															: '' + remain_s;
+
+													if (remain_d >= 1) {
+														$doz_timesale
+																.text(getLocalizeString(
+																		'설명_타임세일종료까지n일',
+																		[ remain_d ],
+																		'타임세일 종료까지 %1일'));
+													} else {
+														$doz_timesale
+																.text(getLocalizeString(
+																		'설명_종류까지n1시n2분n3초남음',
+																		[
+																				remain_hh,
+																				remain_mm,
+																				remain_ss ],
+																		'종료까지 %1:%2:%3 남음'));
+													}
+													start_time = start_time + 1000;
+												} else {
+													/* 타임세일 종료 */
+													clearInterval(timesale_interval);
+													$that.remove();
+												}
+											} else {
+												/* 페이지 이동 등으로 대상이 없으면 inverval 제거 */
+												clearInterval(timesale_interval);
+											}
+										}, 1000);
+							});
+				}
 			}
 
-			function containsMarketingCodeAndLargeCode(largeGroups, marketingCodesTrailingUnderscore, marketingServiceCode,) {
-				return largeGroups.some(function(largeGroup) {
-					return marketingCodesTrailingUnderscore.indexOf(marketingServiceCode + '_' + largeGroup.code + '_') != -1;
-				})
-			}
+			setTimesale();
+		});
 
-			return {
-				marketingServices: marketingServices,
-				largeGroups: largeGroups,
-				targetUrls: targetUrls,
-				getTopOrBottomKey: getTopOrBottomKey,
-				getMatchedInfo: getMatchedInfo,
-			}
-		})();
-
-		/**
-		 * 앱스플라이어 마케팅 url
-		 */
-		function goAppStore(dialogCheck) {
-			const isBottomPopup = !!dialogCheck;
-			const kcode = getCookie('k_code');
-			const kcodeSplit = kcode.split('^'); // 2.0: mkt_code^msid^device_type , 1.0: mkt_code only
-			const marketingCodesTrailingUnderscore = kcodeSplit[0]; // ex: ns_ce_... ns(마케팅 서비스 code)_ce(대그룹 code)
-			const marketingServiceNumber = Number(kcodeSplit[1]); // 마케팅 서비스 number
-
-			location.href = appsflyer.targetUrls.baseURL +
-						appsflyer.getMatchedInfo(
-							appsflyer.targetUrls.species,
-							marketingServiceNumber,
-							marketingCodesTrailingUnderscore,
-							isBottomPopup
-						).pathVariable;
-		}
-
-		// 쿠키 생성
-		function setCookie(cName, cValue, cDay){
-			var expire = new Date();
-			expire.setDate(expire.getDate() + cDay);
-			cookies = cName + '=' + escape(cValue) + '; path=/ ';
-			if(typeof cDay != 'undefined') cookies += ';expires=' + expire.toGMTString() + ';';
-			document.cookie = cookies;
-		}
-
-		// 쿠키 가져오기
-		function getCookie(cName) {
-			cName = cName + '=';
-			var cookieData = document.cookie;
-			var start = cookieData.indexOf(cName);
-			var cValue = '';
-			if(start != -1){
-				start += cName.length;
-				var end = cookieData.indexOf(';', start);
-				if(end == -1)end = cookieData.length;
-				cValue = cookieData.substring(start, end);
-			}
-			return unescape(cValue);
-		}
-
-		if (getCookie('marketing_type') != '') {
-			if (getCookie('marketing_type') == 'pay') {
-				var _nasa={};
-				_nasa["cnv"] = wcs.cnv("1",getCookie('marketing_price')); // 전환유형, 전환가치 설정해야함. 설치매뉴얼 참고
-			} else {
-				var _nasa={};
-				_nasa["cnv"] = wcs.cnv("2","1"); // 전환유형, 전환가치 설정해야함. 설치매뉴얼 참고
-			}
-
-			//쿠키 삭제
-			setCookie('marketing_price', '', -1);
-			setCookie('marketing_type', '', -1);
-		}
+		$("#text_w202211285622030fa19bd").find("._table_responsive").addClass(
+				"table").wrap($("<div />").addClass("table-responsive"));
+		$("#text_w20221128aa8064894aa86").find("._table_responsive").addClass(
+				"table").wrap($("<div />").addClass("table-responsive"));
 	</script>
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-77719807-2', 'auto');
-        ga('send', 'pageview');
-    </script>
-
-    <!-- Daum  중요 용도가 아니라면 주석처리 여부 결정 문제 없을시 삭제
-    <script type="text/javascript">
-        var roosevelt_params = {
-            retargeting_id:'iaYgM3OBV.Uv.QOMJv.bqg00',
-            tag_label:'BTecd8srQJ2G5hhOmZIanw'
-        };
-    </script>
-    <script type="text/javascript" src="//adimg.daumcdn.net/rt/roosevelt.js" async></script -->
-
-    <!-- Google Code for &#50668;&#44592;&#50612;&#46412;_&#50937; Conversion Page -->
-    <script type="text/javascript">
-        /* <![CDATA[ */
-        var google_conversion_id = 964418007;
-        var google_conversion_language = "en";
-        var google_conversion_format = "3";
-        var google_conversion_color = "ffffff";
-        var google_conversion_label = "6YMHCM_i81wQ17PvywM";
-        var google_remarketing_only = false;
-        /* ]]> */
-    </script>
-    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
-
-    <noscript>
-        <div style="display:inline;">
-            <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/964418007/?label=6YMHCM_i81wQ17PvywM&amp;guid=ON&amp;script=0"/>
-        </div>
-    </noscript>
-
-	<script type="text/javascript">
-		if (!wcs_add) var wcs_add={};
-		wcs_add["wa"] = "s_4540c185467c";
-		if (!_nasa) var _nasa={};
-		wcs.inflow("goodchoice.kr");
-		wcs_do(_nasa);
-	</script>
-
-	<!-- Global site tag (gtag.js) - Google AdWords: 802163829 -->
-	<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-802163829"></script>
 	<script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+		ALARM_BADGE
+				.addBadgeArea(
+						$('#slide-alarm'),
+						'<i aria-hidden="true" class="im-icon im-ico-bell"></i><sup class="badge style-danger _badge_cnt">{count}</sup>');
+	</script>
+	<script>
+		$(function() {
+			SITE_VISIT_LOG
+					.addVisitLog(
+							document.referrer,
+							'OK9CVzPXlZWTMsPmOAmxbZ1VUQfdj9zMi9S0iFgj5DB2OmRp39n5++AruWXYQnxO/fFTYOv77/TDeQWicL+asdrMuxKC1G+l+J8qJJ/R/S5GLFTX8ci/TjJWaDzMjX8S',
+							'9031', 'm20221128e445c75c466cd');
+		});
+	</script>
+	<script>
+		ALARM_MENU.init();
+		SITE_ANIMATION.init('N', 'Y');
 
-        gtag('config', 'AW-802163829');
+		$(function() {
+			var gallery_id = 'img_lg';
+			var img_gallery_light_box = false;
+			$('body').lightGallery({
+				selector : '._image_widget_lightbox',
+				thumbnail : false,
+				animateThumb : false,
+				swipeThreshold : 20,
+				showThumbByDefault : false,
+				mode : 'lg-fade',
+				speed : 200,
+				galleryId : gallery_id,
+			});
 
-        // Event snippet for WEB_다운로드_버튼 conversion page In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button.
-        
-        $(function(){
-            $('.appdown_link').on('click',function(){
-                gtag('event', 'conversion', {
-                    'send_to': 'AW-802163829/jxc6CN22x4MBEPWYwP4C'
-                });
-            });
-        });
+			if (history.replaceState && history.pushState) {
+				var current_url = location.href.indexOf('#') === -1 ? location.href
+						: location.href.substr(0, location.href.indexOf('#'));
+				var back_url = document.referrer.indexOf('#') === -1 ? document.referrer
+						: document.referrer.substr(0, document.referrer
+								.indexOf('#'));
+				var history_push_flag = true;
+				// 라이트박스 hash 커스텀(IE 10 이상)
+				$('body').on('onBeforeOpen.lg', function() {
+					history_push_flag = true;
+				});
+				$('body')
+						.on(
+								'onAfterOpen.lg',
+								function() {
+									var current_url_lg_id = location.href
+											.indexOf('#') === -1 ? location.href
+											: location.href.substr(
+													location.href.indexOf('#'),
+													location.href.indexOf('&'));
+									if (current_url_lg_id.indexOf(gallery_id) > 0) {
+										img_gallery_light_box = true;
+									}
+								})
+				$('body').on(
+						'onAfterSlide.lg',
+						function(event, prevIndex, index) {
+							if (img_gallery_light_box) {
+								if (history_push_flag) {
+									history.replaceState(null, null,
+											current_url);
+									history_push_flag = false;
+								}
+								history.replaceState(null, null, current_url
+										+ '#lg=' + gallery_id + '&slide='
+										+ index); // 슬라이드 히스토리 교체
+							}
+						});
+				var history_back_flag = true;
+				$('body').on(
+						'onBeforeClose.lg',
+						function(e) {
+							if (img_gallery_light_box) {
+								history_back_flag = true;
+								if (window.location.hash.indexOf('lg='
+										+ gallery_id) !== -1) {
+									history.back();
+									history_back_flag = false;
+								}
+							}
+						});
+				$('body')
+						.on(
+								'onCloseAfter.lg',
+								function() {
+									if (img_gallery_light_box) {
+										if (history_back_flag
+												|| window.location.hash
+														.indexOf('lg=') !== -1) {
+											history.back();
+										}
+										history_back_flag = true;
+										img_gallery_light_box = false;
+									}
+								})
+			}
+
+			$('[data-toggle="tooltip"]').tooltip();
+
+		});
+
+		$(document)
+				.ready(
+						function() {
+							$('body').removeClass('page_ready');
+							$('._bookmark')
+									.on(
+											'click',
+											function(e) {
+												var bookmarkURL = window.location.href;
+												var bookmarkTitle = document.title;
+												var triggerDefault = false;
+
+												if (window.sidebar
+														&& window.sidebar.addPanel) {
+													// Firefox version < 23
+													window.sidebar.addPanel(
+															bookmarkTitle,
+															bookmarkURL, '');
+												} else if ((window.sidebar && (navigator.userAgent
+														.toLowerCase().indexOf(
+																'firefox') > -1))
+														|| (window.opera && window.print)) {
+													// Firefox version >= 23 and Opera Hotlist
+													var $this = $(this);
+													$this.attr('href',
+															bookmarkURL);
+													$this.attr('title',
+															bookmarkTitle);
+													$this
+															.attr('rel',
+																	'sidebar');
+													$this.off(e);
+													triggerDefault = true;
+												} else if (window.external
+														&& ('AddFavorite' in window.external)) {
+													// IE Favorite
+													window.external
+															.AddFavorite(
+																	bookmarkURL,
+																	bookmarkTitle);
+												} else {
+													// WebKit - Safari/Chrome
+													alert(LOCALIZE
+															.설명_즐겨찾기등록키안내((navigator.userAgent
+																	.toLowerCase()
+																	.indexOf(
+																			'mac') != -1 ? 'Cmd'
+																	: 'Ctrl')
+																	+ '+D'));
+												}
+
+												return triggerDefault;
+											});
+
+						});
 	</script>
 
-    <!-- 채널제출 -->
-    <span itemscope="" itemtype="http://schema.org/Organization">
-        <link itemprop="url" href="https://www.goodchoice.kr">
-        <a itemprop="sameAs" href="https://www.facebook.com/goodchoiceofficial"></a>
-        <a itemprop="sameAs" href="https://play.google.com/store/apps/details?id=kr.goodchoice.abouthere"></a>
-        <a itemprop="sameAs" href="https://itunes.apple.com/kr/app/id884043462"></a>
-        <a itemprop="sameAs" href="https://post.naver.com/withinnovation"></a>
-        <a itemprop="sameAs" href="https://www.youtube.com/channel/UCLI1HOVJdhWdVl9pT__g2Zw"></a>
-    </span>
-</div>
-<script>
-	let sessionUno = sessionStorage.getItem("uno");
-	if(sessionUno) {
-		sessionStorage.removeItem("uno");
+
+	<script>
+		if (LOCAL_STORAGE.getLocalStorage('AUTO_LOGOUT_TIME'))
+			LOCAL_STORAGE.deleteLocalStorage('AUTO_LOGOUT_TIME');
+		if (LOCAL_STORAGE.getLocalStorage('IS_AUTO_LOGOUT'))
+			LOCAL_STORAGE.deleteLocalStorage('IS_AUTO_LOGOUT');
+	</script>
+	<script>
+		var DOZ_AD = function() {
+			var init = function() {
+				var id = 'doz_ad';
+				var ad_class = 'free_ad_block free_banner_wrap';
+				var $html = $('<div />').attr('id', id);
+				var $body = $("body");
+				setInterval(
+						function() {
+							var zindex = 2147483647;
+							var $childs = $body.children();
+							var test = false;
+							$childs.each(function() {
+								var thisz = parseInt($(this).css("z-index"));
+								if (thisz > zindex)
+									zindex = thisz + 1000;
+							});
+							var $doz_ad = $("#" + id);
+							if ($doz_ad.length > 0) {
+								$doz_ad.replaceWith($html);
+							} else {
+								$body.append($html);
+								$doz_ad = $html
+							}
+							$doz_ad.attr('class', ad_class);
+							$doz_ad.attr('style', '');
+							$doz_ad.css("z-index", zindex);
+							$doz_ad.empty();
+
+							var $sub_html = '<div id="doz_free_ad" class="free_ad_block free_banner_wrap" style="z-index: 2147483647;">\n'
+									+ '<div class="holder">\n'
+									+ '<a class="_free_banner free_site_banner inline-blocked "  href="https://goo.gl/CNffhw" target="_blank">\n'
+									+ '<img class="hidden-xs hidden-sm" src="https://vendor-cdn.imweb.me/images/site/imweb_new_logo_blue_2x_360.png" width="95">\n'
+									+ '<img class="hidden-md hidden-lg" src="https://vendor-cdn.imweb.me/images/site/imweb_new_logo_white2.png?454848 " width="70">\n'
+									+ '<div class="inline-blocked">\n'
+									+ "<span class='free_ad_text'>이 사이트는 아임웹으로 제작되었습니다.</span>\n"
+									+ '</div>\n'
+									+ '</a>\n'
+									+ '<a href="https://imweb.me/theme" target="_blank" class="inline-blocked free_ad_btn btn-brand hidden-xs hidden-sm">무료 시작하기\n'
+									+ '</a>\n'
+									+ '<a href="https://imweb.me/best_production_list" target="_blank" class="inline-blocked free_ad_right hidden-xs hidden-sm">'
+									+ '<span>고객사례 확인하기\n'
+									+ '<i class="icon-arrow-right vertical-middle" style="font-size:14px;">\n'
+									+ '</i>\n'
+									+ '</span>\n'
+									+ '</a>\n'
+									+ '</div>\n' + '</div>';
+							$doz_ad.append($sub_html);
+							$doz_ad.show();
+
+							if (Math.round($(window).scrollTop()) === $(
+									document).height()
+									- $(window).height() - $doz_ad.height()) {
+								$(window).scrollTop($(document).height());
+							}
+
+						}, 1000);
+			};
+			return {
+				init : function() {
+					init();
+				}
+			}
+		}();
+		$(function() {
+			DOZ_AD.init();
+		});
+	</script>
+	<style>
+.doz_sys .free_banner_wrap {
+	margin: 0 !important;
+	display: block !important;
+	visibility: visible !important;
+	opacity: 1 !important;
+	line-height: normal;
+}
+
+.doz_sys .free_ad_block {
+	font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+	text-align: center !important;
+	background: #fff !important;
+	box-shadow: 0 -4px 15px 0 rgba(0, 0, 0, 0.08);
+	display: block !important;
+	position: fixed !important;
+	left: 0 !important;
+	bottom: 0 !important;
+	width: 100% !important;
+	z-index: 99999;
+	visibility: visible !important;
+	margin: 0 !important;
+}
+
+.doz_sys.shop_view .free_ad_block {
+	display: none !important;
+}
+
+.free_ad_block .holder {
+	display: block !important;
+	height: 100px;
+	max-width: 1000px;
+	width: 100%;
+	margin: 0 auto;
+	text-align: left;
+}
+
+.free_ad_block .holder:before {
+	content: '';
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+}
+
+.free_site_banner {
+	display: inline-block !important;
+}
+
+.free_site_banner>img {
+	image-rendering: -webkit-optimize-contrast;
+	margin-top: -6px;
+}
+
+.free_ad_text {
+	margin: 0 15px 0 10px;
+	color: #000;
+	letter-spacing: 0;
+	vertical-align: middle;
+	font-size: 22px;
+}
+
+.free_ad_text.arrow_right {
+	margin: 0;
+	color: #fff;
+}
+
+.free_ad_text>i {
+	font-size: 20px;
+	vertical-align: sub;
+	margin-left: 0.3px;
+	position: relative;
+	top: 2px;
+}
+
+.free_ad_text>em {
+	margin-left: 5px;
+}
+
+.free_ad_block .free_ad_btn {
+	background: #1A6DFF;
+	border-color: #1A6DFF;
+	color: #fff;
+	width: 180px;
+	height: 49px;
+	font-size: 16px;
+	line-height: 49px;
+	text-align: center;
+	border-radius: 4px;
+}
+
+.free_ad_right {
+	font-size: 16px;
+	color: #1A6DFF !important;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+.doz_sys .ch-desk-messenger {
+	bottom: 125px !important;
+}
+
+body.doz_sys {
+	padding-bottom: 100px;
+}
+
+.talk_preview_area .talk_banner_preview {
+	bottom: 125px;
+}
+
+#ch-plugin-core>div {
+	bottom: 120px !important;
+	background: transparent !important;
+}
+
+@media ( min-width : 768px) {
+	#kakao-talk-channel-chat-button {
+		bottom: 125px !important;
 	}
-</script>
+}
 
+@media ( max-width : 767px) {
+	#kakao-talk-channel-chat-button {
+		bottom: 60px !important;
+	}
+}
 
-</body></html>
+@media all and (max-width : 991px) {
+	body.doz_sys {
+		padding-bottom: 50px;
+	}
+	.talk_preview_area .talk_banner_preview {
+		bottom: 60px !important;
+	}
+	.doz_sys.shop_view .free_ad_block, .doz_sys.booking_view .free_ad_block
+		{
+		display: none !important;
+	}
+	.doz_sys .ch-mobile-messenger {
+		height: calc(100% - 50px) !important;
+	}
+	.free_ad_block .holder {
+		height: 50px;
+		max-width: 100%;
+		text-align: center;
+		background: #1A6DFF;
+	}
+	.free_ad_text {
+		font-size: 14px;
+		color: #fff !important;
+	}
+	#ch-plugin-core>div {
+		bottom: 60px !important;
+	}
+}
+</style>
+
+	<div id="doz_ad" class="free_ad_block free_banner_wrap"
+		style="z-index: 2147483647;">
+		<div id="doz_free_ad" class="free_ad_block free_banner_wrap"
+			style="z-index: 2147483647;">
+			<%--
+<div class="holder">
+<a class="_free_banner free_site_banner inline-blocked " href="https://goo.gl/CNffhw" target="_blank">
+<img class="hidden-xs hidden-sm" src="https://vendor-cdn.imweb.me/images/site/imweb_new_logo_blue_2x_360.png" width="95">
+<img class="hidden-md hidden-lg" src="https://vendor-cdn.imweb.me/images/site/imweb_new_logo_white2.png?454848 " width="70">
+<div class="inline-blocked">
+<span class="free_ad_text">이 사이트는 아임웹으로 제작되었습니다.</span>
+</div>
+
+</a>
+<a href="https://imweb.me/theme" target="_blank" class="inline-blocked free_ad_btn btn-brand hidden-xs hidden-sm">무료 시작하기
+</a>
+<a href="https://imweb.me/best_production_list" target="_blank" class="inline-blocked free_ad_right hidden-xs hidden-sm"><span>고객사례 확인하기
+<i class="icon-arrow-right vertical-middle" style="font-size:14px;">
+--%>
+			</i> </span> </a>
+		</div>
+	</div>
+	</div>
+</body>
+</html>

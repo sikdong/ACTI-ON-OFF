@@ -26,7 +26,7 @@
 						</label>
 						
 						<div class="input-group">
-							<input id="userIdInput1" class="form-control" type="text" name="id">
+							<input id="userIdInput1" class="form-control" type="text" name="M_ID">
 							<button id="userIdExistButton1" class="btn btn-outline-secondary" type="button">중복확인</button>
 						</div>
 						
@@ -38,7 +38,7 @@
 						<label for="" class="form-label">
 							암호
 						</label>
-						<input id="passwordInput1" class="form-control" type="text" name="password">
+						<input id="passwordInput1" class="form-control" type="text" name="M_PASSWORD">
 						<div id="passwordText1" class="form-text"></div>
 					</div>
 					
@@ -55,27 +55,25 @@
 						</label>
 						
 						<div class="input-group">
-							<input id="nameInput1" class="form-control" type="text" name="name">
+							<input id="nameInput1" class="form-control" type="text" name="M_NAME">
 						</div>
 						
 					</div>
 					
+		
 					
 	                <div class="mb-3">
     					<label for="" class="form-label">
 							성별
 						</label>
-						
-	                    <div class="btn-group" data-toggle="buttons">   
-	                       <label class="btn btn-primary active">
-	                         <input type="radio"  name="gender" autocomplete="off" value="남자" checked/>남자
-	                       </label>
-	                        <label class="btn btn-primary">
-	                         <input type="radio"  name="gender" autocomplete="off" value="여자"/>여자
-	                       </label>
-	                    </div> 
-	                                       
+								
+						<select class="form-select" aria-label="Default select example" name="M_GENDER">
+						  <option selected>선택하세요</option>
+						  <option value="male">남자</option>
+						  <option value="femlae">여자</option>
+						</select>            
 	                </div>
+	                					
 					
 					<div class="mb-3">
 						<label for="" class="form-label">
@@ -83,7 +81,7 @@
 						</label>
 						
 						<div class="input-group">
-							<input id="nameInput1" class="form-control" type="text" name="phone">
+							<input id="nameInput1" class="form-control" type="text" name="M_PHONE">
 						</div>
 					</div>
 										
@@ -93,12 +91,26 @@
 						</label>
 						
 						<div class="input-group">
-							<input id="emailInput1" class="form-control" type="email" name="email">
+							<input id="emailInput1" class="form-control" type="email" name="M_EMAIL">
 							<button id="emailExistButton1" type="button" class="btn btn-outline-secondary">중복확인</button>
 						</div>
 						
 						<div id="emailText1" class="form-text">이메일 중복확인을 해주세요.</div>
 					</div>
+
+	              	<div class="mb-3">
+    					<label for="" class="form-label">
+							호스트 게스트 여부 확인
+						</label>
+								
+						<select class="form-select" aria-label="Default select example" name="M_HOST">
+						  <option selected>선택하세요</option>
+						  <option value="1">호스트입니다.</option>
+						  <option value="0">게스트입니다.</option>
+						</select>            
+	                </div>
+					
+
 
 
 					<input disabled id="submitButton1" class="btn btn-primary" type="submit" value="가입">
@@ -139,13 +151,33 @@ document.querySelector("#emailInput1").addEventListener("keyup", function() {
 	enableSubmitButton();
 });
 
+// 아이디 중복확인
+document.querySelector("#userIdExistButton1").addEventListener("click", function() {
+	availableId = false;
+	// 입력된 userId를
+	const userId = document.querySelector("#userIdInput1").value;
+	
+	// fetch 요청 보내고
+	fetch(ctx + "/jjhLogin/existId/" + userId)
+		.then(res => res.json())
+		.then(data => {
+			// 응답 받아서 메세지 출력
+			document.querySelector("#userIdText1").innerText = data.message;
+			
+			if (data.status == "not exist") {
+				availableId = true;
+				enableSubmitButton();
+			}
+		}); 
+	
+});
 
 // 이메일 중복확인
 document.querySelector("#emailExistButton1").addEventListener("click", function() {
 	availableEmail = false;
 	const email = document.querySelector("#emailInput1").value;
 	
-	fetch(`\${ctx}/member/existEmail`, {
+	fetch(`\${ctx}/jjhLogin/existEmail`, {
 		method : "post",
 		headers : {
 			"Content-Type" : "application/json"
@@ -163,26 +195,6 @@ document.querySelector("#emailExistButton1").addEventListener("click", function(
 		});
 });
 
-// 아이디 중복확인
-document.querySelector("#userIdExistButton1").addEventListener("click", function() {
-	availableId = false;
-	// 입력된 userId를
-	const userId = document.querySelector("#userIdInput1").value;
-	
-	// fetch 요청 보내고
-	fetch(ctx + "/member/existId/" + userId)
-		.then(res => res.json())
-		.then(data => {
-			// 응답 받아서 메세지 출력
-			document.querySelector("#userIdText1").innerText = data.message;
-			
-			if (data.status == "not exist") {
-				availableId = true;
-				enableSubmitButton();
-			}
-		}); 
-	
-});
 
 
 
@@ -190,7 +202,7 @@ document.querySelector("#userIdExistButton1").addEventListener("click", function
 const passwordInput1 = document.querySelector("#passwordInput1");
 const passwordInput2 = document.querySelector("#passwordInput2");
 const passwordText1 = document.querySelector("#passwordText1");
-
+ 
 function matchPassword() {
 	availablePassword = false;
 	
