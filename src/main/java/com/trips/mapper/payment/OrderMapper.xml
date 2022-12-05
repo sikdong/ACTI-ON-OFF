@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.trips.mapper.payment.OrderMapper">
+   
+   <!-- <resultMap type="OrderList" id="orderListResultMap">
+  	<id property="orderId" column="O_ORDER_ID"></id>
+  	<result property="name" column="O_NAME"/>
+  	<result property="email" column="O_EMAIL"/>
+  	<result property="phone" column="O_PHONE"/>
+  	<result property="id" column="m.M_ID"/>
+  	<result property="amount" column="O_AMOUNT"/>
+  	<result property="date" column="O_ORDER_DATE"/>
+  	<result property="resNo" column="RES_NO"/>
+  	<result property="price" column="O_PRICE"/>
+  	<result property="renamedFileName" column="renamedFileName"/>
+  </resultMap> -->
+   
+   <select id="paymentSelect" resultType="com.trips.domain.payment.OrderList">
+  
+  SELECT O_ORDER_ID orderId,
+  		 O_NAME name,
+  		 O_EMAIL email,
+  		 O_PHONE phone,
+  		 m.M_ID id,
+  		 O_AMOUNT amount,
+  		 O_ORDER_DATE date,
+  		 RES_NO resNo,
+  		 O_PRICE price,
+  		 renamedFileName
+  FROM ACTI_ORDER o
+  LEFT JOIN MEMBER m on m.M_ID = o.M_ID
+  
+  
+  </select>
+  
+  
+ 
+  </mapper>
