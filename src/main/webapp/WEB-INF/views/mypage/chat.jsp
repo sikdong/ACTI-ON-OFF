@@ -23,6 +23,45 @@
     transform: translateY(0px)
   }
 }
+.chat_Left{
+ width: 20%;
+ float: left;
+ height: 100%;
+ box-sizing: border-box;
+}
+.chat_Right{
+ width: 80%;
+ float: right; 
+ height: 100%;
+ box-sizing: border-box;
+}
+html, body {
+ width: 100%;
+ height: 100%;
+}
+header{
+	height: 80px;
+	position: sticky;
+	font-weight: bold;
+	font-size: 24px;
+	border-bottom: 0.3px solid #d2d2d2;
+}
+.customContainer{
+	margin: auto;
+	width: 60%;
+	background-color:#E1F6FA;	
+}
+.chat_my{
+	width: 50%;
+	border-radius: 5%;
+	background: #FFFF96;
+}
+.chat_op{
+
+	width: 50%;
+	border-radius: 5%;
+	background: #F4FFFF;
+}
 </style>
 
 <meta charset="UTF-8">
@@ -30,10 +69,58 @@
 <title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
 </head>
-<body>
-
-
+<body style="overflow-y:hidden;">
+	<my:navbar></my:navbar>
+	<div style="height: 100%">
+		<div class="chat_Left" style="border-right: 0.3px solid #d2d2d2">
+			<header style="border-right: none;">
+			</header>
+		 	 <h1>과거 채팅내역 모음</h1>
+		</div>
+		
+		<div class="chat_Right">
+			<header>
+				<div style="padding: 20px 0 0 30px;">
+					${host}
+					<span style="font-weight: normal">님과의 채팅</span>
+				</div>				
+			</header>
+			<div style="overflow: scroll; height: 70%;">
+				<div class="customContainer" style="height: 120%">
+					<c:forEach var="chat" items="${chat}">
+						<c:choose>
+						<c:when test="${chat.writer eq id }">
+							<div class="chat_my">
+								<div style="padding-left: 5px">
+									<span>${chat.writer }</span>
+									<span>${chat.date }</span>
+									<div>${chat.content }</div>
+								</div>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div class="chat_op">
+								<div style="padding-left: 5px">
+									<span>${chat.writer }</span>
+									<span>${chat.date }</span>
+									<div>${chat.content }</div>
+								</div>
+							</div>
+						</c:otherwise>
+						</c:choose>
+						
+						
+							
+				
+						
+					</c:forEach>				
+				</div>
+			</div>
+		</div>
+	</div>
 	
 	
 	
