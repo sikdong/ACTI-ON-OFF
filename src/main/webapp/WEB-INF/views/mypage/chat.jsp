@@ -52,15 +52,23 @@ header{
 	background-color:#E1F6FA;	
 }
 .chat_my{
-	width: 50%;
+	margin-left: auto;
+	margin-right: 10px;
+	width: 60%;
 	border-radius: 5%;
 	background: #FFFF96;
+	font-size: 18px;
 }
 .chat_op{
-
-	width: 50%;
+	margin-right: auto;
+	margin-left: 10px;
+	width: 60%;
 	border-radius: 5%;
 	background: #F4FFFF;
+	font-size: 18px;
+}
+#input{
+	
 }
 </style>
 
@@ -88,35 +96,48 @@ header{
 					<span style="font-weight: normal">님과의 채팅</span>
 				</div>				
 			</header>
-			<div style="overflow: scroll; height: 70%;">
-				<div class="customContainer" style="height: 120%">
-					<c:forEach var="chat" items="${chat}">
-						<c:choose>
-						<c:when test="${chat.writer eq id }">
-							<div class="chat_my">
-								<div style="padding-left: 5px">
-									<span>${chat.writer }</span>
-									<span>${chat.date }</span>
-									<div>${chat.content }</div>
+			<div id="down" style="overflow: scroll; height: 83.3%;">
+				<div class="customContainer">
+					<div style="height: 120%">
+						<c:forEach var="chat" items="${chat}">
+							<c:choose>
+							<c:when test="${chat.writer eq id }">
+								<div class="chat_my">
+									<div style="padding: 5px 10px 10px 10px;">
+										<span style="font-weight: bold; font-size: 20px;">${chat.writer }</span>
+										<span style="font-size: 13px;">${chat.date }</span>
+										<div>${chat.content }</div>
+									</div>
 								</div>
-							</div>
-						</c:when>
-						<c:otherwise>
-							<div class="chat_op">
-								<div style="padding-left: 5px">
-									<span>${chat.writer }</span>
-									<span>${chat.date }</span>
-									<div>${chat.content }</div>
+								<br>
+							</c:when>
+							<c:otherwise>
+								<div class="chat_op">
+									<div style="padding: 5px 10px 10px 10px;">
+										<span style="font-weight: bold; font-size: 20px;">${chat.writer }</span>
+										<span style="font-size: 13px;">${chat.date }</span>
+										<div>${chat.content }</div>
+									</div>
 								</div>
-							</div>
-						</c:otherwise>
-						</c:choose>
-						
-						
-							
-				
-						
-					</c:forEach>				
+								<br>
+							</c:otherwise> 
+							</c:choose>	
+						</c:forEach>
+						<br><br>
+						<div class="input-group has-validation">
+						  <div class="form-floating is-invalid">
+						    <input type="text" class="form-control" id="floatingInputGroup2" style="padding: 10px 0 10px 10px;">
+						  </div>
+						  <span style="width: 80px" class="input-group-text">
+						 	<div style="padding-left: 18px; font-size: 25px">
+						 		↲
+						 	</div>
+						  </span>
+						  <div class="invalid-feedback">
+						    Chat with your host
+						  </div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -127,6 +148,11 @@ header{
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script>
+/* --------------채팅 맨밑으로 끌어내리는 기능-------------------------------------------------------------------------------------------------- */
+var obj = document.getElementById('down');
+obj.scrollTop = obj.scrollHeight;
+/* --------------채팅 맨밑으로 끌어내리는 기능 끝-------------------------------------------------------------------------------------------------- */
+
 /* --------------sticky navbar scroll 기능-------------------------------------------------------------------------------------------------- */
 function navigo (){
   const header = document.querySelector('#nav2'); //헤더부분획득
@@ -145,7 +171,6 @@ document.addEventListener('scroll', onScroll, { passive: true });//스크롤 이
 }
 navigo()
 /* --------------sticky navbar scroll 기능 끝-------------------------------------------------------------------------------------------------- */
-
 </script>
 </body>
 </html>
