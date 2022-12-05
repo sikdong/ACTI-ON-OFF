@@ -34,4 +34,16 @@ public class OfflineController {
 		model.addAttribute("board", board);
 		
 	}
+	
+	@GetMapping("remove")
+	public String removeBoard(int num) {
+		service.removeBoard(num);
+		return "redirect:/ydsBoard/list";
+	}
+	
+	@GetMapping("getFiveFiles")
+	@ResponseBody
+	public List<TripsBoardDto> getFiveFiles(){
+		return service.getFiveFiles();
+	}
 }

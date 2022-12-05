@@ -53,7 +53,7 @@
 							</c:if> <input value="${orderList.orderId}" name="Name" id="Name">
 						</td>
 						<td><br></td>
-						<td><input name="onoffPrice" value="${ orderList.price }" />&nbsp;원</td>
+						<td><input name="orderPrice" value="" />&nbsp;원</td>
 						<td><select name="order_Qty" class="form-control order_Qty">
 								<option value="1" selected="">1</option>
 						</select></td>
@@ -77,7 +77,7 @@
 			<h1 class="page-header">주문정보 확인</h1>
 			<h4 style="color: red;">주문자 정보를 입력해주세요.</h4>
 		</div>
-		<%-- <div class="row no-gutters">
+		 <div class="row no-gutters">
 			<div class="form-horizontal">
 				<div class="form-group">
 					<label for="inputId" class="col-sm-2 control-label">ID</label>
@@ -122,7 +122,7 @@
 			<div class="row no-gutters"
 				style="text-align: center; margin: 50px 0;">
 				<label style="font-size: 1.5em;"> 결제 금액 : <span
-					id="totalprice"></span>&nbsp; ${ orderList.price}원 <input
+					id="totalprice"></span>&nbsp; <input
 					type="hidden" id="amount" name="totalAmount">
 				</label>
 			</div>
@@ -133,21 +133,20 @@
 						class="btn btn-default back_btn">돌아가기</button></a>
 			</div>
 		</div>
-	</div> --%>
+	</div> 
 
-<%--
-	<!-- <script type="text/javascript">
+
+	<script type="text/javascript">
 	
 	// import 결제 api 
-	
 		 IMP.init('imp93088520');
     function requestPay() {
       IMP.request_pay({ // param
           pg: "html5_inicis",
           pay_method: "card",
-          merchant_uid: "${O_ORDER_ID}",
-          name: "${orderList.O_NAME}",
-          amount: ${orderList.O_PRICE},
+          orderId: "123",
+          name: "123",
+          amount: 123,
           buyer_name: "ONOFF",
           buyer_email: "ONOFF@ONOFF.com",
           buyer_tel: "010-4242-4242",
@@ -174,9 +173,5 @@
 	    });
 	}
 	</script>
- -->
-
- --%>
-
 </body>
 </html>

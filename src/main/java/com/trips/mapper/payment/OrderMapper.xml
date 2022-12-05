@@ -5,7 +5,21 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.trips.mapper.payment.OrderMapper">
-  <select id="paymentSelect" resultType="com.trips.domain.payment.OrderList">
+   
+   <!-- <resultMap type="OrderList" id="orderListResultMap">
+  	<id property="orderId" column="O_ORDER_ID"></id>
+  	<result property="name" column="O_NAME"/>
+  	<result property="email" column="O_EMAIL"/>
+  	<result property="phone" column="O_PHONE"/>
+  	<result property="id" column="m.M_ID"/>
+  	<result property="amount" column="O_AMOUNT"/>
+  	<result property="date" column="O_ORDER_DATE"/>
+  	<result property="resNo" column="RES_NO"/>
+  	<result property="price" column="O_PRICE"/>
+  	<result property="renamedFileName" column="renamedFileName"/>
+  </resultMap> -->
+   
+   <select id="paymentSelect" resultType="com.trips.domain.payment.OrderList">
   
   SELECT O_ORDER_ID orderId,
   		 O_NAME name,
@@ -24,5 +38,5 @@
   </select>
   
   
-  
+ 
   </mapper>

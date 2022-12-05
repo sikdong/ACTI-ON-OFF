@@ -12,4 +12,8 @@ public interface offlineMapper {
 	public List<offlineDto> getBoardList();
 	
 	public offlineDto getBoard(int num);
+	
+	public int removeBoard(int num);
+
+	public List<offlineDto> getFiveFiles();
 }
