@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.trips.domain.qna.PageInfo;
@@ -29,12 +30,12 @@ public class QnaController {
 	@PostMapping("QnaRegister")
 	public String QnaRegister(
 			QnaDto qna,
-			//MultipartFile[] files
+			MultipartFile[] files,
 			RedirectAttributes rttr) {
-	
 		// business logic
 		// alert 문의글 작성 알림
-		int cnt = service.QnaRegister(qna);
+		
+		int cnt = service.QnaRegister(qna,files);
 		
 		if (cnt == 1) {
 			rttr.addFlashAttribute("message", "문의글이 등록되었습니다.");
@@ -75,9 +76,13 @@ public class QnaController {
 		model.addAttribute("qna",qna);
 	}
 	@PostMapping("QnaModify")
-	public String QnaModify(QnaDto qna,RedirectAttributes rttr) {
-		service.update(qna);
-		int cnt = service.update(qna);
+	public String QnaModify(
+			QnaDto qna,
+			@RequestParam("files") MultipartFile[] addFiles,
+			@RequestParam(name = "removeFiles", required = false) List<String> removeFiles,
+			RedirectAttributes rttr) {
+		
+		int cnt = service.update(qna,addFiles,removeFiles);
 		if (cnt == 1) {
 			rttr.addFlashAttribute("message", "문의글이 수정되었습니다.");
 		} else {

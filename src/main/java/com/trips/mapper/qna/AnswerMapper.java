@@ -16,6 +16,8 @@ public interface AnswerMapper {
 
 	int update(AnswerDto answer);
 
+	int deleteByQnaId(int id);
+
 
 
 }
