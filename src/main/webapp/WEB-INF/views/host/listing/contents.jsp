@@ -122,7 +122,7 @@ div {
 			<div class="col">
 				
 				<h3>호스트할 체험의 상세 내용을 작성해주세요</h3>
-				<form id="registerForm1" action="" method="post"
+				<form action="" method="post"
 					enctype="multipart/form-data">
 					<div class="mb-3">
 						<label for="" class="form-label">체험을 잘 표현할 수 있는 제목</label> <input
@@ -156,7 +156,7 @@ div {
 							required="required" type="number" class="form-control" name="cost">
 					</div>
 
-					<input id="submitButton1" class="btn btn-primary" type="submit"
+					<input id="submitButton1" class="btn btn-dark" type="submit"
 						value="등록">
 
 

@@ -24,13 +24,13 @@ h2 { text-align: center; }
 <h2>어떤 유형의 체험을 호스팅하고 싶으세요?</h2> <br><br><br><br>
 
 <div class="d-grid gap-2 col-6 mx-auto">
-  <button class="btn btn-primary" type="button" style="bacgroubd-color:white" 
+  <button class="btn btn-dark" type="button" style="bacgroubd-color:white" 
 <%--  onclick="window.open (  '${pageContext.request.contextPath}/host/listing/off');"  ><h4>오프라인 체험</h4> <br> --%>
- onclick="location.href=   '${pageContext.request.contextPath}/host/listing/on_off';"  ><h4>오프라인 체험</h4> <br>
+ onclick="location.href=   '${pageContext.request.contextPath}/host/listing/topic';"  ><h4>오프라인 체험</h4> <br>
   게스트와 현장에서 직접 대면하고 함께 참여하는 체험입니다.
   </button>
-  <button class="btn btn-primary" type="button" 
-  onclick="window.open (  '${pageContext.request.contextPath}/host/listing/on_off');" ><h4>온라인 체험</h4><br>
+  <button class="btn btn-dark" type="button" 
+  onclick="window.open (  '${pageContext.request.contextPath}/host/listing/topic');" ><h4>온라인 체험</h4><br>
 게스트는 줌 화상 회의 소프트웨어를 통해 온라인으로 체험에 참여하게 됩니다.</button>
 </div>
 
