@@ -140,5 +140,10 @@ public class HostService {
 		return null;
 	}
 
+	public Host hostInfo(int m_id) {
+		
+		return hostMapper.hostInfo(m_id);
+	}
+
 	
 }

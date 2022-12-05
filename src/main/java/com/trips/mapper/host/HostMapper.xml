@@ -30,6 +30,10 @@
 <!-- <select id="select"> -->
 <!-- select b_id from ACTI_BOARD</select> -->
 
+<select id="hostInfo" >
+select m_id, h_experience, h_photo from ACTI_HOST
+</select>
+
 	<select id="select" resultMap="boardMap">
 	SELECT
 		b.id,

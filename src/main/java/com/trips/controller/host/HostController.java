@@ -70,14 +70,26 @@ public class HostController {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	@GetMapping({ "info", "modify" })
+	@PreAuthorize("hasAuthority('admin') or (authentication.name == #id)")
+	public void info(String id, Model model) {
+
+		model.addAttribute("member", service.getById(id));
+	}
 	//호스트 정보 관리- ru..d?
 	//호스트만
-	@GetMapping("host")
+	@GetMapping("hostInfo")
 //	@PreAuthorize("@boardSecurity.checkWriter(authentication.name, #id)")
-	public void my(int m_id,Model model) {
-		Host host = hostService.host(m_id);
-		model.addAttribute("host", host);
-		
+	public void hostInfo(int m_id,Model model) {
+		Host hostInfo = hostService.hostInfo(m_id);
+		model.addAttribute("hostInfo", hostInfo);
+		System.out.println(hostInfo);
 	}
 	
 	
@@ -181,8 +193,6 @@ public class HostController {
 	//이미지랑 날짜는 테이블이 각각 있음
 	@GetMapping("listing/image")
 	public void listingImageJsp() {
-		
-		
 	}
 	@PostMapping("listing/image")
 	public String listingImage( MultipartFile[] files, String[] date) throws ParseException {

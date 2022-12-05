@@ -25,5 +25,7 @@ public interface HostMapper {
 
 	public void becomeHost(String m_id, boolean h_experience, String h_introduction, String h_photo);
 
+	public Host hostInfo(int m_id);
+
 	
 }
