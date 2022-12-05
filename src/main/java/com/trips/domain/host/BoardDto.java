@@ -9,7 +9,6 @@ public class BoardDto {
 	private String b_topic;
 	private String b_title;
 	private String b_content;
-	private String b_filename;
 	private int cost;
 	private int min_person;
 	private int max_person;

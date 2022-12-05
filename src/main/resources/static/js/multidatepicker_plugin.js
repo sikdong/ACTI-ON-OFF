@@ -9,8 +9,8 @@
 
             // Set the default values, use comma to separate the settings 
             var defaults = {
-                minYear: 2011,
-                maxYear: 2020,
+                minYear: 2022,
+                maxYear: 2023,
                 startMonth: 0,
                 endMonth: 11,
                 highlightToday: true,

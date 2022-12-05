@@ -59,54 +59,53 @@ div {
 	<!-- 최대 인원 -->
 	<!-- 최소연령 -->
 	<!-- 날짜 -->
-
+<center>
 		<div class="container-md">
 			
 				<h3>어떤 주제로 체험을 진행하시나요?</h3>
 
-				게스트가 체험할 액티비티를 가장 잘 나타내는 주제를 선택하세요. <br> 등록되 호스트 분야와 체험주제가 다를
-				경우 다를 경우 관리자의 승인이 필요합니다. <br> >> 그냥.. 호스트 권한만 얻으면 자유주제 ? @@님의 전문분야는
-				@@입니다. <br> <input class="button" type="button" value="동물"
-					onclick="fetch('${pageContext.request.contextPath}/host/listing/animal').then(function(변수){
+				게스트가 체험할 액티비티를 가장 잘 나타내는 주제를 선택하세요. 
+				 <br><br> <input class="button" type="button" value="동물"
+					onclick="fetch('${pageContext.request.contextPath}/host/listing/topic/animal').then(function(변수){
     		변수.text().then(function(변수2){document.querySelector('article').innerHTML=변수2; }) })">
 
 				<input class="button" type="button" value="미술과 디자인"
-					onclick=" fetch('${pageContext.request.contextPath}/host/listing/art').then(function(변수){
+					onclick=" fetch('${pageContext.request.contextPath}/host/listing/topic/art').then(function(변수){
     		변수.text().then(function(변수2){
        		 document.querySelector('article').innerHTML=변수2; })})">
 
 				<input class="button" type="button" value="문화, 사회, 과학"
-					onclick="fetch('${pageContext.request.contextPath}/host/listing/cultre_sociery_science').then(function(변수){
+					onclick="fetch('${pageContext.request.contextPath}/host/listing/topic/cultrue_society_science').then(function(변수){
     		변수.text().then(function(변수2){document.querySelector('article').innerHTML=변수2; }) })">
 
 				<input class="button" type="button" value="음료"
-					onclick="fetch('${pageContext.request.contextPath}/host/listing/drink').then(function(변수){
+					onclick="fetch('${pageContext.request.contextPath}/host/listing/topic/drink').then(function(변수){
    			 변수.text().then(function(변수2){ document.querySelector('article').innerHTML=변수2; })})">
 				<br> <input class="button" type="button" value="엔터테인먼트"
-					onclick="fetch('${pageContext.request.contextPath}/host/listing/entertain').then(function(변수){
+					onclick="fetch('${pageContext.request.contextPath}/host/listing/topic/entertain').then(function(변수){
    			 변수.text().then(function(변수2){ document.querySelector('article').innerHTML=변수2; })})">
 
 				<input class="button" type="button" value="음식"
-					onclick="fetch('${pageContext.request.contextPath}/host/listing/food').then(function(변수){
+					onclick="fetch('${pageContext.request.contextPath}/host/listing/topic/food').then(function(변수){
    			 변수.text().then(function(변수2){ document.querySelector('article').innerHTML=변수2; })})">
 
 				<input class="button" type="button" value="역사 및 문학"
-					onclick="fetch('${pageContext.request.contextPath}/host/listing/history_literature').then(function(변수){
+					onclick="fetch('${pageContext.request.contextPath}/host/listing/topic/history_literature').then(function(변수){
    			 변수.text().then(function(변수2){ document.querySelector('article').innerHTML=변수2; })})">
 
 				<input class="button" type="button" value="자연 및 야외활동"
-					onclick="fetch('${pageContext.request.contextPath}/host/listing/nature_outdoor').then(function(변수){
+					onclick="fetch('${pageContext.request.contextPath}/host/listing/topic/nature_outdoor').then(function(변수){
    			 변수.text().then(function(변수2){ document.querySelector('article').innerHTML=변수2; })})">
 				<br> <input class="button" type="button" value="관광, 쇼핑 및 교통편"
-					onclick="fetch('${pageContext.request.contextPath}/host/listing/sightseeing_shopping_transportation').then(function(변수){
+					onclick="fetch('${pageContext.request.contextPath}/host/listing/topic/sightseeing_shopping_transportation').then(function(변수){
    			 변수.text().then(function(변수2){ document.querySelector('article').innerHTML=변수2; })})">
 
 				<input class="button" type="button" value="스포츠"
-					onclick="fetch('${pageContext.request.contextPath}/host/listing/sport').then(function(변수){
+					onclick="fetch('${pageContext.request.contextPath}/host/listing/topic/sport').then(function(변수){
    			 변수.text().then(function(변수2){ document.querySelector('article').innerHTML=변수2; })})">
 
 				<input class="button" type="button" value="웰니스"
-					onclick="fetch('${pageContext.request.contextPath}/host/listing/wellness').then(function(변수){
+					onclick="fetch('${pageContext.request.contextPath}/host/listing/topic/wellness').then(function(변수){
    			 변수.text().then(function(변수2){ document.querySelector('article').innerHTML=변수2; })})">
 
 
@@ -114,11 +113,11 @@ div {
 
 
 
-
+				<br><br>
 				<article></article>
 
-				<!-- <button class="btn btn-primary" type="button" style="bacgroubd-color:white"  -->
-				<%--  onclick="window.open (  '${pageContext.request.contextPath}/host/listing/off');"  ><h4>오프라인 체험</h4> <br> --%>
+				<!-- <button class="btn btn-dark" type="button" style="bacgroubd-color:white"  -->
+				<%--  onclick="window.open (  '${pageContext.request.contextPath}/host/listing/topic/off');"  ><h4>오프라인 체험</h4> <br> --%>
 				<!--   게스트와 현장에서 직접 대면하고 함께 참여하는 체험입니다. -->
 				<!--   </button> -->
 
@@ -127,7 +126,7 @@ div {
 
 			</div>
 			
-
+</center>
 
 
 

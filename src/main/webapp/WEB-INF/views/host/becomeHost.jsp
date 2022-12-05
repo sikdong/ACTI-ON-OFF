@@ -18,12 +18,14 @@ h2 { text-align: center; }
 
 </head>
 <body>
+<br>
 <div class="container-md">
 		<div class="row">
 			<div class="col">
-				<h1>호스트를 소개해주세요</h1>
-				로그인해서 멤버아이디 연동하기.
-				<br>호스트 권한 얻는 조건 너무 간단? 본인인증? 첨부파일?
+			<center>	<h1>호스트를 소개해주세요</h1></center><br>
+	
+				로그인해서 멤버아이디 연동
+				<br>
 				<form id="registerForm1" action="" method="post" enctype="multipart/form-data">
 					<div class="mb-3"> 
 						<label for="" class="form-label">m_id</label>
@@ -38,8 +40,12 @@ h2 { text-align: center; }
 						<input required="required" type="radio"  name="h_experience" value=0> 아니오, 처음입니다.<br>  
 					</div>
 					<div class="mb-3">
+						<label for="" class="form-label">본인의 사진을 첨부해주세요</label>
+						<input multiple type="file" accept="image/*" class="form-control" name="h_photo">
+					</div>
+					<div class="mb-3">
 						<label for="" class="form-label">호스트와 호스트할 체험에 관해서 자세하게 소개해주세요</label>
-						<textarea required="required" rows="10" class="form-control" name="content"></textarea>
+						<textarea required="required" rows="10" class="form-control" name="h_introduction"></textarea>
 					</div>
 					
 <!-- 					<div class="mb-3"> -->
@@ -49,7 +55,7 @@ h2 { text-align: center; }
 					
 			
 					
-					<input id="submitButton1" class="btn btn-primary" type="submit" value="등록">
+				<center>	<input id="submitButton1" class="btn btn-dark" type="submit" value="등록"></center>
 					
 				
 				
@@ -57,7 +63,6 @@ h2 { text-align: center; }
 			</div>
 		</div>
 	</div>
-	
 	
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script>

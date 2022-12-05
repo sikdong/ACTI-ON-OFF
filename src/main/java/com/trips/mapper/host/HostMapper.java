@@ -14,14 +14,16 @@ public interface HostMapper {
 
 	public int insertFile(BoardDto board);
 
-	public void insertImage(String originalFilename);
-	public void listingDate(String date);
+	public void insertImage(int b_no, String b_filename);
+	public void listingDate(int b_no,String date);
 	
-	public void becomeHost(Host host);
+	//public void becomeHost(Host host);
 
-	public void listingDate(Date[] dates, int b_no);
+	public void listingDate(String date, int b_no);
 
 	public void listingDate(Date date, int b_no);
+
+	public void becomeHost(String m_id, boolean h_experience, String h_introduction, String h_photo);
 
 	
 }

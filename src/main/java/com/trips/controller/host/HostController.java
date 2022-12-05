@@ -3,12 +3,16 @@ package com.trips.controller.host;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.StringTokenizer;
+import java.io.File;
 import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +32,8 @@ import com.trips.service.host.HostService;
 public class HostController {
 
 	public static int b_no; 
+	public static BoardDto boardDto = new BoardDto();
+	
 	@Autowired
 	private HostService hostService;
 	
@@ -45,10 +51,12 @@ public class HostController {
 //		String password = ((UserDetails) principal).getPassword();
 //		System.out.println(username+","+password)
 	}
+	
 	@GetMapping("becomeHost")
 	public void becomeHost() {
 		
 	}
+	//포토 등록
 	@PostMapping("becomeHost")
 	public String becomeHost(Host host) {
 		System.out.println(host);
@@ -58,67 +66,82 @@ public class HostController {
 	
 	@GetMapping("waitingAcceptance")
 	public void waitingAcceptance() {
+	}
+	
+	
+	
+	//호스트 정보 관리- ru..d?
+	//호스트만
+	@GetMapping("host")
+//	@PreAuthorize("@boardSecurity.checkWriter(authentication.name, #id)")
+	public void my(int m_id,Model model) {
+		Host host = hostService.host(m_id);
+		model.addAttribute("host", host);
 		
 	}
+	
+	
+	
+	
 	
 	
 	
 	//체험 등록
 	//호스트만 
+	// 보드,date,file,...주소? /topic도 테이블 따로 뺄 시간 있으면.. 빼기
 	@RequestMapping("listing")
 	public void listingJsp() {	
 	}
-	@GetMapping("listing/on_off")
+	@GetMapping("listing/topic")
 	public void listingOn() {	
 		
 	}
-//	@RequestMapping("listing/off")
-//	public void listingOff() {	
-//	}
+
 	
 	
-	@RequestMapping("listing/animal") 
+	@RequestMapping("listing/topic/animal") 
 	public void listingAnimal() {	}
 	
-	@RequestMapping("listing/art") 
+	@RequestMapping("listing/topic/art") 
 	public void listingArt() {	}
 	
-	@RequestMapping("listing/cultrue_society_science") 
+	@RequestMapping("listing/topic/cultrue_society_science") 
 	public void listingCultrueSocietyScience() {	}
 	
-	@RequestMapping("listing/drink") 
+	@RequestMapping("listing/topic/drink") 
 	public void listingDrink() {	}
 	
-	@RequestMapping("listing/entertain") 
+	@RequestMapping("listing/topic/entertain") 
 	public void listingEntertain() {	}
 	
-	@RequestMapping("listing/food") 
+	@RequestMapping("listing/topic/food") 
 	public void listingFood() {	}
 	
-	@RequestMapping("listing/history_literature") 
+	@RequestMapping("listing/topic/history_literature") 
 	public void listingHistoryLiterature() {	}
 	
-	@RequestMapping("listing/nature_outdoor") 
+	@RequestMapping("listing/topic/nature_outdoor") 
 	public void listingNatureOutdoor() {	}
 	
-	@RequestMapping("listing/sightseeing_shopping_transportation") 
+	@RequestMapping("listing/topic/sightseeing_shopping_transportation") 
 	public void listingSightseeingShoppingTransportation() {	}
 	
-	@RequestMapping("listing/sport") 
+	@RequestMapping("listing/topic/sport") 
 	public void listingSport() {	}
 	
-	@RequestMapping("listing/wellness") 
+	@RequestMapping("listing/topic/wellness") 
 	public void listingWellness() {	}
 	
 	
 	
-	BoardDto board1 = new BoardDto();
+	
 	// 상대 절대 경로
 	//@RequestParam이랑 @Pathvariable 차이점 
-	@PostMapping("listing/on_off")
+	@PostMapping("listing/topic")
 	public String listingOff(@RequestParam (required=false) String b_topic ) {
 	//	hostService.listingTopic(b_topic);
-		board1.setB_topic(b_topic);
+		boardDto.setB_topic(b_topic);
+		System.out.println(com.trips.controller.host.HostController.boardDto);
 		
 		return "redirect:/host/listing/contents";
 	}
@@ -132,19 +155,20 @@ public class HostController {
 	// ??? 매핑된 메서드의 매개변수에 dto를 쓰면 새로 생성(자바에서 생성말고)이 되는 개념임? (어떤 빈 dto가 대기하고 있는?)
 	// 함수를 호출하지 않고 매개변수에 값을 넣을 수 있는 방법은 없나 ? 매개변수의 값을 나눠서 넣고 싶을 때.
 	//MultipartFile[] b_filename 은 등록페이지 마지막에? 날짜는 달력을 보여주고 선택하게. 파라미터는 컬렉션으로?
-	public String listingContents(@RequestParam (required=false) String b_title, String b_content,
-										 int cost,int max_person, int min_person, int min_age ) {	
+	public String listingContents( String b_title, String b_content,
+										 int cost,int min_person, int max_person, int min_age ) {	
 //	public String listingContents(BoardDto board ) {	
-//		board1=board;//매개변수에 모델어트리뷰트 쓰면 빈디티오에 담기는 거니까 이전과 다른 인스턴스.
+//		boardDto=board;//매개변수에 모델어트리뷰트 쓰면 빈 디티오에 담기는 거니까 이전과 다른 인스턴스.
 		
-		board1.setB_title(b_title);
-		board1.setB_content(b_content);
-		board1.setCost(cost);
-		board1.setMax_person(max_person);
-		board1.setMax_person(max_person);
-		board1.setMin_age(min_age);
-	//	hostService.listingContents(b_title,b_content,cost,max_person,min_person,min_age);
-		System.out.println(board1);
+		boardDto.setB_title(b_title);
+		boardDto.setB_content(b_content);
+		boardDto.setCost(cost);
+		boardDto.setMax_person(min_person);
+		boardDto.setMax_person(max_person);
+		boardDto.setMin_age(min_age);
+	//	b_no=boardDto.getB_no();
+		hostService.listingContents(boardDto);
+		System.out.println(boardDto);
 		
 		return "redirect:/host/listing/image";
 	}
@@ -162,20 +186,30 @@ public class HostController {
 	}
 	@PostMapping("listing/image")
 	public String listingImage( MultipartFile[] files, String[] date) throws ParseException {
+		
 		//매개변수 date는 String[]
-		System.out.println(date.toString()+"@@@@@@@@");
-		int i=0;
+		System.out.println(date[0]+"@@");
+		System.out.println(date[1]+"@@");
+		//이제 스트링배열로 받았으니까! 이걸 db에 저장만하면됨
+		b_no=boardDto.getB_no();
+		hostService.listingImageDate(b_no,files,date); 
+//		hostService.listingImageDate(boardDto,files,date); 
+//		? 디티오에 b_no프로퍼티 있는데 왜 Parameter 'b_no' not found. Available parameters are [boardDto, param1, originalFilename, param2]
+//		     이런 오류가 남?
+		
+//		int i=0;
 	//	@JsonFormat(shape = Shape.STRING)
-		Date[] dates= new Date[100];
-		for (String dateString : date) {
-		Date acti_date=(Date) new SimpleDateFormat("dd/MM/yyyy").parse(dateString);  
-		dates[i]=acti_date;
-		}
+//		Date[] dates= new Date[100];
+//		for (String dateString : date) {
+//		Date acti_date=(Date) new SimpleDateFormat("dd/MM/yyyy").parse(dateString);  
+//		dates[i]=acti_date;
+//		}
+		
 //		String s="11/11/1111";
 //		Date date2=(Date) new SimpleDateFormat("dd/MM/yyyy").parse(s);  		
 		
 	//	dates=(11/11/1111);
-		hostService.listingImageDate(files,dates,b_no);	
+			
 //		for (MultipartFile file : files) {
 //		System.out.println(file.getOriginalFilename());	
 //	}
@@ -206,6 +240,7 @@ public class HostController {
 	public void admin() {
 	}
 	
+
 	
 	
 	

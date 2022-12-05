@@ -101,7 +101,7 @@
 
 
 
-					<input id="submitButton1" class="btn btn-primary" type="submit" value="등록">
+					<input id="submitButton1" class="btn btn-dark" type="submit" value="등록">
 					
  
 				

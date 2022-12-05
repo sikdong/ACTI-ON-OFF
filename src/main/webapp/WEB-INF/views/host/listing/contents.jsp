@@ -156,7 +156,7 @@ div {
 							required="required" type="number" class="form-control" name="cost">
 					</div>
 
-					<input id="submitButton1" class="btn btn-primary" type="submit"
+					<input id="submitButton1" class="btn btn-dark" type="submit"
 						value="등록">
 
 

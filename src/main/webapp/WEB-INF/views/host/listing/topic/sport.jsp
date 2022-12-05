@@ -37,35 +37,28 @@
 
 			<h3>상세 주제가 무엇인가요?</h3>
 			<br>
-	
-<!-- 			<form action="listing" method="post"> -->
-<!-- 				<input type="button" value="고래 관찰"> <input type="button" -->
-<!-- 					value="승마 클래스"> <input type="button" value="승마 투어"> -->
-<!-- 				<input type="button" value="양봉"> <br> <input -->
-<!-- 					type="button" value="조류 관찰"> <input type="button" -->
-<!-- 					value="농장 동물"> <input type="button" value="반려동물"> <input -->
-<!-- 					type="button" value="유기동물"><br> <input type="button" -->
-<!-- 					value="해양생물"> <input type="button" value="야생 동식물"> -->
-<!-- 				<input type="button" value="기타 동물 체험"> <br> -->
-<!-- 				<br> <input type="submit" value="저장하기"> -->
 
- 					<!-- ACTI_BOARD의 B_TOPIC 컬럼에 저장--
-   다음 화면으로 리디렉트. 다음화면은 -  -->
  			<form action="" method="post">
 <!--  				(input[name="b_topic" type="radio" value=""])*11 -->
-				<input type="radio" name="b_topic" value="고래 관찰">고래 관찰
-				<input type="radio" name="b_topic" value="승마 투어">승마 투어
-				<input type="radio" name="b_topic" value="승마 클래스">승마 클래스
-				<input type="radio" name="b_topic" value="양봉">양봉
-				<input type="radio" name="b_topic" value="조류 관찰">조류 관찰
-				<input type="radio" name="b_topic" value="반려동물">반려동물
-				<input type="radio" name="b_topic" value="농장동물">농장동물
-				<input type="radio" name="b_topic" value="유기동물">유기동물
-				<input type="radio" name="b_topic" value="해양생물">해양생물
-				<input type="radio" name="b_topic" value="야생 동식물">야생 동식물
-		  		<input type="radio" name="b_topic" value="기타 동물 체험">기타 동물 체험
+			<table>
+			<tr>
+			<td><input type="radio" name="b_topic" value="팀 스포츠">팀 스포츠</td>
+		  	<td><input type="radio" name="b_topic" value="짜릿한 스포츠">짜릿한 스포츠 </td>
+		  	<td><input type="radio" name="b_topic" value="격투 스포츠">격투 스포츠</td>
+		  	<tr>
+			<td><input type="radio" name="b_topic" value="수상 스포츠">수상 스포츠 </td>
+		  	<td><input type="radio" name="b_topic" value="산악 스포츠">산악 스포츠</td>
+		  	<td><input type="radio" name="b_topic" value="설상 스포츠">설상 스포츠 </td>
+		  	<tr>
+			<td><input type="radio" name="b_topic" value="야외 스포츠">야외 스포츠</td>
+		  	<td><input type="radio" name="b_topic" value="피트니스">피트니스</td>
+		  	<td><input type="radio" name="b_topic" value="기타 스포츠">기타 스포츠</td>
+
+		  	
+		  	</table>
+		  	
 		  		
-		  		<input type="submit" value="다음">
+		  	<br><input class='btn btn-dark' type="submit" value="다음">
 			
 			</form>
 			

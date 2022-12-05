@@ -20,8 +20,8 @@ h2 { text-align: center; }
 <body>
 <my:hostNav></my:hostNav>
 <br><br>
-
-<h2>호스트가 될 준비가 되었나요?</h2> <br><br><br><br>
+<center>
+<h2>호스트가 될 준비가 되었나요?</h2> <br><br>
 <!-- 호스트,체험 안내가이드 페이지 있으면 좋을듯 -->
 
 
@@ -31,11 +31,11 @@ h2 { text-align: center; }
 </ul>
 <ul>게스트가 다른 사람들과 의미 있는 방식으로 교감하고 교류할 수 있도록 도와주세요.
 </ul>
-
+<br><br>
 <div class="d-grid gap-2 col-2 mx-auto">
-  <button class="btn btn-primary" type="button" style="bacgroubd-color:white" 
+  <button class="btn btn-dark" type="button" style="bacgroubd-color:white" 
 <%--  onclick="window.open (  '${pageContext.request.contextPath}/host/listing/off');"  ><h4>오프라인 체험</h4> <br> --%>
- onclick="location.href=   '${pageContext.request.contextPath}/host/becomeHost';"  ><h4>  호스트 신청하기 </h4> <br>
+ onclick="location.href=   '${pageContext.request.contextPath}/host/becomeHost';"  >호스트 신청하기 <br>
 
   </button>
   
@@ -49,6 +49,7 @@ h2 { text-align: center; }
 <!--    }) -->
 <!--   }) -->
 <!--  "> -->
+</center>
 <script>
 
 </script>
