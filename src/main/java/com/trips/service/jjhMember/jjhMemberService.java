@@ -20,9 +20,9 @@ public class jjhMemberService {
 	
 	public int insert(jjhMemberDto member) {
 		
-		String pw = member.getPassword();
+		String pw = member.getM_PASSWORD();
 		
-		member.setPassword(passwordEncoder.encode(pw));
+		member.setM_PASSWORD(passwordEncoder.encode(pw));
 		
 		return memberMapper.insert(member);
 	}

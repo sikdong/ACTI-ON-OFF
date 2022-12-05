@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
+
 <%-- <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %> --%>
 <!DOCTYPE html>
 <html>
@@ -36,7 +37,7 @@
 	               		<form action="" method="post" name="login">
 	                        <div class="form-group">
 	                           <label for="inputID">Id</label>
-	                           <input type="text" name="id"  class="form-control" id="id" aria-describedby="idHelp" placeholder="Enter id">
+	                           <input type="text" name="username"  class="form-control" id="id" aria-describedby="idHelp" placeholder="Enter id">
 	                        </div>
 	                        <div class="form-group">
 	                           <label for="inputPassword">Password</label>
@@ -47,7 +48,7 @@
 	                        </div>
 	
 	                        <div class="form-group">
-	                           <p class="text-center">계정이 없으신가요? <a href="#" id="signup">가입하기</a></p>
+	                           <p class="text-center">계정이 없으신가요? <a href="/jjhLogin/signup" id="signup">가입하기</a></p>
 	                        </div>
 	                    </form>
 					</div>

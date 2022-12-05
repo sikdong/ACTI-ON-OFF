@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>어서오세요 ${NAME}님</h1>
+<h1>회원가입완료</h1>
 </body>
 </html>
