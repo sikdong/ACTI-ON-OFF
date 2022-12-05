@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.trips.mapper.yds.ydsBoardMapper">
+<select id="getBoardList" resultType="com.trips.domain.yds.TripsBoardDto">
+SELECT
+	b.B_NO num,
+	b.B_TITLE title,
+	b.M_ID writer,
+	b.B_CONTENT content,
+	f.B_FILENAME fileName,
+	b.B_STATUS,
+	b.B_CREATEDATE
+FROM ACTI_BOARD b
+LEFT JOIN ACTI_FILE f on f.B_NO = b.B_NO
+ORDER BY b.B_NO DESC; 
+</select>
+
+<select id="getFiveFiles" resultType="com.trips.domain.yds.TripsBoardDto">
+SELECT
+	b.B_NO num,
+	b.B_TITLE title,
+	b.M_ID writer,
+	b.B_CONTENT content,
+	f.B_FILENAME fileName,
+	b.B_STATUS,
+	b.B_CREATEDATE
+FROM ACTI_BOARD b
+LEFT JOIN ACTI_FILE f on f.B_NO = b.B_NO
+ORDER BY b.B_NO DESC
+LIMIT 5; 
+</select>
+
+<select id="getBoard" resultType="com.trips.domain.yds.TripsBoardDto">
+SELECT
+	B_NO num,
+	B_TITLE title,
+	M_ID writer,
+	B_CONTENT content
+FROM ACTI_BOARD
+WHERE B_NO = #{num}
+</select>
+
+<delete id="removeBoard">
+DELETE FROM ACTI_BOARD
+WHERE B_NO = #{num}
+</delete>
+
+
+</mapper>
