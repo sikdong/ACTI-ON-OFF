@@ -28,10 +28,10 @@
 						<textarea required="required" rows="5" class="form-control" name="content"></textarea>
 					</div>
 					
-					<!-- <div class="mb-3">
+					<div class="mb-3">
 						<label for="" class="form-label">파일</label>
 						<input multiple type="file" accept="image/*" class="form-control" name="files">
-					</div> -->
+					</div> 
 					
 					<div class="mb-3">
 						<label for="" class="form-label">작성자</label>
@@ -48,8 +48,7 @@
 	</div>
 	
 	
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-<script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script><script>
 document.querySelector("#submitButton1").addEventListener("click", function(e) {
 	// submit 진행 중지
 	e.preventDefault();

@@ -14,41 +14,57 @@
 
 <select id="list" resultType="com.trips.domain.qna.QnaDto">
 SELECT
-	Q_ID id,
-	Q_TITLE title,
-	M_ID memberId,
-	Q_inserted inserted
-FROM QNA
+	q.Q_ID id,
+	q.Q_TITLE title,
+	q.M_ID memberId,
+	q.Q_inserted inserted,
+	COUNT(a.A_ID) countAnswer
+FROM QNA q LEFT JOIN ANSWER a ON q.Q_ID = a.Q_ID
 WHERE
 	<trim prefixOverrides="OR">
 	<if test="type=='all' or type=='title'">
-	OR Q_TITLE LIKE #{keyword}
+	OR q.Q_TITLE LIKE #{keyword}
 	</if>
 	
 	<if test="type=='all' or type=='content'">
-	OR Q_CONTENT LIKE #{keyword}
+	OR q.Q_CONTENT LIKE #{keyword}
 	</if>
 	<if test="type=='all' or type=='memberId'">
-	OR M_ID LIKE #{keyword}
+	OR q.M_ID LIKE #{keyword}
 	</if>
 	</trim>
-	
-ORDER BY Q_ID DESC
+
+GROUP BY q.Q_ID
+ORDER BY q.Q_ID DESC
 LIMIT #{offset},#{records} 
 </select>
 
-<select id="select" resultType="com.trips.domain.qna.QnaDto">
+<select id="select" resultMap="qnaMap" >
 SELECT
-	Q_ID id,
-	Q_TITLE title,
-	Q_CONTENT content,
-	M_ID memberId,
-	Q_INSERTED inserted
+	q.Q_ID id,
+	q.Q_TITLE title,
+	q.Q_CONTENT content,
+	q.M_ID memberId,
+	q.Q_INSERTED inserted,
+	f.F_ID fileId,
+	f.name fileName
 FROM 
-	QNA
+	QNA q LEFT JOIN File f ON q.Q_ID = f.Q_ID
 WHERE
-	Q_ID=#{id}
+	q.Q_ID=#{id}
 </select>
+
+<resultMap type="com.trips.domain.qna.QnaDto" id="qnaMap">
+	<id column="id" property="id"></id>
+	<result column="title" property="title"/>
+	<result column="content" property="content"/>
+	<result column="memberId" property="memberId"/>
+	<result column="inserted" property="inserted"/>
+	<collection property="fileName"  ofType="string">
+		<result column="fileName" property="fileName"/>
+	</collection>
+</resultMap>
+
 
 <update id="update">
 UPDATE QNA
@@ -84,10 +100,23 @@ WHERE Q_ID =#{id}
 	</trim>
 </select>
 
+<insert id="insertFile">
+INSERT INTO File (Q_ID,name)
+VALUES (#{id},#{fileName})
 
+</insert>
 
+<!-- 파일 레코드에서 지우기 -->
+<delete id="deleteFileByQnaId">
+DELETE FROM File
+WHERE Q_ID= #{id}
+
+</delete>
 	
-	
+<delete id="deleteFileByBoardIdAndFileName">
+	DELETE FROM File
+	WHERE Q_ID = #{id} AND name = #{fileName}
+</delete>
 		
 		
 </mapper>

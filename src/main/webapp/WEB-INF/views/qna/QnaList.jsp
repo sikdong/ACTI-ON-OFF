@@ -43,10 +43,21 @@
 				<a href="${qnaGetLink }">
 				${qna.title }
 				</a>
+				<!-- 댓글 수 -->
+				<c:if test = "${qna.countAnswer>0 }">
+				<i class="fas fa-thin fa-comment-dots"></i>:${qna.countAnswer }
+				</c:if>
 				
+				<%-- 파일 수 출력 --%>
+				<c:if test="${board.countFile > 0 }">
+					<span class="badge rounded-pill text-bg-light">
+						<i class="fas fa-regular fa-file"></i>
+						${qna.countFile }
+					</span>
+				</c:if>
 				</td>
 				<td>${qna.memberId }</td> <!-- writer 대신 memberId  -->
-				<td>${qna.inserted }</td>
+				<td>${qna.ago }</td>
 			</tr>
 		</c:forEach>
 	</tbody>	

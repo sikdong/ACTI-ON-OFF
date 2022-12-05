@@ -5,9 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"	rel="stylesheet"	integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"crossorigin="anonymous">
-<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="crossorigin="anonymous" referrerpolicy="no-referrer" />
-<meta charset="UTF-8">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" /><meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -16,28 +15,35 @@
 	<div class="container-md">
 		<div class="row">
 			<div class="col">
-				<h1>${qna.id }번
+				<h1>${qna.memberId }
 					고객님 문의글
 					<c:url value="/qna/QnaModify" var="qnaModifyLink">
 						<c:param name="id" value="${qna.id }"></c:param>
 					</c:url>
-					<a class="" href="${qnaModifyLink }"> <i
-						class="fa-thin fa-pen-to-square"></i>
+					<a class="" href="${qnaModifyLink }">
+					 <i class="fas fa-thin fa-pen-to-square"></i>
 					</a>
 				</h1>
 
 
 
-				제목 <input type="text" value="${qna.title }" readonly> <br>
+				제목 <input type="text" class="form-control" value="${qna.title }" readonly> <br>
 				본문
-				<textarea readonly>${qna.content }</textarea>
+				<textarea class="form-control" readonly>${qna.content }</textarea>
 				
-				<!-- 이미지 출력 -->				
+				<%-- 이미지 출력 --%>
+				<div>
+					첨부파일
+					<c:forEach items="${qna.fileName }" var="name">
 						<div>
-							<input type="file">
-						</div>		
-				<br> 작성자 <input type="text" value="${qna.memberId }" readonly>
-				<br> 작성일시 <input type="datetime-local" value="${qna.inserted}"
+							<img class="img-fluid img-thumbnail" src="${imgUrl }/${qna.id }/${URLEncoder.encode(name, 'utf-8')}" alt="">
+						</div>
+					</c:forEach>		
+				</div>
+				
+				
+				<br> 작성자 <input class="form-control" type="text" value="${qna.memberId }" readonly>
+				<br> 작성일시 <input class="form-control" type="datetime-local" value="${qna.inserted}"
 					readonly>
 
 			</div>
@@ -47,23 +53,40 @@
 		</div>
 	</div>
 	<br>
-	<!-- 댓글 작성하기 -->
-	<div id="answerMessage1"></div>
+	
+	<%-- 댓글 메시지 토스트 --%>
+	<div id="answerMessageToast" class="toast align-items-center top-0 start-50 translate-middle-x position-fixed" role="alert" aria-live="assertive" aria-atomic="true">
+	  <div class="d-flex">
+	    <div id="answerMessage1" class="toast-body">
+	      Hello, world! This is a toast message.
+	    </div>
+	    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+	  </div>
+	</div>
 
 	<div class="container-md">
 		<div class="row">
 			<div class="col">
+				<h3>
+				<i class="fas fa-thin fa-comment"></i>
+				</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+		<!-- 댓글 작성 -->
+			
 				<input type="hidden" id="qnaId" value="${qna.id }">
-				<input type="text" id="answerInput1">
-				<button id="answerSendButton1">답변쓰기</button>
+				<input class="form-control" type="text" id="answerInput1">
+				<button class="form-control" id="answerSendButton1">답변쓰기</button>
 			</div>
 		</div>
 	</div>
 	
 	<!-- 댓글 보여주기 -->
-	<div class="row">
+	<div class="row mt-3">
 		<div class="col">
-			<div id="answerListContainer">
+			<div class="list-group" id="answerListContainer">
 			
 			</div>
 		</div>
@@ -80,7 +103,7 @@
 	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	      </div>
 	      <div class="modal-body">
-	        <input type="text" id="modifyAnswerInput">
+	        <input type="text" class="form-control" id="modifyAnswerInput">
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -110,10 +133,13 @@
 	  </div>
 	</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"crossorigin="anonymous"></script>
-<script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script><script>
 const ctx="${pageContext.request.contextPath}"
+
 listAnswer();
+
+//댓글 crud 메시지 토스트
+const toast = new bootstrap.Toast(document.querySelector("#answerMessageToast"));
 
 document.querySelector("#modifyFormModalSubmitButton").addEventListener("click",function(){
 	const content = document.querySelector("#modifyAnswerInput").value
@@ -127,7 +153,10 @@ document.querySelector("#modifyFormModalSubmitButton").addEventListener("click",
 		body:JSON.stringify(data)
 	})
 	.then(res=>res.json())
-	.then(data =>document.querySelector("#answerMessage1").innerText=data.message )
+	.then(data =>{
+		document.querySelector("#answerMessage1").innerText=data.message 
+		toast.show()
+	})
 	.then(()=>listAnswer())
 })
 
@@ -158,10 +187,20 @@ function listAnswer(){
 			const modifyAnswerButtonId=`modifyAnswerButton\${item.id}`
 			const removeAnserButtonId = `removeAnswerButton\${item.id}`
 			
-			const answerDiv = `<div>
-			\${item.content} : \${item.inserted}
-			<button data-bs-toggle="modal" data-bs-target="#modifyAnswerFormModal" data-answer-id="\${item.id}" id="\${modifyAnswerButtonId}">수정</button>
-			<button data-bs-toggle="modal" data-bs-target="#removeAnswerConfirmModal" data-answer-id="\${item.id}" id="\${removeAnserButtonId}">삭제</button>
+			const answerDiv = `<div class="list-group-item d-flex">
+			<div class="me-auto">
+			<div>
+				\${item.content} 
+			</div>		
+				<small class="text-muted">
+				<i class="fas fa-regular fa-clock"></i> 
+				\${item.ago}
+				</small>
+			</div>
+			<div>
+				<button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modifyAnswerFormModal" data-answer-id="\${item.id}" id="\${modifyAnswerButtonId}"><i class="fas fa-thin fa-pen-to-square"></i></button>
+				<button class="btn btn=light" data-bs-toggle="modal" data-bs-target="#removeAnswerConfirmModal" data-answer-id="\${item.id}" id="\${removeAnserButtonId}"><i class="fas fa-thin fa-xmark"></i></button>
+			</div>
 			</div>`
 				answerListContainer.insertAdjacentHTML("beforeend",answerDiv)
 				// 수정 폼 모달에 댓글 내용 넣기
@@ -188,7 +227,10 @@ function removeAnswer(answerId){
 		method:"delete"
 	})
 	.then(res=>res.json())
-	.then(data =>document.querySelector("#answerMessage1").innerText=data.message )
+	.then(data =>{
+		document.querySelector("#answerMessage1").innerText=data.message 
+		toast.show()	
+	})
 	.then(()=>listAnswer())
 }
 
@@ -212,10 +254,11 @@ document.querySelector("#answerSendButton1").addEventListener("click",function()
 	})
 	.then(res => res.json())
 	.then(data =>{
-		document.querySelector("#answerInput1").value=""
-		document.querySelector("#answerMessage1").innerText=data.message;
-	})
+			document.querySelector("#answerMessage1").innerText=data.message 
+			toast.show()	
+		})
 	.then(()=>listAnswer())
+		document.querySelector("#answerInput1").value=""
 })
 
 
