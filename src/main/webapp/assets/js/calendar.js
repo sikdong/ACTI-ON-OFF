@@ -1,8 +1,16 @@
 let CDate = new Date();
 let today = new Date();
 
+function none(){
+	document.querySelector("#showCalendar").innerHTML='',
+	document.querySelector("#noneButton").style.display="none"
+};
+
+
 
 function buildCalendar(){
+	document.querySelector("#noneButton").style.display="inline-block"
+	document.querySelector("#showCalendar").innerHTML=''
 const calendarFrame = 	
 	`<div class="calendar">
 		<div class="header">
@@ -25,6 +33,7 @@ const calendarFrame =
 			</div>
 			<div class="dates"></div>
 		</div>
+		<hr width="50%">
 	</div>`
 document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calendarFrame)
 	let prevLast = new Date(CDate.getFullYear(), CDate.getMonth(), 0);
