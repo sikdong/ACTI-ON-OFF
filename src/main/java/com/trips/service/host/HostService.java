@@ -76,14 +76,14 @@ public class HostService {
 			}
 		}
 		for(String date:dates) {
-			StringTokenizer st= new StringTokenizer(date,"/");
-		//	while(st.hasMoreTokens()) {System.out.println(st.nextToken()+",");		}	
-			String month = st.nextToken();
-			String day  = st.nextToken();
-			String year = st.nextToken();
-			String yyyy_mm_dd = year+"-"+month+"-"+day;
-			System.out.println(yyyy_mm_dd);
-			hostMapper.listingDate(b_no,yyyy_mm_dd);
+//			StringTokenizer st= new StringTokenizer(date,"/");
+//		
+//			String month = st.nextToken();
+//			String day  = st.nextToken();
+//			String year = st.nextToken();
+//			String yyyy_mm_dd = year+"-"+month+"-"+day;
+			System.out.println(date);
+			hostMapper.listingDate(b_no,date);
 		}
 //		for (Date date : dates) {
 //			if (date != null ) {
