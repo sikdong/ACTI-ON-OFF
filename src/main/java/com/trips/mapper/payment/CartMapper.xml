@@ -27,7 +27,7 @@
 		<result property="renamedFileName" column="renamedFileName" />
 	</resultMap>
 
-	<select id="CartList" parameterType="String"
+	<select id="cartList" parameterType="String"
 		resultMap="cartListResultMap">
 
 		SELECT c.RES_NO resNo,m.M_ID id,c.B_NO boardBno,O_PRICE price,AMOUNT

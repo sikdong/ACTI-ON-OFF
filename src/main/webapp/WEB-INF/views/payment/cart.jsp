@@ -58,7 +58,7 @@
                     </div>
                  	   <div class="row data">
                         <div class="subdiv">
-                            <div class="check"><input type="checkbox" name="cart_id" value="${list.cart_id}" checked="checked">&nbsp;</div>
+                            <div class="check"><input type="checkbox" name="cart_id" value="${list.id}" checked="checked">&nbsp;</div>
    
                             <div class="img image"><img src="${path}/resources/upload/wineimg/${list.renamedFileName}" width="60" height="60"></div>
 
@@ -83,7 +83,7 @@
                         <!-- 장바구니에서 삭제 -->
                         <div class="subdiv">
                             <div class="basketcmd">
-                            <button type="button" class="abutton" style="line-height: 15px;" onclick="deleteCart(${list.cart_id})">삭제</button>
+                            <button type="button" class="abutton" style="line-height: 15px;" onclick="deleteCart(${list.id})">삭제</button>
 							</div>
                         </div>
                     </div>                      
@@ -93,7 +93,7 @@
                 </div>
         
                 <div class="bigtext right-align sumcount" id="sum_p_num">상품갯수: ${list.amount}</div>
-                <div class="bigtext right-align box blue summoney" id="sum_p_price">합계금액: ${list.Price}원</div>
+                <div class="bigtext right-align box blue summoney" id="sum_p_price">합계금액: ${list.price}원</div>
         
                 <div id="goorder">
                     <div class="clear"></div>

@@ -1,14 +1,11 @@
 package com.trips.controller.payment;
 
-import java.lang.reflect.Member;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,14 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttribute;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.trips.domain.member.MemberDto;
-import com.trips.domain.offline.offlineDto;
 import com.trips.domain.payment.Cart;
 import com.trips.domain.payment.CartList;
-import com.trips.service.offline.OfflineService;
 import com.trips.service.payment.CartService;
 
 
@@ -38,10 +31,9 @@ public class CartController {
 	// 장바구니 저장 
 	@ResponseBody
 	@RequestMapping(value = "/shop/addCart", method = RequestMethod.POST)
-	public Map<String, Integer> addCart(Cart cart, HttpSession session) throws Exception {
+	public Map<String, Integer> addCart(Cart cart, Authentication authentication) throws Exception {
 		Map<String, Integer> map = new  HashMap<>();
-		MemberDto member = (MemberDto)session.getAttribute("loginMember");
-		cart.setId(member.getId());
+		cart.setId(authentication.getName());
 		
 		
 		map.put("result", service.addCart(cart));
@@ -54,10 +46,9 @@ public class CartController {
 	}
 	// 장바구니 이동
 	@RequestMapping(value ="/payment/cart", method = RequestMethod.GET)
-	public void getCartList (HttpSession session, Model model) throws Exception {
-		MemberDto member = (MemberDto)session.getAttribute("loginMember");
+	public void getCartList (Authentication authentication, Model model) throws Exception {
 			
-		String id = member.getId();
+		String id = authentication.getName();
 		
 		List<CartList> cartList = service.cartList(id);
 		
