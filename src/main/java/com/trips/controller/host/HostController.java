@@ -14,6 +14,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -76,21 +77,35 @@ public class HostController {
 	
 	
 	
-	@GetMapping({ "info", "modify" })
-	@PreAuthorize("hasAuthority('admin') or (authentication.name == #id)")
-	public void info(String id, Model model) {
-
-		model.addAttribute("member", service.getById(id));
-	}
+	
 	//호스트 정보 관리- ru..d?
 	//호스트만
+	
 	@GetMapping("hostInfo")
 //	@PreAuthorize("@boardSecurity.checkWriter(authentication.name, #id)")
-	public void hostInfo(int m_id,Model model) {
-		Host hostInfo = hostService.hostInfo(m_id);
-		model.addAttribute("hostInfo", hostInfo);
-		System.out.println(hostInfo);
+//	public void hostInfo(String m_id,Model model) {
+	public void hostInfo(Model model) {
+		//왜 여긴 모델을 파라미터로 써야되지?
+		Host host = hostService.hostInfo("bb");
+		System.out.println(host+"@@");
+		model.addAttribute("host", host);
+		System.out.println(host);
 	}
+	//지금은 호스트 소개만 수정..
+	@PostMapping("hostInfo")
+	public String hostInfo(@ModelAttribute Host host, RedirectAttributes rttr) {
+		System.out.println(host+"######");
+		int result= hostService.hostInfoModify(host);
+		if (result == 1) {
+			rttr.addFlashAttribute("message", "수정완");
+		} else {
+			rttr.addFlashAttribute("message","수정안됨" );
+		}
+		//수정 후 모달로 요청하려면?
+		return "redirect:hostInfoModifyComplete";
+	}
+	@GetMapping("hostInfoModifyComplete")
+	public void hostInfoModifyComplete() {}
 	
 	
 	

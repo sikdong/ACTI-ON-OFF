@@ -72,7 +72,7 @@ public class HostService {
 				// db에 파일 정보 저장
 				hostMapper.insertImage(b_no,file.getOriginalFilename());
 				
-				uploadFile(file);
+		//		uploadFile(file);
 			}
 		}
 		for(String date:dates) {
@@ -98,31 +98,31 @@ public class HostService {
 		
 	}
 
-	private void uploadFile(MultipartFile file) {
-		try {
-			// S3에 파일 저장
-			// 키 생성
-//			String key = "trips/board/" + id + "/" + file.getOriginalFilename();
-			String key = "trips/board/"  + file.getOriginalFilename();
-			
-			// putObjectRequest
-			PutObjectRequest putObjectRequest = PutObjectRequest.builder()
-					.bucket(bucketName)
-					.key(key)
-					.acl(ObjectCannedACL.PUBLIC_READ)
-					.build();
-			
-			// requestBody
-			RequestBody requestBody = RequestBody.fromInputStream(file.getInputStream(), file.getSize());
-			
-			// object(파일) 올리기
-			s3Client.putObject(putObjectRequest, requestBody);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		}
-	}
+//	private void uploadFile(MultipartFile file) {
+//		try {
+//			// S3에 파일 저장
+//			// 키 생성
+////			String key = "trips/board/" + id + "/" + file.getOriginalFilename();
+//			String key = "trips/board/"  + file.getOriginalFilename();
+//			
+//			// putObjectRequest
+//			PutObjectRequest putObjectRequest = PutObjectRequest.builder()
+//					.bucket(bucketName)
+//					.key(key)
+//					.acl(ObjectCannedACL.PUBLIC_READ)
+//					.build();
+//			
+//			// requestBody
+//			RequestBody requestBody = RequestBody.fromInputStream(file.getInputStream(), file.getSize());
+//			
+//			// object(파일) 올리기
+//			s3Client.putObject(putObjectRequest, requestBody);
+//			
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			throw new RuntimeException(e);
+//		}
+//	}
 
 	public void becomeHost(Host host) {
 		
@@ -131,7 +131,7 @@ public class HostService {
 			// db에 파일 정보 저장
 			hostMapper.becomeHost(host.getM_id(),host.isH_experience(),host.getH_introduction(),h_photo);
 			//s3에 저장
-			uploadFile(host.getH_photo());
+	//		uploadFile(host.getH_photo());
 		}
 	}
 
@@ -140,9 +140,14 @@ public class HostService {
 		return null;
 	}
 
-	public Host hostInfo(int m_id) {
+	public Host hostInfo(String string) {
 		
-		return hostMapper.hostInfo(m_id);
+		return hostMapper.hostInfo(string);
+	}
+
+	public int hostInfoModify(Host host) {
+		
+		return hostMapper.hostInfoModify(host);
 	}
 
 	

@@ -157,24 +157,7 @@
 		</div>
 	</div>
 	<script>
-	{
-	    mode: "multiple",
-	    dateFormat: "Y-m-d"
-	}
-	// commonjs
-	const flatpickr = require("flatpickr");
 
-	// es modules are recommended, if available, especially for typescript
-	import flatpickr from "flatpickr";
-	// If using flatpickr in a framework, its recommended to pass the element directly
-	flatpickr(element, {});
-
-	// Otherwise, selectors are also supported
-	flatpickr("#myID", {});
-
-	// creates multiple instances
-	flatpickr(".anotherSelector");
-	$(".selector").flatpickr(optional_config);
 	</script>
 	
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>

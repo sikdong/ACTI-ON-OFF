@@ -30,9 +30,15 @@
 <!-- <select id="select"> -->
 <!-- select b_id from ACTI_BOARD</select> -->
 
-<select id="hostInfo" >
-select m_id, h_experience, h_photo from ACTI_HOST
+<select id="hostInfo" resultType="com.trips.domain.host.Host">
+select m_id, h_experience,h_introduction, h_photo from ACTI_HOST where m_id= #{m_id}
 </select>
+
+<update id="hostInfoModify" >
+UPDATE ACTI_HOST
+SET h_introduction = #{h_introduction}
+WHERE m_id = #{m_id}
+</update>
 
 	<select id="select" resultMap="boardMap">
 	SELECT
