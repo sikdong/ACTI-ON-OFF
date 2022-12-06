@@ -10,7 +10,7 @@ import lombok.Data;
 @Data
 public class TripsBoardDto {
 	private int replyNum;
-	private int likeNumber;
+	private int L_NO;
 	private int countLike;
 	private int accept;
 	private String writer;

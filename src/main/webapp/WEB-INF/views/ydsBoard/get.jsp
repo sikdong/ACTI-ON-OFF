@@ -6,7 +6,15 @@
 <html>
 <head>
 <style>
-@charset "UTF-8";
+
+.red {
+ color : red !important;
+}
+
+.cursor {
+ cursor : pointer;
+}
+
 :root {
     --bg-color: #FFFFFF;/*배경색*/
     --line-color: #aaaaaa;/*상단과 하단을 나눠줄 줄 색*/
@@ -115,21 +123,21 @@
 	</c:url>
 	<input type="hidden" id="numInput" value="${board.num }" />
 	<%--체험 제목 보여주기 --%>
-	<div class="container-fluid">
+	<div class="container-fluid" style="display : flex;">
 		<span>제주 앞바다를 즐겨 보세요!</span>
 		
-		<span>
+		<div>
 			<a href="${removeLink}" class="btn btn-outline-secondary btn-sm">게시물 삭제</a>
-		</span>
-		<span>
-			<button id="solidHeart">임시</button>
-				<span id="countLike">
-					${board.countLike}
-				</span>
-			<button id="minusLike"></button>
-			<i class="fa-regular fa-heart fa-2x"></i> 
-			<i class="fa-solid fa-heart"></i>
-		</span>
+		</div>
+			<div onclick="plusLike()" class="cursor" id="plusLike">
+				<i class="fa-regular fa-heart fa-2x red"></i> 
+			</div>
+			<div onclick="minusLike()" class="cursor" id="minusLike" style="display : none">
+				<i class="fa-solid fa-heart fa-2x red" style="color : red !important;"></i>
+			</div>
+			<div id="countLike" style="font-size : 20px; margin-left : 3px; padding-top : 4px;">
+				${board.countLike}
+			</div>
 	</div>
 	
 	<img src="${path}/assets/img/home2.jpg" class="size" alt="...">
@@ -215,7 +223,8 @@ crossorigin="anonymous"></script>
 <script>
 const ctx = "${pageContext.request.contextPath}";
 <%-----------------------------------------좋아요 기능-------------------------------------------%>
-document.querySelector("#solidHeart").addEventListener("click", () => {
+/* document.querySelector("#solidHeart").addEventListener("click", */ 
+		function plusLike(){
 	const num = document.querySelector("#numInput").value;
 /* 	const data = {
 			num : '${board.num}'
@@ -228,8 +237,35 @@ document.querySelector("#solidHeart").addEventListener("click", () => {
 		body : JSON.stringify({num})
 	})
 	.then(res => res.json())
-	.then(data => document.querySelector("#countLike").innerHTML = data.countLike)
-})
+	.then(data => {
+		document.querySelector("#countLike").innerHTML = data.countLike
+		document.querySelector("#plusLike").style.cssText="display : none;"
+		document.querySelector("#minusLike").style.cssText="display : inline-block;"
+	})
+}
+<%-----------------------------------------좋아요 취소 기능--------------------------%>
+function minusLike(){
+	const num = document.querySelector("#numInput").value;
+/* 	const data = {
+			num : '${board.num}'
+	} */
+	fetch(ctx+"/ydsBoard/minusLike", {
+		method : "DELETE",
+		headers : {
+			"Content-Type" : "application/json"
+		},
+		body : JSON.stringify({num})
+	})
+	.then(res => res.json())
+	.then(data => {console.log(data.deleteLike)
+					document.querySelector("#countLike").innerHTML = data.countLike
+					document.querySelector("#minusLike").style.cssText="display : none;"
+					document.querySelector("#plusLike").style.cssText="display : inline-block;"
+				   
+	})
+}
+
+
 
 
 listReply();

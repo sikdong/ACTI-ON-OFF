@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -61,5 +62,12 @@ public class YdsBoardController {
 		return service.plusLike(req.get("num"), board);
 		
 	}
-	
+
+	@DeleteMapping("minusLike")
+	@ResponseBody
+	public Map<String, Object> minusLike(@RequestBody Map<String, Integer> req, 
+			TripsBoardDto board){
+		return service.minusLike(req.get("num"), 
+				board);
+	}
 }

@@ -21,4 +21,6 @@ public interface ydsBoardMapper {
 
 	public int getLikeByBNO(int num);
 
+	public int deleteLikeByLNO(int num);
+
 }

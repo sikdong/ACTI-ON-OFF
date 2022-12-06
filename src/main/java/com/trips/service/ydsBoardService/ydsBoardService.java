@@ -49,7 +49,16 @@ public class ydsBoardService {
 		
 		int cnt = mapper.getLikeByBNO(num);
 		map.put("countLike", cnt);
-		
+		return map;
+	}
+
+	public Map<String, Object> minusLike(int num, TripsBoardDto board) {
+		// TODO Auto-generated method stub
+		Map<String, Object> map = new HashMap<>();
+		int minus = mapper.deleteLikeByLNO(num);
+		map.put("deleteLike", minus);
+		int cnt = mapper.getLikeByBNO(board.getCountLike());
+		map.put("countLike", cnt);
 		return map;
 	}
 
