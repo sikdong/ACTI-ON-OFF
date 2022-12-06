@@ -8,5 +8,8 @@ public class MemberDto {
 
 	public int MemberNo;
 	
+	public MemberDto(String id) {
+		this.id = id;
+	}
 	
 }

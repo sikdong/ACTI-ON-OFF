@@ -107,7 +107,7 @@
 	    </div>
 	  </div> 
 </section>
-<!-- 	
+
 	<script>
 		$(".btn-back_to_shop").click(function() {
 			history.back();
@@ -211,7 +211,5 @@
     	
 	
 	</script>
- -->
-
 </body>
 </html>
