@@ -54,6 +54,7 @@ SELECT
 	B_TITLE title,
 	M_ID writer,
 	B_CONTENT content,
+	B_CREATEDATE createDate,
 	(SELECT COUNT(*) FROM ACTI_LIKE WHERE B_NO= #{num}) countLike
 FROM ACTI_BOARD
 WHERE B_NO = #{num}

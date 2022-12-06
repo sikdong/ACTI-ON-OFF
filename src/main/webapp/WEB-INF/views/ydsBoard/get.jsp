@@ -6,6 +6,23 @@
 <html>
 <head>
 <style>
+.halfview{
+	width : 50vw !important;
+}
+
+.horizontal {
+	display : flex;
+	width : 100vw;
+	justify-content : space-around;
+}
+
+.mt {
+ margin-top : 10px !important; 
+}
+
+.bold {
+	font-weight : bold;
+}
 
 .red {
  color : red !important;
@@ -21,7 +38,7 @@
     --sat-color: #FFE2E2;/*토요일 배경색*/
     --sun-color: #FFC7C7;/*일요일 배경색*/
     --today-color: #EFBBCF;/*오늘 날짜의 테투리색*/
-    --font: 'Raleway';/*폰트 정의*/
+    --font: 'Raleway' !important;/*폰트 정의*/
 }
 
 .calendar {
@@ -31,17 +48,19 @@
     margin-left: 0;
     background-color: var(--bg-color);
     font-family: var(--font);
+    position : fixed;
+    z-index : 1;
 }
 
 
 .header {
-	width : 100%;
+	width : 96%;
     display: flex;
     font-size: 12px;
     justify-content: space-between; /* /아이템들을 일정한 간격으로 벌려 배치합니다. */
     align-items: center;
     padding-bottom: 3px;
-    margin: 6px 12px 6px 0px;
+    margin: 6px 12px 6px 12px;
     border-bottom: 2px solid var(--line-color);/*header쪽과 달력을 구분하기 위해 밑에만 선을 넣어줍시다.*/
 }
 
@@ -116,7 +135,7 @@
 <link rel="stylesheet" href="${path}/assets/css/ydsCss.css" />
 <link rel="stylesheet" href="${path}/assets/css/calendar.css" />
 </head>
-<body>
+<body style="margin-left : 10px;">
 	<my:navbar></my:navbar>
 	<c:url value="/ydsBoard/remove" var="removeLink">
 		<c:param name="num" value="${board.num }" ></c:param>
@@ -139,11 +158,11 @@
 				${board.countLike}
 			</div>
 	</div>
+		<img src="${path}/assets/img/home2.jpg" class="size" alt="...">
+		<img src="${path}/assets/img/about1.jpg" class="size" alt="...">
+		<img src="${path}/assets/img/home1.jpg" class="size" alt="...">
+		<img src="${path}/assets/img/about2.jpg" class="size" alt="...">
 	
-	<img src="${path}/assets/img/home2.jpg" class="size" alt="...">
-	<img src="${path}/assets/img/about1.jpg" class="size" alt="...">
-	<img src="${path}/assets/img/home1.jpg" class="size" alt="...">
-	<img src="${path}/assets/img/about2.jpg" class="size" alt="...">
 
 
 	<div class="container-fluid">
@@ -151,28 +170,35 @@
 			<h4>호스트 소개</h4>
 			<textarea style="resize: none; width : 50% !important;" rows="5"  
 			readonly class="form-control">${board.content }</textarea>
-			<div class="mt">
-				<h4>프로그램 소개</h4>
+		<div class="horizontal">
+			<div class="halfview">
+				<div class="mt">
+					<h4>프로그램 소개</h4>
+				</div>
+				<hr width="100%" />
+				${board.content }
+				<div>
+					<a id="reserveButton" onclick="buildCalendar()" class="btn btn-dark btn-sm">예약하기</a>
+				</div>
+				<span>
+					<a id="noneButton" style="display : none" onclick="none()" class="btn btn-secondary btn-sm">달력접기</a>
+				</span>
+				<hr width="100%" />
 			</div>
-			<hr width="50%" />
-			${board.content }
-			<div>
-				<a id="reserveButton" onclick="buildCalendar()" class="btn btn-dark btn-sm">예약하기</a>
+			<div id="showCalendar" class="halfview">
 			</div>
-			<span>
-				<a id="noneButton" style="display : none" onclick="none()" class="btn btn-secondary btn-sm">달력접기</a>
-			</span>
-			<hr width="50%" />
-			<div id="showCalendar">
-			</div>
+		</div>	
 			<h4>프로그램 후기</h4>
 			<div class="col-sm-7">
-				<input type="text" class="form-control" placeholder="여러분의 소중한 후기를 남겨주세요" 
+				<div style="display : flex">
+					<div><%--별 들어갈 자리 --%></div>
+				</div>
+				<input type="text" class="form-control halfview" placeholder="여러분의 소중한 후기를 남겨주세요" 
 					id="content"></input>
 				<%-- 로그인 기능 수정되면 지울 것 --%>
 				<input type="hidden" value="bb" id="temperId"/>
 				<input id="boardNum" type="hidden" value="${board.num}" />
-				<button class="btn btn-dark btn-sm" id="enrollReply" type="button" >등록</button>
+				<button class="btn btn-dark btn-sm mt" id="enrollReply" type="button" >등록</button>
 				<div class="row mt-3">
 					<div class="col-sm-12">
 						<div class="list-group" id="replyListContainer">
@@ -183,11 +209,11 @@
 					<div class="mt">
 						<h5>체험 더보기</h5>
 					</div>
-						<div class="flex-container">
+					<div class="flex-container">
 					</div>
+				</div>
 			</div>
 		</div>
-	</div>
 <%------------------------------댓글 수정, 삭제 토스트----------------------------%>	
 <div class="toast-container align-items-center top-0 start-50 translate-middle-x position-fixed">
   <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
@@ -329,21 +355,25 @@ function listReply(){
 			const updateReplyButtonNum = `updateReplyButton\${item.replyNum}`
 			
 			const replyDiv = 
-				`<div class="list-group-item d-flex">
+				`<div class="list-group-item d-flex" style="width : 50vw !important">
 					<div class="me-auto">
 						<div>
 							<small>
 								<i class="fa-solid fa-user"></i>
 								\${item.writer}
 							</small>
+						</div>
 						<div>
-						<small class="col col-lg-2">
-							\${item.content}
-						</small>
-						<small class="text-muted">
-						<i class="fa-regular fa-clock"></i> 
-							\${item.createDate}
-						</small>
+							<small class="col col-lg-2 bold">
+								\${item.content}
+							</small>
+						</div>
+						<div>
+							<small class="text-muted" >
+								<i class="fa-regular fa-clock"></i> 
+								\${item.ago}
+							</small>
+						</div>
 					</div>
 					<div>
 						<%--댓글 수정 버튼 --%>
@@ -439,7 +469,10 @@ function buildCalendar(){
 	document.querySelector("#noneButton").style.display="inline-block"
 	document.querySelector("#showCalendar").innerHTML=''
 const calendarFrame = 	
-	`<div class="calendar">
+	`<div class="calendar shadow p-3 mb-5 bg-body rounded">
+		<div>
+			<%--인원수 들어갈 div --%>
+		</div>
 		<div class="header">
 			<button class="btn btn-outline-danger btn-sm" onclick="prevCal()">&laquo;</button>
 			<div class="title">
@@ -459,7 +492,6 @@ const calendarFrame =
 				<div class="day">Sat</div>
 			</div>
 			<div class="dates"></div>
-		<hr>
 		</div>
 	</div>`
 document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calendarFrame)
