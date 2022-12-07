@@ -261,7 +261,7 @@ public class HostController {
 	
 	
 	
-	//체험관리..
+	//체험관리...
 	//호스트만
 	// 호스트 아이디랑 같은 체험 불러오기
 	@GetMapping("admin")
