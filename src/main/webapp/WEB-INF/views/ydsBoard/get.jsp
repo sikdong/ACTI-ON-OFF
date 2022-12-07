@@ -180,12 +180,15 @@
 
 
 	<div class="container-fluid">
-		<div class="mb-3">
-			<h4>호스트 소개</h4>
-			<textarea style="resize: none; width : 50% !important;" rows="5"  
-			readonly class="form-control">${board.content }</textarea>
 		<div class="horizontal">
-			<div class="halfview">
+				<div class="halfview">
+					<h4>호스트 소개</h4>
+					<textarea style="width : 100% !important;" rows="5"  
+					readonly class="form-control">${board.content }</textarea>
+				</div>
+				<div id="showCalendar" class="halfview">
+				</div>
+			</div>	
 				<div class="mt">
 					<h4>프로그램 소개</h4>
 				</div>
@@ -201,13 +204,12 @@
 			</div>
 			<div id="showCalendar" class="halfview">
 			</div>
-		</div>	
 			<h4>프로그램 후기</h4>
 			<div class="col-sm-7">
 				<div style="display : flex">
 					<div><%--별 들어갈 자리 --%></div>
 				</div>
-				<input type="text" class="form-control halfview" placeholder="여러분의 소중한 후기를 남겨주세요" 
+				<input type="text" class="form-control halfview mt" placeholder="여러분의 소중한 후기를 남겨주세요" 
 					id="content"></input>
 				<%-- 로그인 기능 수정되면 지울 것 --%>
 				<input type="hidden" value="bb" id="temperId"/>
@@ -226,8 +228,6 @@
 					<div class="flex-container">
 					</div>
 				</div>
-			</div>
-		</div>
 <%------------------------------댓글 수정, 삭제 토스트----------------------------%>	
 <div class="toast-container align-items-center top-0 start-50 translate-middle-x position-fixed">
   <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
@@ -345,7 +345,7 @@ function getFiveFiles(){
 		for (const file of list){
 			const fileList = 
 				`<div class="flex-child">
-					<img src="${path}/assets/img/\${file.fileName}" class="size1" alt="...">
+					<img src="${path}/assets/img/\${file.fileName}" class="size" alt="...">
 					<h5 class="text-center">\${file.content}</h5>
 				</div>`
 				<%-- 집가서 작성 --%>
@@ -497,9 +497,9 @@ const calendarFrame =
 	        	총 인원
 	      	</div>
 	        <div class="flex jc-sb" style="width : 30%">
-	        	<div class="cursor"><i class="fa-solid fa-circle-minus fa-2x"></i></div>
-	        	<div style="font-size : 150%;">1</div>
-	        	<div class="cursor"><i class="fa-solid fa-circle-plus fa-2x"></i></div>
+	        	<div class="cursor" onclick="substractNumber()"><i class="fa-solid fa-circle-minus fa-2x"></i></div>
+	        	<div id="number" style="font-size : 150%; margin : auto;">0</div>
+	        	<div class="cursor" onclick="addNumber()"><i class="fa-solid fa-circle-plus fa-2x"></i></div>
 	        </div>
 	      </div>
 	    </div>
@@ -575,6 +575,16 @@ function nextCal(){
 	CDate.setMonth(CDate.getMonth()+1);
 	buildCalendar();
 }	
+
+function addNumber(){
+	document.querySelector("#number").innerHTML++
+}
+
+function substractNumber(){
+	if(document.querySelector("#number").innerHTML > 0){
+		document.querySelector("#number").innerHTML--
+	}
+}
 	
 
 </script>
