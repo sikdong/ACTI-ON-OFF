@@ -20,6 +20,8 @@
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="${path}/assets/css/ydsCss.css" />
 <link rel="stylesheet" href="${path}/assets/css/calendar.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 </head>
 <body>
 	<my:navbar></my:navbar>
@@ -95,10 +97,10 @@
 	                        <form action="${path}/payment/orderPage" method="get">
 	                       <c:forEach var="list" items="${cartList}">
 				         <div class="paymentScreenBtn">
-								<input type="hidden" name="resNo" value="${list.RES_NO}">
-								<input type="hidden" name="boardBno" value="${list.B_NO}">
-								<input type="hidden" name="price" value="${list.O_PRICE}">
-								<input type="hidden" name="resNo" value="" id="resNo">
+								<input type="hidden" name="boardBno" value="${list.boardBno}">
+								<input type="hidden" name="" value="name">
+								<input type="hidden" name="price" value="${list.price}">
+								<input type="hidden" name="resno" value="" id="resno">
                     </div>
                     </c:forEach>
                         <!-- <button type="submit" class="btn-wine-wish btn-pop-wine-01 btn_open btn-order cart_btn2" id="paymentSubmit">구매하기</button>  -->
@@ -113,9 +115,9 @@ integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbs
 crossorigin="anonymous"></script>
 <script>
 const ctx = "${pageContext.request.contextPath}";
-
 listReply();
 getFiveFiles();
+
 <%--댓글 등록 기능 --%>
 document.querySelector("#enrollReply").addEventListener("click", function(){
 	const boardNum = document.querySelector("#boardNum").value;
@@ -262,56 +264,53 @@ function modifyReply(){
 	.then(() => listReply());
 }
 
-	
-
 </script>
 
  <script>
 						//장바구니 담기
-				            $(".cart_btn").click(function(){
-				                  
-				                  var num=${offlineboard.num};
-				                  var wineName = $("#title").val();
-				                  var cartqty = $(".numBox").val();
-				                  var renamedFileName= $("#image").attr("src");
-				                 
-				               if(num == 1){
-				            	   num=1;
-				               }else{
-				            	   num=${offlineboard.num};
-				               }
-				               
-				                 console.log(num);
-				                  var data = {
-				                	b.B_NO : num,
-				                	CART_QTY : cartqty
+$(".cart_btn").click(function(){
+   
+	var boardBno= `${offlineboard.boardBno}`;
+	var boardBno = $("#title").val();
+	var cartQty = $(".numBox").val();
+	var renamedFileName= $("#image").attr("src");
+	
+	if(boardBno == 1){
+		boardBno=1;
+	}else{
+		boardBno= `${offlineboard.boardBno}`;
+	}
+	
+	console.log(boardBno);
+	var data = {
+		B_NO : boardBno,
+		CART_QTY : cartQty
+	
+	};
+	$.ajax({
+		url : "${path}/shop/addCart",
+		type : "post",
+		data : data,
+		success : function(result){
+			alert("카트 담기 성공");
+			$(".numBox").val("1");
+			location.replace("${path}/payment/cart");
+		},
+		error : function(){
+			alert("로그인 후 이용해주세요.");
+			console.log(resno);
+			console.log(cartqty);
+			console.log(renamedFileName);
+		}
+	});
 
-				                  };
-				                  $.ajax({
-				                      url : "${path}/shop/addCart",
-				                      type : "post",
-				                      data : data,
-				                      success : function(result){
-				                       alert("카트 담기 성공");
-				                       $(".numBox").val("1");
-				                       location.replace("${path}/payment/cart");
-				                      },
-				                      error : function(){
-				                       alert("로그인 후 이용해주세요.");
-				                       console.log(resNo);
-				                       console.log(cartqty);
-				                       console.log(renamedFileName);
-				                      }
-				                  });
-				                  
-		                    });
+});
 						
 				        
 	
     				
 						  
      
-
 </script>		
 <script  src="${path }/assets/js/calendar.js"></script>
 </body>
