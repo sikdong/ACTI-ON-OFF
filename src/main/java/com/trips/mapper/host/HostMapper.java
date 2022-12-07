@@ -1,6 +1,7 @@
 package com.trips.mapper.host;
 
 import java.sql.Date;
+import java.util.List;
 
 import com.trips.domain.host.BoardDto;
 import com.trips.domain.host.Host;
@@ -28,6 +29,8 @@ public interface HostMapper {
 	public Host hostInfo(String string);
 
 	public int hostInfoModify(Host host);
+
+	public List<BoardDto> getMyList(String m_id);
 
 	
 }

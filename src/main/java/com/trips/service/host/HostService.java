@@ -3,6 +3,7 @@ package com.trips.service.host;
 
 
 import java.text.ParseException;
+import java.util.List;
 import java.util.StringTokenizer;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -148,6 +149,11 @@ public class HostService {
 	public int hostInfoModify(Host host) {
 		
 		return hostMapper.hostInfoModify(host);
+	}
+
+	public List<BoardDto> getMyList(String m_id) {
+		// TODO Auto-generated method stub
+		return hostMapper.getMyList(m_id);
 	}
 
 	

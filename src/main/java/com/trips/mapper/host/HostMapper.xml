@@ -31,14 +31,26 @@
 <!-- select b_id from ACTI_BOARD</select> -->
 
 <select id="hostInfo" resultType="com.trips.domain.host.Host">
-select m_id, h_experience,h_introduction, h_photo from ACTI_HOST where m_id= #{m_id}
+	select m_id, h_experience,h_introduction, h_photo from ACTI_HOST where m_id= #{m_id}
 </select>
 
 <update id="hostInfoModify" >
-UPDATE ACTI_HOST
-SET h_introduction = #{h_introduction}
-WHERE m_id = #{m_id}
+	UPDATE ACTI_HOST
+	SET h_introduction = #{h_introduction}
+	WHERE m_id = #{m_id}
 </update>
+
+<!-- name 속성은 어디에 사용함? -->
+<!-- date,file,reple? -->
+<select id="getMyList" resultType="com.trips.domain.host.BoardDto">
+	select b.b_no, b.b_accept, b.b_title, b.b_content, b.b_readcount,b.b_status,b.b_createdate,b.b_modifydate,b.m_id,b.cost,
+    b.min_person,b.max_person,b.min_age,b.b_topic
+	from ACTI_BOARD b left join ACTI_FILE f  ON b.b_no=f.b_no 
+    left join ACTI_REPLY  r on f.b_no =r.b_no
+    left join ACTI_DATE d on b.b_no=d.B_NO
+	where b.m_id=#{m_id};
+</select>
+
 
 	<select id="select" resultMap="boardMap">
 	SELECT

@@ -3,6 +3,7 @@ package com.trips.controller.host;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.StringTokenizer;
 import java.io.File;
 import java.sql.Date;
@@ -25,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 import com.trips.domain.host.BoardDto;
 import com.trips.domain.host.Host;
+import com.trips.domain.yds.TripsBoardDto;
 import com.trips.service.host.HostService;
 
 
@@ -261,11 +263,15 @@ public class HostController {
 	
 	//체험관리
 	//호스트만
-	@RequestMapping("admin")
-	public void admin() {
+	// 호스트 아이디랑 같은 체험 불러오기
+	@GetMapping("admin")
+	public void admin(String m_id, Model model) {
+		List<BoardDto> boardList = hostService.getMyList("bb");
+		System.out.println(boardList );
+		model.addAttribute("boardList", boardList);
 	}
 	
-
+	
 	
 	
 	
