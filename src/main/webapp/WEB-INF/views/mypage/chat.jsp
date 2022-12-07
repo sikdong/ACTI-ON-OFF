@@ -52,18 +52,34 @@ header{
 	background-color:#E1F6FA;	
 }
 .chat_my{
-	width: 50%;
+	margin-left: auto;
+	margin-right: 10px;
+	width: 60%;
 	border-radius: 5%;
 	background: #FFFF96;
+	font-size: 18px;
 }
 .chat_op{
-
-	width: 50%;
+	margin-right: auto;
+	margin-left: 10px;
+	width: 60%;
 	border-radius: 5%;
 	background: #F4FFFF;
+	font-size: 18px;
+}
+#messages{
+	margin: 15px 10px 15px 10px;
+	padding: 10px 10px 10px 10px;
+	border-radius: 10%;
+	background-color: #E6FFE6;
+	width: 93%;	
+}
+.container {
+	display: flex;
+	/* display: inline-flex; */
 }
 </style>
-
+<!-- <meta http-equiv="refresh" content="30" > -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
@@ -77,8 +93,33 @@ header{
 	<div style="height: 100%">
 		<div class="chat_Left" style="border-right: 0.3px solid #d2d2d2">
 			<header style="border-right: none;">
+				<div style="padding: 20px 0 0 20px; font-family: 'Palatino Linotype';'">
+					Messages ▼
+				</div>
 			</header>
-		 	 <h1>과거 채팅내역 모음</h1>
+			
+		 	 <c:forEach var="left" items="${left}">
+		 	 	<div id="messages" class="container" onclick="location.href='/mypage/chat?chatRoom=${left.resNo}&id=${left.id}&host=${left.host}'">
+		 	 		
+		 	 		<div class="item">
+			 	 		<img style="width:80px; height:80px;border-radius: 100%" 
+						src="${imgUrl }/${left.fileName}">
+		 	 		</div>
+					<div class="item" style="padding-left: 20px;">
+						<div style="font-weight: bold;font-size: 22px">
+							${left.host }
+						</div>
+						<div>
+							${left.content}
+						</div>
+						<div style="font-size: 12px">
+							${left.date }
+						</div>
+					</div>
+		 	 	</div>
+		 	 	
+		 	 </c:forEach>
+
 		</div>
 		
 		<div class="chat_Right">
@@ -88,35 +129,53 @@ header{
 					<span style="font-weight: normal">님과의 채팅</span>
 				</div>				
 			</header>
-			<div style="overflow: scroll; height: 70%;">
-				<div class="customContainer" style="height: 120%">
-					<c:forEach var="chat" items="${chat}">
-						<c:choose>
-						<c:when test="${chat.writer eq id }">
-							<div class="chat_my">
-								<div style="padding-left: 5px">
-									<span>${chat.writer }</span>
-									<span>${chat.date }</span>
-									<div>${chat.content }</div>
+			<div id="down" style="overflow: scroll; height: 83.3%;">
+				<div class="customContainer">
+					<div style="height: 120%;min-height: 670px">
+						<c:forEach var="chat" items="${chat}">
+							<c:choose>
+							<c:when test="${chat.writer eq id }">
+								<div class="chat_my">
+									<div style="padding: 5px 10px 10px 10px;">
+										<span style="font-weight: bold; font-size: 20px;">${chat.writer }</span>
+										<span style="font-size: 13px;">${chat.date }</span>
+										<div>${chat.content }</div>
+									</div>
 								</div>
-							</div>
-						</c:when>
-						<c:otherwise>
-							<div class="chat_op">
-								<div style="padding-left: 5px">
-									<span>${chat.writer }</span>
-									<span>${chat.date }</span>
-									<div>${chat.content }</div>
+								<br>
+							</c:when>
+							<c:otherwise>
+								<div class="chat_op">
+									<div style="padding: 5px 10px 10px 10px;">
+										<span style="font-weight: bold; font-size: 20px;">${chat.writer }</span>
+										<span style="font-size: 13px;">${chat.date }</span>
+										<div>${chat.content }</div>
+									</div>
 								</div>
-							</div>
-						</c:otherwise>
-						</c:choose>
+								<br>
+							</c:otherwise> 
+							</c:choose>	
+						</c:forEach>
+						</div>
+						<div class="input-group has-validation" style="">
+						  <div class="form-floating is-invalid">
+						    
+						    	<input type="hidden" id="id" value="${id}"/>
+						    	<input type="hidden" id="host" value="${host}"/>
+						    	<input type="hidden" id="room" value="${chatRoom }"/>
+							    <input type="text" class="form-control" id="floatingInputGroup2" style="padding: 20px 0 20px 10px;">
 						
-						
-							
-				
-						
-					</c:forEach>				
+						  </div>
+						  <span id="subButton"style="width: 80px" class="input-group-text">
+						 	<div style="padding-left: 18px; font-size: 25px">
+						 		↲
+						 	</div>
+						  </span>
+						  <div class="invalid-feedback">
+						    Chat with your host
+						  </div>
+						</div>
+					
 				</div>
 			</div>
 		</div>
@@ -127,26 +186,58 @@ header{
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script>
-/* --------------sticky navbar scroll 기능-------------------------------------------------------------------------------------------------- */
-function navigo (){
-  const header = document.querySelector('#nav2'); //헤더부분획득
-  const headerheight = header.clientHeight;//헤더높이
-document.addEventListener('scroll', onScroll, { passive: true });//스크롤 이벤트
- function onScroll () {
-     const scrollposition = pageYOffset;//스크롤 위치
-   const nav = document.querySelector('#nav');//네비게이션
-   if (headerheight<=scrollposition){//만약 헤더높이<=스크롤위치라면
-     nav.classList.add('fix')//fix클래스를 네비에 추가
-   }
-   else {//그 외의 경우
-     nav.classList.remove('fix');//fix클래스를 네비에서 제거
-   }
- } 
-}
-navigo()
-/* --------------sticky navbar scroll 기능 끝-------------------------------------------------------------------------------------------------- */
+const ctx = "${pageContext.request.contextPath}";
+console.log(ctx);
+/* --------------채팅 맨밑으로 끌어내리는 기능-------------------------------------------------------------------------------------------------- */
+var obj = document.getElementById('down');
+obj.scrollTop = obj.scrollHeight;
+/* --------------채팅 맨밑으로 끌어내리는 기능 끝-------------------------------------------------------------------------------------------------- */
+
+/* --------------chat submit 기능-------------------------------------------------------------------------------------------------- */
+document.querySelector("#subButton").addEventListener("click", function() {
+	
+	const id = document.querySelector("#id").value;
+	const host = document.querySelector("#host").value;
+	const chatRoom = document.querySelector("#room").value;
+	const content = document.querySelector("#floatingInputGroup2").value;
+	
+	const data = {
+			id, 
+			host, 
+			chatRoom,
+			content
+	};
+	
+	fetch(`\${ctx}/mypage/chatAdd`,{
+			method : "post",
+			headers : {
+				"Content-Type" : "application/json"
+			},
+			body : JSON.stringify(data)
+		})
+		/* .then(res => res.json()) */
+		.then(data => {
+			document.querySelector("#floatingInputGroup2").value = "";
+			})
+		.then(() => location.href="/mypage/chat?chatRoom=${chatRoom}&id=${id}&host=${host}")
+	});
+/* --------------chat submit 기능 끝-------------------------------------------------------------------------------------------------- */ 
+/* --------------chat submit 엔터 기능-------------------------------------------------------------------------------------------------- */
+	var input = document.getElementById("floatingInputGroup2");
+
+    input.addEventListener("keyup", function (event) {
+      if (event.keyCode === 13) {
+        document.getElementById("subButton").click();
+      }
+    });
+/* --------------chat submit 엔터 기능 끝-------------------------------------------------------------------------------------------------- */
 
 </script>
+
+<!-- <script language='javascript'> 
+window.setTimeout('window.location.reload()',5000); //5초마다 리플리쉬 시킨다.
+</script> -->
+
 </body>
 </html>
 

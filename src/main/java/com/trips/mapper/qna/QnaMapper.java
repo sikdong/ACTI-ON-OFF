@@ -34,8 +34,9 @@ public interface QnaMapper {
 	int insertEmpathy(String qnaId);
 
 	int countEmpathyByQnaId(String qnaId);
-
+  
 	int deleteEmpathyByQnaId(int id);
+
 
 
 	

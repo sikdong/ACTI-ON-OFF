@@ -7,12 +7,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fasterxml.jackson.databind.ser.std.StdKeySerializers.Default;
+import com.trips.domain.mypage.ChatAddDto;
 import com.trips.domain.mypage.ChatDto;
+import com.trips.domain.mypage.ChatLeftDto;
 import com.trips.domain.mypage.MemberDto;
 import com.trips.domain.mypage.Res1Dto;
 import com.trips.domain.mypage.Res2Dto;
@@ -146,8 +150,40 @@ public class MyPageController {
 			) {
 		
 		List<ChatDto> chat = service.getChat(chatRoom);
+		List<ChatLeftDto> left = service.getChatLeft();
+		
+		for(ChatLeftDto l : left) {
+			String text;
+			if(l.getContent().length() > 30) {
+				text = l.getContent().substring(0, 30)+"...";
+			}else {
+				text = l.getContent();
+			}
+			l.setContent(text);
+		}
+		
 		model.addAttribute("chat", chat);
 		model.addAttribute("id", id);
 		model.addAttribute("host", host);
+		model.addAttribute("chatRoom", chatRoom);
+		model.addAttribute("left", left);
+		
+	}
+	
+	
+	@PostMapping("chatAdd")
+	@ResponseBody
+	public void chat2(
+			@RequestBody ChatAddDto chatDto,
+			RedirectAttributes rttr
+			) throws Exception{
+		String id = chatDto.getId();
+		String host = chatDto.getHost();
+		int chatRoom = chatDto.getChatRoom();
+		String content = chatDto.getContent();
+		System.out.println(chatDto);
+		
+		int cnt = service.insertChat(id, chatRoom, content);
+		
 	}
 }

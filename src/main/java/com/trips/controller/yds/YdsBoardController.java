@@ -1,12 +1,17 @@
 package com.trips.controller.yds;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -50,4 +55,19 @@ public class YdsBoardController {
 		return service.getFiveFiles();
 	}
 	
+	@PostMapping("plusLike")
+	@ResponseBody
+	public Map<String, Object> plusLike(@RequestBody Map<String, Integer> req,
+			TripsBoardDto board) {
+		return service.plusLike(req.get("num"), board);
+		
+	}
+
+	@DeleteMapping("minusLike")
+	@ResponseBody
+	public Map<String, Object> minusLike(@RequestBody Map<String, Integer> req, 
+			TripsBoardDto board){
+		return service.minusLike(req.get("num"), 
+				board);
+	}
 }

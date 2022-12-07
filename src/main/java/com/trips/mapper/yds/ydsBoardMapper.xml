@@ -4,6 +4,21 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.trips.mapper.yds.ydsBoardMapper">
+<delete id="deleteLikeByLNO">
+DELETE FROM ACTI_LIKE WHERE B_NO = #{B_NO} AND M_ID = 'aa'
+
+</delete>
+
+<insert id="plusLike" useGeneratedKeys="true" keyProperty="board.L_NO">
+INSERT INTO ACTI_LIKE (
+	L_CLICK,
+	M_ID,
+    B_NO
+)
+VALUES(1, 'aa', #{num});
+	
+</insert>
+
 <select id="getBoardList" resultType="com.trips.domain.yds.TripsBoardDto">
 SELECT
 	b.B_NO num,
@@ -38,7 +53,9 @@ SELECT
 	B_NO num,
 	B_TITLE title,
 	M_ID writer,
-	B_CONTENT content
+	B_CONTENT content,
+	B_CREATEDATE createDate,
+	(SELECT COUNT(*) FROM ACTI_LIKE WHERE B_NO= #{num}) countLike
 FROM ACTI_BOARD
 WHERE B_NO = #{num}
 </select>
@@ -47,6 +64,11 @@ WHERE B_NO = #{num}
 DELETE FROM ACTI_BOARD
 WHERE B_NO = #{num}
 </delete>
+
+<select id="getLikeByBNO" resultType="int">
+SELECT COUNT(*) FROM ACTI_LIKE WHERE B_NO= #{num}
+
+</select>
 
 
 </mapper>

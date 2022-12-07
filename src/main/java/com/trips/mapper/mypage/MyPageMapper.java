@@ -3,6 +3,7 @@ package com.trips.mapper.mypage;
 import java.util.List;
 
 import com.trips.domain.mypage.ChatDto;
+import com.trips.domain.mypage.ChatLeftDto;
 import com.trips.domain.mypage.MemberDto;
 import com.trips.domain.mypage.Res1Dto;
 import com.trips.domain.mypage.Res2Dto;
@@ -30,5 +31,9 @@ public interface MyPageMapper {
 	int getCountByBD(int boardNo, String date);
 
 	List<ChatDto> getChat(int chatRoom);
+
+	int insertChat(String id, int chatRoom, String content);
+
+	List<ChatLeftDto> getChatLeft();
 
 }
