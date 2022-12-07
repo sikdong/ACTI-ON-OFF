@@ -59,7 +59,7 @@
 			
 					<div style="padding: 0 0 60px 0;">
 						<img style="width:128px; height:128px;" 
-						src="${imgUrl }/ico_21.png">
+						src="${imgUrl }/mypage/ico_21.png">
 					</div>
 					<button id="reservation" type="button" class="btn btn-outline-dark" style="width:130px">
 						예약내역 보기

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.trips.domain.mypage.ChatDto;
+import com.trips.domain.mypage.ChatLeftDto;
 import com.trips.domain.mypage.MemberDto;
 import com.trips.domain.mypage.Res1Dto;
 import com.trips.domain.mypage.Res2Dto;
@@ -76,5 +77,15 @@ public class MyPageService {
 
 	public List<ChatDto> getChat(int chatRoom) {
 		return mapper.getChat(chatRoom);
+	}
+
+	public int insertChat(String id, int chatRoom, String content) {
+		
+		return mapper.insertChat(id,chatRoom,content);
+	}
+
+	public List<ChatLeftDto> getChatLeft() {
+		
+		return mapper.getChatLeft();
 	}
 }
