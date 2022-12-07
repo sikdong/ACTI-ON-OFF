@@ -41,6 +41,7 @@
 							<c:forEach items="${boardList}" var="board">
 							<tr>
 								<td>${board.b_no }</td>
+<!-- 								dd -->
 								
 					
 							
