@@ -18,8 +18,12 @@ SELECT
 	q.Q_TITLE title,
 	q.M_ID memberId,
 	q.Q_inserted inserted,
-	COUNT(a.A_ID) countAnswer
+	COUNT(DISTINCT a.A_ID) countAnswer,
+	COUNT(DISTINCT f.F_ID) countFile,
+	COUNT(DISTINCT e.M_ID) countEmpathy
 FROM QNA q LEFT JOIN ANSWER a ON q.Q_ID = a.Q_ID
+		   LEFT JOIN File f ON q.Q_ID = f.Q_ID
+		   LEFT JOIN empathy e ON q.Q_ID = e.Q_ID
 WHERE
 	<trim prefixOverrides="OR">
 	<if test="type=='all' or type=='title'">
@@ -46,10 +50,12 @@ SELECT
 	q.Q_CONTENT content,
 	q.M_ID memberId,
 	q.Q_INSERTED inserted,
+	COUNT(e.M_ID) countEmpathy,
 	f.F_ID fileId,
 	f.name fileName
 FROM 
 	QNA q LEFT JOIN File f ON q.Q_ID = f.Q_ID
+		  LEFT JOIN empathy e ON q.Q_ID = e.Q_ID
 WHERE
 	q.Q_ID=#{id}
 </select>
@@ -60,6 +66,7 @@ WHERE
 	<result column="content" property="content"/>
 	<result column="memberId" property="memberId"/>
 	<result column="inserted" property="inserted"/>
+	<result column="countEmpathy" property="countEmpathy"/>
 	<collection property="fileName"  ofType="string">
 		<result column="fileName" property="fileName"/>
 	</collection>
@@ -117,6 +124,31 @@ WHERE Q_ID= #{id}
 	DELETE FROM File
 	WHERE Q_ID = #{id} AND name = #{fileName}
 </delete>
+
+<select id="getEmpathyByQnaId" resultType="int">
+SELECT COUNT(*) FROM empathy
+WHERE Q_ID = #{qnaId} AND M_ID = 'aa'
+</select>
+		
+<delete id="deleteEmpathy">
+DELETE FROM empathy
+WHERE Q_ID=#{qnaId} AND M_ID='aa'
+</delete>
+
+<insert id="insertEmpathy">
+INSERT INTO empathy(Q_ID,M_ID)
+VALUES (#{qnaId},'aa')
+</insert>		
+
+<select id="countEmpathyByQnaId" resultType="int">
+SELECT 
+COUNT(*) 
+FROM empathy 
+WHERE
+Q_ID = #{qnaId}
+</select>
+		
+		
 		
 		
 </mapper>
