@@ -6,6 +6,20 @@
 <html>
 <head>
 <style>
+
+.jc-sb {
+	justify-content : space-between;
+}
+
+.accordion-body {
+	padding : 10px !important;
+	justify-content : space-between;
+}
+
+.flex {
+	display : flex;
+}
+
 .halfview{
 	width : 50vw !important;
 }
@@ -470,9 +484,26 @@ function buildCalendar(){
 	document.querySelector("#showCalendar").innerHTML=''
 const calendarFrame = 	
 	`<div class="calendar shadow p-3 mb-5 bg-body rounded">
-		<div>
-			<%--인원수 들어갈 div --%>
-		</div>
+	<div class="accordion" id="accordionExample">
+	  <div class="accordion-item">
+	    <h2 class="accordion-header" id="headingOne">
+	      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+	        인원수 확인
+	      </button>
+	    </h2>
+	    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+	      <div class="accordion-body flex">
+	      	<div class="mt">
+	        	총 인원
+	      	</div>
+	        <div class="flex jc-sb" style="width : 30%">
+	        	<div class="cursor"><i class="fa-solid fa-circle-minus fa-2x"></i></div>
+	        	<div style="font-size : 150%;">1</div>
+	        	<div class="cursor"><i class="fa-solid fa-circle-plus fa-2x"></i></div>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
 		<div class="header">
 			<button class="btn btn-outline-danger btn-sm" onclick="prevCal()">&laquo;</button>
 			<div class="title">
