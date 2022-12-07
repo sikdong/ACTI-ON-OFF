@@ -26,8 +26,9 @@ public class MyPageService {
 	@Autowired
 	private S3Client s3Client;
 	
-	@Value("${aws.s3.bucket}")
-	private String bucketName;
+	
+	  @Value("${aws.s3.bucket}") private String bucketName;
+	 
 	
 	public MemberDto getById(String id) {
 		return mapper.select(id);

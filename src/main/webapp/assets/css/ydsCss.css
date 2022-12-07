@@ -1,4 +1,8 @@
 @charset "UTF-8";
+.introduce {
+	width : 50% !important;
+}
+
 .size {
 	height : 350px;
 	width : 300px; 
