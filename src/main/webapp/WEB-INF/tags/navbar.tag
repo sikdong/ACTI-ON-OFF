@@ -38,7 +38,7 @@ padding: 0 15px 0 15px;
 
 
 <c:url value="/mypage/mypage2" var="myPageLink" />
-
+<c:url value="/qna/QnaList" var="qnaLink" />
 
 <nav id="nav" class="navbar navbar-expand-md mb-3">
   <div class="container-md">
@@ -76,8 +76,9 @@ padding: 0 15px 0 15px;
         </li>
         
          <li class="nav-item">
-          <a class="nav-link">
-          <span class="font">Admin Page</span
+          <a class="nav-link"
+          href="${qnaLink}">
+          <span class="font">Q&A</span
           ></a>
         </li>
         
