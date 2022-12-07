@@ -11,7 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<my:navBar1 active="list"></my:navBar1>
+<my:navbar></my:navbar>
 <div class="container-md">
 		<div class="row">
 			<div class="col">
@@ -27,6 +27,7 @@
 	<thead>
 		<tr>
 			<th>#</th>
+			<th>공감</th>
 			<th>제목</th>
 			<th>작성자</th>
 			<th>작성일시</th>
@@ -36,6 +37,7 @@
 		<c:forEach items="${qnaList }" var="qna">
 			<tr>
 				<td>${qna.id }</td>
+				<th>${qna.countEmpathy }</th>
 				<td>
 				<c:url value="/qna/QnaGet" var="qnaGetLink">
 					<c:param name="id" value="${qna.id }"></c:param>
@@ -49,7 +51,7 @@
 				</c:if>
 				
 				<%-- 파일 수 출력 --%>
-				<c:if test="${board.countFile > 0 }">
+				<c:if test="${qna.countFile > 0 }">
 					<span class="badge rounded-pill text-bg-light">
 						<i class="fas fa-regular fa-file"></i>
 						${qna.countFile }
@@ -137,6 +139,7 @@
 			</div>
 		</div>
 	</div>
+<my:navBar1 active="list"></my:navBar1>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
 </html>

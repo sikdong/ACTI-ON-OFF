@@ -1,6 +1,8 @@
 package com.trips.service.qna;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -150,6 +152,7 @@ public class QnaService {
 		}
 		
 		
+		
 		return qnaMapper.update(qna);
 	}
 	
@@ -184,6 +187,30 @@ public class QnaService {
 				.key(key)
 				.build();
 		s3Client.deleteObject(deleteObjectRequest);
+	}
+
+	public Map<String, Object> updateEmpathy(String qnaId) {
+		Map<String,Object> map=new HashMap<>();
+		int cnt =qnaMapper.getEmpathyByQnaId(qnaId);
+
+		if(cnt==1) {
+			// qnaId로 공감 테이블 검색해서 있으면 삭제
+			qnaMapper.deleteEmpathy(qnaId);
+			map.put("current","not empathied");
+			
+		}else {
+			//없으면 추가
+			qnaMapper.insertEmpathy(qnaId);
+			map.put("current","empathied");
+			
+			
+		}
+		
+		int countAll =qnaMapper.countEmpathyByQnaId(qnaId);
+		// 공감 갯수
+		map.put("count",countAll);
+		
+		return map;
 	}
 
 
