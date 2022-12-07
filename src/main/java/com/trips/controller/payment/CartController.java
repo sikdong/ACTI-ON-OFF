@@ -73,15 +73,17 @@ public class CartController {
 		return "redirect:/payment/cart";
 	}
 	
-	/*@GetMapping("/payment/cart/deleteAll")
-	public String deleteAllCart(@SessionAttribute(name="loginMember")Member loginMember) {
+	/*
+	 * @GetMapping("/payment/cart/deleteAll") public String
+	 * deleteAllCart(Authentication authentication,Member loginMember) {
+	 * 
+	 * service.deleteAllCart(loginMember.getId());
+	 * 
+	 * return "redirect:/payment/cart";
+	 * 
+	 * }
+	 */
 		
-		service.deleteAllCart(loginMember.getId());
-		
-		return "redirect:/payment/cart";
-		
-	}
-		*/
 	
 	
 	

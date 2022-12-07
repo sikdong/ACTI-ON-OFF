@@ -15,7 +15,7 @@
 <!-- 화살표 이미지 다운받아 오는 곳 -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
- <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mypage/cart.css">
+ <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage/cart.css">
 
   <script src="${ path }/js/jquery.min.js"></script>
   <script src="${ path }/js/cart.js"></script>
@@ -60,7 +60,7 @@
                         <div class="subdiv">
                             <div class="check"><input type="checkbox" name="resno" value="${list.resno}" checked="checked">&nbsp;</div>
    
-                            <div class="img image"><img src="${path}/resources/upload/wineimg/${list.renamedFileName}" width="60" height="60"></div>
+                            <div class="img image"><img src="${path}/resources/upload/img/${list.renamedFileName}" width="60" height="60"></div>
 
                             <div class="pname">
                                 <span></span>
