@@ -50,12 +50,11 @@ SELECT
 	q.Q_CONTENT content,
 	q.M_ID memberId,
 	q.Q_INSERTED inserted,
-	COUNT(e.M_ID) countEmpathy,
+	(SELECT COUNT(*) FROM empathy WHERE Q_ID=#{id}) countEmpathy,
 	f.F_ID fileId,
 	f.name fileName
 FROM 
 	QNA q LEFT JOIN File f ON q.Q_ID = f.Q_ID
-		  LEFT JOIN empathy e ON q.Q_ID = e.Q_ID
 WHERE
 	q.Q_ID=#{id}
 </select>
@@ -147,6 +146,19 @@ FROM empathy
 WHERE
 Q_ID = #{qnaId}
 </select>
+		
+<delete id="deleteEmpathyByQnaId">
+DELETE FROM empathy
+WHERE Q_ID = #{id}
+</delete>
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		

@@ -172,7 +172,8 @@ public class QnaService {
 		qnaMapper.deleteFileByQnaId(id);
 		//게시물의 댓글들 지우기
 		answerMapper.deleteByQnaId(id);
-		
+		//공감 지우기
+		qnaMapper.deleteEmpathyByQnaId(id);
 		
 		//게시물 지우기
 

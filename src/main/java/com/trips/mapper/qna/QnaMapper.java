@@ -35,9 +35,11 @@ public interface QnaMapper {
 
 	int countEmpathyByQnaId(String qnaId);
 
+	int deleteEmpathyByQnaId(int id);
+
 
 	
-//	int insertFile(int id, String Filename);
+
 
 
 	
