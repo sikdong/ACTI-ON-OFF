@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-<my:navBar1 active="register"></my:navBar1>
+<my:navbar></my:navbar>
 	<div class="container-md">
 		<div class="row">
 			<div class="col">
@@ -28,10 +28,10 @@
 						<textarea required="required" rows="5" class="form-control" name="content"></textarea>
 					</div>
 					
-					<!-- <div class="mb-3">
+					<div class="mb-3">
 						<label for="" class="form-label">파일</label>
 						<input multiple type="file" accept="image/*" class="form-control" name="files">
-					</div> -->
+					</div> 
 					
 					<div class="mb-3">
 						<label for="" class="form-label">작성자</label>
@@ -48,8 +48,8 @@
 	</div>
 	
 	
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-<script>
+<my:navBar1 active="register"></my:navBar1>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script><script>
 document.querySelector("#submitButton1").addEventListener("click", function(e) {
 	// submit 진행 중지
 	e.preventDefault();

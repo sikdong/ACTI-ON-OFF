@@ -3,6 +3,8 @@ package com.trips.mapper.qna;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.trips.domain.qna.QnaDto;
 
 public interface QnaMapper {
@@ -18,6 +20,20 @@ public interface QnaMapper {
 	int delete(int id);
 
 	int countAll(String type,String keyword);
+
+	int insertFile(int id, String fileName);
+
+	int deleteFileByQnaId(int id);
+
+	int deleteFileByBoardIdAndFileName(int id, String fileName);
+
+	int getEmpathyByQnaId(String qnaId);
+
+	int deleteEmpathy(String qnaId);
+
+	int insertEmpathy(String qnaId);
+
+	int countEmpathyByQnaId(String qnaId);
 
 
 	

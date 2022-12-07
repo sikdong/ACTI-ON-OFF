@@ -38,11 +38,12 @@ padding: 0 15px 0 15px;
 
 
 <c:url value="/mypage/mypage2" var="myPageLink" />
-
+<c:url value="/qna/QnaList" var="qnaLink" />
+<c:url value="/ydsBoard/list" var="mainLink" />
 
 <nav id="nav" class="navbar navbar-expand-md mb-3">
   <div class="container-md">
-    <a class="navbar-brand" href="${listLink }">
+    <a class="navbar-brand" href="${mainLink }">
     <span class="font-main">Main</span>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,8 +77,9 @@ padding: 0 15px 0 15px;
         </li>
         
          <li class="nav-item">
-          <a class="nav-link">
-          <span class="font">Admin Page</span
+          <a class="nav-link"
+          href="${qnaLink}">
+          <span class="font">Q&A</span
           ></a>
         </li>
         

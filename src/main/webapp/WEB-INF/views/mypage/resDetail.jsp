@@ -235,9 +235,9 @@ navigo()
      var marker = new google.maps.Marker({position: pos, map: map});
   }
 
-/* --------------구글 맵 api 기능 끝--------------------------------------------------------------------------------------------------------------- */
+/* --------------구글 맵 api 기능 끝----------나중에 key 추가---------------------------------------------------------------------------------------------------- */
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=${gKey }_BAvWeRChX7uI8-wLy8&callback=myMap"></script> 
+<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script> 
 <script>
 /* --------------description 열고 닫는 기능--------------------------------------------------------------------------------------------------------- */
 document.querySelector("#open").addEventListener("click", function() {
