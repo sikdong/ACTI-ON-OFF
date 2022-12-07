@@ -1,4 +1,4 @@
-<!-- 이거 navbar 아직 아무런 기능 없습니다 디자인 보려고 넣어놓은거 -->
+
 <%@ tag language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ attribute name="active" %>
@@ -17,7 +17,7 @@ background-color:black;
 
 }
 .container-md{
- padding:0 0 0 220px; 
+ padding:0 0 0 100px; 
 }
 .font{
 color: #ffffff;
@@ -43,33 +43,57 @@ padding: 0 15px 0 15px;
 <c:url value="/offline/on" var="offLineLink" />
 <c:url value="/jjhLogin/login" var="logInLink" />
 <c:url value="/jjhLogin/signup" var="signUpLink" />
+<c:url value="/home" var="mainLink" />
+<c:url value="/jjhLogin/logout" var="logOutLink" />
 
 <nav id="nav" class="navbar navbar-expand-md mb-3">
   <div class="container-md">
-    <a class="navbar-brand" href="${onLineLink }">
+    <a class="navbar-brand" href="${mainLink }">
     <span class="font-main">Main</span>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div style="padding-left: 200px"class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div style="padding-left: 120px"class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
          <a class="nav-link"
          href="${onLineLink }">
-          <span class="font">Activity On-line</span>
+          <span class="font">
+          	<div>
+          		Activity
+          	</div>
+          	<div>
+          		On-line
+          	</div> 
+          </span>
          </a>
         </li>
         <li class="nav-item">
          <a class="nav-link"
          href="${offLineLink }">
-          <span class="font">Activity Off-line</span>
+          <span class="font">
+		  	<div>
+          		Activity
+          	</div>
+          	<div>
+          		Off-line
+          	</div> 
+		  </span>
          </a>
         </li>
+        
         <li class="nav-item">
          <a class="nav-link"
          href="${logInLink }">
 		  <span class="font">Log In</span>
+		  </a>
+        </li>
+        
+        <li class="nav-item">
+         <a class="nav-link"
+         href="${logOutLink }">
+		  <span class="font">Log Out</span>
 		  </a>
         </li>
         
