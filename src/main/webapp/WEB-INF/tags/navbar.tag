@@ -38,11 +38,15 @@ padding: 0 15px 0 15px;
 
 
 <c:url value="/mypage/mypage2" var="myPageLink" />
-
+<c:url value="/qna/QnaList" var="qnaLink" />
+<c:url value="/ydsBoard/list" var="onLineLink" />
+<c:url value="/offline/on" var="offLineLink" />
+<c:url value="/jjhLogin/login" var="logInLink" />
+<c:url value="/jjhLogin/signup" var="signUpLink" />
 
 <nav id="nav" class="navbar navbar-expand-md mb-3">
   <div class="container-md">
-    <a class="navbar-brand" href="${listLink }">
+    <a class="navbar-brand" href="${onLineLink }">
     <span class="font-main">Main</span>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,18 +55,27 @@ padding: 0 15px 0 15px;
     <div style="padding-left: 200px"class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-         <a class="nav-link">
-          <span class="font">Activity</span>
+         <a class="nav-link"
+         href="${onLineLink }">
+          <span class="font">Activity On-line</span>
          </a>
         </li>
         <li class="nav-item">
-         <a class="nav-link">
+         <a class="nav-link"
+         href="${offLineLink }">
+          <span class="font">Activity Off-line</span>
+         </a>
+        </li>
+        <li class="nav-item">
+         <a class="nav-link"
+         href="${logInLink }">
 		  <span class="font">Log In</span>
 		  </a>
         </li>
         
         <li class="nav-item">
-          <a class="nav-link">
+          <a class="nav-link"
+          href="${signUpLink }">
           <span class="font">Sign Up</span>
           </a>
         </li>
@@ -76,8 +89,9 @@ padding: 0 15px 0 15px;
         </li>
         
          <li class="nav-item">
-          <a class="nav-link">
-          <span class="font">Admin Page</span
+          <a class="nav-link"
+          href="${qnaLink}">
+          <span class="font">Q&A</span
           ></a>
         </li>
         

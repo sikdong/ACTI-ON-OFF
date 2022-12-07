@@ -27,9 +27,20 @@ public interface QnaMapper {
 
 	int deleteFileByBoardIdAndFileName(int id, String fileName);
 
+	int getEmpathyByQnaId(String qnaId);
+
+	int deleteEmpathy(String qnaId);
+
+	int insertEmpathy(String qnaId);
+
+	int countEmpathyByQnaId(String qnaId);
+  
+	int deleteEmpathyByQnaId(int id);
+
+
 
 	
-//	int insertFile(int id, String Filename);
+
 
 
 	

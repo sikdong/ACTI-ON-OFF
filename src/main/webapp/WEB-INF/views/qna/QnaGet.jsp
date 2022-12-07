@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.net.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html>
@@ -10,20 +11,33 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<my:navBar1></my:navBar1>
+	<my:navbar></my:navbar>
 
 	<div class="container-md">
 		<div class="row">
 			<div class="col">
-				<h1>${qna.memberId }
-					고객님 문의글
-					<c:url value="/qna/QnaModify" var="qnaModifyLink">
-						<c:param name="id" value="${qna.id }"></c:param>
-					</c:url>
-					<a class="" href="${qnaModifyLink }">
-					 <i class="fas fa-thin fa-pen-to-square"></i>
-					</a>
-				</h1>
+				<div class="d-flex" >
+					<h1 class="me-auto">${qna.memberId }님 문의글
+						<c:url value="/qna/QnaModify" var="qnaModifyLink">
+							<c:param name="id" value="${qna.id }"></c:param>
+						</c:url>
+						<a class="" href="${qnaModifyLink }">
+						 <i class="fas fa-thin fa-pen-to-square"></i>
+						</a>
+					</h1>
+					<span id="empathyButton">
+					
+					<c:if test="${qna.empathied }">
+					<i class="fas fa-solid fa-thumbs-up"></i>
+					</c:if>
+					<c:if test="${not qna.empathied }">
+					<i class="fas fa-regular fa-thumbs-up"></i>	
+					</c:if>
+					</span>
+					<span id="empathyCount">
+						${qna.countEmpathy }
+					</span>
+				</div>
 
 
 
@@ -36,7 +50,7 @@
 					첨부파일
 					<c:forEach items="${qna.fileName }" var="name">
 						<div>
-							<img class="img-fluid img-thumbnail" src="${imgUrl }/${qna.id }/${URLEncoder.encode(name, 'utf-8')}" alt="">
+							<img class="img-fluid img-thumbnail" src="${imgUrl }/qna/${qna.id }/${URLEncoder.encode(name, 'utf-8')}" alt="">
 						</div>
 					</c:forEach>		
 				</div>
@@ -133,8 +147,32 @@
 	  </div>
 	</div>
 
+	<my:navBar1></my:navBar1>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script><script>
 const ctx="${pageContext.request.contextPath}"
+
+// 공감 버튼 클릭
+document.querySelector("#empathyButton").addEventListener("click",function(){
+	const qnaId=document.querySelector("#qnaId").value
+	
+	fetch(`\${ctx}/qna/empathy`,{
+		method:"put",
+		headers:{
+			"Content-Type" : "application/json"
+		},
+		body:JSON.stringify({qnaId})
+	})
+	.then(res=>res.json())
+	.then(data=>{
+		if (data.current == 'empathied') {
+			document.querySelector("#empathyButton").innerHTML = `<i class="fas fa-solid fa-thumbs-up"></i>`
+		} else {
+			document.querySelector("#empathyButton").innerHTML = `<i class="fas fa-regular fa-thumbs-up"></i>`
+		}
+		
+		document.querySelector("#empathyCount").innerText = data.count;
+	});
+});
 
 listAnswer();
 

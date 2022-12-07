@@ -17,4 +17,10 @@ public interface ydsBoardMapper {
 
 	public List<TripsBoardDto> getFiveFiles();
 
+	public int plusLike(int num, TripsBoardDto board);
+
+	public int getLikeByBNO(int num);
+
+	public int deleteLikeByLNO(int num);
+
 }

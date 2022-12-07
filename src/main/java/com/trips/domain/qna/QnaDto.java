@@ -17,9 +17,9 @@ public class QnaDto {
 	private LocalDateTime inserted;
 	private int countAnswer;
 	private int countFile;
-	private int countLike;
+	private int countEmpathy;
 	
-	private boolean liked;
+	private boolean empathied;
 	
 	private List<String> fileName;
 	

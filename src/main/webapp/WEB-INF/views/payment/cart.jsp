@@ -15,8 +15,8 @@
 <!-- 화살표 이미지 다운받아 오는 곳 -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
-<%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mypage/cart.css">
- --%>
+ <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mypage/cart.css">
+
   <script src="${ path }/js/jquery.min.js"></script>
   <script src="${ path }/js/cart.js"></script>
 </head>
@@ -58,7 +58,7 @@
                     </div>
                  	   <div class="row data">
                         <div class="subdiv">
-                            <div class="check"><input type="checkbox" name="cart_id" value="${list.cart_id}" checked="checked">&nbsp;</div>
+                            <div class="check"><input type="checkbox" name="resno" value="${list.resno}" checked="checked">&nbsp;</div>
    
                             <div class="img image"><img src="${path}/resources/upload/wineimg/${list.renamedFileName}" width="60" height="60"></div>
 
@@ -83,7 +83,7 @@
                         <!-- 장바구니에서 삭제 -->
                         <div class="subdiv">
                             <div class="basketcmd">
-                            <button type="button" class="abutton" style="line-height: 15px;" onclick="deleteCart(${list.cart_id})">삭제</button>
+                            <button type="button" class="abutton" style="line-height: 15px;" onclick="deleteCart(${list.id})">삭제</button>
 							</div>
                         </div>
                     </div>                      
@@ -93,7 +93,7 @@
                 </div>
         
                 <div class="bigtext right-align sumcount" id="sum_p_num">상품갯수: ${list.amount}</div>
-                <div class="bigtext right-align box blue summoney" id="sum_p_price">합계금액: ${list.Price}원</div>
+                <div class="bigtext right-align box blue summoney" id="sum_p_price">합계금액: ${list.price}원</div>
         
                 <div id="goorder">
                     <div class="clear"></div>
@@ -107,7 +107,7 @@
 	    </div>
 	  </div> 
 </section>
-<!-- 	
+
 	<script>
 		$(".btn-back_to_shop").click(function() {
 			history.back();
@@ -127,22 +127,22 @@
 		$(".chk_all").click(function(){
 			var chk = $(".chk_all").prop("checked");
 			if(chk) {
-				$("input:checkbox[name='cart_id']").prop("checked", true);
+				$("input:checkbox[name='resno']").prop("checked", true);
 			} else {
-				$("input:checkbox[name='cart_id']").prop("checked", false);
+				$("input:checkbox[name='resno']").prop("checked", false);
 			}
 			calAmount();
 		});
 
-		$("input:checkbox[name='cart_id']").click(function(){
+		$("input:checkbox[name='resno']").click(function(){
 			$(".chk_all").prop("checked", false);
 			calAmount();
 		});
 
 
 			//상품 삭제 버튼
-			deleteCart = (cart_id) => {
-				fetch("${path}/payment/cart/delete/" + cart_id , {
+			deleteCart = (resno) => {
+				fetch("${path}/payment/cart/delete/" + resno , {
 					method : "GET"
 				})
 				.then(response => {
@@ -176,13 +176,13 @@
 		function selectDelete() {
 			 var url = "${path}/payment/cart/selectDelete";
 			 var selectedArr = new Array();
-			 var cart_id = document.getElementsByName("cart_id"); //
+			 var resno = document.getElementsByName("resno"); //
 			 console.dir(selectedArr);
-			console.dir(cart_id);
-			console.dir(cart_id.value);
-			  for (var i = 0; i < cart_id.length; i++) {
-			   if (cart_id[i].checked == true) {
-				   selectedArr.push(cart_id[i].value);
+			console.dir(resno);
+			console.dir(resno.value);
+			  for (var i = 0; i < resno.length; i++) {
+			   if (resno[i].checked == true) {
+				   selectedArr.push(resno[i].value);
 				   console.dir(selectedArr);
 			   }
 			  }
@@ -211,7 +211,5 @@
     	
 	
 	</script>
- -->
-
 </body>
 </html>
