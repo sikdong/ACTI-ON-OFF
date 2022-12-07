@@ -17,8 +17,7 @@
 		<div class="row">
 			<div class="col">
 				<div class="d-flex" >
-					<h1 class="me-auto">${qna.memberId }
-						고객님 문의글
+					<h1 class="me-auto">${qna.memberId }님 문의글
 						<c:url value="/qna/QnaModify" var="qnaModifyLink">
 							<c:param name="id" value="${qna.id }"></c:param>
 						</c:url>

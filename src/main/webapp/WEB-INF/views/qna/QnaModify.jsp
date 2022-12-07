@@ -45,7 +45,7 @@
 								</div>
 								<div class="col-10">
 									<div>
-										<img class="img-fluid img-thumbnail" src="${imgUrl }/${qna.id }/${URLEncoder.encode(name, 'utf-8')}" alt="">
+										<img class="img-fluid img-thumbnail" src="${imgUrl }/qna/${qna.id }/${URLEncoder.encode(name, 'utf-8')}" alt="">
 									</div>
 								</div>
 							</div>
