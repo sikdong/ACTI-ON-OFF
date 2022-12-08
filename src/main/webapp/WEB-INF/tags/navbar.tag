@@ -88,31 +88,31 @@ padding: 0 15px 0 15px;
         </li>
         
 
-        <sec:authorize access="not isAuthenticated()" >
-
-        <li class="nav-item">
-         <a class="nav-link"
-         href="${logInLink }">
-		  <span class="font">Log In</span>
-		  </a>
-        </li>
+        <sec:authorize access="not isAuthenticated()" var="logged"/>
+		<c:if test="${logged}">
+			<li class="nav-item">
+	         <a class="nav-link"
+	         href="${logInLink }">
+			  <span class="font">Log In</span>
+			  </a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link"
+	          href="${signUpLink }">
+	          <span class="font">Sign Up</span>
+	          </a>
+	        </li>
+		</c:if>
+		<c:if test="${not logged}">
+			<li class="nav-item">
+	         <a class="nav-link"
+	         href="${logOutLink }">
+			  <span class="font">Log Out</span>
+			  </a>
+	        </li>
+		</c:if>
         
-       
-        <li class="nav-item">
-         <a class="nav-link"
-         href="${logOutLink }">
-		  <span class="font">Log Out</span>
-		  </a>
-        </li>
-        
-        <li class="nav-item">
-          <a class="nav-link"
-          href="${signUpLink }">
-          <span class="font">Sign Up</span>
-          </a>
-        </li>
-        </sec:authorize>
-        
+ 
         <li class="nav-item">
           <a class="nav-link"
           <%-- ${active eq 'signup' ? 'active' : '' } --%>
