@@ -151,17 +151,33 @@
 </head>
 <body style="margin-left : 10px;">
 	<my:navbar></my:navbar>
+
+<form action="/shop/addCart" method="post" id="cartForm">
+	<input type="hidden" name="addDate" id="addDate" value=""/>
+	<input type="hidden" name="person" id="person" value=""/>
+	<input type="hidden" name="price" id="price" value="${board.price}"/>
+	<input type="hidden" name="boardnum" id="boardNum" value="${board.num}"/>	
+</form>
+
 	<c:url value="/ydsBoard/remove" var="removeLink">
 		<c:param name="num" value="${board.num }" ></c:param>
 	</c:url>
+	<c:url value="/ydsBoard/modify" var="modifyLink">
+		<c:param name="num" value="${board.num}"></c:param>
+	</c:url>
+	
 	<input type="hidden" id="numInput" value="${board.num }" />
 	<%--체험 제목 보여주기 --%>
 	<div class="container-fluid" style="display : flex;">
 		<span>제주 앞바다를 즐겨 보세요!</span>
-		
 		<div>
 			<a href="${removeLink}" class="btn btn-outline-secondary btn-sm">게시물 삭제</a>
+			<a href="${modifyLink}" class="btn btn-outline-warning btn-sm">게시물 수정</a>
 		</div>
+			<h3>${board.price}</h3> 
+			<span class="mt">
+				<small>원</small>
+			</span>
 			<div onclick="plusLike()" class="cursor" id="plusLike">
 				<i class="fa-regular fa-heart fa-2x red"></i> 
 			</div>
@@ -171,6 +187,9 @@
 			<div id="countLike" style="font-size : 20px; margin-left : 3px; padding-top : 4px;">
 				${board.countLike}
 			</div>
+	</div>
+	<div class="container-fluid">
+		<h3>${board.price}<small>원</small></h3> 
 	</div>
 		<img src="${path}/assets/img/home2.jpg" class="size" alt="...">
 		<img src="${path}/assets/img/about1.jpg" class="size" alt="...">
@@ -186,23 +205,23 @@
 					<textarea style="width : 100% !important;" rows="5"  
 					readonly class="form-control">${board.content }</textarea>
 				</div>
-				<div id="showCalendar" class="halfview">
+				<div id="showCalendar" class="halfview" style="margin-bottom : 50px;">
 				</div>
 			</div>	
 				<div class="mt">
 					<h4>프로그램 소개</h4>
 				</div>
-				<hr width="100%" />
-				${board.content }
+				<hr width="50%" />
+				<div style="width : 50%">
+					${board.content }
+				</div>
 				<div>
 					<a id="reserveButton" onclick="buildCalendar()" class="btn btn-dark btn-sm">예약하기</a>
 				</div>
 				<span>
 					<a id="noneButton" style="display : none" onclick="none()" class="btn btn-secondary btn-sm">달력접기</a>
 				</span>
-				<hr width="100%" />
-			</div>
-			<div id="showCalendar" class="halfview">
+				<hr width="50%" />
 			</div>
 			<h4>프로그램 후기</h4>
 			<div class="col-sm-7">
@@ -253,7 +272,6 @@
   </div>
 </div>
 	
-
 			
 			
 <script
@@ -262,9 +280,11 @@ integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbs
 crossorigin="anonymous"></script>
 <script>
 const ctx = "${pageContext.request.contextPath}";
+
+
+
 <%-----------------------------------------좋아요 기능-------------------------------------------%>
-/* document.querySelector("#solidHeart").addEventListener("click", */ 
-		function plusLike(){
+function plusLike(){
 	const num = document.querySelector("#numInput").value;
 /* 	const data = {
 			num : '${board.num}'
@@ -523,6 +543,7 @@ const calendarFrame =
 				<div class="day">Sat</div>
 			</div>
 			<div class="dates"></div>
+			<div onclick="goCart()" class="btn btn-outline-secondary">장바구니 담기 <i class="fa-solid fa-cart-shopping"></i></div>
 		</div>
 	</div>`
 document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calendarFrame)
@@ -553,17 +574,44 @@ document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calenda
 	for(let i=0; i < 35; i++){
 		if(i == 0 || i % 7 == 0){
 			document.querySelector(".dates").insertAdjacentHTML("afterbegin", weekDiv)	
-		}
-		if(today.getDate()==dates[i] &&today.getMonth()==CDate.getMonth()&&
-		today.getFullYear()==CDate.getFullYear()){
-			const todayDiv =`<div class="date today">\${dates[i]}</div>`;
-				document.querySelector(".week").insertAdjacentHTML("afterbegin", todayDiv);
-			}else {
-				const dateDiv =`<div class="date">\${dates[i]}</div>`;
+		} 
+				const dateDiv =`<div class="date cursor" id="date\${i}">\${dates[i]}</div>`;
 				document.querySelector(".week").insertAdjacentHTML("afterbegin", dateDiv); 
-			}
+			
+		document.querySelector("#date"+i).addEventListener("click", () => {
+		document.querySelector("#addDate").value = '';	
+		let year = CDate.getFullYear()
+		let month = CDate.getMonth() + 1
+		document.querySelector("#addDate").value += year;
+		document.querySelector("#addDate").value +="."+ month;
+		document.querySelector("#addDate").value +='.'+ document.querySelector("#date"+i).innerHTML;
+		for(let a = 0; a<35; a++){
+			document.querySelector("#date"+a).style.border="none";
 		}
+		document.querySelector("#date"+i).style.border="2px solid #EFBBCF"
+		})
 	}
+	
+	/* function addNumber(){
+		n++;
+	} */
+
+	let person = document.querySelector("#number").innerHTML; 
+	document.querySelector("#person").value += person;
+}
+
+function addNumber(){
+	document.querySelector("#number").innerHTML++
+	document.querySelector("#person").value= document.querySelector("#number").innerHTML; 
+}
+
+
+function substractNumber(){
+	if(document.querySelector("#number").innerHTML > 0){
+		document.querySelector("#number").innerHTML--
+		document.querySelector("#person").value= document.querySelector("#number").innerHTML;
+	}
+}
 <%-- 이전 달 버튼 누르면 실행 되는 함수 --%>
 function prevCal(){
 	CDate.setMonth(CDate.getMonth()-1);
@@ -576,14 +624,8 @@ function nextCal(){
 	buildCalendar();
 }	
 
-function addNumber(){
-	document.querySelector("#number").innerHTML++
-}
-
-function substractNumber(){
-	if(document.querySelector("#number").innerHTML > 0){
-		document.querySelector("#number").innerHTML--
-	}
+function goCart(){
+	document.querySelector("#cartForm").submit();
 }
 	
 

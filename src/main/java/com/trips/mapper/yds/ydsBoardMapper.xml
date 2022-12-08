@@ -41,7 +41,8 @@ SELECT
 	b.B_CONTENT content,
 	f.B_FILENAME fileName,
 	b.B_STATUS,
-	b.B_CREATEDATE
+	b.B_CREATEDATE createDate,
+	b.COST price
 FROM ACTI_BOARD b
 LEFT JOIN ACTI_FILE f on f.B_NO = b.B_NO
 ORDER BY b.B_NO DESC
@@ -55,7 +56,8 @@ SELECT
 	M_ID writer,
 	B_CONTENT content,
 	B_CREATEDATE createDate,
-	(SELECT COUNT(*) FROM ACTI_LIKE WHERE B_NO= #{num}) countLike
+	(SELECT COUNT(*) FROM ACTI_LIKE WHERE B_NO= #{num}) countLike,
+	COST price 
 FROM ACTI_BOARD
 WHERE B_NO = #{num}
 </select>

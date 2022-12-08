@@ -45,12 +45,13 @@
 	<insert id="addCart">
 
 		INSERT INTO CART(
-		RES_NO,
-		M_ID,
+		M_ID, 
 		B_NO,
-		CART_QTY
+		PERSON,
+		PRICE,
+		ADDDATE
 		)
-		VALUES(1,'aa',1,'1');
+		VALUES('aa',#{boardnum},#{person},#{price},#{addDate});
 
 
 	</insert>

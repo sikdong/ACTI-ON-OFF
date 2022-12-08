@@ -22,6 +22,7 @@ public class TripsBoardDto {
 	private String fileName;
 	private String readCount;
 	private String status;
+	private String price;
 	@JsonFormat(shape = Shape.STRING)
 	private LocalDateTime createDate;
 	@JsonFormat(shape = Shape.STRING)

@@ -13,17 +13,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Cart {
 
-	private int RES_NO;
-	
-	private int cart_qty;
-	
-	private int order_bno;
-	
+	private int cart_id;
+			
 	private String id;
 	
-	private String amount;
+	private String price;
 	
-	private Date addDate;
+	private String boardnum;
+	
+	private int person;
+	
+	private String addDate;
 	
 	private String renamedFileName;
 }
