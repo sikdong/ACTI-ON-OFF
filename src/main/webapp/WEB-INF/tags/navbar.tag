@@ -45,6 +45,7 @@ padding: 0 15px 0 15px;
 <c:url value="/jjhLogin/signup" var="signUpLink" />
 <c:url value="/home" var="mainLink" />
 <c:url value="/jjhLogin/logout" var="logOutLink" />
+<c:url value="/host/becomeHostIntro" var="hostLink" />
 
 <nav id="nav" class="navbar navbar-expand-md mb-3">
   <div class="container-md">
@@ -120,7 +121,8 @@ padding: 0 15px 0 15px;
         </li>
         
          <li class="nav-item">
-          <a class="nav-link">
+          <a class="nav-link"
+          href="${hostLink}">
           <span class="font">Host Page</span
           ></a>
         </li>
