@@ -3,6 +3,7 @@ package com.trips.controller.host;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.StringTokenizer;
 import java.io.File;
 import java.sql.Date;
@@ -14,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 import com.trips.domain.host.BoardDto;
 import com.trips.domain.host.Host;
+import com.trips.domain.yds.TripsBoardDto;
 import com.trips.service.host.HostService;
 
 
@@ -70,15 +73,41 @@ public class HostController {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
 	//호스트 정보 관리- ru..d?
 	//호스트만
-	@GetMapping("host")
+	
+	@GetMapping("hostInfo")
 //	@PreAuthorize("@boardSecurity.checkWriter(authentication.name, #id)")
-	public void my(int m_id,Model model) {
-		Host host = hostService.host(m_id);
+//	public void hostInfo(String m_id,Model model) {
+	public void hostInfo(Model model) {
+		//왜 여긴 모델을 파라미터로 써야되지?
+		Host host = hostService.hostInfo("bb");
+		System.out.println(host+"@@");
 		model.addAttribute("host", host);
-		
+		System.out.println(host);
 	}
+	//지금은 호스트 소개만 수정..
+	@PostMapping("hostInfo")
+	public String hostInfo(@ModelAttribute Host host, RedirectAttributes rttr) {
+		System.out.println(host+"######");
+		int result= hostService.hostInfoModify(host);
+		if (result == 1) {
+			rttr.addFlashAttribute("message", "수정완");
+		} else {
+			rttr.addFlashAttribute("message","수정안됨" );
+		}
+		//수정 후 모달로 요청하려면?
+		return "redirect:hostInfoModifyComplete";
+	}
+	@GetMapping("hostInfoModifyComplete")
+	public void hostInfoModifyComplete() {}
 	
 	
 	
@@ -181,8 +210,6 @@ public class HostController {
 	//이미지랑 날짜는 테이블이 각각 있음
 	@GetMapping("listing/image")
 	public void listingImageJsp() {
-		
-		
 	}
 	@PostMapping("listing/image")
 	public String listingImage( MultipartFile[] files, String[] date) throws ParseException {
@@ -234,13 +261,17 @@ public class HostController {
 	
 	
 	
-	//체험관리
+	//체험관리...
 	//호스트만
-	@RequestMapping("admin")
-	public void admin() {
+	// 호스트 아이디랑 같은 체험 불러오기
+	@GetMapping("admin")
+	public void admin(String m_id, Model model) {
+		List<BoardDto> boardList = hostService.getMyList("bb");
+		System.out.println(boardList );
+		model.addAttribute("boardList", boardList);
 	}
 	
-
+	
 	
 	
 	

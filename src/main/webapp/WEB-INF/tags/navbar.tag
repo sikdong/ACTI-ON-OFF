@@ -1,6 +1,7 @@
 
 <%@ tag language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ attribute name="active" %>
 
 <style>
@@ -47,6 +48,8 @@ padding: 0 15px 0 15px;
 <c:url value="/jjhLogin/logout" var="logOutLink" />
 <c:url value="/host/becomeHostIntro" var="hostLink" />
 
+
+
 <nav id="nav" class="navbar navbar-expand-md mb-3">
   <div class="container-md">
     <a class="navbar-brand" href="${mainLink }">
@@ -84,6 +87,9 @@ padding: 0 15px 0 15px;
          </a>
         </li>
         
+
+        <sec:authorize access="not isAuthenticated()" >
+
         <li class="nav-item">
          <a class="nav-link"
          href="${logInLink }">
@@ -91,6 +97,7 @@ padding: 0 15px 0 15px;
 		  </a>
         </li>
         
+       
         <li class="nav-item">
          <a class="nav-link"
          href="${logOutLink }">
@@ -104,6 +111,7 @@ padding: 0 15px 0 15px;
           <span class="font">Sign Up</span>
           </a>
         </li>
+        </sec:authorize>
         
         <li class="nav-item">
           <a class="nav-link"
