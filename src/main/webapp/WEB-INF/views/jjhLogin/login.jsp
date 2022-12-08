@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
+ <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
-<%-- <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,6 +46,7 @@
 	                        <div class="col-md-12 text-center ">
 	                           <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">로그인</button>
 	                        </div>
+		                     
 	
 	                        <div class="form-group">
 	                           <p class="text-center">계정이 없으신가요? <a href="/jjhLogin/signup" id="signup">가입하기</a></p>
