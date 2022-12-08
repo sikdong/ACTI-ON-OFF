@@ -179,7 +179,7 @@ html, body {
 					</div>
 					<div id="des" style="padding-right: 60px; display:none;">
 						<div id="close">▲</div>
-						<div class="infos">
+						<div class="infos" style="padding-bottom: 60px;">
 							${resNo.content}						
 						</div>
 					</div>

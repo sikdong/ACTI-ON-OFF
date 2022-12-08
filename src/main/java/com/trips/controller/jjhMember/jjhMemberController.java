@@ -30,9 +30,13 @@ public class jjhMemberController {
 		
 	}
 	
-	
 	@GetMapping("login")
 	public void login() {
+
+	}
+	
+	@GetMapping("loginLegacy")
+	public void loginL() {
 
 	}	
 	
