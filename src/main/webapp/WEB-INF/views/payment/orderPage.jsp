@@ -154,18 +154,19 @@
 	      buyer_postcode: "01181"
       }, function (rsp) { // callback
           if (rsp.success) {
-             	console.log("ajax 이전");
-             	$.ajax({
+             	console.log("ajax 이전33333S");
+/*              	$.ajax({
 	        		url: "${path}/payment/orderResult",
 	        		type: "post",
 	        		data: data,
 	        		dataType: "text",
 	        		success: function(){
 			        	alert("결제가 완료되었습니다.");
-			        	/* location.href = "${path}/payment/orderResult"; */
+			        	 location.href = "${path}/payment/orderResult"; 
 	        		}
-	        	});
+	        	}); */
 	        	console.log("ajax 이후");
+	        	 location.href = "${path}/payment/orderResult"; 
 	        } else { // 실패시 실행문
 	        	alert("결제가 취소되었습니다.");
 	    		location.href = "${path}/payment/cart";

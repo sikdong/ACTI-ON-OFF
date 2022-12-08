@@ -31,9 +31,12 @@ public class OrderController {
 		
 		List<OrderList> paymentSelect = orderService.paymentSelect(orderList);
 		model.addAttribute("orderList", paymentSelect);
-		return "/payment/orderPage";
+		return "/payment/orderPage";}
 		
+	@GetMapping("/payment/orderResult")
+	public void orderResult() {
 	}
+		
 	
 	
     

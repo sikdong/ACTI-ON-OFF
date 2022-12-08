@@ -32,14 +32,14 @@
 					<tr>
 						<th colspan="2" style="text-align: center !important;">상품명</th>
 						<th>가격</th>
-						<th>수량</th>
-						<th>옵션</th>
+						<th>인원수</th>
+						<th>날짜</th>
 						<th>결제금액</th>
 					</tr>
 				</thead>
 				<tbody style="text-align: left; vertical-align: middle;">
 						<tr>
-							<td style="text-align: center;"><img alt="thumbnail" src="/resources/upload${dto.fullname}" width="30%">
+							<td style="text-align: center;"><img alt="onoff" src="/resources/upload${dto.fullname}" width="30%">
 							<input type="hidden" value="${dto.productId}" name="productId" id="productId">
 							</td>
 							<td>${dto.productName}<br>${dto.productInfo}</td>
