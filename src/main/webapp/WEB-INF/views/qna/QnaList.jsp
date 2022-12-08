@@ -9,6 +9,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	.pagination{
+		--bs-pagination-active-bg:#fff;
+		--bs-pagination-active-border-color: #fff;
+		--bs-pagination-active-color:#000;
+		--bs-pagination-border-width: 0px;
+	}
+</style>
 </head>
 <body>
 <my:navbar></my:navbar>
@@ -22,7 +30,9 @@
 	</div>
 </c:if>
 
-<h1>문의게시판</h1>
+<div class="mt-3">
+<h3 style="text-align:center;">고객센터</h3>
+</div>
 	<table class="table">
 	<thead>
 		<tr>
@@ -79,7 +89,7 @@
 				  	<c:param name="t" value="${param.t }"></c:param>
 				  </c:url>
 				  <li class="page-item">
-				  <a href="${qnaListLink }" class="page-link">맨앞</a>
+				  <a href="${qnaListLink }" class="page-link"><<</a>
 				  </li>
 				  </c:if>
 				  
@@ -90,7 +100,7 @@
 				  		<c:param name="t" value="${param.t }"></c:param>
 				  	</c:url>
 				  	<li class="page-item">
-				  		<a href="${qnaListLink }" class="page-link">이전</a>
+				  		<a href="${qnaListLink }" class="page-link"><</a>
 				  	</li>
 				  </c:if>
 				  
@@ -104,6 +114,7 @@
 					    <li class="page-item
 					    
 					    <%-- 현재 페이지에 active 클래스 추가 --%>
+					  				    
 					    ${pageInfo.currentPageNumber eq pageNumber ? 'active' : '' }
 					    
 					    "><a class="page-link" href="${qnaListLink }">${pageNumber }</a>
@@ -117,7 +128,7 @@
 				  			<c:param name="t" value="${param.t }"></c:param>
 				  		</c:url>
 				  			<li class="page-item">
-				  				<a href="${qnaListLink }" class="page-link">다음</a>
+				  				<a href="${qnaListLink }" class="page-link">></a>
 				  			</li>
 				  	</c:if>
 				  	
@@ -129,7 +140,7 @@
 				  		  	<c:param name="t" value="${param.t }"></c:param>
 				  		</c:url>
 				  	<li class="page-item">
-				  		<a href="${qnaListLink }" class="page-link">맨뒤</a>
+				  		<a href="${qnaListLink }" class="page-link">>></a>
 				  	</li>
 				  	
 				  	</c:if>
@@ -138,8 +149,13 @@
 				</nav>
 			</div>
 		</div>
+		
 	</div>
 <my:navBar1 active="list"></my:navBar1>
+
+<jsp:include page="/WEB-INF/views/index.jsp" flush="true">
+	<jsp:param value="index1" name="1"/>
+</jsp:include>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
 </html>

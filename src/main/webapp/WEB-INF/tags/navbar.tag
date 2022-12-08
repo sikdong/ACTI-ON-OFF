@@ -1,6 +1,7 @@
 <!-- 이거 navbar 아직 아무런 기능 없습니다 디자인 보려고 넣어놓은거 -->
 <%@ tag language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ attribute name="active" %>
 
 <style>
@@ -44,6 +45,8 @@ padding: 0 15px 0 15px;
 <c:url value="/jjhLogin/login" var="logInLink" />
 <c:url value="/jjhLogin/signup" var="signUpLink" />
 
+
+
 <nav id="nav" class="navbar navbar-expand-md mb-3">
   <div class="container-md">
     <a class="navbar-brand" href="${onLineLink }">
@@ -66,6 +69,8 @@ padding: 0 15px 0 15px;
           <span class="font">Activity Off-line</span>
          </a>
         </li>
+        
+        <sec:authorize access="not isAuthenticated()" >
         <li class="nav-item">
          <a class="nav-link"
          href="${logInLink }">
@@ -73,12 +78,14 @@ padding: 0 15px 0 15px;
 		  </a>
         </li>
         
+       
         <li class="nav-item">
           <a class="nav-link"
           href="${signUpLink }">
           <span class="font">Sign Up</span>
           </a>
         </li>
+        </sec:authorize>
         
         <li class="nav-item">
           <a class="nav-link"
