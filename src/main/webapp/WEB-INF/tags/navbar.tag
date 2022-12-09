@@ -110,16 +110,14 @@ padding: 0 15px 0 15px;
 			  <span class="font">Log Out</span>
 			  </a>
 	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link"
+	          <%-- ${active eq 'signup' ? 'active' : '' } --%>
+	          href="${myPageLink}">
+	          <span class="font">My Page</span
+	          ></a>
+	        </li>
 		</c:if>
-        
- 
-        <li class="nav-item">
-          <a class="nav-link"
-          <%-- ${active eq 'signup' ? 'active' : '' } --%>
-          href="${myPageLink}">
-          <span class="font">My Page</span
-          ></a>
-        </li>
         
          <li class="nav-item">
           <a class="nav-link"

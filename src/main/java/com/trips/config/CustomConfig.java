@@ -62,6 +62,7 @@ public class CustomConfig {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
 		http.formLogin().loginPage("/jjhLogin/login").defaultSuccessUrl("/home", true);
+		
 		http.logout().logoutUrl("/jjhLogin/logout");
 		http.csrf().disable();
 		return http.build();

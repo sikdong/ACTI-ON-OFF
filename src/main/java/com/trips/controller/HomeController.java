@@ -27,8 +27,11 @@ public class HomeController {
 	
 	@GetMapping("home")
 	public String currentUserName(@AuthenticationPrincipal User user, Model model) {
-        String username = user.getUsername();
-        model.addAttribute("NAME", username);
+        if(user!= null) {
+        	String username = user.getUsername();
+            model.addAttribute("NAME", username);
+        }
+		
         return "home";
 	}
 }

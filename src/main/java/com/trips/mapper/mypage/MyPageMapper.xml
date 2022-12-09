@@ -170,9 +170,15 @@
 	JOIN M_CHAT m ON m.CHAT_ROOM = r.RES_NO
 	ORDER BY date DESC
 	LIMIT 18446744073709551615) AS one
+	WHERE id = #{id}
 	GROUP BY resNo) AS two
 	ORDER BY date DESC
 	</select>
+	
+	<delete id="remove">
+	DELETE FROM MEMBER
+	WHERE M_ID = #{id}
+	</delete>
 </mapper>
 
 
