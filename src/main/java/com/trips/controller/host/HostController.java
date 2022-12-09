@@ -61,9 +61,10 @@ public class HostController {
 	}
 	//포토 등록
 	@PostMapping("becomeHost")
-	public String becomeHost(Host host) {
+	
+	public String becomeHost(Host host, MultipartFile file) {
 		System.out.println(host);
-		hostService.becomeHost(host);
+		hostService.becomeHost(host,file);
 		return "redirect:waitingAcceptance";
 	}
 	
