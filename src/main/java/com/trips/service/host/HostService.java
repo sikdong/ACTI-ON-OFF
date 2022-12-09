@@ -73,7 +73,7 @@ public class HostService {
 				// db에 파일 정보 저장
 				hostMapper.insertImage(b_no,file.getOriginalFilename());
 				
-		//		uploadFile(file);
+				uploadFile(file,"trips/host/"+b_no+"/");
 			}
 		}
 		for(String date:dates) {
@@ -99,40 +99,40 @@ public class HostService {
 		
 	}
 
-//	private void uploadFile(MultipartFile file) {
-//		try {
-//			// S3에 파일 저장
-//			// 키 생성
-////			String key = "trips/board/" + id + "/" + file.getOriginalFilename();
-//			String key = "trips/board/"  + file.getOriginalFilename();
-//			
-//			// putObjectRequest
-//			PutObjectRequest putObjectRequest = PutObjectRequest.builder()
-//					.bucket(bucketName)
-//					.key(key)
-//					.acl(ObjectCannedACL.PUBLIC_READ)
-//					.build();
-//			
-//			// requestBody
-//			RequestBody requestBody = RequestBody.fromInputStream(file.getInputStream(), file.getSize());
-//			
-//			// object(파일) 올리기
-//			s3Client.putObject(putObjectRequest, requestBody);
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			throw new RuntimeException(e);
-//		}
-//	}
+	private void uploadFile(MultipartFile file,String folder) {
+		try {
+			// S3에 파일 저장
+			// 키 생성
+//			String key = "trips/board/" + id + "/" + file.getOriginalFilename();
+			String key = folder  + file.getOriginalFilename();
+			
+			// putObjectRequest
+			PutObjectRequest putObjectRequest = PutObjectRequest.builder()
+					.bucket(bucketName)
+					.key(key)
+					.acl(ObjectCannedACL.PUBLIC_READ)
+					.build();
+			
+			// requestBody
+			RequestBody requestBody = RequestBody.fromInputStream(file.getInputStream(), file.getSize());
+			
+			// object(파일) 올리기
+			s3Client.putObject(putObjectRequest, requestBody);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
 
-	public void becomeHost(Host host) {
+	public void becomeHost(Host host, MultipartFile file) {
 		
-		if (host.getH_photo() != null && host.getH_photo().getSize() > 0) {
-			String h_photo=host.getH_photo().getOriginalFilename();
+		if (file != null && file.getSize() > 0) {
+			 host.setH_photo(file.getOriginalFilename());
 			// db에 파일 정보 저장
-			hostMapper.becomeHost(host.getM_id(),host.isH_experience(),host.getH_introduction(),h_photo);
+			hostMapper.becomeHost(host);
 			//s3에 저장
-	//		uploadFile(host.getH_photo());
+			uploadFile(file,"trips/host/"+host.getM_id()+"/");
 		}
 	}
 

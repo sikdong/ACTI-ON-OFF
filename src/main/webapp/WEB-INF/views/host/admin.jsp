@@ -14,6 +14,8 @@
 
 </head>
 <body>
+<my:navbar></my:navbar>
+
 <my:hostNav></my:hostNav>
 	
 	<div class="container-md">
@@ -31,20 +33,23 @@
 				<table class="table">
 					<thead>
 						<tr>
-<!-- 							<th>?</th> -->
-<!-- 							<th><i class="fa-solid fa-thumbs-up"></i></th> -->
-							<th>b_title</th>
-							
-							<th>b_createdate</th>
+							<th>허가여부</th>
+							<th>제목</th>
+							<th>체험주제</th>
+							<th>일인당 비용</th>
+							<th>최대인원</th>
+							<th>최소인원</th>
 						</tr>
 					</thead>
 							<c:forEach items="${boardList}" var="board">
 							<tr>
-								<td>${board.b_no }</td>
-<!-- 								dd -->
+								<td>${board.b_accept }</td>
+								<td>${board.b_title }</td>
+								<td>${board.b_topic }</td>
+								<td>${board.cost }</td>
+								<td>${board.max_person }</td>
+								<td>${board.min_person }</td>
 								
-					
-							
 							</tr>
 						</c:forEach> 
 </table></div></div></div>

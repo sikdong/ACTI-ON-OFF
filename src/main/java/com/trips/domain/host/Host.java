@@ -1,6 +1,6 @@
 package com.trips.domain.host;
 
-import org.springframework.web.multipart.MultipartFile;
+
 
 import lombok.Data;
 
@@ -10,6 +10,6 @@ public class Host {
 	private boolean h_experience;
 	private String h_introduction;
 	//private String h_photo;
-	private MultipartFile h_photo;
-//	private String h_field;
+	private String h_photo;
+	private String h_field;
 }

@@ -51,7 +51,7 @@ public class CustomConfig {
 		servletContext.setAttribute("imgUrl", imgUrl);
 		servletContext.setAttribute("gKey", gKey);
 	}
-
+ 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		
@@ -66,6 +66,8 @@ public class CustomConfig {
 		http.csrf().disable();
 		return http.build();
 	}
+	
+
 
 	@Bean
 	public S3Client s3Client() {

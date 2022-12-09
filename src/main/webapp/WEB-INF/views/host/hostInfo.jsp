@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.net.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html>
@@ -23,20 +24,35 @@
 </head>
 <body>
 	<my:hostNav></my:hostNav>
-
+<center>
 	<div class="container-md">
 		<div class="row">
 			<div class="col">
 
-				<center><h2>호스트 정보 수정</h2></center>
+				<center>
+					<h2>호스트 정보 수정</h2>
+				</center>
+
 
 
 
 
 				<form action="" method="post">
-					m_id <br> <input type="text" value="${host.m_id }" name="m_id">
-					<br>
-					<br>
+					m_id <br> <input type="text" value="${host.m_id }" name="m_id" readonly>
+					<br> <br>
+					<%-- 이미지 출력 디비는 스트링일뿐.--%>
+					호스트의 전문 분야 <br> <input type="text" value="${host.h_field }"
+						name="h_field" readonly> <br> <br>
+					<div>
+						<c:set value="${host.h_photo}" var="photoName"></c:set>
+					
+						
+						호스트 사진 <br><img class="img-fluid img-thumbnail"
+							src="${imgUrl }/host/${host.m_id}/${URLEncoder.encode(photoName, 'utf-8')}"
+							width="200px" height="200px" alt=""> <br>
+						<br>
+
+					</div>
 					<%-- 				<textarea value="${host.h_introduction }" name = "h_introduction"/> --%>
 					호스트 소개 <br>
 					<textarea rows="5" name="h_introduction" class="form-control">${host.h_introduction  }</textarea>
@@ -45,13 +61,13 @@
 							class="btn btn-dark" value="수정하기">
 						<button class="btn btn-dark" type="button"
 							style="bacgroubd-color: white"
-							onclick="location.href=   '${pageContext.request.contextPath}/host/listing/topic';">수정취소</button>
+							onclick="location.href=   '${pageContext.request.contextPath}/host/admin';">수정취소</button>
 					</center>
 				</form>
 			</div>
 
 
-
+</center>
 
 
 

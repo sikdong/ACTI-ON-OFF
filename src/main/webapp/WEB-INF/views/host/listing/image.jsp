@@ -43,13 +43,16 @@
 					
 					<div class="mb-3">
 						<label for="" class="form-label">체험을 가장 잘 표현할 수 있는 이미지를 올려주세요</label>
-						<input multiple type="file" accept="image/*" class="form-control" name="files">
+						<input id="imageFile" multiple type="file" accept="image/*" class="form-control" name="files">
+						<br>
+					
+					
 					</div>
 					
 					<br><br>
 
 					체험을 진행할 날짜를 선택해주세요 <br>
-					<input type="text" id="ttt1" value="날짜 선택하기" name="date">
+					<input type="text" id="ttt1" value="날짜 선택하기" name="date"> <br><br>
 					<input id="submitButton1" class="btn btn-dark" type="submit" value="등록">
 					
  
@@ -68,11 +71,70 @@
 
 
 
-<!--  이 스크립트의 위치가 인풋보다 아래있어야 작동을 하는데 왜그럼? -->
+<!--  이 스크립트의 위치가 인풋보다 아래있어야 작동 -->
+<!-- 왜 아래 코드 주석 풀면 mdp 동작 안함? -->
  <script>
+ 
+//  $("#imageFile").on("change", function(event) {
+
+// 	    var file = event.target.files[0];
+	    
+
+// 	    var reader = new FileReader(); 
+// 	    reader.onload = function(e) {
+
+// 	        $("#preview").attr("src", e.target.result);
+// 	    }
+
+// 	    reader.readAsDataURL(file);
+// 	});
+ 
+ 
+//   $("#imageFile").on("change", function(event) {
+
+// 	  for (var i = 0; i < files.length; i++) { 
+		  
+// 	    var file = event.target.files[i];
+	    
+
+// 	    var reader = new FileReader(); 
+// 	    reader.onload = function(e) {
+
+// 	        $("#preview"+i).attr("src", e.target.result);
+// 	    }
+
+// 	    reader.readAsDataURL(file);
+// 	});
+ 
+//    }
+ 
+ 
+// //확장자가 이미지 파일인지 확인
+//  function isImageFile(file) {
+
+//      var ext = file.name.split(".").pop().toLowerCase(); // 파일명에서 확장자를 가져온다. 
+
+//      return ($.inArray(ext, ["jpg", "jpeg", "gif", "png"]) === -1) ? false : true;
+//  }
+//  // 파일의 최대 사이즈 확인
+//  function isOverSize(file) {
+
+//      var maxSize = 3 * 1024 * 1024; // 3MB로 제한 
+
+//      return (file.size > maxSize) ? true : false;
+//  }
+ 
+ 
+ //mdp
     flatpickr("#ttt1",{
         mode: "multiple",
-        dateFormat: "Y-m-d"
+        dateFormat: "Y-m-d",
+        disable: [
+            {
+                from: "0000-04-01",
+                to: new Date()
+            }
+        ]
     });
 </script>
  
