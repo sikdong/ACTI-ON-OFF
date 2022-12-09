@@ -26,6 +26,14 @@
 	values(#{m_id},#{h_experience},#{h_field},#{h_introduction},#{h_photo}) 	
 </insert>
 
+<update id="hostRequest">
+	update MEMBER
+	set 
+		M_HOST_REQUEST = TRUE
+	WHERE M_ID = #{id}
+</update>
+
+
 
 <!-- <select id="select"> -->
 <!-- select b_id from ACTI_BOARD</select> -->

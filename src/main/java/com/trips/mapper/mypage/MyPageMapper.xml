@@ -12,7 +12,7 @@
 	    M_GENDER,
 	    M_PHONE,
 	    M_EMAIL,
-	    M_HOST
+	    M_HOST_REQUEST
 	FROM
 		MEMBER
 	WHERE
@@ -26,7 +26,7 @@
 		<result column="M_GENDER" property="gender"/>
 		<result column="M_PHONE" property="phone"/>
 		<result column="M_EMAIL" property="email"/>
-		<result column="M_HOST" property="host"/>
+		<result column="M_HOST_REQUEST" property="host"/>
 	</resultMap>
 	
 	<update id="update">
@@ -72,7 +72,7 @@
 	<update id="updateByHost">
 	UPDATE MEMBER
 	SET
-		M_HOST = #{host}
+		M_HOST_REQUEST = #{host}
 	WHERE
 		M_ID = #{id}
 	</update>

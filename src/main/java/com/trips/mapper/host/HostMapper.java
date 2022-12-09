@@ -34,5 +34,7 @@ public interface HostMapper {
 
 	public List<BoardDto> getMyList(String m_id);
 
+	public void hostRequest(String id);
+
 	
 }

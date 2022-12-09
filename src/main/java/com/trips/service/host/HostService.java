@@ -127,10 +127,13 @@ public class HostService {
 
 	public void becomeHost(Host host, MultipartFile file) {
 		
+		
+		
 		if (file != null && file.getSize() > 0) {
 			 host.setH_photo(file.getOriginalFilename());
 			// db에 파일 정보 저장
 			hostMapper.becomeHost(host);
+			hostMapper.hostRequest(host.getM_id());
 			//s3에 저장
 			uploadFile(file,"trips/host/"+host.getM_id()+"/");
 		}
