@@ -85,8 +85,13 @@ public class MyPageService {
 		return mapper.insertChat(id,chatRoom,content);
 	}
 
-	public List<ChatLeftDto> getChatLeft() {
+	public List<ChatLeftDto> getChatLeft(String id) {
 		
-		return mapper.getChatLeft();
+		return mapper.getChatLeft(id);
+	}
+
+	public int remove(String id) {
+		
+		return mapper.remove(id);
 	}
 }

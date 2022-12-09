@@ -2,7 +2,12 @@ package com.trips.controller.mypage;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,10 +42,13 @@ public class MyPageController {
 	}
 	
 	@GetMapping("mypage2")
+	@PreAuthorize("isAuthenticated()")
 	public void myPage2(
-			@RequestParam(name = "id", defaultValue = "dd") String id,
+			@AuthenticationPrincipal User user,
+			/* @RequestParam(name = "id", defaultValue = "dd") String id2, */
 			Model model
 			) {
+		String id = user.getUsername();
 		MemberDto member = service.getById(id);
 		model.addAttribute("member", member);
 	}
@@ -117,6 +125,7 @@ public class MyPageController {
 	}
 	
 	@GetMapping("reservation")
+	@PreAuthorize("isAuthenticated()")
 	public void res(
 			@RequestParam(name = "id") String id,
 			Model model
@@ -124,9 +133,11 @@ public class MyPageController {
 		
 		List<Res1Dto> res1 = service.getRes1ById(id);
 		model.addAttribute("res1", res1);
+		model.addAttribute("id", id);
 	}
 	
 	@GetMapping("resDetail")
+	@PreAuthorize("isAuthenticated()")
 	public void resD(
 			@RequestParam(name = "resNo") int resNo,
 			Model model
@@ -142,6 +153,7 @@ public class MyPageController {
 	}
 	
 	@GetMapping("chat")
+	@PreAuthorize("isAuthenticated()")
 	public void chat(
 			@RequestParam(name = "chatRoom") int chatRoom,
 			@RequestParam(name = "id") String id,
@@ -150,7 +162,7 @@ public class MyPageController {
 			) {
 		
 		List<ChatDto> chat = service.getChat(chatRoom);
-		List<ChatLeftDto> left = service.getChatLeft();
+		List<ChatLeftDto> left = service.getChatLeft(id);
 		
 		for(ChatLeftDto l : left) {
 			String text;
@@ -184,6 +196,59 @@ public class MyPageController {
 		System.out.println(chatDto);
 		
 		int cnt = service.insertChat(id, chatRoom, content);
+		
+	}
+	
+	@PostMapping("remove")
+	public String remove(String id, 
+			//RedirectAttributes rttr, 
+			HttpServletRequest request)
+			throws Exception {
+		
+		int cnt = service.remove(id);
+//		rttr.addFlashAttribute("message", "회원 탈퇴하였습니다.");
+		request.logout();
+
+		return "redirect:/qna/QnaList";
+		
+//		MemberDto oldmember = service.getById(id);
+//
+//		boolean passwordMatch = passwordEncoder.matches(oldPassword, oldmember.getPassword());
+//
+//		if (passwordMatch) {
+//			service.remove(id);
+//
+//			rttr.addFlashAttribute("message", "회원 탈퇴하였습니다.");
+//			request.logout();
+//
+//			return "redirect:/board/list";
+//
+//		} else {
+//			rttr.addAttribute("id", id);
+//			rttr.addFlashAttribute("message", "암호가 일치하지 않습니다.");
+//			return "redirect:/member/modify";
+//		}
+
+	}
+	@PostMapping("existEmail")
+	@ResponseBody
+	public void existEmail(
+			@RequestBody String email
+			) {
+		System.out.println(email);
+	}
+	
+	
+	@GetMapping("geocode")
+	public void geocode() {
+		
+	}
+	@GetMapping("Sample")
+	public void sample() {
+		
+	}
+	@GetMapping("jusoPopup")
+	public void jusoPopup() {
 		
 	}
 }

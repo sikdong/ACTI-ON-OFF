@@ -146,7 +146,7 @@
           pay_method: "card",
           orderId: "123",
           name: "123",
-          amount: 123,
+          amount: 100,
           buyer_name: "ONOFF",
           buyer_email: "ONOFF@ONOFF.com",
           buyer_tel: "010-4242-4242",
@@ -162,7 +162,7 @@
 	        		dataType: "text",
 	        		success: function(){
 			        	alert("결제가 완료되었습니다.");
-			        	/* location.href = "${path}/payment/orderResult"; */
+			        	location.href = "${path}/payment/orderResult";
 	        		}
 	        	});
 	        	console.log("ajax 이후");

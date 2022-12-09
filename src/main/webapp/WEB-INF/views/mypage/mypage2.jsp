@@ -150,7 +150,8 @@
 						<div style="padding:0 0 10px 0;">
 							<form id="emailModifyText" action="" method="post">
 								<input type="hidden" name="id" value="${member.id}" />
-								<input style="width:300px" type="email" name="email" placeholder="변경하실 이메일을 입력해주세요" required/> <br>
+								<input id="modifyEmail" style="width:300px" type="email" name="email" placeholder="변경하실 이메일을 입력해주세요" required/> 
+								<button id="existEmailButton" type="button" class="btn btn-outline-primary" style="width:100px">중복확인</button>
 							</form>
 						</div>
 						<button id="emailModifyOk" type="button" class="btn btn-danger" style="width:100px">수정완료</button>
@@ -187,15 +188,76 @@
 					<div  id="hostModifyStart">
 						<button type="button" class="btn btn-outline-dark" style="width:100px">수정</button> <br><br>
 					</div>
+					
+					
+					<input class="btn btn-danger" type="submit" value="회원탈퇴" data-bs-toggle="modal" data-bs-target="#removeModal" style="width:100px; float: right;margin-bottom: 30px;">
 			</div>
 		</div>
 	</div>
 	
+	<%-- 탈퇴 시 예전암호 입력 Modal --%>
+	<div class="modal fade" id="removeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h1 class="modal-title fs-6" id="exampleModalLabel" style="color: #B9062F;font-weight: bold;">탈퇴를 원하시면 회원을탈퇴합니다 라고 입력해주세요</h1>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body">
+	        <input id="deleteText" type="text" class="form-control" placeholder="회원을탈퇴합니다">
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+	        <button id="modalConfirmButton2" type="button" class="btn btn-danger">탈퇴</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 	
-	
+	<c:url value="/mypage/remove" var="removeUrl" />
+				<form id="form2" action="${removeUrl }" method="post">
+					<input type="hidden" name="id" value="${member.id }">
+				</form>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script>
+const ctx = "${pageContext.request.contextPath}";
+/* --------------이메일 중복 확인 기능------------------------------------------------------------------------------------------------ */
+ document.querySelector("#existEmailButton").addEventListener("click", function() {
+	 	availableEmail = false;
+		const email = document.querySelector("#modifyEmail").value;
+		
+		fetch(`\${ctx}/mypage/existEmail`, {
+			method : "post",
+			headers : {
+				"Content-Type" : "text/plain"
+			},
+			body : email
+		})
+			.then(res => res.json())
+			.then(data => {
+				document.querySelector("#emailText1").innerText = data.message;
+				
+				if (data.status == "not exist") {
+					availableEmail = true;
+					enableSubmitButton();
+				}
+			});
+	});
+
+/* --------------이메일 중복 확인 기능 끝------------------------------------------------------------------------------------------------ */
+
+/* --------------회원 탈퇴 기능-------------------------------------------------------------------------------------------------- */
+document.querySelector("#modalConfirmButton2").addEventListener("click", function() {
+	const text = document.querySelector("#deleteText").value
+	const form = document.forms.form2;
+	if(text == '회원을탈퇴합니다'){
+		console.log("OK");
+		form.submit();
+	}
+});
+/* --------------회원 탈퇴 기능 끝------------------------------------------------------------------------------------------------ */
+
 /* --------------수정 기능들-------------------------------------------------------------------------------------------------- */
 document.querySelector("#pwModifyStart").addEventListener("click", function() {
 	const change = document.querySelector("#pwModify");
