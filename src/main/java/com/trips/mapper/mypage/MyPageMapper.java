@@ -38,4 +38,6 @@ public interface MyPageMapper {
 
 	int remove(String id);
 
+	String getEmailById(String id);
+
 }

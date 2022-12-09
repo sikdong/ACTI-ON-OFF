@@ -149,7 +149,7 @@
 					<div id="emailModify" style="display:none;">
 						<div style="padding:0 0 10px 0;">
 							<form id="emailModifyText" action="" method="post">
-								<input type="hidden" name="id" value="${member.id}" />
+								<input id="mId" type="hidden" name="id" value="${member.id}" />
 								<input id="modifyEmail" style="width:300px" type="email" name="email" placeholder="변경하실 이메일을 입력해주세요" required/> 
 								<button id="existEmailButton" type="button" class="btn btn-outline-primary" style="width:100px">중복확인</button>
 							</form>
@@ -226,13 +226,19 @@ const ctx = "${pageContext.request.contextPath}";
  document.querySelector("#existEmailButton").addEventListener("click", function() {
 	 	availableEmail = false;
 		const email = document.querySelector("#modifyEmail").value;
+		const id = document.querySelector("#mId").value;
+		
+		const data = {
+				id, 
+				email
+		};
 		
 		fetch(`\${ctx}/mypage/existEmail`, {
 			method : "post",
 			headers : {
-				"Content-Type" : "text/plain"
+				"Content-Type" : "application/json"
 			},
-			body : email
+			body : JSON.stringify(data)
 		})
 			.then(res => res.json())
 			.then(data => {

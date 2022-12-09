@@ -94,4 +94,8 @@ public class MyPageService {
 		
 		return mapper.remove(id);
 	}
+
+	public String getEmailById(String id) {
+		return mapper.getEmailById(id);
+	}
 }

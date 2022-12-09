@@ -179,6 +179,12 @@
 	DELETE FROM MEMBER
 	WHERE M_ID = #{id}
 	</delete>
+	
+	<select id="getEmailById" resultType="String">
+		SELECT M_EMAIL 
+		FROM MEMBER 
+		WHERE M_ID = #{id};
+	</select>
 </mapper>
 
 

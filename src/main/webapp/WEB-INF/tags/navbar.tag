@@ -87,7 +87,6 @@ padding: 0 15px 0 15px;
          </a>
         </li>
         
-
         <sec:authorize access="not isAuthenticated()" var="logged"/>
 		<c:if test="${logged}">
 			<li class="nav-item">

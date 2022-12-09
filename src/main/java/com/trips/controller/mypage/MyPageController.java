@@ -22,6 +22,7 @@ import com.fasterxml.jackson.databind.ser.std.StdKeySerializers.Default;
 import com.trips.domain.mypage.ChatAddDto;
 import com.trips.domain.mypage.ChatDto;
 import com.trips.domain.mypage.ChatLeftDto;
+import com.trips.domain.mypage.IdEmailDto;
 import com.trips.domain.mypage.MemberDto;
 import com.trips.domain.mypage.Res1Dto;
 import com.trips.domain.mypage.Res2Dto;
@@ -233,9 +234,17 @@ public class MyPageController {
 	@PostMapping("existEmail")
 	@ResponseBody
 	public void existEmail(
-			@RequestBody String email
+			@RequestBody IdEmailDto data
 			) {
-		System.out.println(email);
+		String id = data.getId();
+		String email = data.getEmail();
+		String oldEmail = service.getEmailById(id);
+		if(email.equals(oldEmail)) {
+			//여기부터 다시 시작
+		}else {
+			
+		}
+		
 	}
 	
 	
