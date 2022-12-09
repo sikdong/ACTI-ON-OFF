@@ -14,6 +14,7 @@
 .fa-pen-to-square{
 	color:black;
 }
+
 </style>
 </head>
 <body>
@@ -28,13 +29,20 @@
 						<c:url value="/qna/QnaModify" var="qnaModifyLink">
 							<c:param name="id" value="${qna.id }"></c:param>			
 						</c:url>			
-						<sec:authorize access="isAuthenticated()">
-						<a class="" href="${qnaModifyLink }">
-						 <i class="fas fa-thin fa-pen-to-square "></i>
-						</a>
-						</sec:authorize>
+						
+						<sec:authentication property="name" var="userName"/>
+						<c:if test="${qna.memberId == userName }">
+							<a class="" href="${qnaModifyLink }">
+							 <i class="fas fa-thin fa-pen-to-square "></i>
+							</a>
+						</c:if>
+					
+					
 					</h4>
+					<sec:authorize access="isAuthenticated()">
+					
 					<span id="empathyButton">
+					</sec:authorize>
 					
 					<c:if test="${qna.empathied }">
 					<i class="fas fa-solid fa-thumbs-up"></i>
@@ -99,10 +107,15 @@
 		<div class="row">
 			<div class="col">
 		<!-- 댓글 작성 -->
-			
+		
 				<input type="hidden" id="qnaId" value="${qna.id }">
+			<sec:authorize access="hasAuthority('admin')">
 				<input class="form-control" type="text" id="answerInput1">
 				<button class="form-control" id="answerSendButton1">답변쓰기</button>
+			</sec:authorize>
+			
+		
+			
 			</div>
 		</div>
 	</div>
@@ -241,17 +254,21 @@ function listAnswer(){
 			const answerDiv = `<div class="list-group-item d-flex">
 			<div class="me-auto">
 			<div>
-				\${item.content} 
+				\${item.content}
 			</div>		
 				<small class="text-muted">
+				관리자
 				<i class="fas fa-regular fa-clock"></i> 
 				\${item.ago}
 				</small>
 			</div>
+			
+			<sec:authorize access="hasAuthority('admin')">
 			<div>
 				<button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modifyAnswerFormModal" data-answer-id="\${item.id}" id="\${modifyAnswerButtonId}"><i class="fas fa-thin fa-pen-to-square"></i></button>
 				<button class="btn btn=light" data-bs-toggle="modal" data-bs-target="#removeAnswerConfirmModal" data-answer-id="\${item.id}" id="\${removeAnserButtonId}"><i class="fas fa-thin fa-xmark"></i></button>
 			</div>
+			</sec:authorize>
 			</div>`
 				answerListContainer.insertAdjacentHTML("beforeend",answerDiv)
 				// 수정 폼 모달에 댓글 내용 넣기

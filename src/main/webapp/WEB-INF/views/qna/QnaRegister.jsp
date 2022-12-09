@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags" %>
-
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +13,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+
+
 <my:navbar></my:navbar>
 	<div class="container-md">
 		<div class="row">
@@ -33,9 +35,11 @@
 						<input multiple type="file" accept="image/*" class="form-control" name="files">
 					</div> 
 					
+					
 					<div class="mb-3">
 						<label for="" class="form-label">작성자</label>
-						<input type="text" class="form-control" name="memberId">
+						<input value="<sec:authentication property="name"/>"
+						type="text" class="form-control" name="memberId">
 					</div>
 					
 					<input id="submitButton1" class="btn primary" type="submit" value="등록">
