@@ -6,6 +6,11 @@
 <html>
 <head>
 <style>
+.root {
+	margin-left : 25%;
+	margin-top : 50px;
+}
+
 
 .jc-sb {
 	justify-content : space-between;
@@ -149,12 +154,12 @@
 <link rel="stylesheet" href="${path}/assets/css/ydsCss.css" />
 <link rel="stylesheet" href="${path}/assets/css/calendar.css" />
 </head>
-<body style="margin-left : 10px;">
+<body>
 	<my:navbar></my:navbar>
-
+<div class="root">
 	<div class="mb-3 mt bold">
 		<h3><Strong>게시물 수정</Strong></h3>
-	</div>
+	</div>	
 	
 	<form action="" method="post" enctype="multipart/form-data">
 	<div class="mb-3 halfview">
@@ -165,6 +170,11 @@
 	  <label for="exampleFormControlInput1" class="form-label">가격</label>
 	  <input value="${board.price }" type="text" class="form-control" name="price">
 	</div>
+	<c:forEach items="${board.fileName }" var="file">
+		<div class="container-fluid">
+			<img src="${path}/assets/img/${file}" class="size" alt="이미지">
+		</div>
+	</c:forEach>
 	<div class="mb-3 halfview">
 	  <label for="exampleFormControlTextarea1" class="form-label">호스트 소개</label>
 	  <textarea class="form-control" name="hostIntro" rows="6">${board.hostIntro }</textarea>
@@ -175,12 +185,13 @@
 	</div>
 	<div class="mb-3 halfview">
 	  <label for="formFileMultiple" class="form-label">이미지 올리기(복수 선택 가능)</label>
-	  <input class="form-control" type="file" name="fileName" multiple>
+	  <input class="form-control" accept="image/*" type="file" name="fileName" multiple>
 	</div>
 	<div>
 	  <input type="submit" value="수정하기" class="btn btn-dark btn-lg"/>	
 	</div>
 	</form>
+</div>
 		
 
 			

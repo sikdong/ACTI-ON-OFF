@@ -49,7 +49,7 @@ ORDER BY b.B_NO DESC
 LIMIT 5; 
 </select>
 
-<select id="getBoard" resultType="com.trips.domain.yds.TripsBoardDto">
+<select id="getBoard" resultMap="boardMap">
 SELECT
 	b.B_NO num,
 	b.B_TITLE title,
@@ -65,6 +65,20 @@ LEFT JOIN ACTI_FILE f ON b.B_NO = f.B_NO
 WHERE b.B_NO = #{num}
 </select>
 
+<resultMap type="com.trips.domain.yds.TripsBoardDto" id="boardMap">
+		<result column="num" property="num"></result>
+		<result column="title" property="title"/>
+		<result column="writer" property="writer"></result>
+		<result column="content" property="content"/>
+		<result column="createDate" property="createDate"/>
+		<result column="hostIntro" property="hostIntro"></result>
+		<result column="countLike" property="countLike"/>
+		<result column="price" property="price"/>
+		<collection property="fileName" ofType="string">
+			<result property="fileName" column="fileName"/>
+		</collection>
+</resultMap>
+
 <delete id="removeBoard">
 DELETE FROM ACTI_BOARD
 WHERE B_NO = #{num}
@@ -77,15 +91,22 @@ SELECT COUNT(*) FROM ACTI_LIKE WHERE B_NO= #{num}
 
 <update id="modifyBoard">
 UPDATE ACTI_BOARD b
-LEFT JOIN ACTI_FILE f on b.B_NO = f.B_NO
 SET
 	b.B_TITLE = #{title},
 	b.B_CONTENT = #{content},
 	b.COST = #{price},
-	b.B_HOSTINTRO = #{hostIntro},
-	f.B_FILENAME = #{fileName}
+	b.B_HOSTINTRO = #{hostIntro}
 WHERE b.B_NO = #{num}
 </update>
 
+<delete id="deleteFileByNumAndfileName">
+DELETE FROM ACTI_FILE 
+WHERE B_NO = #{num} AND B_FILENAME = #{fileName} 
 
+</delete>
+
+<insert id="insertFile">
+	INSERT INTO File (B_NO, B_FILENAME)
+	VALUES (#{num}, #{fileName})
+</insert>
 </mapper>

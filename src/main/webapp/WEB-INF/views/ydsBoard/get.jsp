@@ -172,7 +172,6 @@
 	</c:url>
 	
 	<input type="hidden" id="numInput" value="${board.num }" />
-	<%--체험 제목 보여주기 --%>
 <div class="root">
 	<div class="container-fluid" style="display : flex;">
 		<span><Strong>${board.title }</Strong></span>
@@ -194,16 +193,18 @@
 				${board.countLike}
 			</div>
 	</div>
+	<c:forEach items="${board.fileName }" var="file">
 	<div class="container-fluid">
-		<img src="${path}/assets/img/${board.fileName}" class="size" alt="...">
+		<img src="${path}/assets/img/${file}" class="size" alt="...">
 	</div>
+	</c:forEach>
 	
 
 
 	<div class="container-fluid">
 		<div class="horizontal">
 				<div class="halfview">
-					<h4 class="ml-3 mt-40">호스트 소개</h4>
+					<h4 class="ml-3 mt-40">호스트 id의 name님 소개</h4>
 					<textarea style="width : 100% !important;" rows="5"  
 					readonly class="form-control">${board.hostIntro }</textarea>
 				</div>

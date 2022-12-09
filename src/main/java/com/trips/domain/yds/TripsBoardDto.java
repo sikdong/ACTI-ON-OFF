@@ -3,6 +3,7 @@ package com.trips.domain.yds;
 import java.time.LocalDateTime;
 import java.time.Period;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
@@ -24,7 +25,6 @@ public class TripsBoardDto {
 	private String status;
 	private String price;
 	private String hostIntro;
-	@JsonFormat(shape = Shape.STRING)
 	private LocalDateTime createDate;
 	@JsonFormat(shape = Shape.STRING)
 	private LocalDateTime B_MODIFYDATE;

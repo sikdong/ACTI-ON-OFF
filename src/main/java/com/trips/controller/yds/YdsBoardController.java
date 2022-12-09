@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.trips.domain.yds.TripsBoardDto;
 import com.trips.service.ydsBoardService.ydsBoardService;
@@ -37,8 +38,9 @@ public class YdsBoardController {
 	}
 	
 	@GetMapping({"get","modify"})
-	public void getBoard(int num, Model model) {
-		TripsBoardDto board = service.getBoard(num);
+	public void getBoard(int num, Model model, MultipartFile[] file) {
+		TripsBoardDto board = service.getBoard(num, file);
+		System.out.println(num);
 		model.addAttribute("board", board);
 		
 	}
@@ -72,8 +74,9 @@ public class YdsBoardController {
 	}
 	
 	@PostMapping("modify")
-	public String modify(TripsBoardDto board) {
-		int cnt = service.modifyBoard(board);
+	public String modify(TripsBoardDto board, MultipartFile[] fileName) {
+		
+		int cnt = service.modifyBoard(board, fileName);
 		
 		return "redirect:/ydsBoard/list";
 	}

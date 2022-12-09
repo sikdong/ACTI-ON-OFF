@@ -6,12 +6,15 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.trips.domain.yds.TripsBoardDto;
 import com.trips.mapper.yds.ydsBoardMapper;
 import com.trips.mapper.yds.reply.YdsReplyMapper;
 
 @Service
+@Transactional
 public class ydsBoardService {
 	
 	@Autowired
@@ -25,9 +28,9 @@ public class ydsBoardService {
 		return mapper.getBoardList();
 	}
 
-	public TripsBoardDto getBoard(int num) {
+	public TripsBoardDto getBoard(int num, MultipartFile[] file) {
 		// TODO Auto-generated method stub
-		return mapper.getBoard(num);
+		return mapper.getBoard(num, file);
 	}
 
 	public int removeBoard(int num) {
@@ -62,8 +65,19 @@ public class ydsBoardService {
 		return map;
 	}
 
-	public int modifyBoard(TripsBoardDto board) {
+	public int modifyBoard(TripsBoardDto board, MultipartFile[] fileName) {
 		// TODO Auto-generated method stub
+		for(MultipartFile f : fileName) {
+		if(f != null && f.getSize()>0) {
+			int num = board.getNum();
+			String name = f.getOriginalFilename();
+			mapper.deleteFileByNumAndfileName(num,name);
+			
+			mapper.insertFile(num, name);
+			}
+		
+		}
+		
 		return mapper.modifyBoard(board);
 	}
 
