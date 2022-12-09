@@ -51,15 +51,18 @@ LIMIT 5;
 
 <select id="getBoard" resultType="com.trips.domain.yds.TripsBoardDto">
 SELECT
-	B_NO num,
-	B_TITLE title,
-	M_ID writer,
-	B_CONTENT content,
-	B_CREATEDATE createDate,
-	(SELECT COUNT(*) FROM ACTI_LIKE WHERE B_NO= #{num}) countLike,
-	COST price 
-FROM ACTI_BOARD
-WHERE B_NO = #{num}
+	b.B_NO num,
+	b.B_TITLE title,
+	b.M_ID writer,
+	b.B_CONTENT content,
+	b.B_CREATEDATE createDate,
+	b.B_HOSTINTRO hostIntro,
+	(SELECT COUNT(*) FROM ACTI_LIKE l WHERE l.B_NO= #{num}) countLike,
+	b.COST price,
+	f.B_FILENAME fileName 
+FROM ACTI_BOARD b
+LEFT JOIN ACTI_FILE f ON b.B_NO = f.B_NO
+WHERE b.B_NO = #{num}
 </select>
 
 <delete id="removeBoard">
@@ -71,6 +74,18 @@ WHERE B_NO = #{num}
 SELECT COUNT(*) FROM ACTI_LIKE WHERE B_NO= #{num}
 
 </select>
+
+<update id="modifyBoard">
+UPDATE ACTI_BOARD b
+LEFT JOIN ACTI_FILE f on b.B_NO = f.B_NO
+SET
+	b.B_TITLE = #{title},
+	b.B_CONTENT = #{content},
+	b.COST = #{price},
+	b.B_HOSTINTRO = #{hostIntro},
+	f.B_FILENAME = #{fileName}
+WHERE b.B_NO = #{num}
+</update>
 
 
 </mapper>

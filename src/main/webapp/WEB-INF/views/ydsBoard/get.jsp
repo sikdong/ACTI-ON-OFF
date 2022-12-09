@@ -6,6 +6,18 @@
 <html>
 <head>
 <style>
+.root {
+	margin-left : 25%;
+	margin-top : 50px;
+}
+
+.mt-40 {
+	margin-top : 80px;
+}
+
+.ml-3 {
+ 	margin-left : 6px;
+}
 
 .jc-sb {
 	justify-content : space-between;
@@ -57,12 +69,13 @@
 
 .calendar {
   /*padding과 margin을 없애고 body태그 전체에 배경색과 폰트를 넣어줍니다.*/
-  	width : 50%;
+  	width : 24%;
     padding: 0;
     margin-left: 0;
     background-color: var(--bg-color);
     font-family: var(--font);
     position : fixed;
+    bottom : 5px;
     z-index : 1;
 }
 
@@ -147,17 +160,9 @@
 	integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="${path}/assets/css/ydsCss.css" />
-<link rel="stylesheet" href="${path}/assets/css/calendar.css" />
 </head>
-<body style="margin-left : 10px;">
+<body>
 	<my:navbar></my:navbar>
-
-<form action="/shop/addCart" method="post" id="cartForm">
-	<input type="hidden" name="addDate" id="addDate" value=""/>
-	<input type="hidden" name="person" id="person" value=""/>
-	<input type="hidden" name="price" id="price" value="${board.price}"/>
-	<input type="hidden" name="boardnum" id="boardNum" value="${board.num}"/>	
-</form>
 
 	<c:url value="/ydsBoard/remove" var="removeLink">
 		<c:param name="num" value="${board.num }" ></c:param>
@@ -168,20 +173,21 @@
 	
 	<input type="hidden" id="numInput" value="${board.num }" />
 	<%--체험 제목 보여주기 --%>
+<div class="root">
 	<div class="container-fluid" style="display : flex;">
-		<span>제주 앞바다를 즐겨 보세요!</span>
-		<div>
+		<span><Strong>${board.title }</Strong></span>
+		<div class="ml-3">
 			<a href="${removeLink}" class="btn btn-outline-secondary btn-sm">게시물 삭제</a>
-			<a href="${modifyLink}" class="btn btn-outline-warning btn-sm">게시물 수정</a>
+			<a href="${modifyLink}" class="btn btn-outline-dark btn-sm">게시물 수정</a>
 		</div>
-			<h3>${board.price}</h3> 
+			<h3 class="ml-3">${board.price}</h3> 
 			<span class="mt">
 				<small>원</small>
 			</span>
-			<div onclick="plusLike()" class="cursor" id="plusLike">
+			<div onclick="plusLike()" class="cursor ml-3" id="plusLike">
 				<i class="fa-regular fa-heart fa-2x red"></i> 
 			</div>
-			<div onclick="minusLike()" class="cursor" id="minusLike" style="display : none">
+			<div onclick="minusLike()" class="cursor ml-3" id="minusLike" style="display : none">
 				<i class="fa-solid fa-heart fa-2x red" style="color : red !important;"></i>
 			</div>
 			<div id="countLike" style="font-size : 20px; margin-left : 3px; padding-top : 4px;">
@@ -189,30 +195,26 @@
 			</div>
 	</div>
 	<div class="container-fluid">
-		<h3>${board.price}<small>원</small></h3> 
+		<img src="${path}/assets/img/${board.fileName}" class="size" alt="...">
 	</div>
-		<img src="${path}/assets/img/home2.jpg" class="size" alt="...">
-		<img src="${path}/assets/img/about1.jpg" class="size" alt="...">
-		<img src="${path}/assets/img/home1.jpg" class="size" alt="...">
-		<img src="${path}/assets/img/about2.jpg" class="size" alt="...">
 	
 
 
 	<div class="container-fluid">
 		<div class="horizontal">
 				<div class="halfview">
-					<h4>호스트 소개</h4>
+					<h4 class="ml-3 mt-40">호스트 소개</h4>
 					<textarea style="width : 100% !important;" rows="5"  
-					readonly class="form-control">${board.content }</textarea>
+					readonly class="form-control">${board.hostIntro }</textarea>
 				</div>
-				<div id="showCalendar" class="halfview" style="margin-bottom : 50px;">
+				<div id="showCalendar" class="halfview">
 				</div>
 			</div>	
-				<div class="mt">
-					<h4>프로그램 소개</h4>
+				<div class="mt-40">
+					<h4 class="ml-3">프로그램 소개</h4>
 				</div>
-				<hr width="50%" />
-				<div style="width : 50%">
+				<hr width="65%" />
+				<div style="width : 100%">
 					${board.content }
 				</div>
 				<div>
@@ -221,10 +223,10 @@
 				<span>
 					<a id="noneButton" style="display : none" onclick="none()" class="btn btn-secondary btn-sm">달력접기</a>
 				</span>
-				<hr width="50%" />
+				<hr width="65%" />
 			</div>
-			<h4>프로그램 후기</h4>
-			<div class="col-sm-7">
+			<div class="col-sm-7 ml-3">
+				<h4 class="ml-3 mt-40">프로그램 후기</h4>
 				<div style="display : flex">
 					<div><%--별 들어갈 자리 --%></div>
 				</div>
@@ -241,12 +243,20 @@
 						</div>
 					</div>
 				</div>
-					<div class="mt">
+					<div class="mt-40">
 						<h5>체험 더보기</h5>
 					</div>
 					<div class="flex-container">
 					</div>
 				</div>
+</div>	
+				
+<form action="/shop/addCart" method="post" id="cartForm">
+	<input type="hidden" name="addDate" id="addDate" value=""/>
+	<input type="hidden" name="person" id="person" value=""/>
+	<input type="hidden" name="price" id="price" value="${board.price}"/>
+	<input type="hidden" name="boardnum" id="boardNum" value="${board.num}"/>	
+</form>
 <%------------------------------댓글 수정, 삭제 토스트----------------------------%>	
 <div class="toast-container align-items-center top-0 start-50 translate-middle-x position-fixed">
   <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
@@ -630,6 +640,5 @@ function goCart(){
 	
 
 </script>
-<script  src="${path }/assets/js/calendar.js"></script>
 </body>
 </html>

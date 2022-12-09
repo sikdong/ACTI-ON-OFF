@@ -23,4 +23,6 @@ public interface ydsBoardMapper {
 
 	public int deleteLikeByLNO(int num);
 
+	public int modifyBoard(TripsBoardDto board);
+
 }

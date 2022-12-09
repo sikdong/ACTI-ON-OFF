@@ -36,7 +36,7 @@ public class YdsBoardController {
 		model.addAttribute("boardList", list);
 	}
 	
-	@GetMapping("get")
+	@GetMapping({"get","modify"})
 	public void getBoard(int num, Model model) {
 		TripsBoardDto board = service.getBoard(num);
 		model.addAttribute("board", board);
@@ -69,5 +69,12 @@ public class YdsBoardController {
 			TripsBoardDto board){
 		return service.minusLike(req.get("num"), 
 				board);
+	}
+	
+	@PostMapping("modify")
+	public String modify(TripsBoardDto board) {
+		int cnt = service.modifyBoard(board);
+		
+		return "redirect:/ydsBoard/list";
 	}
 }

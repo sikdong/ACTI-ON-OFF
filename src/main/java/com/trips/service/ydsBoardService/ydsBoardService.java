@@ -62,4 +62,9 @@ public class ydsBoardService {
 		return map;
 	}
 
+	public int modifyBoard(TripsBoardDto board) {
+		// TODO Auto-generated method stub
+		return mapper.modifyBoard(board);
+	}
+
 }
