@@ -74,9 +74,9 @@ public class YdsBoardController {
 	}
 	
 	@PostMapping("modify")
-	public String modify(TripsBoardDto board, MultipartFile[] fileName) {
+	public String modify(TripsBoardDto board, MultipartFile[] files) {
 		
-		int cnt = service.modifyBoard(board, fileName);
+		int cnt = service.modifyBoard(board, files);
 		
 		return "redirect:/ydsBoard/list";
 	}

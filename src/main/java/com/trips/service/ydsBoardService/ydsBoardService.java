@@ -65,12 +65,12 @@ public class ydsBoardService {
 		return map;
 	}
 
-	public int modifyBoard(TripsBoardDto board, MultipartFile[] fileName) {
+	public int modifyBoard(TripsBoardDto board, MultipartFile[] files) {
 		// TODO Auto-generated method stub
-		for(MultipartFile f : fileName) {
-		if(f != null && f.getSize()>0) {
+		for(MultipartFile fileName : files) {
+		if(files != null && fileName.getSize()>0) {
 			int num = board.getNum();
-			String name = f.getOriginalFilename();
+			String name = fileName.getOriginalFilename();
 			mapper.deleteFileByNumAndfileName(num,name);
 			
 			mapper.insertFile(num, name);

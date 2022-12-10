@@ -26,8 +26,8 @@ public interface ydsBoardMapper {
 
 	public int modifyBoard(TripsBoardDto board);
 
-	public int deleteFileByNumAndfileName(int num, String name);
+	public int deleteFileByNumAndfileName(int num, String fileName);
 
-	public int insertFile(int num, String name);
+	public int insertFile(int num, String fileName);
 
 }

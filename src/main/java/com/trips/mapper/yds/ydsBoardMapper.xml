@@ -30,6 +30,7 @@ SELECT
 	b.B_CREATEDATE
 FROM ACTI_BOARD b
 LEFT JOIN ACTI_FILE f on f.B_NO = b.B_NO
+GROUP BY b.B_NO
 ORDER BY b.B_NO DESC; 
 </select>
 
@@ -106,7 +107,7 @@ WHERE B_NO = #{num} AND B_FILENAME = #{fileName}
 </delete>
 
 <insert id="insertFile">
-	INSERT INTO File (B_NO, B_FILENAME)
+	INSERT INTO ACTI_FILE (B_NO, B_FILENAME)
 	VALUES (#{num}, #{fileName})
 </insert>
 </mapper>

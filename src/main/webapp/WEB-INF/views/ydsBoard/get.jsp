@@ -7,7 +7,7 @@
 <head>
 <style>
 .root {
-	margin-left : 25%;
+	margin-left : 20%;
 	margin-top : 50px;
 }
 
@@ -33,7 +33,7 @@
 }
 
 .halfview{
-	width : 50vw !important;
+	width : 100% !important;
 }
 
 .horizontal {
@@ -173,7 +173,7 @@
 	
 	<input type="hidden" id="numInput" value="${board.num }" />
 <div class="root">
-	<div class="container-fluid" style="display : flex;">
+	<div class="container-fluid flex">
 		<span><Strong>${board.title }</Strong></span>
 		<div class="ml-3">
 			<a href="${removeLink}" class="btn btn-outline-secondary btn-sm">게시물 삭제</a>
@@ -193,11 +193,11 @@
 				${board.countLike}
 			</div>
 	</div>
+	<div class="container-fluid flex" >
 	<c:forEach items="${board.fileName }" var="file">
-	<div class="container-fluid">
 		<img src="${path}/assets/img/${file}" class="size" alt="...">
-	</div>
 	</c:forEach>
+	</div>
 	
 
 
@@ -231,7 +231,7 @@
 				<div style="display : flex">
 					<div><%--별 들어갈 자리 --%></div>
 				</div>
-				<input type="text" class="form-control halfview mt" placeholder="여러분의 소중한 후기를 남겨주세요" 
+				<input type="text" class="form-control mt" placeholder="여러분의 소중한 후기를 남겨주세요" 
 					id="content"></input>
 				<%-- 로그인 기능 수정되면 지울 것 --%>
 				<input type="hidden" value="bb" id="temperId"/>

@@ -20,7 +20,7 @@ public class TripsBoardDto {
 	private int num;
 	private String title;
 	private String content;
-	private String fileName;
+	private List<String> fileName;
 	private String readCount;
 	private String status;
 	private String price;
