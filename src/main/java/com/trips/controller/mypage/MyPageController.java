@@ -1,6 +1,8 @@
 package com.trips.controller.mypage;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fasterxml.jackson.databind.ser.std.StdKeySerializers.Default;
+import com.trips.domain.jjhMember.jjhMemberDto;
 import com.trips.domain.mypage.ChatAddDto;
 import com.trips.domain.mypage.ChatDto;
 import com.trips.domain.mypage.ChatLeftDto;
@@ -233,18 +236,26 @@ public class MyPageController {
 	}
 	@PostMapping("existEmail")
 	@ResponseBody
-	public void existEmail(
+	public Map<String, Object> existEmail(
 			@RequestBody IdEmailDto data
 			) {
+		Map<String, Object> map = new HashMap<>();
 		String id = data.getId();
 		String email = data.getEmail();
 		String oldEmail = service.getEmailById(id);
-		if(email.equals(oldEmail)) {
-			//여기부터 다시 시작
+		
+		MemberDto member = service.getByEmail(email);
+		
+		//이전 메일과 같지 않고, 데이터베이스에 없는 이메일일 경우
+		if(!email.equals(oldEmail)&&(member == null)) {
+			map.put("status", "not exist");
+			map.put("message", "사용가능한 이메일입니다.");
 		}else {
-			
+			map.put("status", "exist");
+			map.put("message", "이미 존재하는 이메일입니다.");
 		}
 		
+		return map;
 	}
 	
 	

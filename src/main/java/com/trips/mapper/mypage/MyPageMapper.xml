@@ -185,6 +185,19 @@
 		FROM MEMBER 
 		WHERE M_ID = #{id};
 	</select>
+	
+	<select id="getByEmail" resultType="com.trips.domain.mypage.MemberDto">
+		SELECT 
+			M_ID id,
+		    M_PASSWORD password,
+		    M_NAME name,
+		    M_GENDER gender,
+		    M_PHONE phone,
+		    M_EMAIL email,
+		    M_HOST_REQUEST host
+		FROM MEMBER 
+		WHERE M_EMAIL = #{email};
+	</select>
 </mapper>
 
 

@@ -40,4 +40,6 @@ public interface MyPageMapper {
 
 	String getEmailById(String id);
 
+	MemberDto getByEmail(String email);
+
 }

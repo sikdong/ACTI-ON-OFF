@@ -98,4 +98,9 @@ public class MyPageService {
 	public String getEmailById(String id) {
 		return mapper.getEmailById(id);
 	}
+
+	public MemberDto getByEmail(String email) {
+		// TODO Auto-generated method stub
+		return mapper.getByEmail(email);
+	}
 }
