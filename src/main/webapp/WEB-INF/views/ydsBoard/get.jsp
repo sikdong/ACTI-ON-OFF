@@ -7,7 +7,7 @@
 <head>
 <style>
 .root {
-	margin-left : 20%;
+	margin-left : 25%;
 	margin-top : 50px;
 }
 
@@ -173,6 +173,7 @@
 	
 	<input type="hidden" id="numInput" value="${board.num }" />
 <div class="root">
+		<div class="container-fluid">현재 남은 인원 : ${board.maxPerson}</div>
 	<div class="container-fluid flex">
 		<span><Strong>${board.title }</Strong></span>
 		<div class="ml-3">

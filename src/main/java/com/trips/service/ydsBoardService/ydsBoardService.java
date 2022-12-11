@@ -71,14 +71,19 @@ public class ydsBoardService {
 		if(files != null && fileName.getSize()>0) {
 			int num = board.getNum();
 			String name = fileName.getOriginalFilename();
-			mapper.deleteFileByNumAndfileName(num,name);
-			
+			int cnt = mapper.deleteFileByNumAndfileName(num,name);
+			System.out.println(cnt+ "개 삭제됨----------");
 			mapper.insertFile(num, name);
 			}
 		
 		}
 		
 		return mapper.modifyBoard(board);
+	}
+
+	public void deleteFile(int fileNum) {
+		// TODO Auto-generated method stub
+		mapper.deleteFile(fileNum);
 	}
 
 }

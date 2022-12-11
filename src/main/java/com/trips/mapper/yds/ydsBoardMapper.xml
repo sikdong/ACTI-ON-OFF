@@ -27,28 +27,41 @@ SELECT
 	b.B_CONTENT content,
 	f.B_FILENAME fileName,
 	b.B_STATUS,
-	b.B_CREATEDATE
+	b.B_CREATEDATE,
+	b.MAX_PERSON maxPerson
 FROM ACTI_BOARD b
 LEFT JOIN ACTI_FILE f on f.B_NO = b.B_NO
 GROUP BY b.B_NO
 ORDER BY b.B_NO DESC; 
 </select>
 
-<select id="getFiveFiles" resultType="com.trips.domain.yds.TripsBoardDto">
+<select id="getFiveFiles" resultMap="getfiveMap">
 SELECT
 	b.B_NO num,
 	b.B_TITLE title,
 	b.M_ID writer,
 	b.B_CONTENT content,
 	f.B_FILENAME fileName,
-	b.B_STATUS,
 	b.B_CREATEDATE createDate,
-	b.COST price
+	b.COST price,
+	b.MAX_PERSON maxPerson
 FROM ACTI_BOARD b
 LEFT JOIN ACTI_FILE f on f.B_NO = b.B_NO
+GROUP BY b.B_NO
 ORDER BY b.B_NO DESC
 LIMIT 5; 
 </select>
+<resultMap type="com.trips.domain.yds.TripsBoardDto" id="getfiveMap">
+		<result column="num" property="num"></result>
+		<result column="title" property="title"/>
+		<result column="writer" property="writer"></result>
+		<result column="content" property="content"/>
+		<result column="createDate" property="createDate"/>
+		<result column="price" property="price"/>
+		<collection property="fileName" ofType="String">
+			<result property="fileName" column="fileName"/>
+		</collection>
+</resultMap>
 
 <select id="getBoard" resultMap="boardMap">
 SELECT
@@ -60,7 +73,9 @@ SELECT
 	b.B_HOSTINTRO hostIntro,
 	(SELECT COUNT(*) FROM ACTI_LIKE l WHERE l.B_NO= #{num}) countLike,
 	b.COST price,
-	f.B_FILENAME fileName 
+	f.B_FILENAME fileName,
+	f.B_FILE_NO fileNum,
+	b.MAX_PERSON maxPerson 
 FROM ACTI_BOARD b
 LEFT JOIN ACTI_FILE f ON b.B_NO = f.B_NO
 WHERE b.B_NO = #{num}
@@ -75,8 +90,12 @@ WHERE b.B_NO = #{num}
 		<result column="hostIntro" property="hostIntro"></result>
 		<result column="countLike" property="countLike"/>
 		<result column="price" property="price"/>
-		<collection property="fileName" ofType="string">
+		<result column="maxPerson" property="maxPerson"></result>
+		<collection property="fileName" ofType="String">
 			<result property="fileName" column="fileName"/>
+		</collection>
+		<collection property="fileNum" ofType="int">
+			<result property="fileNum" column="fileNum"></result>
 		</collection>
 </resultMap>
 
@@ -110,4 +129,10 @@ WHERE B_NO = #{num} AND B_FILENAME = #{fileName}
 	INSERT INTO ACTI_FILE (B_NO, B_FILENAME)
 	VALUES (#{num}, #{fileName})
 </insert>
+
+<delete id="deleteFile">
+DELETE FROM ACTI_FILE
+WHERE B_FILE_NO = #{fileNum}
+</delete>
+
 </mapper>

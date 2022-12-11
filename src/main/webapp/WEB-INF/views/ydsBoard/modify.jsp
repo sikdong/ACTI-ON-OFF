@@ -13,6 +13,7 @@
 
 
 .jc-sb {
+	display : flex;
 	justify-content : space-between;
 }
 
@@ -170,9 +171,10 @@
 	  <label for="exampleFormControlInput1" class="form-label">가격</label>
 	  <input value="${board.price }" type="text" class="form-control" name="price">
 	</div>
-		<div class="flex mb-3" style="margin-top : 30px;">
-	<c:forEach items="${board.fileName }" var="file">
+		<div style = "width : 400px;"class="jc-sb mb-3" style="margin-top : 30px;">
+	<c:forEach items="${board.fileName }" var="file" varStatus="status">
 			<img src="${path}/assets/img/${file}" class="size" alt="이미지">
+			<div></div>
 	</c:forEach>
 		</div>
 	<div class="mb-3 halfview">
@@ -200,3 +202,11 @@
 src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
 integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
 crossorigin="anonymous"></script>
+<script>
+function deletefile(${board.fileNum}){
+	fetch(ctx +"/ydsBoard/deleteFile")
+}
+
+</script>
+</body>
+</html>

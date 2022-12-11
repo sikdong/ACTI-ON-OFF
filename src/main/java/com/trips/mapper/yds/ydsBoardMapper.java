@@ -30,4 +30,6 @@ public interface ydsBoardMapper {
 
 	public int insertFile(int num, String fileName);
 
+	public void deleteFile(int fileNum);
+
 }

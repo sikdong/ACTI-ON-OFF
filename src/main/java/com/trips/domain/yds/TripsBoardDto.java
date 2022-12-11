@@ -25,6 +25,8 @@ public class TripsBoardDto {
 	private String status;
 	private String price;
 	private String hostIntro;
+	private int maxPerson;
+	private int fileNum;
 	private LocalDateTime createDate;
 	@JsonFormat(shape = Shape.STRING)
 	private LocalDateTime B_MODIFYDATE;
