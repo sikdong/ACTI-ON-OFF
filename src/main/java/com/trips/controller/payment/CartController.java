@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.trips.domain.jjhMember.jjhMemberDto;
 import com.trips.domain.member.MemberDto;
@@ -31,25 +32,22 @@ public class CartController {
 	private CartService service;
 	
 	// 장바구니 저장 
-	@ResponseBody
-	@RequestMapping(value = "/shop/addCart", method = RequestMethod.POST)
-	public Map<String, Integer> addCart(Cart cart, Authentication authentication) throws Exception {
-		Map<String, Integer> map = new  HashMap<>();
+	/* @ResponseBody */
+	@RequestMapping(value = "/shop/addCart", method = {RequestMethod.GET, RequestMethod.POST})
+	public String addCart(Cart cart, Authentication authentication) throws Exception {
+		Map map = new  HashMap<>();
 		cart.setId(authentication.getName());
-		
 		
 		map.put("result", service.addCart(cart));
 
 		System.out.println(cart);
-		
-		
-		return map;
+
+		return "redirect:/payment/cart";
 			
 	}
-	 
 
 	// 장바구니 이동
-	@RequestMapping(value = "/payment/cart", method = RequestMethod.GET)
+	@RequestMapping(value = "/payment/cart", method = {RequestMethod.GET, RequestMethod.POST})
 	public void getCartList(Authentication authentication, Model model) throws Exception {
 
 		String id = authentication.getName();
@@ -78,15 +76,5 @@ public class CartController {
 		return "redirect:/payment/cart";
 	}
 
-	/*
-	 * @GetMapping("/payment/cart/deleteAll") public String
-	 * deleteAllCart(Authentication authentication,Member loginMember) {
-	 * 
-	 * service.deleteAllCart(loginMember.getId());
-	 * 
-	 * return "redirect:/payment/cart";
-	 * 
-	 * }
-	 */
 
 }

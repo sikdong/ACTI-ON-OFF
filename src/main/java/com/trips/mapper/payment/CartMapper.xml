@@ -20,7 +20,7 @@
 		resultMap="cartListResultMap">
 
 		SELECT c.CART_ID cart_id,m.M_ID id,c.B_NO boardnum,
-		PRICE price,renamedFileName
+		PERSON person, ADDDATE addDate,	PRICE price,renamedFileName
 		from CART c
 		LEFT JOIN MEMBER m on m.M_ID = c.CART_ID
 		AND c.M_ID = m.M_ID
@@ -36,20 +36,28 @@
 		INSERT INTO CART(
 		M_ID,
 		B_NO,
+		CART_ID,
 		PERSON,
 		PRICE
 		)
-		VALUES(1,'aa',1,'1');
-
+		VALUES( 
+		#{id},
+		#{boardnum},
+		#{cart_id},
+		#{person},
+		#{price}
+		)
 
 	</insert>
+	
+	
  
 	<delete id="deleteCart">
-		DELETE FROM cart WHERE CART_ID=#{cart_id}
+		DELETE FROM CART WHERE CART_ID=#{cart_id}
 	</delete> 
 
 	<delete id="deleteAllCart">
-		DELETE FROM cart WHERE CART_ID=#{cart_id}
+		DELETE FROM CART WHERE M_ID=#{id}	
 	</delete>
 
 </mapper>

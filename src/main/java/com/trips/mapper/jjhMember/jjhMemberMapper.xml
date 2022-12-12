@@ -6,7 +6,7 @@
 <mapper namespace="com.trips.mapper.jjhMember.jjhMemberMapper">
 
 	<insert id="insert">
-	INSERT INTO MEMBER (M_ID, M_PASSWORD, M_NAME, M_GENDER, M_PHONE, M_EMAIL, M_HOST)
+	INSERT INTO MEMBER (M_ID, M_PASSWORD, M_NAME, M_GENDER, M_PHONE, M_EMAIL, M_HOST_REQUEST)
 	VALUES (#{M_ID}, #{M_PASSWORD}, #{M_NAME}, #{M_GENDER}, #{M_PHONE}, #{M_EMAIL}, #{M_HOST})
 	</insert>
 
@@ -18,7 +18,7 @@
 		M_GENDER,
 		M_PHONE,
 		M_EMAIL,
-		M_HOST
+		M_HOST_REQUEST
 	FROM
 		MEMBER
 	WHERE
@@ -33,7 +33,7 @@
 		<result column="M_GENDER" property="M_GENDER"/>
 		<result column="M_PHONE" property="M_PHONE"/>
 		<result column="M_EMAIL" property="M_EMAIL"/>		
-		<result column="M_HOST" property="M_HOST"/>
+		<result column="M_HOST_REQUEST" property="M_HOST"/>
 	</resultMap>
 	
 	<select id="selectByEmail" resultType="com.trips.domain.jjhMember.jjhMemberDto">
@@ -44,7 +44,7 @@
 		M_GENDER,
 		M_PHONE,
 		M_EMAIL,
-		M_HOST
+		M_HOST_REQUEST
 	FROM
 		MEMBER
 	WHERE

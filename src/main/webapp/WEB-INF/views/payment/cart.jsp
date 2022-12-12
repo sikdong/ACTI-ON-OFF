@@ -35,10 +35,9 @@
                             <div class="img">이미지</div>
                             <div class="pname">상품명</div>
                         </div>
-
                         <div class="subdiv">
                             <div class="basketprice">가격</div>
-                            <div class="num">수량</div>
+                            <div class="num">인원수</div>
                             <div class="sum">합계</div>
                         </div>
 
@@ -52,10 +51,10 @@
 					<form action="${path}/payment/orderPage" method="get">
 					 <c:forEach var="list" items="${cartList}">
 			         <div class="paymentScreenBtn">
-								<input type="hidden" name="" value="">
-								<input type="hidden" name="" value="">
-								<input type="hidden" name="" value="">
-								<input type="hidden" name="" value="" id="">
+								<input type="hidden" name="boardnum" value="${list.boardnum}">
+								<input type="hidden" name="boardtitle" value="${boardList.title}">
+								<input type="hidden" name="Price" value="${list.price}">
+								<input type="hidden" name="merchant_uid" value="" id="merchant_uid">
                     </div>
                  	   <div class="row data">
                         <div class="subdiv">
@@ -64,12 +63,12 @@
                             <div class="img image"><img src="${path}/resources/upload/img/${list.renamedFileName}" width="60" height="60"></div>
 
                             <div class="pname">
-                                <span></span>
+                                <span>${boardList.title}</span>
                             </div>
                         </div>
                         <div class="subdiv">
                             <!-- 가격 -->
-                            <div class="basketprice"></div>
+                            <div class="basketprice">${list.price}</div>
                             <!-- 수량 조절 -->
                             <div class="num">
                                 <div class="updown">
@@ -79,12 +78,12 @@
                                 </div>
                             </div>
                             <!-- 가격 * 수량 -->
-                            <div class="sum"></div>
+                            <div class="sum">${cartlist.price}</div>
                         </div>
                         <!-- 장바구니에서 삭제 -->
                         <div class="subdiv">
                             <div class="basketcmd">
-                            <button type="button" class="abutton" style="line-height: 15px;" onclick="deleteCart(${list.id})">삭제</button>
+                            <button type="button" class="abutton" style="line-height: 15px;" onclick="deleteCart(${list.cart_id})">삭제</button>
 							</div>
                         </div>
                     </div>                      
@@ -92,8 +91,8 @@
                     <button type="button" class="abutton" onclick="selectDelete()">선택상품삭제</button>
                     <button type="button" class="abutton" onclick="deleteAll()">장바구니비우기</button>
                 </div>
-        <%-- 
-                <div class="bigtext right-align sumcount" id="sum_p_num">상품갯수: ${list.amount}</div> --%>
+         
+                <div class="bigtext right-align sumcount" id="sum_p_num">상품인원수: ${list.person}</div> 
                 <div class="bigtext right-align box blue summoney" id="sum_p_price">합계금액: ${list.price}원</div>
         
                 <div id="goorder">
