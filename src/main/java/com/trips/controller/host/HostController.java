@@ -186,7 +186,7 @@ public class HostController {
 	// 함수를 호출하지 않고 매개변수에 값을 넣을 수 있는 방법은 없나 ? 매개변수의 값을 나눠서 넣고 싶을 때.
 	//MultipartFile[] b_filename 은 등록페이지 마지막에? 날짜는 달력을 보여주고 선택하게. 파라미터는 컬렉션으로?
 	public String listingContents( String b_title, String b_content,
-										 int cost,int min_person, int max_person, int min_age ) {	
+										 int cost,int min_person, int max_person, int min_age, String address, String addressLL ) {	
 //	public String listingContents(BoardDto board ) {	
 //		boardDto=board;//매개변수에 모델어트리뷰트 쓰면 빈 디티오에 담기는 거니까 이전과 다른 인스턴스.
 		
@@ -196,6 +196,8 @@ public class HostController {
 		boardDto.setMax_person(min_person);
 		boardDto.setMax_person(max_person);
 		boardDto.setMin_age(min_age);
+		boardDto.setAddress(address);
+		boardDto.setAddressLL(addressLL);
 	//	b_no=boardDto.getB_no();
 		hostService.listingContents(boardDto);
 		System.out.println(boardDto);

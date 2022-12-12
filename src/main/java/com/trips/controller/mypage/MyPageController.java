@@ -147,7 +147,12 @@ public class MyPageController {
 			Model model
 			) {
 		Res2Dto res2 = service.getByResNo(resNo);
-		String shorts = res2.getContent().substring(0, 20);
+		String shorts;
+		if(res2.getContent().length() > 30) {
+			shorts = res2.getContent().substring(0, 30)+"...";
+		}else {
+			shorts = res2.getContent();
+		}
 		int boardNo = res2.getBoardNo();
 		String date = res2.getDate();
 		int count = service.getCountByBD(boardNo, date);

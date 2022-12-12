@@ -44,7 +44,7 @@ body {
 		/*아랫글에서 설명한 event를 이용 지도를 'click'하면 codeCoordinate함수를 실행합니다.
 		   codeCoordinate함수는 클릭한 지점의 좌표를 가지고 주소를 찾는 함수입니다. */
 	}
-	function Setmarker(latLng) {
+	/* function Setmarker(latLng) {
 		if (marker.length > 0){
 			marker[0].setMap(null);
 		}
@@ -59,7 +59,7 @@ body {
 			map : map
 		}));
 		// marker 배열에 새 marker object를 push 함수로 추가합니다.
-	}
+	} */
 	/*클릭한 지점에 마커를 표시하는 함수입니다.
 	 그런데 이 함수를 잘 봐야 하는 것이 바로 marker를 생성하지 않고 marker라는 배열 안에 Marker 
 	 obejct  원소를 계속 추가하고 있습니다. 이는 매번 클릭할 때마다 새로운 마커를 생성하기 위함입니다. */
@@ -82,8 +82,6 @@ body {
 		}, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) //Geocoding이 성공적이라면,
 			{
-				alert(results.length + "개의 결과를 찾았습니다.");
-				//결과의 개수를 표시하는 창을 띄웁니다. alert 함수는 알림창 함수입니다.
 				for (var i = 0; i < results.length; i++)
 				{
 					var loc = JSON.stringify(results[i].geometry.location);
@@ -107,7 +105,7 @@ body {
 		});
 	}
 	//클릭 이벤트 발생 시 그 좌표를 주소로 변환하는 함수입니다.
-	function codeCoordinate(event) {
+/* 	function codeCoordinate(event) {
 		Setmarker(event.latLng);
 		console.log(event.latLng);
 		//이벤트 발생 시 그 좌표에 마커를 생성합니다.
@@ -123,11 +121,11 @@ body {
 				}
 			}
 		});
-	}
+	} */
 </script>
 </head>
 <body onload="initialize()">
-	<div id="map_canvas" style="width: 80%; height: 60%"></div>
+	<div hidden id="map_canvas" style="width: 80%; height: 60%"></div>
 	<p>
 		주소 : <input type="text" size="100" id="addr1" name="address" /> <input
 			name="submit" type="submit" value="Search"

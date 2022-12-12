@@ -13,5 +13,6 @@ public class BoardDto {
 	private int min_person;
 	private int max_person;
 	private int min_age;
-
+	private String address;
+	private String addressLL;
 }
