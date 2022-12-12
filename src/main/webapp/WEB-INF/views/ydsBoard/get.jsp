@@ -173,7 +173,9 @@
 	
 	<input type="hidden" id="numInput" value="${board.num }" />
 <div class="root">
-		<div class="container-fluid">현재 남은 인원 : ${board.maxPerson}</div>
+		<div class="container-fluid">최대 인원 : ${board.maxPerson}</div>
+		<div class="container-fluid">최소 인원 : ${board.minPerson}</div>
+		<div class="container-fluid">최소 연령 : ${board.minAge}</div>
 	<div class="container-fluid flex">
 		<span><Strong>${board.title }</Strong></span>
 		<div class="ml-3">
@@ -182,7 +184,7 @@
 		</div>
 			<h3 class="ml-3">${board.price}</h3> 
 			<span class="mt">
-				<small>원</small>
+				<small>원/1인</small>
 			</span>
 			<div onclick="plusLike()" class="cursor ml-3" id="plusLike">
 				<i class="fa-regular fa-heart fa-2x red"></i> 
@@ -329,7 +331,7 @@ function minusLike(){
 		body : JSON.stringify({num})
 	})
 	.then(res => res.json())
-	.then(data => {console.log(data.deleteLike)
+	.then(data => {
 					document.querySelector("#countLike").innerHTML = data.countLike
 					document.querySelector("#minusLike").style.cssText="display : none;"
 					document.querySelector("#plusLike").style.cssText="display : inline-block;"
@@ -380,7 +382,6 @@ function getFiveFiles(){
 					<img src="${path}/assets/img/\${file.fileName}" class="size" alt="...">
 					<h5 class="text-center">\${file.content}</h5>
 				</div>`
-				<%-- 집가서 작성 --%>
 			  document.querySelector(".flex-container").insertAdjacentHTML("afterbegin", fileList);
 		}
 	})
@@ -389,7 +390,6 @@ function getFiveFiles(){
 <%--댓글 출력 기능 --%>
 function listReply(){
 	const boardNum = document.querySelector("#boardNum").value;
-/* 	console.log(boardNum) */
 	fetch(`\${ctx}/ydsReply/listReply/\${boardNum}`)
 	.then(res => res.json())
 	.then(list => {
@@ -556,13 +556,13 @@ const calendarFrame =
 			</div>
 			<div class="dates"></div>
 			<div onclick="goCart()" class="btn btn-outline-secondary">장바구니 담기 <i class="fa-solid fa-cart-shopping"></i></div>
+			<div style="color : red"><small>*밑줄 친 날짜만 예약 가능합니다</small></div>
 		</div>
 	</div>`
 document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calendarFrame)
 	let prevLast = new Date(CDate.getFullYear(), CDate.getMonth(), 0);
 	let thisFirst = new Date(CDate.getFullYear(),CDate.getMonth(), 1);
 	let thisLast = new Date(CDate.getFullYear(), CDate.getMonth()+1, 0);
-	console.log(CDate.getMonth()+1);
 	document.querySelector(".yearTitle").innerHTML = CDate.getFullYear()+"년 ";
 	document.querySelector(".monthTitle").innerHTML = CDate.getMonth() + 1+"월";
 	let dates = [];
@@ -589,24 +589,31 @@ document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calenda
 		} 
 				const dateDiv =`<div class="date cursor" id="date\${i}">\${dates[i]}</div>`;
 				document.querySelector(".week").insertAdjacentHTML("afterbegin", dateDiv); 
+		const actiDate = [];
+		actiDate.push(8)
+		actiDate.push(11)
+		actiDate.push(20)
+		
+		for(let a = 0; a < actiDate.length; a++){
+		if(i == actiDate[a]){/* acti date 에서 가져와야 함 */
+		 document.querySelector("#date"+i).style.borderBottom="2px solid red";
+		} 
+	}	
 			
 		document.querySelector("#date"+i).addEventListener("click", () => {
+		for(let a = 0; a < actiDate.length; a++){
+			if(i == actiDate[a]){/* acti date 에서 가져와야 함 */
+			 document.querySelector("#date"+i).style.backgroundColor="grey";
+			}
+		}
 		document.querySelector("#addDate").value = '';	
 		let year = CDate.getFullYear()
 		let month = CDate.getMonth() + 1
 		document.querySelector("#addDate").value += year;
 		document.querySelector("#addDate").value +="."+ month;
 		document.querySelector("#addDate").value +='.'+ document.querySelector("#date"+i).innerHTML;
-		for(let a = 0; a<35; a++){
-			document.querySelector("#date"+a).style.border="none";
-		}
-		document.querySelector("#date"+i).style.border="2px solid #EFBBCF"
 		})
 	}
-	
-	/* function addNumber(){
-		n++;
-	} */
 
 	let person = document.querySelector("#number").innerHTML; 
 	document.querySelector("#person").value += person;

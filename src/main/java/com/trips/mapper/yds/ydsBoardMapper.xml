@@ -19,21 +19,42 @@ VALUES(1, 'aa', #{num});
 	
 </insert>
 
-<select id="getBoardList" resultType="com.trips.domain.yds.TripsBoardDto">
+<select id="getBoardList" resultMap="boardListMap">
 SELECT
 	b.B_NO num,
 	b.B_TITLE title,
 	b.M_ID writer,
 	b.B_CONTENT content,
 	f.B_FILENAME fileName,
-	b.B_STATUS,
-	b.B_CREATEDATE,
 	b.MAX_PERSON maxPerson
 FROM ACTI_BOARD b
 LEFT JOIN ACTI_FILE f on f.B_NO = b.B_NO
 GROUP BY b.B_NO
-ORDER BY b.B_NO DESC; 
+ORDER BY b.B_NO DESC;
+LIMIT 20;
 </select>
+
+<resultMap type="com.trips.domain.yds.TripsBoardDto" id="boardListMap">
+		<result column="num" property="num"></result>
+		<result column="title" property="title"/>
+		<result column="writer" property="writer"></result>
+		<result column="content" property="content"/>
+		<result column="createDate" property="createDate"/>
+		<result column="hostIntro" property="hostIntro"></result>
+		<result column="countLike" property="countLike"/>
+		<result column="price" property="price"/>
+		<result column="maxPerson" property="maxPerson"></result>
+		<result column="minPerson" property="minPerson"></result>
+		<result column="minAge" property="minAge"></result>
+		<collection property="fileName" ofType="String">
+			<result property="fileName" column="fileName"/>
+		</collection>
+		<collection property="fileNum" ofType="int">
+			<result property="fileNum" column="fileNum"></result>
+		</collection>
+</resultMap>
+
+
 
 <select id="getFiveFiles" resultMap="getfiveMap">
 SELECT
@@ -75,7 +96,9 @@ SELECT
 	b.COST price,
 	f.B_FILENAME fileName,
 	f.B_FILE_NO fileNum,
-	b.MAX_PERSON maxPerson 
+	b.MAX_PERSON maxPerson,
+	b.MIN_PERSON minPerson,
+	b.MIN_AGE minAge
 FROM ACTI_BOARD b
 LEFT JOIN ACTI_FILE f ON b.B_NO = f.B_NO
 WHERE b.B_NO = #{num}
@@ -91,6 +114,8 @@ WHERE b.B_NO = #{num}
 		<result column="countLike" property="countLike"/>
 		<result column="price" property="price"/>
 		<result column="maxPerson" property="maxPerson"></result>
+		<result column="minPerson" property="minPerson"></result>
+		<result column="minAge" property="minAge"></result>
 		<collection property="fileName" ofType="String">
 			<result property="fileName" column="fileName"/>
 		</collection>
