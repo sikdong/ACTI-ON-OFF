@@ -133,7 +133,8 @@
 						<div style="padding:0 0 10px 0;">
 							<form id="phoneModifyText" action="" method="post">
 								<input type="hidden" name="id" value="${member.id}" />
-								<input id="modifyPhone" style="width:400px" type="text" name="phone" placeholder="변경하실 전화번호를 '-'를 제외하고 입력해주세요" /> 
+								<input id="modifyPhone" onkeydown="return event.key != 'Enter';" 
+									style="width:400px" type="text" name="phone" placeholder="변경하실 전화번호를 '-'를 제외하고 입력해주세요" /> 
 								<button id="existPhoneButton" type="button" class="btn btn-outline-primary" style="width:100px">번호체크</button>
 								<div id="phoneText1" class="form-text">전화번호 체크를 해주세요.</div>
 							</form>
