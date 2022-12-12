@@ -36,6 +36,9 @@ public class ydsBoardService {
 	public int removeBoard(int num) {
 		rMapper.deleteReplybyBoardId(num);
 		// TODO Auto-generated method stub
+		mapper.deleteFileByBoardNo(num);
+		mapper.deleteLikeByBoardNo(num);
+		mapper.deleteDate(num);
 		return mapper.removeBoard(num);
 	}
 
@@ -84,6 +87,11 @@ public class ydsBoardService {
 	public void deleteFile(int fileNum) {
 		// TODO Auto-generated method stub
 		mapper.deleteFile(fileNum);
+	}
+
+	public List<TripsBoardDto> getAllBoard(MultipartFile[] file) {
+		// TODO Auto-generated method stub
+		return mapper.getAllBoard(file);
 	}
 
 }

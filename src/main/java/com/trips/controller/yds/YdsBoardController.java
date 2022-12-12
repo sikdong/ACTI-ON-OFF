@@ -41,7 +41,6 @@ public class YdsBoardController {
 	@GetMapping({"get","modify"})
 	public void getBoard(int num, Model model, MultipartFile[] file) {
 		TripsBoardDto board = service.getBoard(num, file);
-		System.out.println(num);
 		model.addAttribute("board", board);
 		
 	}
@@ -85,5 +84,11 @@ public class YdsBoardController {
 	@DeleteMapping("deleteFile/{fileNum}")
 	public void deleteFile(@PathVariable int fileNum){
 		service.deleteFile(fileNum);
+	}
+	
+	@GetMapping("getAllBoard")
+	public void getallboard(Model model, MultipartFile[] file) {
+		List<TripsBoardDto> board = service.getAllBoard(file);
+		model.addAttribute("allBoard", board);
 	}
 }

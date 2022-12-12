@@ -32,4 +32,12 @@ public interface ydsBoardMapper {
 
 	public void deleteFile(int fileNum);
 
+	public void deleteDate(int num);
+
+	public void deleteFileByBoardNo(int num);
+
+	public void deleteLikeByBoardNo(int num);
+
+	public List<TripsBoardDto> getAllBoard(MultipartFile[] file);
+
 }

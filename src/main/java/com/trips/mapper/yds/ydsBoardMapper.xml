@@ -6,7 +6,6 @@
 <mapper namespace="com.trips.mapper.yds.ydsBoardMapper">
 <delete id="deleteLikeByLNO">
 DELETE FROM ACTI_LIKE WHERE B_NO = #{B_NO} AND M_ID = 'aa'
-
 </delete>
 
 <insert id="plusLike" useGeneratedKeys="true" keyProperty="board.L_NO">
@@ -19,6 +18,33 @@ VALUES(1, 'aa', #{num});
 	
 </insert>
 
+<select id="getAllBoard" resultMap="allBoard">
+SELECT
+	b.B_NO num,
+	b.B_TITLE title,
+	b.M_ID writer,
+	b.B_CONTENT content,
+	f.B_FILENAME fileName,
+	b.MAX_PERSON maxPerson,
+	b.COST price
+FROM ACTI_BOARD b
+LEFT JOIN ACTI_FILE f on f.B_NO = b.B_NO
+GROUP BY b.B_NO
+ORDER BY b.B_NO DESC;
+</select>
+
+<resultMap type="com.trips.domain.yds.TripsBoardDto" id="allBoard">
+		<result column="num" property="num"></result>
+		<result column="title" property="title"/>
+		<result column="writer" property="writer"></result>
+		<result column="content" property="content"/>
+		<result column="maxPerson" property="maxPerson"></result>
+		<result column="price" property="price"></result>
+		<collection property="fileName" ofType="String">
+			<result property="fileName" column="fileName"/>
+		</collection>
+</resultMap>
+
 <select id="getBoardList" resultMap="boardListMap">
 SELECT
 	b.B_NO num,
@@ -26,11 +52,12 @@ SELECT
 	b.M_ID writer,
 	b.B_CONTENT content,
 	f.B_FILENAME fileName,
-	b.MAX_PERSON maxPerson
+	b.MAX_PERSON maxPerson,
+	b.COST price
 FROM ACTI_BOARD b
 LEFT JOIN ACTI_FILE f on f.B_NO = b.B_NO
 GROUP BY b.B_NO
-ORDER BY b.B_NO DESC;
+ORDER BY b.B_NO DESC
 LIMIT 20;
 </select>
 
@@ -39,18 +66,10 @@ LIMIT 20;
 		<result column="title" property="title"/>
 		<result column="writer" property="writer"></result>
 		<result column="content" property="content"/>
-		<result column="createDate" property="createDate"/>
-		<result column="hostIntro" property="hostIntro"></result>
-		<result column="countLike" property="countLike"/>
-		<result column="price" property="price"/>
 		<result column="maxPerson" property="maxPerson"></result>
-		<result column="minPerson" property="minPerson"></result>
-		<result column="minAge" property="minAge"></result>
+		<result column="price" property="price"></result>
 		<collection property="fileName" ofType="String">
 			<result property="fileName" column="fileName"/>
-		</collection>
-		<collection property="fileNum" ofType="int">
-			<result property="fileNum" column="fileNum"></result>
 		</collection>
 </resultMap>
 
@@ -101,6 +120,7 @@ SELECT
 	b.MIN_AGE minAge
 FROM ACTI_BOARD b
 LEFT JOIN ACTI_FILE f ON b.B_NO = f.B_NO
+LEFT JOIN ACTI_DATE d ON b.B_NO = d.B_NO
 WHERE b.B_NO = #{num}
 </select>
 
@@ -158,6 +178,19 @@ WHERE B_NO = #{num} AND B_FILENAME = #{fileName}
 <delete id="deleteFile">
 DELETE FROM ACTI_FILE
 WHERE B_FILE_NO = #{fileNum}
+</delete>
+
+<delete id="deleteFileByBoardNo">
+DELETE FROM ACTI_FILE
+WHERE B_NO = #{num}
+</delete>
+<delete id="deleteLikeByBoardNo">
+DELETE FROM ACTI_LIKE
+WHERE B_NO = #{num}
+</delete>
+<delete id="deleteDate">
+DELETE FROM ACTI_DATE
+WHERE B_NO = #{num}
 </delete>
 
 </mapper>

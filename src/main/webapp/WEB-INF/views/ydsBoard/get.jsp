@@ -7,7 +7,7 @@
 <head>
 <style>
 .root {
-	margin-left : 25%;
+	margin-left : 10%;
 	margin-top : 50px;
 }
 
@@ -68,14 +68,13 @@
 }
 
 .calendar {
-  /*padding과 margin을 없애고 body태그 전체에 배경색과 폰트를 넣어줍니다.*/
-  	width : 24%;
+  	width : 30%;
     padding: 0;
     margin-left: 0;
     background-color: var(--bg-color);
     font-family: var(--font);
     position : fixed;
-    bottom : 5px;
+    bottom : 2px;
     z-index : 1;
 }
 
@@ -197,10 +196,12 @@
 			</div>
 	</div>
 	<div class="container-fluid flex" >
-	<c:forEach items="${board.fileName }" var="file">
+	<c:forEach items="${board.fileName }" var="file" begin="0" end="2">
 		<img src="${path}/assets/img/${file}" class="size" alt="...">
 	</c:forEach>
 	</div>
+	<%--사진 더 보기 기능도 추가해야함 --%>
+	<div style="text-align : left"><a href="" style="color : black;">사진 다 보기</a></div>
 	
 
 
@@ -211,7 +212,7 @@
 					<textarea style="width : 100% !important;" rows="5"  
 					readonly class="form-control">${board.hostIntro }</textarea>
 				</div>
-				<div id="showCalendar" class="halfview">
+				<div id="showCalendar" class="halfview" style="margin-left : 20%">
 				</div>
 			</div>	
 				<div class="mt-40">
@@ -222,7 +223,7 @@
 					${board.content }
 				</div>
 				<div>
-					<a id="reserveButton" onclick="buildCalendar()" class="btn btn-dark btn-sm">예약하기</a>
+					<a id="reserveButton" onclick="buildCalendar()" class="btn btn-dark btn-sm">예약날짜확인</a>
 				</div>
 				<span>
 					<a id="noneButton" style="display : none" onclick="none()" class="btn btn-secondary btn-sm">달력접기</a>
@@ -377,12 +378,14 @@ function getFiveFiles(){
 	.then(res => res.json())
 	.then(list => {
 		for (const file of list){
+			if(file.num != ${board.num}){
 			const fileList = 
 				`<div class="flex-child">
 					<img src="${path}/assets/img/\${file.fileName}" class="size" alt="...">
 					<h5 class="text-center">\${file.content}</h5>
 				</div>`
 			  document.querySelector(".flex-container").insertAdjacentHTML("afterbegin", fileList);
+			}
 		}
 	})
 }
@@ -556,7 +559,8 @@ const calendarFrame =
 			</div>
 			<div class="dates"></div>
 			<div onclick="goCart()" class="btn btn-outline-secondary">장바구니 담기 <i class="fa-solid fa-cart-shopping"></i></div>
-			<div style="color : red"><small>*밑줄 친 날짜만 예약 가능합니다</small></div>
+			<div style="color : red"><small>*밑줄 친 날짜만 예약 가능합니다.</small></div>
+			<small id="actiDate"></small>
 		</div>
 	</div>`
 document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calendarFrame)
@@ -590,7 +594,7 @@ document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calenda
 				const dateDiv =`<div class="date cursor" id="date\${i}">\${dates[i]}</div>`;
 				document.querySelector(".week").insertAdjacentHTML("afterbegin", dateDiv); 
 		const actiDate = [];
-		actiDate.push(8)
+		actiDate.push(${board.price})
 		actiDate.push(11)
 		actiDate.push(20)
 		
@@ -599,11 +603,10 @@ document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calenda
 		 document.querySelector("#date"+i).style.borderBottom="2px solid red";
 		} 
 	}	
-			
 		document.querySelector("#date"+i).addEventListener("click", () => {
 		for(let a = 0; a < actiDate.length; a++){
 			if(i == actiDate[a]){/* acti date 에서 가져와야 함 */
-			 document.querySelector("#date"+i).style.backgroundColor="grey";
+			 document.querySelector("#actiDate").innerHTML="선택하신 날짜는 " + document.querySelector("#date"+i).innerHTML+"일 입니다."
 			}
 		}
 		document.querySelector("#addDate").value = '';	
@@ -618,6 +621,8 @@ document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calenda
 	let person = document.querySelector("#number").innerHTML; 
 	document.querySelector("#person").value += person;
 }
+
+buildCalendar();
 
 function addNumber(){
 	document.querySelector("#number").innerHTML++
