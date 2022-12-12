@@ -155,7 +155,18 @@ div {
 						<label for="" class="form-label">체험의 1인당 비용을 알려주세요</label> <input
 							required="required" type="number" class="form-control" name="cost" placeholder="단위: 원(won)">
 					</div>
-
+					
+					<div class="mb-3">
+						<label for="" class="form-label">체험을 진행할 주소를 알려주세요</label> 
+						<input required="required" type="text" class="form-control" name="address2" placeholder="주소찾기 버튼을 통해 입력해주세요">
+						<input required="required" type="text" class="form-control" name="addressLL" placeholder="주소찾기 버튼을 통해 입력해주세요">
+						<div style="display: flex">
+							<input required="required" type="text" class="form-control" style="width: 1205px"
+							name="address" placeholder="주소찾기 버튼을 통해 입력해주세요">
+							<button id="addressSubmitButton" type="button" class="btn btn-primary" style="width:90px">주소찾기</button>
+						</div>
+					</div>
+					
 					<input id="submitButton1" class="btn btn-dark" type="submit"
 						value="등록">
 
@@ -171,8 +182,21 @@ div {
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
 		crossorigin="anonymous"></script>
-	<script>
-		
+	
+<script>
+const ctx = "${pageContext.request.contextPath}";
+
+document.querySelector("#addressSubmitButton").addEventListener("click", function() {
+	window.open("/mypage/jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+});
+
+
+function jusoCallBack(roadFullAddr,roadAddrPart1){
+		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
+		document.querySelector("#address").value = roadFullAddr;
+		document.querySelector("#address2").value = roadAddrPart1;
+}
+</script>		
 </body>
 </html>
 

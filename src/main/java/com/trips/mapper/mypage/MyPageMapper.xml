@@ -103,15 +103,15 @@
 	    d.DATE date,
 	    f.B_FILENAME fileName,
         b.B_CONTENT content,
-        m.MAP_TEXT mapText,
-        m.MAP_LL mapLL,
+        b.MAP_TEXT mapText,
+        b.MAP_LL mapLL,
         b.B_NO boardNo,
+        <!-- ↓ 얘 상수로 되어있긴한데 어차피 JSP에서 안쓰는 데이터라 신경 안써도 됨 바닐라count가 역할 대신하는 중-->
         COUNT(CASE WHEN r.B_NO = 1001 AND d.DATE = '2022-10-30' THEN 1 END) count
 	FROM
     	ACTI_RESERVATION r
 	JOIN ACTI_BOARD b ON r.B_NO = b.B_NO
 	JOIN ACTI_DATE d ON r.B_NO = d.B_NO
-	JOIN ACTI_MAP m ON r.B_NO = m.B_NO
 	JOIN ACTI_FILE f ON r.B_NO = f.B_NO
 	WHERE r.RES_NO= #{resNo};
 	</select>
@@ -123,7 +123,6 @@
     	ACTI_RESERVATION r
 	JOIN ACTI_BOARD b ON r.B_NO = b.B_NO
 	JOIN ACTI_DATE d ON r.B_NO = d.B_NO
-	JOIN ACTI_MAP m ON r.B_NO = m.B_NO
 	JOIN ACTI_FILE f ON r.B_NO = f.B_NO
 	WHERE r.B_NO = #{boardNo} AND d.DATE = #{date};
 	</select>

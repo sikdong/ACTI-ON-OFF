@@ -267,8 +267,14 @@ public class MyPageController {
 	public void sample() {
 		
 	}
+	
 	@GetMapping("jusoPopup")
 	public void jusoPopup() {
 		
 	}
+	@PostMapping("jusoPopup")
+	public void jusoPopup2() {
+		
+	}
+	
 }
