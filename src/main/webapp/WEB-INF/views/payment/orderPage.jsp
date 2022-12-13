@@ -136,30 +136,31 @@ function requestPay() {
         	console.log("ajax 이전33333S");
         	// todo1 : data 만들기
         	// data : m_id, o_b_no, o_cart_id, o_adddate, o_price, renamedFilename
-        	const memberId = "11"; // 나중에 실제 멤버아이디로 변경
+        	const memberId = ${orderList.id}; // 나중에 실제 멤버아이디로 변경
         	const boardNumber = 1; // 필요한건가???? 나중에 수정하세요
         	const cartId = ${orderList.cart_id};
-        	const price = ${ orderList.price };
+        	const price = ${orderList.price};
         	const renamedFilename = '';
-        	
-        	const data = {memberId, boardNumber, cartId, price};
-        	
+        
+        	var data = {memberId, boardNumber, cartId, price};
+        	/*----------여기부터 문제--------------------------------*/
               	$.ajax({
        		url: "${path}/payment/orderResult",
-       		type: "post",
+       		type: "POST",
        		data: JSON.stringify(data),
-       		dataType: "json",
+       		dataType: "JSON",
        		contentType: "application/json; charset=UTF-8",
        		success: function(){
 		        	alert("결제가 완료되었습니다.");
-		        	 location.href = "${path}/payment/orderResult"; 
+		        	 location.href = "${path}/payment/orderResult";
        		}
+            /*----------여기부터 문제--------------------------------*/
        	}); 
        	console.log("ajax 이후");
-       	location.href = "${path}/payment/orderResult"; 
+       	location.href = "${path}/payment/orderResult";
        } else { // 실패시 실행문
        	alert("결제가 취소되었습니다.");
-   		location.href = "${path}/payment/cart";
+       	location.href = "${path}/payment/orderResult";
        }
    });
 }

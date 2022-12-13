@@ -31,7 +31,7 @@ public class OrderList {
 	
 	private int resNo;
 	
-	private String price; // 
+	private int price; // 
 
 	private String renamedFileName;
 }

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.trips.domain.payment.CartList;
 import com.trips.domain.payment.Order;
 import com.trips.domain.payment.OrderList;
+import com.trips.domain.payment.testDto;
 import com.trips.service.payment.CartService;
 import com.trips.service.payment.OrderService;
 
@@ -32,7 +33,12 @@ public class OrderController {
 
 	@RequestMapping(value="/payment/orderPage", method = {RequestMethod.GET, RequestMethod.POST}) 
 	public String orderPage(OrderList orderList, String merchant_uid, Authentication authentication, Model model) throws Exception {
-
+		System.out.println();
+		System.out.println("@@@@@@@@@@@@"+orderList+"@@@@@@@@@@@@@@@@@@@@@@@");
+		System.out.println();
+		System.out.println();
+		System.out.println("@@@@@@@@@@@@"+merchant_uid+"@@@@@@@@@@@@@@@@@@@@@@@");
+		System.out.println();
 		model.addAttribute("orderList", orderList);
 		model.addAttribute("merchant_uid", merchant_uid);
 		
@@ -46,16 +52,16 @@ public class OrderController {
 	}
 		
 	@PostMapping("/payment/orderResult") 
-	public void saveOrderResult(@RequestBody Order order) {
-		System.out.println(order);
-		int id = order.getId();
+	public void saveOrderResult(@RequestBody testDto test) {
+		System.out.println(test);
+		
 		// service에서 order받아서 ACTI_ORDER 테이블에 넣기
 
-		List<OrderList> paymentList = orderService.orderResult(id);
+		//List<OrderList> paymentList = orderService.orderResult(id);
 
 		
 		// service.orderResult(order)
-		orderService.orderResult(order);
+		//orderService.orderResult(order);
 		System.out.println();
 		
 	}
