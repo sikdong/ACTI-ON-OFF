@@ -29,6 +29,7 @@ import com.trips.domain.mypage.IdEmailDto;
 import com.trips.domain.mypage.MemberDto;
 import com.trips.domain.mypage.Res1Dto;
 import com.trips.domain.mypage.Res2Dto;
+import com.trips.service.mypage.DeleteService;
 import com.trips.service.mypage.MyPageService;
 
 @Controller
@@ -37,6 +38,9 @@ public class MyPageController {
 	
 	@Autowired
 	private MyPageService service;
+	
+	@Autowired
+	private DeleteService dservice;
 	
 	@GetMapping("mypage1")
 	public void myPage(
@@ -214,7 +218,7 @@ public class MyPageController {
 			HttpServletRequest request)
 			throws Exception {
 		
-		int cnt = service.remove(id);
+		int cnt = dservice.remove(id);
 //		rttr.addFlashAttribute("message", "회원 탈퇴하였습니다.");
 		request.logout();
 

@@ -70,7 +70,7 @@ html, body {
 
 	<my:navbar></my:navbar>
 	
-	<div style="height: 100%">
+	<div style="height: calc(100% - 80px)">
 		<div class="resD_left">
 			<div style="width:100%; position:relative; height: 300px" >
 				<div style="
@@ -193,7 +193,7 @@ html, body {
 		
 		
 		<div class="resD_right">
-			<div id="googleMap" style="width:100%; height: 92%;">
+			<div id="googleMap" style="width:100%; height: 100%;">
 			</div>
 		</div>
 	</div>
