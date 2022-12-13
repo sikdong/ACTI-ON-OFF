@@ -48,6 +48,7 @@ public class AdminController {
 	}
 	
 	@GetMapping("accept")
+	@PreAuthorize("hasAuthority('admin')")
 	public String adminAccept(jjhMemberDto member,RedirectAttributes rttr) {
 		
 		int cnt = service.update(member);
@@ -57,7 +58,7 @@ public class AdminController {
 		return "redirect:/qna/admin";
 	}
 	@GetMapping("boardAccept")
-	// @PreAuthorize("@CustomUserDetailsService.member.getM_AUTHORITY()!='null'") 
+	@PreAuthorize("hasAuthority('admin')")
 	public String boardAccept(BoardDto board) {
 		int cnt = service.updateAccept(board);
 		

@@ -109,10 +109,10 @@
 		<!-- 댓글 작성 -->
 		
 				<input type="hidden" id="qnaId" value="${qna.id }">
-			<sec:authorize access="hasAuthority('admin')">
+			  <sec:authorize access="hasAuthority('admin')"> 
 				<input class="form-control" type="text" id="answerInput1">
 				<button class="form-control" id="answerSendButton1">답변쓰기</button>
-			</sec:authorize>
+			 </sec:authorize> 
 			
 		
 			

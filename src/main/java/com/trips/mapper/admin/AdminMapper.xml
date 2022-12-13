@@ -53,7 +53,8 @@ WHERE b_accept=0
 <update id="update">
 UPDATE MEMBER 
 SET
-	M_HOST_REQUEST = 0
+	M_HOST_REQUEST = 0,
+	M_AUTHORITY= 'host'
 WHERE
     M_ID = #{M_ID}
 </update>
