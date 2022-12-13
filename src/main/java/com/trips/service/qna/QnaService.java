@@ -29,6 +29,7 @@ public class QnaService {
 	private QnaMapper qnaMapper;
 	@Autowired
 	private AnswerMapper answerMapper;
+
 	
 	
 	@Autowired
@@ -190,18 +191,18 @@ public class QnaService {
 		s3Client.deleteObject(deleteObjectRequest);
 	}
 
-	public Map<String, Object> updateEmpathy(String qnaId) {
+	public Map<String, Object> updateEmpathy(String qnaId,String MemberNo) {
 		Map<String,Object> map=new HashMap<>();
-		int cnt =qnaMapper.getEmpathyByQnaId(qnaId);
+		int cnt =qnaMapper.getEmpathyByQnaId(qnaId,MemberNo);
 
 		if(cnt==1) {
 			// qnaId로 공감 테이블 검색해서 있으면 삭제
-			qnaMapper.deleteEmpathy(qnaId);
+			qnaMapper.deleteEmpathy(qnaId,MemberNo);
 			map.put("current","not empathied");
 			
 		}else {
 			//없으면 추가
-			qnaMapper.insertEmpathy(qnaId);
+			qnaMapper.insertEmpathy(qnaId,MemberNo);
 			map.put("current","empathied");
 			
 			

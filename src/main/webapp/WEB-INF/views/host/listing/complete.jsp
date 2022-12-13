@@ -18,6 +18,8 @@ h2 { text-align: center; }
 
 </head>
 <body>
+<my:navbar></my:navbar>
+
 <my:hostNav></my:hostNav>
 <br><br>
 <center><h3>체험 등록이 완료되었습니다! <br> 관리자의 승인을 기다려주세요</h3>

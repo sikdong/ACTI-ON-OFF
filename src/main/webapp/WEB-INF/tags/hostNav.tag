@@ -7,16 +7,19 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ attribute name="active" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
+
+
+          
 <ul class="list-group list-group-flush">
+
   <li class="list-group-item"><a href="<c:url value="/host/becomeHostIntro"/>">호스트 되기</a></li>
   <li class="list-group-item"><a href="<c:url value="/host/listing"/>">체험 등록하기</a></li>
   <li class="list-group-item"><a href="<c:url value="/host/admin"/>">나의 체험 관리</a></li>
   <li class="list-group-item"><a href="<c:url value="/host/hostInfo"/>">호스트 정보 수정</a></li>
 
 </ul>
-
-
 <!-- <div class="row"> -->
 <!--   <div class="col-4"> -->
 <!--     <nav id="navbar-example3" class="h-100 flex-column align-items-stretch pe-4 border-end"> -->

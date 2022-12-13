@@ -18,7 +18,8 @@
 		M_GENDER,
 		M_PHONE,
 		M_EMAIL,
-		M_HOST_REQUEST
+		M_HOST_REQUEST,
+		M_AUTHORITY
 	FROM
 		MEMBER
 	WHERE
@@ -34,6 +35,7 @@
 		<result column="M_PHONE" property="M_PHONE"/>
 		<result column="M_EMAIL" property="M_EMAIL"/>		
 		<result column="M_HOST_REQUEST" property="M_HOST"/>
+		<result column="M_AUTHORITY" property="M_AUTHORITY"/>
 	</resultMap>
 	
 	<select id="selectByEmail" resultType="com.trips.domain.jjhMember.jjhMemberDto">
