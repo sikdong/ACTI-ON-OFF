@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,6 +28,10 @@ h2 {
 
 </head>
 <body>
+<my:navbar></my:navbar>
+<my:hostNav></my:hostNav>
+<sec:authorize access="isAuthenticated()" var="loggedIn" />
+${loggedIn }
 	<br>
 	<div class="container-md">
 		<div class="row">
