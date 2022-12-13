@@ -170,8 +170,33 @@
 	JOIN M_CHAT m ON m.CHAT_ROOM = r.RES_NO
 	ORDER BY date DESC
 	LIMIT 18446744073709551615) AS one
+	WHERE id = #{id}
 	GROUP BY resNo) AS two
 	ORDER BY date DESC
+	</select>
+	
+	<delete id="remove">
+	DELETE FROM MEMBER
+	WHERE M_ID = #{id}
+	</delete>
+	
+	<select id="getEmailById" resultType="String">
+		SELECT M_EMAIL 
+		FROM MEMBER 
+		WHERE M_ID = #{id};
+	</select>
+	
+	<select id="getByEmail" resultType="com.trips.domain.mypage.MemberDto">
+		SELECT 
+			M_ID id,
+		    M_PASSWORD password,
+		    M_NAME name,
+		    M_GENDER gender,
+		    M_PHONE phone,
+		    M_EMAIL email,
+		    M_HOST_REQUEST host
+		FROM MEMBER 
+		WHERE M_EMAIL = #{email};
 	</select>
 </mapper>
 

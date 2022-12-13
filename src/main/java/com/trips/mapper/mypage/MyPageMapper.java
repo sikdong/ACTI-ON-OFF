@@ -34,6 +34,12 @@ public interface MyPageMapper {
 
 	int insertChat(String id, int chatRoom, String content);
 
-	List<ChatLeftDto> getChatLeft();
+	List<ChatLeftDto> getChatLeft(String id);
+
+	int remove(String id);
+
+	String getEmailById(String id);
+
+	MemberDto getByEmail(String email);
 
 }

@@ -23,7 +23,7 @@
 
 
 
-				<h1>${qna.id }번 문의글 수정</h1>
+				<h4 style="text-align:center;">${qna.memberId }님 문의글 수정</h4>
 				<form id="modifyForm" action="" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="id" value="${qna.id }"> 
 					제목<input class="form-control" type="text" name="title" value="${qna.title }"><br>
@@ -45,7 +45,7 @@
 								</div>
 								<div class="col-10">
 									<div>
-										<img class="img-fluid img-thumbnail" src="${imgUrl }/${qna.id }/${URLEncoder.encode(name, 'utf-8')}" alt="">
+										<img class="img-fluid img-thumbnail" src="${imgUrl }/qna/${qna.id }/${URLEncoder.encode(name, 'utf-8')}" alt="">
 									</div>
 								</div>
 							</div>
@@ -61,10 +61,10 @@
 					 작성일시<input class="form-control" type="datetime-local" value="${qna.inserted }" readonly><br>
 				</form>
 				<!-- 수정 -->
-				<input type="submit" value="수정" data-bs-toggle="modal"
+				<input type="submit" class="btn btn-light" value="수정" data-bs-toggle="modal"
 					data-bs-target="#modifyModal">
 				<!-- 삭제 -->
-				<input type="submit" value="삭제" data-bs-toggle="modal"
+				<input type="submit" class="btn btn-dark" value="삭제" data-bs-toggle="modal"
 					data-bs-target="#removeModal">
 				<c:url value="/qna/QnaRemove" var="qnaRemoveLink"></c:url>
 				<form id="removeForm" action="${qnaRemoveLink }" method="post">
@@ -89,7 +89,7 @@
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">취소</button>
 					<button id="removeConfirmButton" type="button"
-						class="btn btn-danger">확인</button>
+						class="btn btn-dark">확인</button>
 				</div>
 			</div>
 		</div>
@@ -111,13 +111,16 @@
 					<button type="button" class="btn btn-secondary"
 						data-bs-dismiss="modal">취소</button>
 					<button id="modifyConfirmButton" type="button"
-						class="btn btn-primary">확인</button>
+						class="btn btn-light">확인</button>
 				</div>
 			</div>
 		</div>
 	</div>
 	
 	<my:navBar1></my:navBar1>
+	<jsp:include page="/WEB-INF/views/index.jsp" flush="true">
+	<jsp:param value="index1" name="1"/>
+</jsp:include>
 	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 	<script>

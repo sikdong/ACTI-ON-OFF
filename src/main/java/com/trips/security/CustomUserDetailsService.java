@@ -25,6 +25,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 	 
 	@Autowired
 	private jjhMemberMapper mapper;
+	
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

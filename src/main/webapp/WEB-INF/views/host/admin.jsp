@@ -14,6 +14,8 @@
 
 </head>
 <body>
+<my:navbar></my:navbar>
+
 <my:hostNav></my:hostNav>
 	
 	<div class="container-md">
@@ -31,150 +33,28 @@
 				<table class="table">
 					<thead>
 						<tr>
-<!-- 							<th>?</th> -->
-<!-- 							<th><i class="fa-solid fa-thumbs-up"></i></th> -->
-							<th>b_title</th>
-							
-							<th>b_createdate</th>
+							<th>허가여부</th>
+							<th>제목</th>
+							<th>체험주제</th>
+							<th>일인당 비용</th>
+							<th>최대인원</th>
+							<th>최소인원</th>
 						</tr>
 					</thead>
-					<tbody>
-						<c:forEach items="${boardList}" var="board">
+							<c:forEach items="${boardList}" var="board">
 							<tr>
-<%-- 								<td>${board.id }</td> --%>
-<%-- 								<td>${board.countLike }</td> --%>
-								<td>
-									<c:url value="/board/get" var="getLink">
-										<c:param name="id" value="${board.id }"></c:param>
-									</c:url>
-									<a href="${getLink }">
-										${board.title }
-									</a>
-									
-									<%-- 댓글 수 출력 --%>
-									<c:if test="${board.countReply > 0 }">
-										<span class="badge rounded-pill text-bg-light">
-											<i class="fa-regular fa-comment-dots"></i>
-											${board.countReply }
-										</span>
-									</c:if>
-									
-									<%-- 파일 수 출력 --%>
-									<c:if test="${board.countFile > 0 }">
-										<span class="badge rounded-pill text-bg-light">
-											<i class="fa-regular fa-file"></i>
-											${board.countFile }
-										</span>
-									</c:if>
-								</td>
+								<td>${board.b_accept }</td>
+								<td>${board.b_title }</td>
+								<td>${board.b_topic }</td>
+								<td>${board.cost }</td>
+								<td>${board.max_person }</td>
+								<td>${board.min_person }</td>
 								
-								<td>${board.ago }</td>
 							</tr>
 						</c:forEach> 
-					</tbody>
-				</table>
-			</div>
-		</div>
-		
-		<!-- .row>.col -->
-		<div class="row">
-			<div class="col">
-				<nav class="mt-3" aria-label="Page navigation example">
-				  <ul class="pagination justify-content-center">
-				  
-				  	<%-- 맨앞 버튼은 1페이지가 아니면 존재함 --%>
-				  	<c:if test="${pageInfo.currentPageNumber ne 1 }">
-				  		<c:url value="/board/list" var="listLink">
-				  			<c:param name="page" value="1" />
-				  			<c:param name="q" value="${param.q }" />
-				  			<c:param name="t" value="${param.t }" />
-				  		</c:url>
-				  		<!-- li.page-item>a.page-link{맨앞버튼} -->
-						<li class="page-item">
-							<a href="${listLink }" class="page-link">
-								<i class="fa-solid fa-angles-left"></i>
-							</a>
-						</li>
-				  	</c:if>
-				  	
-				  	<c:if test="${pageInfo.hasPrevButton }">
-				  		<c:url value="/board/list" var="listLink">
-				  			<c:param name="page" value="${pageInfo.jumpPrevPageNumber }"></c:param>
-				  			<c:param name="q" value="${param.q }" />
-				  			<c:param name="t" value="${param.t }" />
-				  		</c:url>
-				  		<li class="page-item">
-				  			<a href="${listLink }" class="page-link">
-				  				<i class="fa-solid fa-angle-left"></i>
-				  			</a>
-				  		</li>
-				  	</c:if>
-				  
-				  	<c:forEach begin="${pageInfo.leftPageNumber }" end="${pageInfo.rightPageNumber }" var="pageNumber">
-				  		<c:url value="/board/list" var="listLink">
-				  			<c:param name="page" value="${pageNumber }" />
-				  			<c:param name="q" value="${param.q }" />
-				  			<c:param name="t" value="${param.t }" />
-				  		</c:url>
-					    <li class="page-item
-					    
-					    	<%-- 현재페이지에 active 클래스 추가 --%>
-					    	${pageInfo.currentPageNumber eq pageNumber ? 'active' : '' }
-					    
-					    "><a class="page-link" href="${listLink }">${pageNumber }</a></li>
-				  	</c:forEach>
-				  	
-				  	<c:if test="${pageInfo.hasNextButton }">
-				  		<c:url value="/board/list" var="listLink">
-				  			<c:param name="page" value="${pageInfo.jumpNextPageNumber }"></c:param>
-				  			<c:param name="q" value="${param.q }" />
-				  			<c:param name="t" value="${param.t }" />
-				  		</c:url>
-				  		<li class="page-item">
-				  			<a href="${listLink }" class="page-link">
-				  				<i class="fa-solid fa-angle-right"></i>
-				  			</a>
-				  		</li>
-				  	</c:if>
-				  	
-				  	
-				  	<c:if test="${pageInfo.currentPageNumber ne pageInfo.lastPageNumber }">
-				  		<c:url value="/board/list" var="listLink">
-				  			<c:param value="${pageInfo.lastPageNumber }" name="page" />
-				  			<c:param name="q" value="${param.q }" />
-				  			<c:param name="t" value="${param.t }" />
-				  		</c:url>
-				  		<!-- li.page-item>a.page-link{맨뒤버튼} -->
-				  		<li class="page-item">
-				  			<a href="${listLink }" class="page-link">
-				  				<i class="fa-solid fa-angles-right"></i>
-				  			</a>
-				  		</li>
-				  	</c:if>
-				  </ul>
-				</nav>
-			</div>
-		</div>
-	</div>
+</table></div></div></div>
 	<script>
-	{
-	    mode: "multiple",
-	    dateFormat: "Y-m-d"
-	}
-	// commonjs
-	const flatpickr = require("flatpickr");
 
-	// es modules are recommended, if available, especially for typescript
-	import flatpickr from "flatpickr";
-	// If using flatpickr in a framework, its recommended to pass the element directly
-	flatpickr(element, {});
-
-	// Otherwise, selectors are also supported
-	flatpickr("#myID", {});
-
-	// creates multiple instances
-	flatpickr(".anotherSelector");
-	$(".selector").flatpickr(optional_config);
 	</script>
 	
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>

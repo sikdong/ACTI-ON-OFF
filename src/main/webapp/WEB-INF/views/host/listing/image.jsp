@@ -19,24 +19,19 @@
   integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
   crossorigin="anonymous"></script>
   
-  
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-          integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-          crossorigin="anonymous">
 
-    <link href="${path }/content/css/styles.css" rel="stylesheet">
-
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
-    <script src="${path }/content/js/multidatespicker.js" type="text/javascript"></script>
-    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   
 </head>
 <body>
+
 <my:hostNav></my:hostNav>
+
+
+
+
+
 	<div class="container-md">
 		<div class="row">
 			<div class="col">
@@ -48,59 +43,16 @@
 					
 					<div class="mb-3">
 						<label for="" class="form-label">체험을 가장 잘 표현할 수 있는 이미지를 올려주세요</label>
-						<input multiple type="file" accept="image/*" class="form-control" name="files">
+						<input id="imageFile" multiple type="file" accept="image/*" class="form-control" name="files">
+						<br>
+					
+					
 					</div>
 					
-<!-- 					<div class="mb-3"> -->
-<!-- 						<label for="" class="form-label">호스트할 날짜를 선택해주세요/ 최대 몇달 ? 날짜기능 나중에</label>  -->
-<!-- 						<input type= date name="date">  -->
-							
-<!-- 					</div> -->
-					
-					<div style="width: 22%;margin:20px;">
-					        <input type="text" id="selectedValues" class="date-values" name="date" readonly/>
-					        <div id="parent" class="container" style="display:none;">
-					            <div class="row header-row">
-					                <div class="col-xs previous">
-					                    <a href="#" id="previous" onclick="previous()">
-					                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
-					                    </a>
-					                </div>
-					                <div class="card-header month-selected col-sm" id="monthAndYear">
-					                </div>
-					                <div class="col-sm">
-					                    <select class="form-control col-xs-6" name="month" id="month" onchange="change()"></select>
-					                </div>
-					                <div class="col-sm">
-					                    <select class="form-control col-xs-6" name="year" id="year" onchange="change()"></select>
-					                </div>
-					                <div class="col-xs next">
-					                    <a href="#" id="next" onclick="next()">
-					                        <i class="fa fa-arrow-right" aria-hidden="true"></i>
-					                    </a>
-					                </div>
-					            </div>
-					            <table id="calendar">
-					                <thead>
-					                    <tr>
-					                        <th>S</th>
-					                        <th>M</th>
-					                        <th>T</th>
-					                        <th>W</th>
-					                        <th>T</th>
-					                        <th>F</th>
-					                        <th>S</th>
-					                    </tr>
-					                </thead>
-					                <tbody id="calendarBody"></tbody>
-					            </table>
-					        </div>
-					    </div>				
+					<br><br>
 
-
-
-
-
+					체험을 진행할 날짜를 선택해주세요 <br>
+					<input type="text" id="ttt1" value="날짜 선택하기" name="date"> <br><br>
 					<input id="submitButton1" class="btn btn-dark" type="submit" value="등록">
 					
  
@@ -109,17 +61,82 @@
 			</div>
 		</div>
 	</div>
-	<h1 id="header">jQuery Test를 위한 태그</h1>
+<!-- 	<h1 id="header">jQuery Test를 위한 태그</h1> -->
 <% 
 	// 스크립트릿 영역 (scriptlet) : java coding area
 	// java -> System.out.println();
 	// js -> console.log();, document.write();
-	out.print("hi jQuery...");
+	//out.print("hi jQuery...");
 %>
 
 
 
+<!--  이 스크립트의 위치가 인풋보다 아래있어야 작동 -->
+<!-- 왜 아래 코드 주석 풀면 mdp 동작 안함? -->
+ <script>
+ 
+//  $("#imageFile").on("change", function(event) {
 
+// 	    var file = event.target.files[0];
+	    
+
+// 	    var reader = new FileReader(); 
+// 	    reader.onload = function(e) {
+
+// 	        $("#preview").attr("src", e.target.result);
+// 	    }
+
+// 	    reader.readAsDataURL(file);
+// 	});
+ 
+ 
+//   $("#imageFile").on("change", function(event) {
+
+// 	  for (var i = 0; i < files.length; i++) { 
+		  
+// 	    var file = event.target.files[i];
+	    
+
+// 	    var reader = new FileReader(); 
+// 	    reader.onload = function(e) {
+
+// 	        $("#preview"+i).attr("src", e.target.result);
+// 	    }
+
+// 	    reader.readAsDataURL(file);
+// 	});
+ 
+//    }
+ 
+ 
+// //확장자가 이미지 파일인지 확인
+//  function isImageFile(file) {
+
+//      var ext = file.name.split(".").pop().toLowerCase(); // 파일명에서 확장자를 가져온다. 
+
+//      return ($.inArray(ext, ["jpg", "jpeg", "gif", "png"]) === -1) ? false : true;
+//  }
+//  // 파일의 최대 사이즈 확인
+//  function isOverSize(file) {
+
+//      var maxSize = 3 * 1024 * 1024; // 3MB로 제한 
+
+//      return (file.size > maxSize) ? true : false;
+//  }
+ 
+ 
+ //mdp
+    flatpickr("#ttt1",{
+        mode: "multiple",
+        dateFormat: "Y-m-d",
+        disable: [
+            {
+                from: "0000-04-01",
+                to: new Date()
+            }
+        ]
+    });
+</script>
  
 	
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>

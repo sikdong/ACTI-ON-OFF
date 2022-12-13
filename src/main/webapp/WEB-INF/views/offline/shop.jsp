@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -93,7 +94,15 @@
 	                        	<option value="3">3</option>
 	                        	<option value="4">4</option>
 	                        	<option value="5">5</option>
-	                        </select>&nbsp;개 <button type="button" class="btn-wine-wish btn-pop-wine-01 btn_open btn-cart cart_btn">장바구니 담기</button>
+	                        </select>&nbsp;개 
+	                     	
+	                     	<sec:authorize access="isAuthenticated()" var="logged"/>
+	                        <button type="button" class="btn-wine-wish btn-pop-wine-01 btn_open btn-cart cart_btn" 
+	                        <c:if test="${logged }"> 
+	                        	id="cart"
+	                    	</c:if>
+	                        >장바구니 담기</button>
+	                        
 	                        <form action="${path}/payment/orderPage" method="get">
 	                       <c:forEach var="list" items="${cartList}">
 				         <div class="paymentScreenBtn">
@@ -268,7 +277,7 @@ function modifyReply(){
 
  <script>
 						//장바구니 담기
-$(".cart_btn").click(function(){
+$("#cart").click(function(){
    
 	var boardnum= `${offlineboard.boardnum}`;
 	var boardTitle = $("#board.title").val();

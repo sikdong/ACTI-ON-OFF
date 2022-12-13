@@ -51,7 +51,7 @@ public class CustomConfig {
 		servletContext.setAttribute("imgUrl", imgUrl);
 		servletContext.setAttribute("gKey", gKey);
 	}
-
+ 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		
@@ -62,10 +62,13 @@ public class CustomConfig {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
 		http.formLogin().loginPage("/jjhLogin/login").defaultSuccessUrl("/home", true);
+		
 		http.logout().logoutUrl("/jjhLogin/logout");
 		http.csrf().disable();
 		return http.build();
 	}
+	
+
 
 	@Bean
 	public S3Client s3Client() {

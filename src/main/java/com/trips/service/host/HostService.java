@@ -3,6 +3,7 @@ package com.trips.service.host;
 
 
 import java.text.ParseException;
+import java.util.List;
 import java.util.StringTokenizer;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,18 +73,18 @@ public class HostService {
 				// db에 파일 정보 저장
 				hostMapper.insertImage(b_no,file.getOriginalFilename());
 				
-				uploadFile(file);
+				uploadFile(file,"trips/host/"+b_no+"/");
 			}
 		}
 		for(String date:dates) {
-			StringTokenizer st= new StringTokenizer(date,"/");
-		//	while(st.hasMoreTokens()) {System.out.println(st.nextToken()+",");		}	
-			String month = st.nextToken();
-			String day  = st.nextToken();
-			String year = st.nextToken();
-			String yyyy_mm_dd = year+"-"+month+"-"+day;
-			System.out.println(yyyy_mm_dd);
-			hostMapper.listingDate(b_no,yyyy_mm_dd);
+//			StringTokenizer st= new StringTokenizer(date,"/");
+//		
+//			String month = st.nextToken();
+//			String day  = st.nextToken();
+//			String year = st.nextToken();
+//			String yyyy_mm_dd = year+"-"+month+"-"+day;
+			System.out.println(date);
+			hostMapper.listingDate(b_no,date);
 		}
 //		for (Date date : dates) {
 //			if (date != null ) {
@@ -98,12 +99,12 @@ public class HostService {
 		
 	}
 
-	private void uploadFile(MultipartFile file) {
+	private void uploadFile(MultipartFile file,String folder) {
 		try {
 			// S3에 파일 저장
 			// 키 생성
 //			String key = "trips/board/" + id + "/" + file.getOriginalFilename();
-			String key = "trips/board/"  + file.getOriginalFilename();
+			String key = folder  + file.getOriginalFilename();
 			
 			// putObjectRequest
 			PutObjectRequest putObjectRequest = PutObjectRequest.builder()
@@ -124,20 +125,38 @@ public class HostService {
 		}
 	}
 
-	public void becomeHost(Host host) {
+	public void becomeHost(Host host, MultipartFile file) {
 		
-		if (host.getH_photo() != null && host.getH_photo().getSize() > 0) {
-			String h_photo=host.getH_photo().getOriginalFilename();
+		
+		
+		if (file != null && file.getSize() > 0) {
+			 host.setH_photo(file.getOriginalFilename());
 			// db에 파일 정보 저장
-			hostMapper.becomeHost(host.getM_id(),host.isH_experience(),host.getH_introduction(),h_photo);
+			hostMapper.becomeHost(host);
+			hostMapper.hostRequest(host.getM_id());
 			//s3에 저장
-			uploadFile(host.getH_photo());
+			uploadFile(file,"trips/host/"+host.getM_id()+"/");
 		}
 	}
 
 	public Host my(int m_id) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public Host hostInfo(String string) {
+		
+		return hostMapper.hostInfo(string);
+	}
+
+	public int hostInfoModify(Host host) {
+		
+		return hostMapper.hostInfoModify(host);
+	}
+
+	public List<BoardDto> getMyList(String m_id) {
+		// TODO Auto-generated method stub
+		return hostMapper.getMyList(m_id);
 	}
 
 	
