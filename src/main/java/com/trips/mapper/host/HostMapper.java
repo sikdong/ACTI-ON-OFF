@@ -3,6 +3,8 @@ package com.trips.mapper.host;
 import java.sql.Date;
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.trips.domain.host.BoardDto;
 import com.trips.domain.host.Host;
 
@@ -24,13 +26,15 @@ public interface HostMapper {
 
 	public void listingDate(Date date, int b_no);
 
-	public void becomeHost(String m_id, boolean h_experience, String h_introduction, String h_photo);
+	public void becomeHost(Host host);
 
 	public Host hostInfo(String string);
 
 	public int hostInfoModify(Host host);
 
 	public List<BoardDto> getMyList(String m_id);
+
+	public void hostRequest(String id);
 
 	
 }

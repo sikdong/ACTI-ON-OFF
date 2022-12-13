@@ -126,7 +126,7 @@ div {
 					enctype="multipart/form-data">
 					<div class="mb-3">
 						<label for="" class="form-label">체험을 잘 표현할 수 있는 제목</label> <input
-							required="required" type="text" class="form-control" name="b_title">
+							required="required" type="text" class="form-control" name="b_title" placeholder="예시 : 뮤지션이 들려주는 홍대와 음악 이야기">
 					</div>
 					<div class="mb-3">
 						<label for="" class="form-label">체험 소개</label>
@@ -141,19 +141,19 @@ div {
 
 					<div class="mb-3">
 						<label for="" class="form-label">체험의 최소 인원을 알려주세요</label> <input
-							required="required" type="number" class="form-control" name="min_person">
+							required="required" type="number" class="form-control" name="min_person" placeholder="단위: 명">
 					</div>
 					<div class="mb-3">
 						<label for="" class="form-label">체험의 최대 인원을 알려주세요</label> <input
-							required="required" type="number" class="form-control" name="max_person">
+							required="required" type="number" class="form-control" name="max_person" placeholder="단위: 명">
 					</div>
 					<div class="mb-3">
 						<label for="" class="form-label">참여 가능한 최소연령을 알려주세요</label> <input
-							required="required" type="number" class="form-control" name="min_age">
+							required="required" type="number" class="form-control" name="min_age" >
 					</div>
 						<div class="mb-3">
 						<label for="" class="form-label">체험의 1인당 비용을 알려주세요</label> <input
-							required="required" type="number" class="form-control" name="cost">
+							required="required" type="number" class="form-control" name="cost" placeholder="단위: 원(won)">
 					</div>
 
 					<input id="submitButton1" class="btn btn-dark" type="submit"

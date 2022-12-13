@@ -6,7 +6,7 @@
 <mapper namespace="com.trips.mapper.jjhMember.jjhMemberMapper">
 
 	<insert id="insert">
-	INSERT INTO MEMBER (M_ID, M_PASSWORD, M_NAME, M_GENDER, M_PHONE, M_EMAIL, M_HOST)
+	INSERT INTO MEMBER (M_ID, M_PASSWORD, M_NAME, M_GENDER, M_PHONE, M_EMAIL, M_HOST_REQUEST)
 	VALUES (#{M_ID}, #{M_PASSWORD}, #{M_NAME}, #{M_GENDER}, #{M_PHONE}, #{M_EMAIL}, #{M_HOST})
 	</insert>
 

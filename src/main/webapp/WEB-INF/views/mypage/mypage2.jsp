@@ -133,7 +133,10 @@
 						<div style="padding:0 0 10px 0;">
 							<form id="phoneModifyText" action="" method="post">
 								<input type="hidden" name="id" value="${member.id}" />
-								<input style="width:300px" type="text" name="phone" placeholder="변경하실 전화번호를 입력해주세요" /> <br>
+								<input id="modifyPhone" onkeydown="return event.key != 'Enter';" 
+									style="width:400px" type="text" name="phone" placeholder="변경하실 전화번호를 '-'를 제외하고 입력해주세요" /> 
+								<button id="existPhoneButton" type="button" class="btn btn-outline-primary" style="width:100px">번호체크</button>
+								<div id="phoneText1" class="form-text">전화번호 체크를 해주세요.</div>
 							</form>
 						</div>
 						<button id="phoneModifyOk" type="button" class="btn btn-danger" style="width:100px">수정완료</button>
@@ -149,8 +152,10 @@
 					<div id="emailModify" style="display:none;">
 						<div style="padding:0 0 10px 0;">
 							<form id="emailModifyText" action="" method="post">
-								<input type="hidden" name="id" value="${member.id}" />
-								<input style="width:300px" type="email" name="email" placeholder="변경하실 이메일을 입력해주세요" required/> <br>
+								<input id="mId" type="hidden" name="id" value="${member.id}" />
+								<input id="modifyEmail" style="width:300px" type="email" name="email" placeholder="변경하실 이메일을 입력해주세요" required/> 
+								<button id="existEmailButton" type="button" class="btn btn-outline-primary" style="width:100px">중복확인</button>
+								<div id="emailText1" class="form-text">이메일 중복확인을 해주세요.</div>
 							</form>
 						</div>
 						<button id="emailModifyOk" type="button" class="btn btn-danger" style="width:100px">수정완료</button>
@@ -187,15 +192,193 @@
 					<div  id="hostModifyStart">
 						<button type="button" class="btn btn-outline-dark" style="width:100px">수정</button> <br><br>
 					</div>
+					
+					
+					<input class="btn btn-danger" type="submit" value="회원탈퇴" data-bs-toggle="modal" data-bs-target="#removeModal" style="width:100px; float: right;margin-bottom: 30px;">
 			</div>
 		</div>
 	</div>
 	
+	<%-- 탈퇴 시 예전암호 입력 Modal --%>
+	<div class="modal fade" id="removeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h1 class="modal-title fs-6" id="exampleModalLabel" style="color: #B9062F;font-weight: bold;">탈퇴를 원하시면 회원을탈퇴합니다 라고 입력해주세요</h1>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body">
+	        <input id="deleteText" type="text" class="form-control" placeholder="회원을탈퇴합니다">
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+	        <button id="modalConfirmButton2" type="button" class="btn btn-danger">탈퇴</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 	
-	
+	<c:url value="/mypage/remove" var="removeUrl" />
+				<form id="form2" action="${removeUrl }" method="post">
+					<input type="hidden" name="id" value="${member.id }">
+				</form>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script>
+const ctx = "${pageContext.request.contextPath}";
+/* --------------전화번호 숫자 체크------------------------------------------------------------------------------------------------ */
+let availablePhone = false;
+var checkP = true;
+//전화번호 input 값 변경되면 초기화
+document.querySelector("#modifyPhone").addEventListener("keyup", function() {
+	availablePhone = false;
+	enableSubmitButton2();
+});
+//전화번호 체크 함수
+function CheckPhone(str){                                                 
+     var reg_phone = /[0-9]/g;
+     if(!reg_phone.test(str)) {                            
+          return false;         
+     }                            
+     else {                       
+          return true;         
+     }                            
+}                                
+
+function GoToEnroll2(){                                          
+	var obPhone = document.getElementById("modifyPhone");
+	if (!obPhone.value) {   
+		document.querySelector("#phoneText1").innerText = "전화번호를 입력하세요!";
+		obPhone.focus();
+		checkP=false;
+		return;
+	}               
+	else   {          
+		if(!CheckPhone(obPhone.value))	{
+			document.querySelector("#phoneText1").innerText = "숫자만 입력가능합니다";
+			obPhone.focus();
+			checkP=false;
+			return;
+		}                
+	}    
+	checkP=true;
+}
+function enableSubmitButton2() {
+	const button = document.querySelector("#phoneModifyOk");
+	if (availablePhone) {
+		button.removeAttribute("disabled")
+	} else {
+		button.setAttribute("disabled", "");
+	}
+}
+enableSubmitButton2()
+
+ document.querySelector("#existPhoneButton").addEventListener("click", function() {
+	 	
+	 	availablePhone = false;
+	
+				GoToEnroll2();
+				
+				if (checkP) {
+					document.querySelector("#phoneText1").innerText = "사용가능한 번호입니다.";
+					availablePhone = true;
+					enableSubmitButton2();
+				}
+			
+	});
+
+/* --------------전화번호 숫자 체크 끝------------------------------------------------------------------------------------------------ */
+ 
+/* --------------이메일 중복 확인 기능------------------------------------------------------------------------------------------------ */
+let availableEmail = false;
+var checkE = true;
+//이메일 input 값 변경되면 초기화
+document.querySelector("#modifyEmail").addEventListener("keyup", function() {
+	availableEmail = false;
+	enableSubmitButton();
+});
+//이메일 체크 함수
+function CheckEmail(str){                                                 
+     var reg_email = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+     if(!reg_email.test(str)) {                            
+          return false;         
+     }                            
+     else {                       
+          return true;         
+     }                            
+}                                
+
+function GoToEnroll(){                                          
+	var obEmail = document.getElementById("modifyEmail");
+	if (!obEmail.value) {   
+		document.querySelector("#emailText1").innerText = "이메일을 입력하세요!";
+		obEmail.focus();
+		checkE=false;
+		return;
+	}               
+	else   {          
+		if(!CheckEmail(obEmail.value))	{
+			document.querySelector("#emailText1").innerText = "이메일 형식이 잘못되었습니다";
+			obEmail.focus();
+			checkE=false;
+			return;
+		}                
+	}    
+	checkE=true;
+}                           
+
+function enableSubmitButton() {
+	const button = document.querySelector("#emailModifyOk");
+	if (availableEmail) {
+		button.removeAttribute("disabled")
+	} else {
+		button.setAttribute("disabled", "");
+	}
+}
+enableSubmitButton()
+
+ document.querySelector("#existEmailButton").addEventListener("click", function() {
+	 	
+	 	availableEmail = false;
+		const email = document.querySelector("#modifyEmail").value;
+		const id = document.querySelector("#mId").value;
+		
+		const data = {
+				id, 
+				email
+		};
+		
+		fetch(`\${ctx}/mypage/existEmail`, {
+			method : "post",
+			headers : {
+				"Content-Type" : "application/json"
+			},
+			body : JSON.stringify(data)
+		})
+			.then(res => res.json())
+			.then(data => {
+				document.querySelector("#emailText1").innerText = data.message;
+				GoToEnroll();
+				if (data.status == "not exist" && checkE) {
+					availableEmail = true;
+					enableSubmitButton();
+				}
+			});
+	});
+
+/* --------------이메일 중복 확인 기능 끝------------------------------------------------------------------------------------------------ */
+
+/* --------------회원 탈퇴 기능-------------------------------------------------------------------------------------------------- */
+document.querySelector("#modalConfirmButton2").addEventListener("click", function() {
+	const text = document.querySelector("#deleteText").value
+	const form = document.forms.form2;
+	if(text == '회원을탈퇴합니다'){
+		console.log("OK");
+		form.submit();
+	}
+});
+/* --------------회원 탈퇴 기능 끝------------------------------------------------------------------------------------------------ */
+
 /* --------------수정 기능들-------------------------------------------------------------------------------------------------- */
 document.querySelector("#pwModifyStart").addEventListener("click", function() {
 	const change = document.querySelector("#pwModify");

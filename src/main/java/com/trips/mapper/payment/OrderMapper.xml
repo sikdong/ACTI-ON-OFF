@@ -6,20 +6,22 @@
   
   <mapper namespace="com.trips.mapper.payment.OrderMapper">
    
-   <!-- <resultMap type="OrderList" id="orderListResultMap">
+  <resultMap type="com.trips.domain.payment.OrderList" id="orderListResultMap">
   	<id property="orderId" column="O_ORDER_ID"></id>
+  	<result property="cart_id" column="C_CART_ID"/>
+  	<result property="id" column="M_ID"/>
   	<result property="name" column="O_NAME"/>
   	<result property="email" column="O_EMAIL"/>
   	<result property="phone" column="O_PHONE"/>
-  	<result property="id" column="m.M_ID"/>
-  	<result property="amount" column="O_AMOUNT"/>
-  	<result property="date" column="O_ORDER_DATE"/>
-  	<result property="resNo" column="RES_NO"/>
+  	<result property="boardnum" column="B_NO"/>
+  	<result property="boardtitle" column="B_TITLE"/>
+  	<result property="addDate" column="O_ADDDATE"/>
+  	<result property="person" column="person"/>
   	<result property="price" column="O_PRICE"/>
   	<result property="renamedFileName" column="renamedFileName"/>
-  </resultMap> -->
+  </resultMap>
    
-   <select id="paymentSelect" resultType="com.trips.domain.payment.OrderList">
+   <!-- <select id="paymentSelect" resultType="com.trips.domain.payment.OrderList">
   
   SELECT O_ORDER_ID orderId,
   		 O_NAME name,
@@ -35,7 +37,40 @@
   LEFT JOIN MEMBER m on m.M_ID = o.M_ID
   
   
+  </select> -->
+  
+  <select id="paymentSelect" parameterType="map" resultType="com.trips.domain.payment.OrderList">
+  
+  SELECT O_ORDER_ID orderId,
+  		 m.M_ID id,
+  		 O_B_NO boardnum,
+  		 O_CART_ID cart_id,
+  		 O_ADDDATE adddate,
+  		 O_PERSON person,
+  		 O_PRICE price
+  FROM ACTI_ORDER o 
+  LEFT JOIN ACTI_BOARD ACTI_BOARD ON o.O_B_NO = ACTI_BOARD.B_NO
+  LEFT JOIN MEMBER m on m.M_ID = o.M_ID
+LEFT JOIN CART c ON o.O_CART_ID = c.CART_ID
+  	WHERE o.O_CART_ID = c.CART_ID
+  
+  
   </select>
+  
+  <!--밑의 쿼리문 수정해야함. -->
+   <insert id="paymentInsert">
+   	INSERT INTO ACTI_ORDER (
+   				O_ORDER_ID
+   				O_B_NO
+   				O_CART_ID
+   				M_ID	        
+   				) VALUES (
+   				#{id},
+				#{boardNumber},
+				#{cartId},
+   				#{memberId}
+   				)
+  </insert>
   
   
  

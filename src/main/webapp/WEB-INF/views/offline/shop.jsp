@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -93,12 +94,20 @@
 	                        	<option value="3">3</option>
 	                        	<option value="4">4</option>
 	                        	<option value="5">5</option>
-	                        </select>&nbsp;개 <button type="button" class="btn-wine-wish btn-pop-wine-01 btn_open btn-cart cart_btn">장바구니 담기</button>
+	                        </select>&nbsp;개 
+	                     	
+	                     	<sec:authorize access="isAuthenticated()" var="logged"/>
+	                        <button type="button" class="btn-wine-wish btn-pop-wine-01 btn_open btn-cart cart_btn" 
+	                        <c:if test="${logged }"> 
+	                        	id="cart"
+	                    	</c:if>
+	                        >장바구니 담기</button>
+	                        
 	                        <form action="${path}/payment/orderPage" method="get">
 	                       <c:forEach var="list" items="${cartList}">
 				         <div class="paymentScreenBtn">
-								<input type="hidden" name="boardBno" value="${list.boardBno}">
-								<input type="hidden" name="" value="name">
+								<input type="hidden" name="boardnum" value="${list.boardnum}">
+								<input type="hidden" name="boardTitle" value="${board.title }">
 								<input type="hidden" name="price" value="${list.price}">
 								<input type="hidden" name="resno" value="" id="resno">
                     </div>
@@ -268,23 +277,23 @@ function modifyReply(){
 
  <script>
 						//장바구니 담기
-$(".cart_btn").click(function(){
+$("#cart").click(function(){
    
-	var boardBno= `${offlineboard.boardBno}`;
-	var boardBno = $("#title").val();
-	var cartQty = $(".numBox").val();
+	var boardnum= `${offlineboard.boardnum}`;
+	var boardTitle = $("#board.title").val();
+	var person = $(".numBox").val();
 	var renamedFileName= $("#image").attr("src");
 	
-	if(boardBno == 1){
-		boardBno=1;
+	if(boardnum == 1){
+		boardnum=1;
 	}else{
-		boardBno= `${offlineboard.boardBno}`;
+		boardnum= `${offlineboard.boardnum}`;
 	}
 	
-	console.log(boardBno);
+	console.log(boardnum);
 	var data = {
-		B_NO : boardBno,
-		CART_QTY : cartQty
+		B_NO : boardnum,
+		PERSON : person
 	
 	};
 	$.ajax({
@@ -294,12 +303,14 @@ $(".cart_btn").click(function(){
 		success : function(result){
 			alert("카트 담기 성공");
 			$(".numBox").val("1");
+			console.log(1);
 			location.replace("${path}/payment/cart");
+			console.log(2);
 		},
 		error : function(){
 			alert("로그인 후 이용해주세요.");
-			console.log(resno);
-			console.log(cartqty);
+			console.log(res_no);
+			console.log(person);
 			console.log(renamedFileName);
 		}
 	});
