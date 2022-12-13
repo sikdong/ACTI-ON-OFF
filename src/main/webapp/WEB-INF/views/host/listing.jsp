@@ -18,6 +18,8 @@ h2 { text-align: center; }
 
 </head>
 <body>
+<my:navbar></my:navbar>
+
 <my:hostNav></my:hostNav>
 <br><br>
 
