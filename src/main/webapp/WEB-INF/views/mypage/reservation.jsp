@@ -86,7 +86,7 @@
 							<div onclick="location.href='/mypage/resDetail?resNo=${res.resNo}'" style="display:flex;">
 								<div style="padding-right: 70px;">
 									<img style="width:200px; height:135px;border-radius: 30%" 
-									src="${imgUrl }/${res.fileName}">
+									src="${imgUrl }/host/${res.boardNo}/${res.fileName}">
 								</div>
 								<div>
 									<div id="res_title1">${res.title }</div>
@@ -107,7 +107,7 @@
 							<div  onclick="location.href='/mypage/resDetail?resNo=${res.resNo}'" style="display:flex;">
 								<div style="padding-right: 70px;">
 									<img style="width:200px; height:135px;border-radius: 30%" 
-									src="${imgUrl }/${res.fileName}">
+									src="${imgUrl }/host/${res.boardNo}/${res.fileName}">
 								</div>
 								<div>
 									<div id="res_title1">${res.title }</div>

@@ -10,4 +10,5 @@ public class ChatLeftDto {
 	private String fileName;
 	private String content;
 	private String date;
+	private String boardNo;
 }

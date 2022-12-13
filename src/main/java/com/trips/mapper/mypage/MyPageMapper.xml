@@ -84,7 +84,8 @@
 	    b.B_TITLE title,
 	    b.M_ID host,
 	    d.DATE date,
-	    f.B_FILENAME fileName
+	    f.B_FILENAME fileName,
+	    r.B_NO boardNo
 	FROM
 	    ACTI_RESERVATION r
 	JOIN ACTI_BOARD b ON r.B_NO = b.B_NO
@@ -162,7 +163,8 @@
 	    b.M_ID host,
 	    f.B_FILENAME fileName,
 	    m.CHAT_CONTENTS content,
-	    m.CHAT_DATE date
+	    m.CHAT_DATE date,
+	    b.B_NO boardNo
 	FROM ACTI_RESERVATION r
 	JOIN ACTI_BOARD b ON r.B_NO = b.B_NO
 	JOIN ACTI_FILE f ON f.B_NO = b.B_NO 

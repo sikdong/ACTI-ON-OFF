@@ -84,7 +84,7 @@ html, body {
 				width:100%; 
 				height:300px; 
 				"
-				src="${imgUrl }/${resNo.fileName}">
+				src="${imgUrl }/host/${resNo.boardNo}/${resNo.fileName}">
 			</div>
 			<div style="display:flex;">
 				<i id="icon_base" class="fa-regular fa-calendar-days fa-2x"></i>

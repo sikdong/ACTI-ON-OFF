@@ -10,4 +10,5 @@ public class Res1Dto {
 	private String host;
 	private String date;
 	private String fileName;
+	private int boardNo;
 }
