@@ -173,10 +173,25 @@
 	</div>
 		<div style = "width : 400px;"class="jc-sb mb-3" style="margin-top : 30px;">
 	<c:forEach items="${board.fileName }" var="file" varStatus="status">
-			<img src="${path}/assets/img/${file}" class="size" alt="이미지">
-			<div></div>
+			<div class="flex">
+				<img src="${path}/assets/img/${file}" class="size" alt="이미지">
+				<div id="deleteButton${board.fileNum[status.index]}"><i class="fa-regular fa-circle-xmark cursor"></i></div>
+				<input id="deleteInput${board.fileNum[status.index]}" type="hidden" value="${board.fileNum[status.index]}" />
+			</div>
 	</c:forEach>
 		</div>
+	<div class="mb-3 halfview">
+	  <label for="exampleFormControlInput1" class="form-label">최소 인원</label>
+	  <input value="${board.minPerson }" type="text" class="form-control" name="minPerson">
+	</div>	
+	<div class="mb-3 halfview">
+	  <label for="exampleFormControlInput1" class="form-label">최대 인원</label>
+	  <input value="${board.maxPerson }" type="text" class="form-control" name="maxPerson">
+	</div>
+	<div class="mb-3 halfview">
+	  <label for="exampleFormControlInput1" class="form-label">최소 연령</label>
+	  <input value="${board.minAge }" type="text" class="form-control" name="minAge">
+	</div>
 	<div class="mb-3 halfview">
 	  <label for="exampleFormControlTextarea1" class="form-label">호스트 소개</label>
 	  <textarea class="form-control" name="hostIntro" rows="6">${board.hostIntro }</textarea>
@@ -203,7 +218,8 @@ src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.j
 integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
 crossorigin="anonymous"></script>
 <script>
-function deletefile(${board.fileNum}){
+const fileNum = document.querySelector()
+function deletefile(){
 	fetch(ctx +"/ydsBoard/deleteFile")
 }
 

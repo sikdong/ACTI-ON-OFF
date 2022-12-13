@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.trips.domain.yds.TripsBoardDto;
+import com.trips.domain.yds.TripsOrderDto;
 import com.trips.service.ydsBoardService.ydsBoardService;
 
 @Controller

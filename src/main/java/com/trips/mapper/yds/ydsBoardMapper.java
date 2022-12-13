@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.trips.domain.yds.TripsBoardDto;
+import com.trips.domain.yds.TripsOrderDto;
 
 @Mapper
 public interface ydsBoardMapper {
@@ -39,5 +40,6 @@ public interface ydsBoardMapper {
 	public void deleteLikeByBoardNo(int num);
 
 	public List<TripsBoardDto> getAllBoard(MultipartFile[] file);
+
 
 }

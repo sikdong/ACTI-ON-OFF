@@ -117,10 +117,14 @@ SELECT
 	f.B_FILE_NO fileNum,
 	b.MAX_PERSON maxPerson,
 	b.MIN_PERSON minPerson,
-	b.MIN_AGE minAge
+	b.MIN_AGE minAge,
+	o.O_ADDDATE addDate,
+    o.O_PERSON person,
+    d.DATE date
 FROM ACTI_BOARD b
 LEFT JOIN ACTI_FILE f ON b.B_NO = f.B_NO
 LEFT JOIN ACTI_DATE d ON b.B_NO = d.B_NO
+LEFT JOIN ACTI_ORDER o ON b.B_NO = o.O_B_NO
 WHERE b.B_NO = #{num}
 </select>
 
@@ -141,6 +145,15 @@ WHERE b.B_NO = #{num}
 		</collection>
 		<collection property="fileNum" ofType="int">
 			<result property="fileNum" column="fileNum"></result>
+		</collection>
+		<collection property="addDate" ofType="String">
+			<result property="addDate" column="addDate"/>
+		</collection>
+		<collection property="person" ofType="int">
+			<result property="person" column="person"></result>
+		</collection>
+		<collection property="date" ofType="String">
+			<result property="date" column="date"></result>
 		</collection>
 </resultMap>
 
@@ -192,5 +205,22 @@ WHERE B_NO = #{num}
 DELETE FROM ACTI_DATE
 WHERE B_NO = #{num}
 </delete>
+
+<select id="getOrders" resultMap="orderMap">
+SELECT 
+    O_ADDDATE addDate,
+    O_PERSON person
+FROM ACTI_ORDER
+WHERE O_B_NO = #{num}
+</select>
+
+<resultMap type="com.trips.domain.yds.TripsOrderDto" id="orderMap">
+	<collection property="addDate" ofType="date">
+		<result property="addDate" column="addDate"/>
+	</collection>
+	<collection property="person" ofType="int">
+		<result property="person" column="person"></result>
+	</collection>
+</resultMap>
 
 </mapper>

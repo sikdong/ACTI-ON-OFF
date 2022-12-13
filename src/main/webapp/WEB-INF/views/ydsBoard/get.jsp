@@ -170,11 +170,19 @@
 		<c:param name="num" value="${board.num}"></c:param>
 	</c:url>
 	
-	<input type="hidden" id="numInput" value="${board.num }" />
+	<input type="hidden" id="numInput" value="${board.num}" />
 <div class="root">
+		<c:forEach items="${board.date}" var="date">
+		<div>저장날짜 : ${date} 최대 인원 : ${board.maxPerson}</div>
+		</c:forEach>
+		<c:forEach items="${board.addDate}" var="addDate" varStatus="status">
+			<div>주문날짜 : ${addDate} 주문 인원 ${board.person[status.index]}</div>
+		</c:forEach>
+		<div class="container-fluid">남은 인원 : ${board.avaliablePeople}</div>
 		<div class="container-fluid">최대 인원 : ${board.maxPerson}</div>
 		<div class="container-fluid">최소 인원 : ${board.minPerson}</div>
 		<div class="container-fluid">최소 연령 : ${board.minAge}</div>
+		<input type="number" id="orderAllPerson" value="" />
 	<div class="container-fluid flex">
 		<span><Strong>${board.title }</Strong></span>
 		<div class="ml-3">
@@ -651,7 +659,6 @@ function nextCal(){
 function goCart(){
 	document.querySelector("#cartForm").submit();
 }
-	
 
 </script>
 </body>

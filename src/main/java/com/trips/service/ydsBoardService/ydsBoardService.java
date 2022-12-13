@@ -1,5 +1,6 @@
 package com.trips.service.ydsBoardService;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.trips.domain.yds.TripsBoardDto;
+import com.trips.domain.yds.TripsOrderDto;
 import com.trips.mapper.yds.ydsBoardMapper;
 import com.trips.mapper.yds.reply.YdsReplyMapper;
 
@@ -30,8 +32,34 @@ public class ydsBoardService {
 
 	public TripsBoardDto getBoard(int num, MultipartFile[] file) {
 		// TODO Auto-generated method stub
-		return mapper.getBoard(num, file);
-	}
+		
+		TripsBoardDto board = mapper.getBoard(num, file);
+		List<Integer> sumList = new ArrayList<>();
+		List<String> savedDate = board.getDate();
+		List<String> orderDate = board.getAddDate();
+		List<Integer> person = board.getPerson();
+		for(int i = 0; i < savedDate.size(); i++) {
+			System.out.println(savedDate.get(i));
+			int sum= board.getMaxPerson();
+			for(int j = 0; j < orderDate.size(); j++) {
+				System.out.println(orderDate.get(j));
+				if(savedDate.get(i).equals(orderDate.get(j))) {
+				for(int k = 0; k < person.size(); k++) {
+					
+					sum -= person.get(k);
+				}
+				sumList.add(sum);
+			}
+		}
+	}		
+		// 계산...
+		System.out.println(sumList);
+		/*
+		 * for(int a = 0; a < sumList.size(); a++) {
+		 * board.setAvaliablePeople.add(sumList.get(a)); }
+		 */
+		return board;
+}
 
 	public int removeBoard(int num) {
 		rMapper.deleteReplybyBoardId(num);
@@ -93,5 +121,6 @@ public class ydsBoardService {
 		// TODO Auto-generated method stub
 		return mapper.getAllBoard(file);
 	}
+
 
 }
