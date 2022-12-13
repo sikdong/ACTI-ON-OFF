@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -65,21 +67,25 @@ public class QnaController {
 		model.addAttribute("qnaList", QnaList);
 	}
 	
+	
 	@GetMapping("QnaGet")
 	public void QnaGet(
 			Model model,
 			@RequestParam(name="id")
 			int id) {
+		
 		QnaDto qna = service.get(id);
 		model.addAttribute("qna",qna);
 	
 	}
 	@GetMapping("QnaModify")
+	@PreAuthorize("@qnaSecurity.checkMemberId(authentication.name,#id)")
 	public void QnaModify(int id,Model model) {
 		QnaDto qna = service.get(id);
 		model.addAttribute("qna",qna);
 	}
 	@PostMapping("QnaModify")
+	@PreAuthorize("@qnaSecurity.checkMemberId(authentication.name,#qna.id)")
 	public String QnaModify(
 			QnaDto qna,
 			@RequestParam("files") MultipartFile[] addFiles,
@@ -96,6 +102,7 @@ public class QnaController {
 		return "redirect:/qna/QnaList";
 	}
 	@PostMapping("QnaRemove")
+	@PreAuthorize("@qnaSecurity.checkMemberId(authentication.name,#id)")
 	public String QnaRemove(int id,RedirectAttributes rttr) {
 		// alert 문의글 삭제 알림
 		int cnt= service.remove(id);
@@ -110,9 +117,10 @@ public class QnaController {
 	
 	@PutMapping("empathy")
 	@ResponseBody
-	public Map<String,Object> empathy(@RequestBody Map<String,String> req){
-		
-		Map<String, Object> result = service.updateEmpathy(req.get("qnaId"));
+	@PreAuthorize("isAuthenticated()")
+	public Map<String,Object> empathy(@RequestBody Map<String,String> req,
+			Authentication authentication){
+		Map<String, Object> result = service.updateEmpathy(req.get("qnaId"),authentication.getName());
 		
 		return result;
 	}

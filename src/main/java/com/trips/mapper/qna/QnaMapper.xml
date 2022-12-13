@@ -127,17 +127,17 @@ WHERE Q_ID= #{id}
 
 <select id="getEmpathyByQnaId" resultType="int">
 SELECT COUNT(*) FROM empathy
-WHERE Q_ID = #{qnaId} AND M_ID = 'aa'
+WHERE Q_ID = #{qnaId} AND M_ID = #{MemberNo}
 </select>
 		
 <delete id="deleteEmpathy">
 DELETE FROM empathy
-WHERE Q_ID=#{qnaId} AND M_ID='aa'
+WHERE Q_ID=#{qnaId} AND M_ID=#{MemberNo}
 </delete>
 
 <insert id="insertEmpathy">
 INSERT INTO empathy(Q_ID,M_ID)
-VALUES (#{qnaId},'aa')
+VALUES (#{qnaId},#{MemberNo})
 </insert>		
 
 <select id="countEmpathyByQnaId" resultType="int">
