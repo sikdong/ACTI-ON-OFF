@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,6 +49,7 @@ public class CartController {
 
 	// 장바구니 이동
 	@RequestMapping(value = "/payment/cart", method = {RequestMethod.GET, RequestMethod.POST})
+	@PreAuthorize("isAuthenticated()")
 	public void getCartList(Authentication authentication, Model model) throws Exception {
 
 		String id = authentication.getName();
