@@ -6,6 +6,18 @@
 <html>
 <head>
 <style>
+.root {
+	margin-left : 25%;
+	margin-top : 50px;
+}
+
+.mt-40 {
+	margin-top : 80px;
+}
+
+.ml-3 {
+ 	margin-left : 6px;
+}
 
 .jc-sb {
 	justify-content : space-between;
@@ -21,7 +33,7 @@
 }
 
 .halfview{
-	width : 50vw !important;
+	width : 100% !important;
 }
 
 .horizontal {
@@ -57,12 +69,13 @@
 
 .calendar {
   /*padding과 margin을 없애고 body태그 전체에 배경색과 폰트를 넣어줍니다.*/
-  	width : 50%;
+  	width : 24%;
     padding: 0;
     margin-left: 0;
     background-color: var(--bg-color);
     font-family: var(--font);
     position : fixed;
+    bottom : 5px;
     z-index : 1;
 }
 
@@ -147,67 +160,79 @@
 	integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="${path}/assets/css/ydsCss.css" />
-<link rel="stylesheet" href="${path}/assets/css/calendar.css" />
 </head>
-<body style="margin-left : 10px;">
+<body>
 	<my:navbar></my:navbar>
+
 	<c:url value="/ydsBoard/remove" var="removeLink">
 		<c:param name="num" value="${board.num }" ></c:param>
 	</c:url>
+	<c:url value="/ydsBoard/modify" var="modifyLink">
+		<c:param name="num" value="${board.num}"></c:param>
+	</c:url>
+	
 	<input type="hidden" id="numInput" value="${board.num }" />
-	<%--체험 제목 보여주기 --%>
-	<div class="container-fluid" style="display : flex;">
-		<span>제주 앞바다를 즐겨 보세요!</span>
-		
-		<div>
+<div class="root">
+		<div class="container-fluid">현재 남은 인원 : ${board.maxPerson}</div>
+	<div class="container-fluid flex">
+		<span><Strong>${board.title }</Strong></span>
+		<div class="ml-3">
 			<a href="${removeLink}" class="btn btn-outline-secondary btn-sm">게시물 삭제</a>
+			<a href="${modifyLink}" class="btn btn-outline-dark btn-sm">게시물 수정</a>
 		</div>
-			<div onclick="plusLike()" class="cursor" id="plusLike">
+			<h3 class="ml-3">${board.price}</h3> 
+			<span class="mt">
+				<small>원</small>
+			</span>
+			<div onclick="plusLike()" class="cursor ml-3" id="plusLike">
 				<i class="fa-regular fa-heart fa-2x red"></i> 
 			</div>
-			<div onclick="minusLike()" class="cursor" id="minusLike" style="display : none">
+			<div onclick="minusLike()" class="cursor ml-3" id="minusLike" style="display : none">
 				<i class="fa-solid fa-heart fa-2x red" style="color : red !important;"></i>
 			</div>
 			<div id="countLike" style="font-size : 20px; margin-left : 3px; padding-top : 4px;">
 				${board.countLike}
 			</div>
 	</div>
-		<img src="${path}/assets/img/home2.jpg" class="size" alt="...">
-		<img src="${path}/assets/img/about1.jpg" class="size" alt="...">
-		<img src="${path}/assets/img/home1.jpg" class="size" alt="...">
-		<img src="${path}/assets/img/about2.jpg" class="size" alt="...">
+	<div class="container-fluid flex" >
+	<c:forEach items="${board.fileName }" var="file">
+		<img src="${path}/assets/img/${file}" class="size" alt="...">
+	</c:forEach>
+	</div>
 	
 
 
 	<div class="container-fluid">
-		<div class="mb-3">
-			<h4>호스트 소개</h4>
-			<textarea style="resize: none; width : 50% !important;" rows="5"  
-			readonly class="form-control">${board.content }</textarea>
 		<div class="horizontal">
-			<div class="halfview">
-				<div class="mt">
-					<h4>프로그램 소개</h4>
+				<div class="halfview">
+					<h4 class="ml-3 mt-40">호스트 id의 name님 소개</h4>
+					<textarea style="width : 100% !important;" rows="5"  
+					readonly class="form-control">${board.hostIntro }</textarea>
 				</div>
-				<hr width="100%" />
-				${board.content }
+				<div id="showCalendar" class="halfview">
+				</div>
+			</div>	
+				<div class="mt-40">
+					<h4 class="ml-3">프로그램 소개</h4>
+				</div>
+				<hr width="65%" />
+				<div style="width : 100%">
+					${board.content }
+				</div>
 				<div>
 					<a id="reserveButton" onclick="buildCalendar()" class="btn btn-dark btn-sm">예약하기</a>
 				</div>
 				<span>
 					<a id="noneButton" style="display : none" onclick="none()" class="btn btn-secondary btn-sm">달력접기</a>
 				</span>
-				<hr width="100%" />
+				<hr width="65%" />
 			</div>
-			<div id="showCalendar" class="halfview">
-			</div>
-		</div>	
-			<h4>프로그램 후기</h4>
-			<div class="col-sm-7">
+			<div class="col-sm-7 ml-3">
+				<h4 class="ml-3 mt-40">프로그램 후기</h4>
 				<div style="display : flex">
 					<div><%--별 들어갈 자리 --%></div>
 				</div>
-				<input type="text" class="form-control halfview" placeholder="여러분의 소중한 후기를 남겨주세요" 
+				<input type="text" class="form-control mt" placeholder="여러분의 소중한 후기를 남겨주세요" 
 					id="content"></input>
 				<%-- 로그인 기능 수정되면 지울 것 --%>
 				<input type="hidden" value="bb" id="temperId"/>
@@ -220,14 +245,20 @@
 						</div>
 					</div>
 				</div>
-					<div class="mt">
+					<div class="mt-40">
 						<h5>체험 더보기</h5>
 					</div>
 					<div class="flex-container">
 					</div>
 				</div>
-			</div>
-		</div>
+</div>	
+				
+<form action="/shop/addCart" method="post" id="cartForm">
+	<input type="hidden" name="addDate" id="addDate" value=""/>
+	<input type="hidden" name="person" id="person" value=""/>
+	<input type="hidden" name="price" id="price" value="${board.price}"/>
+	<input type="hidden" name="boardnum" id="boardNum" value="${board.num}"/>	
+</form>
 <%------------------------------댓글 수정, 삭제 토스트----------------------------%>	
 <div class="toast-container align-items-center top-0 start-50 translate-middle-x position-fixed">
   <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
@@ -253,7 +284,6 @@
   </div>
 </div>
 	
-
 			
 			
 <script
@@ -262,9 +292,11 @@ integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbs
 crossorigin="anonymous"></script>
 <script>
 const ctx = "${pageContext.request.contextPath}";
+
+
+
 <%-----------------------------------------좋아요 기능-------------------------------------------%>
-/* document.querySelector("#solidHeart").addEventListener("click", */ 
-		function plusLike(){
+function plusLike(){
 	const num = document.querySelector("#numInput").value;
 /* 	const data = {
 			num : '${board.num}'
@@ -345,7 +377,7 @@ function getFiveFiles(){
 		for (const file of list){
 			const fileList = 
 				`<div class="flex-child">
-					<img src="${path}/assets/img/\${file.fileName}" class="size1" alt="...">
+					<img src="${path}/assets/img/\${file.fileName}" class="size" alt="...">
 					<h5 class="text-center">\${file.content}</h5>
 				</div>`
 				<%-- 집가서 작성 --%>
@@ -497,9 +529,9 @@ const calendarFrame =
 	        	총 인원
 	      	</div>
 	        <div class="flex jc-sb" style="width : 30%">
-	        	<div class="cursor"><i class="fa-solid fa-circle-minus fa-2x"></i></div>
-	        	<div style="font-size : 150%;">1</div>
-	        	<div class="cursor"><i class="fa-solid fa-circle-plus fa-2x"></i></div>
+	        	<div class="cursor" onclick="substractNumber()"><i class="fa-solid fa-circle-minus fa-2x"></i></div>
+	        	<div id="number" style="font-size : 150%; margin : auto;">0</div>
+	        	<div class="cursor" onclick="addNumber()"><i class="fa-solid fa-circle-plus fa-2x"></i></div>
 	        </div>
 	      </div>
 	    </div>
@@ -523,6 +555,7 @@ const calendarFrame =
 				<div class="day">Sat</div>
 			</div>
 			<div class="dates"></div>
+			<div onclick="goCart()" class="btn btn-outline-secondary">장바구니 담기 <i class="fa-solid fa-cart-shopping"></i></div>
 		</div>
 	</div>`
 document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calendarFrame)
@@ -553,17 +586,44 @@ document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calenda
 	for(let i=0; i < 35; i++){
 		if(i == 0 || i % 7 == 0){
 			document.querySelector(".dates").insertAdjacentHTML("afterbegin", weekDiv)	
-		}
-		if(today.getDate()==dates[i] &&today.getMonth()==CDate.getMonth()&&
-		today.getFullYear()==CDate.getFullYear()){
-			const todayDiv =`<div class="date today">\${dates[i]}</div>`;
-				document.querySelector(".week").insertAdjacentHTML("afterbegin", todayDiv);
-			}else {
-				const dateDiv =`<div class="date">\${dates[i]}</div>`;
+		} 
+				const dateDiv =`<div class="date cursor" id="date\${i}">\${dates[i]}</div>`;
 				document.querySelector(".week").insertAdjacentHTML("afterbegin", dateDiv); 
-			}
+			
+		document.querySelector("#date"+i).addEventListener("click", () => {
+		document.querySelector("#addDate").value = '';	
+		let year = CDate.getFullYear()
+		let month = CDate.getMonth() + 1
+		document.querySelector("#addDate").value += year;
+		document.querySelector("#addDate").value +="."+ month;
+		document.querySelector("#addDate").value +='.'+ document.querySelector("#date"+i).innerHTML;
+		for(let a = 0; a<35; a++){
+			document.querySelector("#date"+a).style.border="none";
 		}
+		document.querySelector("#date"+i).style.border="2px solid #EFBBCF"
+		})
 	}
+	
+	/* function addNumber(){
+		n++;
+	} */
+
+	let person = document.querySelector("#number").innerHTML; 
+	document.querySelector("#person").value += person;
+}
+
+function addNumber(){
+	document.querySelector("#number").innerHTML++
+	document.querySelector("#person").value= document.querySelector("#number").innerHTML; 
+}
+
+
+function substractNumber(){
+	if(document.querySelector("#number").innerHTML > 0){
+		document.querySelector("#number").innerHTML--
+		document.querySelector("#person").value= document.querySelector("#number").innerHTML;
+	}
+}
 <%-- 이전 달 버튼 누르면 실행 되는 함수 --%>
 function prevCal(){
 	CDate.setMonth(CDate.getMonth()-1);
@@ -575,9 +635,12 @@ function nextCal(){
 	CDate.setMonth(CDate.getMonth()+1);
 	buildCalendar();
 }	
+
+function goCart(){
+	document.querySelector("#cartForm").submit();
+}
 	
 
 </script>
-<script  src="${path }/assets/js/calendar.js"></script>
 </body>
 </html>

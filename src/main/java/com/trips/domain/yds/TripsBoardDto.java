@@ -3,6 +3,7 @@ package com.trips.domain.yds;
 import java.time.LocalDateTime;
 import java.time.Period;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
@@ -19,10 +20,13 @@ public class TripsBoardDto {
 	private int num;
 	private String title;
 	private String content;
-	private String fileName;
+	private List<String> fileName;
 	private String readCount;
 	private String status;
-	@JsonFormat(shape = Shape.STRING)
+	private String price;
+	private String hostIntro;
+	private int maxPerson;
+	private int fileNum;
 	private LocalDateTime createDate;
 	@JsonFormat(shape = Shape.STRING)
 	private LocalDateTime B_MODIFYDATE;
