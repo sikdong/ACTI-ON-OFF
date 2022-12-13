@@ -193,7 +193,7 @@ public class HostController {
 	// 함수를 호출하지 않고 매개변수에 값을 넣을 수 있는 방법은 없나 ? 매개변수의 값을 나눠서 넣고 싶을 때.
 	//MultipartFile[] b_filename 은 등록페이지 마지막에? 날짜는 달력을 보여주고 선택하게. 파라미터는 컬렉션으로?
 	public String listingContents( String b_title, String b_content,
-										 int cost,int min_person, int max_person, int min_age, String address, String addressLL ) {	
+										 int cost,int min_person, int max_person, int min_age, String address, String addressLL, HttpSession session ) {	
 
 //	public String listingContents(BoardDto board ) {	
 //		boardDto=board;//매개변수에 모델어트리뷰트 쓰면 빈 디티오에 담기는 거니까 이전과 다른 인스턴스.
@@ -205,6 +205,9 @@ public class HostController {
 		session.setAttribute("min_person", min_person);
 		session.setAttribute("max_person", max_person);
 		session.setAttribute("min_age", min_age);		
+		session.setAttribute("address", address);
+		session.setAttribute("addressLL", addressLL);
+		
 		
 		System.out.println(session.getAttribute("b_topic")+"@@@"); // 같은 세션에 담기네 
 		
@@ -244,13 +247,14 @@ public class HostController {
 		BoardDto boardDto =new BoardDto();
 
 		boardDto.setB_topic((String)session.getAttribute("b_topic"));
-		
+		boardDto.setCost((int)session.getAttribute("cost"));
 		boardDto.setB_title((String)session.getAttribute("b_title"));
 		boardDto.setB_content((String)session.getAttribute("b_content"));
 		boardDto.setMax_person((int) session.getAttribute("max_person")   );
 		boardDto.setMin_person((int) session.getAttribute("min_person")   );
 		boardDto.setMin_age((int) session.getAttribute("min_age")   );
-		
+		boardDto.setAddress((String)session.getAttribute("address"));
+		boardDto.setAddressLL((String)session.getAttribute("addressLL"));
 	
 		
 		
