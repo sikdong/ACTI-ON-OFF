@@ -12,6 +12,7 @@ public class jjhMemberDto {
 	private String M_PHONE;
 	private String M_EMAIL;
 	private Boolean M_HOST;
+	private String M_AUTHORITY;
 	
 }
 

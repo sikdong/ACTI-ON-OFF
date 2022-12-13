@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.trips.mapper.admin.AdminMapper">
+
+<select id="list" resultType="com.trips.domain.jjhMember.jjhMemberDto">
+SELECT 
+	M_ID,
+	M_NAME,
+	M_GENDER,
+	M_PHONE,
+	M_EMAIL,
+	M_HOST_REQUEST M_HOST
+FROM
+	MEMBER
+WHERE
+	M_HOST_REQUEST = 1
+GROUP BY M_ID
+ORDER BY M_ID DESC
+LIMIT #{offset},#{records} 
+</select>
+
+<!-- 총 레코드 수  확인하는 xml -->
+<select id="countAll" resultType="int">
+	SELECT COUNT(*) FROM MEMBER
+	WHERE M_HOST_REQUEST=1
+</select>
+
+<select id="listBoard" resultType="com.trips.domain.host.BoardDto">
+SELECT
+	b_no num,
+	b_title,
+	b_content,
+	min_person,
+	max_person,
+	b_accept
+FROM 
+	ACTI_BOARD
+WHERE
+	B_ACCEPT = 0
+GROUP BY b_no
+ORDER BY b_no DESC
+LIMIT #{offset},#{records} 
+</select>
+
+<select id="BoardCountAll" resultType="int">
+SELECT COUNT(*) FROM ACTI_BOARD
+WHERE b_accept=0
+</select>
+
+<update id="update">
+UPDATE MEMBER 
+SET
+	M_HOST_REQUEST = 0,
+	M_AUTHORITY= 'host'
+WHERE
+    M_ID = #{M_ID}
+</update>
+
+<update id="updateAccept">
+UPDATE ACTI_BOARD
+SET
+	B_ACCEPT = 1
+WHERE
+	B_NO = #{num}
+</update>
+
+</mapper>

@@ -1,4 +1,5 @@
 
+
 .title-mypage {
     margin-bottom: 40px;
     margin-top: 70px;
@@ -106,8 +107,8 @@
     .basketdiv .img{
         width: 20%;
     }
-    .basketdiv .pname{
-        width: 70%;
+    .basketdiv .pname{/* 
+        width: 70%; */
     }
     /* .basketdiv2 .pname {
         width: 80%;

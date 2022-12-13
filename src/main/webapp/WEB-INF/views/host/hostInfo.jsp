@@ -23,7 +23,8 @@
 
 </head>
 <body>
-	<my:hostNav></my:hostNav>
+<my:navbar></my:navbar>
+<my:hostNav></my:hostNav>
 <center>
 	<div class="container-md">
 		<div class="row">

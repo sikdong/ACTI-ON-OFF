@@ -1,5 +1,6 @@
 package com.trips.security;
 
+import java.util.ArrayList;
 //import java.util.ArrayList;
 import java.util.List;
 
@@ -37,8 +38,13 @@ public class CustomUserDetailsService implements UserDetailsService {
 		if (member == null) {
 			return null;
 		}
+		
+		List<SimpleGrantedAuthority> list = new ArrayList<>();
+		if(member.getM_AUTHORITY()!=null) {
+			list.add(new SimpleGrantedAuthority(member.getM_AUTHORITY()));
+		}
 			
-		User user = new User(member.getM_ID(), member.getM_PASSWORD(), List.of());
+		User user = new User(member.getM_ID(), member.getM_PASSWORD(),list);
 		 
 		return user;
 	}

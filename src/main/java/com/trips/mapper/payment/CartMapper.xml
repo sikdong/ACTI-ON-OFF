@@ -5,35 +5,24 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.trips.mapper.payment.CartMapper">
-	<sql id="cartListSql">
-
-		SELECT RES_NO resNo,
-		M_ID id,
-		B_NO boardBno,
-		O_PRICE price,
-		AMOUNT amount,
-		CART_QTY cartQty,
-		renamedFileName
-		FROM CART;
-	</sql>
+	
 
 	<resultMap type="com.trips.domain.payment.CartList" id="cartListResultMap">
-		<id property="resNo" column="RES_NO"></id>
+		<id property="cart_id" column="CART_ID"></id>
 		<result property="id" column="M_ID" />
-		<result property="boardBno" column="B_NO" />
-		<result property="price" column="O_PRICE" />
-		<result property="amount" column="AMOUNT" />
-		<result property="cartQty" column="CART_QTY" />
+		<result property="boardnum" column="B_NO" />
+		<result property="price" column="PRICE" />
 		<result property="renamedFileName" column="renamedFileName" />
+	
 	</resultMap>
 
 	<select id="cartList" parameterType="String"
 		resultMap="cartListResultMap">
 
-		SELECT c.RES_NO resNo,m.M_ID id,c.B_NO boardBno,O_PRICE price,AMOUNT
-		amount,CART_QTY cartQty,renamedFileName
+		SELECT c.CART_ID cart_id,m.M_ID id,c.B_NO boardnum,
+		PERSON person, ADDDATE addDate,	PRICE price,renamedFileName
 		from CART c
-		LEFT JOIN MEMBER m on m.M_ID = c.RES_NO
+		LEFT JOIN MEMBER m on m.M_ID = c.CART_ID
 		AND c.M_ID = m.M_ID
 		left join ACTI_BOARD a
 		on c.B_NO = a.B_NO
@@ -45,22 +34,30 @@
 	<insert id="addCart">
 
 		INSERT INTO CART(
-		RES_NO,
 		M_ID,
 		B_NO,
-		CART_QTY
+		CART_ID,
+		PERSON,
+		PRICE
 		)
-		VALUES(1,'aa',1,'1');
-
+		VALUES( 
+		#{id},
+		#{boardnum},
+		#{cart_id},
+		#{person},
+		#{price}
+		)
 
 	</insert>
-
+	
+	
+ 
 	<delete id="deleteCart">
-		DELETE FROM cart WHERE RES_NO=#{resNo}
-	</delete>
+		DELETE FROM CART WHERE CART_ID=#{cart_id}
+	</delete> 
 
 	<delete id="deleteAllCart">
-		DELETE FROM cart WHERE M_ID=#{id}
+		DELETE FROM CART WHERE M_ID=#{id}	
 	</delete>
 
 </mapper>
