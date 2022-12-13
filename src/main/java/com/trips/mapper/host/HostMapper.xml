@@ -8,8 +8,8 @@
 	insert into ACTI_BOARD (b_topic,b_accept) values(#{b_topic},0)
 </insert>
 <insert id="listingContents" useGeneratedKeys="true" keyProperty="b_no" keyColumn="B_NO">
-	insert into ACTI_BOARD (b_topic,b_title,b_content,cost,max_person,min_person,min_age) 
-	values(#{b_topic},#{b_title},#{b_content},#{cost},#{max_person},#{min_person},#{min_age})
+	insert into ACTI_BOARD (b_topic,b_title,b_content,cost,max_person,min_person,min_age, map_text, map_ll) 
+	values(#{b_topic},#{b_title},#{b_content},#{cost},#{max_person},#{min_person},#{min_age}, #{address}, #{addressLL})
 	
 </insert>
 
