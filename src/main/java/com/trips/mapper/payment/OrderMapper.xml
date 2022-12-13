@@ -16,7 +16,7 @@
   	<result property="boardnum" column="B_NO"/>
   	<result property="boardtitle" column="B_TITLE"/>
   	<result property="addDate" column="O_ADDDATE"/>
-  	<result property="person" column="PERSON"/>
+  	<result property="person" column="person"/>
   	<result property="price" column="O_PRICE"/>
   	<result property="renamedFileName" column="renamedFileName"/>
   </resultMap>
@@ -46,7 +46,7 @@
   		 O_B_NO boardnum,
   		 O_CART_ID cart_id,
   		 O_ADDDATE adddate,
-  		 PERSON person,
+  		 O_PERSON person,
   		 O_PRICE price
   FROM ACTI_ORDER o 
   LEFT JOIN ACTI_BOARD ACTI_BOARD ON o.O_B_NO = ACTI_BOARD.B_NO
@@ -65,10 +65,10 @@ LEFT JOIN CART c ON o.O_CART_ID = c.CART_ID
    				O_CART_ID
    				M_ID	        
    				) VALUES (
-   				#{order_id},
-				#{boardnum},
-				#{cart_id},
-   				#{id}
+   				#{id},
+				#{boardNumber},
+				#{cartId},
+   				#{memberId}
    				)
   </insert>
   

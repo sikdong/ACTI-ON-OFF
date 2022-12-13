@@ -35,23 +35,20 @@
 					<tr>
 						<th colspan="2" style="text-align: center;">상품명</th>
 						<th>가격</th>
-						<th>수량</th>
+						<th>인원수</th>
 						<th>옵션</th>
 					</tr>
 				</thead>
 				<tbody>
 						<tr>
 							<td><c:if test="${ !empty orderList.renamedFileName }">
-							 <img alt="thumbnail" id="image" src="${path}/resources/upload/wineimg/${orderList.renamedFileName}" width="150px" height="180px"></c:if>
+							 <img alt="thumbnail" id="image" src="${path}/resources/upload/${orderList.renamedFileName}" width="150px" height="180px"></c:if>
 							<input value="${orderList.cart_id}" name="cart_id" id="cart_id">
 							</td>
 							<td><br></td>
-							<td><input name="price" value="${ orderList.price }"/>&nbsp;원</td>
-							<td><input name="person" value="${ orderList.person }"/>&nbsp;인원수</td>
-							<td><select name="order_Qty" class="form-control order_Qty">
-									<option value="1" selected="">1</option>
-							</select>
-							</td>
+							<td><input name="price" value="${ orderList.price }"/>&nbsp;</td>
+							<td><input name="person" value="${ orderList.person }"/>&nbsp;</td>
+							
 							<td>
 										<div class="form-horizontal" style="text-align: left;">
 											<select class="form-control" name="selected_Opt">
@@ -75,14 +72,14 @@
 				<div class="form-group">
 					<label for="inputId" class="col-sm-2 control-label">ID</label>
 					<div class="col-sm-8">
-						<input class="form-control" id="inputId" placeholder="ID" name="id" value="${loginMember.id}" readonly>
+						<input class="form-control" id="inputId" placeholder="ID" name="M_ID" value="${member.M_ID}" readonly>
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<label for="inputName" class="col-sm-2 control-label">Name</label>
 					<div class="col-sm-8">
-						<input class="form-control" id="name" placeholder="Name" name="name" value="${loginMember.name}">
+						<input class="form-control" id="name" placeholder="Name" name="name" value="${orderList.name}">
 					</div>
 				</div>					
 				<div class="form-group">
@@ -137,18 +134,29 @@ function requestPay() {
  }, function (rsp) { // callback
      if (rsp.success) {
         	console.log("ajax 이전33333S");
-/*              	$.ajax({
+        	// todo1 : data 만들기
+        	// data : m_id, o_b_no, o_cart_id, o_adddate, o_price, renamedFilename
+        	const memberId = "11"; // 나중에 실제 멤버아이디로 변경
+        	const boardNumber = 1; // 필요한건가???? 나중에 수정하세요
+        	const cartId = ${orderList.cart_id};
+        	const price = ${ orderList.price };
+        	const renamedFilename = '';
+        	
+        	const data = {memberId, boardNumber, cartId, price};
+        	
+              	$.ajax({
        		url: "${path}/payment/orderResult",
        		type: "post",
-       		data: data,
-       		dataType: "text",
+       		data: JSON.stringify(data),
+       		dataType: "json",
+       		contentType: "application/json; charset=UTF-8",
        		success: function(){
 		        	alert("결제가 완료되었습니다.");
 		        	 location.href = "${path}/payment/orderResult"; 
        		}
-       	}); */
+       	}); 
        	console.log("ajax 이후");
-       	 location.href = "${path}/payment/orderResult"; 
+       	location.href = "${path}/payment/orderResult"; 
        } else { // 실패시 실행문
        	alert("결제가 취소되었습니다.");
    		location.href = "${path}/payment/cart";

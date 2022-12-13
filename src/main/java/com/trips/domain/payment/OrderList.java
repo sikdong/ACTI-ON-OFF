@@ -31,7 +31,7 @@ public class OrderList {
 	
 	private int resNo;
 	
-	private String price; // wine -- cart table 이랑 연결을 하는 것이? 
-	
+	private String price; // 
+
 	private String renamedFileName;
 }

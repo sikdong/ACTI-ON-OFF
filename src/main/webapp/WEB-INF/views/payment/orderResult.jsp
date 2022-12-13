@@ -24,7 +24,7 @@
 </head>
 <body>	
 	<div class="container">
-		<c:set value="${orderDTO}" var="dto"/>
+		<c:set value="${order}" var="dto"/>
 		<div class="row" style="text-align: center;">
 			<h1 class="page-header" style="margin-bottom: 50px;">주문이 완료되었습니다.</h1>
 			<table class="table table-hover" style="margin: auto; border-bottom: 1px solid #D5D5D5;">
@@ -40,11 +40,11 @@
 				<tbody style="text-align: left; vertical-align: middle;">
 						<tr>
 							<td style="text-align: center;"><img alt="onoff" src="/resources/upload${dto.fullname}" width="30%">
-							<input type="hidden" value="${dto.productId}" name="productId" id="productId">
+							<input type="hidden" value="${dto.id}" name="productId" id="productId">
 							</td>
-							<td>${dto.productName}<br>${dto.productInfo}</td>
+							<td>${dto.name}<br>${dto.productInfo}</td>
 							<td><fmt:formatNumber type="number" value="${dto.price}"/>&nbsp;원</td>
-							<td>${dto.order_Qty}</td>
+							<td>${dto.cart_id}</td>
 							<td>${dto.selected_Opt}</td>
 							<td><fmt:formatNumber type="number" value="${dto.totalAmount}"/>&nbsp;원</td>
 						</tr>

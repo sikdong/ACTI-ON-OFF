@@ -1,6 +1,7 @@
 package com.trips.domain.payment;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,29 +12,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Order {
 	   
-	private String orderId;
-	
-	private String id;
-	
-	private int wineBno;
-	
-	private int cart_id;
-	
-	private Date orderDate;
-	
-	private String name; // member
-	
-	private String email;
-	
-	private String phone;
-	
-	private String amount; // wine -- cart table 이랑 연결을 하는 것이? 
-	
-	private String wineName;
-	
-	private String winePrice;
-	
-	private String renamedFileName;
+	private int id; // o_order_id
+	private String memberId; // m_id
+	private int boardNumber; // o_b_no
+	private int cartId; // o_cart_id
+	private LocalDateTime addDate; // o_adddate
+	private int price; // o_price
+	private String renamedFilename; // renamedFilename
 	
 
 }
