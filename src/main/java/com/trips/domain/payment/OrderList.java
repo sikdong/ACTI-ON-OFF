@@ -13,6 +13,8 @@ public class OrderList {
 	
 	private int orderId;
 	
+	private int cart_id;
+	
 	private String name;
 	
 	private int email;
@@ -23,11 +25,13 @@ public class OrderList {
 	
 	private int amount; // member
 	
-	private Date date;
+	private int person; // member
+	
+	private Date adddate;
 	
 	private int resNo;
 	
-	private int price; // wine -- cart table 이랑 연결을 하는 것이? 
-	
+	private int price; // 
+
 	private String renamedFileName;
 }

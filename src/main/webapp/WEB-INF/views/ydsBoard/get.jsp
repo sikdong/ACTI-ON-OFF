@@ -7,7 +7,9 @@
 <head>
 <style>
 .root {
+
 	margin-left : 10%;
+
 	margin-top : 50px;
 }
 
@@ -68,7 +70,9 @@
 }
 
 .calendar {
+
   	width : 30%;
+
     padding: 0;
     margin-left: 0;
     background-color: var(--bg-color);
@@ -170,6 +174,7 @@
 		<c:param name="num" value="${board.num}"></c:param>
 	</c:url>
 	
+
 	<input type="hidden" id="numInput" value="${board.num}" />
 <div class="root">
 		<c:forEach items="${board.date}" var="date">
@@ -183,6 +188,7 @@
 		<div class="container-fluid">최소 인원 : ${board.minPerson}</div>
 		<div class="container-fluid">최소 연령 : ${board.minAge}</div>
 		<input type="number" id="orderAllPerson" value="" />
+
 	<div class="container-fluid flex">
 		<span><Strong>${board.title }</Strong></span>
 		<div class="ml-3">
@@ -192,6 +198,7 @@
 			<h3 class="ml-3">${board.price}</h3> 
 			<span class="mt">
 				<small>원/1인</small>
+
 			</span>
 			<div onclick="plusLike()" class="cursor ml-3" id="plusLike">
 				<i class="fa-regular fa-heart fa-2x red"></i> 
@@ -204,12 +211,14 @@
 			</div>
 	</div>
 	<div class="container-fluid flex" >
+
 	<c:forEach items="${board.fileName }" var="file" begin="0" end="2">
 		<img src="${path}/assets/img/${file}" class="size" alt="...">
 	</c:forEach>
 	</div>
 	<%--사진 더 보기 기능도 추가해야함 --%>
 	<div style="text-align : left"><a href="" style="color : black;">사진 다 보기</a></div>
+
 	
 
 
@@ -220,7 +229,9 @@
 					<textarea style="width : 100% !important;" rows="5"  
 					readonly class="form-control">${board.hostIntro }</textarea>
 				</div>
+
 				<div id="showCalendar" class="halfview" style="margin-left : 20%">
+
 				</div>
 			</div>	
 				<div class="mt-40">
@@ -389,9 +400,11 @@ function getFiveFiles(){
 			if(file.num != ${board.num}){
 			const fileList = 
 				`<div class="flex-child">
+
 					<a href="/ydsBoard/get?num=\${file.num}">
 					<img src="${path}/assets/img/\${file.fileName}" class="size" alt="...">
 					</a>
+
 					<h5 class="text-center">\${file.content}</h5>
 				</div>`
 			  document.querySelector(".flex-container").insertAdjacentHTML("afterbegin", fileList);
@@ -571,6 +584,7 @@ const calendarFrame =
 			<div onclick="goCart()" class="btn btn-outline-secondary">장바구니 담기 <i class="fa-solid fa-cart-shopping"></i></div>
 			<div style="color : red"><small>*밑줄 친 날짜만 예약 가능합니다.</small></div>
 			<small id="actiDate"></small>
+
 		</div>
 	</div>`
 document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calendarFrame)
@@ -603,25 +617,31 @@ document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calenda
 		} 
 				const dateDiv =`<div class="date cursor" id="date\${i}">\${dates[i]}</div>`;
 				document.querySelector(".week").insertAdjacentHTML("afterbegin", dateDiv); 
+
 		
 		document.querySelector("#date"+i).addEventListener("click", () => {
 			 document.querySelector("#actiDate").innerHTML="선택하신 날짜는 " + document.querySelector("#date"+i).innerHTML+"일 입니다."
 			
 		
+
 		document.querySelector("#addDate").value = '';	
 		let year = CDate.getFullYear()
 		let month = CDate.getMonth() + 1
 		document.querySelector("#addDate").value += year;
 		document.querySelector("#addDate").value +="."+ month;
 		document.querySelector("#addDate").value +='.'+ document.querySelector("#date"+i).innerHTML;
+
 		})
 	}
+
 
 	let person = document.querySelector("#number").innerHTML; 
 	document.querySelector("#person").value += person;
 }
 
+
 buildCalendar();
+
 
 function addNumber(){
 	document.querySelector("#number").innerHTML++
@@ -651,6 +671,7 @@ function goCart(){
 	document.querySelector("#cartForm").submit();
 }
 
+
 let date =[];
 <c:forEach items="${board.date}" var="date">
 	date.push(${date});
@@ -658,6 +679,7 @@ let date =[];
 </c:forEach>
 	date.push(document.querySelector("#addDate").value);
 	console.log(date)
+
 
 </script>
 </body>

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags" %>
-
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,11 +13,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+
+
 <my:navbar></my:navbar>
 	<div class="container-md">
 		<div class="row">
 			<div class="col">
-				<h1>문의하기</h1>
+				<h4 style="text-align:center;">문의하기</h4>
 				<form id="registerForm1" action="" method="post" enctype="multipart/form-data">
 					<div class="mb-3">
 						<label for="" class="form-label">제목</label>
@@ -33,12 +35,14 @@
 						<input multiple type="file" accept="image/*" class="form-control" name="files">
 					</div> 
 					
+					
 					<div class="mb-3">
 						<label for="" class="form-label">작성자</label>
-						<input type="text" class="form-control" name="memberId">
+						<input value="<sec:authentication property="name"/>"
+						type="text" class="form-control" name="memberId">
 					</div>
 					
-					<input id="submitButton1" class="btn btn-primary" type="submit" value="등록">
+					<input id="submitButton1" class="btn primary" type="submit" value="등록">
 					
 				
 				
@@ -49,6 +53,9 @@
 	
 	
 <my:navBar1 active="register"></my:navBar1>
+<jsp:include page="/WEB-INF/views/index.jsp" flush="true">
+	<jsp:param value="index1" name="1"/>
+</jsp:include>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script><script>
 document.querySelector("#submitButton1").addEventListener("click", function(e) {
 	// submit 진행 중지

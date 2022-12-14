@@ -27,11 +27,11 @@ public interface QnaMapper {
 
 	int deleteFileByBoardIdAndFileName(int id, String fileName);
 
-	int getEmpathyByQnaId(String qnaId);
+	int getEmpathyByQnaId(String qnaId,String MemberNo);
 
-	int deleteEmpathy(String qnaId);
+	int deleteEmpathy(String qnaId,String MemberNo);
 
-	int insertEmpathy(String qnaId);
+	int insertEmpathy(String qnaId,String MemberNo);
 
 	int countEmpathyByQnaId(String qnaId);
   

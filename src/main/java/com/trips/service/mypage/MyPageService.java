@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.trips.domain.mypage.ChatDto;
 import com.trips.domain.mypage.ChatLeftDto;
+import com.trips.domain.mypage.ImgDto;
 import com.trips.domain.mypage.MemberDto;
 import com.trips.domain.mypage.Res1Dto;
 import com.trips.domain.mypage.Res2Dto;
@@ -85,8 +86,27 @@ public class MyPageService {
 		return mapper.insertChat(id,chatRoom,content);
 	}
 
-	public List<ChatLeftDto> getChatLeft() {
+	public List<ChatLeftDto> getChatLeft(String id) {
 		
-		return mapper.getChatLeft();
+		return mapper.getChatLeft(id);
+	}
+
+	public int remove(String id) {
+		
+		return mapper.remove(id);
+	}
+
+	public String getEmailById(String id) {
+		return mapper.getEmailById(id);
+	}
+
+	public MemberDto getByEmail(String email) {
+		// TODO Auto-generated method stub
+		return mapper.getByEmail(email);
+	}
+
+	public List<ImgDto> getImgByResNo(int resNo) {
+		// TODO Auto-generated method stub
+		return mapper.getImgByResNo(resNo);
 	}
 }

@@ -103,7 +103,7 @@ header{
 		 	 		
 		 	 		<div class="item">
 			 	 		<img style="width:80px; height:80px;border-radius: 100%" 
-						src="${imgUrl }/${left.fileName}">
+						src="${imgUrl }/host/${left.boardNo}/${left.fileName}">
 		 	 		</div>
 					<div class="item" style="padding-left: 20px;">
 						<div style="font-weight: bold;font-size: 22px">

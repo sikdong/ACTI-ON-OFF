@@ -3,7 +3,11 @@ package com.trips.controller.host;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.StringTokenizer;
+
+import javax.servlet.http.HttpSession;
+
 import java.io.File;
 import java.sql.Date;
 
@@ -14,6 +18,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,9 +29,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 import com.trips.domain.host.BoardDto;
 import com.trips.domain.host.Host;
+import com.trips.domain.yds.TripsBoardDto;
 import com.trips.service.host.HostService;
 
-
+//컨트롤러에 트렌잭션 어노테이션을 못쓰는 이유 ?
 @Controller
 @RequestMapping("host")
 public class HostController {
@@ -58,9 +64,10 @@ public class HostController {
 	}
 	//포토 등록
 	@PostMapping("becomeHost")
-	public String becomeHost(Host host) {
+	public String becomeHost(Host host, MultipartFile file) {
 		System.out.println(host);
-		hostService.becomeHost(host);
+		hostService.becomeHost(host,file);
+		
 		return "redirect:waitingAcceptance";
 	}
 	
@@ -70,15 +77,43 @@ public class HostController {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
 	//호스트 정보 관리- ru..d?
 	//호스트만
-	@GetMapping("host")
+	
+	@GetMapping("hostInfo")
 //	@PreAuthorize("@boardSecurity.checkWriter(authentication.name, #id)")
-	public void my(int m_id,Model model) {
-		Host host = hostService.host(m_id);
+//	public void hostInfo(String m_id,Model model) {
+	public void hostInfo(Model model) {
+		//왜 여긴 모델을 파라미터로 써야되지?
+		Host host = hostService.hostInfo("bb");
+		System.out.println(host+"@@");
 		model.addAttribute("host", host);
-		
+		System.out.println(host);
 	}
+	//지금은 호스트 소개만 수정..
+	@PostMapping("hostInfo")
+	public String hostInfo(@ModelAttribute Host host, RedirectAttributes rttr) {
+		System.out.println(host+"######");
+		int result= hostService.hostInfoModify(host);
+		if (result == 1) {
+			rttr.addFlashAttribute("message", "수정완");
+		} else {
+			rttr.addFlashAttribute("message","수정안됨" );
+		}
+		//수정 후 모달로 요청하려면?
+		return "redirect:hostInfoModifyComplete";
+	}
+	
+	
+	@GetMapping("hostInfoModifyComplete")
+	public void hostInfoModifyComplete() {}
 	
 	
 	
@@ -138,9 +173,11 @@ public class HostController {
 	// 상대 절대 경로
 	//@RequestParam이랑 @Pathvariable 차이점 
 	@PostMapping("listing/topic")
-	public String listingOff(@RequestParam (required=false) String b_topic ) {
+	public String listingOff(@RequestParam (required=false) String b_topic, HttpSession session ) {
 	//	hostService.listingTopic(b_topic);
-		boardDto.setB_topic(b_topic);
+		session.setAttribute("b_topic", b_topic);
+		
+	//	boardDto.setB_topic(b_topic);
 		System.out.println(com.trips.controller.host.HostController.boardDto);
 		
 		return "redirect:/host/listing/contents";
@@ -156,9 +193,23 @@ public class HostController {
 	// 함수를 호출하지 않고 매개변수에 값을 넣을 수 있는 방법은 없나 ? 매개변수의 값을 나눠서 넣고 싶을 때.
 	//MultipartFile[] b_filename 은 등록페이지 마지막에? 날짜는 달력을 보여주고 선택하게. 파라미터는 컬렉션으로?
 	public String listingContents( String b_title, String b_content,
-										 int cost,int min_person, int max_person, int min_age ) {	
+										 int cost,int min_person, int max_person, int min_age, String address, String addressLL, HttpSession session ) {	
+
 //	public String listingContents(BoardDto board ) {	
 //		boardDto=board;//매개변수에 모델어트리뷰트 쓰면 빈 디티오에 담기는 거니까 이전과 다른 인스턴스.
+		
+		
+		session.setAttribute("b_title", b_title);
+		session.setAttribute("b_content", b_content);
+		session.setAttribute("cost", cost);
+		session.setAttribute("min_person", min_person);
+		session.setAttribute("max_person", max_person);
+		session.setAttribute("min_age", min_age);		
+		session.setAttribute("address", address);
+		session.setAttribute("addressLL", addressLL);
+		
+		
+		System.out.println(session.getAttribute("b_topic")+"@@@"); // 같은 세션에 담기네 
 		
 		boardDto.setB_title(b_title);
 		boardDto.setB_content(b_content);
@@ -166,9 +217,11 @@ public class HostController {
 		boardDto.setMax_person(min_person);
 		boardDto.setMax_person(max_person);
 		boardDto.setMin_age(min_age);
+		boardDto.setAddress(address);
+		boardDto.setAddressLL(addressLL);
 	//	b_no=boardDto.getB_no();
-		hostService.listingContents(boardDto);
-		System.out.println(boardDto);
+//		hostService.listingContents(boardDto);
+	//	System.out.println(boardDto);
 		
 		return "redirect:/host/listing/image";
 	}
@@ -181,18 +234,41 @@ public class HostController {
 	//이미지랑 날짜는 테이블이 각각 있음
 	@GetMapping("listing/image")
 	public void listingImageJsp() {
-		
-		
 	}
 	@PostMapping("listing/image")
-	public String listingImage( MultipartFile[] files, String[] date) throws ParseException {
+	public String listingImage( MultipartFile[] files, String[] date, HttpSession session) throws ParseException {
 		
 		//매개변수 date는 String[]
-		System.out.println(date[0]+"@@");
-		System.out.println(date[1]+"@@");
 		//이제 스트링배열로 받았으니까! 이걸 db에 저장만하면됨
-		b_no=boardDto.getB_no();
-		hostService.listingImageDate(b_no,files,date); 
+		//b_no=boardDto.getB_no();
+		
+		
+		
+		BoardDto boardDto =new BoardDto();
+
+		boardDto.setB_topic((String)session.getAttribute("b_topic"));
+		boardDto.setCost((int)session.getAttribute("cost"));
+		boardDto.setB_title((String)session.getAttribute("b_title"));
+		boardDto.setB_content((String)session.getAttribute("b_content"));
+		boardDto.setMax_person((int) session.getAttribute("max_person")   );
+		boardDto.setMin_person((int) session.getAttribute("min_person")   );
+		boardDto.setMin_age((int) session.getAttribute("min_age")   );
+		boardDto.setAddress((String)session.getAttribute("address"));
+		boardDto.setAddressLL((String)session.getAttribute("addressLL"));
+	
+		
+		
+		
+		 
+		
+		hostService.listing(boardDto,files, date);
+		
+//		hostService.listingContents(boardDto);
+//		hostService.listingImageDate(b_no,files,date); 
+//		hostService.listing(boardDto,files,date);
+//		hostService.listing(  b_topic,  b_title,  b_content,
+//										  cost, min_person,  max_person,  min_age, files, date);
+//		
 //		hostService.listingImageDate(boardDto,files,date); 
 //		? 디티오에 b_no프로퍼티 있는데 왜 Parameter 'b_no' not found. Available parameters are [boardDto, param1, originalFilename, param2]
 //		     이런 오류가 남?
@@ -234,13 +310,17 @@ public class HostController {
 	
 	
 	
-	//체험관리
+	//체험관리...
 	//호스트만
-	@RequestMapping("admin")
-	public void admin() {
+	// 호스트 아이디랑 같은 체험 불러오기
+	@GetMapping("admin")
+	public void admin(String m_id, Model model) {
+		List<BoardDto> boardList = hostService.getMyList("bb");
+		System.out.println(boardList );
+		model.addAttribute("boardList", boardList);
 	}
 	
-
+	
 	
 	
 	

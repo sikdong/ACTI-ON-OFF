@@ -72,7 +72,7 @@
 	
 	<div id="res" class="container-md" style="width:1500px">
 		
-		<strong style="padding:70px 0 43px 0;display:block">${res1[0].id }님의 예약내역</strong>
+		<strong style="padding:70px 0 43px 0;display:block">${id }님의 예약내역</strong>
 		<div class="row">
 			<div class="col">
 				<jsp:useBean id="now" class="java.util.Date" />
@@ -86,7 +86,7 @@
 							<div onclick="location.href='/mypage/resDetail?resNo=${res.resNo}'" style="display:flex;">
 								<div style="padding-right: 70px;">
 									<img style="width:200px; height:135px;border-radius: 30%" 
-									src="${imgUrl }/${res.fileName}">
+									src="${imgUrl }/host/${res.boardNo}/${res.fileName}">
 								</div>
 								<div>
 									<div id="res_title1">${res.title }</div>
@@ -107,7 +107,7 @@
 							<div  onclick="location.href='/mypage/resDetail?resNo=${res.resNo}'" style="display:flex;">
 								<div style="padding-right: 70px;">
 									<img style="width:200px; height:135px;border-radius: 30%" 
-									src="${imgUrl }/${res.fileName}">
+									src="${imgUrl }/host/${res.boardNo}/${res.fileName}">
 								</div>
 								<div>
 									<div id="res_title1">${res.title }</div>

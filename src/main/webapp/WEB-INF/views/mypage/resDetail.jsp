@@ -6,6 +6,79 @@
 <html>
 <head>
 <style>
+/*----------------슬라이드 CSS-----------------*/
+.slider{
+    width: 100%;
+    height: 300px;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden; 
+}
+.slider input[type=radio]{
+    display: none;
+}
+ul.imgs{
+    padding: 0;
+    margin: 0;
+    list-style: none;    
+}
+ul.imgs li{
+    position: absolute;
+    left: 640px;
+    transition-delay: 1s; 
+
+    padding: 0;
+    margin: 0;
+}
+.bullets{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 20px;
+    z-index: 2;
+}
+.bullets label{
+    display: inline-block;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.55);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.slider input[type=radio]:nth-child(1):checked~.bullets>label:nth-child(1){
+    background-color: #fff;
+}
+.slider input[type=radio]:nth-child(2):checked~.bullets>label:nth-child(2){
+    background-color: #fff;
+}
+.slider input[type=radio]:nth-child(3):checked~.bullets>label:nth-child(3){
+    background-color: #fff;
+}
+.slider input[type=radio]:nth-child(4):checked~.bullets>label:nth-child(4){
+    background-color: #fff;
+}
+.slider input[type=radio]:nth-child(1):checked~ul.imgs>li:nth-child(1){
+    left: 0;
+    transition: 0.5s;
+    z-index:1;
+}
+.slider input[type=radio]:nth-child(2):checked~ul.imgs>li:nth-child(2){
+    left: 0;
+    transition: 0.5s;
+    z-index:1;
+}
+.slider input[type=radio]:nth-child(3):checked~ul.imgs>li:nth-child(3){
+    left: 0;
+    transition: 0.5s;
+    z-index:1;
+}
+.slider input[type=radio]:nth-child(4):checked~ul.imgs>li:nth-child(4){
+    left: 0;
+    transition: 0.5s;
+    z-index:1;
+}
+/*----------------슬라이드 CSS 끝-----------------*/
 .fix {
   background-color:rgb(60, 60, 60) !important;	
   width:100%;
@@ -70,22 +143,60 @@ html, body {
 
 	<my:navbar></my:navbar>
 	
-	<div style="height: 100%">
+	<div style="height: calc(100% - 80px)">
 		<div class="resD_left">
-			<div style="width:100%; position:relative; height: 300px" >
+			
+			<div class="slider">
+				
+				    <input type="radio" name="slide" id="slide1" checked>
+				    <input type="radio" name="slide" id="slide2">
+				    <input type="radio" name="slide" id="slide3">
+				    <input type="radio" name="slide" id="slide4">
+			    
+			    <ul id="imgholder" class="imgs">
+			        <c:forEach items="${img}" var="img">	
+						<li style="width:100%">
+							<div style="width:100%; position:relative; height: 300px" >
+								<div style="
+								position:absolute;
+								background: rgba(0,0,0,0.5);
+								width:100%; height:300px;
+								">
+								<h3 class="white_bold">${resNo.host}님의 체험 : ${resNo.title}</h3>
+								</div>
+								<img src="${imgUrl }/host/${img.boardNo}/${img.fileName}"
+								      	style="width:100%;height:300px;">
+						   </div>
+						</li>
+					</c:forEach>
+			    </ul>
+			    <div class="bullets">
+			    	
+			        <label for="slide1">&nbsp;</label>
+			    	<label for="slide2">&nbsp;</label>
+			        <label for="slide3">&nbsp;</label>
+			        <label for="slide4">&nbsp;</label>
+			       
+			    </div>
+			</div>
+			
+			<%-- <div style="width:100%; position:relative; height: 300px" >
 				<div style="
 				position:absolute;
 				background: rgba(0,0,0,0.5);
 				width:100%; height:300px;
 				">
-					<h3 class="white_bold">${resNo.host}님의 체험 : ${resNo.title}</h3>
+				<h3 class="white_bold">${resNo.host}님의 체험 : ${resNo.title}</h3>
 				</div>
 				<img style="
 				width:100%; 
 				height:300px; 
 				"
-				src="${imgUrl }/${resNo.fileName}">
-			</div>
+				src="${imgUrl }/host/${resNo.boardNo}/${resNo.fileName}">
+			</div> --%>
+			
+			
+			
 			<div style="display:flex;">
 				<i id="icon_base" class="fa-regular fa-calendar-days fa-2x"></i>
 				<div id="description">
@@ -179,7 +290,7 @@ html, body {
 					</div>
 					<div id="des" style="padding-right: 60px; display:none;">
 						<div id="close">▲</div>
-						<div class="infos">
+						<div class="infos" style="padding-bottom: 60px;">
 							${resNo.content}						
 						</div>
 					</div>
@@ -187,13 +298,14 @@ html, body {
 			</div>
 			
 			<hr class="shortLine">
+			
 		</div>
 		
 		
 		
 		
 		<div class="resD_right">
-			<div id="googleMap" style="width:100%; height: 92%;">
+			<div id="googleMap" style="width:100%; height: 100%;">
 			</div>
 		</div>
 	</div>
@@ -258,6 +370,10 @@ document.querySelector("#goToChat").addEventListener("click", function() {
 	location.href="/mypage/chat?chatRoom=${resNo.resNo}&id=${resNo.id}&host=${resNo.host}"
 });
 /* --------------채팅 페이지 이동 기능 끝-------------------------------------------------------------------------------------------------- */
+
+/* --------------슬라이드 이동 기능 스크립트-------------------------------------------------------------------------------------------------- */
+
+/* --------------슬라이드 이동 기능 스크립트 끝-------------------------------------------------------------------------------------------------- */
 </script>
 <!-- 구글 map api -->
 </body>
