@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.trips.domain.mypage.ChatDto;
 import com.trips.domain.mypage.ChatLeftDto;
+import com.trips.domain.mypage.ImgDto;
 import com.trips.domain.mypage.MemberDto;
 import com.trips.domain.mypage.Res1Dto;
 import com.trips.domain.mypage.Res2Dto;
@@ -41,5 +42,7 @@ public interface MyPageMapper {
 	String getEmailById(String id);
 
 	MemberDto getByEmail(String email);
+
+	List<ImgDto> getImgByResNo(int resNo);
 
 }

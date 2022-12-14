@@ -26,6 +26,7 @@ import com.trips.domain.mypage.ChatAddDto;
 import com.trips.domain.mypage.ChatDto;
 import com.trips.domain.mypage.ChatLeftDto;
 import com.trips.domain.mypage.IdEmailDto;
+import com.trips.domain.mypage.ImgDto;
 import com.trips.domain.mypage.MemberDto;
 import com.trips.domain.mypage.Res1Dto;
 import com.trips.domain.mypage.Res2Dto;
@@ -160,9 +161,12 @@ public class MyPageController {
 		int boardNo = res2.getBoardNo();
 		String date = res2.getDate();
 		int count = service.getCountByBD(boardNo, date);
+		List<ImgDto> img = service.getImgByResNo(resNo);
+		
 		model.addAttribute("resNo", res2);
 		model.addAttribute("shorts", shorts);
 		model.addAttribute("count", count);
+		model.addAttribute("img", img);
 	}
 	
 	@GetMapping("chat")
