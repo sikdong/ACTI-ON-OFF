@@ -49,6 +49,7 @@ public class HostController {
 	//호스트 되기
 	//로그인한 멤버만 
 	@RequestMapping("becomeHostIntro")
+	//@PreAuthorize("isAuthenticated()")
 	public void becomeHostIntro() {
 //		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //		UserDetails userDetails = (UserDetails)principal;
@@ -125,6 +126,7 @@ public class HostController {
 	//호스트만 
 	// 보드,date,file,...주소? /topic도 테이블 따로 뺄 시간 있으면.. 빼기
 	@RequestMapping("listing")
+	//@PreAuthorize("hasAuthority('host')")
 	public void listingJsp() {	
 	}
 	@GetMapping("listing/topic")
