@@ -4,10 +4,11 @@
 }
 
 .size {
-	height : 350px;
-	width : 300px; 
-	border-radius : 30px;
-	margin : 10px;
+	width : 240px;
+	height : 260px;
+	margin-left : 5px;
+	border-radius : 20px;
+	
 }
 
 .container-fluid {

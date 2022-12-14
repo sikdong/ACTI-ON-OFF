@@ -71,24 +71,10 @@ a {
  <div class="mt-100" style="text-align : center">
  	<h4>당신의 여행을 특별하게</h4>
  </div>
-<div style="text-align : right; margin-right : 20px"><a style="color : black" href="/ydsBoard/getAllBoard">체험 전체 보기</a></div>
+<div style="text-align : right; margin-right : 20px"><a style="color : black" href="">체험 전체 보기</a></div>
 <div class="root mt-100">
  <div class="flex">
- 	<c:forEach items="${boardList }" var="list" begin="0" end="3">
- 	<c:url value="/ydsBoard/get" var="getLink">
-		<c:param name="num" value="${list.num }" ></c:param>
-	</c:url>
- 	<div class="ml-20">
- 		<a href="${getLink}"><img src="${imgUrl}/assets/img/${URLEncoder.encode(filename[0], 'utf-8')}" alt="이미지" class="size" /></a>
- 		<div class="mt-3" style="text-align : center;">
- 			<a class="link" href="${getLink}">${list.title }</a>
- 		</div>
- 		<div style="text-align : center;">${list.price }<small>원/1인</small></div>
- 	</div>
- 	</c:forEach>
- </div>
-  <div class="flex mt-10pro">
- 	<c:forEach items="${boardList }" var="list" begin="4" end="7">
+ 	<c:forEach items="${allBoard}" var="list">
  	<c:url value="/ydsBoard/get" var="getLink">
 		<c:param name="num" value="${list.num }" ></c:param>
 	</c:url>

@@ -1,17 +1,25 @@
 package com.trips.service.ydsBoardService;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.trips.domain.yds.TripsBoardDto;
+import com.trips.domain.yds.TripsOrderDto;
 import com.trips.mapper.yds.ydsBoardMapper;
 import com.trips.mapper.yds.reply.YdsReplyMapper;
 
+import software.amazon.awssdk.services.s3.S3Client;
+
 @Service
+@Transactional
 public class ydsBoardService {
 	
 	@Autowired
@@ -19,20 +27,58 @@ public class ydsBoardService {
 	
 	@Autowired
 	private YdsReplyMapper rMapper;
+	
+	@Autowired
+	private S3Client s3Client;
+	
+	// s3 파일 버켓 설정해야함
+	@Value("${aws.s3.bucket}")
+	private String bucketName;
+	
 
 	public List<TripsBoardDto> getBoardlist() {
 		// TODO Auto-generated method stub
 		return mapper.getBoardList();
 	}
 
-	public TripsBoardDto getBoard(int num) {
+	public TripsBoardDto getBoard(int num, MultipartFile[] file) {
 		// TODO Auto-generated method stub
-		return mapper.getBoard(num);
-	}
+		
+		TripsBoardDto board = mapper.getBoard(num, file);
+		List<Integer> sumList = new ArrayList<>();
+		List<String> savedDate = board.getDate();
+		List<String> orderDate = board.getAddDate();
+		List<Integer> person = board.getPerson();
+		for(int i = 0; i < savedDate.size(); i++) {
+			System.out.println(savedDate.get(i));
+			int sum= board.getMaxPerson();
+			for(int j = 0; j < orderDate.size(); j++) {
+				System.out.println(orderDate.get(j));
+				if(savedDate.get(i).equals(orderDate.get(j))) {
+				for(int k = 0; k < person.size(); k++) {
+					
+					sum -= person.get(k);
+				}
+				sumList.add(sum);
+			}
+		}
+	}		
+		// 계산...
+		System.out.println(sumList);
+		/*
+		 * for(int a = 0; a < sumList.size(); a++) {
+		 * board.setAvaliablePeople.add(sumList.get(a)); }
+		 */
+		return board;
+}
 
 	public int removeBoard(int num) {
 		rMapper.deleteReplybyBoardId(num);
 		// TODO Auto-generated method stub
+		mapper.deleteFileByBoardNo(num);
+		mapper.deleteLikeByBoardNo(num);
+		mapper.deleteDate(num);
+		mapper.deleteReservation(num);
 		return mapper.removeBoard(num);
 	}
 
@@ -61,5 +107,37 @@ public class ydsBoardService {
 		map.put("countLike", cnt);
 		return map;
 	}
+
+	public int modifyBoard(TripsBoardDto board, MultipartFile[] files) {
+		// TODO Auto-generated method stub
+		for(MultipartFile fileName : files) {
+		if(files != null && fileName.getSize()>0) {
+			int num = board.getNum();
+			String name = fileName.getOriginalFilename();
+			int cnt = mapper.deleteFileByNumAndfileName(num,name);
+			System.out.println(cnt+ "개 삭제됨----------");
+			mapper.insertFile(num, name);
+			}
+		
+		}
+		
+		return mapper.modifyBoard(board);
+	}
+
+	public void deleteFile(int fileNum) {
+		// TODO Auto-generated method stub
+		mapper.deleteFile(fileNum);
+	}
+
+	public List<TripsBoardDto> getAllBoard(MultipartFile[] file) {
+		// TODO Auto-generated method stub
+		return mapper.getAllBoard(file);
+	}
+
+	public List<TripsBoardDto> getAllfileWhenModify(int num) {
+		// TODO Auto-generated method stub
+		return mapper.getAllfileWhenModify(num);
+	}
+
 
 }

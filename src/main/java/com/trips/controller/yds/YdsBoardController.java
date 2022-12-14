@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.trips.domain.yds.TripsBoardDto;
+import com.trips.domain.yds.TripsOrderDto;
 import com.trips.service.ydsBoardService.ydsBoardService;
 
 @Controller
@@ -36,9 +39,9 @@ public class YdsBoardController {
 		model.addAttribute("boardList", list);
 	}
 	
-	@GetMapping("get")
-	public void getBoard(int num, Model model) {
-		TripsBoardDto board = service.getBoard(num);
+	@GetMapping({"get","modify"})
+	public void getBoard(int num, Model model, MultipartFile[] file) {
+		TripsBoardDto board = service.getBoard(num, file);
 		model.addAttribute("board", board);
 		
 	}
@@ -70,4 +73,31 @@ public class YdsBoardController {
 		return service.minusLike(req.get("num"), 
 				board);
 	}
+	
+	@PostMapping("modify")
+	public String modify(TripsBoardDto board, MultipartFile[] files) {
+		
+		int cnt = service.modifyBoard(board, files);
+		
+		return "redirect:/ydsBoard/list";
+	}
+	
+	@DeleteMapping("deleteFile/{fileNum}")
+	public void deleteFile(@PathVariable int fileNum){
+		service.deleteFile(fileNum);
+	}
+	
+	@GetMapping("getAllBoard")
+	public void getallboard(Model model, MultipartFile[] file) {
+		List<TripsBoardDto> board = service.getAllBoard(file);
+		model.addAttribute("allBoard", board);
+	}
+	
+	@GetMapping("getAllfileWhenModify/{num}")
+	public List<TripsBoardDto> getAllfileWhenModify(
+			@PathVariable int num){
+		System.out.println(num);
+		return service.getAllfileWhenModify(num);
+	}
+	
 }

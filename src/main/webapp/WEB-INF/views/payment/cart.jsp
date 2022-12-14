@@ -51,10 +51,12 @@
 					<form action="${path}/payment/orderPage" method="get">
 					 <c:forEach var="list" items="${cartList}">
 			         <div class="paymentScreenBtn">
+
 								<input type="hidden" name="boardnum" value="${list.boardnum}">
 								<input type="hidden" name="boardtitle" value="${boardList.title}">
 								<input type="hidden" name="Price" value="${list.price}">
 								<input type="hidden" name="merchant_uid" value="" id="merchant_uid">
+
                     </div>
                  	   <div class="row data">
                         <div class="subdiv">

@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Cart {
 
+
 	   private int cart_id;
 	         
 	   private String id;
@@ -26,4 +27,5 @@ public class Cart {
 	   private String addDate;
 	   
 	   private String renamedFileName;
+
 }

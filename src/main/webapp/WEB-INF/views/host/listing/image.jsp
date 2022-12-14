@@ -20,6 +20,7 @@
 	integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script src="./lib/jquery-3.5.1.js"></script>
+
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <script src="http://code.jquery.com/jquery-3.5.1.js"
 	integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
@@ -53,9 +54,11 @@
 
 
 
+
 	<div class="container-md">
 		<div class="row">
 			<div class="col">
+
 
 				<form id="registerForm1" action="" method="post"
 					enctype="multipart/form-data">
@@ -87,10 +90,12 @@
 
 
 
+
 				</form>
 			</div>
 		</div>
 	</div>
+
 	
 	
 	
@@ -216,11 +221,14 @@
 
 	<!-- 	<h1 id="header">jQuery Test를 위한 태그</h1> -->
 	<%
+
 	// 스크립트릿 영역 (scriptlet) : java coding area
 	// java -> System.out.println();
 	// js -> console.log();, document.write();
 	//out.print("hi jQuery...");
+
 	%>
+
 
 
 
@@ -235,6 +243,7 @@
 
 // 	    var reader = new FileReader(); 
 // 	    reader.onload = function(e) {
+
 
 // 	        $("#preview").attr("src", e.target.result);
 // 	    }
@@ -301,7 +310,6 @@ $('#header').css('color', '#00f'); //jQuery문법
 </script>
 </body>
 </html>
-
 
 
 

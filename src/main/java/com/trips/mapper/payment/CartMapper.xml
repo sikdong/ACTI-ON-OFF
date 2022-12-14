@@ -34,6 +34,7 @@
 	<insert id="addCart">
 
 		INSERT INTO CART(
+
 		M_ID,
 		B_NO,
 		CART_ID,
@@ -47,6 +48,7 @@
 		#{person},
 		#{price}
 		)
+
 
 	</insert>
 	

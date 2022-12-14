@@ -6,7 +6,6 @@
 <mapper namespace="com.trips.mapper.yds.ydsBoardMapper">
 <delete id="deleteLikeByLNO">
 DELETE FROM ACTI_LIKE WHERE B_NO = #{B_NO} AND M_ID = 'aa'
-
 </delete>
 
 <insert id="plusLike" useGeneratedKeys="true" keyProperty="board.L_NO">
@@ -19,46 +18,144 @@ VALUES(1, 'aa', #{num});
 	
 </insert>
 
-<select id="getBoardList" resultType="com.trips.domain.yds.TripsBoardDto">
+<select id="getAllBoard" resultMap="allBoard">
 SELECT
 	b.B_NO num,
 	b.B_TITLE title,
 	b.M_ID writer,
 	b.B_CONTENT content,
 	f.B_FILENAME fileName,
-	b.B_STATUS,
-	b.B_CREATEDATE
+	b.MAX_PERSON maxPerson,
+	b.COST price
 FROM ACTI_BOARD b
 LEFT JOIN ACTI_FILE f on f.B_NO = b.B_NO
-ORDER BY b.B_NO DESC; 
+GROUP BY b.B_NO
+ORDER BY b.B_NO DESC;
 </select>
 
-<select id="getFiveFiles" resultType="com.trips.domain.yds.TripsBoardDto">
+<resultMap type="com.trips.domain.yds.TripsBoardDto" id="allBoard">
+		<result column="num" property="num"></result>
+		<result column="title" property="title"/>
+		<result column="writer" property="writer"></result>
+		<result column="content" property="content"/>
+		<result column="maxPerson" property="maxPerson"></result>
+		<result column="price" property="price"></result>
+		<collection property="fileName" ofType="String">
+			<result property="fileName" column="fileName"/>
+		</collection>
+</resultMap>
+
+<select id="getBoardList" resultMap="boardListMap">
 SELECT
 	b.B_NO num,
 	b.B_TITLE title,
 	b.M_ID writer,
 	b.B_CONTENT content,
 	f.B_FILENAME fileName,
-	b.B_STATUS,
-	b.B_CREATEDATE
+	b.MAX_PERSON maxPerson,
+	b.COST price
 FROM ACTI_BOARD b
 LEFT JOIN ACTI_FILE f on f.B_NO = b.B_NO
+GROUP BY b.B_NO
+ORDER BY b.B_NO DESC
+LIMIT 20;
+</select>
+
+<resultMap type="com.trips.domain.yds.TripsBoardDto" id="boardListMap">
+		<result column="num" property="num"></result>
+		<result column="title" property="title"/>
+		<result column="writer" property="writer"></result>
+		<result column="content" property="content"/>
+		<result column="maxPerson" property="maxPerson"></result>
+		<result column="price" property="price"></result>
+		<collection property="fileName" ofType="String">
+			<result property="fileName" column="fileName"/>
+		</collection>
+</resultMap>
+
+
+
+<select id="getFiveFiles" resultMap="getfiveMap">
+SELECT
+	b.B_NO num,
+	b.B_TITLE title,
+	b.M_ID writer,
+	b.B_CONTENT content,
+	f.B_FILENAME fileName,
+	b.B_CREATEDATE createDate,
+	b.COST price,
+	b.MAX_PERSON maxPerson
+FROM ACTI_BOARD b
+LEFT JOIN ACTI_FILE f on f.B_NO = b.B_NO
+GROUP BY b.B_NO
 ORDER BY b.B_NO DESC
 LIMIT 5; 
 </select>
+<resultMap type="com.trips.domain.yds.TripsBoardDto" id="getfiveMap">
+		<result column="num" property="num"></result>
+		<result column="title" property="title"/>
+		<result column="writer" property="writer"></result>
+		<result column="content" property="content"/>
+		<result column="createDate" property="createDate"/>
+		<result column="price" property="price"/>
+		<collection property="fileName" ofType="String">
+			<result property="fileName" column="fileName"/>
+		</collection>
+</resultMap>
 
-<select id="getBoard" resultType="com.trips.domain.yds.TripsBoardDto">
+<select id="getBoard" resultMap="boardMap">
 SELECT
-	B_NO num,
-	B_TITLE title,
-	M_ID writer,
-	B_CONTENT content,
-	B_CREATEDATE createDate,
-	(SELECT COUNT(*) FROM ACTI_LIKE WHERE B_NO= #{num}) countLike
-FROM ACTI_BOARD
-WHERE B_NO = #{num}
+	b.B_NO num,
+	b.B_TITLE title,
+	b.M_ID writer,
+	b.B_CONTENT content,
+	b.B_CREATEDATE createDate,
+	b.B_HOSTINTRO hostIntro,
+	(SELECT COUNT(*) FROM ACTI_LIKE l WHERE l.B_NO= #{num}) countLike,
+	b.COST price,
+	f.B_FILENAME fileName,
+	f.B_FILE_NO fileNum,
+	b.MAX_PERSON maxPerson,
+	b.MIN_PERSON minPerson,
+	b.MIN_AGE minAge,
+	o.O_ADDDATE addDate,
+    o.O_PERSON person,
+    d.DATE date
+FROM ACTI_BOARD b
+LEFT JOIN ACTI_FILE f ON b.B_NO = f.B_NO
+LEFT JOIN ACTI_DATE d ON b.B_NO = d.B_NO
+LEFT JOIN ACTI_ORDER o ON b.B_NO = o.O_B_NO
+WHERE b.B_NO = #{num}
 </select>
+
+<resultMap type="com.trips.domain.yds.TripsBoardDto" id="boardMap">
+		<result column="num" property="num"></result>
+		<result column="title" property="title"/>
+		<result column="writer" property="writer"></result>
+		<result column="content" property="content"/>
+		<result column="createDate" property="createDate"/>
+		<result column="hostIntro" property="hostIntro"></result>
+		<result column="countLike" property="countLike"/>
+		<result column="price" property="price"/>
+		<result column="maxPerson" property="maxPerson"></result>
+		<result column="minPerson" property="minPerson"></result>
+		<result column="minAge" property="minAge"></result>
+		<collection property="fileName" ofType="String">
+			<result property="fileName" column="fileName"/>
+		</collection>
+		<collection property="fileNum" ofType="int">
+			<result property="fileNum" column="fileNum"></result>
+		</collection>
+		<collection property="addDate" ofType="String">
+			<result property="addDate" column="addDate"/>
+		</collection>
+		<collection property="person" ofType="int">
+			<result property="person" column="person"></result>
+		</collection>
+		<collection property="date" ofType="String">
+			<result property="date" column="date"></result>
+		</collection>
+</resultMap>
 
 <delete id="removeBoard">
 DELETE FROM ACTI_BOARD
@@ -70,5 +167,81 @@ SELECT COUNT(*) FROM ACTI_LIKE WHERE B_NO= #{num}
 
 </select>
 
+<update id="modifyBoard">
+UPDATE ACTI_BOARD b
+SET
+	b.B_TITLE = #{title},
+	b.B_CONTENT = #{content},
+	b.COST = #{price},
+	b.B_HOSTINTRO = #{hostIntro}
+WHERE b.B_NO = #{num}
+</update>
 
+<delete id="deleteFileByNumAndfileName">
+DELETE FROM ACTI_FILE 
+WHERE B_NO = #{num} AND B_FILENAME = #{fileName} 
+
+</delete>
+
+<insert id="insertFile">
+	INSERT INTO ACTI_FILE (B_NO, B_FILENAME)
+	VALUES (#{num}, #{fileName})
+</insert>
+
+<delete id="deleteFile">
+DELETE FROM ACTI_FILE
+WHERE B_FILE_NO = #{fileNum}
+</delete>
+
+<delete id="deleteFileByBoardNo">
+DELETE FROM ACTI_FILE
+WHERE B_NO = #{num}
+</delete>
+<delete id="deleteLikeByBoardNo">
+DELETE FROM ACTI_LIKE
+WHERE B_NO = #{num}
+</delete>
+<delete id="deleteDate">
+DELETE FROM ACTI_DATE
+WHERE B_NO = #{num}
+</delete>
+
+<select id="getOrders" resultMap="orderMap">
+SELECT 
+    O_ADDDATE addDate,
+    O_PERSON person
+FROM ACTI_ORDER
+WHERE O_B_NO = #{num}
+</select>
+
+<resultMap type="com.trips.domain.yds.TripsOrderDto" id="orderMap">
+	<collection property="addDate" ofType="date">
+		<result property="addDate" column="addDate"/>
+	</collection>
+	<collection property="person" ofType="int">
+		<result property="person" column="person"></result>
+	</collection>
+</resultMap>
+
+<delete id="deleteReservation">
+DELETE FROM ACTI_RESERVATION
+WHERE B_NO = #{num}
+</delete>
+
+<select id="getAllfileWhenModify" resultMap="modifyFileMap">
+SELECT 
+	B_FILENAME fileName,
+	B_FILE_NO fileNum
+FROM ACTI_FILE
+WHERE B_NO = #{num}	
+	
+</select>
+	<resultMap type="com.trips.domain.yds.TripsBoardDto" id="modifyFileMap">
+		<collection property="fileName" ofType="String">
+			<result property="fileName" column="fileName"/>
+		</collection>
+		<collection property="fileNum" ofType="int">
+			<result property="fileNum" column="fileNum"></result>
+		</collection>
+	</resultMap>
 </mapper>
