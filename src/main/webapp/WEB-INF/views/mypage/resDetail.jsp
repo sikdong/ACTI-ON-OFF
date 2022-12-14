@@ -147,13 +147,15 @@ html, body {
 		<div class="resD_left">
 			
 			<div class="slider">
-			    <input type="radio" name="slide" id="slide1" checked>
-			    <input type="radio" name="slide" id="slide2">
-			    <input type="radio" name="slide" id="slide3">
-			    <input type="radio" name="slide" id="slide4">
+				
+				    <input type="radio" name="slide" id="slide1" checked>
+				    <input type="radio" name="slide" id="slide2">
+				    <input type="radio" name="slide" id="slide3">
+				    <input type="radio" name="slide" id="slide4">
+			    
 			    <ul id="imgholder" class="imgs">
 			        <c:forEach items="${img}" var="img">	
-						<li>
+						<li style="width:100%">
 							<div style="width:100%; position:relative; height: 300px" >
 								<div style="
 								position:absolute;
@@ -163,16 +165,18 @@ html, body {
 								<h3 class="white_bold">${resNo.host}님의 체험 : ${resNo.title}</h3>
 								</div>
 								<img src="${imgUrl }/host/${img.boardNo}/${img.fileName}"
-								      	style="width:588px;height:300px;">
+								      	style="width:100%;height:300px;">
 						   </div>
 						</li>
 					</c:forEach>
 			    </ul>
 			    <div class="bullets">
+			    	
 			        <label for="slide1">&nbsp;</label>
-			        <label for="slide2">&nbsp;</label>
+			    	<label for="slide2">&nbsp;</label>
 			        <label for="slide3">&nbsp;</label>
 			        <label for="slide4">&nbsp;</label>
+			       
 			    </div>
 			</div>
 			
