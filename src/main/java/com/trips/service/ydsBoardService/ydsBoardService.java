@@ -16,7 +16,11 @@ import com.trips.domain.yds.TripsOrderDto;
 import com.trips.mapper.yds.ydsBoardMapper;
 import com.trips.mapper.yds.reply.YdsReplyMapper;
 
+import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.model.DeleteObjectRequest;
+import software.amazon.awssdk.services.s3.model.ObjectCannedACL;
+import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 
 @Service
 @Transactional
@@ -73,13 +77,54 @@ public class ydsBoardService {
 }
 
 	public int removeBoard(int num) {
+		TripsBoardDto board = mapper.getBoard(num, null);
+		List<String> fileNames = board.getFileName();
+		
+		if(fileNames != null) {
+			for(String fileName : fileNames) {
+				deleteS3File(num, fileName);
+			}
+		}
 		rMapper.deleteReplybyBoardId(num);
 		// TODO Auto-generated method stub
 		mapper.deleteFileByBoardNo(num);
 		mapper.deleteLikeByBoardNo(num);
 		mapper.deleteDate(num);
 		mapper.deleteReservation(num);
+		mapper.deleteCartNo(num);
 		return mapper.removeBoard(num);
+	}
+	
+	private void deleteS3File(int num, String fileName) {
+		String key = "trips/host/" + num +"/" + fileName;
+				DeleteObjectRequest deleteObjectRequest = DeleteObjectRequest.builder()
+				.bucket(bucketName)
+				.key(key)
+				.build();
+		s3Client.deleteObject(deleteObjectRequest);
+	}
+	
+	private void uploadFile(int num, MultipartFile file) {
+		try {
+			String key = "trips/host/" + num +"/" + file.getOriginalFilename();
+			System.out.println(key + "올림 ################");
+			//putObjectRequest
+			PutObjectRequest putObjectRequest = PutObjectRequest.builder()
+					.bucket(bucketName)
+					.key(key)
+					.acl(ObjectCannedACL.PUBLIC_READ)
+					.build();
+			
+			//requestBody
+			RequestBody requestBody = RequestBody.fromInputStream(file.getInputStream(), file.getSize());
+			
+			//object(파일) 올리기
+			s3Client.putObject(putObjectRequest, requestBody);
+			System.out.println("파일올림 종료 ###############");
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
 	}
 
 	public List<TripsBoardDto> getFiveFiles() {
@@ -114,9 +159,13 @@ public class ydsBoardService {
 		if(files != null && fileName.getSize()>0) {
 			int num = board.getNum();
 			String name = fileName.getOriginalFilename();
+			
 			int cnt = mapper.deleteFileByNumAndfileName(num,name);
 			System.out.println(cnt+ "개 삭제됨----------");
+			
 			mapper.insertFile(num, name);
+			
+			uploadFile(num, fileName);
 			}
 		
 		}
@@ -137,6 +186,11 @@ public class ydsBoardService {
 	public List<TripsBoardDto> getAllfileWhenModify(int num) {
 		// TODO Auto-generated method stub
 		return mapper.getAllfileWhenModify(num);
+	}
+
+	public int deletefileWhenModify(int fileNum) {
+		// TODO Auto-generated method stub
+		return mapper.deletefileWhenModify(fileNum);
 	}
 
 

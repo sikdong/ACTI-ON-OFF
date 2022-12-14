@@ -110,7 +110,6 @@ SELECT
 	b.M_ID writer,
 	b.B_CONTENT content,
 	b.B_CREATEDATE createDate,
-	b.B_HOSTINTRO hostIntro,
 	(SELECT COUNT(*) FROM ACTI_LIKE l WHERE l.B_NO= #{num}) countLike,
 	b.COST price,
 	f.B_FILENAME fileName,
@@ -120,11 +119,13 @@ SELECT
 	b.MIN_AGE minAge,
 	o.O_ADDDATE addDate,
     o.O_PERSON person,
-    d.DATE date
+    d.DATE date,
+    h.H_INTRODUCTION hostIntro
 FROM ACTI_BOARD b
 LEFT JOIN ACTI_FILE f ON b.B_NO = f.B_NO
 LEFT JOIN ACTI_DATE d ON b.B_NO = d.B_NO
 LEFT JOIN ACTI_ORDER o ON b.B_NO = o.O_B_NO
+LEFT JOIN ACTI_HOST h ON b.M_ID = h.M_ID
 WHERE b.B_NO = #{num}
 </select>
 
@@ -229,19 +230,27 @@ WHERE B_NO = #{num}
 </delete>
 
 <select id="getAllfileWhenModify" resultMap="modifyFileMap">
-SELECT 
+SELECT
+	B_NO num, 
 	B_FILENAME fileName,
 	B_FILE_NO fileNum
 FROM ACTI_FILE
 WHERE B_NO = #{num}	
 	
 </select>
-	<resultMap type="com.trips.domain.yds.TripsBoardDto" id="modifyFileMap">
-		<collection property="fileName" ofType="String">
+	<resultMap type="com.trips.domain.yds.TripsOrderDto" id="modifyFileMap">
 			<result property="fileName" column="fileName"/>
-		</collection>
-		<collection property="fileNum" ofType="int">
-			<result property="fileNum" column="fileNum"></result>
-		</collection>
+			<result property="fileNum" column="fileNum"/>
 	</resultMap>
+	
+<delete id="deletefileWhenModify">
+DELETE FROM ACTI_FILE
+WHERE B_FILE_NO = #{fileNum}
+
+</delete>	
+
+<delete id="deleteCartNo">
+DELETE FROM CART
+WHERE B_NO = #{num}
+</delete>
 </mapper>

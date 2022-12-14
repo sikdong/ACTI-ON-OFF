@@ -94,10 +94,17 @@ public class YdsBoardController {
 	}
 	
 	@GetMapping("getAllfileWhenModify/{num}")
+	@ResponseBody
 	public List<TripsBoardDto> getAllfileWhenModify(
 			@PathVariable int num){
-		System.out.println(num);
-		return service.getAllfileWhenModify(num);
+		List<TripsBoardDto> board = service.getAllfileWhenModify(num);
+		return board;
+	}
+	
+	@DeleteMapping("deletefileWhenModify/{fileNum}")
+	public int deletefileWhenModify(@PathVariable int fileNum){
+		int cnt = service.deletefileWhenModify(fileNum);
+		return cnt;
 	}
 	
 }

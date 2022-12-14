@@ -11,7 +11,7 @@
 }
 
 .mt-10pro {
-	margin-top : 20%
+	margin-top : 10%
 }
 
 .mt-50 {
@@ -24,15 +24,16 @@
 	
 }
 
+
 .root {
-	width : 1200px;
+	width : 100%;
 	margin-left : 10%;
 	margin-right : 10%;
 	box-sizing : border-box;
 }
 
 .ml-20{
-	margin-left : 35px !important;
+	margin-left : 3% !important;
 }
 
 .size {
@@ -79,8 +80,8 @@ a {
 		<c:param name="num" value="${list.num }" ></c:param>
 	</c:url>
  	<div class="ml-20">
- 		<a href="${getLink}"><img src="${imgUrl}/assets/img/${URLEncoder.encode(filename[0], 'utf-8')}" alt="이미지" class="size" /></a>
- 		<div class="mt-3" style="text-align : center;">
+ 		<a href="${getLink}"><img src="${imgUrl}/host/${list.num }/${list.fileName[0]}" alt="이미지" class="size" /></a>
+ 		<div class="mt-2" style="text-align : center;">
  			<a class="link" href="${getLink}">${list.title }</a>
  		</div>
  		<div style="text-align : center;">${list.price }<small>원/1인</small></div>
@@ -93,8 +94,8 @@ a {
 		<c:param name="num" value="${list.num }" ></c:param>
 	</c:url>
  	<div class="ml-20">
- 		<a href="${getLink}"><img src="${path}/assets/img/${list.fileName[0]}" alt="이미지" class="size" /></a>
- 		<div class="mt-3" style="text-align : center;">
+ 		<a href="${getLink}"><img src="${imgUrl}/host/${list.num }/${list.fileName[0]}" alt="이미지" class="size" /></a>
+ 		<div class="mt-2" style="text-align : center;">
  			<a class="link" href="${getLink}">${list.title }</a>
  		</div>
  		<div style="text-align : center;">${list.price }<small>원/1인</small></div>

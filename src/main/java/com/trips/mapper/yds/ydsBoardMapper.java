@@ -45,5 +45,9 @@ public interface ydsBoardMapper {
 
 	public List<TripsBoardDto> getAllfileWhenModify(int num);
 
+	public int deletefileWhenModify(int fileNum);
+
+	public void deleteCartNo(int num);
+
 
 }

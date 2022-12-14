@@ -44,9 +44,9 @@ ${loggedIn }
 					enctype="multipart/form-data">
 					<div class="mb-3">
 						<label for="" class="form-label"></label> <input
-							<%-- 							value="<sec:authentication property="name"/>" --%>
+							
 							 type="text"
-							class="form-control" name="m_id" value="bb">
+							class="form-control" name="m_id" value="<sec:authentication property="name"/>" >
 					</div>
 					<div class="mb-3">
 						<label for="" class="form-label"><b>호스트 경험이 있으신가요?</b></label><br> <input

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -148,6 +149,49 @@
 	
 }
 
+.introduce {
+	width : 50% !important;
+}
+
+.size {
+	width : 240px;
+	height : 260px;
+	margin-left : 5px;
+	border-radius : 20px;
+	
+}
+
+.container-fluid {
+	margin-bottom : 10px !important;
+}
+
+.mt {
+	margin-top : 10px !important;
+}
+
+.size1 {
+	height : 250px;
+	width : 250px; 
+	border-radius : 15px;
+	margin : 10px;
+}
+.flex-container {
+	display : flex;
+}
+.flex-child {
+	justify-content : center;
+	flex : 1;
+	font-family : 'Palatino';
+} 
+
+.text-center {
+	text-align : center;
+}
+
+body {
+	font-family : 'Palatino'; 
+} 
+
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -162,9 +206,10 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
 	integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="${path}/assets/css/ydsCss.css" />
 </head>
 <body>
+
+	<sec:authorize access="isAuthenticated()" var="loggedIn"/>
 	<my:navbar></my:navbar>
 
 	<c:url value="/ydsBoard/remove" var="removeLink">
@@ -188,13 +233,17 @@
 		<div class="container-fluid">최소 인원 : ${board.minPerson}</div>
 		<div class="container-fluid">최소 연령 : ${board.minAge}</div>
 		<input type="number" id="orderAllPerson" value="" />
-
+	
 	<div class="container-fluid flex">
 		<span><Strong>${board.title }</Strong></span>
+		<%-- spring security expressions 로 검색 --%>
+		<sec:authentication property="name" var="userName"/>
+	<c:if test="${board.writer == userName }">
 		<div class="ml-3">
-			<a href="${removeLink}" class="btn btn-outline-secondary btn-sm">게시물 삭제</a>
-			<a href="${modifyLink}" class="btn btn-outline-dark btn-sm">게시물 수정</a>
+			<a href="${removeLink}" class="btn btn-outline-dark btn-sm">삭제</a>
+			<a href="${modifyLink}" class="btn btn-outline-dark btn-sm">수정</a>
 		</div>
+	</c:if>	
 			<h3 class="ml-3">${board.price}</h3> 
 			<span class="mt">
 				<small>원/1인</small>
@@ -213,7 +262,7 @@
 	<div class="container-fluid flex" >
 
 	<c:forEach items="${board.fileName }" var="file" begin="0" end="2">
-		<img src="${path}/assets/img/${file}" class="size" alt="...">
+		<img src="${imgUrl}/host/${board.num }/${file}" class="size" alt="...">
 	</c:forEach>
 	</div>
 	<%--사진 더 보기 기능도 추가해야함 --%>
@@ -225,7 +274,7 @@
 	<div class="container-fluid">
 		<div class="horizontal">
 				<div class="halfview">
-					<h4 class="ml-3 mt-40">호스트 id의 name님 소개</h4>
+					<h4 class="ml-3 mt-40">${board.writer }님 소개</h4>
 					<textarea style="width : 100% !important;" rows="5"  
 					readonly class="form-control">${board.hostIntro }</textarea>
 				</div>
@@ -254,12 +303,22 @@
 				<div style="display : flex">
 					<div><%--별 들어갈 자리 --%></div>
 				</div>
+				<sec:authorize access="isAuthenticated()">
 				<input type="text" class="form-control mt" placeholder="여러분의 소중한 후기를 남겨주세요" 
 					id="content"></input>
-				<%-- 로그인 기능 수정되면 지울 것 --%>
 				<input type="hidden" value="bb" id="temperId"/>
-				<input id="boardNum" type="hidden" value="${board.num}" />
 				<button class="btn btn-dark btn-sm mt" id="enrollReply" type="button" >등록</button>
+				</sec:authorize>
+				<input id="boardNum" type="hidden" value="${board.num}" />
+				<%-- 로그인 기능 수정되면 지울 것 --%>
+				
+				
+				<sec:authorize access="not isAuthenticated()">
+				<input readonly type="text" class="form-control mt" placeholder="로그인 후 이용 가능합니다" 
+					id="content"></input>
+				<button class="btn btn-dark btn-sm mt" id="enrollReply" type="button" disabled >등록</button>	
+				</sec:authorize>	
+				
 				<div class="row mt-3">
 					<div class="col-sm-12">
 						<div class="list-group" id="replyListContainer">
@@ -402,7 +461,7 @@ function getFiveFiles(){
 				`<div class="flex-child">
 
 					<a href="/ydsBoard/get?num=\${file.num}">
-					<img src="${path}/assets/img/\${file.fileName}" class="size" alt="...">
+					<img src="${imgUrl}/host/\${file.num }/\${file.fileName}" class="size" alt="...">
 					</a>
 
 					<h5 class="text-center">\${file.content}</h5>
@@ -581,10 +640,14 @@ const calendarFrame =
 				<div class="day">Sat</div>
 			</div>
 			<div class="dates"></div>
+			<sec:authorize access="isAuthenticated()">
 			<div onclick="goCart()" class="btn btn-outline-secondary">장바구니 담기 <i class="fa-solid fa-cart-shopping"></i></div>
 			<div style="color : red"><small>*밑줄 친 날짜만 예약 가능합니다.</small></div>
 			<small id="actiDate"></small>
-
+			</sec:authorize>
+			<sec:authorize access="not isAuthenticated()">
+			<div class="btn btn-outline-secondary">로그인 후 이용 가능 합니다</div>
+			</sec:authorize>
 		</div>
 	</div>`
 document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calendarFrame)

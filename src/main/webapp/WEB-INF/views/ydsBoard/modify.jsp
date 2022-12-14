@@ -6,6 +6,51 @@
 <html>
 <head>
 <style>
+.introduce {
+	width : 50% !important;
+}
+
+.size {
+	width : 240px;
+	height : 260px;
+	margin-left : 5px;
+	border-radius : 20px;
+	
+}
+
+.container-fluid {
+	margin-bottom : 10px !important;
+}
+
+.mt {
+	margin-top : 10px !important;
+}
+
+.size1 {
+	height : 250px;
+	width : 250px; 
+	border-radius : 15px;
+	margin : 10px;
+}
+.flex-container {
+	display : flex;
+}
+.flex-child {
+	justify-content : center;
+	flex : 1;
+	font-family : 'Palatino';
+} 
+
+.text-center {
+	text-align : center;
+}
+
+body {
+	font-family : 'Palatino'; 
+} 
+
+
+
 .root {
 	margin-left : 25%;
 	margin-top : 50px;
@@ -221,30 +266,37 @@ const ctx = "${pageContext.request.contextPath}";
 
 function getAllfileWhenModify(){
 	const num = document.querySelector("#boardNumInput").value;
-	console.log(num)
 	fetch(ctx+"/ydsBoard/getAllfileWhenModify/"+num)
 	.then(res => res.json())
 	.then(list => {
 		document.querySelector("#fileBox").innerHTML = '';
 		for(const file of list){
 			const fileRemoveButton = `fileRemoveButton\${file.fileNum}`
-			
 		const fileDiv = 
 			`<div class="flex">
-				<img src="${path}/assets/img/\${file.fileName}" class="size" alt="이미지">
-				<div id="\${fileRemoveButton}"><i class="fa-regular fa-circle-xmark cursor"></i>
+				<img src="${imgUrl}/host/\${file.num }/\${file.fileName}" class="size" alt="이미지">
+				<div data-file-num="\${file.fileNum}" id="\${fileRemoveButton}"><i class="fa-regular fa-circle-xmark cursor"></i>
 				</div>
 			</div>`
 			
 			document.querySelector("#fileBox").insertAdjacentHTML("beforeend", fileDiv);
-			/* document.querySelector("#"+fileRemoveButton).addEventListener("click", 
-				deletefileWhenModify(${file.fileNum});		
-			) */
+			 document.querySelector("#"+fileRemoveButton).addEventListener("click", function(){
+				 
+				deletefileWhenModify(this.dataset.fileNum);		
+			 })  
 		}
 	})
 }
 
 getAllfileWhenModify();
+
+function deletefileWhenModify(fileNum){
+	fetch(ctx+"/ydsBoard/deletefileWhenModify/"+fileNum, {
+		method : "delete",
+	})
+	.then(()=> getAllfileWhenModify());
+}
+
 </script>
 </body>
 </html>
