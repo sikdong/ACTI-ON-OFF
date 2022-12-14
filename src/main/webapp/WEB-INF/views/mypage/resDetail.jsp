@@ -171,12 +171,18 @@ html, body {
 					</c:forEach>
 			    </ul>
 			    <div class="bullets">
-			    	
-			        <label for="slide1">&nbsp;</label>
-			    	<label for="slide2">&nbsp;</label>
-			        <label for="slide3">&nbsp;</label>
-			        <label for="slide4">&nbsp;</label>
-			       
+			    	<c:if test="${img.size() > 0}">
+			    		<label for="slide1">&nbsp;</label>
+			    	</c:if>
+			    	<c:if test="${img.size() > 1}">
+			    		<label for="slide2">&nbsp;</label>
+			    	</c:if>
+			    	<c:if test="${img.size() > 2}">
+			    		<label for="slide3">&nbsp;</label>
+			    	</c:if>
+			    	<c:if test="${img.size() > 3}">
+			    		<label for="slide4">&nbsp;</label>
+			    	</c:if> 
 			    </div>
 			</div>
 			

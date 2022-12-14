@@ -70,7 +70,7 @@
 							올려주세요</label> <input id="btnAtt" multiple type="file" accept="image/*"
 							class="form-control" name="files"> <br>
 						<div id='att_zone'
-							data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요'></div>
+							data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요.(사진은 최대 4개)'></div>
 						<!-- 					<input type="file" onchange="readURL(this);">  -->
 						<!-- 						<img id="preview" style="width: 300px; height: 300px;" /> -->
 

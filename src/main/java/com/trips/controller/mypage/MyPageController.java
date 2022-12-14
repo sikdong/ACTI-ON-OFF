@@ -160,6 +160,8 @@ public class MyPageController {
 		}
 		int boardNo = res2.getBoardNo();
 		String date = res2.getDate();
+		System.out.println(boardNo);
+		System.out.println(date);
 		int count = service.getCountByBD(boardNo, date);
 		List<ImgDto> img = service.getImgByResNo(resNo);
 		
@@ -288,6 +290,14 @@ public class MyPageController {
 	@PostMapping("jusoPopup")
 	public void jusoPopup2() {
 		
+	}
+	
+	@GetMapping("hostChatIntro")
+	public void hostChatIntro(
+			@RequestParam(name = "id") String id,
+			Model model
+			) {
+		System.out.println(id);
 	}
 	
 }

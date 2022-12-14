@@ -78,7 +78,7 @@
 	</update>
 	
 	<select id="getRes1ById" resultType="com.trips.domain.mypage.Res1Dto">
-	SELECT * FROM
+<!-- 	SELECT * FROM
 	(SELECT
 		r.RES_NO resNo, 
 		r.M_ID id,
@@ -94,7 +94,23 @@
 	JOIN ACTI_FILE f ON r.B_NO = f.B_NO
 	WHERE r.M_ID = #{id}
     GROUP BY boardNo) AS UNO
-	ORDER BY DATE DESC
+	ORDER BY DATE DESC -->
+	<!-- 개량형 -->
+	SELECT * FROM
+	(SELECT
+		r.RES_NO resNo, 
+		r.M_ID id,
+		b.B_TITLE title,
+	    b.M_ID host,
+	    r.DATE date,
+	    f.B_FILENAME fileName,
+	    r.B_NO boardNo
+	FROM ACTI_RESERVATION r
+	JOIN ACTI_BOARD b ON r.B_NO = b.B_NO
+	JOIN ACTI_FILE f ON r.B_NO = f.B_NO
+	WHERE r.M_ID = #{id}
+    GROUP BY resNo) AS UNO
+	ORDER BY DATE DESC;
 	</select>
 	
 	<select id="getByResNo" resultType="com.trips.domain.mypage.Res2Dto">
@@ -103,14 +119,14 @@
 		r.M_ID id,
 	    b.B_TITLE title,
 	    b.M_ID host,
-	    d.DATE date,
+	    r.DATE date,
 	    f.B_FILENAME fileName,
         b.B_CONTENT content,
         b.MAP_TEXT mapText,
         b.MAP_LL mapLL,
         b.B_NO boardNo,
         <!-- ↓ 얘 상수로 되어있긴한데 어차피 JSP에서 안쓰는 데이터라 신경 안써도 됨 바닐라count가 역할 대신하는 중-->
-        COUNT(CASE WHEN r.B_NO = 1001 AND d.DATE = '2022-10-30' THEN 1 END) count
+        COUNT(CASE WHEN r.B_NO = 1001 AND r.DATE = '2022-10-30' THEN 1 END) count
 	FROM
     	ACTI_RESERVATION r
 	JOIN ACTI_BOARD b ON r.B_NO = b.B_NO
@@ -132,13 +148,13 @@
 	
 	<select id="getCountByBD" resultType="int">
 	SELECT 
-        COUNT(*)
+        COUNT(DISTINCT RES_NO)
 	FROM
     	ACTI_RESERVATION r
 	JOIN ACTI_BOARD b ON r.B_NO = b.B_NO
 	JOIN ACTI_DATE d ON r.B_NO = d.B_NO
 	JOIN ACTI_FILE f ON r.B_NO = f.B_NO
-	WHERE r.B_NO = #{boardNo} AND d.DATE = #{date}
+	WHERE r.B_NO = #{boardNo} AND r.DATE = #{date}
 	</select>
 	
 	<select id="getChat" resultType="com.trips.domain.mypage.ChatDto">
