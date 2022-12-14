@@ -243,7 +243,7 @@ public class HostController {
 		BoardDto boardDto =new BoardDto();
 
 		boardDto.setB_topic((String)session.getAttribute("b_topic"));
-		boardDto.setCost((int) session.getAttribute("cost")   );
+		boardDto.setCost((int)session.getAttribute("cost"));
 		boardDto.setB_title((String)session.getAttribute("b_title"));
 		boardDto.setB_content((String)session.getAttribute("b_content"));
 		boardDto.setMax_person((int) session.getAttribute("max_person")   );
