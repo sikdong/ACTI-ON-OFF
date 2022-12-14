@@ -92,4 +92,12 @@ public class YdsBoardController {
 		List<TripsBoardDto> board = service.getAllBoard(file);
 		model.addAttribute("allBoard", board);
 	}
+	
+	@GetMapping("getAllfileWhenModify/{num}")
+	public List<TripsBoardDto> getAllfileWhenModify(
+			@PathVariable int num){
+		System.out.println(num);
+		return service.getAllfileWhenModify(num);
+	}
+	
 }

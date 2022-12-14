@@ -173,7 +173,7 @@
 	<input type="hidden" id="numInput" value="${board.num}" />
 <div class="root">
 		<c:forEach items="${board.date}" var="date">
-		<div>저장날짜 : ${date} 최대 인원 : ${board.maxPerson}</div>
+			<div>저장날짜 : ${date} 최대 인원 : ${board.maxPerson}</div>
 		</c:forEach>
 		<c:forEach items="${board.addDate}" var="addDate" varStatus="status">
 			<div>주문날짜 : ${addDate} 주문 인원 ${board.person[status.index]}</div>
@@ -389,7 +389,9 @@ function getFiveFiles(){
 			if(file.num != ${board.num}){
 			const fileList = 
 				`<div class="flex-child">
+					<a href="/ydsBoard/get?num=\${file.num}">
 					<img src="${path}/assets/img/\${file.fileName}" class="size" alt="...">
+					</a>
 					<h5 class="text-center">\${file.content}</h5>
 				</div>`
 			  document.querySelector(".flex-container").insertAdjacentHTML("afterbegin", fileList);
@@ -601,22 +603,11 @@ document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calenda
 		} 
 				const dateDiv =`<div class="date cursor" id="date\${i}">\${dates[i]}</div>`;
 				document.querySelector(".week").insertAdjacentHTML("afterbegin", dateDiv); 
-		const actiDate = [];
-		actiDate.push(${board.price})
-		actiDate.push(11)
-		actiDate.push(20)
 		
-		for(let a = 0; a < actiDate.length; a++){
-		if(i == actiDate[a]){/* acti date 에서 가져와야 함 */
-		 document.querySelector("#date"+i).style.borderBottom="2px solid red";
-		} 
-	}	
 		document.querySelector("#date"+i).addEventListener("click", () => {
-		for(let a = 0; a < actiDate.length; a++){
-			if(i == actiDate[a]){/* acti date 에서 가져와야 함 */
 			 document.querySelector("#actiDate").innerHTML="선택하신 날짜는 " + document.querySelector("#date"+i).innerHTML+"일 입니다."
-			}
-		}
+			
+		
 		document.querySelector("#addDate").value = '';	
 		let year = CDate.getFullYear()
 		let month = CDate.getMonth() + 1
@@ -659,6 +650,14 @@ function nextCal(){
 function goCart(){
 	document.querySelector("#cartForm").submit();
 }
+
+let date =[];
+<c:forEach items="${board.date}" var="date">
+	date.push(${date});
+	console.log(date)
+</c:forEach>
+	date.push(document.querySelector("#addDate").value);
+	console.log(date)
 
 </script>
 </body>

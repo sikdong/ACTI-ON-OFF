@@ -223,4 +223,25 @@ WHERE O_B_NO = #{num}
 	</collection>
 </resultMap>
 
+<delete id="deleteReservation">
+DELETE FROM ACTI_RESERVATION
+WHERE B_NO = #{num}
+</delete>
+
+<select id="getAllfileWhenModify" resultMap="modifyFileMap">
+SELECT 
+	B_FILENAME fileName,
+	B_FILE_NO fileNum
+FROM ACTI_FILE
+WHERE B_NO = #{num}	
+	
+</select>
+	<resultMap type="com.trips.domain.yds.TripsBoardDto" id="modifyFileMap">
+		<collection property="fileName" ofType="String">
+			<result property="fileName" column="fileName"/>
+		</collection>
+		<collection property="fileNum" ofType="int">
+			<result property="fileNum" column="fileNum"></result>
+		</collection>
+	</resultMap>
 </mapper>

@@ -79,7 +79,7 @@ a {
 		<c:param name="num" value="${list.num }" ></c:param>
 	</c:url>
  	<div class="ml-20">
- 		<a href="${getLink}"><img src="${path}/assets/img/${list.fileName[0]}" alt="이미지" class="size" /></a>
+ 		<a href="${getLink}"><img src="${imgUrl}/assets/img/${URLEncoder.encode(filename[0], 'utf-8')}" alt="이미지" class="size" /></a>
  		<div class="mt-3" style="text-align : center;">
  			<a class="link" href="${getLink}">${list.title }</a>
  		</div>

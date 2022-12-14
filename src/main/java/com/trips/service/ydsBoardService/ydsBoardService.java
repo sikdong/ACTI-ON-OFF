@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -14,6 +15,8 @@ import com.trips.domain.yds.TripsBoardDto;
 import com.trips.domain.yds.TripsOrderDto;
 import com.trips.mapper.yds.ydsBoardMapper;
 import com.trips.mapper.yds.reply.YdsReplyMapper;
+
+import software.amazon.awssdk.services.s3.S3Client;
 
 @Service
 @Transactional
@@ -24,6 +27,14 @@ public class ydsBoardService {
 	
 	@Autowired
 	private YdsReplyMapper rMapper;
+	
+	@Autowired
+	private S3Client s3Client;
+	
+	// s3 파일 버켓 설정해야함
+	@Value("${aws.s3.bucket}")
+	private String bucketName;
+	
 
 	public List<TripsBoardDto> getBoardlist() {
 		// TODO Auto-generated method stub
@@ -67,6 +78,7 @@ public class ydsBoardService {
 		mapper.deleteFileByBoardNo(num);
 		mapper.deleteLikeByBoardNo(num);
 		mapper.deleteDate(num);
+		mapper.deleteReservation(num);
 		return mapper.removeBoard(num);
 	}
 
@@ -120,6 +132,11 @@ public class ydsBoardService {
 	public List<TripsBoardDto> getAllBoard(MultipartFile[] file) {
 		// TODO Auto-generated method stub
 		return mapper.getAllBoard(file);
+	}
+
+	public List<TripsBoardDto> getAllfileWhenModify(int num) {
+		// TODO Auto-generated method stub
+		return mapper.getAllfileWhenModify(num);
 	}
 
 

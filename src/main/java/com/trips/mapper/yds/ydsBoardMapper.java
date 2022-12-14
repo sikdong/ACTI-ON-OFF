@@ -41,5 +41,9 @@ public interface ydsBoardMapper {
 
 	public List<TripsBoardDto> getAllBoard(MultipartFile[] file);
 
+	public void deleteReservation(int num);
+
+	public List<TripsBoardDto> getAllfileWhenModify(int num);
+
 
 }

@@ -152,8 +152,6 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
 	integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="${path}/assets/css/ydsCss.css" />
-<link rel="stylesheet" href="${path}/assets/css/calendar.css" />
 </head>
 <body>
 	<my:navbar></my:navbar>
@@ -161,7 +159,7 @@
 	<div class="mb-3 mt bold">
 		<h3><Strong>게시물 수정</Strong></h3>
 	</div>	
-	
+	<input type="hidden" value="${board.num }" id="boardNumInput" />
 	<form action="" method="post" enctype="multipart/form-data">
 	<div class="mb-3 halfview">
 	  <label for="exampleFormControlInput1" class="form-label">체험 제목</label>
@@ -171,14 +169,14 @@
 	  <label for="exampleFormControlInput1" class="form-label">가격</label>
 	  <input value="${board.price }" type="text" class="form-control" name="price">
 	</div>
-		<div style = "width : 400px;"class="jc-sb mb-3" style="margin-top : 30px;">
-	<c:forEach items="${board.fileName }" var="file" varStatus="status">
+		<div id="fileBox" style = "width : 400px;"class="jc-sb mb-3" style="margin-top : 30px;">
+	<%-- <c:forEach items="${board.fileName }" var="file" varStatus="status">
 			<div class="flex">
 				<img src="${path}/assets/img/${file}" class="size" alt="이미지">
 				<div id="deleteButton${board.fileNum[status.index]}"><i class="fa-regular fa-circle-xmark cursor"></i></div>
 				<input id="deleteInput${board.fileNum[status.index]}" type="hidden" value="${board.fileNum[status.index]}" />
 			</div>
-	</c:forEach>
+	</c:forEach> --%>
 		</div>
 	<div class="mb-3 halfview">
 	  <label for="exampleFormControlInput1" class="form-label">최소 인원</label>
@@ -218,11 +216,35 @@ src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.j
 integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
 crossorigin="anonymous"></script>
 <script>
-const fileNum = document.querySelector()
-function deletefile(){
-	fetch(ctx +"/ydsBoard/deleteFile")
+const ctx = "${pageContext.request.contextPath}";
+
+
+function getAllfileWhenModify(){
+	const num = document.querySelector("#boardNumInput").value;
+	console.log(num)
+	fetch(ctx+"/ydsBoard/getAllfileWhenModify/"+num)
+	.then(res => res.json())
+	.then(list => {
+		document.querySelector("#fileBox").innerHTML = '';
+		for(const file of list){
+			const fileRemoveButton = `fileRemoveButton\${file.fileNum}`
+			
+		const fileDiv = 
+			`<div class="flex">
+				<img src="${path}/assets/img/\${file.fileName}" class="size" alt="이미지">
+				<div id="\${fileRemoveButton}"><i class="fa-regular fa-circle-xmark cursor"></i>
+				</div>
+			</div>`
+			
+			document.querySelector("#fileBox").insertAdjacentHTML("beforeend", fileDiv);
+			/* document.querySelector("#"+fileRemoveButton).addEventListener("click", 
+				deletefileWhenModify(${file.fileNum});		
+			) */
+		}
+	})
 }
 
+getAllfileWhenModify();
 </script>
 </body>
 </html>
