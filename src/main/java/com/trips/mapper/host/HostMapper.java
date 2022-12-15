@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.trips.domain.host.BoardDto;
 import com.trips.domain.host.Host;
+import com.trips.domain.mypage.MemberDto;
 
 public interface HostMapper {
 
@@ -35,6 +36,8 @@ public interface HostMapper {
 	public List<BoardDto> getMyList(String m_id);
 
 	public void hostRequest(String id);
+
+	public MemberDto getMember(String username);
 
 	
 }

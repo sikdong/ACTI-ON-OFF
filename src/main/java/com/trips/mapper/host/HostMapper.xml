@@ -44,11 +44,18 @@
 
 <update id="hostInfoModify" >
 	UPDATE ACTI_HOST
-	SET h_introduction = #{h_introduction}
+	SET h_introduction = #{h_introduction}r
 	WHERE m_id = #{m_id}
 </update>
 
-<!-- name 속성은 어디에 사용함? -->
+<select  id="getMember" resultType="com.trips.domain.mypage.MemberDto">
+	select m_id id from MEMBER where m_id= #{username}
+</select>
+
+
+
+
+
 <!-- date,file,reple? -->
 <select id="getMyList" resultType="com.trips.domain.host.BoardDto">
 	select DISTINCT b.b_no, b.b_accept, b.b_title, b.b_content, b.b_readcount,b.b_status,b.b_createdate,b.b_modifydate,b.m_id,b.cost,
