@@ -53,10 +53,11 @@ header{
 }
 .chat_my{
 	margin: 0 20px 10px 20px;
-	width: 60%;
+	width: 95%;
 	border-radius: 5%;
-	background: #FFFF96;
+	background: #FFF0F5;
 	font-size: 18px;
+	border: 1px solid;
 }
 .chat_op{
 	margin-right: auto;
@@ -80,7 +81,7 @@ header{
     flex-wrap: wrap;
 }
 #members{
-	background-color: #A5FFE4;
+	background-color: #FFFF8C;
 	width : 20%;
 	border-radius: 15%;
 	padding: 5px 10px 5px 10px;

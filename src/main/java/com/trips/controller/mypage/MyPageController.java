@@ -299,11 +299,20 @@ public class MyPageController {
 			Model model
 			) {
 		List<HostChatIntroDto>hostChatIntroDto = service.getUserListById(id); 
-	
-		for(HostChatIntroDto hci : hostChatIntroDto) {
-			System.out.println(hci);
+		List<ChatLeftDto> left = service.getChatLeft(id);
+		
+		for(ChatLeftDto l : left) {
+			String text;
+			if(l.getContent().length() > 30) {
+				text = l.getContent().substring(0, 30)+"...";
+			}else {
+				text = l.getContent();
+			}
+			l.setContent(text);
 		}
+		
 		model.addAttribute("hci", hostChatIntroDto);
+		model.addAttribute("left", left);
 	}
 	
 }
