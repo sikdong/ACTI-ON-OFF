@@ -11,8 +11,10 @@ import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.sql.Date;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -59,14 +61,17 @@ public class HostController {
 //		System.out.println(username+","+password)
 	}
 	
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("becomeHost")
 	public void becomeHost() {
 		
 	}
 	//포토 등록
 	@PostMapping("becomeHost")
+	@PreAuthorize("isAuthenticated()")
+	//@PreAuthorize("@hostSecurity.checkMemberId(authentication.name)")
 	public String becomeHost(Host host, MultipartFile file) {
-		System.out.println(host);
+		System.out.println(host+"@@@@@@@");
 		hostService.becomeHost(host,file);
 		
 		return "redirect:waitingAcceptance";
@@ -86,10 +91,10 @@ public class HostController {
 	
 	
 	//호스트 정보 관리- ru..d?
-	//호스트만
+	//호스트대기와 호스트만
 	
 	@GetMapping("hostInfo")
-//	@PreAuthorize("@boardSecurity.checkWriter(authentication.name, #id)")
+//	@PreAuthorize("@boardSecurity.checkMemberId(authentication.name, #id)")
 //	public void hostInfo(String m_id,Model model) {
 	public void hostInfo(Model model) {
 		//왜 여긴 모델을 파라미터로 써야되지?
@@ -123,10 +128,10 @@ public class HostController {
 	
 	
 	//체험 등록
-	//호스트만 
+	//호스트만 , 호스트만 보이게하거나 호스트 등록해달라는 메세지 띠우거나 호스트 등록페이지로 이동
 	// 보드,date,file,...주소? /topic도 테이블 따로 뺄 시간 있으면.. 빼기
 	@RequestMapping("listing")
-	//@PreAuthorize("hasAuthority('host')")
+	@PreAuthorize("hasAuthority('host')")
 	public void listingJsp() {	
 	}
 	@GetMapping("listing/topic")
@@ -305,12 +310,16 @@ public class HostController {
 	
 	
 	
-	//체험관리...
+	//체험관리
 	//호스트만
 	// 호스트 아이디랑 같은 체험 불러오기
+	
 	@GetMapping("admin")
-	public void admin(String m_id, Model model) {
-		List<BoardDto> boardList = hostService.getMyList("bb");
+//	@PreAuthorize("@hostSecurity.checkMemberId(authentication.name)")//isAuthenticated()에는 매개변수 못씀?
+	public void admin(
+			Authentication authentication, Model model) {
+		System.out.println(authentication.getName());
+		List<BoardDto> boardList = hostService.getMyList(authentication.getName());
 		System.out.println(boardList );
 		model.addAttribute("boardList", boardList);
 	}
