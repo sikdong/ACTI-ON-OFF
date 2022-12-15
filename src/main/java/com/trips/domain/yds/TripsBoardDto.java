@@ -33,7 +33,9 @@ public class TripsBoardDto {
 	private List<Integer> person;
 	private List<Integer> fileNum;
 	private List<String> date;
-
+	private String topic;
+	private String address;
+	
 	private LocalDateTime createDate;
 	private List<Integer> avaliablePeople;
 	@JsonFormat(shape = Shape.STRING)

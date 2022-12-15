@@ -11,7 +11,7 @@ import com.trips.domain.yds.TripsOrderDto;
 @Mapper
 public interface ydsBoardMapper {
 
-	public List<TripsBoardDto> getBoardList();
+	public List<TripsBoardDto> getBoardList(String address);
 
 	public TripsBoardDto getBoard(int num, MultipartFile[] file);
 

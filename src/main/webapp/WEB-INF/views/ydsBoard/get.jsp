@@ -306,11 +306,9 @@ body {
 				<sec:authorize access="isAuthenticated()">
 				<input type="text" class="form-control mt" placeholder="여러분의 소중한 후기를 남겨주세요" 
 					id="content"></input>
-				<input type="hidden" value="bb" id="temperId"/>
+				<%-- <input type="hidden" value="${board.writer }" id="temperId"/> --%>
 				<button class="btn btn-dark btn-sm mt" id="enrollReply" type="button" >등록</button>
 				</sec:authorize>
-				<input id="boardNum" type="hidden" value="${board.num}" />
-				<%-- 로그인 기능 수정되면 지울 것 --%>
 				
 				
 				<sec:authorize access="not isAuthenticated()">
@@ -335,7 +333,7 @@ body {
 </div>	
 				
 <form action="/shop/addCart" method="post" id="cartForm">
-	<input type="hidden" name="addDate" id="addDate" value=""/>
+	<input type="text" name="addDate" id="addDate" value=""/>
 	<input type="hidden" name="person" id="person" value=""/>
 	<input type="hidden" name="price" id="price" value="${board.price}"/>
 	<input type="hidden" name="boardnum" id="boardNum" value="${board.num}"/>	
@@ -347,8 +345,7 @@ body {
       <strong class="me-auto">댓글 수정 확인</strong>
       <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
-    <div class="toast-body">
-      댓글이 수정되었습니다
+    <div id="modifyMessage" class="toast-body">
     </div>
   </div>
 </div>
@@ -359,11 +356,30 @@ body {
       <strong class="me-auto">댓글 삭제 확인</strong>
       <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
-    <div class="toast-body">
-      댓글이 삭제되었습니다
+    <div id="deleteMessage" class="toast-body">
     </div>
   </div>
 </div>
+	
+<%-- 댓글 수정 Modal --%>
+<div class="modal fade" id="modifyReplyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title fs-5" id="exampleModalLabel">후기를 수정하세요</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input id="modifyReplyInput" class="form-control"></input>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+        <button type="button" id="updateReplyModalButtonNum" 
+        	data-bs-dismiss="modal" class="btn btn-dark">수정</button>
+      </div>
+    </div>
+  </div>
+</div>	
 	
 			
 			
@@ -427,12 +443,10 @@ getFiveFiles();
 document.querySelector("#enrollReply").addEventListener("click", function(){
 	const boardNum = document.querySelector("#boardNum").value;
 	const content = document.querySelector("#content").value;
-	const writer = document.querySelector("#temperId").value;
 	
 	const data = {
 			boardNum,
-			content,
-			writer
+			content
 	};
 	
 	fetch(ctx+"/ydsReply/insertReply", {
@@ -508,7 +522,7 @@ function listReply(){
 					</div>
 					<div>
 						<%--댓글 수정 버튼 --%>
-						<button class="btn btn-outline-secondary" data-reply-num="\${item.replyNum}">
+						<button class="btn btn-outline-secondary" data-reply-num="\${item.replyNum}" id="\${updateReplyButtonNum}">
 							<i class="fa-solid fa-pencil" data-bs-toggle="modal" data-bs-target="#modifyReplyModal"></i>
 						</button>
 						<%--댓글 삭제 버튼 --%>
@@ -517,27 +531,7 @@ function listReply(){
 							<i class="fa-solid fa-trash-can"></i>
 						</button>
 					</div>
-				</div>
-					<%-- 댓글 수정 Modal --%>
-					<div class="modal fade" id="modifyReplyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					  <div class="modal-dialog modal-dialog-centered">
-					    <div class="modal-content">
-					      <div class="modal-header">
-					        <h3 class="modal-title fs-5" id="exampleModalLabel">후기를 수정하세요</h3>
-					        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					      </div>
-					      <div class="modal-body">
-					        <input id="modifyReplyInput" class="form-control"></input>
-					        <input type="hidden" value="\${item.replyNum}" id="hiddenNum" />
-					      </div>
-					      <div class="modal-footer">
-					        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-					        <button type="button" id="\${updateReplyButtonNum}" 
-					        	data-bs-dismiss="modal" data-reply-num="\${item.replyNum}" class="btn btn-dark">수정</button>
-					      </div>
-					    </div>
-					  </div>
-					</div>`
+				</div>`
 				replyListContainer.insertAdjacentHTML("beforeend", replyDiv);
 				
 				document.querySelector("#"+removeReplyButtonNum).addEventListener("click", function(){
@@ -550,41 +544,50 @@ function listReply(){
 				})
 				
 				document.querySelector("#"+updateReplyButtonNum).addEventListener("click", function(){
-					modifyReply();
-					const toastLiveExample = document.getElementById('liveToast')
-					const toast = new bootstrap.Toast(toastLiveExample)
-
-				    toast.show()
+					document.querySelector("#updateReplyModalButtonNum").setAttribute("data-reply-num", this.dataset.replyNum)
 				})
 				
 		}
 	})
 }
-
-function removeReply(replyNum){
-	fetch(ctx+"/ydsReply/deleteReply/" + replyNum, {
-		method : "delete"	
-	})
-	.then(() => listReply());
-}
-
-function modifyReply(){
+document.querySelector("#updateReplyModalButtonNum").addEventListener("click", function(){
 	const content = document.querySelector("#modifyReplyInput").value;
-	const replyNum = document.querySelector("#hiddenNum").value;
-	
+	const replyNum = this.dataset.replyNum;
+	console.log(replyNum);
 	const data = {
 			content,
 			replyNum
 	}
 	fetch(ctx+"/ydsReply/modifyReply" , {
-		method : "put", 
+		method : "PUT", 
 		headers : {
 			"Content-Type" : "application/json"	
 		},
 		body : JSON.stringify(data)
 	})
+	.then(res => res.json())
+	.then(data => {
+		document.querySelector("#modifyReplyInput").value ='';
+	    toast.show()
+		document.querySelector("#modifyMessage").innerText= data.message;
+	})
+	.then(() => listReply());
+	
+})
+
+function removeReply(replyNum){
+	console.log(replyNum);
+	fetch(ctx+"/ydsReply/deleteReply/" + replyNum, {
+		method : "DELETE"	
+	})
+	.then(res => res.json())
+	.then(data => {
+		document.querySelector("#deleteMessage").innerText = data.message;
+	})
 	.then(() => listReply());
 }
+		const toastLiveExample = document.getElementById('liveToast')
+		const toast = new bootstrap.Toast(toastLiveExample)
 
 
 
@@ -733,15 +736,6 @@ function nextCal(){
 function goCart(){
 	document.querySelector("#cartForm").submit();
 }
-
-
-let date =[];
-<c:forEach items="${board.date}" var="date">
-	date.push(${date});
-	console.log(date)
-</c:forEach>
-	date.push(document.querySelector("#addDate").value);
-	console.log(date)
 
 
 </script>

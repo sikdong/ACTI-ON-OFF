@@ -34,8 +34,9 @@ public class YdsBoardController {
 	 
 	
 	@GetMapping("list")
-	public void getBoardlist(Model model) {
-		List<TripsBoardDto> list = service.getBoardlist();
+	public void getBoardlist(Model model, 
+			@RequestParam(name="address", required=false) String address) {
+		List<TripsBoardDto> list = service.getBoardlist(address);
 		model.addAttribute("boardList", list);
 	}
 	
@@ -102,9 +103,10 @@ public class YdsBoardController {
 	}
 	
 	@DeleteMapping("deletefileWhenModify/{fileNum}")
-	public int deletefileWhenModify(@PathVariable int fileNum){
+	public int deletefileWhenModify(@PathVariable int fileNum) {
 		int cnt = service.deletefileWhenModify(fileNum);
 		return cnt;
 	}
+	
 	
 }

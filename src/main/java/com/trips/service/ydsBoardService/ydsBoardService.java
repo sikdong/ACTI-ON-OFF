@@ -40,15 +40,18 @@ public class ydsBoardService {
 	private String bucketName;
 	
 
-	public List<TripsBoardDto> getBoardlist() {
+	public List<TripsBoardDto> getBoardlist(String address) {
 		// TODO Auto-generated method stub
-		return mapper.getBoardList();
+		if(address != null) {
+			address = "%" + address + "%";
+		}
+		return mapper.getBoardList(address);
 	}
 
 	public TripsBoardDto getBoard(int num, MultipartFile[] file) {
 		// TODO Auto-generated method stub
-		
 		TripsBoardDto board = mapper.getBoard(num, file);
+		System.out.println(board.getAddress());
 		List<Integer> sumList = new ArrayList<>();
 		List<String> savedDate = board.getDate();
 		List<String> orderDate = board.getAddDate();
@@ -107,7 +110,6 @@ public class ydsBoardService {
 	private void uploadFile(int num, MultipartFile file) {
 		try {
 			String key = "trips/host/" + num +"/" + file.getOriginalFilename();
-			System.out.println(key + "올림 ################");
 			//putObjectRequest
 			PutObjectRequest putObjectRequest = PutObjectRequest.builder()
 					.bucket(bucketName)

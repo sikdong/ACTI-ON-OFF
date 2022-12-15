@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,6 +52,11 @@ a {
 	text-decoration : none;
 	color : black
 }
+
+.jc-se {
+	display:flex;
+	justify-content : space-evenly;
+}
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -68,11 +74,29 @@ a {
 </head>
 <body>
 <my:navbar></my:navbar>
-
+<sec:authorize access="isAuthenticated()">
+	<div style="text-align : right;"><i class="fa-solid fa-user"></i>님 안녕하세요</div>
+</sec:authorize>
  <div class="mt-100" style="text-align : center">
  	<h4>당신의 여행을 특별하게</h4>
  </div>
 <div style="text-align : right; margin-right : 20px"><a style="color : black" href="/ydsBoard/getAllBoard">체험 전체 보기</a></div>
+
+<button class="btn">1</button>
+<button class="btn">2</button>
+<button class="btn">3</button>
+<button class="btn">4</button>
+<button class="btn">5</button>
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <form action="" class="d-flex" role="search">
+        <input style="width : 1000px !important;"class="form-control me-2" type="search" placeholder="가고싶은 지역을 검색해주세요." aria-label="Search" value="" name="address">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
 <div class="root mt-100">
  <div class="flex">
  	<c:forEach items="${boardList }" var="list" begin="0" end="3">
@@ -81,10 +105,13 @@ a {
 	</c:url>
  	<div class="ml-20">
  		<a href="${getLink}"><img src="${imgUrl}/host/${list.num }/${list.fileName[0]}" alt="이미지" class="size" /></a>
- 		<div class="mt-2" style="text-align : center;">
+ 		<div class="mt-2" style="text-align : left;">
  			<a class="link" href="${getLink}">${list.title }</a>
  		</div>
- 		<div style="text-align : center;">${list.price }<small>원/1인</small></div>
+ 		<div class="mt-2" style="text-align : left;">
+ 			<small>${list.address}</small>
+ 		</div>
+ 		<div style="text-align : left;">${list.price }<small>원/1인</small></div>
  	</div>
  	</c:forEach>
  </div>
@@ -95,10 +122,30 @@ a {
 	</c:url>
  	<div class="ml-20">
  		<a href="${getLink}"><img src="${imgUrl}/host/${list.num }/${list.fileName[0]}" alt="이미지" class="size" /></a>
- 		<div class="mt-2" style="text-align : center;">
+ 		<div class="mt-2" style="text-align : left;">
  			<a class="link" href="${getLink}">${list.title }</a>
  		</div>
- 		<div style="text-align : center;">${list.price }<small>원/1인</small></div>
+ 		<div class="mt-2" style="text-align : left;">
+ 			<small>${list.address}</small>
+ 		</div>
+ 		<div style="text-align : left;">${list.price }<small>원/1인</small></div>
+ 	</div>
+ 	</c:forEach>
+ </div>
+   <div class="flex mt-10pro">
+ 	<c:forEach items="${boardList }" var="list" begin="8" end="11">
+ 	<c:url value="/ydsBoard/get" var="getLink">
+		<c:param name="num" value="${list.num }" ></c:param>
+	</c:url>
+ 	<div class="ml-20">
+ 		<a href="${getLink}"><img src="${imgUrl}/host/${list.num }/${list.fileName[0]}" alt="이미지" class="size" /></a>
+ 		<div class="mt-2" style="text-align : left;">
+ 			<a class="link" href="${getLink}">${list.title }</a>
+ 		</div>
+ 		<div class="mt-2" style="text-align : left;">
+ 			<small>${list.address}</small>
+ 		</div>
+ 		<div style="text-align : left;">${list.price }<small>원/1인</small></div>
  	</div>
  	</c:forEach>
  </div>
