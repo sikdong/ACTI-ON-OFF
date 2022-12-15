@@ -43,11 +43,14 @@
 						<tr>
 							<td><c:if test="${ !empty orderList.renamedFileName }">
 							 <img alt="thumbnail" id="image" src="${path}/resources/upload/${orderList.renamedFileName}" width="150px" height="180px"></c:if>
-							<input value="${orderList.cart_id}" name="cart_id" id="cart_id">
+							<input value="${title}" name="title" id="title">
 							</td>
 							<td><br></td>
+							
+							<div class="img image"><img src="${imgUrl }/host/${boardNo}/${firstFile}" width="60" height="60"></div>
+							
 							<td><input name="price" value="${ orderList.price }"/>&nbsp;</td>
-							<td><input name="person" value="${ orderList.person }"/>&nbsp;</td>
+							<td><input name="person" value="${ orderlist.person }"/>&nbsp;</td>
 							
 							<td>
 										<div class="form-horizontal" style="text-align: left;">
@@ -124,7 +127,7 @@ function requestPay() {
      pg: "html5_inicis",
      pay_method: "card",
      merchant_uid: "${merchant_uid}",
-     name: "123",
+     name: "${title}",
      amount: ${orderList.price},
      buyer_name: "ONOFF",
      buyer_email: "ONOFF@ONOFF.com",
@@ -137,6 +140,7 @@ function requestPay() {
         	// todo1 : data 만들기
         	// data : m_id, o_b_no, o_cart_id, o_adddate, o_price, renamedFilename
         	const memberId = ${orderList.id}; // 나중에 실제 멤버아이디로 변경
+
         	const boardNumber = 1; // 필요한건가???? 나중에 수정하세요
         	const cartId = ${orderList.cart_id};
         	const price = ${orderList.price};
@@ -160,7 +164,6 @@ function requestPay() {
        	location.href = "${path}/payment/orderResult";
        } else { // 실패시 실행문
        	alert("결제가 취소되었습니다.");
-       	location.href = "${path}/payment/orderResult";
        }
    });
 }
