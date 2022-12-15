@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.trips.domain.payment.Order;
 import com.trips.domain.payment.OrderList;
+import com.trips.domain.payment.testDto;
 import com.trips.mapper.payment.OrderMapper;
 
 
@@ -14,6 +15,11 @@ public class OrderServiceImpl implements OrderService {
 
 	@Autowired
 	public OrderMapper mapper;
+	
+	@Override
+	public int addOrder(testDto testdto) throws Exception {
+		return mapper.addOrder(testdto);
+	}
 
 	@Override
 	public int orderResult(Order order) {
