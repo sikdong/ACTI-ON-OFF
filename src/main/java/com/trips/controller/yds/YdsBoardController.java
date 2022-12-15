@@ -57,6 +57,8 @@ public class YdsBoardController {
 		System.out.println(firstFile);
 		System.out.println(boardNo);
 		
+		System.out.println(board);
+		
 		model.addAttribute("board", board);
 		
 	}

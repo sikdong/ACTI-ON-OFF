@@ -25,6 +25,12 @@ public interface AdminMapper {
 
 	int workList(QnaDto qna);
 
+	int getQnaList();
+
+	int getBoardList();
+
+	int getHostList();
+
 	
 
 }

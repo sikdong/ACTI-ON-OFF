@@ -70,7 +70,7 @@
 						<select class="form-select" aria-label="Default select example" name="M_GENDER">
 						  <option selected>선택하세요</option>
 						  <option value="male">남자</option>
-						  <option value="femlae">여자</option>
+						  <option value="female">여자</option>
 						</select>            
 	                </div>
 	                					

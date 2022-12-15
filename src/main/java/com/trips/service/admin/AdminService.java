@@ -111,6 +111,21 @@ public class AdminService {
 		return mapper.workList(qna);
 	}
 
+	public int getQnaList() {
+		
+		return mapper.getQnaList();
+	}
+
+	public int getBoardList() {
+		// TODO Auto-generated method stub
+		return mapper.getBoardList();
+	}
+
+	public int getHostList() {
+		// TODO Auto-generated method stub
+		return mapper.getHostList();
+	}
+
 	
 
 	

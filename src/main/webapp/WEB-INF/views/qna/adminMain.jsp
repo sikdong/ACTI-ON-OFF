@@ -39,13 +39,13 @@ a{
 		<div class="col-xs-6 col-sm-4 thum">
 		<a href="${qnaListLink}">
 			<div><i class="fas fa-solid fa-file"></i></div>
-			<span>게시판 관리+${workList.status}</span>		
+			<span>게시판 관리+${qna}</span>		
 		</a>	
 		</div>
 		<div class="col-xs-6 col-sm-4 thum">
 		<a href="${adminBoardLink}">
 			<div><i class="fas fa-light fa-clipboard"></i></div>
-			<span>게시물 관리</span>
+			<span>게시물 관리+${board }</span>
 		</a>
 		</div>
 		<div class="col-xs-6 col-sm-4 thum">
@@ -53,7 +53,7 @@ a{
 		<div>
 		<i class="fas fa-regular fa-users">
 		</i></div>
-			<span>호스트 관리</span>
+			<span>호스트 관리+${host}</span>
 		</a>
 		</div>
 			

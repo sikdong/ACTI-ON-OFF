@@ -66,8 +66,16 @@ public class AdminController {
 		return "redirect:/qna/adminBoard";
 	}
 	@GetMapping("adminMain")
-	public void adminMain() {
+	public void adminMain(Model model) {
 		
+		int qna = service.getQnaList();
+		int board = service.getBoardList();
+		int host = service.getHostList();
+		System.out.println(host);
+		
+		model.addAttribute("qna", qna);
+		model.addAttribute("board", board);
+		model.addAttribute("host", host);
 	}
 	@GetMapping("workList")
 	public String workList(QnaDto qna,Model model) {		
