@@ -190,6 +190,7 @@
 		<input type="number" id="orderAllPerson" value="" />
 
 	<div class="container-fluid flex">
+		<input hidden type="text" name="title" value="${board.title}"/>
 		<span><Strong>${board.title }</Strong></span>
 		<div class="ml-3">
 			<a href="${removeLink}" class="btn btn-outline-secondary btn-sm">게시물 삭제</a>

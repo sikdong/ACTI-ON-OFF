@@ -50,10 +50,11 @@ public class CartController {
 	// 장바구니 이동
 	@RequestMapping(value = "/payment/cart", method = {RequestMethod.GET, RequestMethod.POST})
 	@PreAuthorize("isAuthenticated()")
-	public void getCartList(Authentication authentication, Model model) throws Exception {
-
+	public void getCartList(Authentication authentication, Model model, HttpSession session) throws Exception {
+		String title= (String) session.getAttribute("title");
+		System.out.println("세션 타이틀 : "+ title);
 		String id = authentication.getName();
-
+		
 		List<CartList> cartList = service.cartList(id);
 
 		model.addAttribute("cartList", cartList);

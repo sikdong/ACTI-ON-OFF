@@ -3,6 +3,8 @@ package com.trips.controller.yds;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
@@ -40,8 +42,13 @@ public class YdsBoardController {
 	}
 	
 	@GetMapping({"get","modify"})
-	public void getBoard(int num, Model model, MultipartFile[] file) {
+	public void getBoard(int num, Model model, MultipartFile[] file, HttpSession session) {
 		TripsBoardDto board = service.getBoard(num, file);
+		
+		String title = board.getTitle();
+		session.setAttribute("title", title);
+		System.out.println(title);
+		
 		model.addAttribute("board", board);
 		
 	}

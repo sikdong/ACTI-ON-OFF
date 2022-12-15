@@ -297,7 +297,7 @@ public class MyPageController {
 			@RequestParam(name = "id") String id,
 			Model model
 			) {
-		System.out.println(id);
+		
 	}
 	
 }
