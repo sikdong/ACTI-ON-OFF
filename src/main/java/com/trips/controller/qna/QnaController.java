@@ -59,11 +59,13 @@ public class QnaController {
 			@RequestParam(name="page",defaultValue = "1")int page,
 			@RequestParam(name="t",defaultValue = "all")String type,
 			@RequestParam(name="q",defaultValue = "")String keyword,
+			@RequestParam(name="s",defaultValue="s0")String status,
 			Model model,
 			PageInfo pageInfo
 			) {
-		List<QnaDto> QnaList = service.listQna(page,type,keyword,pageInfo);
-		
+		// System.out.println(status);
+		List<QnaDto> QnaList = service.listQna(page,type,keyword,pageInfo,status);
+	
 		model.addAttribute("qnaList", QnaList);
 	}
 	

@@ -47,6 +47,7 @@ padding: 0 15px 0 15px;
 <c:url value="/home" var="mainLink" />
 <c:url value="/jjhLogin/logout" var="logOutLink" />
 <c:url value="/host/becomeHostIntro" var="hostLink" />
+<c:url value="/qna/adminMain" var="adminMainLink"/>
 
 
 
@@ -131,6 +132,15 @@ padding: 0 15px 0 15px;
           <span class="font">Host Page</span
           ></a>
         </li>
+        
+        <sec:authorize access="hasAuthority('admin')">
+        <li class="nav-item">
+          <a class="nav-link"
+          href="${adminMainLink}">
+          <span class="font">Admin Page</span
+          ></a>
+        </li>
+        </sec:authorize>
         
       </ul>
       <form action="${listLink }" class="d-flex" role="search">

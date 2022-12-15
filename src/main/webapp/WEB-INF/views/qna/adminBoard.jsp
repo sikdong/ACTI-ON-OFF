@@ -21,7 +21,6 @@
 </style>
 <body>
 <my:navbar></my:navbar>
-<h1>호스트->체험 신청</h1>
 <table class="table">
 	<thead class="table-dark">
 		<tr>
@@ -57,7 +56,7 @@
 				<c:url value="/qna/boardAccept" var="boardAccept"></c:url>
 				<form id="boardAcceptForm" action="${boardAccept }" method="get">
 				<input type="hidden" name="num" value="${board.num}">
-				<input type="submit" id="${board.num }" class="btn btn-light" value="승인">
+				<input type="submit" id="${board.num }" class="btn btn-dark" value="승인">
 				</form>
 				</td>
 			</tr>

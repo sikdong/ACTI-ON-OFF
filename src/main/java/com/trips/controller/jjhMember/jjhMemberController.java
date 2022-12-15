@@ -97,4 +97,8 @@ public class jjhMemberController {
 
 		return map;
 	}
+	@GetMapping("accessDenied")
+	public void accesDenied() {
+		
+	}
 }

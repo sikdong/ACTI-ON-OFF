@@ -20,9 +20,8 @@
 </head>
 <body>
 <my:navbar></my:navbar>
-<h1>유저->호스트 신청</h1>
 <table class="table">
-	<thead>
+	<thead class="table-dark">
 		<tr>
 			<th>#</th>
 			<th>이름</th>
@@ -56,7 +55,7 @@
 				<c:url value="/qna/accept" var="accept"></c:url>
 				<form id="acceptForm"action="${accept }" method="get" >
 				<input type="hidden" name="m_ID" value="${request.m_ID }">
-				<input type="submit" id="${request.m_ID }" class="btn btn-light" value="승인">
+				<input type="submit" id="${request.m_ID }" class="btn btn-dark" value="승인">
 				</form>
 				</td>
 			</tr>

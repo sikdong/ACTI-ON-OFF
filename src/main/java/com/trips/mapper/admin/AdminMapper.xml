@@ -67,4 +67,8 @@ WHERE
 	B_NO = #{num}
 </update>
 
+<select id="workList" resultType="int">
+SELECT COUNT(Q_STATUS) FROM QNA
+</select>
+
 </mapper>

@@ -15,6 +15,7 @@ public class QnaDto {
 	private String content;
 	private String memberId;
 	private LocalDateTime inserted;
+	private String status;
 	private int countAnswer;
 	private int countFile;
 	private int countEmpathy;
