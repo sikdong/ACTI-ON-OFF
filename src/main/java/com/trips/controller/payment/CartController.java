@@ -52,12 +52,22 @@ public class CartController {
 	@PreAuthorize("isAuthenticated()")
 	public void getCartList(Authentication authentication, Model model, HttpSession session) throws Exception {
 		String title= (String) session.getAttribute("title");
+		String firstFile= (String) session.getAttribute("firstFile");
+		int boardNo = (int) session.getAttribute("boardNo");
+		
+		
 		System.out.println("세션 타이틀 : "+ title);
+		System.out.println("세션 첫파일 : "+ firstFile);
+		System.out.println("세션 보드넘버 : "+ boardNo);
+		
 		String id = authentication.getName();
 		
 		List<CartList> cartList = service.cartList(id);
 
 		model.addAttribute("cartList", cartList);
+		model.addAttribute("title", title);
+		model.addAttribute("firstFile", firstFile);
+		model.addAttribute("boardNo", boardNo);
 	}
 
 	// 장바구니 삭제

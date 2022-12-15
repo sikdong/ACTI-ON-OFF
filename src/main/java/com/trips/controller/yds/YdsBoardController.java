@@ -46,8 +46,16 @@ public class YdsBoardController {
 		TripsBoardDto board = service.getBoard(num, file);
 		
 		String title = board.getTitle();
+		String firstFile = board.getFileName().get(0);
+		int boardNo = board.getNum();
+		
 		session.setAttribute("title", title);
+		session.setAttribute("firstFile", firstFile);
+		session.setAttribute("boardNo", boardNo);
+		
 		System.out.println(title);
+		System.out.println(firstFile);
+		System.out.println(boardNo);
 		
 		model.addAttribute("board", board);
 		

@@ -212,7 +212,7 @@
 			</div>
 	</div>
 	<div class="container-fluid flex" >
-
+	<input hidden type="text" name="firstFile" value="${board.fileName[0]}" />
 	<c:forEach items="${board.fileName }" var="file" begin="0" end="2">
 		<img src="${path}/assets/img/${file}" class="size" alt="...">
 	</c:forEach>

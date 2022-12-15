@@ -62,23 +62,23 @@
                         <div class="subdiv">
                             <div class="check"><input type="checkbox" name="cart_id" value="${list.cart_id}" checked="checked">&nbsp;</div>
    
-                            <div class="img image"><img src="${path}/resources/upload/img/${list.renamedFileName}" width="60" height="60"></div>
+                            <div class="img image"><img src="${imgUrl }/host/${boardNo}/${firstFile}" width="60" height="60"></div>
 
                             <div class="pname">
-                                <span>${boardList.title}</span>
+                                <span>${title}</span>
                             </div>
                         </div>
                         <div class="subdiv">
                             <!-- 가격 -->
                             <div class="basketprice">${list.price}</div>
                             <!-- 수량 조절 -->
-                            <div class="num">
+                          <!--   <div class="num">
                                 <div class="updown">
                                     <input type="text" name="p_num1" id="p_num1" size="2" maxlength="4" class="p_num" value="1" style="line-height: 0;" onkeyup="javascript:basket.changePNum(1);">
                                     <span onclick="javascript:basket.changePNum(1);"><i class="fas fa-arrow-alt-circle-up up"></i></span>
                                     <span onclick="javascript:basket.changePNum(1);"><i class="fas fa-arrow-alt-circle-down down"></i></span>
                                 </div>
-                            </div>
+                            </div> -->
                             <!-- 가격 * 수량 -->
                             <div class="sum">${cartlist.price}</div>
                         </div>

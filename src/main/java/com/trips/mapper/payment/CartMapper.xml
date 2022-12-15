@@ -13,7 +13,7 @@
 		<result property="boardnum" column="B_NO" />
 		<result property="price" column="PRICE" />
 		<result property="renamedFileName" column="renamedFileName" />
-	
+		<result property="addDate" column="addDate" />
 	</resultMap>
 
 	<select id="cartList" parameterType="String"
@@ -39,6 +39,7 @@
 		B_NO,
 		CART_ID,
 		PERSON,
+		ADDDATE,
 		PRICE
 		)
 		VALUES( 
@@ -46,6 +47,7 @@
 		#{boardnum},
 		#{cart_id},
 		#{person},
+		#{addDate},
 		#{price}
 		)
 
