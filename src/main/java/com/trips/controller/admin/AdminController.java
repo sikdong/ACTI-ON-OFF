@@ -26,7 +26,9 @@ public class AdminController {
 	@Autowired
 	private AdminService service;
 	
+	// 호스트 리스트 출력
 	@GetMapping("admin")
+	@PreAuthorize("hasAuthority('admin')")
 	public void admin(
 			@RequestParam(name="page",defaultValue = "1")int page,
 			PageInfo pageInfo,
@@ -37,8 +39,9 @@ public class AdminController {
 		model.addAttribute("requestList",list);
 	}
 	
-
+	// 게시물 리스트 출력
 	@GetMapping("adminBoard")
+	@PreAuthorize("hasAuthority('admin')")
 	public void adminBoard(
 			@RequestParam(name="page",defaultValue = "1")int page,
 			PageInfo pageInfo,
@@ -48,6 +51,7 @@ public class AdminController {
 		model.addAttribute("boardList",boardList);
 	}
 	
+	// 호스트 승인
 	@GetMapping("accept")
 	@PreAuthorize("hasAuthority('admin')")
 	public String adminAccept(jjhMemberDto member,RedirectAttributes rttr) {
@@ -58,6 +62,7 @@ public class AdminController {
 		
 		return "redirect:/qna/admin";
 	}
+	// 게시판 승인
 	@GetMapping("boardAccept")
 	@PreAuthorize("hasAuthority('admin')")
 	public String boardAccept(BoardDto board) {
@@ -65,25 +70,36 @@ public class AdminController {
 		
 		return "redirect:/qna/adminBoard";
 	}
+	//호스트 반려
+	@GetMapping("denied")
+	@PreAuthorize("hasAuthority('admin')")
+	public String denied(jjhMemberDto member) {
+		int cnt = service.denied(member);
+		
+		return "redirect:/qna/admin";
+	}
+	//게시판 반려
+	@GetMapping("boardDenied")
+	@PreAuthorize("hasAuthority('admin')")
+	public String boardDenied(BoardDto board) {
+		int cnt = service.boardDenied(board);
+		
+		return "redirect:/qna/adminBoard";
+	}
+	
+	//adminMain 페이지에서 COUNT 불러오는 쿼리
 	@GetMapping("adminMain")
+	@PreAuthorize("hasAuthority('admin')")
 	public void adminMain(Model model) {
 		
 		int qna = service.getQnaList();
 		int board = service.getBoardList();
 		int host = service.getHostList();
-		System.out.println(host);
+		
 		
 		model.addAttribute("qna", qna);
 		model.addAttribute("board", board);
 		model.addAttribute("host", host);
-	}
-	@GetMapping("workList")
-	public String workList(QnaDto qna,Model model) {		
-		int workList = service.workList(qna);
-		
-		model.addAttribute("workList",workList);
-		
-		return "redirect:/qna/adminMain";
 	}
 	
 }

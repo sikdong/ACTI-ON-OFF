@@ -23,13 +23,16 @@ public interface AdminMapper {
 
 	int updateAccept(BoardDto board);
 
-	int workList(QnaDto qna);
 
 	int getQnaList();
 
 	int getBoardList();
 
 	int getHostList();
+
+	int denied(jjhMemberDto member);
+
+	int boardDenied(BoardDto board);
 
 	
 

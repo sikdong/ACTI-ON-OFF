@@ -16,6 +16,9 @@
 		--bs-pagination-active-color:#000;
 		--bs-pagination-border-width: 0px;
 	}
+	.badge{
+		font-size: 13px;
+	}b
 </style>
 </head>
 <body>
@@ -81,7 +84,7 @@
 				</td>
 				<td>${qna.memberId }</td> <!-- writer 대신 memberId  -->
 				<td>${qna.ago }</td>
-				<td>${qna.status }</td>
+				<td><span class="badge bg-secondary text-wrap"> ${qna.status }</span></td>
 			</tr>
 		</c:forEach>
 	</tbody>	

@@ -24,6 +24,7 @@ a{
 	margin-block-end:300px;
 }
 
+
 </style>
 </head>
 <body>
@@ -39,13 +40,13 @@ a{
 		<div class="col-xs-6 col-sm-4 thum">
 		<a href="${qnaListLink}">
 			<div><i class="fas fa-solid fa-file"></i></div>
-			<span>게시판 관리+${qna}</span>		
+			<span>게시판 관리  <span class="badge bg-secondary text-wrap">+${qna}</span></span>		
 		</a>	
 		</div>
 		<div class="col-xs-6 col-sm-4 thum">
 		<a href="${adminBoardLink}">
 			<div><i class="fas fa-light fa-clipboard"></i></div>
-			<span>게시물 관리+${board }</span>
+			<span>게시물 관리  <span class="badge bg-secondary text-wrap">+${board }</span></span>
 		</a>
 		</div>
 		<div class="col-xs-6 col-sm-4 thum">
@@ -53,7 +54,7 @@ a{
 		<div>
 		<i class="fas fa-regular fa-users">
 		</i></div>
-			<span>호스트 관리+${host}</span>
+			<span>호스트 관리  <span class="badge bg-secondary text-wrap">+${host}</span></span>
 		</a>
 		</div>
 			
