@@ -88,6 +88,7 @@ public class HostService {
 			// db에 파일 정보 저장
 			hostMapper.becomeHost(host);
 			hostMapper.hostRequest(host.getM_id());
+			hostMapper.hostRequestAuthority(host.getM_id());
 			// s3에 저장
 			uploadFile(file, "trips/host/" + host.getM_id() + "/");
 		}
