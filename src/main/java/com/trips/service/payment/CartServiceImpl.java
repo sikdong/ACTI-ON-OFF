@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.trips.domain.payment.Cart;
 import com.trips.domain.payment.CartList;
+import com.trips.domain.payment.testDto;
 import com.trips.mapper.payment.CartMapper;
 
 
@@ -44,7 +45,11 @@ public class CartServiceImpl implements CartService {
 	}
 
 
-
+	@Override
+	public testDto getCart(int cartId) {
+		
+		return mapper.getCart(cartId);
+	}
 
 
 

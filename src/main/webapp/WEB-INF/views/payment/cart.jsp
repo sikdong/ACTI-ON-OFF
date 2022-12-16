@@ -93,9 +93,9 @@
                     <button type="button" class="abutton" onclick="selectDelete()">선택상품삭제</button>
                     <button type="button" class="abutton" onclick="deleteAll()">장바구니비우기</button>
                 </div>
-         
+         		<input hidden type="text" name="person" value="${list.person}"/>
                 <div class="bigtext right-align sumcount" id="sum_p_num">상품인원수: ${list.person}</div> 
-                <div class="bigtext right-align box blue summoney" id="sum_p_price">합계금액: ${list.price}원</div>
+                <div class="bigtext right-align box blue summoney" id="sum_p_price">합계금액: ${list.price * list.person}원</div>
         
                 <div id="goorder">
                     <div class="clear"></div>

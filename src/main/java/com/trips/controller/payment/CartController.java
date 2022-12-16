@@ -60,10 +60,15 @@ public class CartController {
 		System.out.println("세션 첫파일 : "+ firstFile);
 		System.out.println("세션 보드넘버 : "+ boardNo);
 		
+		
 		String id = authentication.getName();
 		
 		List<CartList> cartList = service.cartList(id);
-
+		
+		for(CartList c: cartList) {
+			System.out.println(c);
+		}
+		
 		model.addAttribute("cartList", cartList);
 		model.addAttribute("title", title);
 		model.addAttribute("firstFile", firstFile);

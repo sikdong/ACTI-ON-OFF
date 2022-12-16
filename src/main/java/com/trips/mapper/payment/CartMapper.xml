@@ -64,5 +64,18 @@
 		DELETE FROM CART WHERE M_ID=#{id}	
 	</delete>
 
+	<select id="getCart" resultType="com.trips.domain.payment.testDto">
+		SELECT 
+		    M_ID id,
+		    B_NO boardNumber,
+		    CART_ID cartId,
+		    ADDDATE addDate,
+		    PRICE price,
+		    PERSON person,
+		    renamedFilename
+		FROM CART
+		WHERE CART_ID = #{cartId}
+	</select>
+
 </mapper>
 	

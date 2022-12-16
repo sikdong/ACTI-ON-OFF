@@ -1,12 +1,10 @@
 package com.trips.domain.payment;
 
-import java.sql.Date;
-
 import lombok.Data;
 
 @Data
-public class testDto {
-	
+public class Test2Dto {
+	private int orderId;
 	private String id;
 	private int boardNumber;
 	private int cartId;
@@ -14,11 +12,4 @@ public class testDto {
 	private int price; 
 	private int person;
 	private String renamedFilename;
-	private String title;
-	
-	/*
-	 * private int orderId; public int getOrderId(){return orderId;} public void
-	 * setOrderId(int orderId){this.orderId = orderId;}
-	 */
-	
 }
