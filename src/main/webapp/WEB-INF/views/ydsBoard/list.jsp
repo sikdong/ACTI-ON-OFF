@@ -98,7 +98,7 @@ a {
     <div class="collapse navbar-collapse jc-c" id="navbarSupportedContent">
       <form action="" class="d-flex jc-se" role="search">
         <input style="width : 1000px !important;"class="form-control me-2" type="search" placeholder="가고싶은 지역을 검색해주세요." aria-label="Search" value="" name="address">
-        <button class="btn btn-dark" type="submit">검색</button>
+        <button class="btn btn-secondary" type="submit">검색</button>
       </form>
     </div>
   </div>

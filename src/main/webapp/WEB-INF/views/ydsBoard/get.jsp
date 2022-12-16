@@ -706,6 +706,10 @@ document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calenda
 			document.querySelector(".dates").insertAdjacentHTML("afterbegin", weekDiv)	
 		} 		
 				const dateDiv =`<div class="date cursor" id="date\${i}">\${dates[i]}</div>`;
+				const dateChoice =document.querySelector("#date${i}")
+				if(dateChoice.innerHTML !== ''){
+					dateChoice.setAttribute("data-full-date", <%--여기에 날짜다 들어가도록 이따 수정--%>)
+				}
 				document.querySelector(".week").insertAdjacentHTML("afterbegin", dateDiv); 
 
 		
@@ -718,8 +722,8 @@ document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calenda
 		let year = CDate.getFullYear()
 		let month = CDate.getMonth() + 1
 		document.querySelector("#addDate").value += year;
-		document.querySelector("#addDate").value +="."+ month;
-		document.querySelector("#addDate").value +='.'+ document.querySelector("#date"+i).innerHTML;
+		document.querySelector("#addDate").value +="-"+ month;
+		document.querySelector("#addDate").value +='-'+ document.querySelector("#date"+i).innerHTML;
 
 		})
 	}
