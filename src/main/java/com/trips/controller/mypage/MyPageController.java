@@ -25,6 +25,7 @@ import com.trips.domain.jjhMember.jjhMemberDto;
 import com.trips.domain.mypage.ChatAddDto;
 import com.trips.domain.mypage.ChatDto;
 import com.trips.domain.mypage.ChatLeftDto;
+import com.trips.domain.mypage.HostChatIntroDto;
 import com.trips.domain.mypage.IdEmailDto;
 import com.trips.domain.mypage.ImgDto;
 import com.trips.domain.mypage.MemberDto;
@@ -297,7 +298,21 @@ public class MyPageController {
 			@RequestParam(name = "id") String id,
 			Model model
 			) {
+		List<HostChatIntroDto>hostChatIntroDto = service.getUserListById(id); 
+		List<ChatLeftDto> left = service.getChatLeft(id);
 		
+		for(ChatLeftDto l : left) {
+			String text;
+			if(l.getContent().length() > 30) {
+				text = l.getContent().substring(0, 30)+"...";
+			}else {
+				text = l.getContent();
+			}
+			l.setContent(text);
+		}
+		
+		model.addAttribute("hci", hostChatIntroDto);
+		model.addAttribute("left", left);
 	}
 	
 }

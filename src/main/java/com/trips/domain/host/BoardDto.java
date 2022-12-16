@@ -16,5 +16,7 @@ public class BoardDto {
 	private String address;
 	private String addressLL;
 	private String m_id;
+	private int num;
+
 
 }

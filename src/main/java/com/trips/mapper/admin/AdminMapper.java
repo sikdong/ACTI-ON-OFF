@@ -5,6 +5,7 @@ import java.util.List;
 import com.trips.domain.host.BoardDto;
 import com.trips.domain.host.Host;
 import com.trips.domain.jjhMember.jjhMemberDto;
+import com.trips.domain.qna.QnaDto;
 
 public interface AdminMapper {
 
@@ -21,6 +22,14 @@ public interface AdminMapper {
 	
 
 	int updateAccept(BoardDto board);
+
+	int workList(QnaDto qna);
+
+	int getQnaList();
+
+	int getBoardList();
+
+	int getHostList();
 
 	
 

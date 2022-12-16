@@ -16,6 +16,7 @@ import com.trips.domain.host.BoardDto;
 import com.trips.domain.host.Host;
 import com.trips.domain.jjhMember.jjhMemberDto;
 import com.trips.domain.qna.PageInfo;
+import com.trips.domain.qna.QnaDto;
 import com.trips.service.admin.AdminService;
 
 @Controller
@@ -63,6 +64,26 @@ public class AdminController {
 		int cnt = service.updateAccept(board);
 		
 		return "redirect:/qna/adminBoard";
+	}
+	@GetMapping("adminMain")
+	public void adminMain(Model model) {
+		
+		int qna = service.getQnaList();
+		int board = service.getBoardList();
+		int host = service.getHostList();
+		System.out.println(host);
+		
+		model.addAttribute("qna", qna);
+		model.addAttribute("board", board);
+		model.addAttribute("host", host);
+	}
+	@GetMapping("workList")
+	public String workList(QnaDto qna,Model model) {		
+		int workList = service.workList(qna);
+		
+		model.addAttribute("workList",workList);
+		
+		return "redirect:/qna/adminMain";
 	}
 	
 }

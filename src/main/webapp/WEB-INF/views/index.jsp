@@ -10,6 +10,7 @@
 		background-color: #fff;
 		color: gray;
 		font-size: 10px;
+		margin-top:auto;
 	}
 	a{
 	color:gray;

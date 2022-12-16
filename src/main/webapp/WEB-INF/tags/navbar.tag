@@ -46,8 +46,12 @@ padding: 0 15px 0 15px;
 <c:url value="/jjhLogin/signup" var="signUpLink" />
 <c:url value="/home" var="mainLink" />
 <c:url value="/jjhLogin/logout" var="logOutLink" />
+
 <c:url value="/host/hostInfo" var="hostInfo" />
 <c:url value="/host/becomeHostIntro" var="becomeHostIntro" />
+<%-- <c:url value="/host/becomeHostIntro" var="hostLink" /> --%>
+<c:url value="/qna/adminMain" var="adminMainLink"/>
+
 
 
 
@@ -141,6 +145,15 @@ padding: 0 15px 0 15px;
           <a class="nav-link"  href="${hostInfo}"> <span class="font">Host Page</span></a>
           </sec:authorize>
         </li>
+        
+        <sec:authorize access="hasAuthority('admin')">
+        <li class="nav-item">
+          <a class="nav-link"
+          href="${adminMainLink}">
+          <span class="font">Admin Page</span
+          ></a>
+        </li>
+        </sec:authorize>
         
       </ul>
       <form action="${listLink }" class="d-flex" role="search">

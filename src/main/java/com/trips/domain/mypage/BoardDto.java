@@ -19,7 +19,8 @@ public class BoardDto {
 	private int countLike;
 	private boolean liked;
 	private List<String> fileName;
-
+	
+	
 	public String getAgo() {
 		LocalDateTime now = LocalDateTime.now();
 		LocalDateTime oneDayBefore = now.minusDays(1);

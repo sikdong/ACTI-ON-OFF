@@ -228,6 +228,31 @@
 		FROM MEMBER 
 		WHERE M_EMAIL = #{email}
 	</select>
+	
+	<select id="getUserListById" resultMap="hostChatMap">
+	SELECT 
+		b.B_NO boardNo,
+		b.B_TITLE title,
+		r.DATE date,
+	    b.M_ID id,
+	    r.M_ID host,
+	    r.RES_NO chatRoom
+	FROM ACTI_BOARD b
+	JOIN ACTI_RESERVATION r ON b.B_NO = r.B_NO 
+	WHERE b.M_ID = #{id}
+	ORDER BY date DESC;
+	</select>
+	
+	<resultMap type="com.trips.domain.mypage.HostChatIntroDto" id="hostChatMap">
+		<id column="boardNo" property="boardNo"></id>
+		<id column="date" property="date"></id>
+		<result column="title" property="title"></result>
+		<result column="id" property="id"></result>
+		<collection ofType="com.trips.domain.mypage.HostChatRoomDto" column="hcd" property="hcd">
+			<result column="host" property="host" />
+			<result column="chatRoom" property="chatRoom" />
+		</collection>
+	</resultMap>
 </mapper>
 
 

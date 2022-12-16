@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.trips.domain.qna.AnswerDto;
+import com.trips.domain.qna.QnaDto;
 import com.trips.service.qna.AnswerService;
 
 //@Controller +@ResponseBody
@@ -65,6 +66,8 @@ public class AnswerController {
 		Map<String,Object> map = new HashMap<>();
 	
 		int cnt = service.addAnswer(answer);
+		int cnt2 = service.updateStatus(answer.getQnaId());
+		
 		if(cnt ==1) {
 			map.put("message", "답변이 등록되었습니다");
 		}else {

@@ -43,9 +43,12 @@
 						<tr>
 							<td><c:if test="${ !empty orderList.renamedFileName }">
 							 <img alt="thumbnail" id="image" src="${path}/resources/upload/${orderList.renamedFileName}" width="150px" height="180px"></c:if>
-							<input value="${orderList.cart_id}" name="cart_id" id="cart_id">
+							<input value="${title}" name="title" id="title">
 							</td>
 							<td><br></td>
+							
+							<div class="img image"><img src="${imgUrl }/host/${boardNo}/${firstFile}" width="60" height="60"></div>
+							
 							<td><input name="price" value="${ orderList.price }"/>&nbsp;</td>
 							<td><input name="person" value="${ orderList.person }"/>&nbsp;</td>
 							
@@ -104,7 +107,7 @@
 			</div>
 			<hr>
 			<div class="row no-gutters" style="text-align: center; margin: 50px 0;">
-				<label style="font-size: 1.5em;"> 결제 금액 : <span id="totalprice"></span>&nbsp; ${ orderList.price }원
+				<label style="font-size: 1.5em;"> 결제 금액 : <span id="totalprice"></span>&nbsp; ${ orderList.price * orderList.person}원
 				<input type="hidden" id="amount" name="totalAmount">
 				</label>
 			</div>
@@ -124,8 +127,8 @@ function requestPay() {
      pg: "html5_inicis",
      pay_method: "card",
      merchant_uid: "${merchant_uid}",
-     name: "123",
-     amount: ${orderList.price},
+     name: "${title}",
+     amount: ${orderList.price * orderList.person},
      buyer_name: "ONOFF",
      buyer_email: "ONOFF@ONOFF.com",
      buyer_tel: "010-4242-4242",
@@ -136,31 +139,42 @@ function requestPay() {
         	console.log("ajax 이전33333S");
         	// todo1 : data 만들기
         	// data : m_id, o_b_no, o_cart_id, o_adddate, o_price, renamedFilename
-        	const memberId = ${orderList.id}; // 나중에 실제 멤버아이디로 변경
+        	
+        	/* const memberId = ${orderList.id}; // 나중에 실제 멤버아이디로 변경
         	const boardNumber = 1; // 필요한건가???? 나중에 수정하세요
         	const cartId = ${orderList.cart_id};
         	const price = ${orderList.price};
-        	const renamedFilename = '';
-        
-        	var data = {memberId, boardNumber, cartId, price};
+        	const renamedFilename = '';   */
+        	
+        	const id = '${tDto.id}';
+        	const boardNumber = ${tDto.boardNumber};
+        	const cartId = ${orderList.cart_id};	
+        	const addDate = '${tDto.addDate}';
+        	const price	= ${orderList.price};
+        	const person = ${orderList.person};
+        	const renamedFilename = 'Nothing';
+        	
+        	var data = {id, boardNumber, cartId, addDate, price, person, renamedFilename};
+        	
+        	/* var data = {memberId, boardNumber, cartId, price, renamedFilename}; */
         	/*----------여기부터 문제--------------------------------*/
               	$.ajax({
        		url: "${path}/payment/orderResult",
        		type: "POST",
        		data: JSON.stringify(data),
-       		dataType: "JSON",
+       	/* 	dataType: "JSON", */
        		contentType: "application/json; charset=UTF-8",
        		success: function(){
+       				console.log("결제가 완료되었습니다");
 		        	alert("결제가 완료되었습니다.");
-		        	 location.href = "${path}/payment/orderResult";
+		        	location.href = "${path}/payment/orderResult";
        		}
             /*----------여기부터 문제--------------------------------*/
        	}); 
        	console.log("ajax 이후");
-       	location.href = "${path}/payment/orderResult";
+       /* 	location.href = "${path}/payment/orderResult"; */
        } else { // 실패시 실행문
        	alert("결제가 취소되었습니다.");
-       	location.href = "${path}/payment/orderResult";
        }
    });
 }

@@ -35,16 +35,16 @@
                             <div class="img">이미지</div>
                             <div class="pname">상품명</div>
                         </div>
-                        <div class="subdiv">
+                       <!--  <div class="subdiv">
                             <div class="basketprice">가격</div>
                             <div class="num">인원수</div>
                             <div class="sum">합계</div>
-                        </div>
+                        </div> -->
 
-                        <div class="subdiv">
+                        <!-- <div class="subdiv">
         
                             <div class="basketcmd">삭제</div>
-                        </div>
+                        </div> -->
                         <div class="split"></div>
                     </div>
 
@@ -70,8 +70,8 @@
                         </div>
                         <div class="subdiv">
                             <!-- 가격 -->
-                            <div class="basketprice">${list.price}</div>
-                            <!-- 수량 조절 -->
+                          <%--   <div class="basketprice">${list.price}</div>
+                           --%>  <!-- 수량 조절 -->
                           <!--   <div class="num">
                                 <div class="updown">
                                     <input type="text" name="p_num1" id="p_num1" size="2" maxlength="4" class="p_num" value="1" style="line-height: 0;" onkeyup="javascript:basket.changePNum(1);">
@@ -93,9 +93,9 @@
                     <button type="button" class="abutton" onclick="selectDelete()">선택상품삭제</button>
                     <button type="button" class="abutton" onclick="deleteAll()">장바구니비우기</button>
                 </div>
-         
+         		<input hidden type="text" name="person" value="${list.person}"/>
                 <div class="bigtext right-align sumcount" id="sum_p_num">상품인원수: ${list.person}</div> 
-                <div class="bigtext right-align box blue summoney" id="sum_p_price">합계금액: ${list.price}원</div>
+                <div class="bigtext right-align box blue summoney" id="sum_p_price">합계금액: ${list.price * list.person}원</div>
         
                 <div id="goorder">
                     <div class="clear"></div>

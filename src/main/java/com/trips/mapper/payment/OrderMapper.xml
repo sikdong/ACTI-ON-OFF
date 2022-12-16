@@ -72,6 +72,29 @@ LEFT JOIN CART c ON o.O_CART_ID = c.CART_ID
    				)
   </insert>
   
-  
- 
+  	<insert id="insertOrder"> 
+  	<!-- useGeneratedKeys="true" keyColumn="O_ORDER_ID" keyProperty="" -->
+  	INSERT INTO ACTI_ORDER(M_ID, O_B_NO, O_CART_ID, O_ADDDATE, O_PRICE, O_PERSON, renamedFilename)
+	VALUES(#{id}, #{boardNumber}, #{cartId}, #{addDate}, #{price}, #{person}, #{renamedFilename});
+  	</insert>
+  	
+ 	
+ 	<select id="getOrder" resultType="com.trips.domain.payment.Test2Dto">
+  	SELECT
+		O_ORDER_ID orderId,
+		M_ID id, 
+	    O_B_NO boardNumber, 
+	    O_CART_ID cartId, 
+	    O_ADDDATE addDate, 
+	    O_PRICE price, 
+	    O_PERSON person, 
+	    renamedFilename
+	FROM ACTI_ORDER
+	WHERE O_ORDER_ID = #{orderId};
+  	</select>
+  	
+ 	<insert id="insertRes"> 
+  	INSERT INTO ACTI_RESERVATION(M_ID, B_NO, DATE)
+	VALUES(#{id}, #{boardNumber}, #{addDate});
+  	</insert>
   </mapper>

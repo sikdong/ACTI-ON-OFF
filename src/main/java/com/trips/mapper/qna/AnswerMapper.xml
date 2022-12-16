@@ -5,6 +5,14 @@
 
 <mapper namespace="com.trips.mapper.qna.AnswerMapper">
 
+<!-- 답변하면 status 업데이트  -->
+<update id="updateStatus">
+UPDATE QNA
+SET Q_STATUS = '답변완료'
+WHERE Q_ID = #{id}
+</update>
+
+
 <!-- 댓글 입력 -->
 <insert id="insert">
 INSERT INTO ANSWER (Q_ID,A_CONTENT)

@@ -52,12 +52,12 @@ header{
 	background-color:#E1F6FA;	
 }
 .chat_my{
-	margin-left: auto;
-	margin-right: 10px;
-	width: 60%;
+	margin: 0 20px 10px 20px;
+	width: 95%;
 	border-radius: 5%;
-	background: #FFFF96;
+	background: #FFF0F5;
 	font-size: 18px;
+	border: 1px solid;
 }
 .chat_op{
 	margin-right: auto;
@@ -77,6 +77,15 @@ header{
 .container {
 	display: flex;
 	/* display: inline-flex; */
+	flex-direction: row;
+    flex-wrap: wrap;
+}
+#members{
+	background-color: #FFFF8C;
+	width : 20%;
+	border-radius: 15%;
+	padding: 5px 10px 5px 10px;
+	margin: 10px 10px 10px 10px;
 }
 </style>
 <!-- <meta http-equiv="refresh" content="30" > -->
@@ -131,14 +140,24 @@ header{
 			</header>
 			<div id="down" style="overflow: scroll; height: 83.3%;">
 				<div class="customContainer">
+					<br>
 					<div style="height: calc(100% - 80px);min-height: 760px;">
-						<c:forEach var="chat" items="${chat}">
+						<c:forEach var="hciOut" items="${hci}">
 							
-								<div class="chat_my">
-									<div style="padding: 5px 10px 10px 10px;">
-										<span style="font-weight: bold; font-size: 20px;">${chat.writer }</span>
-										<span style="font-size: 13px;">${chat.date }</span>
-										<div>${chat.content }</div>
+								<div class="chat_my" style="padding: 5px 10px 5px 10px;">
+										<span style="font-weight: bold; font-size: 20px;padding-left: 20px;">${hciOut.title }</span>
+										&nbsp;&nbsp;
+										<span style="font-size: 13px;">${hciOut.date }</span>
+									<div class="container" style="padding: 20px 10px 10px 10px;">
+										<c:forEach var="hciIn" items="${hciOut.hcd}">
+												<div class="item" id="members"  onclick="location.href='/mypage/chat?chatRoom=${hciIn.chatRoom}&id=${hciOut.id}&host=${hciIn.host}'">
+													<div style="text-align: center; font-weight: bold; font-family: 'Palatino Linotype' ">
+														<span style="font-size: 14px">Chat With</span> : ${hciIn.host}
+													</div>
+													<span hidden>${hciIn.chatRoom}</span>
+												</div>
+										</c:forEach>
+										
 									</div>
 								</div>
 								<br>
