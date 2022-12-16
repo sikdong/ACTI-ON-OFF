@@ -233,7 +233,7 @@ public class HostController {
 	@PostMapping("listing/contents") 
 
 	public String listingContents(Authentication authentication, String b_title, String b_content,
-										 int cost,int min_person, int max_person, int min_age,HttpSession session ) {	
+										 int cost,int min_person, int max_person, int min_age, String address, String addressLL, HttpSession session ) {	
 //	public String listingContents(BoardDto board ) {	
 //		boardDto=board;//매개변수에 모델어트리뷰트 쓰면 빈 디티오에 담기는 거니까 이전과 다른 인스턴스.
 		
@@ -245,6 +245,8 @@ public class HostController {
 		session.setAttribute("min_person", min_person);
 		session.setAttribute("max_person", max_person);
 		session.setAttribute("min_age", min_age);		
+		session.setAttribute("address", address);
+		session.setAttribute("addressLL", addressLL);
 		
 		System.out.println(session.getAttribute("b_topic")+"@@@"); // 같은 세션에 담기네 
 		
@@ -288,10 +290,9 @@ public class HostController {
 		boardDto.setMax_person((int) session.getAttribute("max_person")   );
 		boardDto.setMin_person((int) session.getAttribute("min_person")   );
 		boardDto.setMin_age((int) session.getAttribute("min_age")   );
-		
+		boardDto.setAddress((String)session.getAttribute("address"));
+		boardDto.setAddressLL((String)session.getAttribute("addressLL"));
 	
-	
-		
 		
 		 
 		
