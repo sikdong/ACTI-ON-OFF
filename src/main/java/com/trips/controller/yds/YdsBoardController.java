@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -35,15 +37,25 @@ public class YdsBoardController {
 	
 	@GetMapping("list")
 	public void getBoardlist(Model model, 
-			@RequestParam(name="address", required=false) String address) {
+			@RequestParam(name="address", required=false) String address, 
+			Authentication authentication) {
+		String userName ="";
+		if(authentication != null) {
+			userName = authentication.getName();
+		} else {
+			userName = "guest";
+		}
 		List<TripsBoardDto> list = service.getBoardlist(address);
 		model.addAttribute("boardList", list);
+		model.addAttribute("name", userName);
 	}
 	
 	@GetMapping({"get","modify"})
 	public void getBoard(int num, Model model, MultipartFile[] file) {
 		TripsBoardDto board = service.getBoard(num, file);
+//		List<TripsOrderDto> order = service.getOrderByBoardNum(num);
 		model.addAttribute("board", board);
+		//model.addAttribute("order", order);
 		
 	}
 	
@@ -62,17 +74,32 @@ public class YdsBoardController {
 	@PostMapping("plusLike")
 	@ResponseBody
 	public Map<String, Object> plusLike(@RequestBody Map<String, Integer> req,
-			TripsBoardDto board) {
-		return service.plusLike(req.get("num"), board);
+			TripsBoardDto board, Authentication authentication) {
+		String userName = ""; 
+		if(authentication !=null) {
+			userName= authentication.getName();
+		}else {
+			userName= "guest";
+		}
+		
+		return service.plusLike(req.get("num"), board, userName);
 		
 	}
 
 	@DeleteMapping("minusLike")
 	@ResponseBody
 	public Map<String, Object> minusLike(@RequestBody Map<String, Integer> req, 
-			TripsBoardDto board){
+			TripsBoardDto board,
+			Authentication authentication){
+		String userName = ""; 
+		if(authentication !=null) {
+			userName= authentication.getName();
+		} else {
+			userName="guest";
+		}
+		
 		return service.minusLike(req.get("num"), 
-				board);
+				board,userName);
 	}
 	
 	@PostMapping("modify")
@@ -108,5 +135,9 @@ public class YdsBoardController {
 		return cnt;
 	}
 	
+	@GetMapping("map")
+	public void getMap() {
+		
+	}
 	
 }

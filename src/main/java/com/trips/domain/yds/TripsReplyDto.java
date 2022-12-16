@@ -15,9 +15,8 @@ public class TripsReplyDto {
 	private String writer;
 	private String content;
 	private String status;
-	private LocalDateTime createDate;
 	@JsonFormat(shape = Shape.STRING)
-	private LocalDateTime modifyDate;
+	private LocalDateTime createDate;
 	private int boardNum;
 	
 	public String getAgo() {

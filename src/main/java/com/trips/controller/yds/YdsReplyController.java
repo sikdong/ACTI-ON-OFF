@@ -32,6 +32,7 @@ public class YdsReplyController {
 	
 	@GetMapping("listReply/{boardNum}")
 	public List<TripsReplyDto> listReply(@PathVariable int boardNum){
+		System.out.println(boardNum);
 		return service.listReply(boardNum);
 	}
 	

@@ -4,8 +4,17 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.trips.mapper.yds.ydsBoardMapper">
+<select id="getOrderByBoardNum" resultType="com.trips.domain.yds.TripsOrderDto">
+SELECT 
+	ADDDATE addDate,
+	PERSON person
+FROM CART
+WHERE B_NO = #{num}
+</select>
+<!-- 나중에 ACTI_ORDER 로 바껴야 함 -->
+
 <delete id="deleteLikeByLNO">
-DELETE FROM ACTI_LIKE WHERE B_NO = #{B_NO} AND M_ID = 'aa'
+DELETE FROM ACTI_LIKE WHERE B_NO = #{num} AND M_ID = #{writer}
 </delete>
 
 <insert id="plusLike" useGeneratedKeys="true" keyProperty="board.L_NO">
@@ -14,7 +23,7 @@ INSERT INTO ACTI_LIKE (
 	M_ID,
     B_NO
 )
-VALUES(1, 'aa', #{num});
+VALUES(1, #{writer}, #{num});
 	
 </insert>
 
@@ -26,7 +35,8 @@ SELECT
 	b.B_CONTENT content,
 	f.B_FILENAME fileName,
 	b.MAX_PERSON maxPerson,
-	b.COST price
+	b.COST price,
+	b.MAP_TEXT address
 FROM ACTI_BOARD b
 LEFT JOIN ACTI_FILE f on f.B_NO = b.B_NO
 GROUP BY b.B_NO
@@ -40,6 +50,7 @@ ORDER BY b.B_NO DESC;
 		<result column="content" property="content"/>
 		<result column="maxPerson" property="maxPerson"></result>
 		<result column="price" property="price"></result>
+		<result column="address" property="address"></result>
 		<collection property="fileName" ofType="String">
 			<result property="fileName" column="fileName"/>
 		</collection>
@@ -94,7 +105,8 @@ SELECT
 	f.B_FILENAME fileName,
 	b.B_CREATEDATE createDate,
 	b.COST price,
-	b.MAX_PERSON maxPerson
+	b.MAX_PERSON maxPerson,
+	b.MAP_TEXT address
 FROM ACTI_BOARD b
 LEFT JOIN ACTI_FILE f on f.B_NO = b.B_NO
 GROUP BY b.B_NO
@@ -108,6 +120,7 @@ LIMIT 5;
 		<result column="content" property="content"/>
 		<result column="createDate" property="createDate"/>
 		<result column="price" property="price"/>
+		<result column="address" property="address"></result>
 		<collection property="fileName" ofType="String">
 			<result property="fileName" column="fileName"/>
 		</collection>
@@ -130,7 +143,9 @@ SELECT
 	o.O_ADDDATE addDate,
     o.O_PERSON person,
     d.DATE date,
-    h.H_INTRODUCTION hostIntro
+    h.H_INTRODUCTION hostIntro,
+    b.MAP_LL location,
+    b.MAP_TEXT address
 FROM ACTI_BOARD b
 LEFT JOIN ACTI_FILE f ON b.B_NO = f.B_NO
 LEFT JOIN ACTI_DATE d ON b.B_NO = d.B_NO
@@ -151,6 +166,8 @@ WHERE b.B_NO = #{num}
 		<result column="maxPerson" property="maxPerson"></result>
 		<result column="minPerson" property="minPerson"></result>
 		<result column="minAge" property="minAge"></result>
+		<result column="location" property="location"></result>
+		<result column="address" property="address"></result>
 		<collection property="fileName" ofType="String">
 			<result property="fileName" column="fileName"/>
 		</collection>

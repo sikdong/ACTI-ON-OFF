@@ -50,32 +50,26 @@ public class ydsBoardService {
 
 	public TripsBoardDto getBoard(int num, MultipartFile[] file) {
 		// TODO Auto-generated method stub
+		int sum = 0;
 		TripsBoardDto board = mapper.getBoard(num, file);
-		System.out.println(board.getAddress());
-		List<Integer> sumList = new ArrayList<>();
-		List<String> savedDate = board.getDate();
-		List<String> orderDate = board.getAddDate();
-		List<Integer> person = board.getPerson();
-		for(int i = 0; i < savedDate.size(); i++) {
-			System.out.println(savedDate.get(i));
-			int sum= board.getMaxPerson();
-			for(int j = 0; j < orderDate.size(); j++) {
-				System.out.println(orderDate.get(j));
-				if(savedDate.get(i).equals(orderDate.get(j))) {
-				for(int k = 0; k < person.size(); k++) {
+		List<TripsOrderDto> orders = getOrderByBoardNum(num);
+		
+		board.setRemain(new ArrayList<>());
+		for (String date : board.getDate()) {
+			List<Integer> remains = board.getRemain();
+			remains.add(board.getMaxPerson());
+			int last = remains.size() - 1;
+			
+			for (TripsOrderDto order : orders) {
+				if (order.getAddDate().equals(date)) {
 					
-					sum -= person.get(k);
+					remains.set(last, remains.get(last) - order.getPerson());
 				}
-				sumList.add(sum);
 			}
 		}
-	}		
-		// 계산...
-		System.out.println(sumList);
-		/*
-		 * for(int a = 0; a < sumList.size(); a++) {
-		 * board.setAvaliablePeople.add(sumList.get(a)); }
-		 */
+		
+		System.out.println(board.getDate());
+		System.out.println(board.getRemain());
 		return board;
 }
 
@@ -134,9 +128,9 @@ public class ydsBoardService {
 		return mapper.getFiveFiles();
 	}
 
-	public Map<String, Object> plusLike(int num, TripsBoardDto board) {
+	public Map<String, Object> plusLike(int num, TripsBoardDto board, String userName) {
 		// TODO Auto-generated method stub
-		mapper.plusLike(num, board);
+		mapper.plusLike(num, board, userName);
 		
 		Map<String, Object> map = new HashMap<>();
 		
@@ -145,10 +139,10 @@ public class ydsBoardService {
 		return map;
 	}
 
-	public Map<String, Object> minusLike(int num, TripsBoardDto board) {
+	public Map<String, Object> minusLike(int num, TripsBoardDto board, String userName) {
 		// TODO Auto-generated method stub
 		Map<String, Object> map = new HashMap<>();
-		int minus = mapper.deleteLikeByLNO(num);
+		int minus = mapper.deleteLikeByLNO(num, userName);
 		map.put("deleteLike", minus);
 		int cnt = mapper.getLikeByBNO(board.getCountLike());
 		map.put("countLike", cnt);
@@ -193,6 +187,11 @@ public class ydsBoardService {
 	public int deletefileWhenModify(int fileNum) {
 		// TODO Auto-generated method stub
 		return mapper.deletefileWhenModify(fileNum);
+	}
+
+	public List<TripsOrderDto> getOrderByBoardNum(int num) {
+		// TODO Auto-generated method stub
+		return mapper.getOrderByBoardNum(num);
 	}
 
 

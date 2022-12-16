@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -161,6 +162,11 @@
 	
 }
 
+#map {
+  height: 400px; /* The height is 400 pixels */
+  width: 65%; /* The width is the width of the web page */
+}
+
 .container-fluid {
 	margin-bottom : 10px !important;
 }
@@ -196,6 +202,9 @@ body {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Trips</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_orange.css">
 <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
@@ -222,20 +231,24 @@ body {
 
 	<input type="hidden" id="numInput" value="${board.num}" />
 <div class="root">
-		<c:forEach items="${board.date}" var="date">
-			<div>저장날짜 : ${date} 최대 인원 : ${board.maxPerson}</div>
+		<c:forEach items="${board.date}" var="date" varStatus="status">
+			<c:choose >
+				<c:when test="${board.remain[status.index] > 0}">
+					<div>저장날짜 : ${date} 남은 인원 : ${board.remain[status.index]}</div>
+				</c:when>
+				<c:otherwise>
+					<div>${date} 날짜 체험은 품절 입니다</div>
+				</c:otherwise>
+			</c:choose>
 		</c:forEach>
-		<c:forEach items="${board.addDate}" var="addDate" varStatus="status">
-			<div>주문날짜 : ${addDate} 주문 인원 ${board.person[status.index]}</div>
-		</c:forEach>
-		<div class="container-fluid">남은 인원 : ${board.avaliablePeople}</div>
 		<div class="container-fluid">최대 인원 : ${board.maxPerson}</div>
 		<div class="container-fluid">최소 인원 : ${board.minPerson}</div>
 		<div class="container-fluid">최소 연령 : ${board.minAge}</div>
 		<input type="number" id="orderAllPerson" value="" />
-	
+	<div class="ml-3">
+		<h3><Strong>${board.title }</Strong></h3>
+	</div>
 	<div class="container-fluid flex">
-		<span><Strong>${board.title }</Strong></span>
 		<%-- spring security expressions 로 검색 --%>
 		<sec:authentication property="name" var="userName"/>
 	<c:if test="${board.writer == userName }">
@@ -249,6 +262,7 @@ body {
 				<small>원/1인</small>
 
 			</span>
+			
 			<div onclick="plusLike()" class="cursor ml-3" id="plusLike">
 				<i class="fa-regular fa-heart fa-2x red"></i> 
 			</div>
@@ -275,7 +289,7 @@ body {
 		<div class="horizontal">
 				<div class="halfview">
 					<h4 class="ml-3 mt-40">${board.writer }님 소개</h4>
-					<textarea style="width : 100% !important;" rows="5"  
+					<textarea style="width : 143% !important;" rows="5"  
 					readonly class="form-control">${board.hostIntro }</textarea>
 				</div>
 
@@ -298,6 +312,10 @@ body {
 				</span>
 				<hr width="65%" />
 			</div>
+			<h4 class="ml-3">위치 정보</h4>
+			<div>${board.address}</div>
+			<div id="map"></div>
+			<hr width="65%" />
 			<div class="col-sm-7 ml-3">
 				<h4 class="ml-3 mt-40">프로그램 후기</h4>
 				<div style="display : flex">
@@ -333,7 +351,7 @@ body {
 </div>	
 				
 <form action="/shop/addCart" method="post" id="cartForm">
-	<input type="text" name="addDate" id="addDate" value=""/>
+	<input type="hidden" name="addDate" id="addDate" value=""/>
 	<input type="hidden" name="person" id="person" value=""/>
 	<input type="hidden" name="price" id="price" value="${board.price}"/>
 	<input type="hidden" name="boardnum" id="boardNum" value="${board.num}"/>	
@@ -387,6 +405,12 @@ body {
 src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
 integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
 crossorigin="anonymous"></script>
+ <script
+  src="https://maps.googleapis.com/maps/api/js?callback=initMap&v=weekly"
+  defer
+></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://npmcdn.com/flatpickr/dist/l10n/ko.js"></script>
 <script>
 const ctx = "${pageContext.request.contextPath}";
 
@@ -680,7 +704,7 @@ document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calenda
 	for(let i=0; i < 35; i++){
 		if(i == 0 || i % 7 == 0){
 			document.querySelector(".dates").insertAdjacentHTML("afterbegin", weekDiv)	
-		} 
+		} 		
 				const dateDiv =`<div class="date cursor" id="date\${i}">\${dates[i]}</div>`;
 				document.querySelector(".week").insertAdjacentHTML("afterbegin", dateDiv); 
 
@@ -725,18 +749,37 @@ function substractNumber(){
 function prevCal(){
 	CDate.setMonth(CDate.getMonth()-1);
 	buildCalendar();
+	document.querySelector("#person").value='';
 }
 
 <%-- 다음 달 버튼 누르면 실행 되는 함수 --%>
 function nextCal(){
 	CDate.setMonth(CDate.getMonth()+1);
 	buildCalendar();
+	document.querySelector("#person").value='';
 }	
 
 function goCart(){
 	document.querySelector("#cartForm").submit();
 }
 
+function initMap() {
+    // The location of Uluru
+    const location = ${board.location}
+    // The map, centered at Uluru
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 15,
+      center: location,
+    });
+    // The marker, positioned at Uluru
+    const marker = new google.maps.Marker({
+      position: location,
+      map: map,
+    });
+  }
+
+
+  window.initMap = initMap;
 
 </script>
 </body>

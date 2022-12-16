@@ -19,11 +19,11 @@ public interface ydsBoardMapper {
 
 	public List<TripsBoardDto> getFiveFiles();
 
-	public int plusLike(int num, TripsBoardDto board);
+	public int plusLike(int num, TripsBoardDto board, String writer);
 
 	public int getLikeByBNO(int num);
 
-	public int deleteLikeByLNO(int num);
+	public int deleteLikeByLNO(int num, String writer);
 
 	public int modifyBoard(TripsBoardDto board);
 
@@ -48,6 +48,8 @@ public interface ydsBoardMapper {
 	public int deletefileWhenModify(int fileNum);
 
 	public void deleteCartNo(int num);
+
+	public List<TripsOrderDto> getOrderByBoardNum(int num);
 
 
 }
