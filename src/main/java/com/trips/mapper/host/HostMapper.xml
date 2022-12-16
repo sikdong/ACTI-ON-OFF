@@ -8,8 +8,9 @@
 	insert into ACTI_BOARD (b_topic,b_accept) values(#{b_topic},0)
 </insert>
 <insert id="listingContents" useGeneratedKeys="true" keyProperty="b_no" keyColumn="B_NO">
-	insert into ACTI_BOARD (b_topic,b_title,b_content,cost,max_person,min_person,min_age, map_text, map_ll) 
-	values(#{b_topic},#{b_title},#{b_content},#{cost},#{max_person},#{min_person},#{min_age}, #{address}, #{addressLL})
+	insert into ACTI_BOARD (m_id,b_topic,b_title,b_content,cost,max_person,min_person,min_age, map_text, map_ll) 
+	values(#{m_id},#{b_topic},#{b_title},#{b_content},#{cost},#{max_person},#{min_person},#{min_age}, #{address}, #{addressLL})
+	
 	
 </insert>
 
@@ -44,12 +45,12 @@
 
 <update id="hostInfoModify" >
 	UPDATE ACTI_HOST
-	SET h_introduction = #{h_introduction}r
+	SET h_introduction = #{h_introduction}, h_photo=#{h_photo}
 	WHERE m_id = #{m_id}
 </update>
 
 <select  id="getMember" resultType="com.trips.domain.mypage.MemberDto">
-	select m_id id from MEMBER where m_id= #{username}
+	select m_id id, m_host_request host from MEMBER where m_id= #{username}
 </select>
 
 

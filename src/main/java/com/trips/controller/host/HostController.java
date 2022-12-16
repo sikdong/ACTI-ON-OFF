@@ -31,7 +31,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 import com.trips.domain.host.BoardDto;
 import com.trips.domain.host.Host;
+import com.trips.domain.mypage.MemberDto;
 import com.trips.domain.yds.TripsBoardDto;
+import com.trips.mapper.host.HostMapper;
 import com.trips.service.host.HostService;
 
 //컨트롤러에 트렌잭션 어노테이션을 못쓰는 이유 ?
@@ -45,20 +47,46 @@ public class HostController {
 	@Autowired
 	private HostService hostService;
 	
+	// 네브바에서 호스트 클릭하면 
+	// 미로그인(case0) > 로그인페이지 : 뷰에서 해결
+	// 멤버 > (case1)호스트신청x:호스트되기로 리다이렉트  
+	// 		 (case2)호스트신청o:호스트정보 ( case2는 권한설정으로 구분 안되어있고 불리언컬럼으로 구분되어있음 )
+	// (case3)호스트 > 호스트정보
+	
+	// --> 요청을 받아서 컨트롤러에서 처리하거나, 권한에 따라 요청을 다르게 보낸다 
+	// case0 : 로그인페이지
+	// case1 : host필드(호스트요청이 host필드임)가 flase / 호스트되기만 보여지게/ 접근권한부여하는 것이 아니라 다른경로로 요청보내면 becomeHostIntro로 리다이렉트 시키기
+	// case2 : host필드가 true / 호스트되기만 안보여지게
+	// case3 : 권한=host / 호스트되기만 안보여지게
 	
 	
 	
-	//호스트 되기
-	//로그인한 멤버만 
+	// 호스트 되기 
 	@RequestMapping("becomeHostIntro")
-	//@PreAuthorize("isAuthenticated()")
-	public void becomeHostIntro() {
+	@PreAuthorize("isAuthenticated()")
+	public String becomeHostIntro(Authentication authentication,Model model) { 
 //		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //		UserDetails userDetails = (UserDetails)principal;
 //
 //		String username = ((UserDetails) principal).getUsername();
 //		String password = ((UserDetails) principal).getPassword();
 //		System.out.println(username+","+password)
+		System.out.println(authentication.getName()+"@@@");
+		MemberDto member =hostService.getMember(authentication.getName());
+		System.out.println(member+"@@@");
+		if(member.isHost()) {
+		System.out.println(member.isHost());
+			//member 호스트요청 1(true)
+			Host host = hostService.hostInfo(member.getId());
+			System.out.println(host+"@@");
+			model.addAttribute("host", host);
+			
+		
+			return "redirect:hostInfo";
+		}
+		System.out.println("aaaaa");
+		return null;
+		// memeber 호스트요청 0(false)
 	}
 	
 	@PreAuthorize("isAuthenticated()")
@@ -72,6 +100,7 @@ public class HostController {
 	//@PreAuthorize("@hostSecurity.checkMemberId(authentication.name)")
 	public String becomeHost(Host host, MultipartFile file) {
 		System.out.println(host+"@@@@@@@");
+		System.out.println(file+"@@@3134");
 		hostService.becomeHost(host,file);
 		
 		return "redirect:waitingAcceptance";
@@ -91,29 +120,36 @@ public class HostController {
 	
 	
 	//호스트 정보 관리- ru..d?
-	//호스트대기와 호스트만
+	//호스트대기와 호스트만  -> 일반멤버이면 호스트되기로 리다이렉트
 	
 	@GetMapping("hostInfo")
+//	@PreAuthorize("hasAuthority('host')")
 //	@PreAuthorize("@boardSecurity.checkMemberId(authentication.name, #id)")
-//	public void hostInfo(String m_id,Model model) {
-	public void hostInfo(Model model) {
-		//왜 여긴 모델을 파라미터로 써야되지?
-		Host host = hostService.hostInfo("bb");
-		System.out.println(host+"@@");
+	public String hostInfo(Model model, Authentication authentication) { //왜 여긴 모델을 파라미터로 써야되지?
+		MemberDto member =hostService.getMember(authentication.getName());
+		System.out.println(member+"@@@");
+		if(!member.isHost()) {
+			return "redirect:becomeHostIntro";
+		}
+		
+		Host host = hostService.hostInfo(authentication.getName());
+		System.out.println(host+"@@2222");
 		model.addAttribute("host", host);
 		System.out.println(host);
+		return null;
 	}
 	//지금은 호스트 소개만 수정..
 	@PostMapping("hostInfo")
-	public String hostInfo(@ModelAttribute Host host, RedirectAttributes rttr) {
+	public String o( Host host, MultipartFile file, RedirectAttributes rttr) {
 		System.out.println(host+"######");
-		int result= hostService.hostInfoModify(host);
+		System.out.println(file+"@@@313");
+		int result= hostService.hostInfoModify(host,file);
 		if (result == 1) {
 			rttr.addFlashAttribute("message", "수정완");
 		} else {
 			rttr.addFlashAttribute("message","수정안됨" );
 		}
-		//수정 후 모달로 요청하려면?
+		//수정 후 모달로 요청
 		return "redirect:hostInfoModifyComplete";
 	}
 	
@@ -190,31 +226,25 @@ public class HostController {
 		return "redirect:/host/listing/contents";
 	}
 
-	//다른 페이지에서 등록해야해서 컨트롤러를 따로 만드는?
-	//위의 리다이렉트를 받는 컨트롤러
+
 	@GetMapping("listing/contents")
 	public void listingContentsJsp() {	
 	}
 	@PostMapping("listing/contents") 
-	// ??? 매핑된 메서드의 매개변수에 dto를 쓰면 새로 생성(자바에서 생성말고)이 되는 개념임? (어떤 빈 dto가 대기하고 있는?)
-	// 함수를 호출하지 않고 매개변수에 값을 넣을 수 있는 방법은 없나 ? 매개변수의 값을 나눠서 넣고 싶을 때.
-	//MultipartFile[] b_filename 은 등록페이지 마지막에? 날짜는 달력을 보여주고 선택하게. 파라미터는 컬렉션으로?
-	public String listingContents( String b_title, String b_content,
-										 int cost,int min_person, int max_person, int min_age, String address, String addressLL, HttpSession session ) {	
 
+	public String listingContents(Authentication authentication, String b_title, String b_content,
+										 int cost,int min_person, int max_person, int min_age,HttpSession session ) {	
 //	public String listingContents(BoardDto board ) {	
 //		boardDto=board;//매개변수에 모델어트리뷰트 쓰면 빈 디티오에 담기는 거니까 이전과 다른 인스턴스.
 		
 		
+		session.setAttribute("m_id", authentication.getName());
 		session.setAttribute("b_title", b_title);
 		session.setAttribute("b_content", b_content);
 		session.setAttribute("cost", cost);
 		session.setAttribute("min_person", min_person);
 		session.setAttribute("max_person", max_person);
 		session.setAttribute("min_age", min_age);		
-		session.setAttribute("address", address);
-		session.setAttribute("addressLL", addressLL);
-		
 		
 		System.out.println(session.getAttribute("b_topic")+"@@@"); // 같은 세션에 담기네 
 		
@@ -224,8 +254,6 @@ public class HostController {
 		boardDto.setMax_person(min_person);
 		boardDto.setMax_person(max_person);
 		boardDto.setMin_age(min_age);
-		boardDto.setAddress(address);
-		boardDto.setAddressLL(addressLL);
 	//	b_no=boardDto.getB_no();
 //		hostService.listingContents(boardDto);
 	//	System.out.println(boardDto);
@@ -249,10 +277,10 @@ public class HostController {
 		//이제 스트링배열로 받았으니까! 이걸 db에 저장만하면됨
 		//b_no=boardDto.getB_no();
 		
-		
-		
 		BoardDto boardDto =new BoardDto();
-
+		
+		
+		boardDto.setM_id((String)session.getAttribute("m_id"));
 		boardDto.setB_topic((String)session.getAttribute("b_topic"));
 		boardDto.setCost((int)session.getAttribute("cost"));
 		boardDto.setB_title((String)session.getAttribute("b_title"));
@@ -260,10 +288,9 @@ public class HostController {
 		boardDto.setMax_person((int) session.getAttribute("max_person")   );
 		boardDto.setMin_person((int) session.getAttribute("min_person")   );
 		boardDto.setMin_age((int) session.getAttribute("min_age")   );
-		boardDto.setAddress((String)session.getAttribute("address"));
-		boardDto.setAddressLL((String)session.getAttribute("addressLL"));
-	
 		
+	
+	
 		
 		
 		 
@@ -322,16 +349,17 @@ public class HostController {
 	// 호스트 아이디랑 같은 체험 불러오기
 	
 	@GetMapping("admin")
+	@PreAuthorize("hasAuthority('host')")
 //	@PreAuthorize("@hostSecurity.checkMemberId(authentication.name)")//isAuthenticated()에는 매개변수 못씀?
-	public void admin(
-			Authentication authentication, Model model) {
+	public void admin(Authentication authentication, Model model) {
 		System.out.println(authentication.getName());
 		List<BoardDto> boardList = hostService.getMyList(authentication.getName());
+		
 		System.out.println(boardList );
 		model.addAttribute("boardList", boardList);
 	}
 	
-	
+		
 	
 	
 	

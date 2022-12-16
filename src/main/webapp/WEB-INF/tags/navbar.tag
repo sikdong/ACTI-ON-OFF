@@ -46,10 +46,21 @@ padding: 0 15px 0 15px;
 <c:url value="/jjhLogin/signup" var="signUpLink" />
 <c:url value="/home" var="mainLink" />
 <c:url value="/jjhLogin/logout" var="logOutLink" />
-<c:url value="/host/becomeHostIntro" var="hostLink" />
+
+<c:url value="/host/hostInfo" var="hostInfo" />
+<c:url value="/host/becomeHostIntro" var="becomeHostIntro" />
+<%-- <c:url value="/host/becomeHostIntro" var="hostLink" /> --%>
 <c:url value="/qna/adminMain" var="adminMainLink"/>
 
 
+
+
+
+
+
+ 
+	
+ 
 
 <nav id="nav" class="navbar navbar-expand-md mb-3">
   <div class="container-md">
@@ -127,10 +138,12 @@ padding: 0 15px 0 15px;
         </li>
         
          <li class="nav-item">
-          <a class="nav-link"
-          href="${hostLink}">
-          <span class="font">Host Page</span
-          ></a>
+             <sec:authorize access=" not hasAuthority('host')">
+          <a class="nav-link"  href="${becomeHostIntro}"> <span class="font">Host Page</span></a>
+          </sec:authorize>
+          <sec:authorize access="hasAuthority('host')">
+          <a class="nav-link"  href="${hostInfo}"> <span class="font">Host Page</span></a>
+          </sec:authorize>
         </li>
         
         <sec:authorize access="hasAuthority('admin')">
