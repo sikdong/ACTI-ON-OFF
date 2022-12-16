@@ -83,25 +83,57 @@ public class OrderController {
 	}
 		
 	@GetMapping("/payment/orderResult")
-	public void orderResult(Model model, HttpSession session) {
+	public void orderResult(Model model,MemberDto member, Authentication authentication, HttpSession session) {
 		/* Test2Dto t2d = orderService.getOrder(); */
 //		int orderId = (int) session.getAttribute("orderId");
 //		System.out.println(orderId);
 //		Test2Dto t2d = orderService.getOrder(orderId);
 //		System.out.println(t2d);
 //		model.addAttribute("t2d", t2d);
+		member.setId(authentication.getName());
+		
+		jjhMemberDto mem = memberService.getById(authentication.getName());
+		
+		System.out.println("#######################");
+		System.out.println(mem);
+
+		String mid = mem.getM_ID();
+		String password = mem.getM_PASSWORD();
+		String name = mem.getM_NAME();
+		String gender = mem.getM_GENDER();
+		String phone = mem.getM_PHONE();
+		String email = mem.getM_EMAIL();
 		
 		int price = (int) session.getAttribute("price");
 		int person = (int) session.getAttribute("person");
 		String addDate = (String) session.getAttribute("addDate");
 		
+	
 		session.removeAttribute("orderID");
+
+		model.addAttribute("mid", mid);
+		model.addAttribute("name", name);
+		model.addAttribute("phone", phone);
 		//↑다쓴 세션 삭제
 	}
 		
 	@PostMapping("/payment/orderResult")
 	@ResponseBody
-	public void saveOrderResult(@RequestBody testDto testdto, Model model, HttpSession session){
+	public void saveOrderResult(@RequestBody testDto testdto, Model model,Authentication authentication, MemberDto member, HttpSession session){
+		member.setId(authentication.getName());
+		
+		jjhMemberDto mem = memberService.getById(authentication.getName());
+		
+		System.out.println("*******************");
+		System.out.println(mem);
+		
+
+		String mid = mem.getM_ID();
+		String password = mem.getM_PASSWORD();
+		String name = mem.getM_NAME();
+		String gender = mem.getM_GENDER();
+		String phone = mem.getM_PHONE();
+		String email = mem.getM_EMAIL();
 		
 		String id = testdto.getId();
 		int boardNumber = testdto.getBoardNumber();
@@ -117,6 +149,9 @@ public class OrderController {
 		session.setAttribute("price", price);
 		session.setAttribute("person", person);
 		session.setAttribute("addDate", addDate);
+		model.addAttribute("mid", mid);
+		model.addAttribute("name", name);
+		model.addAttribute("phone", phone);
 	}
 	
     
