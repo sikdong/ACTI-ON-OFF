@@ -70,7 +70,7 @@
 				</thead>
 				<tbody style="text-align: left;">
 						<tr>
-							<td>${dto.username}</td>
+							<td>${z}</td>
 							<td>${dto.postcode}<br>${dto.useraddress}</td>
 							<td>${dto.tel}</td>
 							<td id="del_situ"></td>

@@ -5,16 +5,43 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.trips.mapper.payment.CartMapper">
+	<select id="select" resultMap="memberMap">
+	SELECT
+		M_ID,
+	    M_PASSWORD,
+	    M_NAME,
+	    M_GENDER,
+	    M_PHONE,
+	    M_EMAIL,
+	    M_HOST_REQUEST
+	FROM
+		MEMBER
+	WHERE
+		M_ID = #{id}
+	</select>
 	
+	<resultMap type="com.trips.domain.mypage.MemberDto" id="memberMap">
+		<id column="M_ID" property="id"></id>
+		<result column="M_PASSWORD" property="password"/>
+		<result column="M_NAME" property="name"/>
+		<result column="M_GENDER" property="gender"/>
+		<result column="M_PHONE" property="phone"/>
+		<result column="M_EMAIL" property="email"/>
+		<result column="M_HOST_REQUEST" property="host"/>
+	</resultMap>
 
-	<resultMap type="com.trips.domain.payment.CartList" id="cartListResultMap">
+	 <resultMap type="com.trips.domain.payment.CartList" id="cartListResultMap">
 		<id property="cart_id" column="CART_ID"></id>
 		<result property="id" column="M_ID" />
 		<result property="boardnum" column="B_NO" />
 		<result property="price" column="PRICE" />
 		<result property="renamedFileName" column="renamedFileName" />
 		<result property="addDate" column="addDate" />
-	</resultMap>
+	</resultMap> 
+
+	<!-- <insert id="insert">
+		INSERT 
+	</insert> -->
 
 	<select id="cartList" parameterType="String"
 		resultMap="cartListResultMap">

@@ -16,11 +16,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.trips.domain.jjhMember.jjhMemberDto;
 import com.trips.domain.payment.CartList;
+import com.trips.domain.payment.MemberDto;
 import com.trips.domain.payment.Order;
 import com.trips.domain.payment.OrderList;
 import com.trips.domain.payment.Test2Dto;
 import com.trips.domain.payment.testDto;
+import com.trips.service.jjhMember.jjhMemberService;
 import com.trips.service.payment.CartService;
 import com.trips.service.payment.OrderService;
 
@@ -34,9 +37,26 @@ public class OrderController {
 	
 	@Autowired
 	private CartService cartservice;
+	@Autowired
+	private jjhMemberService memberService;
 
 	@RequestMapping(value="/payment/orderPage", method = {RequestMethod.GET, RequestMethod.POST}) 
-	public String orderPage(OrderList orderList, String merchant_uid, Authentication authentication, Model model, HttpSession session) throws Exception {
+	public String orderPage(OrderList orderList, String merchant_uid, Authentication authentication, MemberDto member,Model model, HttpSession session) throws Exception {
+		member.setId(authentication.getName());
+		
+		jjhMemberDto mem = memberService.getById(authentication.getName());
+		
+		System.out.println("#######################");
+		System.out.println(mem);
+
+		String mid = mem.getM_ID();
+		String password = mem.getM_PASSWORD();
+		String name = mem.getM_NAME();
+		String gender = mem.getM_GENDER();
+		String phone = mem.getM_PHONE();
+		String email = mem.getM_EMAIL();
+		
+		System.out.println("세션 아이디 : " + mid);
 		
 		int cartId = orderList.getCart_id(); 
 		testDto tDto = cartservice.getCart(cartId);
@@ -45,7 +65,7 @@ public class OrderController {
 		String firstFile = (String) session.getAttribute("firstFile");
 		int boardNo = (int) session.getAttribute("boardNo");
 		
-	
+		
 		
 		model.addAttribute("merchant_uid", merchant_uid);
 		model.addAttribute("orderList", orderList);
@@ -53,6 +73,10 @@ public class OrderController {
 		model.addAttribute("firstFile", firstFile);
 		model.addAttribute("boardNo", boardNo);
 		model.addAttribute("tDto", tDto);
+		model.addAttribute("mid", mid);
+		model.addAttribute("name", name);
+		model.addAttribute("phone", phone);
+	
 		
 		return "/payment/orderPage";
 		
@@ -97,7 +121,6 @@ public class OrderController {
 	
     
 }
-
 
 
 
