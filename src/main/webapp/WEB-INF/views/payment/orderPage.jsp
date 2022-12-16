@@ -75,26 +75,26 @@
 				<div class="form-group">
 					<label for="inputId" class="col-sm-2 control-label">ID</label>
 					<div class="col-sm-8">
-						<input class="form-control" id="inputId" placeholder="ID" name="M_ID" value="${member.M_ID}" readonly>
+						<input class="form-control" id="inputId" placeholder="ID" name="M_ID" value="${mid}" readonly>
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<label for="inputName" class="col-sm-2 control-label">Name</label>
 					<div class="col-sm-8">
-						<input class="form-control" id="name" placeholder="Name" name="name" value="${orderList.name}">
+						<input class="form-control" id="name" placeholder="Name" name="name" value="${name}">
 					</div>
 				</div>					
 				<div class="form-group">
 					<label for="inputEmail" class="col-sm-2 control-label">Email</label>
 					<div class="col-sm-8">
-						<input type="email" class="form-control" id="email" placeholder="Email" name="email" value="${loginMember.email}">
+						<input type="email" class="form-control" id="email" placeholder="Email" name="email" value="${email}">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="inputTel" class="col-sm-2 control-label">Tel</label>
 					<div class="col-sm-8">
-						<input type="tel" class="form-control" id="phone" placeholder="Tel" name="phone" value="${loginMember.phone}">
+						<input type="tel" class="form-control" id="phone" placeholder="Tel" name="phone" value="${phone}">
 					</div>
 				</div>		
 			</div>

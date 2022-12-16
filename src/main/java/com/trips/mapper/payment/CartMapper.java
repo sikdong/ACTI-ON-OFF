@@ -6,8 +6,10 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+
 import com.trips.domain.payment.Cart;
 import com.trips.domain.payment.CartList;
+import com.trips.domain.payment.MemberDto;
 import com.trips.domain.payment.testDto;
 
 
@@ -23,6 +25,9 @@ public interface CartMapper {
 	public void deleteAllCart(String id);
 
 	public testDto getCart(int cartId);
+
+	public MemberDto select(String id);
+
 
 	}
 

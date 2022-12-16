@@ -70,11 +70,10 @@
 				</thead>
 				<tbody style="text-align: left;">
 						<tr>
-							<td>${dto.username}</td>
-							<td>${dto.postcode}<br>${dto.useraddress}</td>
-							<td>${dto.tel}</td>
+							<td>${mid}</td>
+							<td>${phone}<br></td>
+							<td></td>
 							<td id="del_situ"></td>
-							<td>${dto.deliver_msg}</td>
 						</tr>
 				</tbody>
 			</table>

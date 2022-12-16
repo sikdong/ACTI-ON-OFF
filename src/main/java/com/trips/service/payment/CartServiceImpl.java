@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import com.trips.domain.payment.Cart;
 import com.trips.domain.payment.CartList;
+import com.trips.domain.payment.MemberDto;
 import com.trips.domain.payment.testDto;
 import com.trips.mapper.payment.CartMapper;
 
@@ -17,6 +19,11 @@ public class CartServiceImpl implements CartService {
 
 	@Autowired
 	public CartMapper mapper;
+	
+
+	public MemberDto getById(String id) {
+		return mapper.select(id);
+	}
 
 	@Override
 	public int addCart(Cart cart) throws Exception {

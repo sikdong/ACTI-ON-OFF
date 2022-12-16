@@ -24,7 +24,6 @@
 <body>
 
 <section class="mypage">
-
     <h2 class="title-mypage">장바구니</h2>
     <div class="container">     
                 <input type="hidden" name="cmd" value="order">
@@ -51,7 +50,7 @@
 					<form action="${path}/payment/orderPage" method="get">
 					 <c:forEach var="list" items="${cartList}">
 			         <div class="paymentScreenBtn">
-
+											
 								<input type="hidden" name="boardnum" value="${list.boardnum}">
 								<input type="hidden" name="boardtitle" value="${boardList.title}">
 								<input type="hidden" name="Price" value="${list.price}">
