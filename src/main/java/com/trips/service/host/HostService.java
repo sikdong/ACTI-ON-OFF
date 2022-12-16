@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.trips.domain.host.BoardDto;
 import com.trips.domain.host.Host;
+import com.trips.domain.mypage.MemberDto;
 import com.trips.mapper.host.HostMapper;
 
 import software.amazon.awssdk.core.sync.RequestBody;
@@ -51,11 +52,13 @@ public class HostService {
 			System.out.println(date);
 			hostMapper.listingDate(boardDto.getB_no(), date);
 		}
+		System.out.println(boardDto+"@@@@@@##");
 	}
 
 
 	private void uploadFile(MultipartFile file, String folder) {
 		try {
+			System.out.println(file+"@@@@@@@1");
 			// S3에 파일 저장
 			// 키 생성
 //			String key = "trips/board/" + id + "/" + file.getOriginalFilename();
@@ -88,6 +91,7 @@ public class HostService {
 			// s3에 저장
 			uploadFile(file, "trips/host/" + host.getM_id() + "/");
 		}
+		
 	}
 	
 
@@ -101,7 +105,12 @@ public class HostService {
 	}
 
 	
-	public int hostInfoModify(Host host) {
+	public int hostInfoModify(Host host, MultipartFile file) {
+		System.out.println(file+"###121");
+		if (file != null && file.getSize() > 0) {
+			host.setH_photo(file.getOriginalFilename());
+			uploadFile(file, "trips/host/" + host.getM_id() + "/");
+			}
 		return hostMapper.hostInfoModify(host);
 	}
 	
@@ -208,6 +217,12 @@ public class HostService {
 //			String s="11/11/1111";
 //			Date date=(Date) new SimpleDateFormat("dd/MM/yyyy").parse(s);  
 
+		}
+
+
+		public  MemberDto getMember(String m_id) {
+			// TODO Auto-generated method stub
+			return hostMapper.getMember(m_id);
 		}
 		
 		

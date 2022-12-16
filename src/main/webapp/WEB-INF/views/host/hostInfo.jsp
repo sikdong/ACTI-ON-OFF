@@ -3,6 +3,7 @@
 <%@ page import="java.net.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,7 +39,7 @@
 
 
 
-				<form action="" method="post">
+				<form action="" method="post" enctype="multipart/form-data">
 					m_id <br> <input type="text" value="${host.m_id }" name="m_id" readonly>
 					<br> <br>
 					<%-- 이미지 출력 디비는 스트링일뿐.--%>
@@ -52,6 +53,11 @@
 							src="${imgUrl }/host/${host.m_id}/${URLEncoder.encode(photoName, 'utf-8')}"
 							width="200px" height="200px" alt=""> <br>
 						<br>
+							<div class="mb-3">
+						<label for="" class="form-label"><b>본인의 사진을 첨부해주세요</b></label> <input
+							multiple type="file" accept="image/*" class="form-control"
+							name="file">
+					</div>
 
 					</div>
 					<%-- 				<textarea value="${host.h_introduction }" name = "h_introduction"/> --%>
@@ -59,7 +65,7 @@
 					<textarea rows="5" name="h_introduction" class="form-control">${host.h_introduction  }</textarea>
 					<center>
 						<br> <input id="hostInfoModify" type="submit"
-							class="btn btn-dark" value="수정하기">
+							class="btn btn-dark" value="수정완료">
 						<button class="btn btn-dark" type="button"
 							style="bacgroubd-color: white"
 							onclick="location.href=   '${pageContext.request.contextPath}/host/admin';">수정취소</button>
