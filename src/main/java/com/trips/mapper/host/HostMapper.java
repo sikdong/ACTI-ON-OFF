@@ -40,5 +40,7 @@ public interface HostMapper {
 
 	public MemberDto getMember(String username);
 
+	public void hostRequestAuthority(String id);
+
 	
 }

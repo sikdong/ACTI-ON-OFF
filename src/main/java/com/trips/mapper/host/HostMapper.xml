@@ -33,7 +33,12 @@
 		M_HOST_REQUEST = TRUE
 	WHERE M_ID = #{id}
 </update>
-
+<update id="hostRequestAuthority">
+	update MEMBER
+	set 
+		M_AUTHORITY = 'hostRequest'
+	WHERE M_ID = #{id}
+</update>
 
 
 <!-- <select id="select"> -->
