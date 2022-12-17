@@ -40,45 +40,21 @@ public class OrderController {
 	@Autowired
 	private jjhMemberService memberService;
 
-	@RequestMapping(value="/payment/orderPage", method = {RequestMethod.GET, RequestMethod.POST}) 
-	public String orderPage(OrderList orderList, String merchant_uid, Authentication authentication, MemberDto member,Model model, HttpSession session) throws Exception {
-		member.setId(authentication.getName());
+	@GetMapping("/payment/orderPage")
+	public void orderPage2() {
 		
-		jjhMemberDto mem = memberService.getById(authentication.getName());
-		
-		System.out.println("#######################");
-		System.out.println(mem);
-
-		String mid = mem.getM_ID();
-		String password = mem.getM_PASSWORD();
-		String name = mem.getM_NAME();
-		String gender = mem.getM_GENDER();
-		String phone = mem.getM_PHONE();
-		String email = mem.getM_EMAIL();
-		
-		System.out.println("세션 아이디 : " + mid);
-		
-		int cartId = orderList.getCart_id(); 
-		testDto tDto = cartservice.getCart(cartId);
-		
-		String title= (String) session.getAttribute("title");
-		String firstFile = (String) session.getAttribute("firstFile");
-		int boardNo = (int) session.getAttribute("boardNo");
-		
-		
-		
-		model.addAttribute("merchant_uid", merchant_uid);
-		model.addAttribute("orderList", orderList);
-		model.addAttribute("title", title);
-		model.addAttribute("firstFile", firstFile);
-		model.addAttribute("boardNo", boardNo);
-		model.addAttribute("tDto", tDto);
-		model.addAttribute("mid", mid);
-		model.addAttribute("name", name);
-		model.addAttribute("phone", phone);
+	}
 	
+	@PostMapping("/payment/orderPage")
+	public void orderPage(
+			@RequestParam(value="selectedArr", required = false) int[] selectedArr,
+			Model model){
 		
-		return "/payment/orderPage";
+		System.out.println("--------hello Post----------");
+		for (int i = 0; i < selectedArr.length; i++) {
+			System.out.println(selectedArr[i]);
+		}
+	
 		
 	}
 		

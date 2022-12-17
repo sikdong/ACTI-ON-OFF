@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.trips.domain.payment.Cart;
 import com.trips.domain.payment.CartList;
+import com.trips.domain.payment.CartRe;
 import com.trips.domain.payment.MemberDto;
 import com.trips.domain.payment.testDto;
 
@@ -18,7 +19,7 @@ public interface CartMapper {
 
 	public int addCart(Cart cart);
 
-	public List<CartList> cartList(@Param("id") String id);
+	public List<CartRe> cartList(@Param("id") String id);
 
 	public int deleteCart(int cart_id);
 	

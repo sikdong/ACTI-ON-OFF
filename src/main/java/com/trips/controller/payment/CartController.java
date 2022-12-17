@@ -25,6 +25,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.trips.domain.jjhMember.jjhMemberDto;
 import com.trips.domain.payment.Cart;
 import com.trips.domain.payment.CartList;
+import com.trips.domain.payment.CartRe;
 import com.trips.domain.payment.MemberDto;
 import com.trips.service.jjhMember.jjhMemberService;
 import com.trips.service.payment.CartService;
@@ -60,7 +61,6 @@ public class CartController {
 		String phone = member.getPhone();
 		String email = member.getEmail();
 		Boolean host = member.isHost();
-		System.out.println("------"+member+"-------");
 
 		return "redirect:/payment/cart";
 		}
@@ -74,8 +74,6 @@ public class CartController {
 
 		map.put("result", service.addCart(cart));
 
-		System.out.println(cart);
-
 		return "redirect:/payment/cart";
 
 	}
@@ -88,8 +86,6 @@ public class CartController {
 		
 		jjhMemberDto mem = memberService.getById(authentication.getName());
 		
-		System.out.println("#######################");
-		System.out.println(mem);
 		
 		String id = mem.getM_ID();
 		String password = mem.getM_PASSWORD();
@@ -102,16 +98,9 @@ public class CartController {
 		String firstFile = (String) session.getAttribute("firstFile");
 		int boardNo = (int) session.getAttribute("boardNo");
 
-		System.out.println("세션 타이틀 : " + title);
-		System.out.println("세션 첫파일 : " + firstFile);
-		System.out.println("세션 보드넘버 : " + boardNo);
-		/*
-		 * String id = authentication.getName();
-		 */
+		List<CartRe> cartList = service.cartList(id);
 
-		List<CartList> cartList = service.cartList(id);
-
-		for (CartList c : cartList) {
+		for (CartRe c : cartList) {
 			System.out.println(c);
 		}
 
@@ -137,7 +126,7 @@ public class CartController {
 	public String selectDeleteCart(@RequestParam("selectedArr") int[] selectedArr) {
 
 		for (int i = 0; i < selectedArr.length; i++) {
-			System.out.println("selectedArr :" + selectedArr[i]);
+			/* System.out.println("selectedArr :" + selectedArr[i]); */
 			service.deleteCart(selectedArr[i]);
 		}
 		return "redirect:/payment/cart";
