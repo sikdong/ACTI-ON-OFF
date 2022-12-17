@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.trips.domain.payment.Order;
 import com.trips.domain.payment.OrderList;
+import com.trips.domain.payment.OrderPageDto;
 import com.trips.domain.payment.Test2Dto;
 import com.trips.domain.payment.testDto;
 
@@ -24,6 +25,8 @@ public interface OrderService {
 	public Test2Dto getOrder(int orderId);
 
 	public int insertRes(String id, int boardNumber, String addDate);
+
+	public OrderPageDto getInfo(int sA);
 
 	
 

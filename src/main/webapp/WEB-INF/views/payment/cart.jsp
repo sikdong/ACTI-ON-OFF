@@ -144,7 +144,7 @@
 			 if (selectedArr.length == 0) {
 				 alert("결제하실 항목을 적어도 하나는 체크해 주세요.");
 			 } else {
-			  	$.ajax({
+			  	/*  $.ajax({
 			  		url : url,
 			  		type : 'POST',
 			  		traditional : true,
@@ -154,21 +154,34 @@
 			  		success : function(jdata){
 			  			if(jdata = 1){
 			  				goPost();
-			  			
 			  			}else{
 			  				alert("orderPage 이동 실패");
 			  			}
 			  		}
-			  	});
+			  	});  */
+				 	let f = document.createElement('form');
+				    
+				    let obj;
+				    obj = document.createElement('input');
+				    obj.setAttribute('type', 'hidden');
+				    obj.setAttribute('name', 'selectedArr');
+				    obj.setAttribute('value', selectedArr);
+				    
+				    f.appendChild(obj);
+				    f.setAttribute('method', 'post');
+				    f.setAttribute('action', '${path}/payment/orderPage');
+				    document.body.appendChild(f);
+				    f.submit();
 			 }
 		}
+		
 		
 		function goPost(){
 		    let f = document.createElement('form');
 		    f.setAttribute('method', 'post');
 		    f.setAttribute('action', '${path}/payment/orderPage');
 		    document.body.appendChild(f);
-		    /* f.submit(); */
+		    f.submit(); 
 		}
 
 		

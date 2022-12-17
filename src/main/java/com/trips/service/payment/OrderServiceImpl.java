@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.trips.domain.payment.Order;
 import com.trips.domain.payment.OrderList;
+import com.trips.domain.payment.OrderPageDto;
 import com.trips.domain.payment.Test2Dto;
 import com.trips.domain.payment.testDto;
 import com.trips.mapper.payment.OrderMapper;
@@ -53,5 +54,9 @@ public class OrderServiceImpl implements OrderService {
 	public int insertRes(String id, int boardNumber, String addDate) {
 		// TODO Auto-generated method stub
 		return mapper.insertRes(id, boardNumber, addDate);
+	}
+	@Override
+	public OrderPageDto getInfo(int sA) {
+		return mapper.getInfo(sA);
 	}
 }

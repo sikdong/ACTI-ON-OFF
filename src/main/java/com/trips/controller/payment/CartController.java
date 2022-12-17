@@ -100,10 +100,6 @@ public class CartController {
 
 		List<CartRe> cartList = service.cartList(id);
 
-		for (CartRe c : cartList) {
-			System.out.println(c);
-		}
-
 		model.addAttribute("cartList", cartList);
 		model.addAttribute("title", title);
 		model.addAttribute("firstFile", firstFile);

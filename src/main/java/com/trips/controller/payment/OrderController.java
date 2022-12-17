@@ -1,5 +1,6 @@
 package com.trips.controller.payment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -21,6 +22,7 @@ import com.trips.domain.payment.CartList;
 import com.trips.domain.payment.MemberDto;
 import com.trips.domain.payment.Order;
 import com.trips.domain.payment.OrderList;
+import com.trips.domain.payment.OrderPageDto;
 import com.trips.domain.payment.Test2Dto;
 import com.trips.domain.payment.testDto;
 import com.trips.service.jjhMember.jjhMemberService;
@@ -50,84 +52,45 @@ public class OrderController {
 			@RequestParam(value="selectedArr", required = false) int[] selectedArr,
 			Model model){
 		
-		System.out.println("--------hello Post----------");
-		for (int i = 0; i < selectedArr.length; i++) {
-			System.out.println(selectedArr[i]);
+		List<OrderPageDto> opd = new ArrayList<OrderPageDto>();
+		
+		for(int sA : selectedArr) {
+			OrderPageDto op = orderService.getInfo(sA);
+			opd.add(op);
 		}
-	
+		
+		model.addAttribute("opd", opd);
 		
 	}
-		
-	@GetMapping("/payment/orderResult")
-	public void orderResult(Model model,MemberDto member, Authentication authentication, HttpSession session) {
-		/* Test2Dto t2d = orderService.getOrder(); */
-//		int orderId = (int) session.getAttribute("orderId");
-//		System.out.println(orderId);
-//		Test2Dto t2d = orderService.getOrder(orderId);
-//		System.out.println(t2d);
-//		model.addAttribute("t2d", t2d);
-		member.setId(authentication.getName());
-		
-		jjhMemberDto mem = memberService.getById(authentication.getName());
-		
-		System.out.println("#######################");
-		System.out.println(mem);
 
-		String mid = mem.getM_ID();
-		String password = mem.getM_PASSWORD();
-		String name = mem.getM_NAME();
-		String gender = mem.getM_GENDER();
-		String phone = mem.getM_PHONE();
-		String email = mem.getM_EMAIL();
-		
-		int price = (int) session.getAttribute("price");
-		int person = (int) session.getAttribute("person");
-		String addDate = (String) session.getAttribute("addDate");
-		
-	
-		session.removeAttribute("orderID");
-
-		model.addAttribute("mid", mid);
-		model.addAttribute("name", name);
-		model.addAttribute("phone", phone);
-		//↑다쓴 세션 삭제
-	}
 		
 	@PostMapping("/payment/orderResult")
-	@ResponseBody
-	public void saveOrderResult(@RequestBody testDto testdto, Model model,Authentication authentication, MemberDto member, HttpSession session){
-		member.setId(authentication.getName());
+	public void saveOrderResult(
+			@RequestParam(value="selectedArr", required = false) int[] selectedArr,
+			Model model
+			){
+		for(int sA : selectedArr) {
+		}
 		
-		jjhMemberDto mem = memberService.getById(authentication.getName());
 		
-		System.out.println("*******************");
-		System.out.println(mem);
+		List<OrderPageDto> opd2 = new ArrayList<OrderPageDto>();
 		
-
-		String mid = mem.getM_ID();
-		String password = mem.getM_PASSWORD();
-		String name = mem.getM_NAME();
-		String gender = mem.getM_GENDER();
-		String phone = mem.getM_PHONE();
-		String email = mem.getM_EMAIL();
+		for(int sA : selectedArr) {
+			OrderPageDto op = orderService.getInfo(sA);
+			opd2.add(op);
+			String id = op.getId();
+			int boardNumber = op.getBoardNo();
+			int cartId = op.getCartId();
+			String addDate = op.getAddDate();
+			int price = op.getPrice();
+			int person = op.getPerson();
+			String renamedFilename = op.getRenamedFilename();
+			
+			int cnt1 = orderService.insertOrder(id, boardNumber, cartId, addDate, price, person, renamedFilename);
+			int cnt2 = orderService.insertRes(id, boardNumber, addDate);
+		}
 		
-		String id = testdto.getId();
-		int boardNumber = testdto.getBoardNumber();
-		int cartId = testdto.getCartId();
-		String addDate = testdto.getAddDate();
-		int price = testdto.getPrice();
-		int person = testdto.getPerson();
-		String renamedFilename = testdto.getRenamedFilename();
-		
-		int cnt = orderService.insertOrder(id, boardNumber, cartId, addDate, price, person, renamedFilename);
-		int res = orderService.insertRes(id, boardNumber, addDate);
-		
-		session.setAttribute("price", price);
-		session.setAttribute("person", person);
-		session.setAttribute("addDate", addDate);
-		model.addAttribute("mid", mid);
-		model.addAttribute("name", name);
-		model.addAttribute("phone", phone);
+		model.addAttribute("opd2", opd2);
 	}
 	
     

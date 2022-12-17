@@ -22,11 +22,13 @@
 <script
  src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 </head>
-<body>	
+<body>
+	
 	<div class="container">
 		
 		<div class="row" style="text-align: center;">
 			<h1 class="page-header" style="margin-bottom: 50px;">주문이 완료되었습니다.</h1>
+			<c:forEach items="${opd2}" var="opd2">
 			<table class="table table-hover" style="margin: auto; border-bottom: 1px solid #D5D5D5;">
 				<thead>
 					<tr>
@@ -40,19 +42,20 @@
 				<tbody style="text-align: left; vertical-align: middle;">
 						<tr>
 							<td style="text-align: center;">
-							<div>${testdto.id }</div>
-							<div class="img image"><img src="${imgUrl }/host/${boardNo}/${firstFile}" width="60" height="60"></div>
-							<input type="hidden" value="${testDto.id}" name="productId" id="productId">
+							<div></div>
+							<div class="img image"><img src="${imgUrl }/host/${opd2.boardNo}/${opd2.fileName}" width="60" height="60"></div>
+							<input type="hidden" value="" name="productId" id="productId">
 							</td>
-							<td>${dto.name}<br>${dto.productInfo}
-							<input value="${title}" name="title" id="title"></td>
-							<td><fmt:formatNumber type="number" value="${price}"/>&nbsp;원</td>
-							<td>${person}</td>
-							<td>${addDate}</td>
-							<td><fmt:formatNumber type="number" value="${person * price}"/>&nbsp;원</td>
+							<td><br>
+							<input value="${opd2.title}" name="title" id="title"></td>
+							<td><fmt:formatNumber type="number" value="${opd2.price}"/>&nbsp;원</td>
+							<td>${opd2.person}</td>
+							<td>${opd2.addDate}</td>
+							<td><fmt:formatNumber type="number" value="${opd2.person * opd2.price}"/>&nbsp;원</td>
 						</tr>
 				</tbody>
 			</table>
+			</c:forEach>
 		</div>
 		
 		<hr>
@@ -70,18 +73,18 @@
 				</thead>
 				<tbody style="text-align: left;">
 						<tr>
-							<td>${mid}</td>
-							<td>${phone}<br></td>
-							<td></td>
-							<td id="del_situ"></td>
+							<td>${opd2[0].name}</td>
+							<td>${opd2[0].phone}<br></td>
+							<td>완료</td>
+							<td id="del_situ"> - </td>
 						</tr>
 				</tbody>
 			</table>
 		</div>
 		
 		<div class="row" style="margin: 80px 0; text-align: center;">
-			<button class="btn btn-default back_btn">쇼핑을 계속하기</button>
-			<button class="btn btn-default mycart_btn">장바구니로 이동하기</button>
+			<button onclick="location.href='/ydsBoard/list'">쇼핑을 계속하기</button>
+			<button onclick="location.href='/payment/cart'">장바구니로 이동하기</button>
 		</div>
 	</div>
 
