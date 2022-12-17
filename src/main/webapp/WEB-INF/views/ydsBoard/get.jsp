@@ -8,6 +8,7 @@
 <html>
 <head>
 <style>
+
 .root {
 
 	margin-left : 10%;
@@ -17,10 +18,6 @@
 
 .mt-40 {
 	margin-top : 80px;
-}
-
-.ml-3 {
- 	margin-left : 6px;
 }
 
 .jc-sb {
@@ -80,7 +77,7 @@
     background-color: var(--bg-color);
     font-family: var(--font);
     position : fixed;
-    bottom : 2px;
+    bottom : 1px;
     z-index : 1;
 }
 
@@ -150,24 +147,39 @@
 	
 }
 
+.img-box {
+	width : 1600px;
+	display : flex;
+	flex-wrap : wrap;
+	
+}
+
+#img-js {
+	width : 1600px;
+	display : flex;
+	flex-wrap : wrap;
+	
+}
+
 .introduce {
 	width : 50% !important;
 }
 
 .size {
-	width : 240px;
-	height : 260px;
-	margin-left : 5px;
-	border-radius : 20px;
+	
+	width : 300px;
+	height : 300px;
+	margin : 5px ;
+	border-radius : 10px;
 	
 }
 
 #map {
-  height: 400px; /* The height is 400 pixels */
-  width: 65%; /* The width is the width of the web page */
+  height: 500px; /* The height is 400 pixels */
+  width: 89.5%; /* The width is the width of the web page */
 }
 
-.container-fluid {
+. {
 	margin-bottom : 10px !important;
 }
 
@@ -182,11 +194,10 @@
 	margin : 10px;
 }
 .flex-container {
+	width : 1600px;
 	display : flex;
 }
 .flex-child {
-	justify-content : center;
-	flex : 1;
 	font-family : 'Palatino';
 } 
 
@@ -241,88 +252,81 @@ body {
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
-		<div class="container-fluid">최대 인원 : ${board.maxPerson}</div>
-		<div class="container-fluid">최소 인원 : ${board.minPerson}</div>
-		<div class="container-fluid">최소 연령 : ${board.minAge}</div>
+		<div class="">최대 인원 : ${board.maxPerson}</div>
+		<div class="">최소 인원 : ${board.minPerson}</div>
+		<div class="">최소 연령 : ${board.minAge}</div>
 		<input type="number" id="orderAllPerson" value="" />
-	<div class="ml-3">
+	<div style="margin-left : 5px">
 		<h3><Strong>${board.title }</Strong></h3>
 	</div>
-	<div class="container-fluid flex">
+	<div class="flex">
 		<%-- spring security expressions 로 검색 --%>
 		<sec:authentication property="name" var="userName"/>
-	<c:if test="${board.writer == userName }">
-		<div class="ml-3">
+	<%-- <c:if test="${board.writer == userName }"> --%>
+<%--	</c:if>	 --%>
+			
+		<div onclick="plusLike()" class="cursor ml-3" id="plusLike">
+			<i class="fa-regular fa-heart fa-2x red"></i> 
+		</div>
+		<div onclick="minusLike()" class="cursor ml-3" id="minusLike" style="display : none">
+			<i class="fa-solid fa-heart fa-2x red" style="color : red !important;"></i>
+		</div>
+		<div id="countLike" style="font-size : 20px; margin-left : 3px; padding-top : 4px;">
+			${board.countLike}
+		</div>
+		<div>
 			<a href="${removeLink}" class="btn btn-outline-dark btn-sm">삭제</a>
 			<a href="${modifyLink}" class="btn btn-outline-dark btn-sm">수정</a>
-		</div>
-	</c:if>	
-			<h3 class="ml-3">${board.price}</h3> 
-			<span class="mt">
-				<small>원/1인</small>
-
-			</span>
-			
-			<div onclick="plusLike()" class="cursor ml-3" id="plusLike">
-				<i class="fa-regular fa-heart fa-2x red"></i> 
-			</div>
-			<div onclick="minusLike()" class="cursor ml-3" id="minusLike" style="display : none">
-				<i class="fa-solid fa-heart fa-2x red" style="color : red !important;"></i>
-			</div>
-			<div id="countLike" style="font-size : 20px; margin-left : 3px; padding-top : 4px;">
-				${board.countLike}
-			</div>
+ 		</div>
 	</div>
-	<div class="container-fluid flex" >
-
-	<c:forEach items="${board.fileName }" var="file" begin="0" end="2">
-		<img src="${imgUrl}/host/${board.num }/${file}" class="size" alt="...">
-	</c:forEach>
+	<div class="img-box mt-3" >
+		<c:forEach items="${board.fileName }" var="file" begin="0" end="3">
+			<img src="${imgUrl}/host/${board.num }/${file}" class="size" alt="...">
+		</c:forEach>
 	</div>
 	<%--사진 더 보기 기능도 추가해야함 --%>
+	<br />
 	<div style="text-align : left"><a href="" style="color : black;">사진 다 보기</a></div>
 
 	
 
 
-	<div class="container-fluid">
+	<div class="">
 		<div class="horizontal">
 				<div class="halfview">
 					<h4 class="ml-3 mt-40">${board.writer }님 소개</h4>
-					<textarea style="width : 143% !important;" rows="5"  
-					readonly class="form-control">${board.hostIntro }</textarea>
+					<textarea style="width : 90% !important"rows="5"  
+					readonly class="form-control mt-3">${board.hostIntro }</textarea>
 				</div>
 
-				<div id="showCalendar" class="halfview" style="margin-left : 20%">
+				<div id="showCalendar" class="halfview">
 
 				</div>
 			</div>	
 				<div class="mt-40">
 					<h4 class="ml-3">프로그램 소개</h4>
 				</div>
-				<hr width="65%" />
-				<div style="width : 100%">
+				<hr style="width : 50%" />
+				<div style="width : 50%">
 					${board.content }
 				</div>
-				<div>
-					<a id="reserveButton" onclick="buildCalendar()" class="btn btn-dark btn-sm">예약날짜확인</a>
-				</div>
-				<span>
-					<a id="noneButton" style="display : none" onclick="none()" class="btn btn-secondary btn-sm">달력접기</a>
-				</span>
-				<hr width="65%" />
+				<div class="flex">
+					<div class="mt-3">
+						<a id="reserveButton" onclick="buildCalendar()" class="btn btn-dark btn-sm">예약날짜확인</a>
+					</div>
+					<div class="mt-3" style="margin-left : 3px;"> 
+						<a id="noneButton" style="display : none" onclick="none()" class="btn btn-secondary btn-sm">달력접기</a>
+					</div>
+				</div>	
+				<hr style="width : 50%" />
 			</div>
-			<h4 class="ml-3">위치 정보</h4>
-			<div>${board.address}</div>
-			<div id="map"></div>
-			<hr width="65%" />
 			<div class="col-sm-7 ml-3">
 				<h4 class="ml-3 mt-40">프로그램 후기</h4>
 				<div style="display : flex">
 					<div><%--별 들어갈 자리 --%></div>
 				</div>
 				<sec:authorize access="isAuthenticated()">
-				<input type="text" class="form-control mt" placeholder="여러분의 소중한 후기를 남겨주세요" 
+				<input type="text" style="width : 44.5vw" class="form-control mt" placeholder="여러분의 소중한 후기를 남겨주세요" 
 					id="content"></input>
 				<%-- <input type="hidden" value="${board.writer }" id="temperId"/> --%>
 				<button class="btn btn-dark btn-sm mt" id="enrollReply" type="button" >등록</button>
@@ -330,7 +334,7 @@ body {
 				
 				
 				<sec:authorize access="not isAuthenticated()">
-				<input readonly type="text" class="form-control mt" placeholder="로그인 후 이용 가능합니다" 
+				<input readonly style="width : 44.5vw !important;" type="text" class="form-control mt" placeholder="로그인 후 이용 가능합니다" 
 					id="content"></input>
 				<button class="btn btn-dark btn-sm mt" id="enrollReply" type="button" disabled >등록</button>	
 				</sec:authorize>	
@@ -342,11 +346,21 @@ body {
 						</div>
 					</div>
 				</div>
-					<div class="mt-40">
-						<h5>체험 더보기</h5>
-					</div>
-					<div class="flex-container">
-					</div>
+			</div>
+			<br />
+			<br />
+			<hr width="89.5%" />
+			<div class="ml-3 mt-40">
+				<h4>위치 정보</h4>
+			</div>
+			<div class="ml-3 mt-3">${board.address}</div>
+			<div class="ml-3 mt-3" id="map"></div>
+			<br />
+			<hr width="65%" />
+				<div class="mt-40">
+					<h4>체험 더보기</h4>
+				</div>
+				<div class="flex-container mt-3">
 				</div>
 </div>	
 				
@@ -497,12 +511,10 @@ function getFiveFiles(){
 			if(file.num != ${board.num}){
 			const fileList = 
 				`<div class="flex-child">
-
 					<a href="/ydsBoard/get?num=\${file.num}">
-					<img src="${imgUrl}/host/\${file.num }/\${file.fileName}" class="size" alt="...">
+						<img src="${imgUrl}/host/\${file.num }/\${file.fileName}" class="size" alt="...">
 					</a>
-
-					<h5 class="text-center">\${file.content}</h5>
+					<div style="font-size : 20px;">\${file.content}</div>
 				</div>`
 			  document.querySelector(".flex-container").insertAdjacentHTML("afterbegin", fileList);
 			}
@@ -524,7 +536,7 @@ function listReply(){
 			const updateReplyButtonNum = `updateReplyButton\${item.replyNum}`
 			
 			const replyDiv = 
-				`<div class="list-group-item d-flex" style="width : 50vw !important">
+				`<div class="list-group-item d-flex" style="width : 44.5vw !important">
 					<div class="me-auto">
 						<div>
 							<small>
@@ -628,6 +640,12 @@ function buildCalendar(){
 	document.querySelector("#showCalendar").innerHTML=''
 const calendarFrame = 	
 	`<div class="calendar shadow p-3 mb-5 bg-body rounded">
+	<div style="display : flex;">
+		<div style="font-size : 40px"><strong>${board.price}</strong></div>
+		<div style="margin-top : 30px;">
+			<small>원/1인</small>
+		</div>
+	</div>
 	<div class="accordion" id="accordionExample">
 	  <div class="accordion-item">
 	    <h2 class="accordion-header" id="headingOne">
@@ -700,17 +718,22 @@ document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calenda
 	} // 이번 달 달력에 보이는 전월의 날짜를 공백으로 처리
 		
 	const weekDiv = `<div class="week"></div>`
+	let dateChoice = []
 
 	for(let i=0; i < 35; i++){
 		if(i == 0 || i % 7 == 0){
 			document.querySelector(".dates").insertAdjacentHTML("afterbegin", weekDiv)	
 		} 		
+				let year = CDate.getFullYear()
+				let month = CDate.getMonth() + 1
 				const dateDiv =`<div class="date cursor" id="date\${i}">\${dates[i]}</div>`;
-				const dateChoice =document.querySelector("#date${i}")
-				if(dateChoice.innerHTML !== ''){
-					dateChoice.setAttribute("data-full-date", <%--여기에 날짜다 들어가도록 이따 수정--%>)
-				}
 				document.querySelector(".week").insertAdjacentHTML("afterbegin", dateDiv); 
+					dateChoice.push(document.querySelector("#date"+i).innerHTML);
+					<%--여기서부터 시작 --%>
+					console.log(dateChoice)
+				if(dateChoice[i] !== ''){
+					document.querySelector("#date"+i).setAttribute("data-full-date", year+"-"+month)
+				} 
 
 		
 		document.querySelector("#date"+i).addEventListener("click", () => {
@@ -719,8 +742,6 @@ document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calenda
 		
 
 		document.querySelector("#addDate").value = '';	
-		let year = CDate.getFullYear()
-		let month = CDate.getMonth() + 1
 		document.querySelector("#addDate").value += year;
 		document.querySelector("#addDate").value +="-"+ month;
 		document.querySelector("#addDate").value +='-'+ document.querySelector("#date"+i).innerHTML;
