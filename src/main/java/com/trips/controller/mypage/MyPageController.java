@@ -299,7 +299,7 @@ public class MyPageController {
 			Model model
 			) {
 		List<HostChatIntroDto>hostChatIntroDto = service.getUserListById(id); 
-		List<ChatLeftDto> left = service.getChatLeft(id);
+		List<ChatLeftDto> left = service.getChatLeft2(id);
 		
 		for(ChatLeftDto l : left) {
 			String text;
@@ -315,4 +315,33 @@ public class MyPageController {
 		model.addAttribute("left", left);
 	}
 	
+	@GetMapping("hChat")
+	@PreAuthorize("isAuthenticated()")
+	public void hChat(
+			@RequestParam(name = "chatRoom") int chatRoom,
+			@RequestParam(name = "id") String id,
+			@RequestParam(name = "host") String host,
+			Model model
+			) {
+		
+		List<ChatDto> chat = service.getChat(chatRoom);
+		List<ChatLeftDto> left = service.getChatLeft2(id);
+		
+		for(ChatLeftDto l : left) {
+			String text;
+			if(l.getContent().length() > 30) {
+				text = l.getContent().substring(0, 30)+"...";
+			}else {
+				text = l.getContent();
+			}
+			l.setContent(text);
+		}
+		
+		model.addAttribute("chat", chat);
+		model.addAttribute("id", id);
+		model.addAttribute("host", host);
+		model.addAttribute("chatRoom", chatRoom);
+		model.addAttribute("left", left);
+		
+	}
 }

@@ -115,4 +115,8 @@ public class MyPageService {
 	
 		return mapper.getUserListById(id);
 	}
+
+	public List<ChatLeftDto> getChatLeft2(String id) {
+		return mapper.getChatLeft2(id);
+	}
 }

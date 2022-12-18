@@ -94,16 +94,16 @@ public class CartController {
 		String phone = mem.getM_PHONE();
 		String email = mem.getM_EMAIL();
 
-		String title = (String) session.getAttribute("title");
-		String firstFile = (String) session.getAttribute("firstFile");
-		int boardNo = (int) session.getAttribute("boardNo");
+//		String title = (String) session.getAttribute("title");
+//		String firstFile = (String) session.getAttribute("firstFile");
+//		int boardNo = (int) session.getAttribute("boardNo");
 
 		List<CartRe> cartList = service.cartList(id);
 
 		model.addAttribute("cartList", cartList);
-		model.addAttribute("title", title);
-		model.addAttribute("firstFile", firstFile);
-		model.addAttribute("boardNo", boardNo);
+//		model.addAttribute("title", title);
+//		model.addAttribute("firstFile", firstFile);
+//		model.addAttribute("boardNo", boardNo);
 		model.addAttribute("id", id);
 		model.addAttribute("name", name);
 		model.addAttribute("phone", phone);

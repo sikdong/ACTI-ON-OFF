@@ -60,9 +60,15 @@
 						<img style="width:128px; height:128px;" 
 						src="${imgUrl }/mypage/ico_21.png">
 					</div>
-					<button id="reservation" type="button" class="btn btn-outline-dark" style="width:130px">
+					<button id="reservation" type="button" class="btn btn-outline-dark" style="width:130px;">
 						예약내역 보기
+					</button>
+					
+					<button id="reservation" type="button" class="btn btn-outline-dark" style="width:130px; margin-left: 30px;"
+					onclick="location.href='/payment/cart'">
+						장바구니
 					</button> 
+					 
 					<br><br>
 				
 					<span class="fontA">비밀번호&emsp;&emsp;&emsp;<span class="fontB">${member.password }</span></span>

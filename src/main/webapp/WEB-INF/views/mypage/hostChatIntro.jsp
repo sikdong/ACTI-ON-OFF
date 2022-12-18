@@ -103,12 +103,12 @@ header{
 		<div class="chat_Left" style="border-right: 0.3px solid #d2d2d2">
 			<header style="border-right: none;">
 				<div style="padding: 20px 0 0 20px; font-family: 'Palatino Linotype';'">
-					Messages ▼
+					Recent Messages ▼
 				</div>
 			</header>
-			
+			<div style="overflow: scroll; height: 83.3%;">
 		 	 <c:forEach var="left" items="${left}">
-		 	 	<div id="messages" class="container" onclick="location.href='/mypage/chat?chatRoom=${left.resNo}&id=${left.id}&host=${left.host}'">
+		 	 	<div id="messages" class="container" onclick="location.href='/mypage/hChat?chatRoom=${left.resNo}&id=${left.host}&host=${left.id}'">
 		 	 		
 		 	 		<div class="item">
 			 	 		<img style="width:80px; height:80px;border-radius: 100%" 
@@ -116,7 +116,7 @@ header{
 		 	 		</div>
 					<div class="item" style="padding-left: 20px;">
 						<div style="font-weight: bold;font-size: 22px">
-							${left.host }
+							${left.id }
 						</div>
 						<div>
 							${left.content}
@@ -128,7 +128,7 @@ header{
 		 	 	</div>
 		 	 	
 		 	 </c:forEach>
-
+			</div>
 		</div>
 		
 		<div class="chat_Right">
@@ -150,7 +150,7 @@ header{
 										<span style="font-size: 13px;">${hciOut.date }</span>
 									<div class="container" style="padding: 20px 10px 10px 10px;">
 										<c:forEach var="hciIn" items="${hciOut.hcd}">
-												<div class="item" id="members"  onclick="location.href='/mypage/chat?chatRoom=${hciIn.chatRoom}&id=${hciOut.id}&host=${hciIn.host}'">
+												<div class="item" id="members"  onclick="location.href='/mypage/hChat?chatRoom=${hciIn.chatRoom}&id=${hciOut.id}&host=${hciIn.host}'">
 													<div style="text-align: center; font-weight: bold; font-family: 'Palatino Linotype' ">
 														<span style="font-size: 14px">Chat With</span> : ${hciIn.host}
 													</div>

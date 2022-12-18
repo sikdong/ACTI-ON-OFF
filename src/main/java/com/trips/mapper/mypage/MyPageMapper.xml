@@ -253,6 +253,30 @@
 			<result column="chatRoom" property="chatRoom" />
 		</collection>
 	</resultMap>
+	
+	<select id="getChatLeft2" resultType="com.trips.domain.mypage.ChatLeftDto">
+	SELECT *
+	    FROM
+	(SELECT *
+		FROM
+	(SELECT 
+		r.RES_NO resNo,
+		r.M_ID id,
+	    b.M_ID host,
+	    f.B_FILENAME fileName,
+	    m.CHAT_CONTENTS content,
+	    m.CHAT_DATE date,
+	    b.B_NO boardNo
+	FROM ACTI_RESERVATION r
+	JOIN ACTI_BOARD b ON r.B_NO = b.B_NO
+	JOIN ACTI_FILE f ON f.B_NO = b.B_NO 
+	JOIN M_CHAT m ON m.CHAT_ROOM = r.RES_NO
+	ORDER BY date DESC
+	LIMIT 18446744073709551615) AS one
+	WHERE host = #{id}
+	GROUP BY resNo) AS two
+	ORDER BY date DESC
+	</select>
 </mapper>
 
 

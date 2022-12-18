@@ -99,7 +99,7 @@ header{
 			</header>
 			<div style="overflow: scroll; height: 83.3%;">
 		 	 <c:forEach var="left" items="${left}">
-		 	 	<div id="messages" class="container" onclick="location.href='/mypage/chat?chatRoom=${left.resNo}&id=${left.id}&host=${left.host}'">
+		 	 	<div id="messages" class="container" onclick="location.href='/mypage/hChat?chatRoom=${left.resNo}&id=${left.host}&host=${left.id}'">
 		 	 		
 		 	 		<div class="item">
 			 	 		<img style="width:80px; height:80px;border-radius: 100%" 
@@ -107,7 +107,7 @@ header{
 		 	 		</div>
 					<div class="item" style="padding-left: 20px;">
 						<div style="font-weight: bold;font-size: 22px">
-							${left.host }
+							${left.id }
 						</div>
 						<div>
 							${left.content}
@@ -218,7 +218,7 @@ document.querySelector("#subButton").addEventListener("click", function() {
 		.then(data => {
 			document.querySelector("#floatingInputGroup2").value = "";
 			})
-		.then(() => location.href="/mypage/chat?chatRoom=${chatRoom}&id=${id}&host=${host}")
+		.then(() => location.href="/mypage/hChat?chatRoom=${chatRoom}&id=${id}&host=${host}")
 	});
 /* --------------chat submit 기능 끝-------------------------------------------------------------------------------------------------- */ 
 /* --------------chat submit 엔터 기능-------------------------------------------------------------------------------------------------- */

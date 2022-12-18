@@ -48,4 +48,6 @@ public interface MyPageMapper {
 
 	List<HostChatIntroDto> getUserListById(String id);
 
+	List<ChatLeftDto> getChatLeft2(String id);
+
 }
