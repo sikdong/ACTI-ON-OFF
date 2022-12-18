@@ -83,7 +83,8 @@
 					<hr>
 					<c:forEach var="res" items="${res1}">
 						<c:if test="${res.date > today }">
-							<div onclick="location.href='/mypage/resDetail?resNo=${res.resNo}'" style="display:flex;">
+						<div class="container" style="display: flex;">
+							<div class="item" onclick="location.href='/mypage/resDetail?resNo=${res.resNo}'" style="display:flex;">
 								<div style="padding-right: 70px;">
 									<img style="width:200px; height:135px;border-radius: 30%" 
 									src="${imgUrl }/host/${res.boardNo}/${res.fileName}">
@@ -93,8 +94,13 @@
 									<div id="res_info1">host : ${res.host }</div>
 									<div id="res_info1">date : ${res.date }</div>
 								</div>
+							</div>
+							<div class="item" style="position: absolute; padding-left: 800px; ">
+									<button type="button" class="abutton" style="line-height: 15px;
+									margin: 50px 0 0 50px;" onclick="location.href='/home'">예약취소</button>
 							</div>	
-							<hr>					
+						</div>
+						<hr>					
 						</c:if>
 					</c:forEach>		
 				</div>

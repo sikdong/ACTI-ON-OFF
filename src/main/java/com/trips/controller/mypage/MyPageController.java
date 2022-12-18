@@ -226,10 +226,10 @@ public class MyPageController {
 			throws Exception {
 		
 		int cnt = dservice.remove(id);
-//		rttr.addFlashAttribute("message", "회원 탈퇴하였습니다.");
+		//rttr.addFlashAttribute("message", "회원 탈퇴하였습니다.");
 		request.logout();
 
-		return "redirect:/qna/QnaList";
+		return "redirect:/home";
 		
 //		MemberDto oldmember = service.getById(id);
 //

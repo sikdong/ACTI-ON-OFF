@@ -36,7 +36,36 @@ public class DeleteService {
 		dmapper.removeACTI_ORDER(id);
 		dmapper.removeCART(id);
 		
-		return 0;
+		//예약팀 삭제
+		dmapper.removeACTI_HOST(id);
+		dmapper.removeM_CHAT(id);
+		dmapper.removeACTI_RESERVATION(id);
+		
+		//QNA팀 삭제
+		//QID 불러오기
+		List<Integer> qId = dmapper.getQID(id);
+		
+		for(int q : qId) {
+			dmapper.removeFile(q);
+			dmapper.removeEmpathy(q);
+			dmapper.removeANSWER(q);
+			dmapper.removeQNA(q);
+		}
+		
+		//Board팀 삭제
+		//BoadrdId 불러오기
+		List<Integer> bId = dmapper.getBID(id);
+		
+		for(int b : bId) {
+			dmapper.removeACTI_LIKE(b);
+			dmapper.removeACTI_FILE(b);
+			dmapper.removeACTI_DATE(b);
+			dmapper.removeACTI_REPLY(b);
+			dmapper.removeACTI_BOARD(b);
+		}
+		
+		//본인 삭제
+		return dmapper.removeMEMBER(id);
 	}
 	 
 	

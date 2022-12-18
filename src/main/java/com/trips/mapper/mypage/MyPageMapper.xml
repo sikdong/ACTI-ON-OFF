@@ -165,15 +165,6 @@
 		CHAT_CONTENTS content, 
 		CHAT_ROOM chatRoom
 	FROM M_CHAT WHERE CHAT_ROOM = #{chatRoom}
-	UNION ALL
-	SELECT 
-		CHAT_ID chatId, 
-		M_ID writer, 
-		CHAT_DATE date, 
-		CHAT_CONTENTS content, 
-		CHAT_ROOM chatRoom
-	FROM H_CHAT WHERE CHAT_ROOM = #{chatRoom}
-	ORDER BY date
 	</select>
 	
 	<insert id="insertChat">
