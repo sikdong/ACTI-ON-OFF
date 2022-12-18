@@ -50,7 +50,7 @@ public class YdsBoardController {
 		model.addAttribute("name", userName);
 	}
 	
-	@GetMapping({"get","modify"})
+	@GetMapping({"get","modify","getAllImages"})
 	public void getBoard(int num, Model model, MultipartFile[] file) {
 		TripsBoardDto board = service.getBoard(num, file);
 //		List<TripsOrderDto> order = service.getOrderByBoardNum(num);
@@ -139,5 +139,6 @@ public class YdsBoardController {
 	public void getMap() {
 		
 	}
+	
 	
 }

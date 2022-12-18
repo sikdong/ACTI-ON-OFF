@@ -143,6 +143,7 @@ SELECT
 	o.O_ADDDATE addDate,
     o.O_PERSON person,
     d.DATE date,
+    b.B_TOPIC topic,
     h.H_INTRODUCTION hostIntro,
     b.MAP_LL location,
     b.MAP_TEXT address
@@ -168,6 +169,7 @@ WHERE b.B_NO = #{num}
 		<result column="minAge" property="minAge"></result>
 		<result column="location" property="location"></result>
 		<result column="address" property="address"></result>
+		<result column="topic" property="topic"></result>
 		<collection property="fileName" ofType="String">
 			<result property="fileName" column="fileName"/>
 		</collection>

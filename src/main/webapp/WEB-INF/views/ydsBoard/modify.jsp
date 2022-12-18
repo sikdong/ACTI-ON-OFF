@@ -236,10 +236,6 @@ body {
 	  <input value="${board.minAge }" type="text" class="form-control" name="minAge">
 	</div>
 	<div class="mb-3 halfview">
-	  <label for="exampleFormControlTextarea1" class="form-label">호스트 소개</label>
-	  <textarea class="form-control" name="hostIntro" rows="6">${board.hostIntro }</textarea>
-	</div>
-	<div class="mb-3 halfview">
 	  <label for="exampleFormControlTextarea1" class="form-label">프로그램 소개</label>
 	  <textarea class="form-control" name="content" rows="6">${board.content }</textarea>
 	</div>

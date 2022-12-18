@@ -53,23 +53,22 @@ public class ydsBoardService {
 		int sum = 0;
 		TripsBoardDto board = mapper.getBoard(num, file);
 		List<TripsOrderDto> orders = getOrderByBoardNum(num);
-		
-		board.setRemain(new ArrayList<>());
-		for (String date : board.getDate()) {
-			List<Integer> remains = board.getRemain();
-			remains.add(board.getMaxPerson());
-			int last = remains.size() - 1;
+		if(orders != null) {
+			board.setRemain(new ArrayList<>());
+			for (String date : board.getDate()) {
+				List<Integer> remains = board.getRemain();
+				remains.add(board.getMaxPerson());
+				int last = remains.size() - 1;
 			
-			for (TripsOrderDto order : orders) {
-				if (order.getAddDate().equals(date)) {
-					
-					remains.set(last, remains.get(last) - order.getPerson());
+				for (TripsOrderDto order : orders) {
+					if (order.getAddDate().equals(date)) {
+						
+						remains.set(last, remains.get(last) - order.getPerson());
+					}
 				}
 			}
 		}
 		
-		System.out.println(board.getDate());
-		System.out.println(board.getRemain());
 		return board;
 }
 

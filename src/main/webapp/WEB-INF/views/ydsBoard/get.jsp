@@ -10,10 +10,15 @@
 <style>
 
 .root {
-
+	height : 100vw;
 	margin-left : 10%;
 
 	margin-top : 50px;
+}
+
+.sold-out {
+	text-decoration : underline;
+	color : red;
 }
 
 .mt-40 {
@@ -21,10 +26,11 @@
 }
 
 .jc-sb {
+	display : flex;
 	justify-content : space-between;
 }
 
-.accordion-body {
+.accordion-body {	
 	padding : 10px !important;
 	justify-content : space-between;
 }
@@ -43,9 +49,6 @@
 	justify-content : space-around;
 }
 
-.mt {
- margin-top : 10px !important; 
-}
 
 .bold {
 	font-weight : bold;
@@ -69,14 +72,14 @@
 }
 
 .calendar {
-
+	height: 580px;
   	width : 30%;
-
     padding: 0;
+    top : 120%;
     margin-left: 0;
     background-color: var(--bg-color);
     font-family: var(--font);
-    position : fixed;
+    position : absolute;
     bottom : 1px;
     z-index : 1;
 }
@@ -209,6 +212,10 @@ body {
 	font-family : 'Palatino'; 
 } 
 
+.ml-5 {
+	margin-left : 5px;
+}
+
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -238,47 +245,41 @@ body {
 	<c:url value="/ydsBoard/modify" var="modifyLink">
 		<c:param name="num" value="${board.num}"></c:param>
 	</c:url>
+	<c:url value="/ydsBoard/getAllImages" var="allImages">
+		<c:param name="num" value="${board.num}"></c:param>
+	</c:url>
 	
 
 	<input type="hidden" id="numInput" value="${board.num}" />
-<div class="root">
-		<c:forEach items="${board.date}" var="date" varStatus="status">
-			<c:choose >
-				<c:when test="${board.remain[status.index] > 0}">
-					<div>저장날짜 : ${date} 남은 인원 : ${board.remain[status.index]}</div>
-				</c:when>
-				<c:otherwise>
-					<div>${date} 날짜 체험은 품절 입니다</div>
-				</c:otherwise>
-			</c:choose>
-		</c:forEach>
-		<div class="">최대 인원 : ${board.maxPerson}</div>
-		<div class="">최소 인원 : ${board.minPerson}</div>
-		<div class="">최소 연령 : ${board.minAge}</div>
-		<input type="number" id="orderAllPerson" value="" />
-	<div style="margin-left : 5px">
-		<h3><Strong>${board.title }</Strong></h3>
-	</div>
-	<div class="flex">
-		<%-- spring security expressions 로 검색 --%>
-		<sec:authentication property="name" var="userName"/>
-	<%-- <c:if test="${board.writer == userName }"> --%>
-<%--	</c:if>	 --%>
-			
-		<div onclick="plusLike()" class="cursor ml-3" id="plusLike">
-			<i class="fa-regular fa-heart fa-2x red"></i> 
+	<div class="root">
+		<div style="text-decoration : underline; margin-left : 8px; font-size : 17px;">${board.topic }</div>
+		<div class="jc-sb mt" style="width : 90%">
+			<div class="ml-5">
+				<h3><Strong>${board.title }</Strong></h3>
+			</div>
+			<%-- spring security expressions 로 검색 --%>
+			<sec:authentication property="name" var="userName"/>
+			<div class="flex ml-5">
+				<div onclick="plusLike()" class="cursor ml-3" id="plusLike">
+					<i class="fa-regular fa-heart fa-2x red"></i> 
+				</div>
+				<div onclick="minusLike()" class="cursor ml-3" id="minusLike" style="display : none">
+					<i class="fa-solid fa-heart fa-2x red" style="color : red !important;"></i>
+				</div>
+				<div id="countLike" style="font-size : 20px; margin-left : 3px; padding-top : 4px;">
+					${board.countLike}
+				</div>
+			</div>	
 		</div>
-		<div onclick="minusLike()" class="cursor ml-3" id="minusLike" style="display : none">
-			<i class="fa-solid fa-heart fa-2x red" style="color : red !important;"></i>
-		</div>
-		<div id="countLike" style="font-size : 20px; margin-left : 3px; padding-top : 4px;">
-			${board.countLike}
-		</div>
-		<div>
+		<span class="ml-5">최대 인원 : ${board.maxPerson}명 /</span>
+		<span> 최소 인원 : ${board.minPerson}명 / </span>
+		<span> 최소 연령 : ${board.minAge}세</span>
+		<%-- <c:if test="${board.writer == userName }"> --%>
+		<div class="mt ml-5">
 			<a href="${removeLink}" class="btn btn-outline-dark btn-sm">삭제</a>
 			<a href="${modifyLink}" class="btn btn-outline-dark btn-sm">수정</a>
  		</div>
-	</div>
+	<%--	</c:if>	 --%>
 	<div class="img-box mt-3" >
 		<c:forEach items="${board.fileName }" var="file" begin="0" end="3">
 			<img src="${imgUrl}/host/${board.num }/${file}" class="size" alt="...">
@@ -286,7 +287,7 @@ body {
 	</div>
 	<%--사진 더 보기 기능도 추가해야함 --%>
 	<br />
-	<div style="text-align : left"><a href="" style="color : black;">사진 다 보기</a></div>
+	<div style="text-align : left"><a href="${allImages}" style="color : black;">사진 다 보기</a></div>
 
 	
 
@@ -310,14 +311,9 @@ body {
 				<div style="width : 50%">
 					${board.content }
 				</div>
-				<div class="flex">
 					<div class="mt-3">
-						<a id="reserveButton" onclick="buildCalendar()" class="btn btn-dark btn-sm">예약날짜확인</a>
+						<a id="reserveButton" data-bs-toggle="modal" data-bs-target="#availableDateConfirmModal" class="btn btn-dark btn-sm">예약 날짜 확인</a>
 					</div>
-					<div class="mt-3" style="margin-left : 3px;"> 
-						<a id="noneButton" style="display : none" onclick="none()" class="btn btn-secondary btn-sm">달력접기</a>
-					</div>
-				</div>	
 				<hr style="width : 50%" />
 			</div>
 			<div class="col-sm-7 ml-3">
@@ -356,13 +352,18 @@ body {
 			<div class="ml-3 mt-3">${board.address}</div>
 			<div class="ml-3 mt-3" id="map"></div>
 			<br />
-			<hr width="65%" />
+			<hr width="89.5%"  class="mt-40"/>
 				<div class="mt-40">
 					<h4>체험 더보기</h4>
 				</div>
 				<div class="flex-container mt-3">
 				</div>
-</div>	
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+	</div>	
 				
 <form action="/shop/addCart" method="post" id="cartForm">
 	<input type="hidden" name="addDate" id="addDate" value=""/>
@@ -370,6 +371,36 @@ body {
 	<input type="hidden" name="price" id="price" value="${board.price}"/>
 	<input type="hidden" name="boardnum" id="boardNum" value="${board.num}"/>	
 </form>
+
+
+
+<!-- 예약 날짜 품절 확인 모달 -->
+<div class="modal fade" id="availableDateConfirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">예약 날짜 및 품절 확인</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <c:forEach items="${board.date}" var="date" varStatus="status">
+			<c:choose >
+				<c:when test="${board.remain[status.index] > 0}">
+					<div class="mt-3"> <strong>${date}일 / ${board.remain[status.index]}명 가능합니다</strong></div>
+				</c:when>
+				<c:otherwise>
+					<div><strong>${date} 일 체험은 <span class="sold-out">품절</span> 입니다</strong></div>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">돌아가기</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <%------------------------------댓글 수정, 삭제 토스트----------------------------%>	
 <div class="toast-container align-items-center top-0 start-50 translate-middle-x position-fixed">
   <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
@@ -514,7 +545,7 @@ function getFiveFiles(){
 					<a href="/ydsBoard/get?num=\${file.num}">
 						<img src="${imgUrl}/host/\${file.num }/\${file.fileName}" class="size" alt="...">
 					</a>
-					<div style="font-size : 20px;">\${file.content}</div>
+					<div style="font-size : 15px;">\${file.content}</div>
 				</div>`
 			  document.querySelector(".flex-container").insertAdjacentHTML("afterbegin", fileList);
 			}
@@ -636,12 +667,10 @@ function none(){
 	document.querySelector("#noneButton").style.display="none"
 };
 function buildCalendar(){
-	document.querySelector("#noneButton").style.display="inline-block"
-	document.querySelector("#showCalendar").innerHTML=''
 const calendarFrame = 	
 	`<div class="calendar shadow p-3 mb-5 bg-body rounded">
 	<div style="display : flex;">
-		<div style="font-size : 40px"><strong>${board.price}</strong></div>
+		<div style="font-size : 40px;"><strong>${board.price}</strong></div>
 		<div style="margin-top : 30px;">
 			<small>원/1인</small>
 		</div>
@@ -687,7 +716,6 @@ const calendarFrame =
 			<div class="dates"></div>
 			<sec:authorize access="isAuthenticated()">
 			<div onclick="goCart()" class="btn btn-outline-secondary">장바구니 담기 <i class="fa-solid fa-cart-shopping"></i></div>
-			<div style="color : red"><small>*밑줄 친 날짜만 예약 가능합니다.</small></div>
 			<small id="actiDate"></small>
 			</sec:authorize>
 			<sec:authorize access="not isAuthenticated()">
