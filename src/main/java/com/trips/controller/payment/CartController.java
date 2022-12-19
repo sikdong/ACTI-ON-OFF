@@ -127,5 +127,10 @@ public class CartController {
 		}
 		return "redirect:/payment/cart";
 	}
+	
+	@GetMapping("main")
+	public void main() {
+
+	}
 
 }

@@ -7,6 +7,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -36,30 +38,27 @@ public class YdsBoardController {
 	 
 	
 	@GetMapping("list")
-	public void getBoardlist(Model model) {
-		List<TripsBoardDto> list = service.getBoardlist();
+	public void getBoardlist(Model model, 
+			@RequestParam(name="address", required=false) String address, 
+			Authentication authentication) {
+		String userName ="";
+		if(authentication != null) {
+			userName = authentication.getName();
+		} else {
+			userName = "guest";
+		}
+		List<TripsBoardDto> list = service.getBoardlist(address);
 		model.addAttribute("boardList", list);
+		model.addAttribute("name", userName);
 	}
-	
-	@GetMapping({"get","modify"})
-	public void getBoard(int num, Model model, MultipartFile[] file, HttpSession session) {
+
+	@GetMapping({"get","modify","getAllImages"})
+	public void getBoard(int num, Model model, MultipartFile[] file) {
 		TripsBoardDto board = service.getBoard(num, file);
-		
-		String title = board.getTitle();
-		String firstFile = board.getFileName().get(0);
-		int boardNo = board.getNum();
-		
-		session.setAttribute("title", title);
-		session.setAttribute("firstFile", firstFile);
-		session.setAttribute("boardNo", boardNo);
-		
-		System.out.println(title);
-		System.out.println(firstFile);
-		System.out.println(boardNo);
-		
-		System.out.println(board);
-		
+    //List<TripsOrderDto> order = service.getOrderByBoardNum(num);
+
 		model.addAttribute("board", board);
+		//model.addAttribute("order", order);
 		
 	}
 	
@@ -78,17 +77,32 @@ public class YdsBoardController {
 	@PostMapping("plusLike")
 	@ResponseBody
 	public Map<String, Object> plusLike(@RequestBody Map<String, Integer> req,
-			TripsBoardDto board) {
-		return service.plusLike(req.get("num"), board);
+			TripsBoardDto board, Authentication authentication) {
+		String userName = ""; 
+		if(authentication !=null) {
+			userName= authentication.getName();
+		}else {
+			userName= "guest";
+		}
+		
+		return service.plusLike(req.get("num"), board, userName);
 		
 	}
 
 	@DeleteMapping("minusLike")
 	@ResponseBody
 	public Map<String, Object> minusLike(@RequestBody Map<String, Integer> req, 
-			TripsBoardDto board){
+			TripsBoardDto board,
+			Authentication authentication){
+		String userName = ""; 
+		if(authentication !=null) {
+			userName= authentication.getName();
+		} else {
+			userName="guest";
+		}
+		
 		return service.minusLike(req.get("num"), 
-				board);
+				board,userName);
 	}
 	
 	@PostMapping("modify")
@@ -111,10 +125,23 @@ public class YdsBoardController {
 	}
 	
 	@GetMapping("getAllfileWhenModify/{num}")
+	@ResponseBody
 	public List<TripsBoardDto> getAllfileWhenModify(
 			@PathVariable int num){
-		System.out.println(num);
-		return service.getAllfileWhenModify(num);
+		List<TripsBoardDto> board = service.getAllfileWhenModify(num);
+		return board;
 	}
+	
+	@DeleteMapping("deletefileWhenModify/{fileNum}")
+	public int deletefileWhenModify(@PathVariable int fileNum) {
+		int cnt = service.deletefileWhenModify(fileNum);
+		return cnt;
+	}
+	
+	@GetMapping("map")
+	public void getMap() {
+		
+	}
+	
 	
 }

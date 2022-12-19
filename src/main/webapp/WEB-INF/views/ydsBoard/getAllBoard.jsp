@@ -25,14 +25,14 @@
 }
 
 .root {
-	width : 1200px;
+	width : 90%;
 	margin-left : 10%;
 	margin-right : 10%;
 	box-sizing : border-box;
 }
 
 .ml-20{
-	margin-left : 35px !important;
+	margin-left : 3% !important;
 }
 
 .size {
@@ -69,17 +69,16 @@ a {
 <my:navbar></my:navbar>
 
  <div class="mt-100" style="text-align : center">
- 	<h4>당신의 여행을 특별하게</h4>
+ 	<h4>원하시는 체험을 골라보세요!</h4>
  </div>
-<div style="text-align : right; margin-right : 20px"><a style="color : black" href="">체험 전체 보기</a></div>
 <div class="root mt-100">
  <div class="flex">
  	<c:forEach items="${allBoard}" var="list">
  	<c:url value="/ydsBoard/get" var="getLink">
 		<c:param name="num" value="${list.num }" ></c:param>
 	</c:url>
- 	<div class="ml-20">
- 		<a href="${getLink}"><img src="${path}/assets/img/${list.fileName[0]}" alt="이미지" class="size" /></a>
+ 	<div class="ml-20" style="margin-top : 10%">
+ 		<a href="${getLink}"><img src="${imgUrl}/host/${list.num }/${list.fileName[0]}" alt="이미지" class="size" /></a>
  		<div class="mt-3" style="text-align : center;">
  			<a class="link" href="${getLink}">${list.title }</a>
  		</div>

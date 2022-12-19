@@ -16,7 +16,11 @@ import com.trips.domain.yds.TripsOrderDto;
 import com.trips.mapper.yds.ydsBoardMapper;
 import com.trips.mapper.yds.reply.YdsReplyMapper;
 
+import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.model.DeleteObjectRequest;
+import software.amazon.awssdk.services.s3.model.ObjectCannedACL;
+import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 
 @Service
 @Transactional
@@ -36,50 +40,86 @@ public class ydsBoardService {
 	private String bucketName;
 	
 
-	public List<TripsBoardDto> getBoardlist() {
+	public List<TripsBoardDto> getBoardlist(String address) {
 		// TODO Auto-generated method stub
-		return mapper.getBoardList();
+		if(address != null) {
+			address = "%" + address + "%";
+		}
+		return mapper.getBoardList(address);
 	}
 
 	public TripsBoardDto getBoard(int num, MultipartFile[] file) {
 		// TODO Auto-generated method stub
-		
+		int sum = 0;
 		TripsBoardDto board = mapper.getBoard(num, file);
-		List<Integer> sumList = new ArrayList<>();
-		List<String> savedDate = board.getDate();
-		List<String> orderDate = board.getAddDate();
-		List<Integer> person = board.getPerson();
-		for(int i = 0; i < savedDate.size(); i++) {
-			System.out.println(savedDate.get(i));
-			int sum= board.getMaxPerson();
-			for(int j = 0; j < orderDate.size(); j++) {
-				System.out.println(orderDate.get(j));
-				if(savedDate.get(i).equals(orderDate.get(j))) {
-				for(int k = 0; k < person.size(); k++) {
-					
-					sum -= person.get(k);
+		List<TripsOrderDto> orders = getOrderByBoardNum(num);
+		if(orders != null) {
+			board.setRemain(new ArrayList<>());
+			for (String date : board.getDate()) {
+				List<Integer> remains = board.getRemain();
+				remains.add(board.getMaxPerson());
+				int last = remains.size() - 1;
+			
+				for (TripsOrderDto order : orders) {
+					if (order.getAddDate().equals(date)) {
+						
+						remains.set(last, remains.get(last) - order.getPerson());
+					}
 				}
-				sumList.add(sum);
 			}
 		}
-	}		
-		// 계산...
-		System.out.println(sumList);
-		/*
-		 * for(int a = 0; a < sumList.size(); a++) {
-		 * board.setAvaliablePeople.add(sumList.get(a)); }
-		 */
+		
 		return board;
 }
 
 	public int removeBoard(int num) {
+		TripsBoardDto board = mapper.getBoard(num, null);
+		List<String> fileNames = board.getFileName();
+		
+		if(fileNames != null) {
+			for(String fileName : fileNames) {
+				deleteS3File(num, fileName);
+			}
+		}
 		rMapper.deleteReplybyBoardId(num);
 		// TODO Auto-generated method stub
 		mapper.deleteFileByBoardNo(num);
 		mapper.deleteLikeByBoardNo(num);
 		mapper.deleteDate(num);
 		mapper.deleteReservation(num);
+		mapper.deleteCartNo(num);
 		return mapper.removeBoard(num);
+	}
+	
+	private void deleteS3File(int num, String fileName) {
+		String key = "trips/host/" + num +"/" + fileName;
+				DeleteObjectRequest deleteObjectRequest = DeleteObjectRequest.builder()
+				.bucket(bucketName)
+				.key(key)
+				.build();
+		s3Client.deleteObject(deleteObjectRequest);
+	}
+	
+	private void uploadFile(int num, MultipartFile file) {
+		try {
+			String key = "trips/host/" + num +"/" + file.getOriginalFilename();
+			//putObjectRequest
+			PutObjectRequest putObjectRequest = PutObjectRequest.builder()
+					.bucket(bucketName)
+					.key(key)
+					.acl(ObjectCannedACL.PUBLIC_READ)
+					.build();
+			
+			//requestBody
+			RequestBody requestBody = RequestBody.fromInputStream(file.getInputStream(), file.getSize());
+			
+			//object(파일) 올리기
+			s3Client.putObject(putObjectRequest, requestBody);
+			System.out.println("파일올림 종료 ###############");
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
 	}
 
 	public List<TripsBoardDto> getFiveFiles() {
@@ -87,9 +127,9 @@ public class ydsBoardService {
 		return mapper.getFiveFiles();
 	}
 
-	public Map<String, Object> plusLike(int num, TripsBoardDto board) {
+	public Map<String, Object> plusLike(int num, TripsBoardDto board, String userName) {
 		// TODO Auto-generated method stub
-		mapper.plusLike(num, board);
+		mapper.plusLike(num, board, userName);
 		
 		Map<String, Object> map = new HashMap<>();
 		
@@ -98,10 +138,10 @@ public class ydsBoardService {
 		return map;
 	}
 
-	public Map<String, Object> minusLike(int num, TripsBoardDto board) {
+	public Map<String, Object> minusLike(int num, TripsBoardDto board, String userName) {
 		// TODO Auto-generated method stub
 		Map<String, Object> map = new HashMap<>();
-		int minus = mapper.deleteLikeByLNO(num);
+		int minus = mapper.deleteLikeByLNO(num, userName);
 		map.put("deleteLike", minus);
 		int cnt = mapper.getLikeByBNO(board.getCountLike());
 		map.put("countLike", cnt);
@@ -114,9 +154,13 @@ public class ydsBoardService {
 		if(files != null && fileName.getSize()>0) {
 			int num = board.getNum();
 			String name = fileName.getOriginalFilename();
+			
 			int cnt = mapper.deleteFileByNumAndfileName(num,name);
 			System.out.println(cnt+ "개 삭제됨----------");
+			
 			mapper.insertFile(num, name);
+			
+			uploadFile(num, fileName);
 			}
 		
 		}
@@ -137,6 +181,16 @@ public class ydsBoardService {
 	public List<TripsBoardDto> getAllfileWhenModify(int num) {
 		// TODO Auto-generated method stub
 		return mapper.getAllfileWhenModify(num);
+	}
+
+	public int deletefileWhenModify(int fileNum) {
+		// TODO Auto-generated method stub
+		return mapper.deletefileWhenModify(fileNum);
+	}
+
+	public List<TripsOrderDto> getOrderByBoardNum(int num) {
+		// TODO Auto-generated method stub
+		return mapper.getOrderByBoardNum(num);
 	}
 
 

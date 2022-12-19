@@ -6,11 +6,12 @@
 <mapper namespace="com.trips.mapper.yds.reply.YdsReplyMapper">
 <select id="listReply" resultType = "com.trips.domain.yds.TripsReplyDto">
 SELECT 
-	R_NO replyNum,
-	M_ID writer,
-	R_CONTENT content,
-	R_CREATEDATE createDate
-FROM ACTI_REPLY
+	r.R_NO replyNum,
+	m.M_ID writer,
+	r.R_CONTENT content,
+	r.R_CREATEDATE createDate
+FROM ACTI_REPLY r
+LEFT JOIN MEMBER m ON m.M_ID = r.M_ID 
 WHERE B_NO = #{boardNum}
 ORDER BY R_NO DESC;
 </select>
@@ -41,5 +42,16 @@ WHERE R_NO = #{replyNum}
 DELETE FROM ACTI_REPLY
 WHERE B_NO = #{num}
 </delete>
+
+<select id="selectByReplyNum" resultType = "com.trips.domain.yds.TripsReplyDto">
+SELECT 
+	r.R_NO replyNum,
+	m.M_ID writer,
+	r.R_CONTENT content,
+	r.R_CREATEDATE createDate
+FROM ACTI_REPLY r
+LEFT JOIN MEMBER m ON m.M_ID = r.M_ID 
+WHERE r.R_NO = #{replyNum}
+</select>
 
 </mapper>

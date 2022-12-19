@@ -7,8 +7,10 @@ import lombok.Data;
 
 @Data
 public class TripsOrderDto {
-	private List<Date> addDate;
-	private List<Integer> person;
+	private String addDate;
+	private int person;
+	private String fileName;
+	private int fileNum;
 	private int num;
 	
 }

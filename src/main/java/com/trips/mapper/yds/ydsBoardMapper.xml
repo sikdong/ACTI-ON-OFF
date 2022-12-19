@@ -4,8 +4,17 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.trips.mapper.yds.ydsBoardMapper">
+<select id="getOrderByBoardNum" resultType="com.trips.domain.yds.TripsOrderDto">
+SELECT 
+	ADDDATE addDate,
+	PERSON person
+FROM CART
+WHERE B_NO = #{num}
+</select>
+<!-- 나중에 ACTI_ORDER 로 바껴야 함 -->
+
 <delete id="deleteLikeByLNO">
-DELETE FROM ACTI_LIKE WHERE B_NO = #{B_NO} AND M_ID = 'aa'
+DELETE FROM ACTI_LIKE WHERE B_NO = #{num} AND M_ID = #{writer}
 </delete>
 
 <insert id="plusLike" useGeneratedKeys="true" keyProperty="board.L_NO">
@@ -14,7 +23,7 @@ INSERT INTO ACTI_LIKE (
 	M_ID,
     B_NO
 )
-VALUES(1, 'aa', #{num});
+VALUES(1, #{writer}, #{num});
 	
 </insert>
 
@@ -26,7 +35,8 @@ SELECT
 	b.B_CONTENT content,
 	f.B_FILENAME fileName,
 	b.MAX_PERSON maxPerson,
-	b.COST price
+	b.COST price,
+	b.MAP_TEXT address
 FROM ACTI_BOARD b
 LEFT JOIN ACTI_FILE f on f.B_NO = b.B_NO
 GROUP BY b.B_NO
@@ -40,6 +50,7 @@ ORDER BY b.B_NO DESC;
 		<result column="content" property="content"/>
 		<result column="maxPerson" property="maxPerson"></result>
 		<result column="price" property="price"></result>
+		<result column="address" property="address"></result>
 		<collection property="fileName" ofType="String">
 			<result property="fileName" column="fileName"/>
 		</collection>
@@ -53,12 +64,20 @@ SELECT
 	b.B_CONTENT content,
 	f.B_FILENAME fileName,
 	b.MAX_PERSON maxPerson,
-	b.COST price
+	b.COST price,
+	b.MAP_TEXT address,
+	b.B_TOPIC topic
 FROM ACTI_BOARD b
 LEFT JOIN ACTI_FILE f on f.B_NO = b.B_NO
+<where>
+<trim prefixOverrides = "OR">
+<if test="address != null">
+OR b.MAP_TEXT LIKE #{address} 
+</if>
+</trim> 
+</where>
 GROUP BY b.B_NO
 ORDER BY b.B_NO DESC
-LIMIT 20;
 </select>
 
 <resultMap type="com.trips.domain.yds.TripsBoardDto" id="boardListMap">
@@ -68,6 +87,8 @@ LIMIT 20;
 		<result column="content" property="content"/>
 		<result column="maxPerson" property="maxPerson"></result>
 		<result column="price" property="price"></result>
+		<result column="address" property="address"></result>
+		<result column="topic" property="topic"></result>
 		<collection property="fileName" ofType="String">
 			<result property="fileName" column="fileName"/>
 		</collection>
@@ -84,7 +105,8 @@ SELECT
 	f.B_FILENAME fileName,
 	b.B_CREATEDATE createDate,
 	b.COST price,
-	b.MAX_PERSON maxPerson
+	b.MAX_PERSON maxPerson,
+	b.MAP_TEXT address
 FROM ACTI_BOARD b
 LEFT JOIN ACTI_FILE f on f.B_NO = b.B_NO
 GROUP BY b.B_NO
@@ -98,6 +120,7 @@ LIMIT 5;
 		<result column="content" property="content"/>
 		<result column="createDate" property="createDate"/>
 		<result column="price" property="price"/>
+		<result column="address" property="address"></result>
 		<collection property="fileName" ofType="String">
 			<result property="fileName" column="fileName"/>
 		</collection>
@@ -110,7 +133,6 @@ SELECT
 	b.M_ID writer,
 	b.B_CONTENT content,
 	b.B_CREATEDATE createDate,
-	b.B_HOSTINTRO hostIntro,
 	(SELECT COUNT(*) FROM ACTI_LIKE l WHERE l.B_NO= #{num}) countLike,
 	b.COST price,
 	f.B_FILENAME fileName,
@@ -120,11 +142,16 @@ SELECT
 	b.MIN_AGE minAge,
 	o.O_ADDDATE addDate,
     o.O_PERSON person,
-    d.DATE date
+    d.DATE date,
+    b.B_TOPIC topic,
+    h.H_INTRODUCTION hostIntro,
+    b.MAP_LL location,
+    b.MAP_TEXT address
 FROM ACTI_BOARD b
 LEFT JOIN ACTI_FILE f ON b.B_NO = f.B_NO
 LEFT JOIN ACTI_DATE d ON b.B_NO = d.B_NO
 LEFT JOIN ACTI_ORDER o ON b.B_NO = o.O_B_NO
+LEFT JOIN ACTI_HOST h ON b.M_ID = h.M_ID
 WHERE b.B_NO = #{num}
 </select>
 
@@ -140,6 +167,9 @@ WHERE b.B_NO = #{num}
 		<result column="maxPerson" property="maxPerson"></result>
 		<result column="minPerson" property="minPerson"></result>
 		<result column="minAge" property="minAge"></result>
+		<result column="location" property="location"></result>
+		<result column="address" property="address"></result>
+		<result column="topic" property="topic"></result>
 		<collection property="fileName" ofType="String">
 			<result property="fileName" column="fileName"/>
 		</collection>
@@ -229,19 +259,27 @@ WHERE B_NO = #{num}
 </delete>
 
 <select id="getAllfileWhenModify" resultMap="modifyFileMap">
-SELECT 
+SELECT
+	B_NO num, 
 	B_FILENAME fileName,
 	B_FILE_NO fileNum
 FROM ACTI_FILE
 WHERE B_NO = #{num}	
 	
 </select>
-	<resultMap type="com.trips.domain.yds.TripsBoardDto" id="modifyFileMap">
-		<collection property="fileName" ofType="String">
+	<resultMap type="com.trips.domain.yds.TripsOrderDto" id="modifyFileMap">
 			<result property="fileName" column="fileName"/>
-		</collection>
-		<collection property="fileNum" ofType="int">
-			<result property="fileNum" column="fileNum"></result>
-		</collection>
+			<result property="fileNum" column="fileNum"/>
 	</resultMap>
+	
+<delete id="deletefileWhenModify">
+DELETE FROM ACTI_FILE
+WHERE B_FILE_NO = #{fileNum}
+
+</delete>	
+
+<delete id="deleteCartNo">
+DELETE FROM CART
+WHERE B_NO = #{num}
+</delete>
 </mapper>

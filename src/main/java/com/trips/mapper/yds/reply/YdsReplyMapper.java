@@ -19,4 +19,6 @@ public interface YdsReplyMapper {
 
 	void deleteReplybyBoardId(int num);
 
+	TripsReplyDto selectByReplyNum(int replyNum);
+
 }

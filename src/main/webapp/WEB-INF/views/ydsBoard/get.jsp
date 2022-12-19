@@ -2,30 +2,35 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
 <style>
-.root {
 
+.root {
+	height : 100vw;
 	margin-left : 10%;
 
 	margin-top : 50px;
+}
+
+.sold-out {
+	text-decoration : underline;
+	color : red;
 }
 
 .mt-40 {
 	margin-top : 80px;
 }
 
-.ml-3 {
- 	margin-left : 6px;
-}
-
 .jc-sb {
+	display : flex;
 	justify-content : space-between;
 }
 
-.accordion-body {
+.accordion-body {	
 	padding : 10px !important;
 	justify-content : space-between;
 }
@@ -44,9 +49,6 @@
 	justify-content : space-around;
 }
 
-.mt {
- margin-top : 10px !important; 
-}
 
 .bold {
 	font-weight : bold;
@@ -70,15 +72,15 @@
 }
 
 .calendar {
-
+	height: 580px;
   	width : 30%;
-
     padding: 0;
+    top : 120%;
     margin-left: 0;
     background-color: var(--bg-color);
     font-family: var(--font);
-    position : fixed;
-    bottom : 2px;
+    position : absolute;
+    bottom : 1px;
     z-index : 1;
 }
 
@@ -148,10 +150,79 @@
 	
 }
 
+.img-box {
+	width : 1600px;
+	display : flex;
+	flex-wrap : wrap;
+	
+}
+
+#img-js {
+	width : 1600px;
+	display : flex;
+	flex-wrap : wrap;
+	
+}
+
+.introduce {
+	width : 50% !important;
+}
+
+.size {
+	
+	width : 300px;
+	height : 300px;
+	margin : 5px ;
+	border-radius : 10px;
+	
+}
+
+#map {
+  height: 500px; /* The height is 400 pixels */
+  width: 89.5%; /* The width is the width of the web page */
+}
+
+. {
+	margin-bottom : 10px !important;
+}
+
+.mt {
+	margin-top : 10px !important;
+}
+
+.size1 {
+	height : 250px;
+	width : 250px; 
+	border-radius : 15px;
+	margin : 10px;
+}
+.flex-container {
+	width : 1600px;
+	display : flex;
+}
+.flex-child {
+	font-family : 'Palatino';
+} 
+
+.text-center {
+	text-align : center;
+}
+
+body {
+	font-family : 'Palatino'; 
+} 
+
+.ml-5 {
+	margin-left : 5px;
+}
+
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Trips</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_orange.css">
 <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
@@ -162,9 +233,10 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
 	integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
 	crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="${path}/assets/css/ydsCss.css" />
 </head>
 <body>
+
+	<sec:authorize access="isAuthenticated()" var="loggedIn"/>
 	<my:navbar></my:navbar>
 
 	<c:url value="/ydsBoard/remove" var="removeLink">
@@ -173,94 +245,98 @@
 	<c:url value="/ydsBoard/modify" var="modifyLink">
 		<c:param name="num" value="${board.num}"></c:param>
 	</c:url>
+	<c:url value="/ydsBoard/getAllImages" var="allImages">
+		<c:param name="num" value="${board.num}"></c:param>
+	</c:url>
 	
 
 	<input type="hidden" id="numInput" value="${board.num}" />
-<div class="root">
-		<c:forEach items="${board.date}" var="date">
-			<div>저장날짜 : ${date} 최대 인원 : ${board.maxPerson}</div>
-		</c:forEach>
-		<c:forEach items="${board.addDate}" var="addDate" varStatus="status">
-			<div>주문날짜 : ${addDate} 주문 인원 ${board.person[status.index]}</div>
-		</c:forEach>
-		<div class="container-fluid">남은 인원 : ${board.avaliablePeople}</div>
-		<div class="container-fluid">최대 인원 : ${board.maxPerson}</div>
-		<div class="container-fluid">최소 인원 : ${board.minPerson}</div>
-		<div class="container-fluid">최소 연령 : ${board.minAge}</div>
-		<input type="number" id="orderAllPerson" value="" />
 
-	<div class="container-fluid flex">
-		<input hidden type="text" name="title" value="${board.title}"/>
-		<span><Strong>${board.title }</Strong></span>
-		<div class="ml-3">
-			<a href="${removeLink}" class="btn btn-outline-secondary btn-sm">게시물 삭제</a>
-			<a href="${modifyLink}" class="btn btn-outline-dark btn-sm">게시물 수정</a>
+	<div class="root">
+		<div style="text-decoration : underline; margin-left : 8px; font-size : 17px;">${board.topic }</div>
+		<div class="jc-sb mt" style="width : 90%">
+			<div class="ml-5">
+				<h3><Strong>${board.title }</Strong></h3>
+			</div>
+			<%-- spring security expressions 로 검색 --%>
+			<sec:authentication property="name" var="userName"/>
+			<div class="flex ml-5">
+				<div onclick="plusLike()" class="cursor ml-3" id="plusLike">
+					<i class="fa-regular fa-heart fa-2x red"></i> 
+				</div>
+				<div onclick="minusLike()" class="cursor ml-3" id="minusLike" style="display : none">
+					<i class="fa-solid fa-heart fa-2x red" style="color : red !important;"></i>
+				</div>
+				<div id="countLike" style="font-size : 20px; margin-left : 3px; padding-top : 4px;">
+					${board.countLike}
+				</div>
+			</div>	
 		</div>
-			<h3 class="ml-3">${board.price}</h3> 
-			<span class="mt">
-				<small>원/1인</small>
+		<span class="ml-5">최대 인원 : ${board.maxPerson}명 /</span>
+		<span> 최소 인원 : ${board.minPerson}명 / </span>
+		<span> 최소 연령 : ${board.minAge}세</span>
+		<%-- <c:if test="${board.writer == userName }"> --%>
+		<div class="mt ml-5">
+			<a href="${removeLink}" class="btn btn-outline-dark btn-sm">삭제</a>
+			<a href="${modifyLink}" class="btn btn-outline-dark btn-sm">수정</a>
+ 		</div>
+	<%--	</c:if>	 --%>
+	<div class="img-box mt-3" >
+		<c:forEach items="${board.fileName }" var="file" begin="0" end="3">
+			<img src="${imgUrl}/host/${board.num }/${file}" class="size" alt="...">
+		</c:forEach>
 
-			</span>
-			<div onclick="plusLike()" class="cursor ml-3" id="plusLike">
-				<i class="fa-regular fa-heart fa-2x red"></i> 
-			</div>
-			<div onclick="minusLike()" class="cursor ml-3" id="minusLike" style="display : none">
-				<i class="fa-solid fa-heart fa-2x red" style="color : red !important;"></i>
-			</div>
-			<div id="countLike" style="font-size : 20px; margin-left : 3px; padding-top : 4px;">
-				${board.countLike}
-			</div>
-	</div>
-	<div class="container-fluid flex" >
-	<input hidden type="text" name="firstFile" value="${board.fileName[0]}" />
-	<c:forEach items="${board.fileName }" var="file" begin="0" end="2">
-		<img src="${path}/assets/img/${file}" class="size" alt="...">
-	</c:forEach>
 	</div>
 	<%--사진 더 보기 기능도 추가해야함 --%>
-	<div style="text-align : left"><a href="" style="color : black;">사진 다 보기</a></div>
+	<br />
+	<div style="text-align : left"><a href="${allImages}" style="color : black;">사진 다 보기</a></div>
 
 	
 
 
-	<div class="container-fluid">
+	<div class="">
 		<div class="horizontal">
 				<div class="halfview">
-					<h4 class="ml-3 mt-40">호스트 id의 name님 소개</h4>
-					<textarea style="width : 100% !important;" rows="5"  
-					readonly class="form-control">${board.hostIntro }</textarea>
+					<h4 class="ml-3 mt-40">${board.writer }님 소개</h4>
+					<textarea style="width : 90% !important"rows="5"  
+					readonly class="form-control mt-3">${board.hostIntro }</textarea>
 				</div>
 
-				<div id="showCalendar" class="halfview" style="margin-left : 20%">
+				<div id="showCalendar" class="halfview">
 
 				</div>
 			</div>	
 				<div class="mt-40">
 					<h4 class="ml-3">프로그램 소개</h4>
 				</div>
-				<hr width="65%" />
-				<div style="width : 100%">
+				<hr style="width : 50%" />
+				<div style="width : 50%">
 					${board.content }
 				</div>
-				<div>
-					<a id="reserveButton" onclick="buildCalendar()" class="btn btn-dark btn-sm">예약날짜확인</a>
-				</div>
-				<span>
-					<a id="noneButton" style="display : none" onclick="none()" class="btn btn-secondary btn-sm">달력접기</a>
-				</span>
-				<hr width="65%" />
+					<div class="mt-3">
+						<a id="reserveButton" data-bs-toggle="modal" data-bs-target="#availableDateConfirmModal" class="btn btn-dark btn-sm">예약 날짜 확인</a>
+					</div>
+				<hr style="width : 50%" />
 			</div>
 			<div class="col-sm-7 ml-3">
 				<h4 class="ml-3 mt-40">프로그램 후기</h4>
 				<div style="display : flex">
 					<div><%--별 들어갈 자리 --%></div>
 				</div>
-				<input type="text" class="form-control mt" placeholder="여러분의 소중한 후기를 남겨주세요" 
+				<sec:authorize access="isAuthenticated()">
+				<input type="text" style="width : 44.5vw" class="form-control mt" placeholder="여러분의 소중한 후기를 남겨주세요" 
 					id="content"></input>
-				<%-- 로그인 기능 수정되면 지울 것 --%>
-				<input type="hidden" value="bb" id="temperId"/>
-				<input id="boardNum" type="hidden" value="${board.num}" />
+				<%-- <input type="hidden" value="${board.writer }" id="temperId"/> --%>
 				<button class="btn btn-dark btn-sm mt" id="enrollReply" type="button" >등록</button>
+				</sec:authorize>
+				
+				
+				<sec:authorize access="not isAuthenticated()">
+				<input readonly style="width : 44.5vw !important;" type="text" class="form-control mt" placeholder="로그인 후 이용 가능합니다" 
+					id="content"></input>
+				<button class="btn btn-dark btn-sm mt" id="enrollReply" type="button" disabled >등록</button>	
+				</sec:authorize>	
+				
 				<div class="row mt-3">
 					<div class="col-sm-12">
 						<div class="list-group" id="replyListContainer">
@@ -268,13 +344,28 @@
 						</div>
 					</div>
 				</div>
-					<div class="mt-40">
-						<h5>체험 더보기</h5>
-					</div>
-					<div class="flex-container">
-					</div>
+			</div>
+			<br />
+			<br />
+			<hr width="89.5%" />
+			<div class="ml-3 mt-40">
+				<h4>위치 정보</h4>
+			</div>
+			<div class="ml-3 mt-3">${board.address}</div>
+			<div class="ml-3 mt-3" id="map"></div>
+			<br />
+			<hr width="89.5%"  class="mt-40"/>
+				<div class="mt-40">
+					<h4>체험 더보기</h4>
 				</div>
-</div>	
+				<div class="flex-container mt-3">
+				</div>
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+	</div>	
 				
 <form action="/shop/addCart" method="post" id="cartForm">
 	<input type="hidden" name="addDate" id="addDate" value=""/>
@@ -282,6 +373,36 @@
 	<input type="hidden" name="price" id="price" value="${board.price}"/>
 	<input type="hidden" name="boardnum" id="boardNum" value="${board.num}"/>	
 </form>
+
+
+
+<!-- 예약 날짜 품절 확인 모달 -->
+<div class="modal fade" id="availableDateConfirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">예약 날짜 및 품절 확인</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <c:forEach items="${board.date}" var="date" varStatus="status">
+			<c:choose >
+				<c:when test="${board.remain[status.index] > 0}">
+					<div class="mt-3"> <strong>${date}일 / ${board.remain[status.index]}명 가능합니다</strong></div>
+				</c:when>
+				<c:otherwise>
+					<div><strong>${date} 일 체험은 <span class="sold-out">품절</span> 입니다</strong></div>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">돌아가기</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <%------------------------------댓글 수정, 삭제 토스트----------------------------%>	
 <div class="toast-container align-items-center top-0 start-50 translate-middle-x position-fixed">
   <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
@@ -289,8 +410,7 @@
       <strong class="me-auto">댓글 수정 확인</strong>
       <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
-    <div class="toast-body">
-      댓글이 수정되었습니다
+    <div id="modifyMessage" class="toast-body">
     </div>
   </div>
 </div>
@@ -301,11 +421,30 @@
       <strong class="me-auto">댓글 삭제 확인</strong>
       <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
-    <div class="toast-body">
-      댓글이 삭제되었습니다
+    <div id="deleteMessage" class="toast-body">
     </div>
   </div>
 </div>
+	
+<%-- 댓글 수정 Modal --%>
+<div class="modal fade" id="modifyReplyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title fs-5" id="exampleModalLabel">후기를 수정하세요</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input id="modifyReplyInput" class="form-control"></input>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+        <button type="button" id="updateReplyModalButtonNum" 
+        	data-bs-dismiss="modal" class="btn btn-dark">수정</button>
+      </div>
+    </div>
+  </div>
+</div>	
 	
 			
 			
@@ -313,6 +452,12 @@
 src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
 integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
 crossorigin="anonymous"></script>
+ <script
+  src="https://maps.googleapis.com/maps/api/js?callback=initMap&v=weekly"
+  defer
+></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://npmcdn.com/flatpickr/dist/l10n/ko.js"></script>
 <script>
 const ctx = "${pageContext.request.contextPath}";
 
@@ -369,12 +514,10 @@ getFiveFiles();
 document.querySelector("#enrollReply").addEventListener("click", function(){
 	const boardNum = document.querySelector("#boardNum").value;
 	const content = document.querySelector("#content").value;
-	const writer = document.querySelector("#temperId").value;
 	
 	const data = {
 			boardNum,
-			content,
-			writer
+			content
 	};
 	
 	fetch(ctx+"/ydsReply/insertReply", {
@@ -401,12 +544,10 @@ function getFiveFiles(){
 			if(file.num != ${board.num}){
 			const fileList = 
 				`<div class="flex-child">
-
 					<a href="/ydsBoard/get?num=\${file.num}">
-					<img src="${path}/assets/img/\${file.fileName}" class="size" alt="...">
+						<img src="${imgUrl}/host/\${file.num }/\${file.fileName}" class="size" alt="...">
 					</a>
-
-					<h5 class="text-center">\${file.content}</h5>
+					<div style="font-size : 15px;">\${file.content}</div>
 				</div>`
 			  document.querySelector(".flex-container").insertAdjacentHTML("afterbegin", fileList);
 			}
@@ -428,7 +569,7 @@ function listReply(){
 			const updateReplyButtonNum = `updateReplyButton\${item.replyNum}`
 			
 			const replyDiv = 
-				`<div class="list-group-item d-flex" style="width : 50vw !important">
+				`<div class="list-group-item d-flex" style="width : 44.5vw !important">
 					<div class="me-auto">
 						<div>
 							<small>
@@ -450,7 +591,7 @@ function listReply(){
 					</div>
 					<div>
 						<%--댓글 수정 버튼 --%>
-						<button class="btn btn-outline-secondary" data-reply-num="\${item.replyNum}">
+						<button class="btn btn-outline-secondary" data-reply-num="\${item.replyNum}" id="\${updateReplyButtonNum}">
 							<i class="fa-solid fa-pencil" data-bs-toggle="modal" data-bs-target="#modifyReplyModal"></i>
 						</button>
 						<%--댓글 삭제 버튼 --%>
@@ -459,27 +600,7 @@ function listReply(){
 							<i class="fa-solid fa-trash-can"></i>
 						</button>
 					</div>
-				</div>
-					<%-- 댓글 수정 Modal --%>
-					<div class="modal fade" id="modifyReplyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					  <div class="modal-dialog modal-dialog-centered">
-					    <div class="modal-content">
-					      <div class="modal-header">
-					        <h3 class="modal-title fs-5" id="exampleModalLabel">후기를 수정하세요</h3>
-					        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					      </div>
-					      <div class="modal-body">
-					        <input id="modifyReplyInput" class="form-control"></input>
-					        <input type="hidden" value="\${item.replyNum}" id="hiddenNum" />
-					      </div>
-					      <div class="modal-footer">
-					        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-					        <button type="button" id="\${updateReplyButtonNum}" 
-					        	data-bs-dismiss="modal" data-reply-num="\${item.replyNum}" class="btn btn-dark">수정</button>
-					      </div>
-					    </div>
-					  </div>
-					</div>`
+				</div>`
 				replyListContainer.insertAdjacentHTML("beforeend", replyDiv);
 				
 				document.querySelector("#"+removeReplyButtonNum).addEventListener("click", function(){
@@ -492,41 +613,50 @@ function listReply(){
 				})
 				
 				document.querySelector("#"+updateReplyButtonNum).addEventListener("click", function(){
-					modifyReply();
-					const toastLiveExample = document.getElementById('liveToast')
-					const toast = new bootstrap.Toast(toastLiveExample)
-
-				    toast.show()
+					document.querySelector("#updateReplyModalButtonNum").setAttribute("data-reply-num", this.dataset.replyNum)
 				})
 				
 		}
 	})
 }
-
-function removeReply(replyNum){
-	fetch(ctx+"/ydsReply/deleteReply/" + replyNum, {
-		method : "delete"	
-	})
-	.then(() => listReply());
-}
-
-function modifyReply(){
+document.querySelector("#updateReplyModalButtonNum").addEventListener("click", function(){
 	const content = document.querySelector("#modifyReplyInput").value;
-	const replyNum = document.querySelector("#hiddenNum").value;
-	
+	const replyNum = this.dataset.replyNum;
+	console.log(replyNum);
 	const data = {
 			content,
 			replyNum
 	}
 	fetch(ctx+"/ydsReply/modifyReply" , {
-		method : "put", 
+		method : "PUT", 
 		headers : {
 			"Content-Type" : "application/json"	
 		},
 		body : JSON.stringify(data)
 	})
+	.then(res => res.json())
+	.then(data => {
+		document.querySelector("#modifyReplyInput").value ='';
+	    toast.show()
+		document.querySelector("#modifyMessage").innerText= data.message;
+	})
+	.then(() => listReply());
+	
+})
+
+function removeReply(replyNum){
+	console.log(replyNum);
+	fetch(ctx+"/ydsReply/deleteReply/" + replyNum, {
+		method : "DELETE"	
+	})
+	.then(res => res.json())
+	.then(data => {
+		document.querySelector("#deleteMessage").innerText = data.message;
+	})
 	.then(() => listReply());
 }
+		const toastLiveExample = document.getElementById('liveToast')
+		const toast = new bootstrap.Toast(toastLiveExample)
 
 
 
@@ -539,10 +669,14 @@ function none(){
 	document.querySelector("#noneButton").style.display="none"
 };
 function buildCalendar(){
-	document.querySelector("#noneButton").style.display="inline-block"
-	document.querySelector("#showCalendar").innerHTML=''
 const calendarFrame = 	
 	`<div class="calendar shadow p-3 mb-5 bg-body rounded">
+	<div style="display : flex;">
+		<div style="font-size : 40px;"><strong>${board.price}</strong></div>
+		<div style="margin-top : 30px;">
+			<small>원/1인</small>
+		</div>
+	</div>
 	<div class="accordion" id="accordionExample">
 	  <div class="accordion-item">
 	    <h2 class="accordion-header" id="headingOne">
@@ -582,10 +716,13 @@ const calendarFrame =
 				<div class="day">Sat</div>
 			</div>
 			<div class="dates"></div>
+			<sec:authorize access="isAuthenticated()">
 			<div onclick="goCart()" class="btn btn-outline-secondary">장바구니 담기 <i class="fa-solid fa-cart-shopping"></i></div>
-			<div style="color : red"><small>*밑줄 친 날짜만 예약 가능합니다.</small></div>
 			<small id="actiDate"></small>
-
+			</sec:authorize>
+			<sec:authorize access="not isAuthenticated()">
+			<div class="btn btn-outline-secondary">로그인 후 이용 가능 합니다</div>
+			</sec:authorize>
 		</div>
 	</div>`
 document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calendarFrame)
@@ -611,13 +748,22 @@ document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calenda
 	} // 이번 달 달력에 보이는 전월의 날짜를 공백으로 처리
 		
 	const weekDiv = `<div class="week"></div>`
+	let dateChoice = []
 
 	for(let i=0; i < 35; i++){
 		if(i == 0 || i % 7 == 0){
 			document.querySelector(".dates").insertAdjacentHTML("afterbegin", weekDiv)	
-		} 
+		} 		
+				let year = CDate.getFullYear()
+				let month = CDate.getMonth() + 1
 				const dateDiv =`<div class="date cursor" id="date\${i}">\${dates[i]}</div>`;
 				document.querySelector(".week").insertAdjacentHTML("afterbegin", dateDiv); 
+					dateChoice.push(document.querySelector("#date"+i).innerHTML);
+					<%--여기서부터 시작 --%>
+					console.log(dateChoice)
+				if(dateChoice[i] !== ''){
+					document.querySelector("#date"+i).setAttribute("data-full-date", year+"-"+month)
+				} 
 
 		
 		document.querySelector("#date"+i).addEventListener("click", () => {
@@ -626,11 +772,9 @@ document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calenda
 		
 
 		document.querySelector("#addDate").value = '';	
-		let year = CDate.getFullYear()
-		let month = CDate.getMonth() + 1
 		document.querySelector("#addDate").value += year;
-		document.querySelector("#addDate").value +="."+ month;
-		document.querySelector("#addDate").value +='.'+ document.querySelector("#date"+i).innerHTML;
+		document.querySelector("#addDate").value +="-"+ month;
+		document.querySelector("#addDate").value +='-'+ document.querySelector("#date"+i).innerHTML;
 
 		})
 	}
@@ -660,27 +804,37 @@ function substractNumber(){
 function prevCal(){
 	CDate.setMonth(CDate.getMonth()-1);
 	buildCalendar();
+	document.querySelector("#person").value='';
 }
 
 <%-- 다음 달 버튼 누르면 실행 되는 함수 --%>
 function nextCal(){
 	CDate.setMonth(CDate.getMonth()+1);
 	buildCalendar();
+	document.querySelector("#person").value='';
 }	
 
 function goCart(){
 	document.querySelector("#cartForm").submit();
 }
 
+function initMap() {
+    // The location of Uluru
+    const location = ${board.location}
+    // The map, centered at Uluru
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 15,
+      center: location,
+    });
+    // The marker, positioned at Uluru
+    const marker = new google.maps.Marker({
+      position: location,
+      map: map,
+    });
+  }
 
-let date =[];
-<c:forEach items="${board.date}" var="date">
-	date.push(${date});
-	console.log(date)
-</c:forEach>
-	date.push(document.querySelector("#addDate").value);
-	console.log(date)
 
+  window.initMap = initMap;
 
 </script>
 </body>

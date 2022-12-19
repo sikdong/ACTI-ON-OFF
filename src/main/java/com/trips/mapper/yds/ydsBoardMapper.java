@@ -11,7 +11,7 @@ import com.trips.domain.yds.TripsOrderDto;
 @Mapper
 public interface ydsBoardMapper {
 
-	public List<TripsBoardDto> getBoardList();
+	public List<TripsBoardDto> getBoardList(String address);
 
 	public TripsBoardDto getBoard(int num, MultipartFile[] file);
 
@@ -19,11 +19,11 @@ public interface ydsBoardMapper {
 
 	public List<TripsBoardDto> getFiveFiles();
 
-	public int plusLike(int num, TripsBoardDto board);
+	public int plusLike(int num, TripsBoardDto board, String writer);
 
 	public int getLikeByBNO(int num);
 
-	public int deleteLikeByLNO(int num);
+	public int deleteLikeByLNO(int num, String writer);
 
 	public int modifyBoard(TripsBoardDto board);
 
@@ -44,6 +44,12 @@ public interface ydsBoardMapper {
 	public void deleteReservation(int num);
 
 	public List<TripsBoardDto> getAllfileWhenModify(int num);
+
+	public int deletefileWhenModify(int fileNum);
+
+	public void deleteCartNo(int num);
+
+	public List<TripsOrderDto> getOrderByBoardNum(int num);
 
 
 }
