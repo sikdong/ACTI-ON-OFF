@@ -79,14 +79,14 @@ public class QnaService {
 		}
 	}
 
-	public List<QnaDto> listQna(int page,String type,String keyword,PageInfo pageInfo) {
+	public List<QnaDto> listQna(int page,String type,String keyword,PageInfo pageInfo,String status) {
 		// TODO Auto-generated method stub
 		// page 다음부터 records 개를 나타내기 위한 코드
 		int records = 10;
 		int offset = (page-1) * records;
 		
 		//총 레코드 수
-		int countAll = qnaMapper.countAll(type,"%"+keyword+"%"); // SELECT COUNT(*) FROM QNA
+		int countAll = qnaMapper.countAll(type,"%"+keyword+"%",status); // SELECT COUNT(*) FROM QNA
 		int lastPage = (countAll -1) /records +1; // 마지막 페이지 번호
 		
 		int leftPageNumber= (page-1) / 10*10 +1; // 왼쪽 시작 페이지 번호 페이지 부터 10개
@@ -114,7 +114,8 @@ public class QnaService {
 		
 		pageInfo.setLastPageNumber(lastPage);
 		
-		return qnaMapper.list(offset,records,type,"%"+keyword+"%"); // offset = "1"-1 = 0 / records = 10;
+		
+		return qnaMapper.list(offset,records,type,"%"+keyword+"%",status); // offset = "1"-1 = 0 / records = 10;
 	}
 
 	public QnaDto get(int id) {

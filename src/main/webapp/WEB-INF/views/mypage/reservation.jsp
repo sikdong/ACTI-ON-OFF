@@ -70,7 +70,7 @@
 	<my:navbar></my:navbar>
 	<my:myReservation></my:myReservation>
 	
-	<div id="res" class="container-md" style="width:1500px">
+	<div id="res" class="container-md" style="width:1500px; min-height: 1000px;">
 		
 		<strong style="padding:70px 0 43px 0;display:block">${id }님의 예약내역</strong>
 		<div class="row">
@@ -83,7 +83,8 @@
 					<hr>
 					<c:forEach var="res" items="${res1}">
 						<c:if test="${res.date > today }">
-							<div onclick="location.href='/mypage/resDetail?resNo=${res.resNo}'" style="display:flex;">
+						<div class="container" style="display: flex;">
+							<div class="item" onclick="location.href='/mypage/resDetail?resNo=${res.resNo}'" style="display:flex;">
 								<div style="padding-right: 70px;">
 									<img style="width:200px; height:135px;border-radius: 30%" 
 									src="${imgUrl }/host/${res.boardNo}/${res.fileName}">
@@ -93,8 +94,35 @@
 									<div id="res_info1">host : ${res.host }</div>
 									<div id="res_info1">date : ${res.date }</div>
 								</div>
-							</div>	
-							<hr>					
+							</div>
+							<div class="item" style="position: absolute; padding-left: 800px; ">
+									<button class="abutton" style="line-height: 15px;
+									margin: 50px 0 0 50px;"
+									type="submit"  data-bs-toggle="modal" data-bs-target="#removeModal"  
+									onclick="">예약취소</button>
+							</div>
+							
+							
+							<div class="modal fade" id="removeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							  <div class="modal-dialog">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <h1 class="modal-title fs-6" id="exampleModalLabel" style="color: #B9062F;">
+							        <span style="color: #B9062F;font-weight: bold;">&lt;${res.title}&gt;</span> 예약을 취소하시겠습니까</h1>
+							        <button type="button" class="btn-close" data-bs-dismiss="modal" 
+							        aria-label="Close"></button>
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+							        <button id="modalConfirmButton2" type="button" class="btn btn-danger"
+							        onclick="location.href='/mypage/removeR?resNo=${res.resNo}&id=${res.id}'">예약취소</button>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+								
+						</div>
+						<hr>					
 						</c:if>
 					</c:forEach>		
 				</div>

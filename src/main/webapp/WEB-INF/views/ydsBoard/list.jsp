@@ -109,9 +109,11 @@ a {
  	<c:url value="/ydsBoard/get" var="getLink">
 		<c:param name="num" value="${list.num }" ></c:param>
 	</c:url>
+
  	<div>
  		<a href="${getLink}"><img src="${imgUrl}/host/${list.num }/${list.fileName[0]}" alt="이미지" class="size" /></a>
  		<div class="mt-2" style="text-align : left;">
+
  			<a class="link" href="${getLink}">${list.title }</a>
  		</div>
  		<div class="mt-2" style="text-align : left;">

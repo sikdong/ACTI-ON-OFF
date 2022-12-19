@@ -5,21 +5,48 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.trips.mapper.payment.CartMapper">
+	<select id="select" resultMap="memberMap">
+	SELECT
+		M_ID,
+	    M_PASSWORD,
+	    M_NAME,
+	    M_GENDER,
+	    M_PHONE,
+	    M_EMAIL,
+	    M_HOST_REQUEST
+	FROM
+		MEMBER
+	WHERE
+		M_ID = #{id}
+	</select>
 	
+	<resultMap type="com.trips.domain.mypage.MemberDto" id="memberMap">
+		<id column="M_ID" property="id"></id>
+		<result column="M_PASSWORD" property="password"/>
+		<result column="M_NAME" property="name"/>
+		<result column="M_GENDER" property="gender"/>
+		<result column="M_PHONE" property="phone"/>
+		<result column="M_EMAIL" property="email"/>
+		<result column="M_HOST_REQUEST" property="host"/>
+	</resultMap>
 
-	<resultMap type="com.trips.domain.payment.CartList" id="cartListResultMap">
+	 <resultMap type="com.trips.domain.payment.CartList" id="cartListResultMap">
 		<id property="cart_id" column="CART_ID"></id>
 		<result property="id" column="M_ID" />
 		<result property="boardnum" column="B_NO" />
 		<result property="price" column="PRICE" />
 		<result property="renamedFileName" column="renamedFileName" />
-	
-	</resultMap>
+		<result property="addDate" column="addDate" />
+	</resultMap> 
 
-	<select id="cartList" parameterType="String"
-		resultMap="cartListResultMap">
+	<!-- <insert id="insert">
+		INSERT 
+	</insert> -->
 
-		SELECT c.CART_ID cart_id,m.M_ID id,c.B_NO boardnum,
+	<select id="cartList" resultType="com.trips.domain.payment.CartRe">
+
+		<!-- SELECT 
+			c.CART_ID cart_id,m.M_ID id,c.B_NO boardnum,
 		PERSON person, ADDDATE addDate,	PRICE price,renamedFileName
 		from CART c
 		LEFT JOIN MEMBER m on m.M_ID = c.CART_ID
@@ -27,7 +54,22 @@
 		left join ACTI_BOARD a
 		on c.B_NO = a.B_NO
 		where c.B_NO =
-		a.B_NO;
+		a.B_NO; -->
+		SELECT 
+			c.CART_ID cartId,
+		    c.M_ID id,
+		    c.B_NO boardNo,
+		    c.ADDDATE addDate,
+		    c.PERSON person,
+		    c.PRICE price,
+		    c.renamedFilename,
+		    b.B_TITLE title,
+		    f.B_FILENAME fileName
+		FROM CART c
+		JOIN ACTI_BOARD b ON c.B_NO = b.B_NO
+		JOIN ACTI_FILE f ON f.B_NO = b.B_NO
+		WHERE c.M_ID = #{id}
+		GROUP BY cartId;
 
 	</select>
 
@@ -39,6 +81,7 @@
 		B_NO,
 		CART_ID,
 		PERSON,
+		ADDDATE,
 		PRICE
 		)
 		VALUES( 
@@ -46,6 +89,7 @@
 		#{boardnum},
 		#{cart_id},
 		#{person},
+		#{addDate},
 		#{price}
 		)
 
@@ -61,6 +105,19 @@
 	<delete id="deleteAllCart">
 		DELETE FROM CART WHERE M_ID=#{id}	
 	</delete>
+
+	<select id="getCart" resultType="com.trips.domain.payment.testDto">
+		SELECT 
+		    M_ID id,
+		    B_NO boardNumber,
+		    CART_ID cartId,
+		    ADDDATE addDate,
+		    PRICE price,
+		    PERSON person,
+		    renamedFilename
+		FROM CART
+		WHERE CART_ID = #{cartId}
+	</select>
 
 </mapper>
 	

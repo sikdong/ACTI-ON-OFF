@@ -25,6 +25,7 @@ import com.trips.domain.jjhMember.jjhMemberDto;
 import com.trips.domain.mypage.ChatAddDto;
 import com.trips.domain.mypage.ChatDto;
 import com.trips.domain.mypage.ChatLeftDto;
+import com.trips.domain.mypage.HostChatIntroDto;
 import com.trips.domain.mypage.IdEmailDto;
 import com.trips.domain.mypage.ImgDto;
 import com.trips.domain.mypage.MemberDto;
@@ -160,6 +161,8 @@ public class MyPageController {
 		}
 		int boardNo = res2.getBoardNo();
 		String date = res2.getDate();
+		System.out.println(boardNo);
+		System.out.println(date);
 		int count = service.getCountByBD(boardNo, date);
 		List<ImgDto> img = service.getImgByResNo(resNo);
 		
@@ -223,10 +226,10 @@ public class MyPageController {
 			throws Exception {
 		
 		int cnt = dservice.remove(id);
-//		rttr.addFlashAttribute("message", "회원 탈퇴하였습니다.");
+		//rttr.addFlashAttribute("message", "회원 탈퇴하였습니다.");
 		request.logout();
 
-		return "redirect:/qna/QnaList";
+		return "redirect:/home";
 		
 //		MemberDto oldmember = service.getById(id);
 //
@@ -255,6 +258,7 @@ public class MyPageController {
 		Map<String, Object> map = new HashMap<>();
 		String id = data.getId();
 		String email = data.getEmail();
+		
 		String oldEmail = service.getEmailById(id);
 		
 		MemberDto member = service.getByEmail(email);
@@ -290,4 +294,66 @@ public class MyPageController {
 		
 	}
 	
+	@GetMapping("hostChatIntro")
+	public void hostChatIntro(
+			@RequestParam(name = "id") String id,
+			Model model
+			) {
+		List<HostChatIntroDto>hostChatIntroDto = service.getUserListById(id); 
+		List<ChatLeftDto> left = service.getChatLeft2(id);
+		
+		for(ChatLeftDto l : left) {
+			String text;
+			if(l.getContent().length() > 30) {
+				text = l.getContent().substring(0, 30)+"...";
+			}else {
+				text = l.getContent();
+			}
+			l.setContent(text);
+		}
+		
+		model.addAttribute("hci", hostChatIntroDto);
+		model.addAttribute("left", left);
+	}
+	
+	@GetMapping("hChat")
+	@PreAuthorize("isAuthenticated()")
+	public void hChat(
+			@RequestParam(name = "chatRoom") int chatRoom,
+			@RequestParam(name = "id") String id,
+			@RequestParam(name = "host") String host,
+			Model model
+			) {
+		
+		List<ChatDto> chat = service.getChat(chatRoom);
+		List<ChatLeftDto> left = service.getChatLeft2(id);
+		
+		for(ChatLeftDto l : left) {
+			String text;
+			if(l.getContent().length() > 30) {
+				text = l.getContent().substring(0, 30)+"...";
+			}else {
+				text = l.getContent();
+			}
+			l.setContent(text);
+		}
+		
+		model.addAttribute("chat", chat);
+		model.addAttribute("id", id);
+		model.addAttribute("host", host);
+		model.addAttribute("chatRoom", chatRoom);
+		model.addAttribute("left", left);
+		
+	}
+	
+	@GetMapping("removeR")
+	@PreAuthorize("isAuthenticated()")
+	public String removeRes(
+			@RequestParam(name = "resNo") int resNo,
+			@RequestParam(name = "id") String id
+			) {
+		int remove = dservice.removeR(resNo);
+		
+		return "redirect:/mypage/reservation?id="+id;
+	}
 }

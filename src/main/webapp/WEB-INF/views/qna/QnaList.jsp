@@ -41,6 +41,17 @@
 			<th>제목</th>
 			<th>작성자</th>
 			<th>작성일시</th>
+			<th>
+			<form action="${qnaListLink }">
+				<select name="s" id="statusTypeSelect" class="form-select" onchange="this.form.submit()">
+					<option ${param.s == 's0' ? 'selected' : '' } value="s0">답변여부</option>
+					<option ${param.s == 's1' ? 'selected' : '' } value="s1">답변완료</option>
+					<option ${param.s == 's2' ? 'selected' : '' } value="s2">답변대기</option>
+				</select>      			
+			</form>
+				
+			
+			</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -70,6 +81,7 @@
 				</td>
 				<td>${qna.memberId }</td> <!-- writer 대신 memberId  -->
 				<td>${qna.ago }</td>
+				<td>${qna.status }</td>
 			</tr>
 		</c:forEach>
 	</tbody>	
@@ -87,6 +99,7 @@
 				  	<c:param name="page" value="1"></c:param>
 				  	<c:param name="q" value="${param.q }"></c:param>
 				  	<c:param name="t" value="${param.t }"></c:param>
+				  	<c:param name="s" value="${param.s }"></c:param>
 				  </c:url>
 				  <li class="page-item">
 				  <a href="${qnaListLink }" class="page-link"><<</a>
@@ -98,6 +111,7 @@
 				  		<c:param name="page" value="${pageInfo.jumpPrevPageNumber }"></c:param>
 				  		<c:param name="q" value="${param.q }"></c:param>
 				  		<c:param name="t" value="${param.t }"></c:param>
+				  		<c:param name="s" value="${param.s }"></c:param>
 				  	</c:url>
 				  	<li class="page-item">
 				  		<a href="${qnaListLink }" class="page-link"><</a>
@@ -109,7 +123,8 @@
 				  		<c:url value="/qna/QnaList" var="qnaListLink">
 							<c:param name="page" value="${pageNumber }"></c:param>
 							<c:param name="q" value="${param.q }"></c:param>	
-							<c:param name="t" value="${param.t }"></c:param>			  		
+							<c:param name="t" value="${param.t }"></c:param>
+							<c:param name="s" value="${param.s }"></c:param>		  		
 				  		</c:url>
 					    <li class="page-item
 					    
@@ -126,6 +141,7 @@
 				  			<c:param name="page" value="${pageInfo.jumpNextPageNumber }"></c:param>
 				  			<c:param name="q" value="${param.q }"></c:param>
 				  			<c:param name="t" value="${param.t }"></c:param>
+				  			<c:param name="s" value="${param.s }"></c:param>
 				  		</c:url>
 				  			<li class="page-item">
 				  				<a href="${qnaListLink }" class="page-link">></a>
@@ -138,6 +154,7 @@
 				  			<c:param value="${pageInfo.lastPageNumber }" name="page"></c:param>
 				  		  	<c:param name="q" value="${param.q }"></c:param>
 				  		  	<c:param name="t" value="${param.t }"></c:param>
+				  		  	<c:param name="s" value="${param.s }"></c:param>
 				  		</c:url>
 				  	<li class="page-item">
 				  		<a href="${qnaListLink }" class="page-link">>></a>
@@ -157,5 +174,6 @@
 	<jsp:param value="index1" name="1"/>
 </jsp:include>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
 </body>
 </html>

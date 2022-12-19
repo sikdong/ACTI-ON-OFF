@@ -9,6 +9,7 @@ import com.trips.domain.host.BoardDto;
 import com.trips.domain.host.Host;
 import com.trips.domain.jjhMember.jjhMemberDto;
 import com.trips.domain.qna.PageInfo;
+import com.trips.domain.qna.QnaDto;
 import com.trips.mapper.admin.AdminMapper;
 
 @Service
@@ -103,6 +104,26 @@ public class AdminService {
 	public int updateAccept(BoardDto board) {
 		// TODO Auto-generated method stub
 		return mapper.updateAccept(board);
+	}
+
+	public int workList(QnaDto qna) {
+		// TODO Auto-generated method stub
+		return mapper.workList(qna);
+	}
+
+	public int getQnaList() {
+		
+		return mapper.getQnaList();
+	}
+
+	public int getBoardList() {
+		// TODO Auto-generated method stub
+		return mapper.getBoardList();
+	}
+
+	public int getHostList() {
+		// TODO Auto-generated method stub
+		return mapper.getHostList();
 	}
 
 	

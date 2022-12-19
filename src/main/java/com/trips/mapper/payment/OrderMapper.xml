@@ -72,6 +72,51 @@ LEFT JOIN CART c ON o.O_CART_ID = c.CART_ID
    				)
   </insert>
   
-  
- 
+  	<insert id="insertOrder"> 
+  	<!-- useGeneratedKeys="true" keyColumn="O_ORDER_ID" keyProperty="" -->
+  	INSERT INTO ACTI_ORDER(M_ID, O_B_NO, O_CART_ID, O_ADDDATE, O_PRICE, O_PERSON, renamedFilename)
+	VALUES(#{id}, #{boardNumber}, #{cartId}, #{addDate}, #{price}, #{person}, #{renamedFilename});
+  	</insert>
+  	
+ 	
+ 	<select id="getOrder" resultType="com.trips.domain.payment.Test2Dto">
+  	SELECT
+		O_ORDER_ID orderId,
+		M_ID id, 
+	    O_B_NO boardNumber, 
+	    O_CART_ID cartId, 
+	    O_ADDDATE addDate, 
+	    O_PRICE price, 
+	    O_PERSON person, 
+	    renamedFilename
+	FROM ACTI_ORDER
+	WHERE O_ORDER_ID = #{orderId};
+  	</select>
+  	
+ 	<insert id="insertRes"> 
+  	INSERT INTO ACTI_RESERVATION(M_ID, B_NO, DATE)
+	VALUES(#{id}, #{boardNumber}, #{addDate});
+  	</insert>
+  	
+  	<select id="getInfo" resultType="com.trips.domain.payment.OrderPageDto">
+  		SELECT 
+			c.CART_ID cartId,
+		    c.M_ID id,
+		    c.B_NO boardNo,
+		    c.ADDDATE addDate,
+		    c.PERSON person,
+		    c.PRICE price,
+		    c.renamedFilename,
+		    b.B_TITLE title,
+		    f.B_FILENAME fileName,
+		    m.M_NAME name,
+		    m.M_EMAIL email,
+		    m.M_PHONE phone
+		FROM CART c
+		JOIN ACTI_BOARD b ON c.B_NO = b.B_NO
+		JOIN ACTI_FILE f ON f.B_NO = b.B_NO
+		JOIN MEMBER m ON c.M_ID = m.M_ID
+		WHERE c.CART_ID = #{sA}
+		GROUP BY cartId;
+  	</select>
   </mapper>

@@ -5,8 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import com.trips.domain.payment.Cart;
 import com.trips.domain.payment.CartList;
+import com.trips.domain.payment.CartRe;
+import com.trips.domain.payment.MemberDto;
+import com.trips.domain.payment.testDto;
 import com.trips.mapper.payment.CartMapper;
 
 
@@ -16,6 +20,11 @@ public class CartServiceImpl implements CartService {
 
 	@Autowired
 	public CartMapper mapper;
+	
+
+	public MemberDto getById(String id) {
+		return mapper.select(id);
+	}
 
 	@Override
 	public int addCart(Cart cart) throws Exception {
@@ -25,7 +34,7 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public List<CartList> cartList(String id) throws Exception {
+	public List<CartRe> cartList(String id) throws Exception {
 
 		return mapper.cartList(id);
 	}
@@ -44,7 +53,11 @@ public class CartServiceImpl implements CartService {
 	}
 
 
-
+	@Override
+	public testDto getCart(int cartId) {
+		
+		return mapper.getCart(cartId);
+	}
 
 
 

@@ -13,6 +13,93 @@
 	DELETE FROM CART
 	WHERE M_ID = #{id}
 	</delete>
+	
+	<delete id="removeACTI_HOST">
+	DELETE FROM ACTI_HOST
+	WHERE M_ID = #{id}
+	</delete>
+	
+	<delete id="removeM_CHAT">
+	DELETE FROM M_CHAT
+	WHERE M_ID = #{id}
+	</delete>
+	
+	<delete id="removeACTI_RESERVATION">
+	DELETE FROM ACTI_RESERVATION
+	WHERE M_ID = #{id}
+	</delete>
+	
+	<select id="getQID" resultType="int">
+	SELECT Q_ID
+	FROM QNA
+	WHERE M_ID = #{id}
+	</select>
+	
+	<delete id="removeFile">
+	DELETE FROM File
+	WHERE Q_ID = #{q}
+	</delete>
+	
+	<delete id="removeEmpathy">
+	DELETE FROM empathy
+	WHERE Q_ID = #{q}
+	</delete>
+	
+	<delete id="removeANSWER">
+	DELETE FROM ANSWER
+	WHERE Q_ID = #{q}
+	</delete>
+	
+	<delete id="removeQNA">
+	DELETE FROM QNA
+	WHERE Q_ID = #{q}
+	</delete>
+	
+	<select id="getBID" resultType="int">
+	SELECT B_NO
+	FROM ACTI_BOARD
+	WHERE M_ID = #{id}
+	</select>
+	
+	<delete id="removeACTI_LIKE">
+	DELETE FROM ACTI_LIKE
+	WHERE B_NO = #{b}
+	</delete>
+	<delete id="removeACTI_FILE">
+	DELETE FROM ACTI_FILE
+	WHERE B_NO = #{b}
+	</delete>
+	<delete id="removeACTI_DATE">
+	DELETE FROM ACTI_DATE
+	WHERE B_NO = #{b}
+	</delete>
+	<delete id="removeACTI_REPLY">
+	DELETE FROM ACTI_REPLY
+	WHERE B_NO = #{b}
+	</delete>
+	<delete id="removeACTI_BOARD">
+	DELETE FROM ACTI_BOARD
+	WHERE B_NO = #{b}
+	</delete>
+	<delete id="removeMEMBER">
+	DELETE FROM MEMBER
+	WHERE M_ID = #{id}
+	</delete>
+	
+	<delete id="removeM_CHAT2">
+	DELETE FROM M_CHAT
+	WHERE CHAT_ROOM = #{resNo}
+	</delete>
+	
+	<delete id="removeACTI_RESERVATION2">
+	DELETE FROM ACTI_RESERVATION
+	WHERE RES_NO = #{resNo}
+	</delete>
+	
+	<delete id="removeACTI_REPLY2">
+	DELETE FROM ACTI_REPLY
+	WHERE M_ID = #{id}
+	</delete>
 </mapper>
 
 

@@ -78,7 +78,7 @@
 	</update>
 	
 	<select id="getRes1ById" resultType="com.trips.domain.mypage.Res1Dto">
-	SELECT * FROM
+<!-- 	SELECT * FROM
 	(SELECT
 		r.RES_NO resNo, 
 		r.M_ID id,
@@ -94,7 +94,23 @@
 	JOIN ACTI_FILE f ON r.B_NO = f.B_NO
 	WHERE r.M_ID = #{id}
     GROUP BY boardNo) AS UNO
-	ORDER BY DATE DESC
+	ORDER BY DATE DESC -->
+	<!-- 개량형 -->
+	SELECT * FROM
+	(SELECT
+		r.RES_NO resNo, 
+		r.M_ID id,
+		b.B_TITLE title,
+	    b.M_ID host,
+	    r.DATE date,
+	    f.B_FILENAME fileName,
+	    r.B_NO boardNo
+	FROM ACTI_RESERVATION r
+	JOIN ACTI_BOARD b ON r.B_NO = b.B_NO
+	JOIN ACTI_FILE f ON r.B_NO = f.B_NO
+	WHERE r.M_ID = #{id}
+    GROUP BY resNo) AS UNO
+	ORDER BY DATE DESC;
 	</select>
 	
 	<select id="getByResNo" resultType="com.trips.domain.mypage.Res2Dto">
@@ -103,14 +119,14 @@
 		r.M_ID id,
 	    b.B_TITLE title,
 	    b.M_ID host,
-	    d.DATE date,
+	    r.DATE date,
 	    f.B_FILENAME fileName,
         b.B_CONTENT content,
         b.MAP_TEXT mapText,
         b.MAP_LL mapLL,
         b.B_NO boardNo,
         <!-- ↓ 얘 상수로 되어있긴한데 어차피 JSP에서 안쓰는 데이터라 신경 안써도 됨 바닐라count가 역할 대신하는 중-->
-        COUNT(CASE WHEN r.B_NO = 1001 AND d.DATE = '2022-10-30' THEN 1 END) count
+        COUNT(CASE WHEN r.B_NO = 1001 AND r.DATE = '2022-10-30' THEN 1 END) count
 	FROM
     	ACTI_RESERVATION r
 	JOIN ACTI_BOARD b ON r.B_NO = b.B_NO
@@ -132,13 +148,13 @@
 	
 	<select id="getCountByBD" resultType="int">
 	SELECT 
-        COUNT(*)
+        COUNT(DISTINCT RES_NO)
 	FROM
     	ACTI_RESERVATION r
 	JOIN ACTI_BOARD b ON r.B_NO = b.B_NO
 	JOIN ACTI_DATE d ON r.B_NO = d.B_NO
 	JOIN ACTI_FILE f ON r.B_NO = f.B_NO
-	WHERE r.B_NO = #{boardNo} AND d.DATE = #{date}
+	WHERE r.B_NO = #{boardNo} AND r.DATE = #{date}
 	</select>
 	
 	<select id="getChat" resultType="com.trips.domain.mypage.ChatDto">
@@ -149,15 +165,6 @@
 		CHAT_CONTENTS content, 
 		CHAT_ROOM chatRoom
 	FROM M_CHAT WHERE CHAT_ROOM = #{chatRoom}
-	UNION ALL
-	SELECT 
-		CHAT_ID chatId, 
-		M_ID writer, 
-		CHAT_DATE date, 
-		CHAT_CONTENTS content, 
-		CHAT_ROOM chatRoom
-	FROM H_CHAT WHERE CHAT_ROOM = #{chatRoom}
-	ORDER BY date
 	</select>
 	
 	<insert id="insertChat">
@@ -211,6 +218,55 @@
 		    M_HOST_REQUEST host
 		FROM MEMBER 
 		WHERE M_EMAIL = #{email}
+	</select>
+	
+	<select id="getUserListById" resultMap="hostChatMap">
+	SELECT 
+		b.B_NO boardNo,
+		b.B_TITLE title,
+		r.DATE date,
+	    b.M_ID id,
+	    r.M_ID host,
+	    r.RES_NO chatRoom
+	FROM ACTI_BOARD b
+	JOIN ACTI_RESERVATION r ON b.B_NO = r.B_NO 
+	WHERE b.M_ID = #{id}
+	ORDER BY date DESC;
+	</select>
+	
+	<resultMap type="com.trips.domain.mypage.HostChatIntroDto" id="hostChatMap">
+		<id column="boardNo" property="boardNo"></id>
+		<id column="date" property="date"></id>
+		<result column="title" property="title"></result>
+		<result column="id" property="id"></result>
+		<collection ofType="com.trips.domain.mypage.HostChatRoomDto" column="hcd" property="hcd">
+			<result column="host" property="host" />
+			<result column="chatRoom" property="chatRoom" />
+		</collection>
+	</resultMap>
+	
+	<select id="getChatLeft2" resultType="com.trips.domain.mypage.ChatLeftDto">
+	SELECT *
+	    FROM
+	(SELECT *
+		FROM
+	(SELECT 
+		r.RES_NO resNo,
+		r.M_ID id,
+	    b.M_ID host,
+	    f.B_FILENAME fileName,
+	    m.CHAT_CONTENTS content,
+	    m.CHAT_DATE date,
+	    b.B_NO boardNo
+	FROM ACTI_RESERVATION r
+	JOIN ACTI_BOARD b ON r.B_NO = b.B_NO
+	JOIN ACTI_FILE f ON f.B_NO = b.B_NO 
+	JOIN M_CHAT m ON m.CHAT_ROOM = r.RES_NO
+	ORDER BY date DESC
+	LIMIT 18446744073709551615) AS one
+	WHERE host = #{id}
+	GROUP BY resNo) AS two
+	ORDER BY date DESC
 	</select>
 </mapper>
 

@@ -11,7 +11,7 @@ public interface QnaMapper {
 
 	int insert(QnaDto qna);
 
-	List<QnaDto> list(int offset,int records,String type,String keyword);
+	List<QnaDto> list(int offset,int records,String type,String keyword,String status);
 
 	QnaDto select(int id);
 
@@ -19,7 +19,7 @@ public interface QnaMapper {
 
 	int delete(int id);
 
-	int countAll(String type,String keyword);
+	int countAll(String type,String keyword,String status);
 
 	int insertFile(int id, String fileName);
 

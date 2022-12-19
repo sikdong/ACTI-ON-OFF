@@ -251,6 +251,7 @@ body {
 	
 
 	<input type="hidden" id="numInput" value="${board.num}" />
+
 	<div class="root">
 		<div style="text-decoration : underline; margin-left : 8px; font-size : 17px;">${board.topic }</div>
 		<div class="jc-sb mt" style="width : 90%">
@@ -284,6 +285,7 @@ body {
 		<c:forEach items="${board.fileName }" var="file" begin="0" end="3">
 			<img src="${imgUrl}/host/${board.num }/${file}" class="size" alt="...">
 		</c:forEach>
+
 	</div>
 	<%--사진 더 보기 기능도 추가해야함 --%>
 	<br />

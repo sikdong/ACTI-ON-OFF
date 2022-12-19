@@ -67,4 +67,29 @@ WHERE
 	B_NO = #{num}
 </update>
 
+<select id="workList" resultType="int">
+SELECT COUNT(Q_STATUS) FROM QNA
+</select>
+
+<select id="getQnaList" resultType="int">
+SELECT 
+	COUNT(*)
+FROM QNA
+WHERE Q_STATUS = '답변대기'
+</select>
+
+<select id="getBoardList" resultType="int">
+SELECT 
+	COUNT(*)
+FROM ACTI_BOARD
+WHERE B_ACCEPT = false
+</select>
+
+<select id="getHostList" resultType="int">
+SELECT 
+	COUNT(*)
+FROM MEMBER
+WHERE M_HOST_REQUEST = true
+</select>
+
 </mapper>

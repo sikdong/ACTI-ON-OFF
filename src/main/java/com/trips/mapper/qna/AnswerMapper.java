@@ -3,6 +3,7 @@ package com.trips.mapper.qna;
 import java.util.List;
 
 import com.trips.domain.qna.AnswerDto;
+import com.trips.domain.qna.QnaDto;
 
 public interface AnswerMapper {
 
@@ -17,6 +18,10 @@ public interface AnswerMapper {
 	int update(AnswerDto answer);
 
 	int deleteByQnaId(int id);
+
+	int updateStatus(int id);
+
+
 
 
 

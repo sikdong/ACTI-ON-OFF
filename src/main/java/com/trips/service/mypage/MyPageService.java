@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.trips.domain.mypage.ChatDto;
 import com.trips.domain.mypage.ChatLeftDto;
+import com.trips.domain.mypage.HostChatIntroDto;
 import com.trips.domain.mypage.ImgDto;
 import com.trips.domain.mypage.MemberDto;
 import com.trips.domain.mypage.Res1Dto;
@@ -109,4 +110,14 @@ public class MyPageService {
 		// TODO Auto-generated method stub
 		return mapper.getImgByResNo(resNo);
 	}
+
+	public List<HostChatIntroDto> getUserListById(String id) {
+	
+		return mapper.getUserListById(id);
+	}
+
+	public List<ChatLeftDto> getChatLeft2(String id) {
+		return mapper.getChatLeft2(id);
+	}
+
 }

@@ -70,7 +70,7 @@
 						<select class="form-select" aria-label="Default select example" name="M_GENDER">
 						  <option selected>선택하세요</option>
 						  <option value="male">남자</option>
-						  <option value="femlae">여자</option>
+						  <option value="female">여자</option>
 						</select>            
 	                </div>
 	                					
@@ -98,7 +98,7 @@
 						<div id="emailText1" class="form-text">이메일 중복확인을 해주세요.</div>
 					</div>
 
-	              	<div class="mb-3">
+	              	<!-- <div class="mb-3">
     					<label for="" class="form-label">
 							호스트 게스트 여부 확인
 						</label>
@@ -108,7 +108,7 @@
 						  <option value="1">호스트입니다.</option>
 						  <option value="0">게스트입니다.</option>
 						</select>            
-	                </div>
+	                </div> -->
 					
 
 

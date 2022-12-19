@@ -65,6 +65,7 @@ public class CustomConfig {
 		
 		http.logout().logoutUrl("/jjhLogin/logout");
 		http.csrf().disable();
+		 http.exceptionHandling().accessDeniedPage("/jjhLogin/accessDenied");
 		return http.build();
 	}
 	

@@ -8,8 +8,9 @@
 	insert into ACTI_BOARD (b_topic,b_accept) values(#{b_topic},0)
 </insert>
 <insert id="listingContents" useGeneratedKeys="true" keyProperty="b_no" keyColumn="B_NO">
-	insert into ACTI_BOARD (b_topic,b_title,b_content,cost,max_person,min_person,min_age, map_text, map_ll) 
-	values(#{b_topic},#{b_title},#{b_content},#{cost},#{max_person},#{min_person},#{min_age}, #{address}, #{addressLL})
+	insert into ACTI_BOARD (m_id,b_topic,b_title,b_content,cost,max_person,min_person,min_age, map_text, map_ll) 
+	values(#{m_id},#{b_topic},#{b_title},#{b_content},#{cost},#{max_person},#{min_person},#{min_age}, #{address}, #{addressLL})
+	
 	
 </insert>
 
@@ -32,7 +33,12 @@
 		M_HOST_REQUEST = TRUE
 	WHERE M_ID = #{id}
 </update>
-
+<update id="hostRequestAuthority">
+	update MEMBER
+	set 
+		M_AUTHORITY = 'hostRequest'
+	WHERE M_ID = #{id}
+</update>
 
 
 <!-- <select id="select"> -->
@@ -44,11 +50,18 @@
 
 <update id="hostInfoModify" >
 	UPDATE ACTI_HOST
-	SET h_introduction = #{h_introduction}
+	SET h_introduction = #{h_introduction}, h_photo=#{h_photo}
 	WHERE m_id = #{m_id}
 </update>
 
-<!-- name 속성은 어디에 사용함? -->
+<select  id="getMember" resultType="com.trips.domain.mypage.MemberDto">
+	select m_id id, m_host_request host from MEMBER where m_id= #{username}
+</select>
+
+
+
+
+
 <!-- date,file,reple? -->
 <select id="getMyList" resultType="com.trips.domain.host.BoardDto">
 	select DISTINCT b.b_no, b.b_accept, b.b_title, b.b_content, b.b_readcount,b.b_status,b.b_createdate,b.b_modifydate,b.m_id,b.cost,

@@ -3,6 +3,8 @@ package com.trips.controller.yds;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -49,11 +51,12 @@ public class YdsBoardController {
 		model.addAttribute("boardList", list);
 		model.addAttribute("name", userName);
 	}
-	
+
 	@GetMapping({"get","modify","getAllImages"})
 	public void getBoard(int num, Model model, MultipartFile[] file) {
 		TripsBoardDto board = service.getBoard(num, file);
-//		List<TripsOrderDto> order = service.getOrderByBoardNum(num);
+    //List<TripsOrderDto> order = service.getOrderByBoardNum(num);
+
 		model.addAttribute("board", board);
 		//model.addAttribute("order", order);
 		
