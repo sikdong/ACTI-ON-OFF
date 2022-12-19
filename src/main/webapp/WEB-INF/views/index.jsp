@@ -18,10 +18,8 @@
 </style>
 </head>
 <body>
-	<div class="footer-layer2 ">
-		<h1>
-			<a href="http://localhost:8080/ydsBoard/list" title="Activity">Activity</a>
-		</h1>
+	<div class="footer-layer2 border-top">
+		
 		<div class="footer-content d-flex justify-content-around">
 			<address>
 				상호명 및 호스팅 서비스 제공 : 액티비티(주)<br> 대표이사 : 신준하<br> 서울시 강남구 테헤란로

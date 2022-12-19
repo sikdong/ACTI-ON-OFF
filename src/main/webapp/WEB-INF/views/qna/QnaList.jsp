@@ -36,7 +36,7 @@
 <div class="mt-3">
 <h3 style="text-align:center;">고객센터</h3>
 </div>
-	<table class="table">
+	<table class="table table-hover">
 	<thead>
 		<tr>
 			<th>#</th>
@@ -57,7 +57,7 @@
 			</th>
 		</tr>
 	</thead>
-	<tbody>
+	<tbody class="table-group-divider">
 		<c:forEach items="${qnaList }" var="qna">
 			<tr>
 				<td>${qna.id }</td>

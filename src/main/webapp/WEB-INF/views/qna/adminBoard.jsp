@@ -21,8 +21,8 @@
 </style>
 <body>
 <my:navbar></my:navbar>
-<table class="table">
-	<thead class="table-dark">
+<table class="table table-hover mt-3">
+	<thead>
 		<tr>
 			<th>#</th>
 			<th>제목</th>
@@ -34,7 +34,7 @@
 			<th>거부</th>
 		</tr>
 	</thead>
-	<tbody>
+	<tbody class="table-group-divider">
 		<c:forEach items="${boardList}" var ="board">
 			<tr>
 				<td>	

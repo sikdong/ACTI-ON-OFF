@@ -81,13 +81,13 @@ public class QnaController {
 	
 	}
 	@GetMapping("QnaModify")
-	@PreAuthorize("@qnaSecurity.checkMemberId(authentication.name,#id)")
+	@PreAuthorize("@qnaSecurity.checkMemberId(authentication.name,#id) or hasAuthority('admin')")
 	public void QnaModify(int id,Model model) {
 		QnaDto qna = service.get(id);
 		model.addAttribute("qna",qna);
 	}
 	@PostMapping("QnaModify")
-	@PreAuthorize("@qnaSecurity.checkMemberId(authentication.name,#qna.id)")
+	@PreAuthorize("@qnaSecurity.checkMemberId(authentication.name,#qna.id) or hasAuthority('admin')")
 	public String QnaModify(
 			QnaDto qna,
 			@RequestParam("files") MultipartFile[] addFiles,
@@ -104,7 +104,7 @@ public class QnaController {
 		return "redirect:/qna/QnaList";
 	}
 	@PostMapping("QnaRemove")
-	@PreAuthorize("@qnaSecurity.checkMemberId(authentication.name,#id)")
+	@PreAuthorize("@qnaSecurity.checkMemberId(authentication.name,#id) or hasAuthority('admin')")
 	public String QnaRemove(int id,RedirectAttributes rttr) {
 		// alert 문의글 삭제 알림
 		int cnt= service.remove(id);
