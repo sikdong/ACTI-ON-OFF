@@ -44,7 +44,7 @@ padding: 0 15px 0 15px;
 <c:url value="/offline/on" var="offLineLink" />
 <c:url value="/jjhLogin/login" var="logInLink" />
 <c:url value="/jjhLogin/signup" var="signUpLink" />
-<c:url value="/home" var="mainLink" />
+<c:url value="/main" var="mainLink" />
 <c:url value="/jjhLogin/logout" var="logOutLink" />
 
 <c:url value="/host/hostInfo" var="hostInfo" />

@@ -229,7 +229,7 @@ public class MyPageController {
 		//rttr.addFlashAttribute("message", "회원 탈퇴하였습니다.");
 		request.logout();
 
-		return "redirect:/home";
+		return "redirect:/main";
 		
 //		MemberDto oldmember = service.getById(id);
 //

@@ -45,6 +45,18 @@ public interface DeleteMapper {
 	int removeACTI_RESERVATION2(int resNo);
 
 	void removeACTI_REPLY2(String id);
+
+	void removeACTI_ORDER2(int b);
+
+	void removeACTI_FILE2(int b);
+
+	void removeCART2(int b);
+
+	void removeACTI_RESERVATION3(int b);
+
+	List<Integer> getCID(int b);
+
+	void removeM_CHAT3(int c);
 	
 
 	

@@ -99,7 +99,8 @@ header{
 			</header>
 			<div style="overflow: scroll; height: 83.3%;">
 		 	 <c:forEach var="left" items="${left}">
-		 	 	<div id="messages" class="container" onclick="location.href='/mypage/chat?chatRoom=${left.resNo}&id=${left.id}&host=${left.host}'">
+		 	 	<div id="messages" class="container" onclick="location.href='/mypage/chat?chatRoom=${left.resNo}&id=${left.id}&host=${left.host}'"
+		 	 	style="cursor: pointer; ">
 		 	 		
 		 	 		<div class="item">
 			 	 		<img style="width:80px; height:80px;border-radius: 100%" 

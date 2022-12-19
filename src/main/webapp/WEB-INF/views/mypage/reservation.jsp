@@ -84,26 +84,40 @@
 					<c:forEach var="res" items="${res1}">
 						<c:if test="${res.date > today }">
 						<div class="container" style="display: flex;">
-							<div class="item" onclick="location.href='/mypage/resDetail?resNo=${res.resNo}'" style="display:flex;">
-								<div style="padding-right: 70px;">
-									<img style="width:200px; height:135px;border-radius: 30%" 
-									src="${imgUrl }/host/${res.boardNo}/${res.fileName}">
-								</div>
-								<div>
-									<div id="res_title1">${res.title }</div>
-									<div id="res_info1">host : ${res.host }</div>
-									<div id="res_info1">date : ${res.date }</div>
-								</div>
-							</div>
-							<div class="item" style="position: absolute; padding-left: 800px; ">
-									<button class="abutton" style="line-height: 15px;
-									margin: 50px 0 0 50px;"
-									type="submit"  data-bs-toggle="modal" data-bs-target="#removeModal"  
-									onclick="">예약취소</button>
-							</div>
+							<table>
+								<tr>
+									<td style="width: 800px;">
+										<div onclick="location.href='/mypage/resDetail?resNo=${res.resNo}'" style="display:flex;
+										cursor: pointer; ">
+											<div style="padding-right: 70px;">
+												<img style="width:200px; height:135px;border-radius: 30%" 
+												src="${imgUrl }/host/${res.boardNo}/${res.fileName}">
+											</div>
+											<div>
+												<div id="res_title1">${res.title }</div>
+												<div id="res_info1">host : ${res.host }</div>
+												<div id="res_info1">date : ${res.date }</div>
+											</div>
+										</div>
+									</td>
+									<td>
+											<div class="item" style="">
+													<button class="btn btn-danger" style="line-height: 15px;
+													margin: 10px 0 0 50px;
+													padding: 10px 10px 10px 10px;
+													cursor: pointer; "
+													type="button"  data-bs-toggle="modal" data-bs-target="#removeModal${res.resNo}"  
+													onclick="">예약취소</button>
+											</div>
+									</td>
+								</tr>
+							</table>
 							
 							
-							<div class="modal fade" id="removeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						
+							
+							
+							<div class="modal fade" id="removeModal${res.resNo}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 							  <div class="modal-dialog">
 							    <div class="modal-content">
 							      <div class="modal-header">
@@ -119,7 +133,7 @@
 							      </div>
 							    </div>
 							  </div>
-							</div>
+							</div> 
 								
 						</div>
 						<hr>					
