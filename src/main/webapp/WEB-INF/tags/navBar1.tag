@@ -27,7 +27,7 @@
         
         <sec:authorize access="isAuthenticated()" var="loggedIn"/>
         
-        <c:if test="${loggㅌedIn }">
+        <c:if test="${loggedIn }">
         <li class="nav-item">
         	<c:url value="/qna/QnaRegister" var="qnaRegisterLink"></c:url>
           <a class="nav-link ${active eq 'register' ? 'active' : '' }" href="${qnaRegisterLink }">문의하기</a>

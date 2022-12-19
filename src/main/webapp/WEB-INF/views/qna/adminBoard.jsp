@@ -30,7 +30,8 @@
 			<th>최소인원</th>
 			<th>최대인원</th>		
 			<th>허가여부</th>
-			<th>허가</th>
+			<th>승인</th>
+			<th>거부</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -51,14 +52,22 @@
 				<td>${board.b_content }</td>
 				<td>${board.min_person }</td>
 				<td>${board.max_person }</td>
-				<td>${board.b_accept }</td>		
+				<td>${board.b_accept }</td>					
 				<td>
 				<c:url value="/qna/boardAccept" var="boardAccept"></c:url>
 				<form id="boardAcceptForm" action="${boardAccept }" method="get">
 				<input type="hidden" name="num" value="${board.num}">
 				<input type="submit" id="${board.num }" class="btn btn-dark" value="승인">
 				</form>
-				</td>
+				</td>		
+				
+				<td>
+				<c:url value="/qna/boardDenied" var="boardDenied"></c:url>
+				<form id="boardDeniedForm" action="${boardDenied }" method="get">
+				<input type="hidden" name="num" value="${board.num }">
+				<input type="submit" id="${board.num }" class="btn btn-dark" value="거부">
+				</form>
+				</td>	
 			</tr>
 		</c:forEach>
 	</tbody>

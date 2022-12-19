@@ -30,6 +30,7 @@
 			<th>이메일</th>
 			<th>신청여부</th>		
 			<th>승인</th>
+			<th>거부</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -56,6 +57,13 @@
 				<form id="acceptForm"action="${accept }" method="get" >
 				<input type="hidden" name="m_ID" value="${request.m_ID }">
 				<input type="submit" id="${request.m_ID }" class="btn btn-dark" value="승인">
+				</form>
+				</td>
+				<td>
+				<c:url value="/qna/denied" var="denied"></c:url>
+				<form id="deniedForm" action="${denied }" method="get">
+				<input type="hidden" name="m_ID" value="${request.m_ID }">
+				<input type="submit" id="${request.m_ID }" class="btn btn-dark" value="거부">
 				</form>
 				</td>
 			</tr>

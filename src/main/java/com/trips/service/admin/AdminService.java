@@ -106,11 +106,7 @@ public class AdminService {
 		return mapper.updateAccept(board);
 	}
 
-	public int workList(QnaDto qna) {
-		// TODO Auto-generated method stub
-		return mapper.workList(qna);
-	}
-
+	
 	public int getQnaList() {
 		
 		return mapper.getQnaList();
@@ -124,6 +120,16 @@ public class AdminService {
 	public int getHostList() {
 		// TODO Auto-generated method stub
 		return mapper.getHostList();
+	}
+
+	public int denied(jjhMemberDto member) {
+		// TODO Auto-generated method stub
+		return mapper.denied(member);
+	}
+
+	public int boardDenied(BoardDto board) {
+		// TODO Auto-generated method stub
+		return mapper.boardDenied(board);
 	}
 
 	

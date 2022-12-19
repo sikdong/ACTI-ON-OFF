@@ -59,6 +59,15 @@ WHERE
     M_ID = #{M_ID}
 </update>
 
+<update id="denied">
+UPDATE MEMBER
+SET 
+	M_HOST_REQUEST = 0,
+	M_AUTHORITY=NULL
+WHERE
+	M_ID = #{M_ID}
+</update>
+
 <update id="updateAccept">
 UPDATE ACTI_BOARD
 SET
@@ -67,9 +76,13 @@ WHERE
 	B_NO = #{num}
 </update>
 
-<select id="workList" resultType="int">
-SELECT COUNT(Q_STATUS) FROM QNA
-</select>
+<update id="boardDenied">
+UPDATE ACTI_BOARD
+SET 
+	B_ACCEPT = 2
+WHERE 
+	B_NO = #{num}
+</update>
 
 <select id="getQnaList" resultType="int">
 SELECT 
