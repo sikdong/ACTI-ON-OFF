@@ -79,10 +79,11 @@ a {
 	</c:url>
  	<div class="ml-20" style="margin-top : 10%">
  		<a href="${getLink}"><img src="${imgUrl}/host/${list.num }/${list.fileName[0]}" alt="이미지" class="size" /></a>
- 		<div class="mt-3" style="text-align : center;">
+ 		<div class="mt-3" style="text-align : left; max-width : 250px;">
  			<a class="link" href="${getLink}">${list.title }</a>
  		</div>
- 		<div style="text-align : center;">${list.price }<small>원/1인</small></div>
+ 		<div style="text-align : left; max-width : 250px;">${list.address}</div>
+ 		<div style="text-align : left;">${list.price }<small>원/1인</small></div>
  	</div>
  	</c:forEach>
  </div>

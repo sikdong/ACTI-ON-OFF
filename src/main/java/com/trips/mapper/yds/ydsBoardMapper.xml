@@ -282,4 +282,18 @@ WHERE B_FILE_NO = #{fileNum}
 DELETE FROM CART
 WHERE B_NO = #{num}
 </delete>
+
+<select id="getResNoByBoardNum" resultType="com.trips.domain.yds.TripsBoardDto">
+SELECT 
+ 	RES_NO resNo
+FROM 
+	ACTI_BOARD b
+LEFT JOIN ACTI_RESERVATION r on b.B_NO = r.B_NO
+WHERE
+	b.B_NO = #{num}
+</select>
+
+<delete id="deleteChatRoom">
+DELETE FROM M_CHAT WHERE CHAT_ROOM = #{resNo}
+</delete>
 </mapper>

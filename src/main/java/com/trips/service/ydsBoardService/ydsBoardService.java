@@ -74,6 +74,7 @@ public class ydsBoardService {
 
 	public int removeBoard(int num) {
 		TripsBoardDto board = mapper.getBoard(num, null);
+		System.out.println(board);
 		List<String> fileNames = board.getFileName();
 		
 		if(fileNames != null) {
@@ -81,8 +82,14 @@ public class ydsBoardService {
 				deleteS3File(num, fileName);
 			}
 		}
+		List<TripsBoardDto> anotherBoards = mapper.getResNoByBoardNum(num);
+		System.out.println(anotherBoards);
+			for (TripsBoardDto anotherBoard : anotherBoards) {
+				if(anotherBoard != null) {
+				mapper.deleteChatRoom(anotherBoard.getResNo());
+			}
+		}
 		rMapper.deleteReplybyBoardId(num);
-		// TODO Auto-generated method stub
 		mapper.deleteFileByBoardNo(num);
 		mapper.deleteLikeByBoardNo(num);
 		mapper.deleteDate(num);
@@ -156,7 +163,6 @@ public class ydsBoardService {
 			String name = fileName.getOriginalFilename();
 			
 			int cnt = mapper.deleteFileByNumAndfileName(num,name);
-			System.out.println(cnt+ "개 삭제됨----------");
 			
 			mapper.insertFile(num, name);
 			

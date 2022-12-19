@@ -51,5 +51,9 @@ public interface ydsBoardMapper {
 
 	public List<TripsOrderDto> getOrderByBoardNum(int num);
 
+	public List<TripsBoardDto> getResNoByBoardNum(int num);
+
+	public void deleteChatRoom(int resNo);
+
 
 }

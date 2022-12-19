@@ -271,24 +271,36 @@ body {
 		<span> 최소 연령 : ${board.minAge}세</span>
 		<%-- <c:if test="${board.writer == userName }"> --%>
 		<div class="mt ml-5">
-			<a href="${removeLink}" class="btn btn-outline-dark btn-sm">삭제</a>
+			<a data-bs-toggle="modal" data-bs-target="#exampleModal" href="${removeLink}" class="btn btn-outline-dark btn-sm">삭제</a>
 			<a href="${modifyLink}" class="btn btn-outline-dark btn-sm">수정</a>
  		</div>
 	<%--	</c:if>	 --%>
-	<div class="img-box mt-3" >
-		<c:forEach items="${board.fileName }" var="file" begin="0" end="3">
-			<img src="${imgUrl}/host/${board.num }/${file}" class="size" alt="...">
-		</c:forEach>
-
-	</div>
-	<%--사진 더 보기 기능도 추가해야함 --%>
-	<br />
-	<div style="text-align : left"><a href="${allImages}" style="color : black;">사진 크게 보기</a></div>
-
+		<div class="img-box mt-3" >
+			<c:forEach items="${board.fileName }" var="file" begin="0" end="3">
+				<img src="${imgUrl}/host/${board.num }/${file}" class="size" alt="...">
+			</c:forEach>
 	
-
-
-	<div class="">
+		</div>
+	<br />
+		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h1 class="modal-title fs-5" id="exampleModalLabel">게시물 삭제 확인</h1>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		        게시물을 삭제하시겠습니까?
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">취소</button>
+		        <a href="${removeLink}" class="btn btn-secondary" >확인</a>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		<div style="text-align : left"><a href="${allImages}" style="color : black;">사진 크게 보기</a></div>
+		<div>
 		<div class="horizontal">
 				<div class="halfview">
 					<h4 class="ml-3 mt-40">${board.writer }님 소개</h4>
@@ -763,7 +775,13 @@ document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calenda
 
 		
 		document.querySelector("#date"+i).addEventListener("click", () => {
-			 document.querySelector("#actiDate").innerHTML="선택하신 날짜는 " + document.querySelector("#date"+i).innerHTML+"일 입니다."
+			 if(document.querySelector("#person").value != 0){
+				document.querySelector("#cartButton").disabled=false; 
+			 	document.querySelector("#actiDate").innerHTML="선택하신 날짜는 " + document.querySelector("#date"+i).innerHTML+"일 입니다."
+			 } else {
+				 document.querySelector("#cartButton").disabled=true; 
+				 document.querySelector("#actiDate").innerHTML="선택하신 날짜는 " + document.querySelector("#date"+i).innerHTML+"일 입니다."
+			 }
 			
 		
 
@@ -796,7 +814,7 @@ function addNumber(){
 	document.querySelector("#number").innerHTML++
 	document.querySelector("#person").value= document.querySelector("#number").innerHTML;
 	const people = document.querySelector("#person").value;
-	if(people > 0){
+	if(people > 0 && document.querySelector("#actiDate").innerHTML != ''){
 		document.querySelector("#cartButton").disabled=false;
 	}
 }
@@ -810,9 +828,10 @@ function substractNumber(){
 		if(document.querySelector("#person").value == 0){
 		document.querySelector("#cartButton").disabled=true;
 			
-		}
+		} 
 	}
 }
+
 
 
 <%-- 이전 달 버튼 누르면 실행 되는 함수 --%>

@@ -46,6 +46,10 @@
 	
 }
 
+.mr-3 {
+	margin-rigth : 3px;
+}
+
 a {
 	font-weight : bold;
 }
@@ -81,7 +85,8 @@ a {
 </head>
 <body>
 <my:navbar></my:navbar>
-	<div style="text-align : right;"><i class="fa-solid fa-user"></i>${name }님 안녕하세요</div>
+	<div style="text-align : right; font-size : 18px; margin-top : 10px;"><i class="fa-solid fa-user fa-1x"></i>
+	<span style="margin-left : 3px;">${name }님 안녕하세요</span></div>
  <div class="mt-100" style="text-align : center">
  	<h4>당신의 여행을 특별하게</h4>
  </div>
