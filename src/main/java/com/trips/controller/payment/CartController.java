@@ -39,6 +39,10 @@ public class CartController {
 	@Autowired
 	private jjhMemberService memberService;
 
+	@GetMapping("main")
+	public void main() {
+		
+	}
 	@GetMapping("cart")
 	@PreAuthorize("isAuthenticated()")
 	public void cart(@AuthenticationPrincipal User user,
