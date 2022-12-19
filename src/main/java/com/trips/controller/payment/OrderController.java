@@ -88,6 +88,7 @@ public class OrderController {
 			
 			int cnt1 = orderService.insertOrder(id, boardNumber, cartId, addDate, price, person, renamedFilename);
 			int cnt2 = orderService.insertRes(id, boardNumber, addDate);
+			int cnt3 = orderService.removeCart(cartId);
 		}
 		
 		model.addAttribute("opd2", opd2);

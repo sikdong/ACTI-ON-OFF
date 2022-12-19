@@ -72,7 +72,7 @@
 	
 	<div id="res" class="container-md" style="width:1500px; min-height: 1000px;">
 		
-		<strong style="padding:70px 0 43px 0;display:block">${id }님의 예약내역</strong>
+		<strong style="padding:70px 0 43px 0;display:block;font-size: 30px;">${id }님의 예약내역</strong>
 		<div class="row">
 			<div class="col">
 				<jsp:useBean id="now" class="java.util.Date" />

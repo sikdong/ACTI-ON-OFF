@@ -61,7 +61,7 @@ public class CustomConfig {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-		http.formLogin().loginPage("/jjhLogin/login").defaultSuccessUrl("/ydsBoard/list", true);
+		http.formLogin().loginPage("/jjhLogin/login").defaultSuccessUrl("/main", true);
 		
 		http.logout().logoutUrl("/jjhLogin/logout");
 		http.csrf().disable();

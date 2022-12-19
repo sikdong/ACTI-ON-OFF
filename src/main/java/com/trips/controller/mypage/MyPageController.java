@@ -164,12 +164,19 @@ public class MyPageController {
 		System.out.println(boardNo);
 		System.out.println(date);
 		int count = service.getCountByBD(boardNo, date);
+		List<Integer> cnt = service.getPerson(boardNo, date);
+		int sum=0;
+		for(int person : cnt) {
+			sum+=person;
+		}
+		
 		List<ImgDto> img = service.getImgByResNo(resNo);
 		
 		model.addAttribute("resNo", res2);
 		model.addAttribute("shorts", shorts);
 		model.addAttribute("count", count);
 		model.addAttribute("img", img);
+		model.addAttribute("sum", sum);
 	}
 	
 	@GetMapping("chat")

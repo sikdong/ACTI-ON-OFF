@@ -99,24 +99,48 @@ header{
 			</header>
 			<div style="overflow: scroll; height: 83.3%;">
 		 	 <c:forEach var="left" items="${left}">
-		 	 	<div id="messages" class="container" onclick="location.href='/mypage/hChat?chatRoom=${left.resNo}&id=${left.host}&host=${left.id}'">
+		 	 	<c:if test="${left.resNo eq chatRoom}">
+					<div id="messages" class="container" onclick="location.href='/mypage/hChat?chatRoom=${left.resNo}&id=${left.host}&host=${left.id}'"
+					style="cursor: pointer; border: solid #8AB78A;">
 		 	 		
-		 	 		<div class="item">
-			 	 		<img style="width:80px; height:80px;border-radius: 100%" 
-						src="${imgUrl }/host/${left.boardNo}/${left.fileName}">
-		 	 		</div>
-					<div class="item" style="padding-left: 20px;">
-						<div style="font-weight: bold;font-size: 22px">
-							${left.id }
+			 	 		<div class="item">
+				 	 		<img style="width:80px; height:80px;border-radius: 100%" 
+							src="${imgUrl }/host/${left.boardNo}/${left.fileName}">
+			 	 		</div>
+						<div class="item" style="padding-left: 20px;">
+							<div style="font-weight: bold;font-size: 22px">
+								${left.id }
+							</div>
+							<div>
+								${left.content}
+							</div>
+							<div style="font-size: 12px">
+								${left.date }
+							</div>
 						</div>
-						<div>
-							${left.content}
+			 	 	</div>	
+				</c:if>
+				<c:if test="${left.resNo ne chatRoom}">
+					<div id="messages" class="container" onclick="location.href='/mypage/hChat?chatRoom=${left.resNo}&id=${left.host}&host=${left.id}'">
+		 	 		
+			 	 		<div class="item">
+				 	 		<img style="width:80px; height:80px;border-radius: 100%" 
+							src="${imgUrl }/host/${left.boardNo}/${left.fileName}">
+			 	 		</div>
+						<div class="item" style="padding-left: 20px;">
+							<div style="font-weight: bold;font-size: 22px">
+								${left.id }
+							</div>
+							<div>
+								${left.content}
+							</div>
+							<div style="font-size: 12px">
+								${left.date }
+							</div>
 						</div>
-						<div style="font-size: 12px">
-							${left.date }
-						</div>
-					</div>
-		 	 	</div>	
+			 	 	</div>	
+				</c:if>
+		 	 	
 		 	 </c:forEach>
 			</div>
 		</div>
@@ -124,7 +148,9 @@ header{
 		<div class="chat_Right">
 			<header>
 				<div style="padding: 20px 0 0 30px;">
-					${host}
+					<span style="padding-right: 20px; cursor: pointer;"
+					onclick="location.href='/mypage/hostChatIntro?id=${id}'">Host Intro</span>
+					/ &nbsp;&nbsp;&nbsp;${host}
 					<span style="font-weight: normal">님과의 채팅</span>
 				</div>				
 			</header>

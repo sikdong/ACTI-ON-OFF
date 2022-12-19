@@ -157,6 +157,11 @@
 	WHERE r.B_NO = #{boardNo} AND r.DATE = #{date}
 	</select>
 	
+	<select id="getPerson" resultType="int">
+	SELECT O_PERSON FROM ACTI_ORDER
+    WHERE O_B_NO = #{boardNo} AND O_ADDDATE = #{date};
+	</select>
+	
 	<select id="getChat" resultType="com.trips.domain.mypage.ChatDto">
 	SELECT 
 		CHAT_ID chatId, 

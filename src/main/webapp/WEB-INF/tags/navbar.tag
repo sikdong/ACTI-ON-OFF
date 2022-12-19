@@ -80,12 +80,12 @@ padding: 0 15px 0 15px;
           		Activity
           	</div>
           	<div>
-          		On-line
+          		On/Off
           	</div> 
           </span>
          </a>
         </li>
-        <li class="nav-item">
+        <%-- <li class="nav-item">
          <a class="nav-link"
          href="${offLineLink }">
           <span class="font">
@@ -97,7 +97,7 @@ padding: 0 15px 0 15px;
           	</div> 
 		  </span>
          </a>
-        </li>
+        </li> --%>
         
         <sec:authorize access="not isAuthenticated()" var="logged"/>
 		<c:if test="${logged}">

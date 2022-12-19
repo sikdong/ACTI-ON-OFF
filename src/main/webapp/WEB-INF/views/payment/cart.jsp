@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags" %>
 
 <c:set var="path" value="${ pageContext.request.contextPath }"/>
 
@@ -15,25 +16,25 @@
 
 <!-- 화살표 이미지 다운받아 오는 곳 -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-
- <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage/cart.css">
- 
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage/cart.css">
   <script src="${ path }/js/jquery.min.js"></script>
   <script src="${ path }/js/cart.js"></script>
 </head>
 <body>
 
+<my:navbar></my:navbar>
+
 <section class="mypage">
-    <h2 class="title-mypage">장바구니</h2>
+    <h2 class="title-mypage" style="font-family: 'Palatino Linotype';font-weight: bold;">CART</h2>
     <div class="container">     
                 <input type="hidden" name="cmd" value="order">
                 <div class="basketdiv" id="basket">
                     <div class="row head">
                         <div class="subdiv">
-                            <div class="check">선택</div>
-                            <div class="img">이미지</div>
-                            <div class="pname">상품명</div>
-                            <div class="pname">&nbsp;날짜</div>
+                            <div class="check" style="width: 100px;">선택</div>
+                            <div class="img" style="width: 100px;">이미지</div>
+                            <div class="pname" style="width: 500px;">상품명</div>
+                            <div class="pname" style="width: 500px;">날짜</div>
                         </div>
                        <!--  <div class="subdiv">
                             <div class="basketprice">가격</div>
@@ -60,21 +61,37 @@
 								<input type="hidden" name="merchant_uid" value="" id="merchant_uid">
 
                     </div>
-                 	   <div class="row data">
+                 	   <div class="row data" style="padding-top: 10px;">
                         <div class="subdiv">
-                            <div class="check">
-                            	<input id="checkBoxes" type="checkbox" name="cart_id" value="${list.cartId}" checked="checked">&nbsp;
-                            </div>
-   
-                            <div class="img image"><img src="${imgUrl }/host/${list.boardNo}/${list.fileName}" width="60" height="60"></div>
-
-                            <div class="pname">
-                                <span>${list.title}</span>
-                            </div>
+                            <table>
+                            	<tr>
+                            		<td style="width: 90px;padding-left: 35px;">
+                            			<div class="check">
+			                            	<input id="checkBoxes" type="checkbox" name="cart_id" value="${list.cartId}" checked="checked">&nbsp;
+			                            </div>
+                            		</td>
+                            		<td style="width: 100px;">
+                            			<div class="img image"><img src="${imgUrl }/host/${list.boardNo}/${list.fileName}" width="90" height="90" style="border-radius: 10%"></div>
+                            		</td>
+                            		<td style="width: 500px;">
+                            			<div class="pname">
+			                                ${list.title}
+			                            </div>
+                            		</td>
+                            		<td style="width: 500px;">
+                            			<div class="pname">
+			                            	<span>&nbsp;${list.addDate}</span>
+			                            </div>
+                            		</td>
+                            	</tr>
+                            </table>
                             
-                            <div class="pname">
-                            	<span>&nbsp;${list.addDate}</span>
-                            </div>
+   
+                            
+
+                            
+                            
+                            
                         </div>
                         <div class="subdiv">
                             <!-- 가격 -->

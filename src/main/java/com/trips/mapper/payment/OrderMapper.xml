@@ -119,4 +119,9 @@ LEFT JOIN CART c ON o.O_CART_ID = c.CART_ID
 		WHERE c.CART_ID = #{sA}
 		GROUP BY cartId;
   	</select>
+  	
+  	<delete id="removeCart">
+  		DELETE FROM CART
+  		WHERE CART_ID = #{cartId}
+  	</delete>
   </mapper>

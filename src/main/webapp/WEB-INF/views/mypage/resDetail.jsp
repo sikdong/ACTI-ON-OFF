@@ -259,7 +259,7 @@ html, body {
 						Participants
 					</div>
 					<div class="infos">
-						${count} comming
+						${sum} comming
 					</div>
 				</div>
 			</div>
