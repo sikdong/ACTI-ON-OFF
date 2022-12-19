@@ -6,10 +6,10 @@
 <mapper namespace="com.trips.mapper.yds.ydsBoardMapper">
 <select id="getOrderByBoardNum" resultType="com.trips.domain.yds.TripsOrderDto">
 SELECT 
-	ADDDATE addDate,
-	PERSON person
-FROM CART
-WHERE B_NO = #{num}
+	O_ADDDATE addDate,
+	O_PERSON person
+FROM ACTI_ORDER
+WHERE O_B_NO = #{num}
 </select>
 <!-- 나중에 ACTI_ORDER 로 바껴야 함 -->
 

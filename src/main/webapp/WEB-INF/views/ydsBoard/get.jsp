@@ -8,6 +8,9 @@
 <html>
 <head>
 <style>
+.ml-8 {
+	margin-left : 8px;
+}
 
 .root {
 	height : 100vw;
@@ -72,10 +75,10 @@
 }
 
 .calendar {
-	height: 580px;
+	height: 590px;
   	width : 30%;
     padding: 0;
-    top : 120%;
+    top : 83%;
     margin-left: 0;
     background-color: var(--bg-color);
     font-family: var(--font);
@@ -151,7 +154,7 @@
 }
 
 .img-box {
-	width : 1600px;
+	width : 100vw;
 	display : flex;
 	flex-wrap : wrap;
 	
@@ -170,9 +173,9 @@
 
 .size {
 	
-	width : 300px;
-	height : 300px;
-	margin : 5px ;
+	width : 19vw;
+	height : 350px;
+	margin : 10px ;
 	border-radius : 10px;
 	
 }
@@ -190,19 +193,10 @@
 	margin-top : 10px !important;
 }
 
-.size1 {
-	height : 250px;
-	width : 250px; 
-	border-radius : 15px;
-	margin : 10px;
-}
 .flex-container {
 	width : 1600px;
 	display : flex;
 }
-.flex-child {
-	font-family : 'Palatino';
-} 
 
 .text-center {
 	text-align : center;
@@ -289,7 +283,7 @@ body {
 	</div>
 	<%--사진 더 보기 기능도 추가해야함 --%>
 	<br />
-	<div style="text-align : left"><a href="${allImages}" style="color : black;">사진 다 보기</a></div>
+	<div style="text-align : left"><a href="${allImages}" style="color : black;">사진 크게 보기</a></div>
 
 	
 
@@ -543,11 +537,15 @@ function getFiveFiles(){
 		for (const file of list){
 			if(file.num != ${board.num}){
 			const fileList = 
-				`<div class="flex-child">
+				`<div>
 					<a href="/ydsBoard/get?num=\${file.num}">
 						<img src="${imgUrl}/host/\${file.num }/\${file.fileName}" class="size" alt="...">
 					</a>
-					<div style="font-size : 15px;">\${file.content}</div>
+					<div class="mt-2 ml-8" style="font-size : 15px;"><strong>\${file.title}</strong></div>
+					<div class=" ml-8" style="text-align : left;">
+		 			<small>\${file.address}</small>
+		 		</div>
+		 		<div class="ml-8" style="text-align : left;">\${file.price}<small>원/1인</small></div>
 				</div>`
 			  document.querySelector(".flex-container").insertAdjacentHTML("afterbegin", fileList);
 			}
@@ -622,7 +620,6 @@ function listReply(){
 document.querySelector("#updateReplyModalButtonNum").addEventListener("click", function(){
 	const content = document.querySelector("#modifyReplyInput").value;
 	const replyNum = this.dataset.replyNum;
-	console.log(replyNum);
 	const data = {
 			content,
 			replyNum
@@ -645,7 +642,6 @@ document.querySelector("#updateReplyModalButtonNum").addEventListener("click", f
 })
 
 function removeReply(replyNum){
-	console.log(replyNum);
 	fetch(ctx+"/ydsReply/deleteReply/" + replyNum, {
 		method : "DELETE"	
 	})
@@ -717,7 +713,7 @@ const calendarFrame =
 			</div>
 			<div class="dates"></div>
 			<sec:authorize access="isAuthenticated()">
-			<div onclick="goCart()" class="btn btn-outline-secondary">장바구니 담기 <i class="fa-solid fa-cart-shopping"></i></div>
+			<input type="button" disabled value="장바구니 담기" id="cartButton" onclick="goCart()" class="btn btn-outline-secondary">
 			<small id="actiDate"></small>
 			</sec:authorize>
 			<sec:authorize access="not isAuthenticated()">
@@ -726,6 +722,7 @@ const calendarFrame =
 		</div>
 	</div>`
 document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calendarFrame)
+	
 	let prevLast = new Date(CDate.getFullYear(), CDate.getMonth(), 0);
 	let thisFirst = new Date(CDate.getFullYear(),CDate.getMonth(), 1);
 	let thisLast = new Date(CDate.getFullYear(), CDate.getMonth()+1, 0);
@@ -760,7 +757,6 @@ document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calenda
 				document.querySelector(".week").insertAdjacentHTML("afterbegin", dateDiv); 
 					dateChoice.push(document.querySelector("#date"+i).innerHTML);
 					<%--여기서부터 시작 --%>
-					console.log(dateChoice)
 				if(dateChoice[i] !== ''){
 					document.querySelector("#date"+i).setAttribute("data-full-date", year+"-"+month)
 				} 
@@ -784,13 +780,25 @@ document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calenda
 	document.querySelector("#person").value += person;
 }
 
+/* function changePeople(){
+	const people = document.querySelector("#person").value;
+	console.log(people);
+	if(people > 0){
+		document.querySelector("#cartButton").disabled=false;
+	}
+} */
 
 buildCalendar();
+/* changePeople(); */
 
 
 function addNumber(){
 	document.querySelector("#number").innerHTML++
-	document.querySelector("#person").value= document.querySelector("#number").innerHTML; 
+	document.querySelector("#person").value= document.querySelector("#number").innerHTML;
+	const people = document.querySelector("#person").value;
+	if(people > 0){
+		document.querySelector("#cartButton").disabled=false;
+	}
 }
 
 
@@ -798,8 +806,15 @@ function substractNumber(){
 	if(document.querySelector("#number").innerHTML > 0){
 		document.querySelector("#number").innerHTML--
 		document.querySelector("#person").value= document.querySelector("#number").innerHTML;
+		
+		if(document.querySelector("#person").value == 0){
+		document.querySelector("#cartButton").disabled=true;
+			
+		}
 	}
 }
+
+
 <%-- 이전 달 버튼 누르면 실행 되는 함수 --%>
 function prevCal(){
 	CDate.setMonth(CDate.getMonth()-1);
@@ -815,7 +830,8 @@ function nextCal(){
 }	
 
 function goCart(){
-	document.querySelector("#cartForm").submit();
+		document.querySelector("#cartButton").disabled = "false"
+		document.querySelector("#cartForm").submit();
 }
 
 function initMap() {

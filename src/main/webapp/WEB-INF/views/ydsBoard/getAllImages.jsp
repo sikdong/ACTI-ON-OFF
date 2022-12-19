@@ -32,8 +32,11 @@
 	</c:forEach>
   </div>
   <div class="carousel-inner">
-    <c:forEach items="${board.fileName }" var="file" varStatus="status">
-	    <div class="carousel-item active"  data-bs-interval="100000">
+  	<div class="carousel-item active"  data-bs-interval="1000000">
+		<img src="${imgUrl}/host/${board.num }/${board.fileName[0]}" class="d-block size" alt="...">
+	</div>
+    <c:forEach items="${board.fileName }" var="file" varStatus="status" begin="1">
+	    <div class="carousel-item"  data-bs-interval="1000000">
 			<img src="${imgUrl}/host/${board.num }/${file}" class="d-block size" alt="...">
 	    </div>
 	</c:forEach>
