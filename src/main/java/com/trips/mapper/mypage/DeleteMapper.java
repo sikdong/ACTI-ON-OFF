@@ -39,6 +39,12 @@ public interface DeleteMapper {
 	void removeACTI_BOARD(int b);
 
 	int removeMEMBER(String id);
+
+	void removeM_CHAT2(int resNo);
+
+	int removeACTI_RESERVATION2(int resNo);
+
+	void removeACTI_REPLY2(String id);
 	
 
 	

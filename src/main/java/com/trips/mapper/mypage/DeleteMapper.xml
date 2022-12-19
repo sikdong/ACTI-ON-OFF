@@ -86,6 +86,20 @@
 	WHERE M_ID = #{id}
 	</delete>
 	
+	<delete id="removeM_CHAT2">
+	DELETE FROM M_CHAT
+	WHERE CHAT_ROOM = #{resNo}
+	</delete>
+	
+	<delete id="removeACTI_RESERVATION2">
+	DELETE FROM ACTI_RESERVATION
+	WHERE RES_NO = #{resNo}
+	</delete>
+	
+	<delete id="removeACTI_REPLY2">
+	DELETE FROM ACTI_REPLY
+	WHERE M_ID = #{id}
+	</delete>
 </mapper>
 
 

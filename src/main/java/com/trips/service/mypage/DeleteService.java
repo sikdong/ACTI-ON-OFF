@@ -53,6 +53,8 @@ public class DeleteService {
 		}
 		
 		//Board팀 삭제
+		//Reply id로 삭제
+		dmapper.removeACTI_REPLY2(id);
 		//BoadrdId 불러오기
 		List<Integer> bId = dmapper.getBID(id);
 		
@@ -66,6 +68,14 @@ public class DeleteService {
 		
 		//본인 삭제
 		return dmapper.removeMEMBER(id);
+	}
+
+
+	public int removeR(int resNo) {
+		//chat res 삭제
+		dmapper.removeM_CHAT2(resNo);
+		
+		return dmapper.removeACTI_RESERVATION2(resNo);
 	}
 	 
 	

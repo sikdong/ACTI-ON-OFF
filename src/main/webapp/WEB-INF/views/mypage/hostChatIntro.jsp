@@ -77,8 +77,6 @@ header{
 .container {
 	display: flex;
 	/* display: inline-flex; */
-	flex-direction: row;
-    flex-wrap: wrap;
 }
 #members{
 	background-color: #FFFF8C;

@@ -130,8 +130,8 @@ function requestPay() {
  IMP.request_pay({ // param
      pg: "html5_inicis",
      pay_method: "card",
-     merchant_uid: "d17d",
-     name: "d17d",
+     merchant_uid: "d18d",
+     name: "d18d",
      /*name merchantid 정체가 뭔지 한번 넣은 값을 안되는 것 같기도*?
      /* "${opd[0].title}"+" 외 "+"${opd.size()}"+"건" */
      amount: sum,

@@ -159,7 +159,8 @@
 						<div style="padding:0 0 10px 0;">
 							<form id="emailModifyText" action="" method="post">
 								<input id="mId" type="hidden" name="id" value="${member.id}" />
-								<input id="modifyEmail" style="width:300px" type="email" name="email" placeholder="변경하실 이메일을 입력해주세요" required/> 
+								<input id="modifyEmail" onkeydown="return event.key != 'Enter'"
+								style="width:300px" type="email" name="email" placeholder="변경하실 이메일을 입력해주세요" required/> 
 								<button id="existEmailButton" type="button" class="btn btn-outline-primary" style="width:100px">중복확인</button>
 								<div id="emailText1" class="form-text">이메일 중복확인을 해주세요.</div>
 							</form>
@@ -196,7 +197,8 @@
 						<button id="hostModifyNo" type="button" class="btn btn-outline-dark" style="width:100px">수정취소</button>
 					</div>
 					<div  id="hostModifyStart">
-						<button type="button" class="btn btn-outline-dark" style="width:100px">수정</button> <br><br>
+						<button type="button" class="btn btn-outline-dark" style="width:150px"
+						onclick="location.href='/host/becomeHostIntro'">호스트 신청하기</button> <br><br>
 					</div>
 					
 					
@@ -459,7 +461,7 @@ document.querySelector("#emailModifyOk").addEventListener("click", function() {
 });
 
 
-document.querySelector("#hostModifyStart").addEventListener("click", function() {
+/* document.querySelector("#hostModifyStart").addEventListener("click", function() {
 	const change = document.querySelector("#hostModify");
 	change.style.display="block";
 	document.querySelector("#hostModifyStart").style.display="none";
@@ -471,7 +473,7 @@ document.querySelector("#hostModifyNo").addEventListener("click", function() {
 });
 document.querySelector("#hostModifyOk").addEventListener("click", function() {
 	document.querySelector("#hostModifyText").submit();
-});
+}); */
 /* --------------수정 기능 끝-------------------------------------------------------------------------------------------------- */
 /* --------------체크 유지 기능-------------------------------------------------------------------------------------------------- */ 
 const gender = "male";

@@ -49,7 +49,7 @@ public class jjhMemberController {
 	@PostMapping("signup")
 	public String signup(jjhMemberDto member, RedirectAttributes rttr) {
 			System.out.println(member);
-		  
+		  member.setM_HOST(false);
 		  int cnt = service.insert(member);
 		  
 		  //가입 잘되면 

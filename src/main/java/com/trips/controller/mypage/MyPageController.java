@@ -258,6 +258,7 @@ public class MyPageController {
 		Map<String, Object> map = new HashMap<>();
 		String id = data.getId();
 		String email = data.getEmail();
+		
 		String oldEmail = service.getEmailById(id);
 		
 		MemberDto member = service.getByEmail(email);
@@ -343,5 +344,16 @@ public class MyPageController {
 		model.addAttribute("chatRoom", chatRoom);
 		model.addAttribute("left", left);
 		
+	}
+	
+	@GetMapping("removeR")
+	@PreAuthorize("isAuthenticated()")
+	public String removeRes(
+			@RequestParam(name = "resNo") int resNo,
+			@RequestParam(name = "id") String id
+			) {
+		int remove = dservice.removeR(resNo);
+		
+		return "redirect:/mypage/reservation?id="+id;
 	}
 }
