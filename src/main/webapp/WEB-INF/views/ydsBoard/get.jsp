@@ -299,12 +299,12 @@ body {
 		<span class="ml-5">최대 인원 : ${board.maxPerson}명 /</span>
 		<span> 최소 인원 : ${board.minPerson}명 / </span>
 		<span> 최소 연령 : ${board.minAge}세</span>
-		<%-- <c:if test="${board.writer == userName }"> --%>
+		 <c:if test="${board.writer == userName }"> 
 		<div class="mt ml-5">
 			<a data-bs-toggle="modal" data-bs-target="#exampleModal" href="${removeLink}" class="btn btn-outline-dark btn-sm">삭제</a>
 			<a href="${modifyLink}" class="btn btn-outline-dark btn-sm">수정</a>
  		</div>
-	<%--	</c:if>	 --%>
+		</c:if>	 
 		<div class="img-box mt-3" >
 			<c:forEach items="${board.fileName }" var="file" begin="0" end="3">
 				<img src="${imgUrl}/host/${board.num }/${file}" class="size" alt="...">
