@@ -7,27 +7,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Insert title here</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-	crossorigin="anonymous">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-	integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
-	crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-
-
-
-
-
-</head>
-<body>
 <style>
 ._1uwb2q9 {
     -webkit-box-pack: justify !important;
@@ -231,13 +210,26 @@ html {
 }
 
 </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Insert title here</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+	integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
 
 <ul class="list-group list-group-flush">
-
-
-
-
-
 
 <my:navbar></my:navbar>
 <%-- <my:hostNav></my:hostNav> --%>
@@ -283,7 +275,7 @@ html {
 				</div>
 			</div>
 			
-			<div class="_1obfcljv" style="float:left;">
+			<div class="_1obfcljv" style="float:left;margin-right:20px;">
 				<div class="_15wuypg">
 					<a href="<c:url value="/host/admin"/>" class="_131n1yh"><div
 							class="_1uwb2q9">
@@ -297,6 +289,21 @@ html {
 							<div>
 								<div class="_4i4nwv"><b>체험 관리 </b> </div>
 								<div class="_1c02cnn">자신의 체험 관리하기</div>
+							</div>
+						</div></a>
+				</div>
+			</div>
+			
+			<div class="_1obfcljv" style="float:left;">
+				<div class="_15wuypg">
+					<a href="<c:url value='/mypage/hostChatIntro?id=${id}'/>"
+						class="_131n1yh"><div class="_1uwb2q9">
+							<div style="margin-bottom: 16px;">
+								<i class="fa-solid fa-comments fa-2x"></i>
+							</div>
+							<div>
+								<div class="_4i4nwv"><b>호스트 채팅</b> </div>
+								<div class="_1c02cnn">게스트와 채팅해보기</div>
 							</div>
 						</div></a>
 				</div>
@@ -449,6 +456,7 @@ html {
 				src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
 				integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
 				crossorigin="anonymous"></script>
+				
 </body>
 </html>
 

@@ -48,7 +48,12 @@ public class HostController {
 	private HostService hostService;
 	
 	@RequestMapping("hostPage")
-	public void hostPage() {}
+	@PreAuthorize("isAuthenticated()")
+	public void hostPage(Authentication authentication, Model model) {
+		String id = authentication.getName();
+		
+		model.addAttribute("id", id);
+	}
 	
 	@RequestMapping("listing/content2")
 	public void becomeHostIntro2(Authentication authentication,Model model) { }
