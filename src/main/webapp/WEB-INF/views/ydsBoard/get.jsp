@@ -397,7 +397,7 @@ body {
 					<div class="mt-3"> <strong>${date}일 / ${board.remain[status.index]}명 가능합니다</strong></div>
 				</c:when>
 				<c:otherwise>
-					<div><strong>${date} 일 체험은 <span class="sold-out">품절</span> 입니다</strong></div>
+					<div><strong>${date}일 체험은 <span class="sold-out">품절</span> 입니다</strong></div>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
@@ -450,9 +450,65 @@ body {
       </div>
     </div>
   </div>
-</div>	
-	
-			
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<jsp:include page="/WEB-INF/views/index.jsp" flush="true">
+	<jsp:param value="index1" name="1"/>
+</jsp:include>			
 			
 <script
 src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
@@ -872,5 +928,6 @@ function initMap() {
   window.initMap = initMap;
 
 </script>
+
 </body>
 </html>

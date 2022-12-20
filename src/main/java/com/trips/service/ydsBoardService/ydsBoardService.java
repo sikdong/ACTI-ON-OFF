@@ -95,6 +95,7 @@ public class ydsBoardService {
 		mapper.deleteDate(num);
 		mapper.deleteReservation(num);
 		mapper.deleteCartNo(num);
+		mapper.deleteOrder(num);
 		return mapper.removeBoard(num);
 	}
 	

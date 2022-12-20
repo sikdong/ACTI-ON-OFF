@@ -22,11 +22,8 @@
 	width : 90vw;
 	display : flex;
 	flex-wrap: wrap;
-	justify-content : space-between;
-	
 	
 }
-
 
 .root {
 	width : 90vw;
@@ -68,6 +65,7 @@ a {
 	display:flex !important;
 	justify-content : center !important;
 }
+
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -91,13 +89,6 @@ a {
  	<h4>당신의 여행을 특별하게</h4>
  </div>
 <div style="text-align : right; margin-right : 20px"><a style="color : black" href="/ydsBoard/getAllBoard">체험 전체 보기</a></div>
-<div class="jc-se"style="width : 100vw">
-<button class="btn">1</button>
-<button class="btn">2</button>
-<button class="btn">3</button>
-<button class="btn">4</button>
-<button class="btn">5</button>
-</div>
 <nav class="navbar navbar-expand-lg bg-white" style="width : 100vw !important">
   <div class="container-fluid">
     <div class="collapse navbar-collapse jc-c" id="navbarSupportedContent">
@@ -114,11 +105,9 @@ a {
  	<c:url value="/ydsBoard/get" var="getLink">
 		<c:param name="num" value="${list.num }" ></c:param>
 	</c:url>
-
- 	<div>
+ 	<div class="ml-20">
  		<a href="${getLink}"><img src="${imgUrl}/host/${list.num }/${list.fileName[0]}" alt="이미지" class="size" /></a>
- 		<div class="mt-2" style="text-align : left;">
-
+ 		<div class="mt-2" style="text-align : left; max-width : 240px;">
  			<a class="link" href="${getLink}">${list.title }</a>
  		</div>
  		<div class="mt-2" style="text-align : left;">
@@ -152,7 +141,7 @@ a {
 	</c:url>
  	<div class="ml-20">
  		<a href="${getLink}"><img src="${imgUrl}/host/${list.num }/${list.fileName[0]}" alt="이미지" class="size" /></a>
- 		<div class="mt-2" style="text-align : left;">
+ 		<div class="mt-2" style="text-align : left; max-width : 240px;">
  			<a class="link" href="${getLink}">${list.title }</a>
  		</div>
  		<div class="mt-2" style="text-align : left;">
@@ -162,7 +151,24 @@ a {
  	</div>
  	</c:forEach>
  </div>
-
-</div> 
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<jsp:include page="/WEB-INF/views/index.jsp" flush="true">
+	<jsp:param value="index1" name="1"/>
+</jsp:include>
 </body>
 </html>

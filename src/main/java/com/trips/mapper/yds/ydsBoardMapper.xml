@@ -4,6 +4,12 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.trips.mapper.yds.ydsBoardMapper">
+<delete id="deleteOrder">
+DELETE FROM ACTI_ORDER
+WHERE O_B_NO = #{num}
+</delete>
+
+
 <select id="getOrderByBoardNum" resultType="com.trips.domain.yds.TripsOrderDto">
 SELECT 
 	O_ADDDATE addDate,
@@ -11,7 +17,6 @@ SELECT
 FROM ACTI_ORDER
 WHERE O_B_NO = #{num}
 </select>
-<!-- 나중에 ACTI_ORDER 로 바껴야 함 -->
 
 <delete id="deleteLikeByLNO">
 DELETE FROM ACTI_LIKE WHERE B_NO = #{num} AND M_ID = #{writer}

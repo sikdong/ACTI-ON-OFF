@@ -26,7 +26,7 @@
 
 .root {
 	width : 90%;
-	margin-left : 10%;
+	margin-left : 11%;
 	margin-right : 10%;
 	box-sizing : border-box;
 }
