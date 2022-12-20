@@ -8,6 +8,19 @@
 <html>
 <head>
 <style>
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+	font-family: 'GmarketSansMedium' !important;
+}
+
+
 .ml-8 {
 	margin-left : 8px;
 }
@@ -81,7 +94,7 @@
     top : 83%;
     margin-left: 0;
     background-color: var(--bg-color);
-    font-family: var(--font);
+    font-family: 'GmarketSansMedium' !important;
     position : absolute;
     bottom : 1px;
     z-index : 1;
