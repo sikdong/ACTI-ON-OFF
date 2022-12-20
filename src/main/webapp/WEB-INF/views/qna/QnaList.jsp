@@ -27,11 +27,12 @@
 		<div class="row">
 			<div class="col">
 
+<%-- 	
 <c:if test="${not empty message }">
-	<div class="alert alert-light" role="alert">
+ 	<div class="alert alert-dark" role="alert">
 		${message }
 	</div>
-</c:if>
+</c:if> --%>
 
 <div class="mt-3">
 <h3 style="text-align:center;">고객센터</h3>
@@ -177,6 +178,5 @@
 	<jsp:param value="index1" name="1"/>
 </jsp:include>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-
 </body>
 </html>
