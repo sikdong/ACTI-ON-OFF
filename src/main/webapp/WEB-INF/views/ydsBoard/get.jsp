@@ -410,6 +410,45 @@ body {
 	<input type="hidden" name="boardnum" id="boardNum" value="${board.num}"/>	
 </form>
 
+  <div class="section-4">
+    <div class="container">
+      <div class="row mb-4 align-items-center">
+        <div class="col-6">
+          <h2 class="line-top">On&Off Premium ACTI</h2>
+        </div>
+        <div class="col-6 text-right">
+          <a href="#" class="custom-prev-v2 js-custom-prev-v2">Prev</a>
+          <span class="mx-3">/</span>
+          <a href="#" class="custom-next-v2 js-custom-next-v2">Next</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="owl-4-slider owl-carousel">
+          <div class="product">
+            <a href="${path}/ydsBoard/get?num=1112" class="d-block">
+        <img src="${path}/assets/img/about1.jpg" alt="Image" class="img-fluid" style="width: 250px; height: 300px;">
+           </a>
+            <div class="text-center text-md-left">
+              <h3>체험보드</h3>
+              <p>체험소개글</p>
+            </div>
+          </div>
+
+          <div class="product">
+            <a href="#" class="d-block">
+           <img src="${path}/assets/img/about2.jpg" alt="Image" class="img-fluid" style="width: 250px; height: 300px;">
+           </a>
+            <div class="text-center text-md-left">
+              <h3>체험보드</h3>
+              <p>체험소개글</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 

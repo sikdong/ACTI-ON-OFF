@@ -105,7 +105,8 @@ body {
 	            <a href="${getLink}" class="d-block">
 	        	<img src="${imgUrl}/host/${main.num }/${main.fileName[0]}" alt="Image" class="img-fluid" style="width: 250px; height: 300px;">
 	           </a>
-	            <div>
+	           <br>
+	            <div style="padding : 0 !important;">
 	              <div>${main.title }</div>
 	              <p>${main.address }</p>
 	              <div>${main.price }<small>원/1인</small></div>
