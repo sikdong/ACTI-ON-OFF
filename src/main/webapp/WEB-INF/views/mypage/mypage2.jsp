@@ -178,7 +178,15 @@
 					
 					
 					
-					<span class="fontA">호스트&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;<span class="fontB">${member.host }</span></span> 
+					<span class="fontA">자격&emsp;&emsp;&emsp;&emsp;&emsp;<span class="fontB">
+					
+					<c:if test="${member.authority eq null }">
+						member
+					</c:if>
+					<c:if test="${member.authority ne null }">
+						${member.authority}
+					</c:if>
+					</span></span> 
 					<div id="hostModify" style="display:none;">
 						<div style="padding:0 0 10px 0;">
 							<form id="hostModifyText" action="" method="post">

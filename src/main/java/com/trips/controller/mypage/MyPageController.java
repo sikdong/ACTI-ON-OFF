@@ -60,6 +60,7 @@ public class MyPageController {
 			) {
 		String id = user.getUsername();
 		MemberDto member = service.getById(id);
+		System.out.println(member);
 		model.addAttribute("member", member);
 	}
 	
@@ -211,6 +212,7 @@ public class MyPageController {
 	
 	
 	@PostMapping("chatAdd")
+	@PreAuthorize("isAuthenticated()")
 	@ResponseBody
 	public void chat2(
 			@RequestBody ChatAddDto chatDto,
@@ -227,6 +229,7 @@ public class MyPageController {
 	}
 	
 	@PostMapping("remove")
+	@PreAuthorize("isAuthenticated()")
 	public String remove(String id, 
 			//RedirectAttributes rttr, 
 			HttpServletRequest request)
@@ -258,6 +261,7 @@ public class MyPageController {
 
 	}
 	@PostMapping("existEmail")
+	@PreAuthorize("isAuthenticated()")
 	@ResponseBody
 	public Map<String, Object> existEmail(
 			@RequestBody IdEmailDto data
@@ -284,24 +288,29 @@ public class MyPageController {
 	
 	
 	@GetMapping("geocode")
+	@PreAuthorize("isAuthenticated()")
 	public void geocode() {
 		
 	}
 	@GetMapping("Sample")
+	@PreAuthorize("isAuthenticated()")
 	public void sample() {
 		
 	}
 	
 	@GetMapping("jusoPopup")
+	@PreAuthorize("isAuthenticated()")
 	public void jusoPopup() {
 		
 	}
 	@PostMapping("jusoPopup")
+	@PreAuthorize("isAuthenticated()")
 	public void jusoPopup2() {
 		
 	}
 	
 	@GetMapping("hostChatIntro")
+	@PreAuthorize("isAuthenticated()")
 	public void hostChatIntro(
 			@RequestParam(name = "id") String id,
 			Model model

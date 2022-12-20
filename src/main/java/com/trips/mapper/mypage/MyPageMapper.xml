@@ -12,7 +12,8 @@
 	    M_GENDER,
 	    M_PHONE,
 	    M_EMAIL,
-	    M_HOST_REQUEST
+	    M_HOST_REQUEST,
+	    M_AUTHORITY
 	FROM
 		MEMBER
 	WHERE
@@ -27,6 +28,7 @@
 		<result column="M_PHONE" property="phone"/>
 		<result column="M_EMAIL" property="email"/>
 		<result column="M_HOST_REQUEST" property="host"/>
+		<result column="M_AUTHORITY" property="authority"/>
 	</resultMap>
 	
 	<update id="update">

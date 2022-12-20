@@ -129,7 +129,7 @@
 		
 		<div class="row no-gutters" style="text-align: center; margin: 80px 0;">
 			<h1 class="page-header" style="font-weight: bold;">결제수단 확인</h1>
-			<div style="text-align: center;">
+			<div style="text-align: center;font-size: 20px;">
 				<input type="radio" name="cal_info" value="card" checked><label>&nbsp;카드 결제</label>
 			</div>
 			<hr>
