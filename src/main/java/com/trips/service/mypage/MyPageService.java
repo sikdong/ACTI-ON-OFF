@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.trips.domain.mypage.ChatDto;
 import com.trips.domain.mypage.ChatLeftDto;
@@ -16,7 +17,10 @@ import com.trips.domain.mypage.Res1Dto;
 import com.trips.domain.mypage.Res2Dto;
 import com.trips.mapper.mypage.MyPageMapper;
 
+import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.model.ObjectCannedACL;
+import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 
 @Service
 @Transactional
@@ -124,4 +128,42 @@ public class MyPageService {
 		return mapper.getPerson(boardNo, date);
 	}
 
+	public int insertDB(String id, MultipartFile file) {
+		
+		int cnt = 0;
+		if(file != null) {
+			System.out.println(file.getOriginalFilename());	
+			
+			cnt = mapper.insertDB(id , file.getOriginalFilename());
+			
+			uploadFile(id, file);
+		}
+			
+		return cnt;
+	}
+	
+	private void uploadFile(String id, MultipartFile file) {
+		try {
+			// S3에 파일 저장
+			// 키 생성
+			String key = "trips/mypage/" + id + "/" + file.getOriginalFilename();
+			
+			// putObjectRequest
+			PutObjectRequest putObjectRequest = PutObjectRequest.builder()
+					.bucket(bucketName)
+					.key(key)
+					.acl(ObjectCannedACL.PUBLIC_READ)
+					.build();
+			
+			// requestBody
+			RequestBody requestBody = RequestBody.fromInputStream(file.getInputStream(), file.getSize());
+			
+			// object(파일) 올리기
+			s3Client.putObject(putObjectRequest, requestBody);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+	}
 }

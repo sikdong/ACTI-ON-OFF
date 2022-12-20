@@ -189,7 +189,7 @@ div {
 						<input hidden required="required" type="text" class="form-control" name="address2" id="address2" placeholder="주소찾기 버튼을 통해 입력해주세요">
 						<input hidden required="required" type="text" class="form-control" name="addressLL" id="addressLL" placeholder="주소찾기 버튼을 통해 입력해주세요">
 						<div style="display: flex">
-							<input required="required" type="text" class="form-control" style="width: 1205px"
+							<input readonly="readonly" required="required" type="text" class="form-control" style="width: 1205px"
 							name="address" id="address" placeholder="주소찾기 버튼을 통해 입력해주세요">
 							<button id="addressSubmitButton" type="button" class="btn btn-primary" style="width:90px">주소찾기</button>
 						</div>

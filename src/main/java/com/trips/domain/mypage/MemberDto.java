@@ -12,4 +12,5 @@ public class MemberDto {
 	private String email;
 	private boolean host;
 	private String authority;
+	private String profile;
 }

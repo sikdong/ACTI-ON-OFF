@@ -85,6 +85,15 @@ header{
 	padding: 5px 10px 5px 10px;
 	margin: 10px 10px 10px 10px;
 }
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+} 
+body {
+ font-family: 'NanumSquareNeo-Variable','Palatino Linotype' !important; 
+} 
 </style>
 <!-- <meta http-equiv="refresh" content="30" > -->
 <meta charset="UTF-8">
@@ -109,8 +118,14 @@ header{
 		 	 	<div id="messages" class="container" onclick="location.href='/mypage/hChat?chatRoom=${left.resNo}&id=${left.host}&host=${left.id}'">
 		 	 		
 		 	 		<div class="item">
-			 	 		<img style="width:80px; height:80px;border-radius: 100%" 
-						src="${imgUrl }/host/${left.boardNo}/${left.fileName}">
+			 	 		<c:if test="${left.fileName eq null }">
+			 	 				<img style="width:80px; height:80px;border-radius: 100%" 
+								src="${imgUrl }/mypage/ico_21.png">
+			 	 			</c:if>
+			 	 			<c:if test="${left.fileName ne null }">
+					 	 		<img style="width:80px; height:80px;border-radius: 100%" 
+								src="${imgUrl }/mypage/${left.id}/${left.fileName}">			 	 			
+			 	 			</c:if>
 		 	 		</div>
 					<div class="item" style="padding-left: 20px;">
 						<div style="font-weight: bold;font-size: 22px">

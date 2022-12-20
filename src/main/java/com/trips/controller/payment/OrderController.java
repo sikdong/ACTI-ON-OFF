@@ -67,7 +67,6 @@ public class OrderController {
 
 		
 	@GetMapping("/payment/orderResult")
-	@PreAuthorize("isAuthenticated()")
 	public void saveOrderResult(
 			@RequestParam(value="selectedArr", required = false) int[] selectedArr,
 			Model model
@@ -91,7 +90,6 @@ public class OrderController {
 	}
 	
 	@PostMapping("/payment/orderResult")
-	@PreAuthorize("isAuthenticated()")
 	public void saveOrderR(
 			@RequestBody ArrayList<Integer> selectedArr
 			){
