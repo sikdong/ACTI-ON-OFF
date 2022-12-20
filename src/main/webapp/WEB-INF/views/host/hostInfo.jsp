@@ -442,18 +442,18 @@ input {
 
 <br>
 				<center>
-					<h2>호스트 정보 수정</h2>
+					<h2>호스트 ${host.m_id }님의 정보 수정</h2>
 				</center>
 <br>
 
 
 
-
+ 
 				<form action="" method="post" enctype="multipart/form-data">
 					호스트 아이디 <br> <input type="text" style='text-align:center' value="${host.m_id }" name="m_id" readonly>
 					<br> <br>
-<%-- 					호스트 승인여부 <br> <input type="text" value="${member.authority }" name="m_id" readonly> --%>
-<!-- 					<br> <br> -->
+					호스트 승인여부 <br> <input type="text" style='text-align:center' value="${auth }" name="m_id" readonly>
+					<br> <br>
 					<%-- 이미지 출력 디비는 스트링일뿐.--%>
 					호스트의 전문 분야 <br> <input type="text"  style='text-align:center' value="${host.h_field }"
 						name="h_field" readonly> <br> <br>

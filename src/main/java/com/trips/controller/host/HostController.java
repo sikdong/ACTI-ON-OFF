@@ -124,7 +124,15 @@ public class HostController {
 		Host host = hostService.hostInfo(authentication.getName());
 		System.out.println(host+"@@2222");
 		model.addAttribute("host", host);
-		System.out.println(host);
+		
+		if(host.getM_authority().equals("host")) {
+			System.out.println(host.getM_authority()=="host"+"3211");
+			model.addAttribute("auth","호스트입니다");
+		}if(host.getM_authority()=="hostRequest") {
+			System.out.println(host.getM_authority().equals("host"));
+			model.addAttribute("auth","호스트 승인 대기중입니다");
+		}
+		
 		return null;
 	}
 

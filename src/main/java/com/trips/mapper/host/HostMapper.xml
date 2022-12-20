@@ -45,7 +45,10 @@
 <!-- select b_id from ACTI_BOARD</select> -->
 
 <select id="hostInfo" resultType="com.trips.domain.host.Host">
-	select m_id, h_experience,h_field,h_introduction, h_photo from ACTI_HOST where m_id= #{m_id}
+	select h.m_id, h_experience,h_field,h_introduction, h_photo, m_authority 
+	from ACTI_HOST h left join MEMBER m 
+	on h.m_id=m.m_id
+	where h.m_id= #{m_id}
 </select>
 
 <update id="hostInfoModify" >
