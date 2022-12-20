@@ -410,19 +410,6 @@ body {
 	<input type="hidden" name="boardnum" id="boardNum" value="${board.num}"/>	
 </form>
 
-  <div class="section-4">
-    <div class="container">
-      <div class="row mb-4 align-items-center">
-        <div class="col-6">
-          <h2 class="line-top">On&Off Premium ACTI</h2>
-        </div>
-        <div class="col-6 text-right">
-          <a href="#" class="custom-prev-v2 js-custom-prev-v2">Prev</a>
-          <span class="mx-3">/</span>
-          <a href="#" class="custom-next-v2 js-custom-next-v2">Next</a>
-        </div>
-      </div>
-
 
 
 
@@ -559,10 +546,9 @@ body {
 src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
 integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
 crossorigin="anonymous"></script>
- <script
-  src="https://maps.googleapis.com/maps/api/js?callback=initMap&v=weekly"
-  defer
-></script>
+<script async
+    src="https://maps.googleapis.com/maps/api/js?callback=initMap">
+</script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://npmcdn.com/flatpickr/dist/l10n/ko.js"></script>
 <script>
