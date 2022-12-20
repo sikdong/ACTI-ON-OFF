@@ -44,6 +44,7 @@ SELECT
 	b.MAP_TEXT address
 FROM ACTI_BOARD b
 LEFT JOIN ACTI_FILE f on f.B_NO = b.B_NO
+WHERE b.B_ACCEPT = 1
 GROUP BY b.B_NO
 ORDER BY b.B_NO DESC;
 </select>
@@ -79,6 +80,7 @@ LEFT JOIN ACTI_FILE f on f.B_NO = b.B_NO
 <if test="address != null">
 OR b.MAP_TEXT LIKE #{address} 
 </if>
+AND b.B_ACCEPT = 1
 </trim> 
 </where>
 GROUP BY b.B_NO
@@ -114,6 +116,7 @@ SELECT
 	b.MAP_TEXT address
 FROM ACTI_BOARD b
 LEFT JOIN ACTI_FILE f on f.B_NO = b.B_NO
+WHERE b.B_ACCEPT = 1
 GROUP BY b.B_NO
 ORDER BY b.B_NO DESC
 LIMIT 4; 
@@ -157,7 +160,7 @@ LEFT JOIN ACTI_FILE f ON b.B_NO = f.B_NO
 LEFT JOIN ACTI_DATE d ON b.B_NO = d.B_NO
 LEFT JOIN ACTI_ORDER o ON b.B_NO = o.O_B_NO
 LEFT JOIN ACTI_HOST h ON b.M_ID = h.M_ID
-WHERE b.B_NO = #{num}
+WHERE b.B_NO = #{num} AND b.B_ACCEPT = 1
 </select>
 
 <resultMap type="com.trips.domain.yds.TripsBoardDto" id="boardMap">
@@ -269,7 +272,7 @@ SELECT
 	B_FILENAME fileName,
 	B_FILE_NO fileNum
 FROM ACTI_FILE
-WHERE B_NO = #{num}	
+WHERE B_NO = #{num}	AND B_ACCEPT = 1
 	
 </select>
 	<resultMap type="com.trips.domain.yds.TripsOrderDto" id="modifyFileMap">
@@ -295,7 +298,7 @@ FROM
 	ACTI_BOARD b
 LEFT JOIN ACTI_RESERVATION r on b.B_NO = r.B_NO
 WHERE
-	b.B_NO = #{num}
+	b.B_NO = #{num} 
 </select>
 
 <delete id="deleteChatRoom">

@@ -423,32 +423,6 @@ body {
         </div>
       </div>
 
-      <div>
-        <div class="owl-4-slider owl-carousel">
-          <div class="product">
-            <a href="${path}/ydsBoard/get?num=1112" class="d-block">
-        <img src="${path}/assets/img/about1.jpg" alt="Image" class="img-fluid" style="width: 250px; height: 300px;">
-           </a>
-            <div class="text-center text-md-left">
-              <h3>체험보드</h3>
-              <p>체험소개글</p>
-            </div>
-          </div>
-
-          <div class="product">
-            <a href="#" class="d-block">
-           <img src="${path}/assets/img/about2.jpg" alt="Image" class="img-fluid" style="width: 250px; height: 300px;">
-           </a>
-            <div class="text-center text-md-left">
-              <h3>체험보드</h3>
-              <p>체험소개글</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
 
 
 
