@@ -39,20 +39,20 @@ a{
 	<div class="row" align="center">
 		<div class="col-xs-6 col-sm-4 thum">
 		<a href="${qnaListLink}">
-			<div><i class="fas fa-solid fa-file"></i></div>
+			<div><i class="fas fa-solid fa-file fa-2x"></i></div>
 			<span>게시판 관리  <span class="badge bg-secondary text-wrap">+${qna}</span></span>		
 		</a>	
 		</div>
 		<div class="col-xs-6 col-sm-4 thum">
 		<a href="${adminBoardLink}">
-			<div><i class="fas fa-light fa-clipboard"></i></div>
+			<div><i class="fas fa-light fa-clipboard fa-2x"></i></div>
 			<span>게시물 관리  <span class="badge bg-secondary text-wrap">+${board }</span></span>
 		</a>
 		</div>
 		<div class="col-xs-6 col-sm-4 thum">
 		<a href="${adminLink}">
 		<div>
-		<i class="fas fa-regular fa-users">
+		<i class="fas fa-regular fa-users fa-2x">
 		</i></div>
 			<span>호스트 관리  <span class="badge bg-secondary text-wrap">+${host}</span></span>
 		</a>

@@ -61,6 +61,23 @@
 	WHERE M_ID = #{id}
 	</select>
 	
+	<delete id="removeACTI_ORDER2">
+	DELETE FROM ACTI_ORDER
+	WHERE O_B_NO = #{b}
+	</delete>
+	<delete id="removeACTI_FILE2">
+	DELETE FROM ACTI_FILE
+	WHERE B_NO = #{b}
+	</delete>
+	<delete id="removeCART2">
+	DELETE FROM CART
+	WHERE B_NO = #{b}
+	</delete>
+	<delete id="removeACTI_RESERVATION3">
+	DELETE FROM ACTI_RESERVATION
+	WHERE B_NO = #{b}
+	</delete>
+	
 	<delete id="removeACTI_LIKE">
 	DELETE FROM ACTI_LIKE
 	WHERE B_NO = #{b}
@@ -99,6 +116,17 @@
 	<delete id="removeACTI_REPLY2">
 	DELETE FROM ACTI_REPLY
 	WHERE M_ID = #{id}
+	</delete>
+	
+	<select id="getCID" resultType="int">
+	SELECT RES_NO
+	FROM ACTI_RESERVATION
+	WHERE B_NO = #{b}
+	</select>
+	
+	<delete id="removeM_CHAT3">
+	DELETE FROM M_CHAT
+	WHERE CHAT_ROOM = #{c}
 	</delete>
 </mapper>
 

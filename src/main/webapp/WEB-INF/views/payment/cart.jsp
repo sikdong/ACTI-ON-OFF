@@ -3,37 +3,58 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags" %>
 
 <c:set var="path" value="${ pageContext.request.contextPath }"/>
 
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+.fix {
+  background-color:rgb(60, 60, 60) !important;	
+  width:100%;
+  position:fixed !important;
+  animation: down 0.5s ease !important;
+}
+
+@keyframes down {
+  0%{
+    transform: translateY(-50px)
+  }
+  100%{
+    transform: translateY(0px)
+  }
+}
+</style>
 <meta charset="UTF-8">
 <title>장바구니</title>
 
 
 <!-- 화살표 이미지 다운받아 오는 곳 -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-
- <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage/cart.css">
- 
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage/cart.css">
   <script src="${ path }/js/jquery.min.js"></script>
   <script src="${ path }/js/cart.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
+<my:navbar></my:navbar>
+<my:Cart></my:Cart>
 <section class="mypage">
-    <h2 class="title-mypage">장바구니</h2>
-    <div class="container">     
+    
+    <div class="container" style="padding-top: 20px;min-height: 1000px;">     
                 <input type="hidden" name="cmd" value="order">
                 <div class="basketdiv" id="basket">
                     <div class="row head">
-                        <div class="subdiv">
-                            <div class="check">선택</div>
-                            <div class="img">이미지</div>
-                            <div class="pname">상품명</div>
-                            <div class="pname">&nbsp;날짜</div>
+                        <div class="subdiv" style="background-color: #FFEAD0;">
+                            <div class="check" style="width: 100px;font-weight: bold;">선택</div>
+                            <div class="img" style="width: 100px;font-weight: bold;">이미지</div>
+                            <div class="pname" style="width: 270px;font-weight: bold;">상품명</div>
+                            <div class="pname" style="width: 270px;font-weight: bold;">날짜</div>
+                            <div class="pname" style="width: 270px;font-weight: bold;">인원</div>
                         </div>
                        <!--  <div class="subdiv">
                             <div class="basketprice">가격</div>
@@ -60,21 +81,39 @@
 								<input type="hidden" name="merchant_uid" value="" id="merchant_uid">
 
                     </div>
-                 	   <div class="row data">
+                 	   <div class="row data" style="padding-top: 10px;">
                         <div class="subdiv">
-                            <div class="check">
-                            	<input id="checkBoxes" type="checkbox" name="cart_id" value="${list.cartId}" checked="checked">&nbsp;
-                            </div>
-   
-                            <div class="img image"><img src="${imgUrl }/host/${list.boardNo}/${list.fileName}" width="60" height="60"></div>
-
-                            <div class="pname">
-                                <span>${list.title}</span>
-                            </div>
-                            
-                            <div class="pname">
-                            	<span>&nbsp;${list.addDate}</span>
-                            </div>
+                            <table>
+                            	<tr>
+                            		<td style="width: 90px;padding-left: 35px;">
+                            			<div class="check">
+			                            	<input id="checkBoxes" type="checkbox" name="cart_id" value="${list.cartId}" checked="checked">&nbsp;
+			                            </div>
+                            		</td>
+                            		<td style="width: 100px;padding-left: 30px;">
+                            			<div class="img image"><img src="${imgUrl }/host/${list.boardNo}/${list.fileName}" width="90" height="90" style="border-radius: 10%"></div>
+                            		</td>
+                            		<td style="width: 320px;text-align-last:left;padding-left: 100px;font-weight: bold;
+                            			font-size: 16px; ">
+                            			<div class="pname">
+			                                ${list.title}
+			                            </div>
+                            		</td>
+                            		<td style="width: 270px;text-align-last:left;padding-left: 60px;">
+                            			<div class="pname">
+			                            	<span>&nbsp;${list.addDate}</span>
+			                            </div>
+                            		</td>
+                            		<td style="width: 270px;text-align-last:left;padding-left: 60px;">
+                            			<div class="pname">
+                            				<span>&nbsp;${list.person}명</span>
+                            			</div>
+                            		</td>
+                            		<td style="padding-top: 20px; font-size: 18px; color: #000069; font-weight: bold;">
+                            			 <div id="sum_p_price">합계금액: ${list.price * list.person}원</div>
+                            		</td>
+                            	</tr>
+                            </table>          
                         </div>
                         <div class="subdiv">
                             <!-- 가격 -->
@@ -99,9 +138,6 @@
                     </div>                      
                
          		<input hidden type="text" name="person" value="${list.person}"/>
-                <div class="bigtext right-align sumcount" id="sum_p_num">상품인원수: ${list.person}</div> 
-                <div class="bigtext right-align box blue summoney" id="sum_p_price">합계금액: ${list.price * list.person}원</div>
- 
       			</c:forEach>				
 			</form>
 				
@@ -114,10 +150,10 @@
 				<div id="goorder">
                     <div class="clear"></div>
                     <div class="buttongroup center-align cmd">
-                        <button class="btn btn-default order_btn" id="paymentSubmit"
+                        <button class="btn btn-success" style="border-radius: 5%;" id="paymentSubmit"
                         onclick="sendNextCartId()">결제하기</button>
                         
-                        <button id="keepShopping" class="btn btn-default btn-back_to_shop"
+                        <button id="keepShopping" class="btn btn-outline-success" style="border-radius: 5%;"
                         onclick="location.href='/ydsBoard/list'" >쇼핑 계속하기</button>
                     </div>
                 </div>
@@ -125,7 +161,7 @@
 	    
 	  </div> 
 </section>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 	<script>
 		/* $("#keepShopping").click(function() {
 			history.back();
@@ -278,7 +314,25 @@
 				}
     	
     	
-	
+			/* --------------sticky navbar scroll 기능-------------------------------------------------------------------------------------------------- */
+			function navigo (){
+			  const header = document.querySelector('#nav2'); //헤더부분획득
+			  const headerheight = header.clientHeight;//헤더높이
+			document.addEventListener('scroll', onScroll, { passive: true });//스크롤 이벤트
+			 function onScroll () {
+			     const scrollposition = pageYOffset;//스크롤 위치
+			   const nav = document.querySelector('#nav');//네비게이션
+			   if (headerheight<=scrollposition){//만약 헤더높이<=스크롤위치라면
+			     nav.classList.add('fix')//fix클래스를 네비에 추가
+			   }
+			   else {//그 외의 경우
+			     nav.classList.remove('fix');//fix클래스를 네비에서 제거
+			   }
+			 } 
+			}
+			navigo()
+			/* --------------sticky navbar scroll 기능 끝-------------------------------------------------------------------------------------------------- */
+
 	</script>
 </body>
 </html>

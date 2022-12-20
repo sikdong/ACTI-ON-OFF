@@ -234,7 +234,7 @@ html, body {
 			<div id="goToChat" style="display:flex;">
 				<i id="icon_base" class="fa-regular fa-message fa-2x" style="padding-top: 20px"></i>
 				<div id="description">
-					<div style="font-weight: bold;">
+					<div style="font-weight: bold;cursor: pointer; ">
 						Message your host
 					</div>
 					<div class="infos">
@@ -259,7 +259,7 @@ html, body {
 						Participants
 					</div>
 					<div class="infos">
-						${count} comming
+						${sum} comming
 					</div>
 				</div>
 			</div>
@@ -286,7 +286,7 @@ html, body {
 					<div style="font-weight: bold;">
 						Description
 					</div>
-					<div id="open">
+					<div id="open" style="cursor: pointer;">
 						<div class="infos">
 						${shorts }... 
 							<span style="color: black;">

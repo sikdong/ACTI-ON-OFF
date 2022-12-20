@@ -15,7 +15,7 @@ background-color:black;
  background-color:black;
  height:80px;
  margin:0 0 0 0 !important;
-
+ z-index:1;
 }
 .container-md{
  padding:0 0 0 100px; 
@@ -44,12 +44,11 @@ padding: 0 15px 0 15px;
 <c:url value="/offline/on" var="offLineLink" />
 <c:url value="/jjhLogin/login" var="logInLink" />
 <c:url value="/jjhLogin/signup" var="signUpLink" />
-<c:url value="/home" var="mainLink" />
+<c:url value="/main" var="mainLink" />
 <c:url value="/jjhLogin/logout" var="logOutLink" />
 
-<c:url value="/host/hostInfo" var="hostInfo" />
+<c:url value="/host/hostPage" var="hostPage" />
 <c:url value="/host/becomeHostIntro" var="becomeHostIntro" />
-<%-- <c:url value="/host/becomeHostIntro" var="hostLink" /> --%>
 <c:url value="/qna/adminMain" var="adminMainLink"/>
 
 
@@ -80,12 +79,12 @@ padding: 0 15px 0 15px;
           		Activity
           	</div>
           	<div>
-          		On-line
+          		On/Off
           	</div> 
           </span>
          </a>
         </li>
-        <li class="nav-item">
+        <%-- <li class="nav-item">
          <a class="nav-link"
          href="${offLineLink }">
           <span class="font">
@@ -97,7 +96,7 @@ padding: 0 15px 0 15px;
           	</div> 
 		  </span>
          </a>
-        </li>
+        </li> --%>
         
         <sec:authorize access="not isAuthenticated()" var="logged"/>
 		<c:if test="${logged}">
@@ -138,12 +137,13 @@ padding: 0 15px 0 15px;
         </li>
         
          <li class="nav-item">
-             <sec:authorize access=" not hasAuthority('host')">
-          <a class="nav-link"  href="${becomeHostIntro}"> <span class="font">Host Page</span></a>
+             <sec:authorize access=" not hasAnyAuthority('host','hostRequest')">
+          <a class="nav-link"  href="${becomeHostIntro}"> <span class="font">Become Host</span></a>
           </sec:authorize>
-          <sec:authorize access="hasAuthority('host')">
-          <a class="nav-link"  href="${hostInfo}"> <span class="font">Host Page</span></a>
+          <sec:authorize access="hasAnyAuthority('host','hostRequest')">
+          <a class="nav-link"  href="${hostPage}"> <span class="font">Host Page</span></a>
           </sec:authorize>
+          
         </li>
         
         <sec:authorize access="hasAuthority('admin')">

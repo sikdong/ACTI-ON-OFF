@@ -28,6 +28,8 @@ public interface OrderMapper {
 
 	public OrderPageDto getInfo(int sA);
 
+	public int removeCart(int cartId);
+
 
 	
 }

@@ -59,4 +59,8 @@ public class OrderServiceImpl implements OrderService {
 	public OrderPageDto getInfo(int sA) {
 		return mapper.getInfo(sA);
 	}
+	@Override
+	public int removeCart(int cartId) {
+		return mapper.removeCart(cartId);
+	}
 }

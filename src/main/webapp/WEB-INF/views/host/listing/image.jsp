@@ -48,14 +48,13 @@
 <body>
 	<my:navbar></my:navbar>
 
-	<my:hostNav></my:hostNav>
 
 
 
 
 
 
-	<div class="container-md">
+<div class="container" align="center"style="margin-right:;">
 		<div class="row">
 			<div class="col">
 
@@ -66,9 +65,10 @@
 					<br> <br>
 
 					<div class="mb-3" id='image_preview'>
-						<label for="" class="form-label">체험을 가장 잘 표현할 수 있는 이미지를
-							올려주세요</label> <input id="btnAtt" multiple type="file" accept="image/*"
-							class="form-control" name="files"> <br>
+						<label for="" class="form-label"><b>* 체험을 가장 잘 표현할 수 있는 이미지를
+							올려주세요</b> </label> 
+							<br><input id="btnAtt" multiple type="file" accept="image/*"
+							name="files"> <br><br>
 						<div id='att_zone'
 							data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요.(사진은 최대 4개)'></div>
 						<!-- 					<input type="file" onchange="readURL(this);">  -->
@@ -83,10 +83,10 @@
 					<!-- 							data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요'></div> -->
 					<!-- 					</div> -->
 
-					<br> <br> 체험을 진행할 날짜를 선택해주세요 <br> <input type="text"
+				<br> <br><b> * 체험을 진행할 날짜를 선택해주세요 </b> <br><br>  <input type="text"
 						id="ttt1" value="날짜 선택하기" name="date"> <br> <br>
-					<input id="submitButton1" class="btn btn-dark" type="submit"
-						value="등록">
+						<br><input id="submitButton1" class="btn btn-dark" type="submit"
+						value="체험 등록">
 
 
 
@@ -95,7 +95,7 @@
 			</div>
 		</div>
 	</div>
-
+	</div>
 	
 	
 	

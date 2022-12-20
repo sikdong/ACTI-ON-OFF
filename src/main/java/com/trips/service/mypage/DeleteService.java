@@ -59,6 +59,16 @@ public class DeleteService {
 		List<Integer> bId = dmapper.getBID(id);
 		
 		for(int b : bId) {
+			dmapper.removeACTI_ORDER2(b);
+			dmapper.removeACTI_FILE2(b);
+			dmapper.removeCART2(b);
+			
+			List<Integer> cId = dmapper.getCID(b);
+			for(int c : cId) {
+				dmapper.removeM_CHAT3(c);
+			}
+			
+			dmapper.removeACTI_RESERVATION3(b);
 			dmapper.removeACTI_LIKE(b);
 			dmapper.removeACTI_FILE(b);
 			dmapper.removeACTI_DATE(b);

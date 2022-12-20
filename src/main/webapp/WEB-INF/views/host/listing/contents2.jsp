@@ -20,6 +20,23 @@
 
 <my:hostStyle></my:hostStyle>
 <style>
+      div {
+        width: 100%;
+        height: 500px;
+        border: 1px solid #003458;
+      }
+      div.left {
+        width: 30%;
+        float: left;
+        box-sizing: border-box;
+        background: #8977ad;
+      }
+      div.right {
+        width: 70%;
+        float: right;
+        box-sizing: border-box;
+        background: #ece6cc;
+      }
 .button {
 	border: none;
 	color: blck;
@@ -158,9 +175,16 @@ cursor: pointer;
 
 </div>
 </div>
+    <div>
+      <div class="left">
+        왼쪽
+      </div>
+      <div class="right">
+        오른쪽
+      </div>
+    </div>
 </body>
 </html>
-
 
 
 

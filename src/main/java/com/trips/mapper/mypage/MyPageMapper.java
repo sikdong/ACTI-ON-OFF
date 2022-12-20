@@ -50,4 +50,6 @@ public interface MyPageMapper {
 
 	List<ChatLeftDto> getChatLeft2(String id);
 
+	List<Integer> getPerson(int boardNo, String date);
+
 }

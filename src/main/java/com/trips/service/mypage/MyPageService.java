@@ -120,4 +120,8 @@ public class MyPageService {
 		return mapper.getChatLeft2(id);
 	}
 
+	public List<Integer> getPerson(int boardNo, String date) {
+		return mapper.getPerson(boardNo, date);
+	}
+
 }

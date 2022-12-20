@@ -28,6 +28,8 @@ public interface OrderService {
 
 	public OrderPageDto getInfo(int sA);
 
+	public int removeCart(int cartId);
+
 	
 
 

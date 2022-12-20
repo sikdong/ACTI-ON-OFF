@@ -12,4 +12,5 @@ public class Host {
 	//private String h_photo;
 	private String h_photo;
 	private String h_field;
+	private String m_authority;
 }

@@ -45,7 +45,7 @@ div {
 
 </head>
 <body>
-	<my:hostNav></my:hostNav>
+	
 	<br>
 	<br>
 	<!-- 체험주제가 호스트 전문분야와 다를 경우 관리자의 승인이 필요합니다. -->

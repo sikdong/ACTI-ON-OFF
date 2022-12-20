@@ -46,7 +46,6 @@ div {
 
 </head>
 <body>
-	<my:hostNav></my:hostNav>
 
 
 
@@ -106,6 +105,33 @@ div {
 	background: #ccc;
 	cursor: pointer;
 }
+
+
+
+
+
+
+      div.row {
+        width: 100%;
+        display: flex;
+      
+      }
+      div.left {
+        width: 10%;
+        float: left;
+        box-sizing: border-box;
+        background-color: 
+      }
+      div.right {
+        width: 90%;
+        float: right;
+        box-sizing: border-box;
+        
+      }
+
+
+
+
 </style>
 
 </head>
@@ -118,11 +144,12 @@ div {
 <body onload="initialize()">
 	<!-- (@RequestParam (required=false) String b_title, String b_content, -->
 	<!-- 										 int cost, int min_person, int min_age ) -->
-	<div class="container-md">
+<!-- 	<div class="container" align="center"> -->
+	<div class="container-md right"  style="margin-right:100px;" >
 		<div class="row">
 			<div class="col">
-				
-				<h3>호스트할 체험의 상세 내용을 작성해주세요</h3>
+				<br>
+				<h3>호스트할 체험의 상세 내용을 작성해주세요</h3><br>
 				<form action="" method="post"
 					enctype="multipart/form-data">
 					<div class="mb-3">
@@ -168,8 +195,8 @@ div {
 						</div>
 					</div>
 					
-					<input id="submitButton1" class="btn btn-dark" type="submit"
-						value="등록">
+					<center><input id="submitButton1" class="btn btn-dark" type="submit"
+						value="다음"></center>
 
 
 

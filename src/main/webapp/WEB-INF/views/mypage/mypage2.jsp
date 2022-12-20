@@ -14,6 +14,7 @@
 	font-family: "Malgun Gothic";
 	font-weight: bold;
 	padding: 0 0 10px 0; 
+	font-size: 20px;
 }
 .fontB{
 	color: rgba(0,0,0,0.56);
@@ -48,9 +49,12 @@
 	<my:navbar></my:navbar>
 	<my:navbar-mypage></my:navbar-mypage>
 	
-	<div class="container-md" style="width:800px">
+	<div class="container-md" style="width:800px;
+	border-left : solid #d2d2d2;
+	border-right : solid #d2d2d2;
+  	">
 		
-		<strong style="padding:170px 0 43px 0;display:block">${member.id }님의 정보 수정</strong>
+		<strong style="padding:80px 0 43px 0;display:block;font-size: 30px;">${member.id }님의 정보 수정</strong>
 		<div class="row">
 			<div class="col">
 					
@@ -71,7 +75,7 @@
 					 
 					<br><br>
 				
-					<span class="fontA">비밀번호&emsp;&emsp;&emsp;<span class="fontB">${member.password }</span></span>
+					<span class="fontA">비밀번호&emsp;&emsp;&emsp;<span class="fontB"></span></span>
 					<div id="pwModify" style="display:none;">
 						<div style="padding:0 0 10px 0;">
 							<form id="pwModifyText" action="" method="post">
@@ -202,7 +206,8 @@
 					</div>
 					
 					
-					<input class="btn btn-danger" type="submit" value="회원탈퇴" data-bs-toggle="modal" data-bs-target="#removeModal" style="width:100px; float: right;margin-bottom: 30px;">
+					<input class="btn btn-danger" type="submit" value="회원탈퇴" data-bs-toggle="modal" data-bs-target="#removeModal" 
+					style="width:100px; float: right;margin-bottom: 30px; margin-right: 30px">
 			</div>
 		</div>
 	</div>
