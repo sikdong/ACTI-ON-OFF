@@ -14,6 +14,17 @@
 .fa-pen-to-square{
 	color:black;
 }
+.list-group{
+    display: block;
+    width: 65.3%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    margin-left:98px;
+    
+}
 
 </style>
 </head>
@@ -36,6 +47,13 @@
 							 <i class="fas fa-thin fa-pen-to-square "></i>
 							</a>
 						</c:if>
+						
+						<sec:authorize access="hasAuthority('admin')"> 
+						<a class="" href="${qnaModifyLink }">
+						<i class="fas fa-thin fa-pen-to-square "></i>
+						</a>
+						</sec:authorize>
+					
 					
 					
 					</h4>
@@ -121,9 +139,9 @@
 	</div>
 	
 	<!-- 댓글 보여주기 -->
-	<div class="row mt-3">
-		<div class="col">
-			<div class="list-group" id="answerListContainer">
+	<div class="row mt-3 ">
+		<div class="col d-flex justify-content-center">
+			<div class="list-group " id="answerListContainer">
 			
 			</div>
 		</div>
@@ -243,7 +261,7 @@ function listAnswer(){
 	fetch(`\${ctx}/answer/QnaList/\${qnaId}`)
 	.then(res =>res.json())
 	.then(list =>{
-		const answerListContainer = document.querySelector("#answerListContainer")
+		const answerListContainer = document.querySelector("#answerListContainer ")
 		answerListContainer.innerHTML=""
 		
 		for(const item of list) {
