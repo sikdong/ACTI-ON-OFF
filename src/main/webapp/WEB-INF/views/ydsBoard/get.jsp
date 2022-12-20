@@ -8,6 +8,34 @@
 <html>
 <head>
 <style>
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+	font-family: 'NanumSquareNeo-Variable'!important;
+}
+
+input, textarea {
+	border : 1px solid black !important;
+}
+
+
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+.ml-8 {
+	margin-left : 8px;
+}
 
 .root {
 	height : 100vw;
@@ -72,13 +100,13 @@
 }
 
 .calendar {
-	height: 580px;
+	height: 590px;
   	width : 30%;
     padding: 0;
-    top : 120%;
+    top : 83%;
     margin-left: 0;
     background-color: var(--bg-color);
-    font-family: var(--font);
+    font-family: 'NanumSquareNeo-Variable'!important;
     position : absolute;
     bottom : 1px;
     z-index : 1;
@@ -151,7 +179,7 @@
 }
 
 .img-box {
-	width : 1600px;
+	width : 100vw;
 	display : flex;
 	flex-wrap : wrap;
 	
@@ -170,9 +198,9 @@
 
 .size {
 	
-	width : 300px;
-	height : 300px;
-	margin : 5px ;
+	width : 19vw;
+	height : 350px;
+	margin : 10px ;
 	border-radius : 10px;
 	
 }
@@ -190,19 +218,10 @@
 	margin-top : 10px !important;
 }
 
-.size1 {
-	height : 250px;
-	width : 250px; 
-	border-radius : 15px;
-	margin : 10px;
-}
 .flex-container {
 	width : 1600px;
 	display : flex;
 }
-.flex-child {
-	font-family : 'Palatino';
-} 
 
 .text-center {
 	text-align : center;
@@ -218,9 +237,14 @@ body {
 
 </style>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Untree.co">
+
+<meta name="description" content="" />
+<meta name="keywords" content="free template, bootstrap, bootstrap4" />
 <title>Trips</title>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500&family=Gowun+Dodum&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_orange.css">
 <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
@@ -277,24 +301,36 @@ body {
 		<span> 최소 연령 : ${board.minAge}세</span>
 		<%-- <c:if test="${board.writer == userName }"> --%>
 		<div class="mt ml-5">
-			<a href="${removeLink}" class="btn btn-outline-dark btn-sm">삭제</a>
+			<a data-bs-toggle="modal" data-bs-target="#exampleModal" href="${removeLink}" class="btn btn-outline-dark btn-sm">삭제</a>
 			<a href="${modifyLink}" class="btn btn-outline-dark btn-sm">수정</a>
  		</div>
 	<%--	</c:if>	 --%>
-	<div class="img-box mt-3" >
-		<c:forEach items="${board.fileName }" var="file" begin="0" end="3">
-			<img src="${imgUrl}/host/${board.num }/${file}" class="size" alt="...">
-		</c:forEach>
-
-	</div>
-	<%--사진 더 보기 기능도 추가해야함 --%>
-	<br />
-	<div style="text-align : left"><a href="${allImages}" style="color : black;">사진 다 보기</a></div>
-
+		<div class="img-box mt-3" >
+			<c:forEach items="${board.fileName }" var="file" begin="0" end="3">
+				<img src="${imgUrl}/host/${board.num }/${file}" class="size" alt="...">
+			</c:forEach>
 	
-
-
-	<div class="">
+		</div>
+	<br />
+		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h1 class="modal-title fs-5" id="exampleModalLabel">게시물 삭제 확인</h1>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		        게시물을 삭제하시겠습니까?
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">취소</button>
+		        <a href="${removeLink}" class="btn btn-secondary" >확인</a>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		<div style="text-align : left"><a href="${allImages}" style="color : black;">사진 크게 보기</a></div>
+		<div>
 		<div class="horizontal">
 				<div class="halfview">
 					<h4 class="ml-3 mt-40">${board.writer }님 소개</h4>
@@ -374,6 +410,20 @@ body {
 	<input type="hidden" name="boardnum" id="boardNum" value="${board.num}"/>	
 </form>
 
+  <div class="section-4">
+    <div class="container">
+      <div class="row mb-4 align-items-center">
+        <div class="col-6">
+          <h2 class="line-top">On&Off Premium ACTI</h2>
+        </div>
+        <div class="col-6 text-right">
+          <a href="#" class="custom-prev-v2 js-custom-prev-v2">Prev</a>
+          <span class="mx-3">/</span>
+          <a href="#" class="custom-next-v2 js-custom-next-v2">Next</a>
+        </div>
+      </div>
+
+
 
 
 <!-- 예약 날짜 품절 확인 모달 -->
@@ -391,7 +441,7 @@ body {
 					<div class="mt-3"> <strong>${date}일 / ${board.remain[status.index]}명 가능합니다</strong></div>
 				</c:when>
 				<c:otherwise>
-					<div><strong>${date} 일 체험은 <span class="sold-out">품절</span> 입니다</strong></div>
+					<div><strong>${date}일 체험은 <span class="sold-out">품절</span> 입니다</strong></div>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
@@ -444,9 +494,66 @@ body {
       </div>
     </div>
   </div>
-</div>	
-	
-			
+</div>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<jsp:include page="/WEB-INF/views/index.jsp" flush="true">
+	<jsp:param value="index1" name="1"/>
+</jsp:include>			
 			
 <script
 src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
@@ -541,16 +648,20 @@ function getFiveFiles(){
 	.then(res => res.json())
 	.then(list => {
 		for (const file of list){
-			if(file.num != ${board.num}){
+			
 			const fileList = 
-				`<div class="flex-child">
+				`<div>
 					<a href="/ydsBoard/get?num=\${file.num}">
 						<img src="${imgUrl}/host/\${file.num }/\${file.fileName}" class="size" alt="...">
 					</a>
-					<div style="font-size : 15px;">\${file.content}</div>
+					<div class="mt-2 ml-8" style="font-size : 15px;"><strong>\${file.title}</strong></div>
+					<div class=" ml-8" style="text-align : left;">
+		 			<small>\${file.address}</small>
+		 		</div>
+		 		<div class="ml-8" style="text-align : left;">\${file.price}<small>원/1인</small></div>
 				</div>`
 			  document.querySelector(".flex-container").insertAdjacentHTML("afterbegin", fileList);
-			}
+			
 		}
 	})
 }
@@ -622,7 +733,6 @@ function listReply(){
 document.querySelector("#updateReplyModalButtonNum").addEventListener("click", function(){
 	const content = document.querySelector("#modifyReplyInput").value;
 	const replyNum = this.dataset.replyNum;
-	console.log(replyNum);
 	const data = {
 			content,
 			replyNum
@@ -645,7 +755,6 @@ document.querySelector("#updateReplyModalButtonNum").addEventListener("click", f
 })
 
 function removeReply(replyNum){
-	console.log(replyNum);
 	fetch(ctx+"/ydsReply/deleteReply/" + replyNum, {
 		method : "DELETE"	
 	})
@@ -717,7 +826,7 @@ const calendarFrame =
 			</div>
 			<div class="dates"></div>
 			<sec:authorize access="isAuthenticated()">
-			<div onclick="goCart()" class="btn btn-outline-secondary">장바구니 담기 <i class="fa-solid fa-cart-shopping"></i></div>
+			<input type="button" disabled value="장바구니 담기" id="cartButton" onclick="goCart()" class="btn btn-outline-secondary">
 			<small id="actiDate"></small>
 			</sec:authorize>
 			<sec:authorize access="not isAuthenticated()">
@@ -726,6 +835,7 @@ const calendarFrame =
 		</div>
 	</div>`
 document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calendarFrame)
+	
 	let prevLast = new Date(CDate.getFullYear(), CDate.getMonth(), 0);
 	let thisFirst = new Date(CDate.getFullYear(),CDate.getMonth(), 1);
 	let thisLast = new Date(CDate.getFullYear(), CDate.getMonth()+1, 0);
@@ -760,14 +870,19 @@ document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calenda
 				document.querySelector(".week").insertAdjacentHTML("afterbegin", dateDiv); 
 					dateChoice.push(document.querySelector("#date"+i).innerHTML);
 					<%--여기서부터 시작 --%>
-					console.log(dateChoice)
 				if(dateChoice[i] !== ''){
 					document.querySelector("#date"+i).setAttribute("data-full-date", year+"-"+month)
 				} 
 
 		
 		document.querySelector("#date"+i).addEventListener("click", () => {
-			 document.querySelector("#actiDate").innerHTML="선택하신 날짜는 " + document.querySelector("#date"+i).innerHTML+"일 입니다."
+			 if(document.querySelector("#person").value != 0){
+				document.querySelector("#cartButton").disabled=false; 
+			 	document.querySelector("#actiDate").innerHTML="선택하신 날짜는 " + document.querySelector("#date"+i).innerHTML+"일 입니다."
+			 } else {
+				 document.querySelector("#cartButton").disabled=true; 
+				 document.querySelector("#actiDate").innerHTML="선택하신 날짜는 " + document.querySelector("#date"+i).innerHTML+"일 입니다."
+			 }
 			
 		
 
@@ -784,13 +899,25 @@ document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calenda
 	document.querySelector("#person").value += person;
 }
 
+/* function changePeople(){
+	const people = document.querySelector("#person").value;
+	console.log(people);
+	if(people > 0){
+		document.querySelector("#cartButton").disabled=false;
+	}
+} */
 
 buildCalendar();
+/* changePeople(); */
 
 
 function addNumber(){
 	document.querySelector("#number").innerHTML++
-	document.querySelector("#person").value= document.querySelector("#number").innerHTML; 
+	document.querySelector("#person").value= document.querySelector("#number").innerHTML;
+	const people = document.querySelector("#person").value;
+	if(people > 0 && document.querySelector("#actiDate").innerHTML != ''){
+		document.querySelector("#cartButton").disabled=false;
+	}
 }
 
 
@@ -798,8 +925,16 @@ function substractNumber(){
 	if(document.querySelector("#number").innerHTML > 0){
 		document.querySelector("#number").innerHTML--
 		document.querySelector("#person").value= document.querySelector("#number").innerHTML;
+		
+		if(document.querySelector("#person").value == 0){
+		document.querySelector("#cartButton").disabled=true;
+			
+		} 
 	}
 }
+
+
+
 <%-- 이전 달 버튼 누르면 실행 되는 함수 --%>
 function prevCal(){
 	CDate.setMonth(CDate.getMonth()-1);
@@ -815,7 +950,8 @@ function nextCal(){
 }	
 
 function goCart(){
-	document.querySelector("#cartForm").submit();
+		document.querySelector("#cartButton").disabled = "false"
+		document.querySelector("#cartForm").submit();
 }
 
 function initMap() {
@@ -837,5 +973,6 @@ function initMap() {
   window.initMap = initMap;
 
 </script>
+
 </body>
 </html>

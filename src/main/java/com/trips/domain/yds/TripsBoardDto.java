@@ -38,6 +38,8 @@ public class TripsBoardDto {
 	private String address;
 	private String location;
 	private boolean liked;
+	private int chatRoom;
+	private int resNo;
 	
 	private LocalDateTime createDate;
 	@JsonFormat(shape = Shape.STRING)

@@ -39,10 +39,12 @@ public class CartController {
 	@Autowired
 	private jjhMemberService memberService;
 
+
 	@GetMapping("main")
 	public void main() {
 		//↑이거 이름 바꾸면 controller 기능정지됨
 	}
+
 	@GetMapping("cart")
 	@PreAuthorize("isAuthenticated()")
 	public void cart(@AuthenticationPrincipal User user,
@@ -130,11 +132,6 @@ public class CartController {
 			service.deleteCart(selectedArr[i]);
 		}
 		return "redirect:/payment/cart";
-	}
-	
-	@GetMapping("main")
-	public void main() {
-
 	}
 
 }
