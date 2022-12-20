@@ -41,7 +41,7 @@ public class CartController {
 
 	@GetMapping("main")
 	public void main() {
-		
+		//↑이거 이름 바꾸면 controller 기능정지됨
 	}
 	@GetMapping("cart")
 	@PreAuthorize("isAuthenticated()")

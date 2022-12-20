@@ -64,15 +64,33 @@ public class OrderController {
 	}
 
 		
-	@PostMapping("/payment/orderResult")
+	@GetMapping("/payment/orderResult")
 	public void saveOrderResult(
 			@RequestParam(value="selectedArr", required = false) int[] selectedArr,
 			Model model
 			){
+
+		List<OrderPageDto> opd2 = new ArrayList<OrderPageDto>();
+		
 		for(int sA : selectedArr) {
+			OrderPageDto op = orderService.getInfo(sA);
+			opd2.add(op);
+			String id = op.getId();
+			int boardNumber = op.getBoardNo();
+			int cartId = op.getCartId();
+			String addDate = op.getAddDate();
+			int price = op.getPrice();
+			int person = op.getPerson();
+			String renamedFilename = op.getRenamedFilename();
 		}
 		
-		
+		model.addAttribute("opd2", opd2);
+	}
+	
+	@PostMapping("/payment/orderResult")
+	public void saveOrderR(
+			@RequestBody ArrayList<Integer> selectedArr
+			){
 		List<OrderPageDto> opd2 = new ArrayList<OrderPageDto>();
 		
 		for(int sA : selectedArr) {
@@ -89,11 +107,9 @@ public class OrderController {
 			int cnt1 = orderService.insertOrder(id, boardNumber, cartId, addDate, price, person, renamedFilename);
 			int cnt2 = orderService.insertRes(id, boardNumber, addDate);
 			int cnt3 = orderService.removeCart(cartId);
+			System.out.println("post"+cnt1+cnt2+cnt3);
 		}
-		
-		model.addAttribute("opd2", opd2);
 	}
-	
     
 }
 

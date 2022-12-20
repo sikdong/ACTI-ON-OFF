@@ -15,7 +15,7 @@ background-color:black;
  background-color:black;
  height:80px;
  margin:0 0 0 0 !important;
-
+ z-index:1;
 }
 .container-md{
  padding:0 0 0 100px; 
