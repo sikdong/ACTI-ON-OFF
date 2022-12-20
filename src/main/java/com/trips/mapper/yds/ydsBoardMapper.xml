@@ -116,7 +116,7 @@ FROM ACTI_BOARD b
 LEFT JOIN ACTI_FILE f on f.B_NO = b.B_NO
 GROUP BY b.B_NO
 ORDER BY b.B_NO DESC
-LIMIT 5; 
+LIMIT 4; 
 </select>
 <resultMap type="com.trips.domain.yds.TripsBoardDto" id="getfiveMap">
 		<result column="num" property="num"></result>

@@ -7,6 +7,19 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+<style>
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+	font-family: 'NanumSquareNeo-Variable'!important;
+}
+
+</style>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,7 +29,7 @@
   <meta name="keywords" content="free template, bootstrap, bootstrap4" />
 
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"> 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main/bootstrap.min.css">
  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main/animate.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main/owl.theme.default.min.css">
@@ -46,8 +59,8 @@
 
           <div >
             <div data-jarallax-element="-100" class="jarallax">
-              <h2>ON&OFF로 특별하게</h2>
-              <span class="d-inline-block">ONOFF</span>
+              <h2 style="font-family: 'NanumSquareNeo-Variable'!important;">ON&OFF로 특별하게</h2>
+              <span style="font-family: 'NanumSquareNeo-Variable'!important;" class="d-inline-block">ONOFF</span>
              <a href="${path}/ydsBoard/list"><img src="${path}/upload/paris.jpg" alt="Image" class="img-fluid my-3 my-lg-5"></a>
             </div>
           </div>
@@ -56,8 +69,8 @@
         <div class="col-lg-5 mt-5">
 
           <div>
-            <h2>호스트로 onoff를 운영해봐요 :)</h2>
-            <span class="d-inline-block">find host</span>
+            <h2 style="font-family: 'NanumSquareNeo-Variable'!important;">호스트로 onoff를 운영해봐요 :)</h2>
+            <span style="font-family: 'NanumSquareNeo-Variable'!important;" class="d-inline-block">find host</span>
 
             <div  class="line me-auto mb-3 mt-3"></div>
 
@@ -72,7 +85,7 @@
     <div class="container">
       <div class="row mb-4 align-items-center">
         <div class="col-6">
-          <h2 class="line-top">On&Off Premium ACTI</h2>
+          <h2 class="line-top" style="font-family: 'NanumSquareNeo-Variable'!important;">On&Off Premium ACTI</h2>
         </div>
         <div class="col-6 text-right">
           <a href="#" class="custom-prev-v2 js-custom-prev-v2">Prev</a>
@@ -82,27 +95,23 @@
       </div>
 
       <div>
+      
         <div class="owl-4-slider owl-carousel">
-          <div class="product">
-            <a href="#" class="d-block">
-         <a href="${path}/ydsBoard/get?num=1112"><img src="${path}/assets/img/about1.jpg" alt="Image" class="img-fluid" style="width: 250px; height: 300px;">
-           </a>
-            <div class="text-center text-md-left">
-              <h3>체험보드</h3>
-              <p>체험소개글</p>
-            </div>
-          </div>
-
-          <div class="product">
-            <a href="#" class="d-block">
-           <img src="${path}/assets/img/about2.jpg" alt="Image" class="img-fluid" style="width: 250px; height: 300px;">
-           </a>
-            <div class="text-center text-md-left">
-              <h3>체험보드</h3>
-              <p>체험소개글</p>
-            </div>
-          </div>
-
+	      <c:forEach items="${mainList}" var="main">
+		      <c:url value="/ydsBoard/get" var="getLink">
+				<c:param name="num" value="${main.num }" ></c:param>
+			</c:url>
+	          <div class="product">
+	            <a href="${getLink}" class="d-block">
+	        	<img src="${imgUrl}/host/${main.num }/${main.fileName[0]}" alt="Image" class="img-fluid" style="width: 250px; height: 300px;">
+	           </a>
+	            <div>
+	              <div>${main.title }</div>
+	              <p>${main.address }</p>
+	              <div>${main.price }<small>원/1인</small></div>
+	            </div>
+	          </div>
+	      </c:forEach>
         </div>
       </div>
     </div>

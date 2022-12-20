@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.trips.mapper.MainMapper">
+<select id="getMain" resultMap="MainMap">
+SELECT 
+	b.B_NO num,
+	b.B_TITLE title,
+	b.MAP_TEXT address,
+	f.B_FILENAME fileName,
+	b.COST price
+FROM ACTI_BOARD b 
+LEFT JOIN ACTI_FILE f ON f.B_NO = b.B_NO
+GROUP BY b.B_NO
+ORDER BY b.B_NO DESC
+LIMIT 7
+</select>
+
+
+<resultMap type="com.trips.domain.yds.TripsBoardDto" id="MainMap">
+		<result column="num" property="num"></result>
+		<result column="title" property="title"></result>
+		<result column="price" property="price"></result>
+		<result column="address" property="address"></result>
+		<collection property="fileName" ofType="String">
+			<result property="fileName" column="fileName"/>
+		</collection>
+</resultMap>
+
+</mapper>

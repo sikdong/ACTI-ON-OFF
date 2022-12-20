@@ -7,17 +7,17 @@
 <html>
 <head>
 <style>
-
 @font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
 
 body {
-	font-family: 'GmarketSansMedium'!important;
+	font-family: 'NanumSquareNeo-Variable'!important;
 }
+
 
 .mt-100 {
 	margin-top : 100px;
@@ -80,6 +80,7 @@ a {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Trips</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500&family=Gowun+Dodum&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500&family=Gowun+Dodum&display=swap" rel="stylesheet">
 <link
@@ -108,7 +109,7 @@ a {
   <div class="container-fluid">
     <div class="collapse navbar-collapse jc-c" id="navbarSupportedContent">
       <form action="" class="d-flex jc-se" role="search">
-        <input style="width : 1000px !important;"class="form-control me-2" type="search" placeholder="가고싶은 지역을 검색해주세요." aria-label="Search" value="" name="address">
+        <input style="width : 1000px !important; border : 2px solid black !important;"class="form-control me-2" type="search" placeholder="가고싶은 지역을 검색해주세요." aria-label="Search" value="" name="address">
         <button class="btn btn-secondary" type="submit">검색</button>
       </form>
     </div>

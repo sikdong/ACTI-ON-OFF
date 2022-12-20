@@ -8,17 +8,29 @@
 <html>
 <head>
 <style>
-
 @font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
 
 body {
-	font-family: 'GmarketSansMedium' !important;
+	font-family: 'NanumSquareNeo-Variable'!important;
 }
+
+input, textarea {
+	border : 1px solid black !important;
+}
+
+
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
 
 
 .ml-8 {
@@ -94,7 +106,7 @@ body {
     top : 83%;
     margin-left: 0;
     background-color: var(--bg-color);
-    font-family: 'GmarketSansMedium' !important;
+    font-family: 'NanumSquareNeo-Variable'!important;
     position : absolute;
     bottom : 1px;
     z-index : 1;
@@ -225,9 +237,14 @@ body {
 
 </style>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Untree.co">
+
+<meta name="description" content="" />
+<meta name="keywords" content="free template, bootstrap, bootstrap4" />
 <title>Trips</title>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500&family=Gowun+Dodum&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_orange.css">
 <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
@@ -395,6 +412,7 @@ body {
 
 
 
+
 <!-- 예약 날짜 품절 확인 모달 -->
 <div class="modal fade" id="availableDateConfirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
@@ -464,6 +482,7 @@ body {
     </div>
   </div>
 </div>
+
 <br />
 <br />
 <br />
@@ -616,7 +635,7 @@ function getFiveFiles(){
 	.then(res => res.json())
 	.then(list => {
 		for (const file of list){
-			if(file.num != ${board.num}){
+			
 			const fileList = 
 				`<div>
 					<a href="/ydsBoard/get?num=\${file.num}">
@@ -629,7 +648,7 @@ function getFiveFiles(){
 		 		<div class="ml-8" style="text-align : left;">\${file.price}<small>원/1인</small></div>
 				</div>`
 			  document.querySelector(".flex-container").insertAdjacentHTML("afterbegin", fileList);
-			}
+			
 		}
 	})
 }

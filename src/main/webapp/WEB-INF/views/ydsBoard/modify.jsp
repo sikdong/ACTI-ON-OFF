@@ -6,6 +6,22 @@
 <html>
 <head>
 <style>
+input, textarea {
+	border : 1px solid black !important;
+}
+
+
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+	font-family: 'NanumSquareNeo-Variable' !important;
+}
+
 .introduce {
 	width : 50% !important;
 }
@@ -215,13 +231,6 @@ body {
 	  <input value="${board.price }" type="text" class="form-control" name="price">
 	</div>
 		<div id="fileBox" style = "width : 400px;"class="jc-sb mb-3" style="margin-top : 30px;">
-	<%-- <c:forEach items="${board.fileName }" var="file" varStatus="status">
-			<div class="flex">
-				<img src="${path}/assets/img/${file}" class="size" alt="이미지">
-				<div id="deleteButton${board.fileNum[status.index]}"><i class="fa-regular fa-circle-xmark cursor"></i></div>
-				<input id="deleteInput${board.fileNum[status.index]}" type="hidden" value="${board.fileNum[status.index]}" />
-			</div>
-	</c:forEach> --%>
 		</div>
 	<div class="mb-3 halfview">
 	  <label for="exampleFormControlInput1" class="form-label">최소 인원</label>
