@@ -41,7 +41,7 @@ ${loggedIn }
 				</center>
 			
 				<form id="registerForm1" action="" method="post"
-					enctype="multipart/form-data">
+					enctype="multipart/form-data"> 
 					<div class="mb-3">
 					  <b>	호스트 신청 아이디</b>  
 					  <input type="text"

@@ -24,29 +24,11 @@
 
 
 
-  <style>
-      div.row {
-        width: 100%;
-        display: flex;
-      
-      }
-      div.left {
-        width: 20%;
-        float: left;
-        box-sizing: border-box;
-        background-color: 
-      }
-      div.right {
-        width: 70%;
-        float: right;
-        box-sizing: border-box;
-        
-      }
-      
-      
-      
-      
-     
+
+
+</head>
+<body>
+<style>
 ._1uwb2q9 {
     -webkit-box-pack: justify !important;
     -webkit-box-direction: normal !important;
@@ -248,84 +230,79 @@ html {
     -ms-flex: 0 1 auto;
 }
 
+</style>
+
+<ul class="list-group list-group-flush">
 
 
 
-input {
-  width: 500px;
-  height: 32px;
-  font-size: 15px;
-  border: 0;
-  border-radius: 15px;
-  outline: none;
-  padding-left: 10px;
-  background-color: rgb(233, 233, 233);
-}
 
 
 
-      
-      
-    </style>
-
-
-</head>
-<body>
 <my:navbar></my:navbar>
-
+<%-- <my:hostNav></my:hostNav> --%>
 <center>
 <div class="container" align="center">
-		<div class="row">
-		<div class="left" style="margin-right:120px;">
-		
-		<div class="_1g05mp0x">
+<div class="_1byskwn" align="center" id="wrapper" >
+	<div class="_1g05mp0x">
 		<div class="_hq87c8">
-			<div class="_1obfcljv" ;margin-right:20px;">
+			<div class="_1obfcljv" style="float:left;margin-right:20px;">
 				<div class="_15wuypg">
-					<a href="/host/hostInfo" class="_131n1yh"><div class="_1uwb2q9">
+					<a href="<c:url value="/host/hostInfo"/>" class="_131n1yh"><div
+							class="_1uwb2q9">
 							<div style="margin-bottom: 16px;">
-								<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 32px; width: 32px; fill: currentcolor;">
-									<path d="m29 5c1.0543618 0 1.9181651.81587779 1.9945143 1.85073766l.0054857.14926234v18c0 1.0543618-.8158778 1.9181651-1.8507377 1.9945143l-.1492623.0054857h-26c-1.0543618 0-1.91816512-.8158778-1.99451426-1.8507377l-.00548574-.1492623v-18c0-1.0543618.81587779-1.91816512 1.85073766-1.99451426l.14926234-.00548574zm0 2h-26v18h26zm-3 12v2h-8v-2zm-16-8c1.6568542 0 3 1.3431458 3 3 0 .6167852-.1861326 1.1900967-.5052911 1.6668281 1.4972342.8624949 2.5052911 2.4801112 2.5052911 4.3331719h-2c0-1.3058822-.8343774-2.4168852-1.9990993-2.8289758l-.0009007-3.1710242c0-.5522847-.4477153-1-1-1-.51283584 0-.93550716.3860402-.99327227.8833789l-.00672773.1166211.00008893 3.1706743c-1.16523883.4118113-2.00008893 1.5230736-2.00008893 2.8293257h-2c0-1.8530607 1.00805693-3.470677 2.50570706-4.3343854-.3195745-.4755179-.50570706-1.0488294-.50570706-1.6656146 0-1.6568542 1.34314575-3 3-3zm16 4v2h-8v-2zm0-4v2h-8v-2z"></path></svg>
+								<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
+									aria-hidden="true" role="presentation" focusable="false"
+									style="display: block; height: 32px; width: 32px; fill: currentcolor;">
+									<path
+										d="m29 5c1.0543618 0 1.9181651.81587779 1.9945143 1.85073766l.0054857.14926234v18c0 1.0543618-.8158778 1.9181651-1.8507377 1.9945143l-.1492623.0054857h-26c-1.0543618 0-1.91816512-.8158778-1.99451426-1.8507377l-.00548574-.1492623v-18c0-1.0543618.81587779-1.91816512 1.85073766-1.99451426l.14926234-.00548574zm0 2h-26v18h26zm-3 12v2h-8v-2zm-16-8c1.6568542 0 3 1.3431458 3 3 0 .6167852-.1861326 1.1900967-.5052911 1.6668281 1.4972342.8624949 2.5052911 2.4801112 2.5052911 4.3331719h-2c0-1.3058822-.8343774-2.4168852-1.9990993-2.8289758l-.0009007-3.1710242c0-.5522847-.4477153-1-1-1-.51283584 0-.93550716.3860402-.99327227.8833789l-.00672773.1166211.00008893 3.1706743c-1.16523883.4118113-2.00008893 1.5230736-2.00008893 2.8293257h-2c0-1.8530607 1.00805693-3.470677 2.50570706-4.3343854-.3195745-.4755179-.50570706-1.0488294-.50570706-1.6656146 0-1.6568542 1.34314575-3 3-3zm16 4v2h-8v-2zm0-4v2h-8v-2z"></path></svg>
 							</div>
 							<div>
-					
-								<div class="_4i4nwv"> <b>정보 수정</b></div>
-								<div class="_1c02cnn">호스트 사진 및 소개를 수정합니다</div>
+								<div class="_4i4nwv"> <b>호스트 정보 수정</b></div>
+								<div class="_1c02cnn">호스트 소개와 사진정보 변경</div>
 							</div>
 						</div></a>
 				</div>
 			</div>
-<div class="_1obfcljv" ;margin-right:20px;">
+<div class="_1obfcljv" style="float:left;margin-right:20px;">
 				<div class="_15wuypg">
-					<a href="/host/listing" class="_131n1yh"><div class="_1uwb2q9">
+					<a href="<c:url value="/host/listing"/>"
+						class="_131n1yh"><div class="_1uwb2q9">
 							<div style="margin-bottom: 16px;">
-								<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 32px; width: 32px; fill: currentcolor;">
-									<path d="M25 4a2 2 0 0 1 1.995 1.85L27 6v2h2.04c1.042 0 1.88.824 1.955 1.852L31 10v16c0 1.046-.791 1.917-1.813 1.994L29.04 28H6.96c-1.042 0-1.88-.824-1.955-1.852L5 26v-2H3a2 2 0 0 1-1.995-1.85L1 22V6a2 2 0 0 1 1.85-1.995L3 4zm2 18a2 2 0 0 1-1.85 1.995L25 24H7v2h22V10h-2zM25 6H3v16h22zm-3 12a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-8-8a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm0 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM6 8a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"></path></svg>
+								<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
+									aria-hidden="true" role="presentation" focusable="false"
+									style="display: block; height: 32px; width: 32px; fill: currentcolor;">
+									<path
+										d="M25 4a2 2 0 0 1 1.995 1.85L27 6v2h2.04c1.042 0 1.88.824 1.955 1.852L31 10v16c0 1.046-.791 1.917-1.813 1.994L29.04 28H6.96c-1.042 0-1.88-.824-1.955-1.852L5 26v-2H3a2 2 0 0 1-1.995-1.85L1 22V6a2 2 0 0 1 1.85-1.995L3 4zm2 18a2 2 0 0 1-1.85 1.995L25 24H7v2h22V10h-2zM25 6H3v16h22zm-3 12a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm-8-8a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm0 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM6 8a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"></path></svg>
 							</div>
 							<div>
 								<div class="_4i4nwv"><b>체험 등록</b> </div>
-								<div class="_1c02cnn">새로운 체험을 등록합니다</div>
+								<div class="_1c02cnn">새로운 체험 등록하기</div>
 							</div>
 						</div></a>
 				</div>
 			</div>
 			
-			<div class="_1obfcljv" ;">
+			<div class="_1obfcljv" style="float:left;">
 				<div class="_15wuypg">
-					<a href="/host/admin" class="_131n1yh"><div class="_1uwb2q9">
+					<a href="<c:url value="/host/admin"/>" class="_131n1yh"><div
+							class="_1uwb2q9">
 							<div style="margin-bottom: 16px;">
-								<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 32px; width: 32px; fill: currentcolor;">
-									<path d="m27 5h-4a2.00229 2.00229 0 0 0 -2 2v4h-4v-8a2.002 2.002 0 0 0 -2-2h-4a2.002 2.002 0 0 0 -2 2v8h-4a2.002 2.002 0 0 0 -2 2v16a2.00229 2.00229 0 0 0 2 2h22a2.0026 2.0026 0 0 0 2-2v-22a2.00229 2.00229 0 0 0 -2-2zm-18 24h-4l-.00146-16h4.00146zm6 0h-4v-16l-.00092-.00891-.00054-9.99109h4.00146zm6 0h-4v-16h4zm6 0h-4v-16l-.00073-.007-.00027-5.993h4.001z"></path></svg>
+								<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
+									aria-hidden="true" role="presentation" focusable="false"
+									style="display: block; height: 32px; width: 32px; fill: currentcolor;">
+									<path
+										d="m27 5h-4a2.00229 2.00229 0 0 0 -2 2v4h-4v-8a2.002 2.002 0 0 0 -2-2h-4a2.002 2.002 0 0 0 -2 2v8h-4a2.002 2.002 0 0 0 -2 2v16a2.00229 2.00229 0 0 0 2 2h22a2.0026 2.0026 0 0 0 2-2v-22a2.00229 2.00229 0 0 0 -2-2zm-18 24h-4l-.00146-16h4.00146zm6 0h-4v-16l-.00092-.00891-.00054-9.99109h4.00146zm6 0h-4v-16h4zm6 0h-4v-16l-.00073-.007-.00027-5.993h4.001z"></path></svg>
 							</div>
 							<div>
 								<div class="_4i4nwv"><b>체험 관리 </b> </div>
-								<div class="_1c02cnn">나의 체험을 관리합니다</div>
+								<div class="_1c02cnn">자신의 체험 관리하기</div>
 							</div>
 						</div></a>
 				</div>
 			</div>
 			
-<!-- 			<div class="_1obfcljv" ;"> -->
+<!-- 			<div class="_1obfcljv" style="float:left;"> -->
 <!-- 				<div class="_15wuypg"> -->
 <!-- 					<a href="/account-settings/notifications" class="_131n1yh"><div -->
 <!-- 							class="_1uwb2q9"> -->
@@ -343,7 +320,7 @@ input {
 <!-- 						</div></a> -->
 <!-- 				</div> -->
 <!-- 			</div> -->
-<!-- 			<div class="_1obfcljv" ;"> -->
+<!-- 			<div class="_1obfcljv" style="float:left;"> -->
 <!-- 				<div class="_15wuypg"> -->
 <!-- 					<a href="/account-settings/privacy-and-sharing" class="_131n1yh"><div -->
 <!-- 							class="_1uwb2q9"> -->
@@ -361,7 +338,7 @@ input {
 <!-- 						</div></a> -->
 <!-- 				</div> -->
 <!-- 			</div> -->
-<!-- 			<div class="_1obfcljv" ;"> -->
+<!-- 			<div class="_1obfcljv" style="float:left;"> -->
 <!-- 				<div class="_15wuypg"> -->
 <!-- 					<a href="/account-settings/preferences" class="_131n1yh"><div -->
 <!-- 							class="_1uwb2q9"> -->
@@ -379,7 +356,7 @@ input {
 <!-- 						</div></a> -->
 <!-- 				</div> -->
 <!-- 			</div> -->
-<!-- 			<div class="_1obfcljv" ;"> -->
+<!-- 			<div class="_1obfcljv" style="float:left;"> -->
 <!-- 				<div class="_15wuypg"> -->
 <!-- 					<a data-testid="account-settings-a4w-tile" -->
 <!-- 						href="/account-settings/airbnb-for-work" class="_131n1yh"><div -->
@@ -399,7 +376,7 @@ input {
 <!-- 				</div> -->
 <!-- 			</div> -->
 
-<!-- 			<div class="_1obfcljv" ;"> -->
+<!-- 			<div class="_1obfcljv" style="float:left;"> -->
 <!-- 				<div class="_15wuypg"> -->
 <!-- 					<a href="/account-settings/professional-hosting" class="_131n1yh"><div -->
 <!-- 							class="_1uwb2q9"> -->
@@ -418,7 +395,7 @@ input {
 <!-- 				</div> -->
 <!-- 			</div> -->
 
-<!-- 			<div class="_1obfcljv" ;"> -->
+<!-- 			<div class="_1obfcljv" style="float:left;"> -->
 <!-- 				<div class="_15wuypg"> -->
 <!-- 					<a href="/invite?r=51" class="_131n1yh"><div class="_1uwb2q9"> -->
 <!-- 							<div style="margin-bottom: 16px;"> -->
@@ -437,58 +414,10 @@ input {
 <!-- 			</div> -->
 		</div>
 	</div>
-		</div>
-			<div class="right">
-
-<br>
-				<center>
-					<h2>호스트 정보 수정</h2>
-				</center>
-<br>
-
-
-
-
-				<form action="" method="post" enctype="multipart/form-data">
-					호스트 아이디 <br> <input type="text" style='text-align:center' value="${host.m_id }" name="m_id" readonly>
-					<br> <br>
-<%-- 					호스트 승인여부 <br> <input type="text" value="${member.authority }" name="m_id" readonly> --%>
-<!-- 					<br> <br> -->
-					<%-- 이미지 출력 디비는 스트링일뿐.--%>
-					호스트의 전문 분야 <br> <input type="text"  style='text-align:center' value="${host.h_field }"
-						name="h_field" readonly> <br> <br>
-					<div>
-						<c:set value="${host.h_photo}" var="photoName"></c:set>
-					
-						
-						호스트 사진 <br><img class="img-fluid img-thumbnail"
-							src="${imgUrl }/host/${host.m_id}/${URLEncoder.encode(photoName, 'utf-8')}"
-							width="200px" height="200px" alt=""> <br>
-						<br>
-							<div class="mb-3">
-						<label for="" class="form-label"><b>본인의 사진을 첨부해주세요</b></label> <input
-							multiple type="file" accept="image/*" class="form-control"
-							name="file">
-					</div>
-
-					</div>
-					<%-- 				<textarea value="${host.h_introduction }" name = "h_introduction"/> --%>
-					호스트 소개 <br>
-					<textarea rows="5" name="h_introduction" class="form-control">${host.h_introduction  }</textarea>
-					<center>
-						<br> <input id="hostInfoModify" type="submit"
-							class="btn btn-dark" value="수정완료">
-						<button class="btn btn-dark" type="button"
-							style="bacgroubd-color: white"
-							onclick="location.href=   '${pageContext.request.contextPath}/host/hostPage';">수정취소</button>
-					</center>
-				</form>
-			</div>
-			</div>
-		</div>
-
-
+</div>
+</div>
 </center>
+
 
 
 

@@ -36,7 +36,7 @@ import com.trips.domain.yds.TripsBoardDto;
 import com.trips.mapper.host.HostMapper;
 import com.trips.service.host.HostService;
 
-//컨트롤러에 트렌잭션 어노테이션을 못쓰는 이유 ?
+
 @Controller
 @RequestMapping("host")
 public class HostController {
@@ -47,17 +47,12 @@ public class HostController {
 	@Autowired
 	private HostService hostService;
 	
-	// 네브바에서 호스트 클릭하면 
-	// 미로그인(case0) > 로그인페이지 : 뷰에서 해결
-	// 멤버 > (case1)호스트신청x:호스트되기로 리다이렉트  
-	// 		 (case2)호스트신청o:호스트정보 ( case2는 권한설정으로 구분 안되어있고 불리언컬럼으로 구분되어있음 )
-	// (case3)호스트 > 호스트정보
+	@RequestMapping("hostPage")
+	public void hostPage() {}
 	
-	// --> 요청을 받아서 컨트롤러에서 처리하거나, 권한에 따라 요청을 다르게 보낸다 
-	// case0 : 로그인페이지
-	// case1 : host필드(호스트요청이 host필드임)가 flase / 호스트되기만 보여지게/ 접근권한부여하는 것이 아니라 다른경로로 요청보내면 becomeHostIntro로 리다이렉트 시키기
-	// case2 : host필드가 true / 호스트되기만 안보여지게
-	// case3 : 권한=host / 호스트되기만 안보여지게
+	@RequestMapping("listing/content2")
+	public void becomeHostIntro2(Authentication authentication,Model model) { }
+	
 	
 	
 	
@@ -113,24 +108,18 @@ public class HostController {
 	
 	
 	
+
 	
-	
-	
-	
-	
-	
-	//호스트 정보 관리- ru..d?
-	//호스트대기와 호스트만  -> 일반멤버이면 호스트되기로 리다이렉트
 	
 	@GetMapping("hostInfo")
-//	@PreAuthorize("hasAuthority('host')")
+	@PreAuthorize("hasAnyAuthority('host','hostRequest')")
 //	@PreAuthorize("@boardSecurity.checkMemberId(authentication.name, #id)")
 	public String hostInfo(Model model, Authentication authentication) { //왜 여긴 모델을 파라미터로 써야되지?
 		MemberDto member =hostService.getMember(authentication.getName());
-		System.out.println(member+"@@@");
-		if(!member.isHost()) {
-			return "redirect:becomeHostIntro";
-		}
+//		System.out.println(member+"@@@");
+//		if(!member.isHost()) {
+//			return "redirect:becomeHostIntro";
+//		}
 		
 		Host host = hostService.hostInfo(authentication.getName());
 		System.out.println(host+"@@2222");
@@ -138,7 +127,7 @@ public class HostController {
 		System.out.println(host);
 		return null;
 	}
-	//지금은 호스트 소개만 수정..
+
 	@PostMapping("hostInfo")
 	public String o( Host host, MultipartFile file, RedirectAttributes rttr) {
 		System.out.println(host+"######");
@@ -149,7 +138,7 @@ public class HostController {
 		} else {
 			rttr.addFlashAttribute("message","수정안됨" );
 		}
-		//수정 후 모달로 요청
+		
 		return "redirect:hostInfoModifyComplete";
 	}
 	
@@ -161,11 +150,7 @@ public class HostController {
 	
 	
 	
-	
-	
 	//체험 등록
-	//호스트만 , 호스트만 보이게하거나 호스트 등록해달라는 메세지 띠우거나 호스트 등록페이지로 이동
-	// 보드,date,file,...주소? /topic도 테이블 따로 뺄 시간 있으면.. 빼기
 	@RequestMapping("listing")
 	@PreAuthorize("hasAuthority('host')")
 	public void listingJsp() {	
@@ -213,8 +198,7 @@ public class HostController {
 	
 	
 	
-	// 상대 절대 경로
-	//@RequestParam이랑 @Pathvariable 차이점 
+
 	@PostMapping("listing/topic")
 	public String listingOff(@RequestParam (required=false) String b_topic, HttpSession session ) {
 	//	hostService.listingTopic(b_topic);
@@ -234,9 +218,7 @@ public class HostController {
 
 	public String listingContents(Authentication authentication, String b_title, String b_content,
 										 int cost,int min_person, int max_person, int min_age, String address, String addressLL, HttpSession session ) {	
-//	public String listingContents(BoardDto board ) {	
-//		boardDto=board;//매개변수에 모델어트리뷰트 쓰면 빈 디티오에 담기는 거니까 이전과 다른 인스턴스.
-		
+
 		
 		session.setAttribute("m_id", authentication.getName());
 		session.setAttribute("b_title", b_title);
@@ -326,17 +308,7 @@ public class HostController {
 //	}
 		return "redirect:/host/listing/complete";}
 	
-		// * 파일업로드
-		// 1. web.xml 
-		//    dispatcherServlet 설정에 multipart-config 추가
-		// 2. form 에 enctype="multipart/form-data" 속성 추가 
-		// 3. Controller의 메소드 argument type : MultipartFile 
-		
-		// request param 수집/가공
-//		System.out.println(files.length);
-//		for (MultipartFile file : files) {
-//			System.out.println(file.getOriginalFilename());
-//		}
+
 		
 	@GetMapping("listing/complete")
 	public void listingComplete() {
@@ -361,7 +333,7 @@ public class HostController {
 	}
 	
 		
-	
+
 	
 	
 	

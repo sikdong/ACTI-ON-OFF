@@ -20,7 +20,7 @@ h2 { text-align: center; }
 <body>
 <my:navbar></my:navbar>
 
-<my:hostNav></my:hostNav>
+
 <br><br>
 
 <h2>어떤 유형의 체험을 호스팅하고 싶으세요?</h2> <br><br><br><br>
