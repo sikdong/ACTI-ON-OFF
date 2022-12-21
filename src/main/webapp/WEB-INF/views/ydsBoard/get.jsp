@@ -640,8 +640,8 @@ function getFiveFiles(){
 					<a href="/ydsBoard/get?num=\${file.num}">
 						<img src="${imgUrl}/host/\${file.num }/\${file.fileName}" class="size" alt="...">
 					</a>
-					<div class="mt-2 ml-8" style="font-size : 15px;"><strong>\${file.title}</strong></div>
-					<div class=" ml-8" style="text-align : left;">
+					<div class="mt-2 ml-8" style="font-size : 15px;max-width: 19vw;"><strong>\${file.title}</strong></div>
+					<div class=" ml-8" style="text-align : left;max-width: 19vw;">
 		 			<small>\${file.address}</small>
 		 		</div>
 		 		<div class="ml-8" style="text-align : left;">\${file.price}<small>원/1인</small></div>
