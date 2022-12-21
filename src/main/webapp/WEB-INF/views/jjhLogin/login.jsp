@@ -37,6 +37,15 @@ translateY(
 #padding{
 	padding: 15px 0 15px 0;
 }
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+} 
+body {
+ font-family: 'NanumSquareNeo-Variable','Palatino Linotype' !important; 
+} 
 </style>
 
 <meta charset="UTF-8">
@@ -72,14 +81,14 @@ translateY(
 								<label for="inputID" class="font_pala" style="padding: 10px 0 10px 0; font-size: 25px;">Id</label> 
 								<input type="text"
 									name="username" class="form-control" id="id"
-									aria-describedby="idHelp" placeholder="Enter id" value="host3">
+									aria-describedby="idHelp" placeholder="Enter id">
 							</div>
 							<div class="form-group">
 								<label for="inputPassword" class="font_pala" style="padding: 10px 0 10px 0; font-size: 25px;">Password</label> 
 								<input
 									type="password" name="password" id="password"
 									class="form-control" aria-describedby="passwordHelp"
-									placeholder="Enter Password" value="host3">
+									placeholder="Enter Password">
 							</div>
 							<div class="col-md-12 text-center " style="padding: 15px 0 15px 0;">
 								<button type="submit"
