@@ -26,6 +26,15 @@
     transform: translateY(0px)
   }
 }
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+} 
+body {
+ font-family: 'NanumSquareNeo-Variable','Palatino Linotype' !important; 
+} 
 </style>
 <meta charset="UTF-8">
 <title>주문하기</title>
@@ -129,7 +138,7 @@
 		
 		<div class="row no-gutters" style="text-align: center; margin: 80px 0;">
 			<h1 class="page-header" style="font-weight: bold;">결제수단 확인</h1>
-			<div style="text-align: center;">
+			<div style="text-align: center;font-size: 20px;">
 				<input type="radio" name="cal_info" value="card" checked><label>&nbsp;카드 결제</label>
 			</div>
 			<hr>

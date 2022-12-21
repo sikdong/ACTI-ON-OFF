@@ -128,6 +128,20 @@
 	DELETE FROM M_CHAT
 	WHERE CHAT_ROOM = #{c}
 	</delete>
+	
+	<select id="getIDB" resultType="com.trips.domain.mypage.idBnoDateDto">
+	SELECT 
+		M_ID id, 
+		B_NO boardNo,
+		DATE date
+	FROM ACTI_RESERVATION
+	WHERE RES_NO = #{resNo}
+	</select>
+	
+	<delete id="removeACTI_ORDER3">
+	DELETE FROM ACTI_ORDER
+	WHERE M_ID = #{id} AND O_B_NO = #{boardNo} AND O_ADDDATE = #{date}
+	</delete>
 </mapper>
 
 

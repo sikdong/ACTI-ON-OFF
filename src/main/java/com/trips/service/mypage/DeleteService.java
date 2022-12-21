@@ -12,6 +12,7 @@ import com.trips.domain.mypage.ChatLeftDto;
 import com.trips.domain.mypage.MemberDto;
 import com.trips.domain.mypage.Res1Dto;
 import com.trips.domain.mypage.Res2Dto;
+import com.trips.domain.mypage.idBnoDateDto;
 import com.trips.mapper.mypage.DeleteMapper;
 import com.trips.mapper.mypage.MyPageMapper;
 
@@ -83,6 +84,16 @@ public class DeleteService {
 
 	public int removeR(int resNo) {
 		//chat res 삭제
+		List<idBnoDateDto> idb = dmapper.getIDB(resNo);
+		
+		for(idBnoDateDto db : idb) {
+			String id = db.getId();
+			int boardNo = db.getBoardNo();
+			String date = db.getDate();
+			
+			int cnt = dmapper.removeACTI_ORDER3(id, boardNo, date);
+		}
+		
 		dmapper.removeM_CHAT2(resNo);
 		
 		return dmapper.removeACTI_RESERVATION2(resNo);

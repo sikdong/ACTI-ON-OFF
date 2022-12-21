@@ -40,7 +40,6 @@ public class CartController {
 	private jjhMemberService memberService;
 
 
-	
 
 	@GetMapping("cart")
 	@PreAuthorize("isAuthenticated()")
@@ -54,6 +53,7 @@ public class CartController {
 	}
 
 	@PostMapping("cart")
+	@PreAuthorize("isAuthenticated()")
 	public String cart(MemberDto member, Authentication authentication ,RedirectAttributes rttr) {
 		member.setId(authentication.getName());
 		System.out.println(member);

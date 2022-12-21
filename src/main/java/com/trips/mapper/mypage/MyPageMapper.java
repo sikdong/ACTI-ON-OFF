@@ -52,4 +52,6 @@ public interface MyPageMapper {
 
 	List<Integer> getPerson(int boardNo, String date);
 
+	int insertDB(String id, String originalFilename);
+
 }

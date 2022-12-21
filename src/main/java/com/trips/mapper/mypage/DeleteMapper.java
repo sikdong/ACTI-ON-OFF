@@ -2,6 +2,8 @@ package com.trips.mapper.mypage;
 
 import java.util.List;
 
+import com.trips.domain.mypage.idBnoDateDto;
+
 
 
 public interface DeleteMapper {
@@ -57,6 +59,10 @@ public interface DeleteMapper {
 	List<Integer> getCID(int b);
 
 	void removeM_CHAT3(int c);
+
+	List<idBnoDateDto> getIDB(int resNo);
+
+	int removeACTI_ORDER3(String id, int boardNo, String date);
 	
 
 	

@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 
 
@@ -56,10 +57,21 @@
    
             <ul class="js-clone-nav d-none d-lg-inline-noone text-left site-menu">
               <li class="active"><a href="${path}/main">Home</a></li>
+              
+               <sec:authorize access="isAuthenticated()" var="logged"/>
+               
+               <c:if test="${not logged }">
               <li><a href="${path}/jjhLogin/login">LOGIN</a></li>
+               </c:if>
+               
+               <c:if test="${logged }">
+               <li><a href="${path}/jjhLogin/login?logout">LOGOUT</a></li>
+               </c:if>
+              
+              
               <li><a href="${path}/ydsBoard/list">ONOFF</a></li>
               <li><a href="${path}/qna/QnaList">QNA</a></li>
-              <li><a href="${path}/jjhLogin/login">HOSTPAGE</a></li>
+              <li><a href="${path}/host/hostPage">HOSTPAGE</a></li>
     
 
             </ul>

@@ -272,7 +272,7 @@ SELECT
 	B_FILENAME fileName,
 	B_FILE_NO fileNum
 FROM ACTI_FILE
-WHERE B_NO = #{num}	AND B_ACCEPT = 1
+WHERE B_NO = #{num}
 	
 </select>
 	<resultMap type="com.trips.domain.yds.TripsOrderDto" id="modifyFileMap">

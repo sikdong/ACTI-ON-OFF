@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fasterxml.jackson.databind.ser.std.StdKeySerializers.Default;
@@ -31,6 +32,7 @@ import com.trips.domain.mypage.ImgDto;
 import com.trips.domain.mypage.MemberDto;
 import com.trips.domain.mypage.Res1Dto;
 import com.trips.domain.mypage.Res2Dto;
+import com.trips.domain.qna.QnaDto;
 import com.trips.service.mypage.DeleteService;
 import com.trips.service.mypage.MyPageService;
 
@@ -60,6 +62,7 @@ public class MyPageController {
 			) {
 		String id = user.getUsername();
 		MemberDto member = service.getById(id);
+		System.out.println(member);
 		model.addAttribute("member", member);
 	}
 	
@@ -211,6 +214,7 @@ public class MyPageController {
 	
 	
 	@PostMapping("chatAdd")
+	@PreAuthorize("isAuthenticated()")
 	@ResponseBody
 	public void chat2(
 			@RequestBody ChatAddDto chatDto,
@@ -227,6 +231,7 @@ public class MyPageController {
 	}
 	
 	@PostMapping("remove")
+	@PreAuthorize("isAuthenticated()")
 	public String remove(String id, 
 			//RedirectAttributes rttr, 
 			HttpServletRequest request)
@@ -258,6 +263,7 @@ public class MyPageController {
 
 	}
 	@PostMapping("existEmail")
+	@PreAuthorize("isAuthenticated()")
 	@ResponseBody
 	public Map<String, Object> existEmail(
 			@RequestBody IdEmailDto data
@@ -284,24 +290,29 @@ public class MyPageController {
 	
 	
 	@GetMapping("geocode")
+	@PreAuthorize("isAuthenticated()")
 	public void geocode() {
 		
 	}
 	@GetMapping("Sample")
+	@PreAuthorize("isAuthenticated()")
 	public void sample() {
 		
 	}
 	
 	@GetMapping("jusoPopup")
+	@PreAuthorize("isAuthenticated()")
 	public void jusoPopup() {
 		
 	}
 	@PostMapping("jusoPopup")
+	@PreAuthorize("isAuthenticated()")
 	public void jusoPopup2() {
 		
 	}
 	
 	@GetMapping("hostChatIntro")
+	@PreAuthorize("isAuthenticated()")
 	public void hostChatIntro(
 			@RequestParam(name = "id") String id,
 			Model model
@@ -362,5 +373,19 @@ public class MyPageController {
 		int remove = dservice.removeR(resNo);
 		
 		return "redirect:/mypage/reservation?id="+id;
+	}
+	
+	@PostMapping("profile")
+	public String profile(
+			String id,
+			MultipartFile file,
+			RedirectAttributes rttr
+			) {
+		int dbf = service.insertDB(id, file);
+		
+		System.out.println("profile"+id);
+		System.out.println("profile"+file);
+		
+		return "redirect:/mypage/mypage2";
 	}
 }

@@ -36,6 +36,18 @@
     transform: translateY(0px)
   }
 }
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+} 
+body {
+ font-family: 'NanumSquareNeo-Variable','Palatino Linotype' !important; 
+}
+.container{
+	display: flex;
+} 
 </style>
 
 <meta charset="UTF-8">
@@ -60,10 +72,33 @@
 					
 					
 			
-					<div style="padding: 0 0 60px 0;">
-						<img style="width:128px; height:128px;" 
-						src="${imgUrl }/mypage/ico_21.png">
-					</div>
+
+					<form id="modifyForm" action="/mypage/profile" method="post" enctype="multipart/form-data">
+						<div class="mb-3">
+							<div class="container">
+								<div class="item" style="margin-right: 50px;">
+									<div style="padding: 0 0 60px 0;">
+										<c:if test="${member.profile eq null }">
+											<img style="width:128px; height:128px;border-radius: 100%;" 
+											src="${imgUrl }/mypage/ico_21.png">
+										</c:if>
+										<c:if test="${member.profile ne null }">
+											<img style="width:128px; height:128px;border-radius: 100%;" 
+											src="${imgUrl }/mypage/${member.id}/${member.profile}">
+										</c:if>
+									</div>
+								</div>
+								<div class="item" style="margin-right: 50px;width: 300px;">
+									<input type="hidden" name="id" value="${member.id}" />
+									<label for="" class="form-label">프로필 사진 등록</label>
+									<input multiple type="file" accept="image/*" class="form-control" name="file">
+									<div style="padding-top: 10px;padding-left: 245px;">
+										<input id="submitButton1" class="btn btn-outline-dark" type="submit" value="등록">
+									</div>
+								</div>
+							</div>
+						</div> 	
+					</form>
 					<button id="reservation" type="button" class="btn btn-outline-dark" style="width:130px;">
 						예약내역 보기
 					</button>
@@ -178,7 +213,15 @@
 					
 					
 					
-					<span class="fontA">호스트&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;<span class="fontB">${member.host }</span></span> 
+					<span class="fontA">자격&emsp;&emsp;&emsp;&emsp;&emsp;<span class="fontB">
+					
+					<c:if test="${member.authority eq null }">
+						member
+					</c:if>
+					<c:if test="${member.authority ne null }">
+						${member.authority}
+					</c:if>
+					</span></span> 
 					<div id="hostModify" style="display:none;">
 						<div style="padding:0 0 10px 0;">
 							<form id="hostModifyText" action="" method="post">

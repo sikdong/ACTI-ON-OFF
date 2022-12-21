@@ -12,7 +12,9 @@
 	    M_GENDER,
 	    M_PHONE,
 	    M_EMAIL,
-	    M_HOST_REQUEST
+	    M_HOST_REQUEST,
+	    M_AUTHORITY,
+	    M_PROFILE
 	FROM
 		MEMBER
 	WHERE
@@ -27,6 +29,8 @@
 		<result column="M_PHONE" property="phone"/>
 		<result column="M_EMAIL" property="email"/>
 		<result column="M_HOST_REQUEST" property="host"/>
+		<result column="M_AUTHORITY" property="authority"/>
+		<result column="M_PROFILE" property="profile"/>
 	</resultMap>
 	
 	<update id="update">
@@ -194,7 +198,7 @@
 	JOIN ACTI_BOARD b ON r.B_NO = b.B_NO
 	JOIN ACTI_FILE f ON f.B_NO = b.B_NO 
 	JOIN M_CHAT m ON m.CHAT_ROOM = r.RES_NO
-	ORDER BY date DESC
+	ORDER BY fileName ,date DESC
 	LIMIT 18446744073709551615) AS one
 	WHERE id = #{id}
 	GROUP BY resNo) AS two
@@ -259,7 +263,7 @@
 		r.RES_NO resNo,
 		r.M_ID id,
 	    b.M_ID host,
-	    f.B_FILENAME fileName,
+	    m2.M_PROFILE fileName,
 	    m.CHAT_CONTENTS content,
 	    m.CHAT_DATE date,
 	    b.B_NO boardNo
@@ -267,12 +271,21 @@
 	JOIN ACTI_BOARD b ON r.B_NO = b.B_NO
 	JOIN ACTI_FILE f ON f.B_NO = b.B_NO 
 	JOIN M_CHAT m ON m.CHAT_ROOM = r.RES_NO
+	JOIN MEMBER m2 ON r.M_ID = m2.M_ID
 	ORDER BY date DESC
 	LIMIT 18446744073709551615) AS one
 	WHERE host = #{id}
 	GROUP BY resNo) AS two
 	ORDER BY date DESC
 	</select>
+	
+	<update id="insertDB">
+	UPDATE MEMBER
+	SET
+		M_PROFILE = #{originalFilename}
+	WHERE
+		M_ID = #{id}
+	</update>
 </mapper>
 
 
