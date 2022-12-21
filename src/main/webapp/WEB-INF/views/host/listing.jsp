@@ -20,22 +20,39 @@ h2 { text-align: center; }
 <body>
 <my:navbar></my:navbar>
 
+<div class="container" align="center">
 
 <br><br>
 
-<h2>어떤 유형의 체험을 호스팅하고 싶으세요?</h2> <br><br><br><br>
+<h2>어떤 유형의 체험을 호스팅하고 싶으세요?</h2> <br><br>
 
-<div class="d-grid gap-2 col-6 mx-auto">
+
+<ul>게스트 혼자서는 접할 수 없는 특별한 기회를 제공하세요.
+</ul>
+<ul>자신이 보유한 전문성과 독특한 관점이 무엇인지 생각해보세요.
+</ul>
+<ul>게스트가 다른 사람들과 의미 있는 방식으로 교감하고 교류할 수 있도록 도와주세요.
+</ul> <br><br>
+<div class="d-grid gap-2 col-2 mx-auto">
   <button class="btn btn-dark" type="button" style="bacgroubd-color:white" 
 <%--  onclick="window.open (  '${pageContext.request.contextPath}/host/listing/off');"  ><h4>오프라인 체험</h4> <br> --%>
- onclick="location.href=   '${pageContext.request.contextPath}/host/listing/topic';"  ><h4>오프라인 체험</h4> <br>
-  게스트와 현장에서 직접 대면하고 함께 참여하는 체험입니다.
-  </button>
-  <button class="btn btn-dark" type="button" 
-  onclick="window.open (  '${pageContext.request.contextPath}/host/listing/topic');" ><h4>온라인 체험</h4><br>
-게스트는 줌 화상 회의 소프트웨어를 통해 온라인으로 체험에 참여하게 됩니다.</button>
+ onclick="location.href=   '${pageContext.request.contextPath}/qna/QnaList';"  >문의하기 <br>
+  </button> <br>
 </div>
-
+<div class="d-grid gap-2 col-2 mx-auto">
+  <button class="btn btn-dark" type="button" style="bacgroubd-color:white" 
+<%--  onclick="window.open (  '${pageContext.request.contextPath}/host/listing/off');"  ><h4>오프라인 체험</h4> <br> --%>
+ onclick="location.href=   '${pageContext.request.contextPath}/ydsBoard/list';"  >다른 체험 보러 가기 <br>
+  </button> <br>
+</div>
+<div class="d-grid gap-2 col-2 mx-auto">
+  <button class="btn btn-dark" type="button" style="bacgroubd-color:white" 
+<%--  onclick="window.open (  '${pageContext.request.contextPath}/host/listing/off');"  ><h4>오프라인 체험</h4> <br> --%>
+ onclick="location.href=   '${pageContext.request.contextPath}/host/listing/topic';"  >체험 등록하기 <br>
+ 
+  </button>
+</div>
+</div>
 
 <!-- <input type="button" value="fetch" onclick = " -->
 <!--    fetch('listing/on').then(function(response){ -->

@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.trips.mapper.mypage.MyPageMapper">
+	<select id="select" resultMap="memberMap">
+	SELECT
+		M_ID,
+	    M_PASSWORD,
+	    M_NAME,
+	    M_GENDER,
+	    M_PHONE,
+	    M_EMAIL,
+	    M_HOST_REQUEST
+	FROM
+		MEMBER
+	WHERE
+		M_ID = #{id}
+	</select>
+	
+	<resultMap type="com.trips.domain.mypage.MemberDto" id="memberMap">
+		<id column="M_ID" property="id"></id>
+		<result column="M_PASSWORD" property="password"/>
+		<result column="M_NAME" property="name"/>
+		<result column="M_GENDER" property="gender"/>
+		<result column="M_PHONE" property="phone"/>
+		<result column="M_EMAIL" property="email"/>
+		<result column="M_HOST_REQUEST" property="host"/>
+	</resultMap>
+	
+	<update id="update">
+	UPDATE MEMBER
+	SET
+		M_PASSWORD = #{password}
+	WHERE
+		M_ID = #{id}
+	</update>
+	
+	<update id="updateByName">
+	UPDATE MEMBER
+	SET
+		M_NAME = #{name}
+	WHERE
+		M_ID = #{id}
+	</update>
+	
+	<update id="updateByPhone">
+	UPDATE MEMBER
+	SET
+		M_PHONE = #{phone}
+	WHERE
+		M_ID = #{id}
+	</update>
+	
+	<update id="updateByEmail">
+	UPDATE MEMBER
+	SET
+		M_EMAIL = #{email}
+	WHERE
+		M_ID = #{id}
+	</update>
+	
+	<update id="updateByGender">
+	UPDATE MEMBER
+	SET
+		M_GENDER = #{gender}
+	WHERE
+		M_ID = #{id}
+	</update>
+	
+	<update id="updateByHost">
+	UPDATE MEMBER
+	SET
+		M_HOST_REQUEST = #{host}
+	WHERE
+		M_ID = #{id}
+	</update>
+	
+	<select id="getRes1ById" resultType="com.trips.domain.mypage.Res1Dto">
+<!-- 	SELECT * FROM
+	(SELECT
+		r.RES_NO resNo, 
+		r.M_ID id,
+	    b.B_TITLE title,
+	    b.M_ID host,
+	    d.DATE date,
+	    f.B_FILENAME fileName,
+	    r.B_NO boardNo
+	FROM
+	    ACTI_RESERVATION r
+	JOIN ACTI_BOARD b ON r.B_NO = b.B_NO
+	JOIN ACTI_DATE d ON r.B_NO = d.B_NO
+	JOIN ACTI_FILE f ON r.B_NO = f.B_NO
+	WHERE r.M_ID = #{id}
+    GROUP BY boardNo) AS UNO
+	ORDER BY DATE DESC -->
+	<!-- 개량형 -->
+	SELECT * FROM
+	(SELECT
+		r.RES_NO resNo, 
+		r.M_ID id,
+		b.B_TITLE title,
+	    b.M_ID host,
+	    r.DATE date,
+	    f.B_FILENAME fileName,
+	    r.B_NO boardNo
+	FROM ACTI_RESERVATION r
+	JOIN ACTI_BOARD b ON r.B_NO = b.B_NO
+	JOIN ACTI_FILE f ON r.B_NO = f.B_NO
+	WHERE r.M_ID = #{id}
+    GROUP BY resNo) AS UNO
+	ORDER BY DATE DESC;
+	</select>
+	
+	<select id="getByResNo" resultType="com.trips.domain.mypage.Res2Dto">
+	SELECT 
+		r.RES_NO resNo, 
+		r.M_ID id,
+	    b.B_TITLE title,
+	    b.M_ID host,
+	    r.DATE date,
+	    f.B_FILENAME fileName,
+        b.B_CONTENT content,
+        b.MAP_TEXT mapText,
+        b.MAP_LL mapLL,
+        b.B_NO boardNo,
+        <!-- ↓ 얘 상수로 되어있긴한데 어차피 JSP에서 안쓰는 데이터라 신경 안써도 됨 바닐라count가 역할 대신하는 중-->
+        COUNT(CASE WHEN r.B_NO = 1001 AND r.DATE = '2022-10-30' THEN 1 END) count
+	FROM
+    	ACTI_RESERVATION r
+	JOIN ACTI_BOARD b ON r.B_NO = b.B_NO
+	JOIN ACTI_DATE d ON r.B_NO = d.B_NO
+	JOIN ACTI_FILE f ON r.B_NO = f.B_NO
+	WHERE r.RES_NO= #{resNo}
+	</select>
+	
+	<select id="getImgByResNo" resultType="com.trips.domain.mypage.ImgDto">
+	SELECT 
+		r.RES_NO resNo, 
+	    f.B_FILENAME fileName,
+	    r.B_NO boardNo
+	FROM 
+		ACTI_RESERVATION r
+		JOIN ACTI_FILE f ON r.B_NO = f.B_NO
+	WHERE r.RES_NO= #{resNo}
+	</select>
+	
+	<select id="getCountByBD" resultType="int">
+	SELECT 
+        COUNT(DISTINCT RES_NO)
+	FROM
+    	ACTI_RESERVATION r
+	JOIN ACTI_BOARD b ON r.B_NO = b.B_NO
+	JOIN ACTI_DATE d ON r.B_NO = d.B_NO
+	JOIN ACTI_FILE f ON r.B_NO = f.B_NO
+	WHERE r.B_NO = #{boardNo} AND r.DATE = #{date}
+	</select>
+	
+	<select id="getPerson" resultType="int">
+	SELECT O_PERSON FROM ACTI_ORDER
+    WHERE O_B_NO = #{boardNo} AND O_ADDDATE = #{date};
+	</select>
+	
+	<select id="getChat" resultType="com.trips.domain.mypage.ChatDto">
+	SELECT 
+		CHAT_ID chatId, 
+		M_ID writer, 
+		CHAT_DATE date, 
+		CHAT_CONTENTS content, 
+		CHAT_ROOM chatRoom
+	FROM M_CHAT WHERE CHAT_ROOM = #{chatRoom}
+	</select>
+	
+	<insert id="insertChat">
+	INSERT INTO M_CHAT (M_ID, CHAT_ROOM, CHAT_CONTENTS)
+	VALUES (#{id}, #{chatRoom}, #{content})
+	</insert>
+	
+	<select id="getChatLeft" resultType="com.trips.domain.mypage.ChatLeftDto">
+	SELECT *
+	    FROM
+	(SELECT *
+		FROM
+	(SELECT 
+		r.RES_NO resNo,
+		r.M_ID id,
+	    b.M_ID host,
+	    f.B_FILENAME fileName,
+	    m.CHAT_CONTENTS content,
+	    m.CHAT_DATE date,
+	    b.B_NO boardNo
+	FROM ACTI_RESERVATION r
+	JOIN ACTI_BOARD b ON r.B_NO = b.B_NO
+	JOIN ACTI_FILE f ON f.B_NO = b.B_NO 
+	JOIN M_CHAT m ON m.CHAT_ROOM = r.RES_NO
+	ORDER BY date DESC
+	LIMIT 18446744073709551615) AS one
+	WHERE id = #{id}
+	GROUP BY resNo) AS two
+	ORDER BY date DESC
+	</select>
+	
+	<delete id="remove">
+	DELETE FROM MEMBER
+	WHERE M_ID = #{id}
+	</delete>
+	
+	<select id="getEmailById" resultType="String">
+		SELECT M_EMAIL 
+		FROM MEMBER 
+		WHERE M_ID = #{id}
+	</select>
+	
+	<select id="getByEmail" resultType="com.trips.domain.mypage.MemberDto">
+		SELECT 
+			M_ID id,
+		    M_PASSWORD password,
+		    M_NAME name,
+		    M_GENDER gender,
+		    M_PHONE phone,
+		    M_EMAIL email,
+		    M_HOST_REQUEST host
+		FROM MEMBER 
+		WHERE M_EMAIL = #{email}
+	</select>
+	
+	<select id="getUserListById" resultMap="hostChatMap">
+	SELECT 
+		b.B_NO boardNo,
+		b.B_TITLE title,
+		r.DATE date,
+	    b.M_ID id,
+	    r.M_ID host,
+	    r.RES_NO chatRoom
+	FROM ACTI_BOARD b
+	JOIN ACTI_RESERVATION r ON b.B_NO = r.B_NO 
+	WHERE b.M_ID = #{id}
+	ORDER BY date DESC;
+	</select>
+	
+	<resultMap type="com.trips.domain.mypage.HostChatIntroDto" id="hostChatMap">
+		<id column="boardNo" property="boardNo"></id>
+		<id column="date" property="date"></id>
+		<result column="title" property="title"></result>
+		<result column="id" property="id"></result>
+		<collection ofType="com.trips.domain.mypage.HostChatRoomDto" column="hcd" property="hcd">
+			<result column="host" property="host" />
+			<result column="chatRoom" property="chatRoom" />
+		</collection>
+	</resultMap>
+	
+	<select id="getChatLeft2" resultType="com.trips.domain.mypage.ChatLeftDto">
+	SELECT *
+	    FROM
+	(SELECT *
+		FROM
+	(SELECT 
+		r.RES_NO resNo,
+		r.M_ID id,
+	    b.M_ID host,
+	    f.B_FILENAME fileName,
+	    m.CHAT_CONTENTS content,
+	    m.CHAT_DATE date,
+	    b.B_NO boardNo
+	FROM ACTI_RESERVATION r
+	JOIN ACTI_BOARD b ON r.B_NO = b.B_NO
+	JOIN ACTI_FILE f ON f.B_NO = b.B_NO 
+	JOIN M_CHAT m ON m.CHAT_ROOM = r.RES_NO
+	ORDER BY date DESC
+	LIMIT 18446744073709551615) AS one
+	WHERE host = #{id}
+	GROUP BY resNo) AS two
+	ORDER BY date DESC
+	</select>
+</mapper>
+
+
+
+
+
+
+
+

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,6 +32,7 @@
 		<div class="row">
 			<div class="col">
 
+				
 
 				<c:if test="${not empty message }">
 					<div class="alert alert-success">${message }</div>
@@ -38,6 +40,7 @@
 
 				<h1>호스트 체험 목록</h1>
 				<br>
+				* 허가된 체험만 조회가 가능합니다 	<br>	<br>
 				<table class="table">
 					<thead>
 						<tr>
@@ -55,8 +58,8 @@
 
 
 
-
 					<c:forEach items="${boardList}" var="board">
+					<c:set value="${board.b_accept }" var="accept"></c:set>
 						<c:url value="/ydsBoard/get" var="boardGet">
 							<c:param name="num" value="${board.b_no }"></c:param>
 						</c:url>
@@ -65,7 +68,11 @@
 						</c:url>
 						<tr>
 							<td rowspan="2">${board.b_accept }</td>
-							<td ><a href="${boardGet }">${board.b_title }</a></td>
+							<td ><a 
+							<c:if test="${accept=='true'}">
+							href="${boardGet }"
+							</c:if>
+							>${board.b_title }</a></td>
 							<td>${board.b_topic }</td>
 							<td>${board.cost }</td>
 							<td>${board.max_person }</td>
@@ -75,11 +82,20 @@
 						<tr>
 							<td><button class="btn btn-dark" type="button"
 									style="bacgroubd-color: white"
-									onclick="location.href=   '${boardGet }';">
+									<c:if test="${accept=='true'}">
+									onclick="location.href=   '${boardGet }';" 
+									</c:if>
+									>
 									체험 보기</button>
 								<button class="btn btn-dark" type="button"
 									style="bacgroubd-color: white"
-									onclick="location.href=   '${boardModify }';">
+									
+									<c:if test="${accept=='true'}">
+									onclick="location.href=   '${boardModify }';"
+									</c:if>
+									>
+									
+									
 									체험 수정</button></td>
 						
 							<td></td>

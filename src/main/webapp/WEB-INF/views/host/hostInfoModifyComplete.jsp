@@ -20,12 +20,15 @@ h2 { text-align: center; }
 <body>
 <my:navbar></my:navbar>
 
-<my:hostNav></my:hostNav>
 <br><br>
 
-<h2>  <br>호스트 정보가 수정되었습니다!</h2> <br><br><br><br>
+<h2>  <br>호스트 정보가 수정되었습니다!</h2> 
 
-<
+<my:hostPage></my:hostPage>
+
+
+
+
 <script>
 
 </script>

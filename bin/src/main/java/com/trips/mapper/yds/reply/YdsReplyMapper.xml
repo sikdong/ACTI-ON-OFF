@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.trips.mapper.yds.reply.YdsReplyMapper">
+<select id="listReply" resultType = "com.trips.domain.yds.TripsReplyDto">
+SELECT 
+	r.R_NO replyNum,
+	m.M_ID writer,
+	r.R_CONTENT content,
+	r.R_CREATEDATE createDate
+FROM ACTI_REPLY r
+LEFT JOIN MEMBER m ON m.M_ID = r.M_ID 
+WHERE B_NO = #{boardNum}
+ORDER BY R_NO DESC;
+</select>
+
+<insert id="insertReply">
+INSERT INTO ACTI_REPLY(
+	M_ID,
+    R_CONTENT,
+    B_NO
+)
+VALUE(#{writer}, #{content},#{boardNum});
+
+</insert>
+
+<delete id="deleteReply">
+DELETE FROM ACTI_REPLY
+WHERE R_NO = #{replyNum}
+</delete>
+
+<update id="updateReply">
+UPDATE ACTI_REPLY
+SET
+	R_CONTENT = #{content}
+WHERE R_NO = #{replyNum}
+</update>
+
+<delete id="deleteReplybyBoardId">
+DELETE FROM ACTI_REPLY
+WHERE B_NO = #{num}
+</delete>
+
+<select id="selectByReplyNum" resultType = "com.trips.domain.yds.TripsReplyDto">
+SELECT 
+	r.R_NO replyNum,
+	m.M_ID writer,
+	r.R_CONTENT content,
+	r.R_CREATEDATE createDate
+FROM ACTI_REPLY r
+LEFT JOIN MEMBER m ON m.M_ID = r.M_ID 
+WHERE r.R_NO = #{replyNum}
+</select>
+
+</mapper>

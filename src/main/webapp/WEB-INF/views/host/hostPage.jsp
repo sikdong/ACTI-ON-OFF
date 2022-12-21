@@ -232,6 +232,9 @@ html {
 <ul class="list-group list-group-flush">
 
 <my:navbar></my:navbar>
+
+<my:hostPage></my:hostPage>
+
 <%-- <my:hostNav></my:hostNav> --%>
 <center>
 <div class="container" align="center">
@@ -383,73 +386,12 @@ html {
 <!-- 				</div> -->
 <!-- 			</div> -->
 
-<!-- 			<div class="_1obfcljv" style="float:left;"> -->
-<!-- 				<div class="_15wuypg"> -->
-<!-- 					<a href="/account-settings/professional-hosting" class="_131n1yh"><div -->
-<!-- 							class="_1uwb2q9"> -->
-<!-- 							<div style="margin-bottom: 16px;"> -->
-<!-- 								<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" -->
-<!-- 									aria-hidden="true" role="presentation" focusable="false" -->
-<!-- 									style="display: block; height: 32px; width: 32px; fill: currentcolor;"> -->
-<!-- 									<path -->
-<!-- 										d="m27 5h-4a2.00229 2.00229 0 0 0 -2 2v4h-4v-8a2.002 2.002 0 0 0 -2-2h-4a2.002 2.002 0 0 0 -2 2v8h-4a2.002 2.002 0 0 0 -2 2v16a2.00229 2.00229 0 0 0 2 2h22a2.0026 2.0026 0 0 0 2-2v-22a2.00229 2.00229 0 0 0 -2-2zm-18 24h-4l-.00146-16h4.00146zm6 0h-4v-16l-.00092-.00891-.00054-9.99109h4.00146zm6 0h-4v-16h4zm6 0h-4v-16l-.00073-.007-.00027-5.993h4.001z"></path></svg> -->
-<!-- 							</div> -->
-<!-- 							<div> -->
-<!-- 								<div class="_4i4nwv">전문 호스팅 도구</div> -->
-<!-- 								<div class="_1c02cnn">에어비앤비에서 여러 숙소를 관리하신다면 전문 도구를 이용해보세요.</div> -->
-<!-- 							</div> -->
-<!-- 						</div></a> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-
-<!-- 			<div class="_1obfcljv" style="float:left;"> -->
-<!-- 				<div class="_15wuypg"> -->
-<!-- 					<a href="/invite?r=51" class="_131n1yh"><div class="_1uwb2q9"> -->
-<!-- 							<div style="margin-bottom: 16px;"> -->
-<!-- 								<svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" -->
-<!-- 									aria-hidden="true" role="presentation" focusable="false" -->
-<!-- 									style="display: block; height: 32px; width: 32px; fill: currentcolor;"> -->
-<!-- 									<path -->
-<!-- 										d="m28 2c1.0543618 0 1.9181651.81587779 1.9945143 1.85073766l.0054857.14926234v24c0 1.0543618-.8158778 1.9181651-1.8507377 1.9945143l-.1492623.0054857h-24c-1.0543618 0-1.91816512-.8158778-1.99451426-1.8507377l-.00548574-.1492623v-24c0-1.0543618.81587779-1.91816512 1.85073766-1.99451426l.14926234-.00548574zm-14.415 15h-9.585v11h11v-9.586l-4.2928932 4.2931068-1.41421358-1.4142136zm14.415 0h-9.585l4.2921068 4.2928932-1.4142136 1.4142136-4.2928932-4.2931068v9.586h11zm-13-13h-11v11l3.53577067.0011092c-.34073717-.5885973-.53577067-1.272077-.53577067-2.0011092 0-2.209139 1.790861-4 4-4 1.0347079 0 1.9884302.35717147 2.8159632 1.1592818.2940352.2850022.6817727.8549374 1.1838896 1.7366117zm6 7c-.5327919 0-.9841014.1690165-1.4239808.5953825-.2060299.1997004-.6246872.8766948-1.2206134 1.985144l-.247741.466282-.4926648.9531915h3.385c1.0016437 0 1.8313084-.7363297 1.9772306-1.6972257l.0172837-.153512.0054857-.1492623c0-1.1045695-.8954305-2-2-2zm7-7h-11l.0007292 7.8948717c.5018346-.8810929.889386-1.4506978 1.1833076-1.7355899.827533-.80211033 1.7812553-1.1592818 2.8159632-1.1592818 2.209139 0 4 1.790861 4 4 0 .7290322-.1950335 1.4125119-.5357707 2.0011092l3.5357707-.0011092zm-17 7c-1.1045695 0-2 .8954305-2 2l.00548574.1492623c.07634914 1.0348599.94015246 1.8507377 1.99451426 1.8507377h3.385l-.4926648-.9531915-.3645522-.6822055c-.533991-.9806703-.9115076-1.5828334-1.1038022-1.7692205-.4398794-.426366-.8911889-.5953825-1.4239808-.5953825z"></path></svg> -->
-<!-- 							</div> -->
-<!-- 							<div> -->
-<!-- 								<div class="_4i4nwv">추천 크레딧 및 쿠폰</div> -->
-<!-- 								<div class="_1c02cnn">₩0의 추천 크레딧과 쿠폰이 있습니다. 자세히 알아보기</div> -->
-<!-- 							</div> -->
-<!-- 						</div></a> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-		</div>
-	</div>
-</div>
-</div>
-</center>
 
 
 
 
 
-
-			<script>
-	{
-	    mode: "multiple",
-	    dateFormat: "Y-m-d"
-	}
-	// commonjs
-	const flatpickr = require("flatpickr");
-
-	// es modules are recommended, if available, especially for typescript
-	import flatpickr from "flatpickr";
-	// If using flatpickr in a framework, its recommended to pass the element directly
-	flatpickr(element, {});
-
-	// Otherwise, selectors are also supported
-	flatpickr("#myID", {});
-
-	// creates multiple instances
-	flatpickr(".anotherSelector");
-	$(".selector").flatpickr(optional_config);
-	</script>
+	
 
 			<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 			<script

@@ -43,16 +43,16 @@
 <!--  				(input[name="b_topic" type="radio" value=""])*11 -->
 			<table>
 			<tr>
-			<td><input type="radio" name="b_topic" value="대체 건강 요법">대체 건강 요법 </td>
+			<td><input type="radio" name="b_topic" value="대체 건강 요법">대체 건강 요법 &nbsp;&nbsp; </td>
 		  	<td><input type="radio" name="b_topic" value="마음챙김">마음챙김</td>
 		  	<td><input type="radio" name="b_topic" value="보디워크">보디워크</td>
 		  	<tr>
-			<td><input type="radio" name="b_topic" value="뷰티">뷰티 </td>
+			<td><input type="radio" name="b_topic" value="뷰티">뷰티 &nbsp;&nbsp;</td>
 		  	<td><input type="radio" name="b_topic" value="스파">스파 </td>
 		  	<td><input type="radio" name="b_topic" value="요가">요가 </td>
 		  	<tr>
 			<td><input type="radio" name="b_topic" value="점술">점술 </td>
-		  	<td><input type="radio" name="b_topic" value="기타 웰니스 체험">기타 웰니스 체험 </td>
+		  	<td><input type="radio" name="b_topic" value="기타 웰니스 체험">기타 웰니스 체험  </td>
 
 		  	
 		  	</table>

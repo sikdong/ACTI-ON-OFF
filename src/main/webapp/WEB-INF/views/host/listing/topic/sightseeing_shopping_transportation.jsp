@@ -44,18 +44,18 @@
 				<table>
 			<tr>
 			<td><input type="radio" name="b_topic" value="보드 투어">보드 투어</td>
-		  	<td><input type="radio" name="b_topic" value="자전거 투어">자전거 투어</td>
-		  	<td><input type="radio" name="b_topic" value="헬리콥터 투어">헬리콥터 투어  </td>
+		  	<td><input type="radio" name="b_topic" value="자전거 투어">자전거 투어 &nbsp;&nbsp;</td>
+		  	<td><input type="radio" name="b_topic" value="헬리콥터 투어">헬리콥터 투어 &nbsp;&nbsp;  </td>
 		  	<tr>
-			<td><input type="radio" name="b_topic" value="열기구 투어">열기구 투어 </td>
-		  	<td><input type="radio" name="b_topic" value="박물관 투어">박물관 투어 </td>
-		  	<td><input type="radio" name="b_topic" value="사진 투어">사진 투어</td>
+			<td><input type="radio" name="b_topic" value="열기구 투어">열기구 투어 &nbsp;&nbsp; </td>
+		  	<td><input type="radio" name="b_topic" value="박물관 투어">박물관 투어 &nbsp;&nbsp; </td>
+		  	<td><input type="radio" name="b_topic" value="사진 투어">사진 투어 &nbsp;&nbsp;</td>
 		  	<tr>
-			<td><input type="radio" name="b_topic" value="비행기 투어">비행기 투어 </td>
-		  	<td><input type="radio" name="b_topic" value="스쿠터 투어">스쿠터 투어 </td>
+			<td><input type="radio" name="b_topic" value="비행기 투어">비행기 투어 &nbsp;&nbsp; </td>
+		  	<td><input type="radio" name="b_topic" value="스쿠터 투어">스쿠터 투어 &nbsp;&nbsp; </td>
 		  	<td><input type="radio" name="b_topic" value="쇼핑 투어">쇼핑 투어</td>
 		  	<tr>
-			<td><input type="radio" name="b_topic" value="관광 투어">관광 투어  </td>
+			<td><input type="radio" name="b_topic" value="관광 투어">관광 투어 &nbsp;&nbsp;  </td>
 		  	<td><input type="radio" name="b_topic" value="기차 타기">기차 타기  </td>
 		  	<td><input type="radio" name="b_topic" value="도보 투어">도보 투어  </td>
 		  		  	<tr>

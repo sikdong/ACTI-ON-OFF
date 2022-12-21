@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.trips.mapper.qna.QnaMapper">
+
+	<!-- OR,WHERE 다음 컬럼명이 들어감 -->
+
+<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+	INSERT INTO QNA (Q_TITLE, Q_CONTENT,M_ID)
+	VALUES (#{title},#{content},#{memberId})
+</insert>
+
+<select id="list" resultType="com.trips.domain.qna.QnaDto">
+SELECT
+	q.Q_ID id,
+	q.Q_TITLE title,
+	q.M_ID memberId,
+	q.Q_inserted inserted,
+	COUNT(DISTINCT a.A_ID) countAnswer,
+	COUNT(DISTINCT f.F_ID) countFile,
+	COUNT(DISTINCT e.M_ID) countEmpathy,
+	q.Q_STATUS status
+FROM QNA q LEFT JOIN ANSWER a ON q.Q_ID = a.Q_ID
+		   LEFT JOIN File f ON q.Q_ID = f.Q_ID
+		   LEFT JOIN empathy e ON q.Q_ID = e.Q_ID
+WHERE
+	<trim prefixOverrides="OR">
+		<if test="status==null or status=='s0'">
+			OR q.Q_STATUS LIKE '%%'
+		</if>
+		<if test="status=='s2'">
+			OR q.Q_STATUS LIKE '답변대기'
+		</if>
+		<if test="status=='s1'">
+			OR q.Q_STATUS LIKE '답변완료'
+		</if>
+	</trim>
+
+	AND
+	
+
+	<trim prefixOverrides="OR" prefix="(" suffix=")">
+	<if test="type=='all' or type=='title'">
+	OR q.Q_TITLE LIKE #{keyword}
+	</if>
+	
+	<if test="type=='all' or type=='content'">
+	OR q.Q_CONTENT LIKE #{keyword}
+	</if>
+	<if test="type=='all' or type=='memberId'">
+	OR q.M_ID LIKE #{keyword}
+	</if>
+	</trim>
+	
+GROUP BY q.Q_ID
+ORDER BY q.Q_ID DESC
+LIMIT #{offset},#{records} 
+</select>
+
+
+<select id="select" resultMap="qnaMap" >
+SELECT
+	q.Q_ID id,
+	q.Q_TITLE title,
+	q.Q_CONTENT content,
+	q.M_ID memberId,
+	q.Q_INSERTED inserted,
+  (SELECT COUNT(*) FROM empathy WHERE Q_ID=#{id}) countEmpathy,
+	f.F_ID fileId,
+	f.name fileName
+FROM 
+	QNA q LEFT JOIN File f ON q.Q_ID = f.Q_ID
+		  LEFT JOIN empathy e ON q.Q_ID = e.Q_ID
+WHERE
+	q.Q_ID=#{id}
+</select>
+
+<resultMap type="com.trips.domain.qna.QnaDto" id="qnaMap">
+	<id column="id" property="id"></id>
+	<result column="title" property="title"/>
+	<result column="content" property="content"/>
+	<result column="memberId" property="memberId"/>
+	<result column="inserted" property="inserted"/>
+	<result column="countEmpathy" property="countEmpathy"/>
+	<collection property="fileName"  ofType="string">
+		<result column="fileName" property="fileName"/>
+	</collection>
+</resultMap>
+
+
+<update id="update">
+UPDATE QNA
+SET
+	Q_TITLE = #{title},
+	Q_CONTENT  = #{content},
+	M_ID  = #{memberId}
+WHERE
+ Q_ID=#{id}
+</update>
+
+<delete id="delete">
+DELETE FROM QNA
+WHERE Q_ID =#{id}
+
+</delete>
+ <!-- 총 레코드 수  확인하는 xml -->
+<select id="countAll" resultType="int">
+	SELECT COUNT(*) FROM QNA
+	WHERE
+	
+	<trim prefixOverrides="OR">
+		<if test="status==null or status=='s0'">
+			OR Q_STATUS LIKE '%%'
+		</if>
+		<if test="status=='s2'">
+			OR Q_STATUS LIKE '답변대기'
+		</if>
+		<if test="status=='s1'">
+			OR Q_STATUS LIKE '답변완료'
+		</if>
+	</trim>
+
+	AND
+	
+	<trim prefixOverrides="OR" prefix="(" suffix=")">
+	<if test="type=='all' or type=='title'">
+	OR Q_TITLE LIKE #{keyword}
+	</if>
+	
+	<if test="type=='all' or type=='content'">
+	OR Q_CONTENT LIKE #{keyword}
+	</if>
+	
+	<if test="type=='all' or type=='memberId'">
+	OR M_ID LIKE #{keyword}
+	</if>
+	</trim>
+</select>
+
+<insert id="insertFile">
+INSERT INTO File (Q_ID,name)
+VALUES (#{id},#{fileName})
+
+</insert>
+
+<!-- 파일 레코드에서 지우기 -->
+<delete id="deleteFileByQnaId">
+DELETE FROM File
+WHERE Q_ID= #{id}
+
+</delete>
+	
+<delete id="deleteFileByBoardIdAndFileName">
+	DELETE FROM File
+	WHERE Q_ID = #{id} AND name = #{fileName}
+</delete>
+
+<select id="getEmpathyByQnaId" resultType="int">
+SELECT COUNT(*) FROM empathy
+WHERE Q_ID = #{qnaId} AND M_ID = #{MemberNo}
+</select>
+		
+<delete id="deleteEmpathy">
+DELETE FROM empathy
+WHERE Q_ID=#{qnaId} AND M_ID=#{MemberNo}
+</delete>
+
+<insert id="insertEmpathy">
+INSERT INTO empathy(Q_ID,M_ID)
+VALUES (#{qnaId},#{MemberNo})
+</insert>		
+
+<select id="countEmpathyByQnaId" resultType="int">
+SELECT 
+COUNT(*) 
+FROM empathy 
+WHERE
+Q_ID = #{qnaId}
+</select>
+		
+<delete id="deleteEmpathyByQnaId">
+DELETE FROM empathy
+WHERE Q_ID = #{id}
+</delete>
+
+		
+		
+		
+</mapper>

@@ -55,7 +55,7 @@
 <!--  				(input[name="b_topic" type="radio" value=""])*11 -->
 			<table>
 			<tr>
-			<td><input type="radio" name="b_topic" value="역사 박물관 투어">역사 박물관 투어  </td>
+			<td><input type="radio" name="b_topic" value="역사 박물관 투어">역사 박물관 투어&nbsp;&nbsp;  </td>
 		  	<td><input type="radio" name="b_topic" value="역사 투어">역사 투어</td>
 		  	<td><input type="radio" name="b_topic" value="문학작품 읽기">문학작품 읽기</td>
 		  	<tr>
@@ -64,7 +64,7 @@
 		  	<td><input type="radio" name="b_topic" value="글쓰기 클래스">글쓰기 클래스 </td>
 		  	<tr>
 			<td><input type="radio" name="b_topic" value="역사 이야기">역사 이야기</td>
-		  	<td><input type="radio" name="b_topic" value="기타 역사 체험">기타 역사 체험 </td>
+		  	<td><input type="radio" name="b_topic" value="기타 역사 체험">기타 역사 체험 &nbsp;&nbsp;</td>
 		  	<td><input type="radio" name="b_topic" value="기타 문학 체험">기타 문학 체험  </td>
 
 		  	

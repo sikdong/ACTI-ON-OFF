@@ -56,14 +56,14 @@
 <!--  				(input[name="b_topic" type="radio" value=""])*11 -->
 				<table>
 				<tr>
-				<td><input type="radio" name="b_topic" value="맥주 관련 체험">맥주
+				<td><input type="radio" name="b_topic" value="맥주 관련 체험">맥주&nbsp;&nbsp;&nbsp;
 				<td><input type="radio" name="b_topic" value="와인 과련 체험">와인
 				<td><input type="radio" name="b_topic" value="독주 관련 체험">독주
 				<tr>
-				<td><input type="radio" name="b_topic" value="사케 관련 체험">사케
+				<td><input type="radio" name="b_topic" value="사케 관련 체험">사케&nbsp;&nbsp;&nbsp;
 				<td><input type="radio" name="b_topic" value="차 관련 체험">차
 				<tr>
-				<td><input type="radio" name="b_topic" value="커피 관련 체험">커피
+				<td><input type="radio" name="b_topic" value="커피 관련 체험">커피&nbsp;&nbsp;&nbsp;
 				<td><input type="radio" name="b_topic" value="기타 음료/주류 체험">기타 음료/주류 체험
 				</table>
 				

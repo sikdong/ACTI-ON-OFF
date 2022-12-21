@@ -22,9 +22,8 @@ h2 { text-align: center; }
 <my:hostNav></my:hostNav>
 <br><br>
 
-<h2>호스트 신청이 완료되었습니다. <br>관리자의 승인이 완료되면 호스트 등록이 됩니다!</h2> <br><br><br><br>
-
-<
+<h2>호스트 신청이 완료되었습니다. <br>관리자의 승인이 완료되면 호스트 등록이 됩니다!</h2> 
+<my:hostPage></my:hostPage>
 <script>
 
 </script>
