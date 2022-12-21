@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
-
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <c:set var="path" value="${ pageContext.request.contextPath }"/>
 
 <!DOCTYPE html>
@@ -74,8 +74,14 @@ body {
             <span style="font-family: 'NanumSquareNeo-Variable'!important;" class="d-inline-block">find host</span>
 
             <div  class="line me-auto mb-3 mt-3"></div>
-
-           <a href="${path}/host/becomeHostIntro"><img src="${path}/assets/img/about2.jpg" alt="Image" class="img-fluid"></a>
+			<sec:authorize access="hasAuthority('host')" var="host"/>
+			<c:if test="${host}">
+	           <a href="${path}/host/hostPage"><img src="${path}/assets/img/about2.jpg" alt="Image" class="img-fluid"></a>			
+			</c:if> 
+			<c:if test="${!host}">
+	           <a href="${path}/host/becomeHostIntro"><img src="${path}/assets/img/about2.jpg" alt="Image" class="img-fluid"></a>
+			</c:if>
+		
           </div>
         </div>
       </div>

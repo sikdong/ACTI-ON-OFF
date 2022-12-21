@@ -52,7 +52,7 @@
   <nav class="site-nav">
         <div class="container headerbar" style="padding-top: 20px;">
           <div class="site-navigation">
-            <a href="${path}/" class="logo float-left m-0">ON&OFF <span class="text-primary">.</span></a>
+            <a href="${path}/main" class="logo float-left m-0">ON&OFF <span class="text-primary">.</span></a>
             
    
             <ul class="js-clone-nav d-none d-lg-inline-noone text-left site-menu">
@@ -68,12 +68,15 @@
                <li><a href="${path}/jjhLogin/login?logout">LOGOUT</a></li>
                </c:if>
               
-              
+             
               <li><a href="${path}/ydsBoard/list">ONOFF</a></li>
               <li><a href="${path}/qna/QnaList">QNA</a></li>
+              <c:if test="${logged }">
               <li><a href="${path}/host/hostPage">HOSTPAGE</a></li>
-    
-
+    		  </c:if>	
+			  <c:if test="${not logged }">	
+			  <li><a href="${path}/jjhLogin/login">HOSTPAGE</a></li>
+			  </c:if>	
             </ul>
             <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-block" data-toggle="collapse" data-target="#main-navbar">
               <span></span>
