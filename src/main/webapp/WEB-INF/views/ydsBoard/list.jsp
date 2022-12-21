@@ -129,7 +129,7 @@ a {
  		<div class="mt-2" style="text-align : left; max-width : 280px;">
  			<small>${list.address}</small>
  		</div>
- 		<div style="text-align : left;">${list.price }<small>원/1인</small></div>
+ 		<div style="text-align : left;"><strong>${list.price }</strong><small>원/1인</small></div>
  	</div>
  	</c:forEach>
  </div>
