@@ -37,6 +37,15 @@ translateY(
 #padding{
 	padding: 15px 0 15px 0;
 }
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+} 
+body {
+ font-family: 'NanumSquareNeo-Variable','Palatino Linotype' !important; 
+} 
 </style>
 
 <meta charset="UTF-8">
