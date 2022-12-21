@@ -72,14 +72,14 @@ translateY(
 								<label for="inputID" class="font_pala" style="padding: 10px 0 10px 0; font-size: 25px;">Id</label> 
 								<input type="text"
 									name="username" class="form-control" id="id"
-									aria-describedby="idHelp" placeholder="Enter id">
+									aria-describedby="idHelp" placeholder="Enter id" value="host3">
 							</div>
 							<div class="form-group">
 								<label for="inputPassword" class="font_pala" style="padding: 10px 0 10px 0; font-size: 25px;">Password</label> 
 								<input
 									type="password" name="password" id="password"
 									class="form-control" aria-describedby="passwordHelp"
-									placeholder="Enter Password">
+									placeholder="Enter Password" value="host3">
 							</div>
 							<div class="col-md-12 text-center " style="padding: 15px 0 15px 0;">
 								<button type="submit"
