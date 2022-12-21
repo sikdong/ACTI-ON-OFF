@@ -59,7 +59,7 @@
 		  	<td><input type="radio" name="b_topic" value="시식">시식</td>
 		  	<td><input type="radio" name="b_topic" value="음식 및 시장 투어">음식 및 시장 투어</td>
 		  	<tr>
-			<td><input type="radio" name="b_topic" value="쿠킹 및 음식 만들기">쿠킹 및 음식 만들기 </td>
+			<td><input type="radio" name="b_topic" value="쿠킹 및 음식 만들기">쿠킹 및 음식 만들기&nbsp;&nbsp; </td>
 		  	<td><input type="radio" name="b_topic" value="기타 음식 체험">기타 음식 체험</td>
 
 		  	

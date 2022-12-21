@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.trips.domain.host.BoardDto;
 import com.trips.domain.host.Host;
+import com.trips.domain.host.Host2;
 import com.trips.domain.mypage.MemberDto;
 
 public interface HostMapper {
@@ -30,7 +31,7 @@ public interface HostMapper {
 
 	public void becomeHost(Host host);
 
-	public Host hostInfo(String string);
+	public Host2 hostInfo(String string);
 
 	public int hostInfoModify(Host host);
 

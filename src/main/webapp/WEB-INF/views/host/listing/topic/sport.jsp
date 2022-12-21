@@ -43,16 +43,16 @@
 			<table>
 			<tr>
 			<td><input type="radio" name="b_topic" value="팀 스포츠">팀 스포츠</td>
-		  	<td><input type="radio" name="b_topic" value="짜릿한 스포츠">짜릿한 스포츠 </td>
+		  	<td><input type="radio" name="b_topic" value="짜릿한 스포츠">짜릿한 스포츠 &nbsp;&nbsp; </td>
 		  	<td><input type="radio" name="b_topic" value="격투 스포츠">격투 스포츠</td>
 		  	<tr>
-			<td><input type="radio" name="b_topic" value="수상 스포츠">수상 스포츠 </td>
+			<td><input type="radio" name="b_topic" value="수상 스포츠">수상 스포츠 &nbsp;&nbsp; </td>
 		  	<td><input type="radio" name="b_topic" value="산악 스포츠">산악 스포츠</td>
 		  	<td><input type="radio" name="b_topic" value="설상 스포츠">설상 스포츠 </td>
 		  	<tr>
 			<td><input type="radio" name="b_topic" value="야외 스포츠">야외 스포츠</td>
 		  	<td><input type="radio" name="b_topic" value="피트니스">피트니스</td>
-		  	<td><input type="radio" name="b_topic" value="기타 스포츠">기타 스포츠</td>
+		  	<td><input type="radio" name="b_topic" value="기타 스포츠">기타 스포츠 &nbsp;&nbsp;</td>
 
 		  	
 		  	</table>

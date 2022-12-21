@@ -65,7 +65,7 @@
 				<input type="radio" name="b_topic" value="야생 동식물">야생 동식물
 		  		<input type="radio" name="b_topic" value="기타 동물 체험">기타 동물 체험
 		  		
-		  		<br><input class='btn btn-dark' type="submit" value="다음">
+		  		<br><br><input class='btn btn-dark' type="submit" value="다음">
 			
 			</form>
 			
@@ -78,36 +78,7 @@
 
 
 
-	<script>
-const ctx = "${pageContext.request.contextPath}"; //이거 js가 아니라 jsp의 el이야?
-const orderID = document.querySelector("#orderID").value ; //이거 타입 뭐로 반환됨 ? 스트링?
-const data= {orderID}; // {orderID:"값"} 이렇게 들어있나? 왜? 그냥 "값"만 들어있지 않고.. ???
-	console.log(data);
-	
-	
-function get(){
-// var obj = {orderID: 10248};
-fetch(ctx+"get",{
-	method : "post",
-	headers : {
-		"Content-Type" : "application/json"
-	},
-	body : JSON.stringify({orderID, data})
-})
-.then(res => res.json())
-.then(order => {
 
-
-document.querySelector("article").innerText = 
- 		`
- 			-------------------- 
- 			\${order.orderID}
-			\${order.customerID}
- 			-------------------- 
- 			
- 			`;
-});}
-</script>
 
 
 

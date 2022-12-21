@@ -63,8 +63,8 @@
 		  	<td><input type="radio" name="b_topic" value="밤하늘">밤하늘</td>
 		  	<td><input type="radio" name="b_topic" value="자연 및 생태 투어">자연 및 생태 투어  </td>
 		  	<tr>
-			<td><input type="radio" name="b_topic" value="자연과학과 환경운동">자연과학과 환경운동</td>
-		  	<td><input type="radio" name="b_topic" value="기타 야외 활동">기타 야외 활동</td>
+			<td><input type="radio" name="b_topic" value="자연과학과 환경운동">자연과학과 환경운동&nbsp;&nbsp;</td>
+		  	<td><input type="radio" name="b_topic" value="기타 야외 활동">기타 야외 활동&nbsp;&nbsp;</td>
 		  	<td><input type="radio" name="b_topic" value="기타 자연 체험">기타 자연 체험</td>
 		  	
 		  	

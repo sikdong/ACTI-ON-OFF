@@ -20,17 +20,43 @@
 <my:navbar></my:navbar>
 <my:hostStyle></my:hostStyle>
 <style>
-.button {
-	border: none;
-	color: blck;
-	padding: 16px 32px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 16px;
-	margin: 4px 2px;
-	transition-duration: 0.4s;
-	cursor: pointer;
+/* .button { */
+/* 	border: none; */
+/* 	color: blck; */
+/* 	padding: 16px 32px; */
+/* 	text-align: center; */
+/* 	text-decoration: none; */
+/* 	display: inline-block; */
+/* 	font-size: 16px; */
+/* 	margin: 4px 2px; */
+/* 	transition-duration: 0.4s; */
+/* 	cursor: pointer; */
+/* } */
+.button::before{
+  content: "";
+position: absolute;
+top: 0;
+left: 0;
+display: block;
+width: 100%;
+height: 100%;
+z-index: -1;
+background-color: #000;
+-webkit-transform: scaleY(.3);
+transform: scaleY(.3);
+opacity: 0;
+transition: all .3s
+}
+.button:hover{
+  color:#6098FF;  
+}
+.button:hover::before{
+  opacity: 1;
+  background-color: #fff;
+  -webkit-transform: scaleY(1);
+  transform: scaleY(1);
+  transition: -webkit-transform .6s cubic-bezier(.08, .35, .13, 1.02), opacity .4s;
+  transition: transform .6s cubic-bezier(.08, .35, .13, 1.02), opacity
 }
 
 .form-check-input:checked, .form-check-input:checked {
@@ -48,9 +74,8 @@ div {
 	
 	<br>
 	<br>
-	<!-- 체험주제가 호스트 전문분야와 다를 경우 관리자의 승인이 필요합니다. -->
-	<!-- 세부 체험주제 선택 -->
 
+	<!-- 세부 체험주제 선택 -->
 	<!-- 제목 -->
 	<!-- 내용 -->
 	<!-- 그림파일 -->
@@ -59,8 +84,8 @@ div {
 	<!-- 최대 인원 -->
 	<!-- 최소연령 -->
 	<!-- 날짜 -->
-<center>
-		<div class="container-md">
+
+		<div class="container" align="center">
 			
 				<h3>어떤 주제로 체험을 진행하시나요?</h3>
 
@@ -126,41 +151,12 @@ div {
 
 			</div>
 			
-</center>
 
 
 
 
-			<script>
-const ctx = "${pageContext.request.contextPath}"; //이거 js가 아니라 jsp의 el이야?
-const orderID = document.querySelector("#orderID").value ; //이거 타입 뭐로 반환됨 ? 스트링?
-const data= {orderID}; // {orderID:"값"} 이렇게 들어있나? 왜? 그냥 "값"만 들어있지 않고.. ???
-	console.log(data);
-	
-	
-function get(){
-// var obj = {orderID: 10248};
-fetch(ctx+"get",{
-	method : "post",
-	headers : {
-		"Content-Type" : "application/json"
-	},
-	body : JSON.stringify({orderID, data})
-})
-.then(res => res.json())
-.then(order => {
 
 
-document.querySelector("article").innerText = 
- 		`
- 			-------------------- 
- 			\${order.orderID}
-			\${order.customerID}
- 			-------------------- 
- 			
- 			`;
-});}
-</script>
 
 
 

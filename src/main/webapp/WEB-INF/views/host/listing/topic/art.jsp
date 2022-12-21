@@ -61,7 +61,7 @@
 				<input type="radio" name="b_topic" value="패션 클래스">패션 클래스
 				<input type="radio" name="b_topic" value="그래픽 디자인 클래스">그래픽 디자인 클래스
 		  		<input type="radio" name="b_topic" value="인테리어 디자인 클래스">인테리어 디자인 클래스
-		  		<input type="radio" name="b_topic" value="사진 클래스">사진 클래스
+		  		<br><input type="radio" name="b_topic" value="사진 클래스">사진 클래스
 		  		<input type="radio" name="b_topic" value="사진 촬영">사진 촬영
 		  		<input type="radio" name="b_topic" value="거리 예술">거리 예술
 		  		<input type="radio" name="b_topic" value="시각 디자인 클래스">시각 디자인 클래스
@@ -71,7 +71,7 @@
 
 		  		
 		  		
-		  		<br><input class='btn btn-dark' type="submit" value="다음">
+		  		<br><br><input class='btn btn-dark' type="submit" value="다음">
 			
 			</form>
 			
@@ -84,36 +84,7 @@
 
 
 
-	<script>
-const ctx = "${pageContext.request.contextPath}"; //이거 js가 아니라 jsp의 el이야?
-const orderID = document.querySelector("#orderID").value ; //이거 타입 뭐로 반환됨 ? 스트링?
-const data= {orderID}; // {orderID:"값"} 이렇게 들어있나? 왜? 그냥 "값"만 들어있지 않고.. ???
-	console.log(data);
-	
-	
-function get(){
-// var obj = {orderID: 10248};
-fetch(ctx+"get",{
-	method : "post",
-	headers : {
-		"Content-Type" : "application/json"
-	},
-	body : JSON.stringify({orderID, data})
-})
-.then(res => res.json())
-.then(order => {
 
-
-document.querySelector("article").innerText = 
- 		`
- 			-------------------- 
- 			\${order.orderID}
-			\${order.customerID}
- 			-------------------- 
- 			
- 			`;
-});}
-</script>
 
 
 

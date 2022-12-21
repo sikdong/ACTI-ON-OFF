@@ -65,10 +65,10 @@
 		  	<td><input type="radio" name="b_topic" value="영화,tv 또는 라디오">영화,tv 또는 라디오</td>
 		  	<tr>
 		  	<td><input type="radio" name="b_topic" value="음악">음악</td>
-		  	<td><input type="radio" name="b_topic" value="초자연적">초자연적</td>
+		  	<td><input type="radio" name="b_topic" value="초자연적">초자연적&nbsp;&nbsp;</td>
 		  	<td><input type="radio" name="b_topic" value="극장">극장</td>
 		  	<tr>
-		  	<td><input type="radio" name="b_topic" value="나이트라이프">나이트라이프</td>
+		  	<td><input type="radio" name="b_topic" value="나이트라이프">나이트라이프&nbsp;&nbsp;</td>
 		  	<td><input type="radio" name="b_topic" value="서커스">서커스</td>
 		  	<td><input type="radio" name="b_topic" value="스포츠 경기">스포츠 경기</td>
 		  	</table>			

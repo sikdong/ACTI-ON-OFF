@@ -29,9 +29,9 @@ h2 {
 </head>
 <body>
 <my:navbar></my:navbar>
-<my:hostNav></my:hostNav>
+
 <sec:authorize access="isAuthenticated()" var="loggedIn" />
-${loggedIn }
+
 	<br>
 	<div class="container-md">
 		<div class="row">

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.trips.mapper.host.HostMapper">
+<insert id="listingTopic" useGeneratedKeys="true" keyProperty="b_no" keyColumn="B_NO">	 <!-- db에만 담는게 아니라 dto에도 같이 담는 -->
+	insert into ACTI_BOARD (b_topic,b_accept) values(#{b_topic},0)
+</insert>
+<insert id="listingContents" useGeneratedKeys="true" keyProperty="b_no" keyColumn="B_NO">
+	insert into ACTI_BOARD (m_id,b_topic,b_title,b_content,cost,max_person,min_person,min_age, map_text, map_ll) 
+	values(#{m_id},#{b_topic},#{b_title},#{b_content},#{cost},#{max_person},#{min_person},#{min_age}, #{address}, #{addressLL})
+	
+	
+</insert>
+
+<insert id="insertImage" >
+	insert into ACTI_FILE (b_no,b_filename) values(#{b_no},#{b_filename})
+</insert>
+<insert id="listingDate">
+	insert into ACTI_DATE (date,b_no) values(#{date},#{b_no})
+</insert>
+
+
+<insert id="becomeHost" >
+	insert into ACTI_HOST (m_id,h_experience,h_field,h_introduction,h_photo) 
+	values(#{m_id},#{h_experience},#{h_field},#{h_introduction},#{h_photo}) 	
+</insert>
+
+<update id="hostRequest">
+	update MEMBER
+	set 
+		M_HOST_REQUEST = TRUE
+	WHERE M_ID = #{id}
+</update>
+<update id="hostRequestAuthority">
+	update MEMBER
+	set 
+		M_AUTHORITY = 'hostRequest'
+	WHERE M_ID = #{id}
+</update>
+
+
+<!-- <select id="select"> -->
+<!-- select b_id from ACTI_BOARD</select> -->
+
+<select id="hostInfo" resultType="com.trips.domain.host.Host">
+	select h.m_id, h_experience,h_field,h_introduction, h_photo, m_authority 
+	from ACTI_HOST h left join MEMBER m 
+	on h.m_id=m.m_id
+	where h.m_id= #{m_id}
+</select>
+
+<update id="hostInfoModify" >
+	UPDATE ACTI_HOST
+	SET h_introduction = #{h_introduction}, h_photo=#{h_photo}
+	WHERE m_id = #{m_id}
+</update>
+
+<select  id="getMember" resultType="com.trips.domain.mypage.MemberDto">
+	select m_id id, m_host_request host from MEMBER where m_id= #{username}
+</select>
+
+
+
+
+
+<!-- date,file,reple? -->
+<select id="getMyList" resultType="com.trips.domain.host.BoardDto">
+	select DISTINCT b.b_no, b.b_accept, b.b_title, b.b_content, b.b_readcount,b.b_status,b.b_createdate,b.b_modifydate,b.m_id,b.cost,
+    b.min_person,b.max_person,b.min_age,b.b_topic
+	from ACTI_BOARD b left join ACTI_FILE f  ON b.b_no=f.b_no 
+    left join ACTI_REPLY  r on f.b_no =r.b_no
+    left join ACTI_DATE d on b.b_no=d.B_NO
+	where b.m_id=#{m_id};
+</select>
+
+<!-- <select id="list" resultType="com.study.domain.board.BoardDto"> -->
+<!-- 	SELECT  -->
+<!-- 		b.id, -->
+<!-- 		b.title, -->
+<!-- 		b.writer, -->
+<!-- 		b.inserted, -->
+<!-- 		COUNT(DISTINCT r.id) countReply, -->
+<!-- 		COUNT(DISTINCT f.id) countFile, -->
+<!-- 		COUNT(DISTINCT l.memberId) countLike -->
+<!-- 	FROM Board b LEFT JOIN Reply r ON b.id = r.boardId -->
+<!-- 	             LEFT JOIN File f ON b.id = f.boardId -->
+<!-- 	             LEFT JOIN BoardLike l ON b.id = l.boardId -->
+<!-- 	WHERE -->
+		
+<!-- 		<trim prefixOverrides="OR"> -->
+<!-- 			<if test="type == 'all' or type == 'title'"> -->
+<!-- 			OR b.title LIKE #{keyword} -->
+<!-- 			</if> -->
+			
+<!-- 			<if test="type == 'all' or type == 'content'"> -->
+<!-- 			OR b.content LIKE #{keyword} -->
+<!-- 			</if> -->
+			
+<!-- 			<if test="type == 'all' or type == 'writer'"> -->
+<!-- 			OR b.writer LIKE #{keyword} -->
+<!-- 			</if> -->
+<!-- 		</trim> -->
+<!-- 	GROUP BY b.id -->
+<!-- 	ORDER BY b.id DESC -->
+<!-- 	LIMIT #{offset}, #{records} -->
+<!-- 	</select> -->
+
+
+<!-- 	<select id="select" resultMap="boardMap"> -->
+<!-- 	SELECT -->
+<!-- 		b.id, -->
+<!-- 		b.title, -->
+<!-- 		b.content, -->
+<!-- 		b.writer, -->
+<!-- 		b.inserted, -->
+<!-- 		f.id fileId, -->
+<!-- 		f.name fileName -->
+<!-- 	FROM -->
+<!-- 		Board b LEFT JOIN File f ON b.id = f.boardId -->
+<!-- 	WHERE -->
+<!-- 		b.id = #{id} -->
+<!-- 	</select> -->
+	
+<!-- 	<resultMap type="com.trips.domain.mypage.BoardDto" id="boardMap"> -->
+<!-- 		<id column="id" property="id"></id> -->
+<!-- 		<result column="title" property="title"/> -->
+<!-- 		<result column="writer" property="writer"></result> -->
+<!-- 		<result column="content" property="content"/> -->
+<!-- 		<result column="inserted" property="inserted"/> -->
+<!-- 		<collection property="fileName" ofType="string"> -->
+<!-- 			<result property="fileName" column="fileName"/> -->
+<!-- 		</collection> -->
+<!-- 	</resultMap> -->
+	
+</mapper>
+
+
+
+
+
+
+
+
