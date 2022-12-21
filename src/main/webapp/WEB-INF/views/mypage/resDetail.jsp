@@ -364,7 +364,7 @@ navigo()
 
 /* --------------구글 맵 api 기능 끝----------나중에 key 추가---------------------------------------------------------------------------------------------------- */
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script> 
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=myMap"></script> 
 <script>
 /* --------------description 열고 닫는 기능--------------------------------------------------------------------------------------------------------- */
 document.querySelector("#open").addEventListener("click", function() {

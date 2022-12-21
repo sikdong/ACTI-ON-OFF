@@ -291,7 +291,7 @@ html {
 			<div class="_1byskwn" align="center" id="wrapper">
 				<div class="_1g05mp0x">
 					<div class="_hq87c8">
-						<div class="_1obfcljv" style="float: left; margin-right: 20px;">
+						<div class="_1obfcljv" style="float: left; margin-right: 20px;width: 220px;">
 							<div class="_15wuypg">
 								<a href="<c:url value="/host/hostInfo"/>" class="_131n1yh"><div
 										class="_1uwb2q9">
@@ -312,7 +312,7 @@ html {
 							</div>
 						</div>
 						<sec:authorize access=" hasAnyAuthority('host')" >
-						<div class="_1obfcljv" style="float: left; margin-right: 20px;">
+						<div class="_1obfcljv" style="float: left; margin-right: 20px;width: 220px;">
 							<div class="_15wuypg">
 								<a href="<c:url value="/host/listing"/>" class="_131n1yh"><div
 										class="_1uwb2q9">
@@ -333,7 +333,7 @@ html {
 							</div>
 						</div>
 
-						<div class="_1obfcljv" style="float: left;">
+						<div class="_1obfcljv" style="float: left;;margin-right:20px;width: 220px;">
 							<div class="_15wuypg">
 								<a href="<c:url value="/host/admin"/>" class="_131n1yh"><div
 										class="_1uwb2q9">
@@ -353,6 +353,20 @@ html {
 									</div></a>
 							</div>
 						</div>
+									<div class="_1obfcljv" style="float:left;width: 220px;">
+										<div class="_15wuypg">
+											<a href="<c:url value='/mypage/hostChatIntro?id=${id}'/>"
+												class="_131n1yh"><div class="_1uwb2q9">
+													<div style="margin-bottom: 16px;">
+														<i class="fa-solid fa-comments fa-2x"></i>
+													</div>
+													<div>
+														<div class="_4i4nwv"><b>호스트 채팅</b> </div>
+														<div class="_1c02cnn">게스트와 채팅해보기</div>
+													</div>
+												</div></a>
+										</div>
+									</div>
 						</sec:authorize>
 
 					</div>

@@ -145,7 +145,7 @@ div {
 	<!-- (@RequestParam (required=false) String b_title, String b_content, -->
 	<!-- 										 int cost, int min_person, int min_age ) -->
 <!-- 	<div class="container" align="center"> -->
-	<div class="container-md right"  style="margin-right:100px;" >
+	<div class="container-md">
 		<div class="row">
 			<div class="col">
 				<br>
@@ -189,7 +189,7 @@ div {
 						<input hidden required="required" type="text" class="form-control" name="address2" id="address2" placeholder="주소찾기 버튼을 통해 입력해주세요">
 						<input hidden required="required" type="text" class="form-control" name="addressLL" id="addressLL" placeholder="주소찾기 버튼을 통해 입력해주세요">
 						<div style="display: flex">
-							<input readonly="readonly" required="required" type="text" class="form-control" style="width: 1205px"
+							<input readonly="readonly" required="required" type="text" class="form-control" style="width: 1105px"
 							name="address" id="address" placeholder="주소찾기 버튼을 통해 입력해주세요">
 							<button id="addressSubmitButton" type="button" class="btn btn-primary" style="width:90px">주소찾기</button>
 						</div>

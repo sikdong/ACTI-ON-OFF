@@ -236,7 +236,7 @@ html {
 <my:hostPage></my:hostPage>
 
 <%-- <my:hostNav></my:hostNav> --%>
-<center>
+<%-- <center>
 <div class="container" align="center">
 <div class="_1byskwn" align="center" id="wrapper" >
 	<div class="_1g05mp0x">
@@ -310,7 +310,7 @@ html {
 							</div>
 						</div></a>
 				</div>
-			</div>
+			</div> --%>
 			
 <!-- 			<div class="_1obfcljv" style="float:left;"> -->
 <!-- 				<div class="_15wuypg"> -->
