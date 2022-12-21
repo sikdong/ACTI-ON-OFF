@@ -52,7 +52,7 @@
   <nav class="site-nav">
         <div class="container headerbar" style="padding-top: 20px;">
           <div class="site-navigation">
-            <a href="${path}/main" class="logo float-left m-0">ON&OFF <span class="text-primary">.</span></a>
+            <a href="${path}/main" class="logo float-left m-0">ACTI ON&OFF <span class="text-primary">.</span></a>
             
    
             <ul class="js-clone-nav d-none d-lg-inline-noone text-left site-menu">
@@ -69,7 +69,7 @@
                </c:if>
               
              
-              <li><a href="${path}/ydsBoard/list">ONOFF</a></li>
+              <li><a href="${path}/ydsBoard/list">ACTI ONOFF</a></li>
               <li><a href="${path}/qna/QnaList">QNA</a></li>
               <c:if test="${logged }">
               <li><a href="${path}/host/hostPage">HOSTPAGE</a></li>

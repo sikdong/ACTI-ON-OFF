@@ -299,9 +299,19 @@ public class MyPageController {
 	public void sample() {
 		
 	}
+	@GetMapping("Sample2")
+	@PreAuthorize("isAuthenticated()")
+	public void sample2() {
+		
+	}
 	@GetMapping("jusoPopup")
 	@PreAuthorize("isAuthenticated()")
 	public void jusoPopup() {
+		
+	}
+	@GetMapping("jusoPopup2")
+	@PreAuthorize("isAuthenticated()")
+	public void jusoPopup3() {
 		
 	}
 	@PostMapping("jusoPopup")

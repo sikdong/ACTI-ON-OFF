@@ -225,6 +225,7 @@ body {
 const ctx = "${pageContext.request.contextPath}";
 
 document.querySelector("#addressSubmitButton").addEventListener("click", function() {
+	
 	window.open("/mypage/jusoPopup","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
 });
 

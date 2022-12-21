@@ -49,7 +49,7 @@ body {
 		<div class="col-xs-6 col-sm-4 thum">
 		<a href="${qnaListLink}">
 			<div><i class="fas fa-solid fa-file fa-2x"></i></div>
-			<span>게시판 관리  <span class="badge bg-secondary text-wrap">+${qna}</span></span>		
+			<span>QNA 관리  <span class="badge bg-secondary text-wrap">+${qna}</span></span>		
 		</a>	
 		</div>
 		<div class="col-xs-6 col-sm-4 thum">
