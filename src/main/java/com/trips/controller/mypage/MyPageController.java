@@ -305,12 +305,10 @@ public class MyPageController {
 		
 	}
 	@GetMapping("jusoPopup")
-	@PreAuthorize("isAuthenticated()")
 	public void jusoPopup() {
 		
 	}
 	@GetMapping("jusoPopup2")
-	@PreAuthorize("isAuthenticated()")
 	public void jusoPopup3() {
 		
 	}
