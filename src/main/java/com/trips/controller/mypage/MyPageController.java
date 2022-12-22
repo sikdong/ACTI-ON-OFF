@@ -313,7 +313,6 @@ public class MyPageController {
 		
 	}
 	@PostMapping("jusoPopup")
-	@PreAuthorize("isAuthenticated()")
 	public void jusoPopup2() {
 		
 	}
