@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="path" value="${ pageContext.request.contextPath }"/>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -109,7 +110,7 @@ body {
 			<div style="overflow: scroll; height: 83.3%;">
 		 	 <c:forEach var="left" items="${left}">
 		 	 	<c:if test="${left.resNo eq chatRoom}">
-					<div id="messages" class="container" onclick="location.href='/mypage/hChat?chatRoom=${left.resNo}&id=${left.host}&host=${left.id}'"
+					<div id="messages" class="container" onclick="location.href='${path}/mypage/hChat?chatRoom=${left.resNo}&id=${left.host}&host=${left.id}'"
 					style="cursor: pointer; border: solid #8AB78A;">
 		 	 		
 			 	 		<div class="item">
@@ -136,7 +137,7 @@ body {
 			 	 	</div>	
 				</c:if>
 				<c:if test="${left.resNo ne chatRoom}">
-					<div id="messages" class="container" onclick="location.href='/mypage/hChat?chatRoom=${left.resNo}&id=${left.host}&host=${left.id}'">
+					<div id="messages" class="container" onclick="location.href='${path}/mypage/hChat?chatRoom=${left.resNo}&id=${left.host}&host=${left.id}'">
 		 	 		
 			 	 		<div class="item">
 				 	 		<c:if test="${left.fileName eq null }">
@@ -170,7 +171,7 @@ body {
 			<header>
 				<div style="padding: 20px 0 0 30px;">
 					<span style="padding-right: 20px; cursor: pointer;"
-					onclick="location.href='/mypage/hostChatIntro?id=${id}'">Host Intro</span>
+					onclick="location.href='${path}/mypage/hostChatIntro?id=${id}'">Host Intro</span>
 					/ &nbsp;&nbsp;&nbsp;${host}
 					<span style="font-weight: normal">님과의 채팅</span>
 				</div>				
@@ -265,7 +266,7 @@ document.querySelector("#subButton").addEventListener("click", function() {
 		.then(data => {
 			document.querySelector("#floatingInputGroup2").value = "";
 			})
-		.then(() => location.href="/mypage/hChat?chatRoom=${chatRoom}&id=${id}&host=${host}")
+		.then(() => location.href="${path}/mypage/hChat?chatRoom=${chatRoom}&id=${id}&host=${host}")
 	});
 /* --------------chat submit 기능 끝-------------------------------------------------------------------------------------------------- */ 
 /* --------------chat submit 엔터 기능-------------------------------------------------------------------------------------------------- */

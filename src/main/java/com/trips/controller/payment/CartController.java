@@ -76,7 +76,7 @@ public class CartController {
 		cart.setId(authentication.getName());
 
 		map.put("result", service.addCart(cart));
-
+		
 		return "redirect:/payment/cart";
 
 	}

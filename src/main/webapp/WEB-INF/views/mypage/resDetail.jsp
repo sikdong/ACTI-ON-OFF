@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags" %>
+<c:set var="path" value="${ pageContext.request.contextPath }"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -364,7 +365,7 @@ navigo()
 
 /* --------------구글 맵 api 기능 끝----------나중에 key 추가---------------------------------------------------------------------------------------------------- */
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=myMap"></script> 
+<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script> 
 <script>
 /* --------------description 열고 닫는 기능--------------------------------------------------------------------------------------------------------- */
 document.querySelector("#open").addEventListener("click", function() {
@@ -382,7 +383,7 @@ document.querySelector("#close").addEventListener("click", function() {
 
 /* --------------채팅 페이지 이동 기능---------------------------------------------------------------------------------------------------- */
 document.querySelector("#goToChat").addEventListener("click", function() {
-	location.href="/mypage/chat?chatRoom=${resNo.resNo}&id=${resNo.id}&host=${resNo.host}"
+	location.href="${path}/mypage/chat?chatRoom=${resNo.resNo}&id=${resNo.id}&host=${resNo.host}"
 });
 /* --------------채팅 페이지 이동 기능 끝-------------------------------------------------------------------------------------------------- */
 

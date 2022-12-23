@@ -163,7 +163,7 @@ body {
                         onclick="sendNextCartId()">결제하기</button>
                         
                         <button id="keepShopping" class="btn btn-outline-success" style="border-radius: 5%;"
-                        onclick="location.href='/ydsBoard/list'" >쇼핑 계속하기</button>
+                        onclick="location.href='${path}/ydsBoard/list'" >쇼핑 계속하기</button>
                     </div>
                 </div>
 	    </div>

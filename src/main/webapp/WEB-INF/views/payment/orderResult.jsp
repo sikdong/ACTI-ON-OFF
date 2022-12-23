@@ -100,10 +100,10 @@ body {
 		
 		<div class="row" style="margin: 80px 0; text-align: center;">
 			<div>
-				<button style="font-size:16px; width: 170px;height: 40px;" type="button" class="btn btn-secondary" onclick="location.href='/ydsBoard/list'">쇼핑을 계속하기</button>
+				<button style="font-size:16px; width: 170px;height: 40px;" type="button" class="btn btn-secondary" onclick="location.href='${path}/ydsBoard/list'">쇼핑을 계속하기</button>
 			</div>
 			<div>
-				<button style="font-size:16px; width: 170px;height: 40px; margin-top: 5px;" type="button" class="btn btn-outline-secondary" onclick="location.href='/payment/cart'">장바구니로 이동하기</button>
+				<button style="font-size:16px; width: 170px;height: 40px; margin-top: 5px;" type="button" class="btn btn-outline-secondary" onclick="location.href='${path}/payment/cart'">장바구니로 이동하기</button>
 			</div>
 			
 			

@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="path" value="${ pageContext.request.contextPath }"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -96,7 +97,7 @@ body {
 							<table>
 								<tr>
 									<td style="width: 800px;">
-										<div onclick="location.href='/mypage/resDetail?resNo=${res.resNo}'" style="display:flex;
+										<div onclick="location.href='${path}/mypage/resDetail?resNo=${res.resNo}'" style="display:flex;
 										cursor: pointer; ">
 											<div style="padding-right: 70px;">
 												<img style="width:200px; height:135px;border-radius: 30%" 
@@ -155,7 +156,7 @@ body {
 					<hr>
 					<c:forEach var="res" items="${res1}">
 						<c:if test="${res.date <= today }">
-							<div  onclick="location.href='/mypage/resDetail?resNo=${res.resNo}'" style="display:flex;">
+							<div  onclick="location.href='${path}/mypage/resDetail?resNo=${res.resNo}'" style="display:flex;">
 								<div style="padding-right: 70px;">
 									<img style="width:200px; height:135px;border-radius: 30%" 
 									src="${imgUrl }/host/${res.boardNo}/${res.fileName}">

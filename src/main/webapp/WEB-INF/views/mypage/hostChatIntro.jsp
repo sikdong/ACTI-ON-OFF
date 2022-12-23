@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="path" value="${ pageContext.request.contextPath }"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -115,7 +116,7 @@ body {
 			</header>
 			<div style="overflow: scroll; height: 83.3%;">
 		 	 <c:forEach var="left" items="${left}">
-		 	 	<div id="messages" class="container" onclick="location.href='/mypage/hChat?chatRoom=${left.resNo}&id=${left.host}&host=${left.id}'">
+		 	 	<div id="messages" class="container" onclick="location.href='${path}/mypage/hChat?chatRoom=${left.resNo}&id=${left.host}&host=${left.id}'">
 		 	 		
 		 	 		<div class="item">
 			 	 		<c:if test="${left.fileName eq null }">
@@ -163,7 +164,7 @@ body {
 										<span style="font-size: 13px;">${hciOut.date }</span>
 									<div class="container" style="padding: 20px 10px 10px 10px;">
 										<c:forEach var="hciIn" items="${hciOut.hcd}">
-												<div class="item" id="members"  onclick="location.href='/mypage/hChat?chatRoom=${hciIn.chatRoom}&id=${hciOut.id}&host=${hciIn.host}'">
+												<div class="item" id="members"  onclick="location.href='${path}/mypage/hChat?chatRoom=${hciIn.chatRoom}&id=${hciOut.id}&host=${hciIn.host}'">
 													<div style="text-align: center; font-weight: bold; font-family: 'Palatino Linotype' ">
 														<span style="font-size: 14px">Chat With</span> : ${hciIn.host}
 													</div>

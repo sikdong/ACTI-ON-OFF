@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags" %>
+<c:set var="path" value="${ pageContext.request.contextPath }"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -104,7 +105,7 @@ body {
 					</button>
 					
 					<button id="reservation" type="button" class="btn btn-outline-dark" style="width:130px; margin-left: 30px;"
-					onclick="location.href='/payment/cart'">
+					onclick="location.href='${path}/payment/cart'">
 						장바구니
 					</button> 
 					 
@@ -245,7 +246,7 @@ body {
 					</div>
 					<div  id="hostModifyStart">
 						<button type="button" class="btn btn-outline-dark" style="width:150px"
-						onclick="location.href='/host/becomeHostIntro'">호스트 신청하기</button> <br><br>
+						onclick="location.href='${path}/host/becomeHostIntro'">호스트 신청하기</button> <br><br>
 					</div>
 					
 					
@@ -542,7 +543,7 @@ if(oldHost==host){
 /* --------------체크 유지 기능 끝-------------------------------------------------------------------------------------------------- */
 /* --------------예약페이지 이동 기능---------------------------------------------------------------------------------------------------- */
 document.querySelector("#reservation").addEventListener("click", function() {
-	location.href="/mypage/reservation?id=${member.id}"
+	location.href="${path}/mypage/reservation?id=${member.id}"
 });
 /* --------------예약페이지 이동 기능 끝-------------------------------------------------------------------------------------------------- */
  /* --------------sticky navbar scroll 기능-------------------------------------------------------------------------------------------------- */

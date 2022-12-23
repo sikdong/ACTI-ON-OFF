@@ -4,7 +4,7 @@
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-
+<c:set var="path" value="${ pageContext.request.contextPath }"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -97,7 +97,7 @@ body {
 
 							<div class="form-group">
 								<p class="text-center">
-									계정이 없으신가요? <a href="/jjhLogin/signup" id="signup">가입하기</a>
+									계정이 없으신가요? <a href="${path}/jjhLogin/signup" id="signup">가입하기</a>
 								</p>
 							</div>
 						</form>

@@ -4,6 +4,7 @@
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<c:set var="path" value="${ pageContext.request.contextPath }"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -403,7 +404,7 @@ body {
 			<br />
 	</div>	
 				
-<form action="/shop/addCart" method="post" id="cartForm">
+<form action="${path}/shop/addCart" method="post" id="cartForm">
 	<input type="hidden" name="addDate" id="addDate" value=""/>
 	<input type="hidden" name="person" id="person" value=""/>
 	<input type="hidden" name="price" id="price" value="${board.price}"/>
@@ -547,7 +548,7 @@ src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.j
 integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
 crossorigin="anonymous"></script>
 <script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?callback=initMap">
 </script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://npmcdn.com/flatpickr/dist/l10n/ko.js"></script>
@@ -637,7 +638,7 @@ function getFiveFiles(){
 			
 			const fileList = 
 				`<div>
-					<a href="/ydsBoard/get?num=\${file.num}">
+					<a href="${path}/ydsBoard/get?num=\${file.num}">
 						<img src="${imgUrl}/host/\${file.num }/\${file.fileName}" class="size" alt="...">
 					</a>
 					<div class="mt-2 ml-8" style="font-size : 15px;max-width: 19vw;"><strong>\${file.title}</strong></div>

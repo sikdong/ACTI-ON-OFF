@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="path" value="${ pageContext.request.contextPath }"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -109,7 +110,7 @@ body {
 			<div style="overflow: scroll; height: 83.3%;">
 		 	 <c:forEach var="left" items="${left}">
 		 	 	<c:if test="${left.resNo eq chatRoom}">
-		 	 		<div id="messages" class="container" onclick="location.href='/mypage/chat?chatRoom=${left.resNo}&id=${left.id}&host=${left.host}'"
+		 	 		<div id="messages" class="container" onclick="location.href='${path}/mypage/chat?chatRoom=${left.resNo}&id=${left.id}&host=${left.host}'"
 			 	 	style="cursor: pointer; border: solid #8AB78A;">
 			 	 		
 			 	 		<div class="item">
@@ -130,7 +131,7 @@ body {
 			 	 	</div>	
 		 	 	</c:if>
 		 	 	<c:if test="${left.resNo ne chatRoom}">
-		 	 		<div id="messages" class="container" onclick="location.href='/mypage/chat?chatRoom=${left.resNo}&id=${left.id}&host=${left.host}'"
+		 	 		<div id="messages" class="container" onclick="location.href='${path}/mypage/chat?chatRoom=${left.resNo}&id=${left.id}&host=${left.host}'"
 			 	 	style="cursor: pointer; ">
 			 	 		
 			 	 		<div class="item">
