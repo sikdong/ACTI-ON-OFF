@@ -74,7 +74,7 @@ body {
 					
 			
 
-					<form id="modifyForm" action="/mypage/profile" method="post" enctype="multipart/form-data">
+					<form id="modifyForm" action="${path}/mypage/profile" method="post" enctype="multipart/form-data">
 						<div class="mb-3">
 							<div class="container">
 								<div class="item" style="margin-right: 50px;">
