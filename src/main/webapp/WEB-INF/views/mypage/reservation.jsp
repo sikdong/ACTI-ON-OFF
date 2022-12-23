@@ -139,7 +139,7 @@ body {
 							      <div class="modal-footer">
 							        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
 							        <button id="modalConfirmButton2" type="button" class="btn btn-danger"
-							        onclick="location.href='/mypage/removeR?resNo=${res.resNo}&id=${res.id}'">예약취소</button>
+							        onclick="location.href='${path}/mypage/removeR?resNo=${res.resNo}&id=${res.id}'">예약취소</button>
 							      </div>
 							    </div>
 							  </div>
