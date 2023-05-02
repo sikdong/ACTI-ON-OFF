@@ -2,253 +2,270 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="path" value="${ pageContext.request.contextPath }"/>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<c:set var="path" value="${ pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
 <head>
 <style>
 @font-face {
-    font-family: 'NanumSquareNeo-Variable';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'NanumSquareNeo-Variable';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2')
+		format('woff2');
+	font-weight: normal;
+	font-style: normal;
 }
 
 body {
-	font-family: 'NanumSquareNeo-Variable'!important;
+	font-family: 'NanumSquareNeo-Variable' !important;
 }
 
 input, textarea {
-	border : 1px solid black !important;
+	border: 1px solid black !important;
 }
-
 
 @font-face {
-    font-family: 'NanumSquareNeo-Variable';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
+	font-family: 'NanumSquareNeo-Variable';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2')
+		format('woff2');
+	font-weight: normal;
+	font-style: normal;
 }
 
-
-
 .ml-8 {
-	margin-left : 8px;
+	margin-left: 8px;
 }
 
 .root {
-	height : 100vw;
-	margin-left : 10%;
-
-	margin-top : 50px;
+	height: 100vw;
+	margin-left: 10%;
+	margin-top: 50px;
 }
 
 .sold-out {
-	text-decoration : underline;
-	color : red;
+	text-decoration: underline;
+	color: red;
 }
 
 .mt-40 {
-	margin-top : 80px;
+	margin-top: 80px;
 }
 
 .jc-sb {
-	display : flex;
-	justify-content : space-between;
+	display: flex;
+	justify-content: space-between;
 }
 
-.accordion-body {	
-	padding : 10px !important;
-	justify-content : space-between;
+.accordion-body {
+	padding: 10px !important;
+	justify-content: space-between;
 }
 
 .flex {
-	display : flex;
+	display: flex;
 }
 
-.halfview{
-	width : 100% !important;
+.halfview {
+	width: 100% !important;
 }
 
 .horizontal {
-	display : flex;
-	width : 100vw;
-	justify-content : space-around;
+	display: flex;
+	width: 100vw;
+	justify-content: space-around;
 }
 
-
 .bold {
-	font-weight : bold;
+	font-weight: bold;
 }
 
 .red {
- color : red !important;
+	color: red !important;
 }
 
 .cursor {
- cursor : pointer;
+	cursor: pointer;
 }
 
-:root {
-    --bg-color: #FFFFFF;/*배경색*/
-    --line-color: #aaaaaa;/*상단과 하단을 나눠줄 줄 색*/
-    --sat-color: #FFE2E2;/*토요일 배경색*/
-    --sun-color: #FFC7C7;/*일요일 배경색*/
-    --today-color: #EFBBCF;/*오늘 날짜의 테투리색*/
-    --font: 'Raleway' !important;/*폰트 정의*/
+:root { -
+	-bg-color: #FFFFFF; /*배경색*/ -
+	-line-color: #aaaaaa; /*상단과 하단을 나눠줄 줄 색*/ -
+	-sat-color: #FFE2E2; /*토요일 배경색*/ -
+	-sun-color: #FFC7C7; /*일요일 배경색*/ -
+	-today-color: #EFBBCF; /*오늘 날짜의 테투리색*/ -
+	-font: 'Raleway' !important; /*폰트 정의*/
 }
 
 .calendar {
 	height: 590px;
-  	width : 30%;
-    padding: 0;
-    top : 83%;
-    margin-left: 0;
-    background-color: var(--bg-color);
-    font-family: 'NanumSquareNeo-Variable'!important;
-    position : absolute;
-    bottom : 1px;
-    z-index : 1;
+	width: 30%;
+	padding: 0;
+	top: 83%;
+	margin-left: 0;
+	background-color: var(- -bg-color);
+	font-family: 'NanumSquareNeo-Variable' !important;
+	position: absolute;
+	bottom: 1px;
+	z-index: 1;
 }
 
-
 .header {
-	width : 96%;
-    display: flex;
-    font-size: 12px;
-    justify-content: space-between; /* /아이템들을 일정한 간격으로 벌려 배치합니다. */
-    align-items: center;
-    padding-bottom: 3px;
-    margin: 6px 12px 6px 12px;
-    border-bottom: 2px solid var(--line-color);/*header쪽과 달력을 구분하기 위해 밑에만 선을 넣어줍시다.*/
+	width: 96%;
+	display: flex;
+	font-size: 12px;
+	justify-content: space-between; /* /아이템들을 일정한 간격으로 벌려 배치합니다. */
+	align-items: center;
+	padding-bottom: 3px;
+	margin: 6px 12px 6px 12px;
+	border-bottom: 2px solid var(- -line-color);
+	/*header쪽과 달력을 구분하기 위해 밑에만 선을 넣어줍시다.*/
 }
 
 .title {
-      /*년, 월이 세로로 정렬되게 하기 위함입니다.*/
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	/*년, 월이 세로로 정렬되게 하기 위함입니다.*/
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .main {
-      /*요일과 날짜는 가로가아니라 세로로 정렬되야 하므로 flex-diretion: column;을 해줍시다.*/
-    display: flex;
-    flex-direction: column;
-    margin: 6px 12px 0px 12px;
+	/*요일과 날짜는 가로가아니라 세로로 정렬되야 하므로 flex-diretion: column;을 해줍시다.*/
+	display: flex;
+	flex-direction: column;
+	margin: 6px 12px 0px 12px;
 }
+
 .days {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
 }
+
 .dates {
-      /*wrap을 주어서 한줄에 날짜가 7개만 나오게 만들겁니다.*/
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    width: 100%;
+	/*wrap을 주어서 한줄에 날짜가 7개만 나오게 만들겁니다.*/
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	width: 100%;
 }
-.date, .day{
-      /*width가 100/7을 가지기 때문에 한 줄에 7개의 날짜와 요일이 정렬됩니다.*/
-    text-align: center;
-    width: calc(100%/7);
-    padding: 10px 0 10px 0;
-    box-sizing: border-box;
-   
+
+.date, .day {
+	/*width가 100/7을 가지기 때문에 한 줄에 7개의 날짜와 요일이 정렬됩니다.*/
+	text-align: center;
+	width: calc(100%/ 7);
+	padding: 10px 0 10px 0;
+	box-sizing: border-box;
 }
-.date:nth-child(7n),
-.day:nth-child(7n) {
-      /*.date와 .day의 7n번째 요소만 적용시킵니다. 즉 토요일의 세로줄만 적용합니다.*/
-    background-color: var(--sat-color);
-    color: blue;/*글자색입니다.*/
+
+.date:nth-child(7n), .day:nth-child(7n) {
+	/*.date와 .day의 7n번째 요소만 적용시킵니다. 즉 토요일의 세로줄만 적용합니다.*/
+	background-color: var(- -sat-color);
+	color: blue; /*글자색입니다.*/
 }
-.date:nth-child(7n+1),
-.day:nth-child(7n+1) {
-      /*.date와 .day의 7n+1번째 요소만 적용시킵니다. 즉 일요일의 세로줄만 적용합니다.*/
-    background-color: var(--sun-color);
-    color: red;
+
+.date:nth-child(7n+1), .day:nth-child(7n+1) {
+	/*.date와 .day의 7n+1번째 요소만 적용시킵니다. 즉 일요일의 세로줄만 적용합니다.*/
+	background-color: var(- -sun-color);
+	color: red;
 }
+
 .today {
-      /*오늘 날짜에 테두리를 줍니다. !important로 border의 우선순위를 1순위로 만들 수 있습니다.*/
-    border: 2px solid var(--today-color) !important;
+	/*오늘 날짜에 테두리를 줍니다. !important로 border의 우선순위를 1순위로 만들 수 있습니다.*/
+	border: 2px solid var(- -today-color) !important;
 }
-.week{
-	display : flex;
-	
+
+.week {
+	display: flex;
 }
 
 .img-box {
-	width : 100vw;
-	display : flex;
-	flex-wrap : wrap;
-	
+	width: 100vw;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 #img-js {
-	width : 1600px;
-	display : flex;
-	flex-wrap : wrap;
-	
+	width: 1600px;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .introduce {
-	width : 50% !important;
+	width: 50% !important;
 }
 
 .size {
-	
-	width : 19vw;
-	height : 350px;
-	margin : 10px ;
-	border-radius : 10px;
-	
+	width: 19vw;
+	height: 350px;
+	margin: 10px;
+	border-radius: 10px;
 }
 
 #map {
-  height: 500px; /* The height is 400 pixels */
-  width: 89.5%; /* The width is the width of the web page */
+	height: 500px; /* The height is 400 pixels */
+	width: 89.5%; /* The width is the width of the web page */
 }
 
-. {
-	margin-bottom : 10px !important;
-}
+.
+{
+margin-bottom
+ 
+:
+ 
+10px
+ 
+!
+important
+;
 
+
+}
 .mt {
-	margin-top : 10px !important;
+	margin-top: 10px !important;
 }
 
 .flex-container {
-	width : 1600px;
-	display : flex;
+	width: 1600px;
+	display: flex;
 }
 
 .text-center {
-	text-align : center;
+	text-align: center;
 }
 
 body {
-	font-family : 'Palatino'; 
-} 
-
-.ml-5 {
-	margin-left : 5px;
+	font-family: 'Palatino';
 }
 
+.ml-5 {
+	margin-left: 5px;
+}
 </style>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="Untree.co">
 
 <meta name="description" content="" />
 <meta name="keywords" content="free template, bootstrap, bootstrap4" />
 <title>Trips</title>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500&family=Gowun+Dodum&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-<link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_orange.css">
-<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500&family=Gowun+Dodum&family=Noto+Sans+KR:wght@300;400;500&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" type="text/css"
+	href="https://npmcdn.com/flatpickr/dist/themes/material_orange.css">
+<link
+	href="https://fonts.googleapis.com/css2?family=Raleway&display=swap"
+	rel="stylesheet">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -261,298 +278,338 @@ body {
 </head>
 <body>
 
-	<sec:authorize access="isAuthenticated()" var="loggedIn"/>
+	<sec:authorize access="isAuthenticated()" var="loggedIn" />
 	<my:navbar></my:navbar>
 
-	<c:url value="/ydsBoard/remove" var="removeLink">
-		<c:param name="num" value="${board.num }" ></c:param>
+	<c:url value="/board/remove" var="removeLink">
+		<c:param name="num" value="${board.num }"></c:param>
 	</c:url>
-	<c:url value="/ydsBoard/modify" var="modifyLink">
+	<c:url value="/board/modify" var="modifyLink">
 		<c:param name="num" value="${board.num}"></c:param>
 	</c:url>
-	<c:url value="/ydsBoard/getAllImages" var="allImages">
+	<c:url value="/board/getAllImages" var="allImages">
 		<c:param name="num" value="${board.num}"></c:param>
 	</c:url>
-	
+
 
 	<input type="hidden" id="numInput" value="${board.num}" />
 
 	<div class="root">
-		<div style="text-decoration : underline; margin-left : 8px; font-size : 17px;">${board.topic }</div>
-		<div class="jc-sb mt" style="width : 90%">
+		<div
+			style="text-decoration: underline; margin-left: 8px; font-size: 17px;">${board.topic }</div>
+		<div class="jc-sb mt" style="width: 90%">
 			<div class="ml-5">
-				<h3><Strong>${board.title }</Strong></h3>
+				<h3>
+					<Strong>${board.title }</Strong>
+				</h3>
 			</div>
 			<%-- spring security expressions 로 검색 --%>
-			<sec:authentication property="name" var="userName"/>
+			<sec:authentication property="name" var="userName" />
 			<div class="flex ml-5">
 				<div onclick="plusLike()" class="cursor ml-3" id="plusLike">
-					<i class="fa-regular fa-heart fa-2x red"></i> 
+					<i class="fa-regular fa-heart fa-2x red"></i>
 				</div>
-				<div onclick="minusLike()" class="cursor ml-3" id="minusLike" style="display : none">
-					<i class="fa-solid fa-heart fa-2x red" style="color : red !important;"></i>
+				<div onclick="minusLike()" class="cursor ml-3" id="minusLike"
+					style="display: none">
+					<i class="fa-solid fa-heart fa-2x red"
+						style="color: red !important;"></i>
 				</div>
-				<div id="countLike" style="font-size : 20px; margin-left : 3px; padding-top : 4px;">
-					${board.countLike}
-				</div>
-			</div>	
+				<div id="countLike"
+					style="font-size: 20px; margin-left: 3px; padding-top: 4px;">
+					${board.countLike}</div>
+			</div>
 		</div>
-		<span class="ml-5">최대 인원 : ${board.maxPerson}명 /</span>
-		<span> 최소 인원 : ${board.minPerson}명 / </span>
-		<span> 최소 연령 : ${board.minAge}세</span>
-		 <c:if test="${board.writer == userName }"> 
-		<div class="mt ml-5">
-			<a data-bs-toggle="modal" data-bs-target="#exampleModal" href="${removeLink}" class="btn btn-outline-dark btn-sm">삭제</a>
-			<a href="${modifyLink}" class="btn btn-outline-dark btn-sm">수정</a>
- 		</div>
-		</c:if>	 
-		<div class="img-box mt-3" >
+		<span class="ml-5">최대 인원 : ${board.maxPerson}명 /</span> <span>
+			최소 인원 : ${board.minPerson}명 / </span> <span> 최소 연령 : ${board.minAge}세</span>
+		<c:if test="${board.writer == userName }">
+			<div class="mt ml-5">
+				<a data-bs-toggle="modal" data-bs-target="#exampleModal"
+					href="${removeLink}" class="btn btn-outline-dark btn-sm">삭제</a> <a
+					href="${modifyLink}" class="btn btn-outline-dark btn-sm">수정</a>
+			</div>
+		</c:if>
+		<div class="img-box mt-3">
 			<c:forEach items="${board.fileName }" var="file" begin="0" end="3">
-				<img src="${imgUrl}/host/${board.num }/${file}" class="size" alt="...">
+				<img src="${imgUrl}/host/${board.num }/${file}" class="size"
+					alt="...">
 			</c:forEach>
-	
+
 		</div>
-	<br />
-		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		  <div class="modal-dialog">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <h1 class="modal-title fs-5" id="exampleModalLabel">게시물 삭제 확인</h1>
-		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-		      </div>
-		      <div class="modal-body">
-		        게시물을 삭제하시겠습니까?
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">취소</button>
-		        <a href="${removeLink}" class="btn btn-secondary" >확인</a>
-		      </div>
-		    </div>
-		  </div>
+		<br />
+		<div class="modal fade" id="exampleModal" tabindex="-1"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5" id="exampleModalLabel">게시물 삭제 확인</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body">게시물을 삭제하시겠습니까?</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-outline-secondary"
+							data-bs-dismiss="modal">취소</button>
+						<a href="${removeLink}" class="btn btn-secondary">확인</a>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div style="text-align : left"><a href="${allImages}" style="color : black;">사진 크게 보기</a></div>
+		<div style="text-align: left">
+			<a href="${allImages}" style="color: black;">사진 크게 보기</a>
+		</div>
 		<div>
-		<div class="horizontal">
+			<div class="horizontal">
 				<div class="halfview">
-					<h4 class="ml-3 mt-40">${board.writer }님 소개</h4>
-					<textarea style="width : 90% !important"rows="5"  
-					readonly class="form-control mt-3">${board.hostIntro }</textarea>
+					<h4 class="ml-3 mt-40">${board.writer }님소개</h4>
+					<textarea style="width: 90% !important" rows="5" readonly
+						class="form-control mt-3">${board.hostIntro }</textarea>
 				</div>
 
-				<div id="showCalendar" class="halfview">
-
-				</div>
-			</div>	
-				<div class="mt-40">
-					<h4 class="ml-3">프로그램 소개</h4>
-				</div>
-				<hr style="width : 50%" />
-				<div style="width : 50%">
-					${board.content }
-				</div>
-					<div class="mt-3">
-						<a id="reserveButton" data-bs-toggle="modal" data-bs-target="#availableDateConfirmModal" class="btn btn-dark btn-sm">예약 날짜 확인</a>
-					</div>
-				<hr style="width : 50%" />
+				<div id="showCalendar" class="halfview"></div>
 			</div>
-			<div class="col-sm-7 ml-3">
-				<h4 class="ml-3 mt-40">프로그램 후기</h4>
-				<div style="display : flex">
-					<div><%--별 들어갈 자리 --%></div>
+			<div class="mt-40">
+				<h4 class="ml-3">프로그램 소개</h4>
+			</div>
+			<hr style="width: 50%" />
+			<div style="width: 50%">${board.content }</div>
+			<div class="mt-3">
+				<a id="reserveButton" data-bs-toggle="modal"
+					data-bs-target="#availableDateConfirmModal"
+					class="btn btn-dark btn-sm">예약 날짜 확인</a>
+				<c:forEach items="${board.date}" var="date" varStatus="status">
+					<c:choose>
+						<c:when test="${board.remain[status.index] > 0}">
+							<div class="mt-3">
+								<strong>${date}일 / ${board.remain[status.index]}명 가능합니다</strong>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div>
+								<strong>${date}일 체험은 <span class="sold-out">품절</span>
+									입니다
+								</strong>
+							</div>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+			</div>
+			<hr style="width: 50%" />
+		</div>
+		<div class="col-sm-7 ml-3">
+			<h4 class="ml-3 mt-40">프로그램 후기</h4>
+			<div style="display: flex">
+				<div>
+					<%--별 들어갈 자리 --%>
 				</div>
-				<sec:authorize access="isAuthenticated()">
-				<input type="text" style="width : 44.5vw" class="form-control mt" placeholder="여러분의 소중한 후기를 남겨주세요" 
-					id="content"></input>
+			</div>
+			<sec:authorize access="isAuthenticated()">
+				<input type="text" style="width: 44.5vw" class="form-control mt"
+					placeholder="여러분의 소중한 후기를 남겨주세요" id="content"></input>
 				<%-- <input type="hidden" value="${board.writer }" id="temperId"/> --%>
-				<button class="btn btn-dark btn-sm mt" id="enrollReply" type="button" >등록</button>
-				</sec:authorize>
-				
-				
-				<sec:authorize access="not isAuthenticated()">
-				<input readonly style="width : 44.5vw !important;" type="text" class="form-control mt" placeholder="로그인 후 이용 가능합니다" 
-					id="content"></input>
-				<button class="btn btn-dark btn-sm mt" id="enrollReply" type="button" disabled >등록</button>	
-				</sec:authorize>	
-				
-				<div class="row mt-3">
-					<div class="col-sm-12">
-						<div class="list-group" id="replyListContainer">
-							<input type="hidden" id="boardNum" value="${board.num}">
-						</div>
+				<button class="btn btn-dark btn-sm mt" id="enrollReply"
+					type="button">등록</button>
+			</sec:authorize>
+
+
+			<sec:authorize access="not isAuthenticated()">
+				<input readonly style="width: 44.5vw !important;" type="text"
+					class="form-control mt" placeholder="로그인 후 이용 가능합니다" id="content"></input>
+				<button class="btn btn-dark btn-sm mt" id="enrollReply"
+					type="button" disabled>등록</button>
+			</sec:authorize>
+
+			<div class="row mt-3">
+				<div class="col-sm-12">
+					<div class="list-group" id="replyListContainer">
+						<input type="hidden" id="boardNum" value="${board.num}">
 					</div>
 				</div>
 			</div>
-			<br />
-			<br />
-			<hr width="89.5%" />
-			<div class="ml-3 mt-40">
-				<h4>위치 정보</h4>
+		</div>
+		<br /> <br />
+		<hr width="89.5%" />
+		<div class="ml-3 mt-40">
+			<h4>위치 정보</h4>
+		</div>
+		<div class="ml-3 mt-3">${board.address}</div>
+		<div class="ml-3 mt-3">구글 API 키 만료로 현재는 구글 맵 렌더링 되지 않습니다</div>
+		<div class="ml-3 mt-3" id="map"></div>
+		<br />
+		<hr width="89.5%" class="mt-40" />
+		<div class="mt-40">
+			<h4>체험 더보기</h4>
+		</div>
+		<div class="flex-container mt-3"></div>
+		<br /> <br /> <br /> <br /> <br />
+	</div>
+
+	<form action="${path}/shop/addCart" method="post" id="cartForm">
+		<input type="hidden" name="addDate" id="addDate" value="" /> <input
+			type="hidden" name="person" id="person" value="" /> <input
+			type="hidden" name="price" id="price" value="${board.price}" /> <input
+			type="hidden" name="boardnum" id="boardNum" value="${board.num}" />
+	</form>
+
+
+
+
+	<!-- 예약 날짜 품절 확인 모달 -->
+	<div class="modal fade" id="availableDateConfirmModal" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="exampleModalLabel">예약 날짜 및 품절
+						확인</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<c:forEach items="${board.date}" var="date" varStatus="status">
+						<c:choose>
+							<c:when test="${board.remain[status.index] > 0}">
+								<div class="mt-3">
+									<strong>${date}일 / ${board.remain[status.index]}명
+										가능합니다</strong>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div>
+									<strong>${date}일 체험은 <span class="sold-out">품절</span>
+										입니다
+									</strong>
+								</div>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">돌아가기</button>
+				</div>
 			</div>
-			<div class="ml-3 mt-3">${board.address}</div>
-			<div class="ml-3 mt-3" id="map"></div>
-			<br />
-			<hr width="89.5%"  class="mt-40"/>
-				<div class="mt-40">
-					<h4>체험 더보기</h4>
+		</div>
+	</div>
+
+	<%------------------------------댓글 수정, 삭제 토스트----------------------------%>
+	<div
+		class="toast-container align-items-center top-0 start-50 translate-middle-x position-fixed">
+		<div id="liveToast" class="toast" role="alert" aria-live="assertive"
+			aria-atomic="true">
+			<div class="toast-header">
+				<strong class="me-auto">댓글 수정 확인</strong>
+				<button type="button" class="btn-close" data-bs-dismiss="toast"
+					aria-label="Close"></button>
+			</div>
+			<div id="modifyMessage" class="toast-body"></div>
+		</div>
+	</div>
+
+	<div
+		class="toast-container align-items-center top-0 start-50 translate-middle-x position-fixed">
+		<div id="liveToast1" class="toast" role="alert" aria-live="assertive"
+			aria-atomic="true">
+			<div class="toast-header">
+				<strong class="me-auto">댓글 삭제 확인</strong>
+				<button type="button" class="btn-close" data-bs-dismiss="toast"
+					aria-label="Close"></button>
+			</div>
+			<div id="deleteMessage" class="toast-body"></div>
+		</div>
+	</div>
+
+	<%-- 댓글 수정 Modal --%>
+	<div class="modal fade" id="modifyReplyModal" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title fs-5" id="exampleModalLabel">후기를 수정하세요</h3>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
 				</div>
-				<div class="flex-container mt-3">
+				<div class="modal-body">
+					<input id="modifyReplyInput" class="form-control"></input>
 				</div>
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
-	</div>	
-				
-<form action="${path}/shop/addCart" method="post" id="cartForm">
-	<input type="hidden" name="addDate" id="addDate" value=""/>
-	<input type="hidden" name="person" id="person" value=""/>
-	<input type="hidden" name="price" id="price" value="${board.price}"/>
-	<input type="hidden" name="boardnum" id="boardNum" value="${board.num}"/>	
-</form>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">취소</button>
+					<button type="button" id="updateReplyModalButtonNum"
+						data-bs-dismiss="modal" class="btn btn-dark">수정</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<jsp:include page="/WEB-INF/views/index.jsp" flush="true">
+		<jsp:param value="index1" name="1" />
+	</jsp:include>
 
-
-
-<!-- 예약 날짜 품절 확인 모달 -->
-<div class="modal fade" id="availableDateConfirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">예약 날짜 및 품절 확인</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <c:forEach items="${board.date}" var="date" varStatus="status">
-			<c:choose >
-				<c:when test="${board.remain[status.index] > 0}">
-					<div class="mt-3"> <strong>${date}일 / ${board.remain[status.index]}명 가능합니다</strong></div>
-				</c:when>
-				<c:otherwise>
-					<div><strong>${date}일 체험은 <span class="sold-out">품절</span> 입니다</strong></div>
-				</c:otherwise>
-			</c:choose>
-		</c:forEach>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">돌아가기</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<%------------------------------댓글 수정, 삭제 토스트----------------------------%>	
-<div class="toast-container align-items-center top-0 start-50 translate-middle-x position-fixed">
-  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="toast-header">
-      <strong class="me-auto">댓글 수정 확인</strong>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-    <div id="modifyMessage" class="toast-body">
-    </div>
-  </div>
-</div>
-
-<div class="toast-container align-items-center top-0 start-50 translate-middle-x position-fixed">
-  <div id="liveToast1" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="toast-header">
-      <strong class="me-auto">댓글 삭제 확인</strong>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-    <div id="deleteMessage" class="toast-body">
-    </div>
-  </div>
-</div>
-	
-<%-- 댓글 수정 Modal --%>
-<div class="modal fade" id="modifyReplyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title fs-5" id="exampleModalLabel">후기를 수정하세요</h3>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <input id="modifyReplyInput" class="form-control"></input>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-        <button type="button" id="updateReplyModalButtonNum" 
-        	data-bs-dismiss="modal" class="btn btn-dark">수정</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<jsp:include page="/WEB-INF/views/index.jsp" flush="true">
-	<jsp:param value="index1" name="1"/>
-</jsp:include>			
-			
-<script
-src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-crossorigin="anonymous"></script>
-<script async
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+		crossorigin="anonymous"></script>
+	<!-- <script async
     src="https://maps.googleapis.com/maps/api/js?callback=initMap">
-</script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script src="https://npmcdn.com/flatpickr/dist/l10n/ko.js"></script>
-<script>
+</script> -->
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+	<script src="https://npmcdn.com/flatpickr/dist/l10n/ko.js"></script>
+	<script>
 const ctx = "${pageContext.request.contextPath}";
 
 
@@ -563,7 +620,7 @@ function plusLike(){
 /* 	const data = {
 			num : '${board.num}'
 	} */
-	fetch(ctx+"/ydsBoard/plusLike", {
+	fetch(ctx+"/board/plusLike", {
 		method : "POST",
 		headers : {
 			"Content-Type" : "application/json"
@@ -583,7 +640,7 @@ function minusLike(){
 /* 	const data = {
 			num : '${board.num}'
 	} */
-	fetch(ctx+"/ydsBoard/minusLike", {
+	fetch(ctx+"/board/minusLike", {
 		method : "DELETE",
 		headers : {
 			"Content-Type" : "application/json"
@@ -631,14 +688,14 @@ document.querySelector("#enrollReply").addEventListener("click", function(){
 
 <%-- 체험 더보기 기능 --%>
 function getFiveFiles(){
-	fetch(ctx+"/ydsBoard/getFiveFiles")
+	fetch(ctx+"/board/getFiveFiles")
 	.then(res => res.json())
 	.then(list => {
 		for (const file of list){
 			
 			const fileList = 
 				`<div>
-					<a href="${path}/ydsBoard/get?num=\${file.num}">
+					<a href="${path}/board/get?num=\${file.num}">
 						<img src="${imgUrl}/host/\${file.num }/\${file.fileName}" class="size" alt="...">
 					</a>
 					<div class="mt-2 ml-8" style="font-size : 15px;max-width: 19vw;"><strong>\${file.title}</strong></div>
@@ -925,7 +982,9 @@ function substractNumber(){
 <%-- 이전 달 버튼 누르면 실행 되는 함수 --%>
 function prevCal(){
 	CDate.setMonth(CDate.getMonth()-1);
+	console.log(CDate);
 	buildCalendar();
+	console.log(2);
 	document.querySelector("#person").value='';
 }
 
@@ -941,7 +1000,7 @@ function goCart(){
 		document.querySelector("#cartForm").submit();
 }
 
-function initMap() {
+/* function initMap() {
     // The location of Uluru
     const location = ${board.location}
     // The map, centered at Uluru
@@ -954,10 +1013,10 @@ function initMap() {
       position: location,
       map: map,
     });
-  }
+  } */
 
 
-  window.initMap = initMap;
+/*   window.initMap = initMap; */
 
 </script>
 

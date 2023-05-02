@@ -118,7 +118,7 @@ a {
 <div class="root mt-100">
  <div class="flex">
  	<c:forEach items="${boardList }" var="list">
- 	<c:url value="/ydsBoard/get" var="getLink">
+ 	<c:url value="/board/id" var="getLink">
 		<c:param name="num" value="${list.num }" ></c:param>
 	</c:url>
  	<div style="margin : 140px 10px 10px 10px";>
@@ -133,9 +133,9 @@ a {
  	</div>
  	</c:forEach>
  </div>
-  <%-- <div class="flex mt-10pro">
+   <div class="flex mt-10pro">
  	<c:forEach items="${boardList }" var="list" begin="4" end="7">
- 	<c:url value="/ydsBoard/get" var="getLink">
+ 	<c:url value="/board/id" var="getLink">
 		<c:param name="num" value="${list.num }" ></c:param>
 	</c:url>
  	<div class="">
@@ -152,7 +152,7 @@ a {
  </div>
    <div class="flex mt-10pro">
  	<c:forEach items="${boardList }" var="list" begin="8" end="11">
- 	<c:url value="/ydsBoard/get" var="getLink">
+ 	<c:url value="/board/id" var="getLink">
 		<c:param name="num" value="${list.num }" ></c:param>
 	</c:url>
  	<div class="">
@@ -166,7 +166,7 @@ a {
  		<div style="text-align : left;">${list.price }<small>원/1인</small></div>
  	</div>
  	</c:forEach>
- </div> --%>
+ </div>
 </div>
 <br />
 <br />

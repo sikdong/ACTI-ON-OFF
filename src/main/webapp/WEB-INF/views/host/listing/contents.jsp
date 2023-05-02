@@ -196,10 +196,10 @@ body {
 					
 					<div class="mb-3">
 						<label for="" class="form-label">체험을 진행할 주소를 알려주세요</label> 
-						<input hidden required="required" type="text" class="form-control" name="address2" id="address2" placeholder="주소찾기 버튼을 통해 입력해주세요">
-						<input hidden required="required" type="text" class="form-control" name="addressLL" id="addressLL" placeholder="주소찾기 버튼을 통해 입력해주세요">
+						<!-- <input hidden required="required" type="text" class="form-control" name="address2" id="address2" placeholder="주소찾기 버튼을 통해 입력해주세요">
+						input hidden required="required" type="text" class="form-control" name="addressLL" id="addressLL" placeholder="주소찾기 버튼을 통해 입력해주세요">-->
 						<div style="display: flex">
-							<input readonly="readonly" required="required" type="text" class="form-control" style="width: 1105px"
+							<input required="required" type="text" class="form-control" style="width: 1105px"
 							name="address" id="address" placeholder="주소찾기 버튼을 통해 입력해주세요">
 							<button id="addressSubmitButton" type="button" class="btn btn-primary" style="width:90px">주소찾기</button>
 						</div>

@@ -18,7 +18,6 @@ import com.trips.service.jjhMember.jjhMemberService;
 
 
 @Controller
-@RequestMapping("jjhLogin")
 public class jjhMemberController {
 
 	@Autowired
@@ -54,7 +53,7 @@ public class jjhMemberController {
 		  
 		  //가입 잘되면 
 		  rttr.addFlashAttribute("message", "회원가입 되었습니다."); 
-		  return "redirect:/jjhLogin/login";
+		  return "redirect:/login";
 
 	}
 

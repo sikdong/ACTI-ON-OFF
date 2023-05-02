@@ -39,8 +39,8 @@ public class CustomConfig {
 	@Value("${aws.s3.file.url.prefix}")
 	private String imgUrl;
 	
-	@Value("${gKey}")
-	private String gKey;
+	/*@Value("${gKey}")
+	private String gKey;*/
 
 	
 	@Autowired
@@ -49,7 +49,7 @@ public class CustomConfig {
 	@PostConstruct
 	public void init() {
 		servletContext.setAttribute("imgUrl", imgUrl);
-		servletContext.setAttribute("gKey", gKey);
+		//servletContext.setAttribute("gKey", gKey);
 	}
  
 	@Bean
@@ -61,9 +61,9 @@ public class CustomConfig {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-		http.formLogin().loginPage("/jjhLogin/login").defaultSuccessUrl("/main", true);
+		http.formLogin().loginPage("/login").defaultSuccessUrl("/main", true);
 		
-		http.logout().logoutUrl("/jjhLogin/logout");
+		http.logout().logoutUrl("/logout");
 		http.csrf().disable();
 		// 접근권한 excepiton시 해당 경로로 리턴
 		http.exceptionHandling().accessDeniedPage("/jjhLogin/accessDenied");

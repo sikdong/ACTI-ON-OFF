@@ -5,6 +5,12 @@
 <%@ attribute name="active" %>
 
 <style>
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
 #searchTypeSelect {
 	width: auto;
 }
@@ -22,13 +28,13 @@ background-color:black;
 }
 .font{
 color: #ffffff;
-font-family: "Palatino Linotype" !important;
+font-family: 'NanumSquareNeo-Variable'!important;
 font-weight: bold;
 font-size: 20px;
 }
 .font-main{
 color: #ffffff;
-font-family: "Palatino Linotype" !important;
+font-family: 'NanumSquareNeo-Variable'!important;
 font-weight: bold;
 font-size: 30px;
 }
@@ -40,12 +46,12 @@ padding: 0 15px 0 15px;
 
 <c:url value="/mypage/mypage2" var="myPageLink" />
 <c:url value="/qna/QnaList" var="qnaLink" />
-<c:url value="/ydsBoard/list" var="onLineLink" />
+<c:url value="/board/list" var="onLineLink" />
 <c:url value="/offline/on" var="offLineLink" />
-<c:url value="/jjhLogin/login" var="logInLink" />
-<c:url value="/jjhLogin/signup" var="signUpLink" />
+<c:url value="/login" var="logInLink" />
+<c:url value="/signup" var="signUpLink" />
 <c:url value="/main" var="mainLink" />
-<c:url value="/jjhLogin/logout" var="logOutLink" />
+<c:url value="/logout" var="logOutLink" />
 
 <c:url value="/host/hostPage" var="hostPage" />
 <c:url value="/host/becomeHostIntro" var="becomeHostIntro" />

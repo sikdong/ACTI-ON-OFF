@@ -62,7 +62,7 @@ body {
             <div data-jarallax-element="-100" class="jarallax">
               <h2 style="font-family: 'NanumSquareNeo-Variable'!important;">ON&OFF로 특별하게</h2>
               <span style="font-family: 'NanumSquareNeo-Variable'!important;" class="d-inline-block">ONOFF</span>
-             <a href="${path}/ydsBoard/list"><img src="${path}/upload/paris.jpg" alt="Image" class="img-fluid my-3 my-lg-5"></a>
+             <a href="${path}/board/list"><img src="${path}/upload/paris.jpg" alt="Image" class="img-fluid my-3 my-lg-5"></a>
             </div>
           </div>
 
@@ -105,7 +105,7 @@ body {
       
         <div class="owl-4-slider owl-carousel">
 	      <c:forEach items="${mainList}" var="main">
-		      <c:url value="/ydsBoard/get" var="getLink">
+		      <c:url value="/board/get" var="getLink">
 				<c:param name="num" value="${main.num }" ></c:param>
 			</c:url>
 	          <div class="product">

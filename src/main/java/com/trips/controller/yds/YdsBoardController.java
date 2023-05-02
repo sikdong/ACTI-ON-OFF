@@ -28,7 +28,7 @@ import com.trips.domain.yds.TripsOrderDto;
 import com.trips.service.ydsBoardService.ydsBoardService;
 
 @Controller
-@RequestMapping("ydsBoard")
+@RequestMapping("board")
 @ComponentScan(basePackages = "com.trips.mapper.ydsBoardMapper.ydsBoardMapper")
 public class YdsBoardController {
 	
@@ -52,7 +52,7 @@ public class YdsBoardController {
 		model.addAttribute("name", userName);
 	}
 
-	@GetMapping({"get","modify","getAllImages"})
+	@GetMapping({"id","modify","getAllImages"})
 	public void getBoard(int num, Model model, MultipartFile[] file) {
 		TripsBoardDto board = service.getBoard(num, file);
     //List<TripsOrderDto> order = service.getOrderByBoardNum(num);
@@ -136,11 +136,6 @@ public class YdsBoardController {
 	public int deletefileWhenModify(@PathVariable int fileNum) {
 		int cnt = service.deletefileWhenModify(fileNum);
 		return cnt;
-	}
-	
-	@GetMapping("map")
-	public void getMap() {
-		
 	}
 	
 	
