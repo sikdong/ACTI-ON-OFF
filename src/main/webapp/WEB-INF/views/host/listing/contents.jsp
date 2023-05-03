@@ -196,8 +196,8 @@ body {
 					
 					<div class="mb-3">
 						<label for="" class="form-label">체험을 진행할 주소를 알려주세요</label> 
-						<input hidden required="required" type="text" class="form-control" name="address2" id="address2" placeholder="주소찾기 버튼을 통해 입력해주세요">
-						<input hidden required="required" type="text" class="form-control" name="addressLL" id="addressLL" placeholder="주소찾기 버튼을 통해 입력해주세요">
+						<input required="required" type="text" class="form-control" name="address2" id="address2" placeholder="주소찾기 버튼을 통해 입력해주세요">
+						<input required="required" type="text" class="form-control" name="addressLL" id="addressLL" placeholder="주소찾기 버튼을 통해 입력해주세요">
 						<div style="display: flex">
 							<input readonly="readonly" required="required" type="text" class="form-control" style="width: 1105px"
 							name="address" id="address" placeholder="주소찾기 버튼을 통해 입력해주세요">
@@ -241,7 +241,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1){
 /*--------------------도로명 주소 입력 기능 끝-------------------------------------------------------------------------------*/
 </script>
 
-<script type="text/javascript"src="http://maps.googleapis.com/maps/api/js?key=${gKey }_BAvWeRChX7uI8-wLy8&sensor=true">	</script>
+<script type="text/javascript"src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAbGBvLnbms2Je4iysds8pB6w-ctOdj6So&sensor=true">	</script>
 <script type="text/javascript">
 /*--------------------위도경도 변환 기능-------------------------------------------------------------------------------*/
 	var map;
