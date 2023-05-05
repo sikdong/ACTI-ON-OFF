@@ -1,6 +1,6 @@
 ## Acti on&off</br>
 ### 📚 STACKS</br>
-
+<div>  
 <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
 <img src="https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=css3&logoColor=white">
 <img src="https://img.shields.io/badge/JSP-0095DE?style=for-the-badge&logo=JSP&logoColor=white">
@@ -11,11 +11,14 @@
 <img src="https://img.shields.io/badge/mariaDB-003545?style=for-the-badge&logo=mariaDB&logoColor=white">
 <img src="https://img.shields.io/badge/AWS EC2-FF9900?style=for-the-badge&logo=AWS EC2&logoColor=white">
 <img src="https://img.shields.io/badge/AWS S3-569A31?style=for-the-badge&logo=AWS S3&logoColor=white"><br>
+</div>
 </br>
-  
-<img src="https://user-images.githubusercontent.com/110441578/236374241-b6ccabaa-bcff-482f-a271-251f8dee8a17.png" width="150" height="100">
-<img src="https://user-images.githubusercontent.com/110441578/236373662-6db641c3-4bba-443e-ba15-dfffd2df18ee.PNG" width="200" height="100">
-<img src="https://user-images.githubusercontent.com/110441578/236375319-912e6049-eeaf-4074-8701-741d68fe6d9b.PNG" width="150" height="100">
+<div>  
+<img src="https://user-images.githubusercontent.com/110441578/236374241-b6ccabaa-bcff-482f-a271-251f8dee8a17.png" width="200" height="200">
+<img src="https://user-images.githubusercontent.com/110441578/236373662-6db641c3-4bba-443e-ba15-dfffd2df18ee.PNG" width="300" height="200">
+<img src="https://user-images.githubusercontent.com/110441578/236375319-912e6049-eeaf-4074-8701-741d68fe6d9b.PNG" width="200" height="200">
+<img src="https://user-images.githubusercontent.com/110441578/236378331-f4177f6c-b438-4dbc-876b-d536da421b8c.PNG" width="250" height="200">  
+</div>
 
 
 
@@ -30,6 +33,7 @@
 > 메인 페이지 및 체험 소개 페이지
 - 날짜 별로 품절 표시 기능  
   - Service에서 자체 구현 알고리즘으로 표시 기능
+- S3 사용하여 버킷에 이미지 저장 및 출력
 - 지역 검색 기능
 - 댓글 및 좋아요 기능
 - 장바구니 담기 및 결제 기능  
