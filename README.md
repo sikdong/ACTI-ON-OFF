@@ -1,5 +1,6 @@
 ## Acti on&off</br>
 ### 📚 STACKS</br>
+
 <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
 <img src="https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=css3&logoColor=white">
 <img src="https://img.shields.io/badge/JSP-0095DE?style=for-the-badge&logo=JSP&logoColor=white">
@@ -51,4 +52,7 @@
 - 장바구니에 담으면 예약되며 호스트와 채팅할 수 있는 기능 구현  
   - Java, Mybatis, MariaDB와 쿼리문 이용해서 유사 채팅 기능 구현.    
   - 호스트와 이용자가 실시간으로 채팅할 필요는 없다고 판단하여 채팅 시 DB에 문자열로 등록되고 구분하여 출력함. 
+<br>
 
+### ERD
+![Acti on off ERD](https://user-images.githubusercontent.com/110441578/236377550-f0759c09-9d8f-44b7-ac59-224977648aa8.PNG)
