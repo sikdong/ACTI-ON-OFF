@@ -117,23 +117,21 @@ input, textarea {
 	width: 96%;
 	display: flex;
 	font-size: 12px;
-	justify-content: space-between; /* /아이템들을 일정한 간격으로 벌려 배치합니다. */
+	justify-content: space-between; 
 	align-items: center;
 	padding-bottom: 3px;
 	margin: 6px 12px 6px 12px;
 	border-bottom: 2px solid var(- -line-color);
-	/*header쪽과 달력을 구분하기 위해 밑에만 선을 넣어줍시다.*/
+	
 }
 
 .title {
-	/*년, 월이 세로로 정렬되게 하기 위함입니다.*/
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
 .main {
-	/*요일과 날짜는 가로가아니라 세로로 정렬되야 하므로 flex-diretion: column;을 해줍시다.*/
 	display: flex;
 	flex-direction: column;
 	margin: 6px 12px 0px 12px;
@@ -146,7 +144,6 @@ input, textarea {
 }
 
 .dates {
-	/*wrap을 주어서 한줄에 날짜가 7개만 나오게 만들겁니다.*/
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
@@ -154,7 +151,6 @@ input, textarea {
 }
 
 .date, .day {
-	/*width가 100/7을 가지기 때문에 한 줄에 7개의 날짜와 요일이 정렬됩니다.*/
 	text-align: center;
 	width: calc(100%/ 7);
 	padding: 10px 0 10px 0;
@@ -162,19 +158,16 @@ input, textarea {
 }
 
 .date:nth-child(7n), .day:nth-child(7n) {
-	/*.date와 .day의 7n번째 요소만 적용시킵니다. 즉 토요일의 세로줄만 적용합니다.*/
-	background-color: var(- -sat-color);
-	color: blue; /*글자색입니다.*/
+	background-color: var(- -sat-color) !important;
+	color: blue;
 }
 
 .date:nth-child(7n+1), .day:nth-child(7n+1) {
-	/*.date와 .day의 7n+1번째 요소만 적용시킵니다. 즉 일요일의 세로줄만 적용합니다.*/
-	background-color: var(- -sun-color);
+	background-color: var(- -sun-color) !important;
 	color: red;
 }
 
 .today {
-	/*오늘 날짜에 테두리를 줍니다. !important로 border의 우선순위를 1순위로 만들 수 있습니다.*/
 	border: 2px solid var(- -today-color) !important;
 }
 
@@ -376,31 +369,12 @@ body {
 				<a id="reserveButton" data-bs-toggle="modal"
 					data-bs-target="#availableDateConfirmModal"
 					class="btn btn-dark btn-sm">예약 날짜 확인</a>
-				<c:forEach items="${board.date}" var="date" varStatus="status">
-					<c:choose>
-						<c:when test="${board.remain[status.index] > 0}">
-							<div class="mt-3">
-								<strong>${date}일 / ${board.remain[status.index]}명 가능합니다</strong>
-							</div>
-						</c:when>
-						<c:otherwise>
-							<div>
-								<strong>${date}일 체험은 <span class="sold-out">품절</span>
-									입니다
-								</strong>
-							</div>
-						</c:otherwise>
-					</c:choose>
-				</c:forEach>
 			</div>
 			<hr style="width: 50%" />
 		</div>
 		<div class="col-sm-7 ml-3">
 			<h4 class="ml-3 mt-40">프로그램 후기</h4>
 			<div style="display: flex">
-				<div>
-					<%--별 들어갈 자리 --%>
-				</div>
 			</div>
 			<sec:authorize access="isAuthenticated()">
 				<input type="text" style="width: 44.5vw" class="form-control mt"
@@ -433,22 +407,15 @@ body {
 		</div>
 		<div class="ml-3 mt-3">${board.address}</div>
 		<div class="ml-3 mt-3">구글 API 키 만료로 현재는 구글 맵 렌더링 되지 않습니다</div>
-		<div class="ml-3 mt-3" id="map"></div>
+		<!-- <div class="ml-3 mt-3" id="map"></div> -->
 		<br />
 		<hr width="89.5%" class="mt-40" />
 		<div class="mt-40">
 			<h4>체험 더보기</h4>
 		</div>
 		<div class="flex-container mt-3"></div>
-		<br /> <br /> <br /> <br /> <br />
+	
 	</div>
-
-	<form action="${path}/shop/addCart" method="post" id="cartForm">
-		<input type="hidden" name="addDate" id="addDate" value="" /> <input
-			type="hidden" name="person" id="person" value="" /> <input
-			type="hidden" name="price" id="price" value="${board.price}" /> <input
-			type="hidden" name="boardnum" id="boardNum" value="${board.num}" />
-	</form>
 
 
 
@@ -540,62 +507,8 @@ body {
 			</div>
 		</div>
 	</div>
-
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
+	<div style="height : 50vw;"></div>
+	
 	<jsp:include page="/WEB-INF/views/index.jsp" flush="true">
 		<jsp:param value="index1" name="1" />
 	</jsp:include>
@@ -617,9 +530,6 @@ const ctx = "${pageContext.request.contextPath}";
 <%-----------------------------------------좋아요 기능-------------------------------------------%>
 function plusLike(){
 	const num = document.querySelector("#numInput").value;
-/* 	const data = {
-			num : '${board.num}'
-	} */
 	fetch(ctx+"/board/plusLike", {
 		method : "POST",
 		headers : {
@@ -637,9 +547,6 @@ function plusLike(){
 <%-----------------------------------------좋아요 취소 기능--------------------------%>
 function minusLike(){
 	const num = document.querySelector("#numInput").value;
-/* 	const data = {
-			num : '${board.num}'
-	} */
 	fetch(ctx+"/board/minusLike", {
 		method : "DELETE",
 		headers : {
@@ -695,7 +602,7 @@ function getFiveFiles(){
 			
 			const fileList = 
 				`<div>
-					<a href="${path}/board/get?num=\${file.num}">
+					<a href="${path}/board/id?num=\${file.num}">
 						<img src="${imgUrl}/host/\${file.num }/\${file.fileName}" class="size" alt="...">
 					</a>
 					<div class="mt-2 ml-8" style="font-size : 15px;max-width: 19vw;"><strong>\${file.title}</strong></div>
@@ -813,16 +720,8 @@ function removeReply(replyNum){
 
 
 
-<%--------------------------------달력 코드 %------------------------------------------------------%>
-let CDate = new Date();
-let today = new Date();
-
-function none(){
-	document.querySelector("#showCalendar").innerHTML='',
-	document.querySelector("#noneButton").style.display="none"
-};
-function buildCalendar(){
-const calendarFrame = 	
+function buildframe(){
+const frame = 	
 	`<div class="calendar shadow p-3 mb-5 bg-body rounded">
 	<div style="display : flex;">
 		<div style="font-size : 40px;"><strong>${board.price}</strong></div>
@@ -850,24 +749,16 @@ const calendarFrame =
 	      </div>
 	    </div>
 	  </div>
-		<div class="header">
-			<button class="btn btn-outline-danger btn-sm" onclick="prevCal()">&laquo;</button>
-			<div class="title">
-				<div style="margin : 0 3px 0 0" class="yearTitle"></div>
-				<div class="monthTitle"></div>
-			</div>
-			<button class="btn btn-outline-danger btn-sm" onclick="nextCal()">&raquo;</button>
-		</div>
-		<div class="main">
-			<div class="days">
-				<div class="day">Sun</div>
-				<div class="day">Mon</div>
-				<div class="day">Tue</div>
-				<div class="day">Wed</div>
-				<div class="day">Thu</div>
-				<div class="day">Fri</div>
-				<div class="day">Sat</div>
-			</div>
+	  <br />
+		<div class="main">															
+			<div><h4>예약 날짜</h4></div>
+			<br />
+			<form action="${path}/shop/addCart" method="post" id="cartForm">
+				<input type="date" name="addDate" id="addDate" value="" style="width:450px;"/> 
+				<input type="hidden" name="person" id="person" value="" /> 
+				<input type="hidden" name="price" id="price" value="${board.price}" /> 
+				<input type="hidden" name="boardnum" id="boardNum" value="${board.num}" />
+			</form>
 			<div class="dates"></div>
 			<sec:authorize access="isAuthenticated()">
 			<input type="button" disabled value="장바구니 담기" id="cartButton" onclick="goCart()" class="btn btn-outline-secondary">
@@ -878,81 +769,13 @@ const calendarFrame =
 			</sec:authorize>
 		</div>
 	</div>`
-document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", calendarFrame)
-	
-	let prevLast = new Date(CDate.getFullYear(), CDate.getMonth(), 0);
-	let thisFirst = new Date(CDate.getFullYear(),CDate.getMonth(), 1);
-	let thisLast = new Date(CDate.getFullYear(), CDate.getMonth()+1, 0);
-	document.querySelector(".yearTitle").innerHTML = CDate.getFullYear()+"년 ";
-	document.querySelector(".monthTitle").innerHTML = CDate.getMonth() + 1+"월";
-	let dates = [];
-		
-	for(let i=1; i <= 6-thisLast.getDay(); i++){
-		dates.unshift('');
-	}// 이번달 달력에 보이는 다음달 날짜를 공백으로 처리'
-	
-	for(let i = thisLast.getDate(); i >= 1; i--){
-		dates.push(i);
-	}// 이번달의 날짜 표시
-	
-	if(thisFirst.getDay()!=0){
-		for(let i=0; i < thisFirst.getDay(); i++){
-			dates.push('');
-		}
-	} // 이번 달 달력에 보이는 전월의 날짜를 공백으로 처리
-		
-	const weekDiv = `<div class="week"></div>`
-	let dateChoice = []
-
-	for(let i=0; i < 35; i++){
-		if(i == 0 || i % 7 == 0){
-			document.querySelector(".dates").insertAdjacentHTML("afterbegin", weekDiv)	
-		} 		
-				let year = CDate.getFullYear()
-				let month = CDate.getMonth() + 1
-				const dateDiv =`<div class="date cursor" id="date\${i}">\${dates[i]}</div>`;
-				document.querySelector(".week").insertAdjacentHTML("afterbegin", dateDiv); 
-					dateChoice.push(document.querySelector("#date"+i).innerHTML);
-					<%--여기서부터 시작 --%>
-				if(dateChoice[i] !== ''){
-					document.querySelector("#date"+i).setAttribute("data-full-date", year+"-"+month)
-				} 
-
-		
-		document.querySelector("#date"+i).addEventListener("click", () => {
-			 if(document.querySelector("#person").value != 0){
-				document.querySelector("#cartButton").disabled=false; 
-			 	document.querySelector("#actiDate").innerHTML="선택하신 날짜는 " + document.querySelector("#date"+i).innerHTML+"일 입니다."
-			 } else {
-				 document.querySelector("#cartButton").disabled=true; 
-				 document.querySelector("#actiDate").innerHTML="선택하신 날짜는 " + document.querySelector("#date"+i).innerHTML+"일 입니다."
-			 }
-			
-		
-
-		document.querySelector("#addDate").value = '';	
-		document.querySelector("#addDate").value += year;
-		document.querySelector("#addDate").value +="-"+ month;
-		document.querySelector("#addDate").value +='-'+ document.querySelector("#date"+i).innerHTML;
-
-		})
-	}
-
+document.querySelector("#showCalendar").insertAdjacentHTML("afterbegin", frame) 
 
 	let person = document.querySelector("#number").innerHTML; 
 	document.querySelector("#person").value += person;
 }
 
-/* function changePeople(){
-	const people = document.querySelector("#person").value;
-	console.log(people);
-	if(people > 0){
-		document.querySelector("#cartButton").disabled=false;
-	}
-} */
-
-buildCalendar();
-/* changePeople(); */
+buildframe();
 
 
 function addNumber(){
@@ -982,15 +805,15 @@ function substractNumber(){
 <%-- 이전 달 버튼 누르면 실행 되는 함수 --%>
 function prevCal(){
 	CDate.setMonth(CDate.getMonth()-1);
-	console.log(CDate);
+	console.log(CDate.getMonth()-1);
 	buildCalendar();
-	console.log(2);
 	document.querySelector("#person").value='';
 }
 
 <%-- 다음 달 버튼 누르면 실행 되는 함수 --%>
 function nextCal(){
 	CDate.setMonth(CDate.getMonth()+1);
+	console.log(CDate.getMonth()+1);
 	buildCalendar();
 	document.querySelector("#person").value='';
 }	
