@@ -18,7 +18,11 @@
 <img src="https://user-images.githubusercontent.com/110441578/236373662-6db641c3-4bba-443e-ba15-dfffd2df18ee.PNG" width="300" height="200">
 <img src="https://user-images.githubusercontent.com/110441578/236375319-912e6049-eeaf-4074-8701-741d68fe6d9b.PNG" width="200" height="200">  
 </div>
+<br>
 
+### 서버 구성도
+<br>
+<img src="https://github.com/sikdong/TIL/assets/110441578/4f676e4c-f8b3-4457-950a-4bec77a0cccf" width="700" height="400">
 
 ### 배포 주소
 http://13.125.60.211/acti/main
