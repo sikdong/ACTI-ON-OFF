@@ -201,7 +201,7 @@ WHERE B_NO = #{num}
 </delete>
 
 <select id="getLikeByBNO" resultType="int">
-SELECT COUNT(*) FROM ACTI_LIKE WHERE B_NO= #{num}
+SELECT COUNT(L_CLICK) FROM ACTI_LIKE WHERE B_NO= #{num}
 
 </select>
 

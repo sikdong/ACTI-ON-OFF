@@ -151,7 +151,7 @@ public class ydsBoardService {
 		Map<String, Object> map = new HashMap<>();
 		int minus = mapper.deleteLikeByLNO(num, userName);
 		map.put("deleteLike", minus);
-		int cnt = mapper.getLikeByBNO(board.getCountLike());
+		int cnt = mapper.getLikeByBNO(num);
 		map.put("countLike", cnt);
 		return map;
 	}

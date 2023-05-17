@@ -105,7 +105,7 @@ body {
       
         <div class="owl-4-slider owl-carousel">
 	      <c:forEach items="${mainList}" var="main">
-		      <c:url value="/board/get" var="getLink">
+		      <c:url value="/board/id" var="getLink">
 				<c:param name="num" value="${main.num }" ></c:param>
 			</c:url>
 	          <div class="product">
@@ -136,13 +136,6 @@ body {
     </div>
   </div>
 
-
-  <!-- <div id="overlayer"></div>
-  <div class="loader">
-    <div class="spinner-border" role="status">
-      <span class="sr-only">Loading...</span>
-    </div> -->
-  </div>
 
 
 

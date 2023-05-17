@@ -23,8 +23,6 @@ public class SessionListener implements HttpSessionListener {
      */
     public void sessionCreated(HttpSessionEvent se)  { 
          // TODO Auto-generated method stub
-    	System.out.println("#####################");
-    	System.out.println("session created!!!!!!!!!!!!!!!!!!!!");
     }
 
 	/**
@@ -32,8 +30,6 @@ public class SessionListener implements HttpSessionListener {
      */
     public void sessionDestroyed(HttpSessionEvent se)  { 
          // TODO Auto-generated method stub
-    	System.out.println("#####################");
-    	System.out.println("session destroyed@@@@@@@@@@@@@@@@@@@@@@@@@");
     }
 	
 }

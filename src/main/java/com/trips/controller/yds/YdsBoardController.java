@@ -27,9 +27,15 @@ import com.trips.domain.yds.TripsBoardDto;
 import com.trips.domain.yds.TripsOrderDto;
 import com.trips.service.ydsBoardService.ydsBoardService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+
 @Controller
 @RequestMapping("board")
 @ComponentScan(basePackages = "com.trips.mapper.ydsBoardMapper.ydsBoardMapper")
+@Api(tags="게시판 API")
 public class YdsBoardController {
 	
 	
@@ -38,6 +44,7 @@ public class YdsBoardController {
 	 
 	
 	@GetMapping("list")
+	@ApiOperation(value ="목록 조회", notes="게시물 목록을 조회할 수 있습니다")
 	public void getBoardlist(Model model, 
 			@RequestParam(name="address", required=false) String address, 
 			Authentication authentication) {
@@ -53,12 +60,14 @@ public class YdsBoardController {
 	}
 
 	@GetMapping({"id","modify","getAllImages"})
+	@ApiOperation(value ="상세 조회", notes="게시물 정보를 상세 조회할 수 있습니다")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name = "num", value="게시물 번호", example="100")
+	})
 	public void getBoard(int num, Model model, MultipartFile[] file) {
 		TripsBoardDto board = service.getBoard(num, file);
-    //List<TripsOrderDto> order = service.getOrderByBoardNum(num);
 
 		model.addAttribute("board", board);
-		//model.addAttribute("order", order);
 		
 	}
 	
