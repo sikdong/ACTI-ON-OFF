@@ -22,8 +22,12 @@ import com.trips.domain.qna.PageInfo;
 import com.trips.domain.qna.QnaDto;
 import com.trips.service.qna.QnaService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @Controller
 @RequestMapping("qna")
+@Api(tags="Q&A API")
 public class QnaController {
 	
 	@Autowired
@@ -34,6 +38,7 @@ public class QnaController {
 		//QnaRegister로 포워드
 	}
 	@PostMapping("QnaRegister")
+	@ApiOperation(value ="Q&A 등록")
 	public String QnaRegister(
 			QnaDto qna,
 			MultipartFile[] files,
@@ -55,6 +60,7 @@ public class QnaController {
 	}
 
 	@GetMapping("QnaList")
+	@ApiOperation(value ="Q&A 목록 조회")
 	public void QnaList(
 			@RequestParam(name="page",defaultValue = "1")int page,
 			@RequestParam(name="t",defaultValue = "all")String type,
@@ -71,6 +77,7 @@ public class QnaController {
 	
 	
 	@GetMapping("QnaGet")
+	@ApiOperation(value ="Q&A 상세 조회")
 	public void QnaGet(
 			Model model,
 			@RequestParam(name="id")
@@ -82,12 +89,14 @@ public class QnaController {
 	}
 	@GetMapping("QnaModify")
 	@PreAuthorize("@qnaSecurity.checkMemberId(authentication.name,#id) or hasAuthority('admin')")
+	@ApiOperation(value ="Q&A 수정")
 	public void QnaModify(int id,Model model) {
 		QnaDto qna = service.get(id);
 		model.addAttribute("qna",qna);
 	}
 	@PostMapping("QnaModify")
 	@PreAuthorize("@qnaSecurity.checkMemberId(authentication.name,#qna.id) or hasAuthority('admin')")
+	@ApiOperation(value ="Q&A 수정")
 	public String QnaModify(
 			QnaDto qna,
 			@RequestParam("files") MultipartFile[] addFiles,
@@ -105,6 +114,7 @@ public class QnaController {
 	}
 	@PostMapping("QnaRemove")
 	@PreAuthorize("@qnaSecurity.checkMemberId(authentication.name,#id) or hasAuthority('admin')")
+	@ApiOperation(value ="Q&A 제거")
 	public String QnaRemove(int id,RedirectAttributes rttr) {
 		// alert 문의글 삭제 알림
 		int cnt= service.remove(id);

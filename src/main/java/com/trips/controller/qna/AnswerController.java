@@ -20,9 +20,13 @@ import com.trips.domain.qna.AnswerDto;
 import com.trips.domain.qna.QnaDto;
 import com.trips.service.qna.AnswerService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 //@Controller +@ResponseBody
 @RestController
 @RequestMapping("answer")
+@Api(tags="Q&A 답변 API")
 public class AnswerController {
 	
 	@Autowired
@@ -34,6 +38,7 @@ public class AnswerController {
 	}
 	
 	@PutMapping("modify")
+	@ApiOperation(value ="Q&A 답변 수정")
 	public Map<String,Object> modify(@RequestBody AnswerDto answer){
 		Map<String,Object> map= new HashMap<>();
 		int cnt = service.modify(answer);
@@ -47,6 +52,7 @@ public class AnswerController {
 	}
 	
 	@DeleteMapping("remove/{id}")
+	@ApiOperation(value ="Q&A 답변 삭제")
 	public Map<String,Object> remove(@PathVariable int id){
 		Map <String,Object> map = new HashMap<>();
 		
@@ -62,6 +68,7 @@ public class AnswerController {
 	// 댓글 작성하기
 	//@ResponseBody
 	@PostMapping("add")
+	@ApiOperation(value ="Q&A 답변 추가")
 	public Map<String,Object> add(@RequestBody AnswerDto answer) {
 		Map<String,Object> map = new HashMap<>();
 	
@@ -79,6 +86,7 @@ public class AnswerController {
 	// 댓글 보여주기
 	@GetMapping("QnaList/{qnaId}")
 	@ResponseBody
+	@ApiOperation(value ="Q&A 답변 조회")
 	public List<AnswerDto> list(@PathVariable int qnaId){
 		System.out.println("controloer qna : " + qnaId);
 		return service.listAnswerByAnswerId(qnaId);

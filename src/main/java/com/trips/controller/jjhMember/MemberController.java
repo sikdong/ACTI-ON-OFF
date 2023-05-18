@@ -16,9 +16,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.trips.domain.jjhMember.jjhMemberDto;
 import com.trips.service.jjhMember.jjhMemberService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 
 @Controller
-public class jjhMemberController {
+@Api(tags="유저 API")
+public class MemberController {
 
 	@Autowired
 	private jjhMemberService service;
@@ -40,12 +44,14 @@ public class jjhMemberController {
 	}	
 	
 	@GetMapping("signup")
+	@ApiOperation(value="유저 회원가입")
 	public void signup() {
 		
 	}
 	
 	
 	@PostMapping("signup")
+	@ApiOperation(value="유저 회원가입")
 	public String signup(jjhMemberDto member, RedirectAttributes rttr) {
 			System.out.println(member);
 		  member.setM_HOST(false);

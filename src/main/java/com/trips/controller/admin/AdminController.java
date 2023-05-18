@@ -19,8 +19,12 @@ import com.trips.domain.qna.PageInfo;
 import com.trips.domain.qna.QnaDto;
 import com.trips.service.admin.AdminService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @Controller
 @RequestMapping("qna")
+@Api(tags="관리자 API")
 public class AdminController {
 
 	@Autowired
@@ -29,6 +33,7 @@ public class AdminController {
 	// 호스트 리스트 출력
 	@GetMapping("admin")
 	@PreAuthorize("hasAuthority('admin')")
+	@ApiOperation(value="호스트 승인 요청 목록 조회", notes="호스트 승인을 요청한 유저 목록을 조회 할 수 있습니다")
 	public void admin(
 			@RequestParam(name="page",defaultValue = "1")int page,
 			PageInfo pageInfo,
@@ -42,6 +47,8 @@ public class AdminController {
 	// 게시물 리스트 출력
 	@GetMapping("adminBoard")
 	@PreAuthorize("hasAuthority('admin')")
+	@ApiOperation(value="게시물 승인 요청 목록 조회",
+					notes="게시물 승인 요청 목록을 조회할 수 있습니다")
 	public void adminBoard(
 			@RequestParam(name="page",defaultValue = "1")int page,
 			PageInfo pageInfo,
@@ -54,10 +61,10 @@ public class AdminController {
 	// 호스트 승인
 	@GetMapping("accept")
 	@PreAuthorize("hasAuthority('admin')")
+	@ApiOperation(value="호스트 승인 수락 여부", notes="호스트 승인 수락 여부를 확인할 수 있습니다")
 	public String adminAccept(jjhMemberDto member,RedirectAttributes rttr) {
 		
 		int cnt = service.update(member);
-		
 		
 		
 		return "redirect:/qna/admin";
@@ -65,6 +72,7 @@ public class AdminController {
 	// 게시판 승인
 	@GetMapping("boardAccept")
 	@PreAuthorize("hasAuthority('admin')")
+	@ApiOperation(value="게시물 승인 수락 여부", notes="게시물 승인 수락 여부를 확인할 수 있습니다")
 	public String boardAccept(BoardDto board) {
 		int cnt = service.updateAccept(board);
 		
@@ -73,6 +81,7 @@ public class AdminController {
 	//호스트 반려
 	@GetMapping("denied")
 	@PreAuthorize("hasAuthority('admin')")
+	@ApiOperation(value="호스트 승인 거절 여부", notes="호스트 승인 거절 여부를 확인할 수 있습니다")
 	public String denied(jjhMemberDto member) {
 		int cnt = service.denied(member);
 		
@@ -81,6 +90,7 @@ public class AdminController {
 	//게시판 반려
 	@GetMapping("boardDenied")
 	@PreAuthorize("hasAuthority('admin')")
+	@ApiOperation(value="게시물 승인 거절 여부", notes="게시물 승인 거절 여부를 확인할 수 있습니다")
 	public String boardDenied(BoardDto board) {
 		int cnt = service.boardDenied(board);
 		
@@ -90,6 +100,7 @@ public class AdminController {
 	//adminMain 페이지에서 COUNT 불러오는 쿼리
 	@GetMapping("adminMain")
 	@PreAuthorize("hasAuthority('admin')")
+	@ApiOperation(value="관리자 메인 페이지", notes="관리자 메인 페이지 입니다")
 	public void adminMain(Model model) {
 		
 		int qna = service.getQnaList();

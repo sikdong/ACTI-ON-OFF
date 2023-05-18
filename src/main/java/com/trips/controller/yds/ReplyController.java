@@ -23,20 +23,26 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.trips.domain.yds.TripsReplyDto;
 import com.trips.service.ydsBoardService.YdsReplyService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("ydsReply")
-public class YdsReplyController {
+@Api(tags="댓글 API")
+public class ReplyController {
 	
 	@Autowired
 	private YdsReplyService service;
 	
 	@GetMapping("listReply/{boardNum}")
+	@ApiOperation(value ="게시물 댓글 조회")
 	public List<TripsReplyDto> listReply(@PathVariable int boardNum){
 		System.out.println(boardNum);
 		return service.listReply(boardNum);
 	}
 	
 	@PostMapping("insertReply")
+	@ApiOperation(value ="게시물 댓글 등록")
 	public int insertReply(@RequestBody TripsReplyDto replyDto, 
 			Authentication authentication) {
 		if(authentication != null) {
@@ -48,6 +54,7 @@ public class YdsReplyController {
 	@DeleteMapping("deleteReply/{replyNum}")
 	@ResponseBody
 	@PreAuthorize("@replySecurity.checkWriter(authentication.name, #replyNum)")
+	@ApiOperation(value ="게시물 댓글 삭제")
 	public Map<String, Object> deleteReply(@PathVariable int replyNum) {
 		Map<String, Object> map = new HashMap<>();
 		int cnt = service.deleteReply(replyNum);
@@ -63,6 +70,7 @@ public class YdsReplyController {
 	@PutMapping("modifyReply")
 	@ResponseBody
 	@PreAuthorize("@replySecurity.checkWriter(authentication.name, #reply.replyNum)")
+	@ApiOperation(value ="게시물 댓글 수정")
 	public Map<String, Object> modifyReply(@RequestBody TripsReplyDto reply) {
 		Map<String, Object> map = new HashMap<>();
 		int cnt = service.updateReply(reply);

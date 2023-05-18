@@ -30,9 +30,12 @@ import com.trips.service.jjhMember.jjhMemberService;
 import com.trips.service.payment.CartService;
 import com.trips.service.payment.OrderService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
+@Api(tags="오더 API")
 public class OrderController {
 
 	@Autowired
@@ -50,6 +53,7 @@ public class OrderController {
 	
 	@PostMapping("/payment/orderPage")
 	@PreAuthorize("isAuthenticated()")
+	@ApiOperation(value ="주문 정보 확인")
 	public void orderPage(
 			@RequestParam(value="selectedArr", required = false) int[] selectedArr,
 			Model model){
@@ -67,6 +71,7 @@ public class OrderController {
 
 		
 	@GetMapping("/payment/orderResult")
+	@ApiOperation(value ="주문 후 확인")
 	public void saveOrderResult(
 			@RequestParam(value="selectedArr", required = false) int[] selectedArr,
 			Model model
@@ -90,6 +95,7 @@ public class OrderController {
 	}
 	
 	@PostMapping("/payment/orderResult")
+	@ApiOperation(value ="주문 후 확인")
 	public void saveOrderR(
 			@RequestBody ArrayList<Integer> selectedArr
 			){

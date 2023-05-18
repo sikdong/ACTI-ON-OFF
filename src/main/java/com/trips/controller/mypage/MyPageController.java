@@ -36,8 +36,12 @@ import com.trips.domain.qna.QnaDto;
 import com.trips.service.mypage.DeleteService;
 import com.trips.service.mypage.MyPageService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @Controller
 @RequestMapping("mypage")
+@Api(tags="마이 페이지 API")
 public class MyPageController {
 	
 	@Autowired
@@ -55,6 +59,7 @@ public class MyPageController {
 	
 	@GetMapping("mypage2")
 	@PreAuthorize("isAuthenticated()")
+	@ApiOperation(value ="마이 페이지 조회")
 	public void myPage2(
 			@AuthenticationPrincipal User user,
 			/* @RequestParam(name = "id", defaultValue = "dd") String id2, */
@@ -67,6 +72,7 @@ public class MyPageController {
 	}
 	
 	@PostMapping("mypage2")
+	@ApiOperation(value ="마이 페이지 정보 수정")
 	public String myPage2(
 			MemberDto member,
 			RedirectAttributes rttr
@@ -139,6 +145,7 @@ public class MyPageController {
 	
 	@GetMapping("reservation")
 	@PreAuthorize("isAuthenticated()")
+	@ApiOperation(value ="마이페이지 체험 예약 조회")
 	public void res(
 			@RequestParam(name = "id") String id,
 			Model model
@@ -151,6 +158,7 @@ public class MyPageController {
 	
 	@GetMapping("resDetail")
 	@PreAuthorize("isAuthenticated()")
+	@ApiOperation(value ="마이페이지 체험 예약 상세 조회")
 	public void resD(
 			@RequestParam(name = "resNo") int resNo,
 			Model model
@@ -184,6 +192,7 @@ public class MyPageController {
 	
 	@GetMapping("chat")
 	@PreAuthorize("isAuthenticated()")
+	@ApiOperation(value ="마이페이지 채팅 조회")
 	public void chat(
 			@RequestParam(name = "chatRoom") int chatRoom,
 			@RequestParam(name = "id") String id,
@@ -216,6 +225,7 @@ public class MyPageController {
 	@PostMapping("chatAdd")
 	@PreAuthorize("isAuthenticated()")
 	@ResponseBody
+	@ApiOperation(value ="마이페이지 채팅방 추가")
 	public void chat2(
 			@RequestBody ChatAddDto chatDto,
 			RedirectAttributes rttr
@@ -232,6 +242,7 @@ public class MyPageController {
 	
 	@PostMapping("remove")
 	@PreAuthorize("isAuthenticated()")
+	@ApiOperation(value ="마이페이지 회원 탈퇴")
 	public String remove(String id, 
 			//RedirectAttributes rttr, 
 			HttpServletRequest request)
@@ -242,25 +253,6 @@ public class MyPageController {
 		request.logout();
 
 		return "redirect:/main";
-		
-//		MemberDto oldmember = service.getById(id);
-//
-//		boolean passwordMatch = passwordEncoder.matches(oldPassword, oldmember.getPassword());
-//
-//		if (passwordMatch) {
-//			service.remove(id);
-//
-//			rttr.addFlashAttribute("message", "회원 탈퇴하였습니다.");
-//			request.logout();
-//
-//			return "redirect:/board/list";
-//
-//		} else {
-//			rttr.addAttribute("id", id);
-//			rttr.addFlashAttribute("message", "암호가 일치하지 않습니다.");
-//			return "redirect:/member/modify";
-//		}
-
 	}
 	@PostMapping("existEmail")
 	@PreAuthorize("isAuthenticated()")

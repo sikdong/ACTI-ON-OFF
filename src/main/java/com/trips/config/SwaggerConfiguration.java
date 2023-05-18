@@ -28,7 +28,7 @@ public class SwaggerConfiguration {
   private ApiInfo apiInfo(){
       return new ApiInfoBuilder()
               .title("API with Swagger")
-              .description("acti on&off swagger api 문서 입니다")
+              .description("Acti on&off swagger api 문서 입니다")
               .version("1.0.0")
               .build();
   }

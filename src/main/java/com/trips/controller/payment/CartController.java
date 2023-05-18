@@ -30,7 +30,11 @@ import com.trips.domain.payment.MemberDto;
 import com.trips.service.jjhMember.jjhMemberService;
 import com.trips.service.payment.CartService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @Controller
+@Api(tags="장바구니 API")
 public class CartController {
 
 	@Autowired
@@ -43,6 +47,7 @@ public class CartController {
 
 	@GetMapping("cart")
 	@PreAuthorize("isAuthenticated()")
+	@ApiOperation(value ="장바구니 조회")
 	public void cart(@AuthenticationPrincipal User user,
 			/* @RequestParam(name = "id", defaultValue = "dd") String id2, */
 			Model model) {
@@ -71,6 +76,7 @@ public class CartController {
 	// 장바구니 저장
 	/* @ResponseBody */
 	@RequestMapping(value = "/shop/addCart", method = { RequestMethod.GET, RequestMethod.POST })
+	@ApiOperation(value ="장바구니 추가")
 	public String addCart(Cart cart, Authentication authentication) throws Exception {
 		Map map = new HashMap<>();
 		cart.setId(authentication.getName());
@@ -84,6 +90,7 @@ public class CartController {
 	// 장바구니 이동
 	@RequestMapping(value = "/payment/cart", method = { RequestMethod.GET, RequestMethod.POST })
 	@PreAuthorize("isAuthenticated()")
+	@ApiOperation(value ="장바구니 목록 조회")
 	public void getCartList(Authentication authentication,MemberDto member, Model model, HttpSession session) throws Exception {
 		member.setId(authentication.getName());
 		
@@ -97,16 +104,9 @@ public class CartController {
 		String phone = mem.getM_PHONE();
 		String email = mem.getM_EMAIL();
 
-//		String title = (String) session.getAttribute("title");
-//		String firstFile = (String) session.getAttribute("firstFile");
-//		int boardNo = (int) session.getAttribute("boardNo");
-
 		List<CartRe> cartList = service.cartList(id);
 
 		model.addAttribute("cartList", cartList);
-//		model.addAttribute("title", title);
-//		model.addAttribute("firstFile", firstFile);
-//		model.addAttribute("boardNo", boardNo);
 		model.addAttribute("id", id);
 		model.addAttribute("name", name);
 		model.addAttribute("phone", phone);
@@ -115,6 +115,7 @@ public class CartController {
 	// 장바구니 삭제
 	@GetMapping("/payment/cart/delete/{cart_id}")
 	@ResponseBody
+	@ApiOperation(value ="장바구니 삭제")
 	public void deleteCart(@PathVariable(value = "cart_id") int cart_id) {
 
 		service.deleteCart(cart_id);
@@ -122,6 +123,7 @@ public class CartController {
 	}
 
 	@PostMapping("/payment/cart/selectDelete")
+	@ApiOperation(value ="삭제 장바구니 선택")
 	public String selectDeleteCart(@RequestParam("selectedArr") int[] selectedArr) {
 
 		for (int i = 0; i < selectedArr.length; i++) {

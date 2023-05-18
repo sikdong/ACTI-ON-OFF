@@ -40,8 +40,12 @@ import com.trips.service.host.HostService;
 // 체험주제 안불러와지는거 > 처음부터 등록안하면 주제 등록 안됨
 // 미승인 체험건 안내멘트 -- o
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @Controller
 @RequestMapping("host")
+@Api(tags = "호스트 API")
 public class HostController {
 
 	public static int b_no;
@@ -52,6 +56,7 @@ public class HostController {
 
 	@RequestMapping("hostPage")
 	@PreAuthorize("isAuthenticated()")
+	@ApiOperation(value="호스트 정보 수정 페이지", notes="호스트의 정보를 수정할 수 있습니다")
 	public void hostPage(Authentication authentication, Model model) {
 		String id = authentication.getName();
 		
@@ -59,39 +64,31 @@ public class HostController {
 	}
 	
 
-	@RequestMapping("listing/content2")
-	public void becomeHostIntro2(Authentication authentication, Model model) {
-	}
+
+	 @RequestMapping("listing/content2") public void
+	 becomeHostIntro2(Authentication authentication, Model model) { }
+	 
 
 	// 호스트 되기
 	@RequestMapping("becomeHostIntro")
 	@PreAuthorize("isAuthenticated()")
+	@ApiOperation(value="호스트 신청 페이지", notes="호스트를 신청할 수 있습니다")
 	public String becomeHostIntro(Authentication authentication, Model model) {
-//		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//		UserDetails userDetails = (UserDetails)principal;
-//
-//		String username = ((UserDetails) principal).getUsername();
-//		String password = ((UserDetails) principal).getPassword();
-//		System.out.println(username+","+password)
-		System.out.println(authentication.getName() + "@@@");
 		MemberDto member = hostService.getMember(authentication.getName());
-		System.out.println(member + "@@@");
 		if (member.isHost()) {
-			System.out.println(member.isHost());
 			// member 호스트요청 1(true)
 			Host2 host = hostService.hostInfo(member.getId());
-			System.out.println(host + "@@");
 			model.addAttribute("host", host);
 
 			return "redirect:hostInfo";
 		}
-		System.out.println("aaaaa");
 		return null;
 		// memeber 호스트요청 0(false)
 	}
 
 	@PreAuthorize("isAuthenticated()")
 	@GetMapping("becomeHost")
+	@ApiOperation(value="호스트 신청 항목 페이지", notes="호스트의 정보를 기입할 수 있습니다")
 	public void becomeHost() {
 
 	}
@@ -99,10 +96,8 @@ public class HostController {
 	// 포토 등록
 	@PostMapping("becomeHost")
 	@PreAuthorize("isAuthenticated()")
-	// @PreAuthorize("@hostSecurity.checkMemberId(authentication.name)")
+	@ApiOperation(value="호스트 사진 등록", notes="호스트의 사진을 등록할 수 있습니다")
 	public String becomeHost(Host host, MultipartFile file) {
-		System.out.println(host + "@@@@@@@");
-		System.out.println(file + "@@@3134");
 		hostService.becomeHost(host, file);
 
 		return "redirect:waitingAcceptance";
@@ -114,24 +109,16 @@ public class HostController {
 
 	@GetMapping("hostInfo")
 	@PreAuthorize("hasAnyAuthority('host','hostRequest')")
-//	@PreAuthorize("@boardSecurity.checkMemberId(authentication.name, #id)")
+	@ApiOperation(value="호스트 정보 확인", notes="호스트의 정보를 확인할 수 있습니다")
 	public String hostInfo(Model model, Authentication authentication) { 
 		MemberDto member = hostService.getMember(authentication.getName());
-//		System.out.println(member+"@@@");
-//		if(!member.isHost()) {
-//			return "redirect:becomeHostIntro";
-//		}
-
 		Host2 host = hostService.hostInfo(authentication.getName());
-		System.out.println(host + "@@2222");
 		model.addAttribute("host", host);
 
 		if (host.getM_authority().equals("host")) {
-			System.out.println(host.getM_authority() == "host" + "3211");
 			model.addAttribute("auth", "호스트입니다");
 		}
 		if (host.getM_authority().equals("hostRequest")) {
-			System.out.println(host.getM_authority().equals("host"));
 			model.addAttribute("auth", "호스트 승인 대기중입니다");
 		}
 
@@ -139,11 +126,10 @@ public class HostController {
 	}
 
 	@PostMapping("hostInfo")
+	@ApiOperation(value="호스트 정보 수정", notes="호스트의 정보를 수정할 수 있습니다")
 	public String hostInfoModify(Host host, 
 			MultipartFile file,
 			RedirectAttributes rttr) {
-		System.out.println(host + "######");
-		System.out.println(file + "@@@313");
 		
 		int result = hostService.hostInfoModify(host, file);
 		if (result == 1) {
@@ -218,9 +204,6 @@ public class HostController {
 	public String listingOff(@RequestParam(required = false) String b_topic, HttpSession session) {
 		
 		session.setAttribute("b_topic", b_topic);
-		System.out.println(session.getAttribute("b_topic") + "@@@"); 
-		System.out.println(com.trips.controller.host.HostController.boardDto);
-
 		return "redirect:/host/listing/contents";
 	}
 
@@ -232,7 +215,6 @@ public class HostController {
 
 	public String listingContents(Authentication authentication, String b_title, String b_content, int cost,
 			int min_person, int max_person, int min_age, String address, String addressLL, HttpSession session) {
-		System.out.println(session.getAttribute("b_topic") + "@@@"); 
 		session.setAttribute("m_id", authentication.getName());
 		session.setAttribute("b_title", b_title);
 		session.setAttribute("b_content", b_content);
@@ -243,30 +225,17 @@ public class HostController {
 		session.setAttribute("address", address);
 		session.setAttribute("addressLL", addressLL);
 
-		System.out.println(session.getAttribute("b_topic") + "@@@"); 
-
 		boardDto.setB_title(b_title);
 		boardDto.setB_content(b_content);
 		boardDto.setCost(cost);
 		boardDto.setMax_person(min_person);
 		boardDto.setMax_person(max_person);
 		boardDto.setMin_age(min_age);
-		// b_no=boardDto.getB_no();
-//		hostService.listingContents(boardDto);
-		// System.out.println(boardDto);
-
 		return "redirect:/host/listing/image";
 	}
-	// 기본타입은 required가 false라도..
-	// >> Optional int parameter 'cost' is present but cannot be translated into a
-	// null value due to being declared as a primitive type. Consider declaring it
-	// as object wrapper for the corresponding primitive type.
-
-	// 이제 이미지 등록과 날짜 등록
-	// 이미지랑 날짜는 테이블이 각각 있음
 	@GetMapping("listing/image")
 	public void listingImageJsp(HttpSession session) {
-		System.out.println(session.getAttribute("b_topic")+"22331");
+	
 	}
 
 	@PostMapping("listing/image")
@@ -275,7 +244,6 @@ public class HostController {
 		BoardDto boardDto = new BoardDto();
 
 		boardDto.setM_id((String) session.getAttribute("m_id"));
-		System.out.println(session.getAttribute("b_topic")+"2233");
 		boardDto.setB_topic((String) session.getAttribute("b_topic"));
 		boardDto.setCost((int) session.getAttribute("cost"));
 		boardDto.setB_title((String) session.getAttribute("b_title"));
@@ -285,33 +253,7 @@ public class HostController {
 		boardDto.setMin_age((int) session.getAttribute("min_age"));
 		boardDto.setAddress((String) session.getAttribute("address"));
 		boardDto.setAddressLL((String) session.getAttribute("addressLL"));
-
 		hostService.listing(boardDto, files, date);
-
-//		hostService.listingContents(boardDto);
-//		hostService.listingImageDate(b_no,files,date); 
-//		hostService.listing(boardDto,files,date);
-//		hostService.listing(  b_topic,  b_title,  b_content,
-//										  cost, min_person,  max_person,  min_age, files, date);
-//		
-
-
-//		int i=0;
-		// @JsonFormat(shape = Shape.STRING)
-//		Date[] dates= new Date[100];
-//		for (String dateString : date) {
-//		Date acti_date=(Date) new SimpleDateFormat("dd/MM/yyyy").parse(dateString);  
-//		dates[i]=acti_date;
-//		}
-
-//		String s="11/11/1111";
-//		Date date2=(Date) new SimpleDateFormat("dd/MM/yyyy").parse(s);  		
-
-		// dates=(11/11/1111);
-
-//		for (MultipartFile file : files) {
-//		System.out.println(file.getOriginalFilename());	
-//	}
 		return "redirect:/host/listing/complete";
 	}
 
@@ -325,12 +267,9 @@ public class HostController {
 	// 호스트 아이디랑 같은 체험 불러오기
 	@GetMapping("admin")
 	@PreAuthorize("hasAuthority('host')")
-//	@PreAuthorize("@hostSecurity.checkMemberId(authentication.name)")
+	@ApiOperation(value="호스트 게시물 확인", notes="호스트의 게시물을 확인할 수 있습니다")
 	public void admin(Authentication authentication, Model model) {
-		System.out.println(authentication.getName());
 		List<BoardDto> boardList = hostService.getMyList(authentication.getName());
-
-		System.out.println(boardList);
 		model.addAttribute("boardList", boardList);
 	}
 

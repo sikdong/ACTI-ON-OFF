@@ -36,7 +36,7 @@ import io.swagger.annotations.ApiOperation;
 @RequestMapping("board")
 @ComponentScan(basePackages = "com.trips.mapper.ydsBoardMapper.ydsBoardMapper")
 @Api(tags="게시판 API")
-public class YdsBoardController {
+public class BoardController {
 	
 	
 	 @Autowired 
@@ -62,7 +62,7 @@ public class YdsBoardController {
 	@GetMapping({"id","modify","getAllImages"})
 	@ApiOperation(value ="상세 조회", notes="게시물 정보를 상세 조회할 수 있습니다")
 	@ApiImplicitParams({
-		@ApiImplicitParam(name = "num", value="게시물 번호", example="100")
+		@ApiImplicitParam(name = "num", value="게시물 번호", example="1165")
 	})
 	public void getBoard(int num, Model model, MultipartFile[] file) {
 		TripsBoardDto board = service.getBoard(num, file);
@@ -72,6 +72,7 @@ public class YdsBoardController {
 	}
 	
 	@GetMapping("remove")
+	@ApiOperation(value ="게시물 제거")
 	public String removeBoard(int num) {
 		service.removeBoard(num);
 		return "redirect:/ydsBoard/list";
@@ -79,12 +80,14 @@ public class YdsBoardController {
 	
 	@GetMapping("getFiveFiles")
 	@ResponseBody
+	@ApiOperation(value ="게시물 상세 조회 시 하단 5개 게시물 사진 띄우기")
 	public List<TripsBoardDto> getFiveFiles(){
 		return service.getFiveFiles();
 	}
 	
 	@PostMapping("plusLike")
 	@ResponseBody
+	@ApiOperation(value ="게시물 좋아요 추가")
 	public Map<String, Object> plusLike(@RequestBody Map<String, Integer> req,
 			TripsBoardDto board, Authentication authentication) {
 		String userName = ""; 
@@ -100,6 +103,7 @@ public class YdsBoardController {
 
 	@DeleteMapping("minusLike")
 	@ResponseBody
+	@ApiOperation(value ="게시물 좋아요 삭제")
 	public Map<String, Object> minusLike(@RequestBody Map<String, Integer> req, 
 			TripsBoardDto board,
 			Authentication authentication){
@@ -115,6 +119,7 @@ public class YdsBoardController {
 	}
 	
 	@PostMapping("modify")
+	@ApiOperation(value ="게시물 수정")
 	public String modify(TripsBoardDto board, MultipartFile[] files) {
 		
 		int cnt = service.modifyBoard(board, files);
@@ -123,18 +128,14 @@ public class YdsBoardController {
 	}
 	
 	@DeleteMapping("deleteFile/{fileNum}")
+	@ApiOperation(value ="게시물의 파일 삭제")
 	public void deleteFile(@PathVariable int fileNum){
 		service.deleteFile(fileNum);
 	}
 	
-	@GetMapping("getAllBoard")
-	public void getallboard(Model model, MultipartFile[] file) {
-		List<TripsBoardDto> board = service.getAllBoard(file);
-		model.addAttribute("allBoard", board);
-	}
-	
 	@GetMapping("getAllfileWhenModify/{num}")
 	@ResponseBody
+	@ApiOperation(value ="게시물 수정 시 파일 다 가져오기")
 	public List<TripsBoardDto> getAllfileWhenModify(
 			@PathVariable int num){
 		List<TripsBoardDto> board = service.getAllfileWhenModify(num);
@@ -142,6 +143,7 @@ public class YdsBoardController {
 	}
 	
 	@DeleteMapping("deletefileWhenModify/{fileNum}")
+	@ApiOperation(value ="게시물 수정 시 파일 삭제")
 	public int deletefileWhenModify(@PathVariable int fileNum) {
 		int cnt = service.deletefileWhenModify(fileNum);
 		return cnt;
