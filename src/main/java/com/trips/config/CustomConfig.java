@@ -28,6 +28,19 @@ import software.amazon.awssdk.services.s3.S3Client;
 @MapperScan("com.trips.mapper")
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class CustomConfig {
+	private static final String[] PERMIT_URL_ARRAY = {
+            /* swagger v2 */
+            "/v2/api-docs",
+            "/swagger-resources",
+            "/swagger-resources/**",
+            "/configuration/ui",
+            "/configuration/security",
+            "/swagger-ui.html",
+            "/webjars/**",
+            /* swagger v3 */
+            "/v3/api-docs/**",
+            "/swagger-ui/**"
+    };
 
 	@Value("${aws.accessKeyId}")
 	private String accessKeyId;
@@ -64,7 +77,10 @@ public class CustomConfig {
 		http.formLogin().loginPage("/login").defaultSuccessUrl("/main", true);
 		
 		http.logout().logoutUrl("/logout");
-		http.csrf().disable();
+		http.csrf().disable()
+		.authorizeRequests()
+        .antMatchers(PERMIT_URL_ARRAY).permitAll()
+        .anyRequest().authenticated();
 		// 접근권한 excepiton시 해당 경로로 리턴
 		http.exceptionHandling().accessDeniedPage("/jjhLogin/accessDenied");
 		return http.build();

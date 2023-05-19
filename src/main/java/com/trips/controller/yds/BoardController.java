@@ -62,7 +62,7 @@ public class BoardController {
 	@GetMapping({"id","modify","getAllImages"})
 	@ApiOperation(value ="상세 조회", notes="게시물 정보를 상세 조회할 수 있습니다")
 	@ApiImplicitParams({
-		@ApiImplicitParam(name = "num", value="게시물 번호", example="1165")
+		@ApiImplicitParam(name = "num", value="게시물 번호", example="1165", dataTypeClass = Integer.class)
 	})
 	public void getBoard(int num, Model model, MultipartFile[] file) {
 		TripsBoardDto board = service.getBoard(num, file);

@@ -368,7 +368,7 @@ body {
 			<div class="mt-3">
 				<a id="reserveButton" data-bs-toggle="modal"
 					data-bs-target="#availableDateConfirmModal"
-					class="btn btn-dark btn-sm">예약 날짜 확인</a>
+					class="btn btn-dark btn-sm">체험 날짜 확인</a>
 			</div>
 			<hr style="width: 50%" />
 		</div>
@@ -761,7 +761,7 @@ const frame =
 			</form>
 			<div class="dates"></div>
 			<sec:authorize access="isAuthenticated()">
-			<input type="button" disabled value="장바구니 담기" id="cartButton" onclick="goCart()" class="btn btn-outline-secondary">
+			<input type="button" value="장바구니 담기" id="cartButton" onclick="goCart()" class="btn btn-outline-secondary">
 			<small id="actiDate"></small>
 			</sec:authorize>
 			<sec:authorize access="not isAuthenticated()">
@@ -819,8 +819,13 @@ function nextCal(){
 }	
 
 function goCart(){
-		document.querySelector("#cartButton").disabled = "false"
-		document.querySelector("#cartForm").submit();
+	let number = document.querySelector("#number").innerHTML;
+	let date = document.querySelector("#addDate").value;
+	if(number==0 || date==""){
+		alert("날짜와 인원을 모두 정해주세요")		
+	}else {
+		 document.querySelector("#cartForm").submit();
+	}
 }
 
 /* function initMap() {
