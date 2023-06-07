@@ -25,8 +25,7 @@
 <img src="https://github.com/sikdong/TIL/assets/110441578/4f676e4c-f8b3-4457-950a-4bec77a0cccf" width="700" height="400">
 
 ### 배포 주소
-http://13.125.60.211/acti/main
-(EC2 오류 및 데이터 유실로 현재 접속 안됩니다)
+http://13.125.115.252/acti/main
 (ID : user, PW : user)
 
 ###  기획의도
